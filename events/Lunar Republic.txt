@@ -1,0 +1,349 @@
+add_namespace = lunarep
+
+country_event = {
+	id = lunarep.1
+	title = lunarep.1.t
+	desc = lunarep.1.d
+	picture = GFX_event_luna_ready_for_war
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.1"}
+	is_triggered_only = yes
+	option = {
+		name = lunarep.1.a
+	}
+}
+country_event = {
+	id = lunarep.10
+	title = lunarep.10.t
+	desc = lunarep.10.d
+	picture = GFX_event_equestria_fail
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.10"}
+	is_triggered_only = yes
+	option = {
+		name = lunarep.10.a
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				any_country = {
+					OR = {
+						is_justifying_wargoal_against = ROOT
+						has_wargoal_against = ROOT
+						has_war_with = ROOT
+					}
+				}
+			}
+		}
+		send_equipment = {
+		    equipment = infantry_equipment
+		    amount = 1000
+		    target = NLR
+		}
+		add_manpower = -3000
+		NLR = { 
+			add_manpower = 3000
+			set_country_flag = lunarep_10_yes 
+			add_to_variable = { var = NLR_number_of_sent_guns value = 1000 }
+			add_to_variable = { var = NLR_number_of_sent_manpower value = 3000 }
+		}
+	}
+	option = {
+		name = lunarep.10.b
+		ai_chance = {
+			factor = 3
+			modifier = {
+				NOT = { is_pony_race = yes }
+				factor = 2
+			}
+			modifier = {
+				NOT = {
+					is_neighbor_of = NLR
+					is_neighbor_of = EQR
+					is_neighbor_of = event_target:solar_empire
+				}
+				factor = 1.5
+			}
+			modifier = {
+				NOT = {
+					has_government = democratic 
+				}
+				factor = 3
+			}
+			modifier = {
+				original_tag = CRY
+				factor = 0.1
+			}
+			modifier = {
+				original_tag = EQC
+				factor = 0.1
+			}
+		}
+	}
+}
+country_event = {
+	id = lunarep.11
+	title = { 
+		text = lunarep.11.t_yes
+		trigger = {
+			has_country_flag = lunarep_10_yes
+		}
+	}
+	title = { 
+		text = lunarep.11.t_no
+		trigger = {
+			NOT = { has_country_flag = lunarep_10_yes }
+		}
+	}
+	desc = { 
+		text = lunarep.11.d_yes
+		trigger = {
+			has_country_flag = lunarep_10_yes
+		}
+	}
+	desc = { 
+		text = lunarep.11.d_no
+		trigger = {
+			NOT = { has_country_flag = lunarep_10_yes }
+		}
+	}
+	picture = GFX_event_bat_soldier2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event lunarep.11" }
+	is_triggered_only = yes
+	option = {
+		name = lunarep.11.a #Equipment Sent
+		effect_tooltip = {
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = var:NLR_number_of_sent_guns
+			    producer = NLR
+			}
+			add_manpower = var:NLR_number_of_sent_manpower
+		}
+		trigger = {
+			has_country_flag = lunarep_10_yes
+		}
+		custom_effect_tooltip = nlr_harmonists
+	}
+	option = {
+		name = lunarep.11.b
+		add_war_support = -0.05
+		trigger = {
+			NOT = { has_country_flag = lunarep_10_yes }
+		}
+		custom_effect_tooltip = nlr_thestrals
+	}
+}
+country_event = { #Picking A New Warmaster
+    id = lunarep.12
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.12"}
+	title = lunarep.12.t
+	desc = lunarep.12.d
+
+	picture = GFX_event_bat_soldier2
+	is_triggered_only = yes
+
+	option = {
+		name = lunarep.12.a #SPECK
+		ai_chance = {
+		    factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = superior_firepower
+					has_tech = mass_assault
+					has_tech = mobile_warfare
+					is_researching_technology = superior_firepower
+					is_researching_technology = mass_assault
+					is_researching_technology = mobile_warfare
+				}
+			}
+		}
+		add_tech_bonus = {
+			name = cat_grand_battle_plan
+			bonus = 2
+			uses = 1
+			category = cat_grand_battle_plan
+		}
+		random_army_leader = {
+			limit = { has_id = 201 }
+			add_unit_leader_trait = nlr_commander_in_chief
+		}
+		custom_effect_tooltip = nlr_thestrals
+	}
+	
+	option = {
+		name = lunarep.12.b #Selenite
+		trigger = {
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Selenite"
+				}
+			}
+		}
+		ai_chance = {
+		    factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = trench_warfare
+					has_tech = mass_assault
+					has_tech = mobile_warfare
+					is_researching_technology = trench_warfare
+					is_researching_technology = mass_assault
+					is_researching_technology = mobile_warfare
+				}
+			}
+		}
+		add_tech_bonus = {
+			name = cat_superior_firepower
+			bonus = 2
+			uses = 1
+			category = cat_superior_firepower
+		}
+		random_army_leader = {
+			limit = { has_id = 790 }
+			add_unit_leader_trait = nlr_commander_in_chief
+		}
+		custom_effect_tooltip = nlr_harmonists
+	}
+	option = {
+		name = lunarep.12.c #Galaxy Rose
+		trigger = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Selenite"
+			}
+		}
+		ai_chance = {
+		    factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = trench_warfare
+					has_tech = mass_assault
+					has_tech = mobile_warfare
+					is_researching_technology = trench_warfare
+					is_researching_technology = mass_assault
+					is_researching_technology = mobile_warfare
+				}
+			}
+		}
+		add_tech_bonus = {
+			name = cat_superior_firepower
+			bonus = 2
+			uses = 1
+			category = cat_superior_firepower
+		}
+		random_army_leader = {
+			limit = { 
+				has_trait = thestral_race_trait
+				has_trait = night_guard
+				has_trait = medical_expert 
+			}
+			add_unit_leader_trait = nlr_commander_in_chief
+		}
+		custom_effect_tooltip = nlr_harmonists
+	}
+	
+	option = {
+		name = lunarep.12.e #Caltrop
+		ai_chance = {
+		    factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = trench_warfare
+					has_tech = mass_assault
+					has_tech = superior_firepower
+					is_researching_technology = trench_warfare
+					is_researching_technology = mass_assault
+					is_researching_technology = superior_firepower
+				}
+			}
+		}
+		add_tech_bonus = {
+			name = cat_mobile_warfare
+			bonus = 2
+			uses = 1
+			category = cat_mobile_warfare
+		}
+		random_army_leader = {
+			limit = { has_id = 10 }
+			add_unit_leader_trait = nlr_commander_in_chief
+		}
+		custom_effect_tooltip = nlr_harmonists
+	}
+	
+	option = {
+		name = lunarep.12.f #Midnight Oil
+		ai_chance = {
+		    factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = superior_firepower
+					has_tech = trench_warfare
+					has_tech = mobile_warfare
+					is_researching_technology = superior_firepower
+					is_researching_technology = trench_warfare
+					is_researching_technology = mobile_warfare
+				}
+			}
+		}
+		add_tech_bonus = {
+			name = cat_mass_assault
+			bonus = 2
+			uses = 1
+			category = cat_mass_assault
+		}
+		random_army_leader = {
+			limit = { has_id = 205 }
+			add_unit_leader_trait = nlr_commander_in_chief
+		}
+		custom_effect_tooltip = nlr_thestrals
+	}
+}
+country_event = {
+	id = lunarep.13
+	title = lunarep.13.t
+	desc = lunarep.13.d
+	picture = GFX_event_equestria_fail
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.13"}
+	is_triggered_only = yes
+	option = {
+		name = lunarep.13.a
+		ai_chance = {
+			factor = 3
+			modifier = {
+				surrender_progress < 0.3
+				factor = 3
+			}
+		}
+		custom_effect_tooltip = nlr_harmonists
+		add_ideas = NLR_war_rules_1
+	}
+	option = {
+		name = lunarep.13.b
+		ai_chance = {
+			factor = 3
+			modifier = {
+				surrender_progress > 0.3
+				surrender_progress < 0.7
+				factor = 3
+			}
+		}
+		add_ideas = NLR_war_rules_2
+	}
+	option = {
+		name = lunarep.13.c
+		ai_chance = {
+			factor = 3
+			modifier = {
+				surrender_progress > 0.7
+				factor = 3
+			}
+		}
+		custom_effect_tooltip = nlr_thestrals
+		add_ideas = NLR_war_rules_3
+	}
+}

@@ -1,0 +1,84 @@
+soundeffect = {
+	name = "sol_fire_ev"
+	sounds = {
+		sound = "sol_fire"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_curse_ev"  #Yes, this is a sound file from Stellaris
+	sounds = {
+		sound = "sol_curse"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_blessing_ev"
+	sounds = {
+		sound = "sol_blessing"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_shield_ev"
+	sounds = {
+		sound = "sol_shield"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_attack_daybreaker_ev"
+	sounds = {
+		sound = "sol_attack_daybreaker"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_attack_nightmare_ev"
+	sounds = {
+		sound = "sol_attack_nightmare"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_plasma_shield_ev"
+	sounds = {
+		sound = "sol_plasma_shield"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_supernova_ev"
+	sounds = {
+		sound = "sol_supernova"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_lifebringer_ev"
+	sounds = {
+		sound = "sol_lifebringer"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_ally_of_shadows_ev"
+	sounds = {
+		sound = "sol_ally_of_shadows"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_mistress_of_terror_ev"
+	sounds = {
+		sound = "sol_mistress_of_terror"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "sol_dreamwalker_ev"
+	sounds = {
+		sound = "sol_dreamwalker"
+	}
+	volume = 3
+}

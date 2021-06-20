@@ -1,0 +1,72 @@
+SOL_resistance_menu = {
+	allowed = {
+		original_tag = EQS
+	}
+	icon = GFX_daybreaker_cat
+	priority = {
+		base = 120
+	}
+	visible = {
+		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+		NOT = { has_country_flag = resistance_ceasefire }
+		has_country_flag = march_on_canterlot
+	}
+	scripted_gui = SOL_loyalty_display_container_gui
+}
+SOL_inquisition_mechanic = {
+	icon = GFX_decision_cat_inquisition
+	allowed = {
+		original_tag = EQS
+	}
+	priority = {
+		base = 117
+	}
+	visible = {
+		has_completed_focus = SOL_Imperial_Inquisition
+		NOT = { has_country_flag = resistance_ceasefire }
+	}
+	scripted_gui = SOL_leads_display_container_gui
+	visible_when_empty = yes
+}
+SOL_resistance_activity = {
+	allowed = {
+		original_tag = EQS
+	}
+	icon = GFX_decision_cat_resistance
+	priority = {
+		base = 115
+	}
+	visible = {
+		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+		has_country_flag = SOL_resistance_begins
+		NOT = { has_country_flag = resistance_ceasefire }
+	}
+	visible_when_empty = yes
+}
+SOL_spells_cancel = {
+	allowed = {
+		original_tag = EQS
+	}
+	icon = GFX_daybreaker_cat_blue
+	priority = {
+		base = 110
+	}
+	visible = {
+		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+		has_variable = sol_magic_screen_show
+	}
+}
+SOL_coalition_menu = {
+	allowed = {
+		is_coalition_member = yes
+	}
+	icon = GFX_coalition_cat
+	priority = {
+		base = 110
+	}
+	visible = {
+		is_coalition_member = yes
+	}
+	visible_when_empty = yes
+	scripted_gui = coalition_votes_gui
+}

@@ -1,0 +1,555 @@
+scripted_gui = {
+	sol_fight_window_gui = {
+		window_name = "sol_fight_window"
+		dirty = sol_fight_var
+		context_type = player_context
+		visible = {
+			has_variable = sol_fight_var
+			NOT = { 
+				has_country_flag = sol_fight_left_win
+				has_country_flag = sol_fight_right_win
+			}
+		}
+		properties = {
+			sol_fight_background = {
+				image = "[GetBackgroundImage]"
+			}
+		}
+	}
+	sol_fight_dialogue_gui = {
+		window_name = "sol_fight_dialogue"
+		dirty = sol_dialogue_var
+		context_type = player_context
+		visible = {
+			has_variable = sol_dialogue_var
+		}
+		effects = {
+			sol_fight_dialogue_close_button_click = {
+				set_temp_variable = { dialogue_temp_var = sol_dialogue_var }
+				handle_custom_effects = yes
+				#This is used to chain dialogue if you wish. 
+				if = { 
+					limit = { check_variable = { dialogue_temp_var = sol_dialogue_var } }
+					clear_variable = sol_dialogue_var
+					clr_country_flag = fight_spells_blocked
+					fight_handle_turns = yes
+					available_actions = yes
+					add_to_variable = { var = sol_fight_var value = 1 }
+				}
+			}
+		}
+		properties = {
+			left_fighter = {
+				image = "[GetLeftFighterImage]"
+				frame = var:left_fight_frame
+			}
+			right_fighter = {
+				image = "[GetRightFighterImage]"
+				frame = var:right_fight_frame
+			}
+		}
+	}
+	sol_fight_game_over_popup_gui = {
+		window_name = "sol_fight_game_over_popup"
+		dirty = sol_game_over
+		context_type = player_context
+		visible = {
+			has_variable = sol_game_over
+		}
+		effects = {
+			sol_fight_game_over_close_button_click = {
+				for_each_loop = {
+					array = fighters_array
+					set_variable = { health_array^v = max_health_array^v }
+					set_variable = { vitality_array^v = max_vitality_array^v }
+
+					set_variable = { attack_multiplier_array^v = 1 }
+					set_variable = { defence_multiplier_array^v = 1 }
+					set_variable = { evasion_array^v = evasion_initial_array^v }
+					set_variable = { health_change_array^v = 0 }
+					set_variable = { vitality_change_array^v = 0 }
+					
+					set_variable = { var = damage_frame_array^v value = 1 }
+				}
+				for_each_loop = {
+					array = left_fighters_array
+					set_variable = { health_pos_array^v = -15 }
+					set_variable = { vitality_pos_array^v = -15 }
+				}
+				for_each_loop = {
+					array = right_fighters_array
+					set_variable = { health_pos_array^v = 1 }
+					set_variable = { vitality_pos_array^v = 20 }
+				}
+				set_variable = { var = number_of_turns value = 0 }
+				add_to_variable = { var = fight_replay_pp_cost value = -100 }
+
+				clear_variable = action_display_var
+				clear_array = missed_targets
+				clear_array = used_dialogue
+				clear_variable = sol_dialogue_var
+
+				clear_array = dead_fighters
+				clear_array = status_effect_target_ids
+				clear_array = status_effect_duration
+				clear_array = status_effect_spell_type
+				clear_array = status_effect_type_id
+				clear_array = status_effect_magnitude
+
+				clr_country_flag = sol_fight_left_win
+				clr_country_flag = sol_fight_right_win
+
+				clear_variable = sol_game_over
+				fight_handle_turns = yes
+				available_actions = yes
+				set_variable = { var = sol_fight_var value = 1 }
+			}
+			sol_fight_game_over_skip_button_click = {
+				if = {
+					limit = { has_country_flag = left_side_ai_controlled}
+					set_country_flag = sol_fight_right_win 
+					clr_country_flag = sol_fight_left_win
+				}
+				if = {
+					limit = { has_country_flag = right_side_ai_controlled }
+					set_country_flag = sol_fight_left_win 
+					clr_country_flag = sol_fight_right_win  
+				}
+				handle_victory = yes
+				clear_variable = sol_game_over
+			}
+		}
+	}
+	sol_daybreaker_fighter_gui = {
+		context_type = player_context
+		dirty = sol_fight_var
+		window_name = "SOL_daybreaker_fighter_window"
+		parent_window_name = "sol_fight_window"
+		visible = {
+			has_variable = daybreaker_fight_num
+		}
+		effects = {
+			daybreaker_damage_click = {
+				if = {
+					limit = { check_variable = { damage_frame_array^daybreaker_fight_num = 4 } }
+					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
+					fight_calculate_effect = yes
+				}
+			}
+			daybreaker_defence_click = {
+				if = {
+					limit = { check_variable = { spell_1_frame_array^daybreaker_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 1 }
+					set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
+					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+			daybreaker_sunbeam_click = {
+				if = {
+					limit = { check_variable = { spell_2_frame_array^daybreaker_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					if = {
+						limit = { check_variable = { currently_selected_spell = 2 } }
+						clear_variable = currently_selected_spell
+						set_variable { var = background_darkener_frame value = 1 }
+						for_each_loop = {
+							array = fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 1 }
+							}
+							else = {
+								set_variable = { var = damage_frame_array^v value = 3 }
+							}
+						}
+						clear_variable = fight_attacker_num
+						clear_variable = fight_defender_var
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+					else = {
+						set_variable = { var = currently_selected_spell value = 2 }
+						set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
+						set_variable = { var = fight_defender_num value = daybreaker_fight_num }
+						set_variable = { var = background_darkener_frame value = 2 }
+						for_each_loop = {
+							array = left_fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 4 }
+							}
+						}
+						for_each_loop = {
+							array = right_fighters_array
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+				}
+			}
+			daybreaker_lifebringer_click = {
+				if = {
+					limit = { check_variable = { spell_3_frame_array^daybreaker_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 3 }
+					set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
+					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+			daybreaker_plasma_shield_click = {
+				if = {
+					limit = { check_variable = { spell_4_frame_array^daybreaker_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 4 }
+					set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
+					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+			daybreaker_solar_flare_click = {
+				if = {
+					limit = { check_variable = { spell_5_frame_array^daybreaker_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					if = {
+						limit = { check_variable = { currently_selected_spell = 5 } }
+						clear_variable = currently_selected_spell
+						set_variable { var = background_darkener_frame value = 1 }
+						for_each_loop = {
+							array = fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 1 }
+							}
+							else = {
+								set_variable = { var = damage_frame_array^v value = 3 }
+							}
+						}
+						clear_variable = fight_attacker_num
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+					else = {
+						set_variable = { var = currently_selected_spell value = 5 }
+						set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
+						set_variable = { var = background_darkener_frame value = 2 }
+						for_each_loop = {
+							array = left_fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 4 }
+							}
+						}
+						for_each_loop = {
+							array = right_fighters_array
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+				}
+			}
+		}
+		properties = {
+			daybreaker = {
+				frame = var:daybreaker_frame
+			}
+			daybreaker_health = {
+				x = health_pos_array^daybreaker_fight_num
+			}
+			daybreaker_vitality = {
+				x = vitality_pos_array^daybreaker_fight_num
+			}
+			daybreaker_damage = {
+				frame = damage_frame_array^daybreaker_fight_num
+			}
+			daybreaker_defence = {
+				frame = spell_1_frame_array^daybreaker_fight_num
+			}
+			daybreaker_sunbeam = {
+				frame = spell_2_frame_array^daybreaker_fight_num
+			}
+			daybreaker_lifebringer = {
+				frame = spell_3_frame_array^daybreaker_fight_num
+			}
+			daybreaker_plasma_shield = {
+				frame = spell_4_frame_array^daybreaker_fight_num
+			}
+			daybreaker_solar_flare = {
+				frame = spell_5_frame_array^daybreaker_fight_num
+			}
+		}
+	}
+	sol_nightmare_fighter_gui = {
+		context_type = player_context
+		dirty = sol_fight_var
+		window_name = "SOL_nightmare_fighter_window"
+		parent_window_name = "sol_fight_window"
+		visible = {
+			has_variable = nightmare_fight_num
+		}
+		effects = {
+			nightmare_damage_click = {
+				if = {
+					limit = { check_variable = { damage_frame_array^nightmare_fight_num = 4 } }
+					set_variable = { var = fight_defender_num value = nightmare_fight_num }
+					fight_calculate_effect = yes
+				}
+			}
+			nightmare_defence_click = {
+				if = {
+					limit = { check_variable = { spell_1_frame_array^nightmare_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 1 }
+					set_variable = { var = fight_attacker_num value = nightmare_fight_num }
+					set_variable = { var = fight_defender_num value = nightmare_fight_num }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+			nightmare_void_blade_click = {
+				if = {
+					limit = { check_variable = { spell_2_frame_array^nightmare_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					if = {
+						limit = { check_variable = { currently_selected_spell = 2 } }
+						clear_variable = currently_selected_spell
+						set_variable { var = background_darkener_frame value = 1 }
+						for_each_loop = {
+							array = fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 1 }
+							}
+							else = {
+								set_variable = { var = damage_frame_array^v value = 3 }
+							}
+						}
+						clear_variable = fight_attacker_num
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+					else = {
+						set_variable = { var = currently_selected_spell value = 2 }
+						set_variable = { var = fight_attacker_num value = nightmare_fight_num }
+						set_variable = { var = background_darkener_frame value = 2 }
+						for_each_loop = {
+							array = right_fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 4 }
+							}
+						}
+						for_each_loop = {
+							array = left_fighters_array
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+				}
+			}
+			nightmare_ally_of_shadows_click = {
+				if = {
+					limit = { check_variable = { spell_3_frame_array^nightmare_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 6 }
+					set_variable = { var = fight_attacker_num value = nightmare_fight_num }
+					set_variable = { var = fight_defender_num value = nightmare_fight_num }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+			nightmare_dreamwalker_click = {
+				if = {
+					limit = { check_variable = { spell_4_frame_array^nightmare_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 7 }
+					set_variable = { var = fight_attacker_num value = nightmare_fight_num }
+					set_variable = { var = fight_defender_num value = nightmare_fight_num }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+			nightmare_aura_of_fear_click = {
+				if = {
+					limit = { check_variable = { spell_5_frame_array^nightmare_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					if = {
+						limit = { check_variable = { currently_selected_spell = 8 } }
+						clear_variable = currently_selected_spell
+						set_variable { var = background_darkener_frame value = 1 }
+						for_each_loop = {
+							array = fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 1 }
+							}
+							else = {
+								set_variable = { var = damage_frame_array^v value = 3 }
+							}
+						}
+						clear_variable = fight_attacker_num
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+					else = {
+						set_variable = { var = currently_selected_spell value = 8 }
+						set_variable = { var = fight_attacker_num value = nightmare_fight_num }
+						set_variable = { var = background_darkener_frame value = 2 }
+						for_each_loop = {
+							array = right_fighters_array
+							if = {
+								limit = { NOT = { is_in_array = { dead_fighters = v } } }
+								set_variable = { var = damage_frame_array^v value = 4 }
+							}
+						}
+						for_each_loop = {
+							array = left_fighters_array
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+						add_to_variable = { var = sol_fight_var value = 1 }
+					}
+				}
+			}
+		}
+		properties = {
+			nightmare = {
+				frame = var:nightmare_frame
+			}
+			nightmare_health = {
+				x = health_pos_array^nightmare_fight_num
+			}
+			nightmare_vitality = {
+				x = vitality_pos_array^nightmare_fight_num
+			}
+			nightmare_damage = {
+				frame = damage_frame_array^nightmare_fight_num
+			}
+			nightmare_defence = {
+				frame = spell_1_frame_array^nightmare_fight_num
+			}
+			nightmare_void_blade = {
+				frame = spell_2_frame_array^nightmare_fight_num
+			}
+			nightmare_ally_of_shadows = {
+				frame = spell_3_frame_array^nightmare_fight_num
+			}
+			nightmare_dreamwalker = {
+				frame = spell_4_frame_array^nightmare_fight_num
+			}
+			nightmare_aura_of_fear = {
+				frame = spell_5_frame_array^nightmare_fight_num
+			}
+		}
+	}
+	sol_sunrise_fighter_gui = {
+		context_type = player_context
+		dirty = sol_fight_var
+		window_name = "SOL_sunrise_fighter_window"
+		parent_window_name = "sol_fight_window"
+		visible = {
+			has_variable = sunrise_fight_num
+		}
+		effects = {
+			sunrise_damage_click = {
+				if = {
+					limit = { check_variable = { damage_frame_array^sunrise_fight_num = 4 } }
+					set_variable = { var = fight_defender_num value = sunrise_fight_num }
+					fight_calculate_effect = yes
+				}
+			}
+			sunrise_defence_click = {
+				if = {
+					limit = { check_variable = { spell_1_frame_array^sunrise_fight_num = 1 } NOT = { has_country_flag = fight_spells_blocked } }
+					set_variable = { var = currently_selected_spell value = 1 }
+					set_variable = { var = fight_attacker_num value = sunrise_fight_num }
+					set_variable = { var = fight_defender_num value = sunrise_fight_num }
+					set_variable = { var = vitality_recovered value = 11 }
+					set_variable { var = background_darkener_frame value = 1 }
+					for_each_loop = {
+						array = fighters_array
+						if = {
+							limit = { NOT = { is_in_array = { dead_fighters = v } } }
+							set_variable = { var = damage_frame_array^v value = 1 }
+						}
+						else = {
+							set_variable = { var = damage_frame_array^v value = 3 }
+						}
+					}
+					add_to_variable = { var = sol_fight_var value = 1 }
+					fight_calculate_effect = yes
+				}
+			}
+		}
+		properties = {
+			sunrise_health = {
+				x = health_pos_array^sunrise_fight_num
+			}
+			sunrise_vitality = {
+				x = vitality_pos_array^sunrise_fight_num
+			}
+			sunrise_damage = {
+				frame = damage_frame_array^sunrise_fight_num
+			}
+			sunrise_defence = {
+				frame = spell_1_frame_array^sunrise_fight_num
+			}
+		}
+	}
+}

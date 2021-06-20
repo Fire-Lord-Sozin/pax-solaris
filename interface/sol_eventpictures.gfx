@@ -1,0 +1,70 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_event_pony_counterprotest"
+		texturefile = "gfx/event_pictures/event_pony_counterprotest.dds"
+	}
+	spriteType = {
+		name = "GFX_event_supplies"
+		texturefile = "gfx/event_pictures/event_supplies.dds"
+	}
+	spriteType = {
+		name = "GFX_the_sun"
+		texturefile = "gfx/event_pictures/the_sun.dds"
+	}
+	spriteType = {
+		name = "GFX_inquisition_stamp"
+		texturefile = "gfx/event_pictures/inquisition_stamp.dds"
+	}
+	spriteType = {
+		name = "GFX_ponies_daybreaker"
+		texturefile = "gfx/event_pictures/ponies_daybreaker.dds"
+	}
+	spriteType = {
+		name = "GFX_ponies_urban"
+		texturefile = "gfx/event_pictures/ponies_urban.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker"
+		texturefile = "gfx/event_pictures/sol_daybreaker.dds"
+	}
+	spriteType = {
+		name = "GFX_mane_6_war_council"
+		texturefile = "gfx/event_pictures/mane_6_war_council.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_buffalo"
+		texturefile = "gfx/event_pictures/sol_buffalo.dds"
+	}
+	spriteType = {
+		name = "GFX_event_papers_please"
+		texturefile = "gfx/event_pictures/event_papers_please.dds"
+	}
+	spriteType = {
+		name = "GFX_news_hollow_shades"
+		texturefile = "gfx/event_pictures/news_hollow_shades.dds"
+	}
+	spriteType = {
+		name = "GFX_event_daybreaker"
+		texturefile = "gfx/event_pictures/event_daybreaker.dds"
+	}
+	spriteType = {
+		name = "GFX_event_celestia"
+		texturefile = "gfx/event_pictures/event_celestia.dds"
+	}
+	spriteType = {
+		name = "GFX_event_burning_forest"
+		texturefile = "gfx/event_pictures/event_burning_forest.dds"
+	}
+	spriteType = {
+		name = "GFX_event_daybreaker_luna"
+		texturefile = "gfx/event_pictures/event_daybreaker_luna.dds"
+	}
+	spriteType = {
+		name = "GFX_event_solar_flare"
+		texturefile = "gfx/event_pictures/event_solar_flare.dds"
+	}
+	spriteType = {
+		name = "GFX_event_daybreaker_oil"
+		texturefile = "gfx/event_pictures/event_daybreaker_oil.dds"
+	}
+}

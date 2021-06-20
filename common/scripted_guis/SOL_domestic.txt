@@ -1,0 +1,191 @@
+scripted_gui = {
+	sol_domestic_start_gui = {
+		window_name = "sol_domestic_start_container"
+		context_type = player_context
+		visible = {
+			original_tag = EQS 
+			has_completed_focus = SOL_public_works_program
+		}
+		effects = {
+			sol_domestic_show_bg_click = {
+				set_variable = {
+					sol_public_works_screen_show = 1
+				}
+				hidden_effect = {
+					SOL_calculate_region_development = yes 
+				}
+			}
+		}
+	}
+	sol_domestic_container_gui = {
+		window_name = "sol_domestic_container"
+		dirty = sol_public_works_screen_show
+		context_type = player_context
+		visible = {
+			has_variable = sol_public_works_screen_show
+			original_tag = EQS 
+			has_completed_focus = SOL_public_works_program
+		}
+		effects = {
+			sol_domestic_close_button_click = {
+				clear_variable = sol_public_works_screen_show
+				clear_variable = currently_selected_region
+			}
+			sol_domestic_gui_region1_click = { 
+				set_variable = { currently_selected_region = 1 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region2_click = { 
+				set_variable = { currently_selected_region = 2 } 
+				add_to_variable = { sol_public_works_screen_show = 1 }
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region3_click = { 
+				set_variable = { currently_selected_region = 3 } 
+				add_to_variable = { sol_public_works_screen_show = 1 }
+				SOL_calculate_public_works_industry_use = yes 
+			}
+			sol_domestic_gui_region4_click = { 
+				set_variable = { currently_selected_region = 4 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region5_click = { 
+				set_variable = { currently_selected_region = 5 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region6_click = { 
+				set_variable = { currently_selected_region = 6 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region7_click = { 
+				set_variable = { currently_selected_region = 7 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region8_click = { 
+				set_variable = { currently_selected_region = 8 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region9_click = { 
+				set_variable = { currently_selected_region = 9 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+			sol_domestic_gui_region10_click = { 
+				set_variable = { currently_selected_region = 10 } 
+				add_to_variable = { sol_public_works_screen_show = 1 } 
+				SOL_calculate_public_works_industry_use = yes
+			}
+		}
+		properties = {
+			sol_domestic_gui_region1 = {
+				frame = SOL_public_works_region_frame^1
+			}
+			sol_domestic_gui_region2 = {
+				frame = SOL_public_works_region_frame^2
+			}
+			sol_domestic_gui_region3 = {
+				frame = SOL_public_works_region_frame^3
+			}
+			sol_domestic_gui_region4 = {
+				frame = SOL_public_works_region_frame^4
+			}
+			sol_domestic_gui_region5 = {
+				frame = SOL_public_works_region_frame^5
+			}
+			sol_domestic_gui_region6 = {
+				frame = SOL_public_works_region_frame^6
+			}
+			sol_domestic_gui_region7 = {
+				frame = SOL_public_works_region_frame^7
+			}
+			sol_domestic_gui_region8 = {
+				frame = SOL_public_works_region_frame^8
+			}
+			sol_domestic_gui_region9 = {
+				frame = SOL_public_works_region_frame^9
+			}
+			sol_domestic_gui_region10 = {
+				frame = SOL_public_works_region_frame^10
+			}
+		}
+	}
+	sol_domestic_container_details_gui = {
+		context_type = player_context
+		dirty = sol_public_works_screen_show
+		window_name = "sol_domestic_container_details"
+		parent_window_name = "sol_domestic_container"
+		visible = {
+			has_variable = currently_selected_region
+		}
+		effects = {
+			SOL_infrastructure_improvement_button_click = {
+				hidden_effect = {
+					ROOT = {
+						if = {
+							limit = {
+								NOT = {
+									any_state = {
+										AND = {
+											check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+											NOT = { is_controlled_by = event_target:solar_empire }
+										}
+									}
+									OR = {
+										is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+									}
+									is_in_array = { SOL_completed_public_works = currently_selected_region }
+									has_war = yes
+								}
+								OR = {
+									check_variable = { SOL_dynamic_modifier_civ_use_total < 1 } 
+									num_of_available_civilian_factories > 5
+								}
+							}
+							set_variable = { var = SOL_public_works_duration_array^currently_selected_region value = sol_public_works_duration }
+							add_to_variable = { var = sol_ongoing_public_works_num value = 1 }
+							add_to_array = { array = SOL_ongoing_public_works value = currently_selected_region }
+							add_to_variable = { var = sol_public_works_screen_show value = 1 }
+							set_country_flag = SOL_heartland_public_works_in_progress
+							SOL_calculate_public_works_progress = yes
+							if = {
+								limit = {
+									NOT = { EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } } }
+								}
+								add_dynamic_modifier = { modifier = SOL_public_works_modifier }
+							}
+						}
+					}
+				}
+			}
+		}
+		triggers = {
+			SOL_infrastructure_improvement_button_cover_visible = {
+				OR = {
+					any_state = {
+						AND = {
+							check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+							NOT = { is_controlled_by = event_target:solar_empire }
+						}
+					}
+					OR = {
+						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+					}
+					is_in_array = { SOL_completed_public_works = currently_selected_region }
+					has_war = yes
+					NOT = { 
+						OR = {
+							check_variable = { SOL_dynamic_modifier_civ_use_total < 1 } 
+							num_of_available_civilian_factories > 5
+						}
+					}
+				}
+			}
+		}
+	}
+}

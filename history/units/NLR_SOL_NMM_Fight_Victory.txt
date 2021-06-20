@@ -1,0 +1,43 @@
+units = {
+	division = {
+		location = 3579
+		division_template = "Nightmare Disciples"
+		start_experience_factor = 0.1 
+		start_equipment_factor = 0.95
+	}
+	division = {
+		location = 3534
+		division_template = "Nightmare Disciples"
+		start_experience_factor = 0.1 
+		start_equipment_factor = 0.95
+	}
+	division = {
+		location = 3772
+		division_template = "Nightmare Disciples"
+		start_experience_factor = 0.1 
+		start_equipment_factor = 0.95
+	}
+	division = {
+		location = 6547
+		division_template = "Nightmare Disciples"
+		start_experience_factor = 0.1 
+		start_equipment_factor = 0.95
+	}
+	division = {
+		location = 6560
+		division_template = "Thestral Division"
+		start_experience_factor = 0.2 
+	}
+	division = {
+		location = 9297
+		division_template = "Onhooves Division"
+		start_experience_factor = 0.1 
+		start_equipment_factor = 0.95
+	}
+	division = {
+		location = 6585
+		division_template = "Guerrilla Fighters"
+		start_experience_factor = 0.1 
+		start_equipment_factor = 0.95
+	}
+}

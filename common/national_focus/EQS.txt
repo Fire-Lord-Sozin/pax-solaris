@@ -1,0 +1,54 @@
+focus_tree = {
+	id = equestria_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			original_tag = EQS
+		}
+	}
+	#################################################
+	###### Minor states problem #######################
+	#################################################
+	continuous_focus_position = { 
+		x = 2270 
+		y = 1125 
+	}
+	initial_show_position = {
+		x = 8
+		y = 2
+		offset = {
+			x = 0
+			y = 5
+			trigger = {
+				has_country_flag = march_on_canterlot
+			}
+		}
+	}
+
+	shared_focus = examine_the_situation
+	shared_focus = Ministry_of_defense
+	shared_focus = Friendship_Games
+	shared_focus = EQS_Civil_War_End
+	shared_focus = EQS_buffalo_relations
+	shared_focus = eqs_come_to_compromise
+	shared_focus = eqs_prevent_the_vote
+	shared_focus = Crystal_Fair
+
+	shared_focus = SOL_Imperium_Solis
+
+	shared_focus = SOL_twilight_ascend
+
+	shared_focus = SOL_investigate_resistance
+	shared_focus = SOL_Imperial_Inquisition
+
+	shared_focus = SOL_Solar_Cult
+	shared_focus = SOL_integrate_southeast
+	shared_focus = SOL_integrate_northwest
+
+	shared_focus = SOL_economic_miracle
+	shared_focus = SOL_remilitarisation
+	shared_focus = SOL_all_hail_the_sun_empress
+}

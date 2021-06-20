@@ -1,0 +1,612 @@
+﻿add_namespace = coalition
+
+country_event = {
+	id = coalition.1
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.1"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		if = {
+			limit = {
+				OR = {
+					CRY = {
+						exists = yes
+						has_government = communism
+					}
+					EQC = {
+						exists = yes
+						has_country_leader = { ruling_only = yes name = "Lufty Star" }
+					}
+
+				}
+				STG = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			STG = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				CRY = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = democratic
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			CRY = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				EQC = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = democratic
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			EQC = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				CHN = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = democratic #Thorax can lead the Coalition
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			CHN = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				STG = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			STG = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				CRY = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = communism
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			CRY = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				EQC = {
+					exists = yes
+					is_subject = no
+					is_ai = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Lufty Star" }
+						has_government = neutrality
+					}
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			EQC = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					CRY = {
+						exists = yes
+						has_government = communism
+					}
+					EQC = {
+						exists = yes
+						has_country_leader = { ruling_only = yes name = "Lufty Star" }
+					}
+
+				}
+				STG = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			STG = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				CRY = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = democratic
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			CRY = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				EQC = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = democratic
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			EQC = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				CHN = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = democratic #Thorax can lead the Coalition
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			CHN = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				STG = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			STG = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				CRY = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					has_government = communism
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			CRY = { country_event = { id = coalition.2 hours = 6 } }
+		}
+		else_if = {
+			limit = {
+				EQC = {
+					exists = yes
+					is_subject = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							is_faction_leader = no
+						}
+					}
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Lufty Star" }
+						has_government = neutrality
+					}
+					NOT = { has_country_flag = SOL_refused_leadership }
+				}
+			}
+			EQC = { country_event = { id = coalition.2 hours = 6 } }
+		}
+	}
+}
+country_event = {
+	id = coalition.2
+	title = coalition.2.t
+	desc = coalition.2.d
+	picture = GFX_event_equestria_fail
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.2"}
+	is_triggered_only = yes
+	option = {
+		name = coalition.2.a
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				is_in_faction = yes
+				is_faction_leader = yes
+			}
+			custom_effect_tooltip = coalition_2_rename
+			hidden_effect = {
+				set_faction_name = SOL_Coalition_of_Free
+			}
+		}
+		else = {
+			custom_effect_tooltip = coalition_2_create
+			hidden_effect = {
+				create_faction = SOL_Coalition_of_Free
+			}
+		}
+		hidden_effect = {
+			ROOT = { save_global_event_target_as = SOL_coalition_leader }
+			add_ideas = SOL_coalition_surrender
+		}
+		add_ideas = SOL_coalition_member
+		every_country = {
+			limit = {
+				is_subject_of = ROOT
+			}
+			add_ideas = SOL_coalition_member
+		}
+		every_country = {
+			limit = {
+				exists = yes
+				is_subject = no
+				has_war = no
+				OR = {
+					tag = EQC
+					tag = STG
+					tag = DRG
+					tag = CRY
+					tag = YAK
+					tag = JAK
+					tag = GRF
+					tag = PNG
+					tag = PLB
+					tag = CHN
+					tag = OLE
+				}
+				NOT = {
+					AND = {
+						is_in_faction = yes
+						is_faction_leader = no
+					}
+					has_government = fascism
+					tag = ROOT
+				}
+				if = {
+					limit = {
+						tag = EQC
+					}
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Lufty Star" }
+						has_government = neutrality
+						has_government = democratic
+					}
+				}
+				else_if = {
+					limit = {
+						tag = STG
+					}
+					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+				}
+				else = {
+					OR = {
+						has_government = communism
+						has_government = democratic
+					}
+				}
+			}
+			country_event = {
+				id = coalition.3
+				hours = 2
+			}
+		}
+	}
+	option = {
+		name = coalition.2.b
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			country_event = { id = coalition.1 }
+			set_country_flag = SOL_refused_leadership
+		}
+	}
+}
+country_event = {
+	id = coalition.3
+	title = coalition.3.t
+	desc = coalition.3.d
+	picture = GFX_event_equestria_fail
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.3"}
+	is_triggered_only = yes
+	option = {
+		name = coalition.3.a
+		trigger = {	
+			is_faction_leader = no
+		}
+		ai_chance = {
+			factor = 100
+		}
+		event_target:SOL_coalition_leader = { add_to_faction = ROOT }
+		#add_ideas = SOL_coalition_member
+		every_country = {
+			limit = {
+				is_subject_of = ROOT
+			}
+			#add_ideas = SOL_coalition_member
+		}
+		event_target:SOL_coalition_leader = { country_event = { id = coalition.4 } }
+	}
+	option = {
+		name = coalition.3.b
+		trigger = {	
+			is_faction_leader = yes
+		}
+		ai_chance = {
+			factor = 100
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ROOT
+				exists = yes
+				is_subject = no
+				has_war = no
+				NOT = {
+					has_government = fascism
+					tag = ROOT
+				}
+				if = {
+					limit = {
+						tag = EQC
+					}
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Lufty Star" }
+						has_government = neutrality
+						has_government = democratic
+					}
+				}
+				else_if = {
+					limit = {
+						tag = STG
+					}
+					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+				}
+				else = {
+					OR = {
+						has_government = communism
+						has_government = democratic
+					}
+				}
+			}
+			country_event = { id = coalition.3 hours = 1 }
+		}
+		dismantle_faction = yes
+		event_target:SOL_coalition_leader = { add_to_faction = ROOT }
+		#add_ideas = SOL_coalition_member
+		every_country = {
+			limit = {
+				is_subject_of = ROOT
+			}
+			#add_ideas = SOL_coalition_member
+		}
+		event_target:SOL_coalition_leader = { country_event = { id = coalition.4 } }
+	}
+	option = {
+		name = coalition.3.c
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 5
+				NOT = { event_target:SOL_coalition_leader = { has_government = ROOT } }
+			}
+		}
+		set_country_flag = {
+			flag = SOL_refused_membership
+			days = 365
+			value = 1
+		}
+	}
+}
+news_event = {
+	id = coalition.4
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.4"}
+	title = coalition.4.t
+	desc = coalition.4.d
+	picture = GFX_crystal_city_news
+
+	is_triggered_only = yes
+
+	option = { # Yay
+		name = coalition.4.a
+	}
+}
+
+country_event = {
+	id = coalition.10
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.10"}
+	hidden = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_war_with = FROM }
+	}
+	option = {
+		event_target:coalition_defender  = {
+			ROOT = {
+				add_to_war = {
+					targeted_alliance = PREV
+					enemy = FROM
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = coalition.11
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.11"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		if = {
+			limit = { check_variable = { global.coalition_resolution_support_var > global.coalition_resolution_oppose_var } }
+			if = {
+				limit = { has_global_flag = proposal_coalition_invite_members }
+				event_target:potential_new_member = { country_event = { id = coalition.3 days = 3 } }
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_defensive_plan }
+				set_global_flag = coalition_defensive_plan_accepted
+				set_global_flag = coalition_ongoing_project
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_fortress }
+				set_global_flag = coalition_fortress_accepted
+				set_global_flag = coalition_ongoing_project
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_research }
+				set_global_flag = coalition_research_completed
+				every_country = {
+					limit = { is_coalition_member = yes }
+					add_to_tech_sharing_group = coalition_of_free_tech_share
+				}
+			}
+		}
+		else = {	
+			if = {
+				limit = { has_global_flag = proposal_coalition_invite_members }
+				event_target:potential_new_member = { 
+					set_country_flag = {
+						flag = SOL_refused_membership
+						value = 1 
+						days = 180
+					}
+				}
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_defensive_plan }
+				set_global_flag = {
+					flag = coalition_defensive_plan_rejected
+					value = 1 
+					days = 180
+				}
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_fortress }
+				set_global_flag = {
+					flag = coalition_fortress_rejected
+					value = 1 
+					days = 180
+				}
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_research }
+				set_global_flag = {
+					flag = coalition_research_rejected
+					value = 1 
+					days = 180
+				}
+			}
+		}
+		remove_mission = coalition_current_resolution_decision_support
+		remove_mission = coalition_current_resolution_decision_oppose
+		remove_mission = coalition_current_resolution_decision
+		clr_global_flag = proposal_coalition_active
+		every_country = {
+			limit = {
+				is_coalition_member = yes
+			}
+			set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+		}
+		country_event = { id = coalition.12 hours = 1 }
+	}
+}
+country_event = {
+	id = coalition.12
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.12"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		clr_global_flag = proposal_coalition_invite_members
+		clr_global_flag = proposal_coalition_defensive_plan
+		clr_global_flag = proposal_coalition_fortress
+		clr_global_flag = proposal_coalition_research
+		clear_array = global.coalition_countries_voting_yes
+		clear_array = global.coalition_countries_voting_no
+		set_variable = { var = global.coalition_resolution_support_var value = 0 }
+		set_variable = { var = global.coalition_resolution_oppose_var value = 0 }
+	}
+}

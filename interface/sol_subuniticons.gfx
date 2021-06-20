@@ -1,0 +1,10 @@
+spriteTypes = {
+	spriteType = { 
+		name = "GFX_div_templ_66_small"										
+		textureFile = "gfx/interface/counters/divisions_small/custom_template_imperial_royal_guard.dds" 
+	}
+	spriteType = { 
+		name = "GFX_div_templ_66_large"										
+		textureFile = "gfx/interface/counters/divisions_large/custom_template_imperial_royal_guard.dds" 
+	}
+}

@@ -1,0 +1,1962 @@
+EQS_remove_civil_war_ideas = {
+	remove_ideas = eqs_civil_war
+	hidden_effect = {
+		remove_ideas = SOL_civil_war
+		remove_ideas = communist_civil_war
+	}
+}
+
+EQS_create_new_commanders = {
+	create_corps_commander = {
+		name = "Applejack"
+		portrait_path = "gfx/leaders/EQS/Applejack.dds"
+		traits = { inflexible_strategist ranger pony_race_trait }
+		skill = 1
+		id = 5
+		female = yes
+		attack_skill = 2
+		defense_skill = 3
+		planning_skill = 2
+		logistics_skill = 3
+		desc = "EQS_appulhors_desc"
+	} custom_effect_tooltip = applejack_stats_tp
+	create_corps_commander = {
+		name = "Allen Spark"
+		portrait_path = "gfx/leaders/EQS/Allen.tga"
+		traits = { commando pony_race_trait }
+		skill = 1
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 1
+		logistics_skill = 3
+		id = 31
+	} custom_effect_tooltip = allen_spark_stats_tp
+	create_corps_commander = {
+		name = "Swift Wing"
+		desc = "swift_milf_desc"
+		portrait_path = "gfx/leaders/EQS/Swift_Wing.tga"
+		traits = { trait_swift_wing pony_race_trait }
+		skill = 2
+		attack_skill = 3
+		defense_skill = 1
+		planning_skill = 1
+		logistics_skill = 2
+		female = yes
+		id = 39
+	} custom_effect_tooltip = swift_wing_stats_tp
+	create_corps_commander = {
+		name = "Fireflight"
+		portrait_path = "gfx/leaders/EQS/Fireflight.tga"
+		traits = { fireflight pony_race_trait }
+		skill = 1
+		attack_skill = 3
+		defense_skill = 1
+		planning_skill = 2
+		logistics_skill = 2
+		id = 32
+	} custom_effect_tooltip = fireflight_stats_tp
+	create_corps_commander = {
+		name = "Anonfilly"
+		portrait_path = "gfx/leaders/EQS/REEEEEE.tga"
+		traits = { pony_race_trait imbecile trickster trait_visitor }
+		skill = 1
+		female = yes
+		attack_skill = 1
+		defense_skill = 1
+		planning_skill = 1
+		logistics_skill = 1
+	} custom_effect_tooltip = anonfilly_stats_tp
+	create_corps_commander = {
+		name = "Sergeant Reckless"
+		portrait_path = "gfx/leaders/EQS/Sergeant_Reckless.tga"
+		traits = { pony_race_trait trait_reckless infantry_leader }
+		skill = 1
+		id = 6
+		female = yes
+		attack_skill = 2
+		defense_skill = 3
+		planning_skill = 2
+		logistics_skill = 2
+	} custom_effect_tooltip = sergeant_reckless_stats_tp
+	create_corps_commander = {
+		name = "Big Macintosh"
+		portrait_path = "gfx/leaders/EQS/BigMac.tga"
+		traits = { inflexible_strategist pony_race_trait }
+		skill = 1
+		id = 7
+		attack_skill = 2
+		defense_skill = 4
+		planning_skill = 1
+		logistics_skill = 2
+		desc = "EQS_bigmac_desc"
+	} custom_effect_tooltip = big_macintosh_stats_tp
+	if = {
+		limit = { NOT = { has_global_flag = EQS_Braeburn_created } }
+		create_corps_commander = {
+			name = "Braeburn"
+			id = 10000
+			portrait_path = "gfx/leaders/EQS/Braeburn.tga"
+			traits = { urban_assault_specialist pony_race_trait }
+			skill = 1
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+		} custom_effect_tooltip = braeburn_stats_tp
+		set_global_flag = EQS_Braeburn_created
+		hidden_effect = {
+			random_army_leader = {
+				limit = { has_id = 10000 }
+				save_global_event_target_as = EQS_Braeburn
+			}
+		}
+	}
+	create_corps_commander = {
+		name = "Thunderbolt Sentinel"
+		desc = "ancap_trench_boi_desc"
+		portrait_path = "gfx/leaders/EQS/Sentinel.tga"
+		traits = { vigilant_sentinel inflexible_strategist pony_race_trait }
+		skill = 2
+		attack_skill = 2
+		defense_skill = 3
+		planning_skill = 2
+		logistics_skill = 2
+		id = 19
+	} custom_effect_tooltip = thunderbolt_sentinel_stats_tp
+	if = {
+		limit = { NOT = { has_global_flag = EQS_pinkie_pie_created } }
+		create_corps_commander = {
+			name = "Pinkamena Diana Pie"
+			portrait_path = "gfx/leaders/EQS/PinkiePie.tga"
+			traits = { pinkie_pie_bae trait_reckless pony_race_trait artillery_specialist }
+			skill = 2
+			id = 9
+			female = yes
+			attack_skill = 3
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 3
+			desc = "EQS_ponka_desc"
+		} custom_effect_tooltip = pinkamena_diana_pie_stats_tp
+		set_global_flag = EQS_pinkie_pie_created
+	}
+	create_corps_commander = {
+		name = "Maud Pie"
+		portrait_path = "gfx/leaders/EQS/MaudPie.tga"
+		traits = { pony_race_trait rock_girl }
+		skill = 2
+		attack_skill = 1
+		defense_skill = 4
+		planning_skill = 1
+		logistics_skill = 3
+		id = 73241
+		desc = "EQS_maudpie_desc"
+	} custom_effect_tooltip = maud_pie_stats_tp
+	create_corps_commander = {
+		name = "Caltrop Deekay"
+		portrait_path = "gfx/leaders/EQS/Gamma.tga"
+		traits = { panzer_leader panzer_expert pony_race_trait }
+		skill = 3
+		id = 10
+		attack_skill = 4
+		defense_skill = 2
+		planning_skill = 3
+		logistics_skill = 2
+	} custom_effect_tooltip = caltrop_deekay_stats_tp
+	create_corps_commander = {
+		name = "Sun Marble"
+		portrait_path = "gfx/leaders/EQS/Wilson.tga"
+		traits = { commando career_officer pony_race_trait }
+		skill = 1
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 2
+		logistics_skill = 3
+		id = 33
+	} custom_effect_tooltip = sun_marble_stats_tp
+	create_corps_commander = {
+		name = "Orion Star"
+		portrait_path = "gfx/leaders/EQS/Orion.tga"
+		traits = { cavalry_leader pony_race_trait }
+		skill = 2
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 1
+		logistics_skill = 1
+	} custom_effect_tooltip = orion_star_stats_tp
+	create_corps_commander = {
+		name = "Bernard Hoofgonery"
+		portrait_path = "gfx/leaders/EQS/ComradeKir.tga"
+		traits = { pony_race_trait }
+		skill = 2
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 3
+		logistics_skill = 3
+		id = 30
+	} custom_effect_tooltip = bernard_hoofgonery_stats_tp
+	if = {
+		limit = { NOT = { has_global_flag = EQS_Eisenstadt_created } }
+		create_corps_commander = {
+			name = "August von Eisenstadt"
+			portrait_path = "gfx/leaders/EQS/mageytash.tga"
+			traits = { career_officer pony_race_trait }
+			skill = 2
+			id = 11
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		} custom_effect_tooltip = august_von_eisenstadt_stats_tp
+		set_global_flag = EQS_Eisenstadt_created
+	}
+	create_corps_commander = {
+		name = "Fizzlepop Berrytwist"
+		portrait_path = "gfx/leaders/EQS/TempestShadow.tga"
+		traits = { fortress_buster pony_race_trait }
+		skill = 3
+		id = 12
+		female = yes
+		attack_skill = 4
+		defense_skill = 2
+		planning_skill = 2
+		logistics_skill = 1
+		desc = "EQS_tempy_desc"
+	} custom_effect_tooltip = fizzlepop_berrytwist_stats_tp
+	create_corps_commander = {
+		name = "'Prince' Fallen"
+		portrait_path = "gfx/leaders/EQS/Tinyman.tga"
+		traits = { tinyman pony_race_trait }
+		skill = 1
+		attack_skill = 1
+		defense_skill = 3
+		planning_skill = 1
+		logistics_skill = 2
+	} custom_effect_tooltip = prince_fallen_stats_tp
+	create_corps_commander = {
+		name = "Sunrise Moonshadow"
+		portrait_path = "gfx/leaders/EQS/sunrise_moonshadow.tga"
+		traits = { night_guard ranger pony_race_trait }
+		skill = 1
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 2
+		logistics_skill = 3
+		desc = "EQS_sunrise_moonshadow"
+	} custom_effect_tooltip = sunrise_moonshadow_stats_tp
+	if = {
+		limit = {
+			has_global_flag = celestia_and_luna_fused
+			NOT = { has_global_flag = EQS_Tempest_Wind_created }
+		}
+		create_corps_commander = {
+			name = "Tempest Wind"
+			portrait_path = "gfx/leaders/NLR/TempestWind.tga"
+			traits = { night_guard commando panzer_leader thestral_race_trait }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+			female = yes
+			id = 202
+		} custom_effect_tooltip = tempest_wind_stats_tp
+		set_global_flag = EQS_Tempest_Wind_created
+		hidden_effect = {
+			random_army_leader = {
+				limit = { has_id = 202 }
+				save_global_event_target_as = EQS_Tempest_Wind
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = celestia_and_luna_fused
+			NOT = { has_global_flag = EQS_Selenite_created }
+		}
+		create_corps_commander = {
+			name = "Selenite"
+			portrait_path = "gfx/leaders/NLR/Selenite.tga"
+			traits = { moonatik thestral_race_trait }
+			desc = NLR_selenite_desc
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 1
+			id = 790
+			female = yes
+		} custom_effect_tooltip = selenite_stats_tp
+		set_global_flag = EQS_Selenite_created
+		hidden_effect = {
+			random_army_leader = {
+				limit = { has_id = 790 }
+				save_global_event_target_as = EQS_Selenite
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = celestia_and_luna_fused
+			NOT = { has_global_flag = EQS_Bipen_created }
+		}
+		create_corps_commander = {
+			name = "Bipen"
+			portrait_path = "gfx/leaders/NLR/Bipen.tga"
+			traits = { night_guard thestral_race_trait }
+			desc = striped_pink_bat_except_not_lunarist_scum
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			female = yes
+			id = 789
+		} custom_effect_tooltip = bipen_stats_tp
+		set_global_flag = EQS_Bipen_created
+		hidden_effect = {
+			random_army_leader = {
+				limit = { has_id = 789 }
+				save_global_event_target_as = EQS_Bipen
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = celestia_and_luna_fused
+			NOT = { has_global_flag = EQS_Midnight_Oil_created }
+		}
+		create_corps_commander = {
+			name = "Midnight Oil"
+			portrait_path = "gfx/leaders/NLR/Cyrus.tga"
+			traits = { night_guard trait_reckless pony_race_trait }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+			id = 205
+		} custom_effect_tooltip = midnight_oil_stats_tp
+		set_global_flag = EQS_Midnight_Oil_created
+		hidden_effect = {
+			random_army_leader = {
+				limit = { has_id = 205 }
+				save_global_event_target_as = EQS_Midnight_Oil
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = celestia_and_luna_fused
+			NOT = { has_global_flag = EQS_Oligarch_created }
+		}
+		create_corps_commander = {
+			name = "Oli Equites"
+			portrait_path = "gfx/leaders/EQS/Oligarch.tga"
+			traits = { thestral_race_trait }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			id = 206
+		} custom_effect_tooltip = oli_equites_stats_tp
+		set_global_flag = EQS_Oligarch_created
+	}
+	hidden_effect = {
+		random_army_leader = {
+			limit = { has_id = 6 }
+			save_global_event_target_as = EQS_Surprise
+		}
+		random_army_leader = {
+			limit = { has_id = 7 }
+			save_global_event_target_as = EQS_BigMac
+		}
+		random_army_leader = {
+			limit = { has_id = 12 }
+			save_global_event_target_as = EQS_Berrytwist
+		}
+		random_army_leader = {
+			limit = { has_id = 30 }
+			save_global_event_target_as = EQS_Hoofgonery
+		}
+		random_army_leader = {
+			limit = { has_id = 33 }
+			save_global_event_target_as = EQS_Sun_Marble
+		}
+		random_army_leader = {
+			limit = { has_id = 19 }
+			save_global_event_target_as = EQS_Thunderbolt
+		}
+		random_army_leader = {
+			limit = { has_id = 32 }
+			save_global_event_target_as = EQS_Fireflight
+		}
+		random_army_leader = {
+			limit = { has_id = 31 }
+			save_global_event_target_as = EQS_Spark
+		}
+		random_army_leader = {
+			limit = { has_id = 39 }
+			save_global_event_target_as = EQS_SwiftWing
+		}
+	}
+}
+
+EQS_SOL_remove_ideas = {
+	remove_ideas = {
+		harmonic_stagnation
+		harmonic_stagnation2
+		harmonic_stagnation3
+		alicorn_sisters
+		friendly_harmony
+		equestrian_communists
+		war_communism
+		celestial_resistance
+		revolution_triumph
+		collectivization_effort_eqs
+		agrarian_reforms
+		eqs_nationalization
+		royal_family_imprisoned
+		eqs_conscription_crisis
+		eqs_defeatists
+		popular_discontent
+		democratic_protest
+		lone_princess
+		transitional_government
+		charter_liberties
+		charter_republic
+		charter_commonwealth
+		bastion_harmony
+		arsenal_harmony
+		EQS_cel_executive
+		EQS_cel_figurehead
+		species_rights_act
+		new_harmonic_administration
+		commoner_kingdom
+		merchant_republic
+		diet_commoners
+		diet_nobles
+		centralization
+		maintain_autonomies
+		grand_army
+		SOL_daybreaker_curse1
+		SOL_daybreaker_curse2
+		SOL_daybreaker_curse3
+	}
+
+	every_enemy_country = {
+		add_ideas = SOL_enemy_debuff_idea
+	}
+	if = {
+		limit = {
+			is_faction_leader = no
+		}
+		create_faction = "SOL_faction"
+	}
+	set_variable = { var = solar_civilian_measures value = 0 }
+	set_variable = { var = solar_civilian_measures_progress value = 0 }
+	set_variable = { var = solar_military_measures value = 0 }
+	set_variable = { var = solar_military_measures_progress value = 0 }
+	set_variable = { var = solar_military_defeats value = 0 }
+
+	#RESISTANCE
+	set_variable = { var = solar_civilian_resistance_actions value = 0 }
+	set_variable = { var = solar_military_resistance_actions value = 0 }
+	set_variable = { var = solar_resistance_actions value = 0 }
+	set_variable = { var = solar_civilian_resistance_actions_progress value = 0 }
+	set_variable = { var = solar_military_resistance_actions_progress value = 0 }
+	set_variable = { var = solar_resistance_actions_progress value = 0 }
+	set_variable = { var = solar_resistance_strength value = 0 }
+	set_variable = { var = solar_military_support value = 5 }
+	set_variable = { var = solar_civilian_support value = 5 }
+	set_variable = { var = solar_inquisition_decision_duration value = 20 }
+	set_variable = { var = solar_resistance_cohesion value = 0 }
+	set_variable = { var = daybreaker_support_daily_actions value = 0 }
+
+	set_variable = { var = informants_loyalty_frame_var value = 1 }
+	set_variable = { var = volunteer_militias_frame_var value = 1 }
+	set_variable = { var = inquisition_informants_frame_var value = 1 }
+	set_variable = { var = harmonist_commanders_frame_var value = 1 }
+
+	set_variable = { var = num_ongoing_uprisings value = 0 }
+
+	set_variable = { var = daybreaker_magic_reserves value = 100 }
+	set_variable = { var = daybreaker_magic_max value = 100 }
+	set_variable = { var = daybreaker_magic_regeneration value = 1 }
+	set_variable = { var = daybreaker_magic_loss value = 0 }
+	set_variable = { var = daybreaker_magic_daily_change_actions value = 0 }
+
+	set_variable = { var = sol_heatwave_cost value = 5 }
+	set_variable = { var = sol_heatwave_cost_daily value = 0.4 }
+	set_variable = { var = sol_blessing_cost value = 40 }
+	set_variable = { var = sol_blessing_cost_daily value = 0.8 }
+	set_variable = { var = sol_curse_cost value = 40 }
+	set_variable = { var = sol_curse_cost_daily value = 0.8 }
+
+	set_variable = { var = sol_heatwave_number = 0 }
+	set_variable = { var = sol_blessing_number = 0 }
+	set_variable = { var = sol_curse_number = 0 }
+
+	SOL_set_state_flags_for_public_works = yes 
+
+	
+	
+	if = { 
+		limit = { has_war_with = CHN }
+		CHN = {
+			save_global_event_target_as = sol_defeated
+		}
+		set_country_flag = victory_parade_CHN
+	}
+	else_if = {
+		limit = { has_war_with = NLR }
+		NLR = {
+			save_global_event_target_as = sol_defeated
+		}
+		set_country_flag = victory_parade_NLR
+	}
+	else_if = {
+		limit = { has_war_with = STG }
+		STG = {
+			save_global_event_target_as = sol_defeated
+		}
+		set_country_flag = victory_parade_STG
+	}
+	else_if = {
+		limit = { has_war_with = CRY }
+		CRY = {
+			save_global_event_target_as = sol_defeated			
+		}
+		set_country_flag = victory_parade_CRY
+	}
+	else_if = {
+		limit = { has_country_flag = sol_wartime_change }
+		random_other_country = {
+			limit = { has_war_with = EQS }
+ 			save_global_event_target_as = sol_defeated
+		}
+		set_country_flag = victory_parade_RND
+	}
+	else = {
+		set_country_flag = victory_parade_bypass
+	}
+	if = {
+		limit = {
+			OR = {
+				BUF = { 
+					any_owned_state {
+						NOT = {
+							state = 89
+							state = 78
+						}
+					}
+				}
+				BUF = {
+					has_completed_focus = BUF_support_the_elder
+				}
+			}
+		}
+		set_country_flag = fuck_the_buffalo
+	}
+
+
+	if = {
+		limit = { 
+			fascism < 0.16
+		}
+		set_variable = { var = daybreaker_support value = 0 }
+	}
+	if = {
+		limit = { 
+			fascism > 0.15
+			fascism < 0.31
+		}
+		set_variable = { var = daybreaker_support value = 10 }
+	}
+	if = {
+		limit = { 
+			fascism > 0.30
+			fascism < 0.41
+		}
+		set_variable = { var = daybreaker_support value = 30 }
+	}
+	if = {
+		limit = { 
+			fascism > 0.40
+			fascism < 0.51
+		}
+		set_variable = { var = daybreaker_support value = 35 }
+	}
+	if = {
+		limit = { 
+			fascism > 0.50
+			fascism < 0.71
+		}
+		set_variable = { var = daybreaker_support value = 40 }
+	}
+	if = {
+		limit = { 
+			fascism > 0.7
+		}
+		set_variable = { var = daybreaker_support value = 45 }
+	}
+	if = {
+		limit = { has_offensive_war = yes }
+		add_to_variable = { var = daybreaker_support value = -10 } #Ponies will not support a warmonger
+	}
+	if = { 
+		limit = { any_enemy_country = { controls_state = 132 } } #Shire - More support if ponies feel threatened
+		add_to_variable = { var = daybreaker_support value = 2 }
+		132 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_frontier_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 66 } } #Los Pegasus
+		add_to_variable = { var = daybreaker_support value = 5 }
+		66 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_west_coast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 75 } } #Manehattan
+		add_to_variable = { var = daybreaker_support value = 5 }
+		75 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_east_coast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 3 } } #Canterlot
+		add_to_variable = { var = daybreaker_support value = 10 }
+		3 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_heartland_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 14 } } #Vanhoover
+		add_to_variable = { var = daybreaker_support value = 3 }
+		14 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_frontier_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 59 } } #Tall Tale
+		add_to_variable = { var = daybreaker_support value = 3 }
+		59 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_frontier_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 13 } } #Baltimare
+		add_to_variable = { var = daybreaker_support value = 3 }
+		13 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_southeast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 16 } } #Tenochtitlan
+		add_to_variable = { var = daybreaker_support value = 2 }
+		16 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_southeast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 136 } } #Acornage
+		add_to_variable = { var = daybreaker_support value = 2 }
+		136 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_frontier_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 12 } } #Fillydelphia
+		add_to_variable = { var = daybreaker_support value = 5 }
+		12 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_east_coast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 70 } } #Whinnyapolis
+		add_to_variable = { var = daybreaker_support value = 3 }
+		70 = { set_state_flag = SOL_fall_whinnyapolis }
+		set_variable = { var = SOL_equus_map_bales_whinnyapolis_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 74 } } #Bales
+		add_to_variable = { var = daybreaker_support value = 3 }
+		74 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_bales_whinnyapolis_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 38 } } #Rockville
+		add_to_variable = { var = daybreaker_support value = 3 }
+		38 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_west_coast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 525 } } #Albion
+		add_to_variable = { var = daybreaker_support value = 2 }
+		525 = { set_state_flag = SOL_state_fall }
+		set_variable = { var = SOL_equus_map_east_coast_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 2 } } #Ponyville
+		add_to_variable = { var = daybreaker_support value = 2 }
+		2 = { set_state_flag =  SOL_state_fall }
+		set_variable = { var = SOL_equus_map_heartland_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { any_enemy_country = { controls_state = 19 } } #Hoofington
+		add_to_variable = { var = daybreaker_support value = 2 }
+		19 = { set_state_flag =  SOL_state_fall }
+		set_variable = { var = SOL_equus_map_southwest_development_wartorn value = -1 }
+	}
+	if = {
+		limit = { 
+			has_defensive_war = yes 
+			has_country_flag = sol_wartime_change
+		} 
+		add_to_variable = { var = daybreaker_support value = 10 } #Ponies want more protection if they are being attacked
+
+		add_timed_idea = {
+			idea = SOL_Revanchism 
+			days = 365
+		}
+
+		if = { #Ponies won't support extreme measures if they're already winning
+			limit = { has_war_with = CHN } #Less support if winning defensive war with Changelings
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 259 } EQS = { controls_state = 259 } } } #Vraks
+				add_to_variable = { var = daybreaker_support value = -3 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 251 } EQS = { controls_state = 251} } } #Vesalipolis
+				add_to_variable = { var = daybreaker_support value = -10 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 309 } EQS = { controls_state = 309} } } #Lyctida
+				add_to_variable = { var = daybreaker_support value = -3 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 252 } EQS = { controls_state = 252} } } #Ditrysium
+				add_to_variable = { var = daybreaker_support value = -3 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 262 } EQS = { controls_state = 262} } } #Soryth
+				add_to_variable = { var = daybreaker_support value = -3 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 316 } EQS = { controls_state = 316} } } #Volistad
+				add_to_variable = { var = daybreaker_support value = -3 }
+			}
+		}
+
+		if = {
+			limit = { has_war_with = STG } #Less support if winning defensive war with Stalliongrad
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 166 } EQS = { controls_state = 166 } } } #Petershoof
+				add_to_variable = { var = daybreaker_support value = -5 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 153 } EQS = { controls_state = 153 } } } #Stalliongrad
+				add_to_variable = { var = daybreaker_support value = -10 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 225 } EQS = { controls_state = 225 } } } #Konzan + Sladiky
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 233 } EQS = { controls_state = 233 } } } #Stavropon
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 332 } EQS = { controls_state = 332 } } } #Ravenskoye
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 235 } EQS = { controls_state = 235 } } } #Caramel Marks
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+		}
+
+		if = {
+			limit = { has_war_with = CRY } #Less support if winning defensive war with Crystal Empire
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 344 } EQS = { controls_state = 344 } } } #Crystal City
+				add_to_variable = { var = daybreaker_support value = -10 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 98 } EQS = { controls_state = 98 } } } #Rainbow Falls
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 324 } EQS = { controls_state = 324 } } } #Hedgewards
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 146 } EQS = { controls_state = 146 } } } #Ponytown
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 343 } EQS = { controls_state = 343 } } } #Evergreen
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 143 } EQS = { controls_state = 143 } } } #Quebuck
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 142 } EQS = { controls_state = 142 } } } #Snowybury
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+		}
+
+		if = {
+			limit = { has_war_with = NLR } #Less support if winning defensive war with Lunar Empire
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 75 } EQS = { controls_state = 75 } } } #Manehattan
+				add_to_variable = { var = daybreaker_support value = -10 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 106 } EQS = { controls_state = 106 } } } #Mareway
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 12 } EQS = { controls_state = 12 } } } #Fillydelphia
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 525 } EQS = { controls_state = 525 } } } #Albion
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 187 } EQS = { controls_state = 187 } } } #Bridlepolis
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 226 } EQS = { controls_state = 226 } } } #Stratusburg
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 349 } EQS = { controls_state = 349 } } } #Detrot
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+			if = {
+				limit = { OR = { any_allied_country = { controls_state = 231 } EQS = { controls_state = 231 } } } #Prance
+				add_to_variable = { var = daybreaker_support value = -1 }
+			}
+		}
+	}
+	clamp_variable = {
+		var = daybreaker_support
+		min = 0
+		max = 100
+	}
+	set_variable = { var = daybreaker_support_progress_bar_pos value = daybreaker_support }
+	multiply_variable = { var = daybreaker_support_progress_bar_pos value = 4 }
+	add_to_variable = { var = daybreaker_support_progress_bar_pos value = -400 }
+	every_state = {
+		limit = {
+			AND = {
+				is_owned_by = STG
+				is_core_of = STG
+				is_core_of = EQS
+			}
+		}
+		remove_core_of = EQS
+	}
+}
+
+#ROOT is EQS
+EQS_SOL_wartime_change = {
+	clr_country_flag = manpower_laws_blocked
+	clr_country_flag = economic_laws_blocked
+	kill_country_leader = yes
+	if = {
+		limit = { NOT = { has_completed_focus = Friendship_Games } }
+		complete_national_focus = Friendship_Games
+	}
+	if = {
+		limit = { NOT = { has_completed_focus = examine_the_situation } }
+		complete_national_focus = examine_the_situation
+	}
+	if = {
+		limit = { NOT = { has_completed_focus = Ministry_of_defense } }
+		complete_national_focus = Ministry_of_defense
+	}
+	if = {
+		limit = { NOT = { has_completed_focus = worrisome_changelings } }
+		complete_national_focus = worrisome_changelings
+	}
+	if = {
+		limit = {
+			has_idea = alicorn_sisters
+		}
+		add_stability = -0.1
+		remove_ideas = alicorn_sisters
+	}
+	create_country_leader = {
+		name = "Daybreaker"
+		expire = "1965.1.1"
+		picture = GFX_DaybreakerPortrait
+		desc = "POLITICS_DAYBREAKER_DESC"
+		ideology = nazism
+		traits = {
+
+		}
+	}
+	set_politics = { ruling_party = fascism }
+	add_popularity = {
+		ideology = fascism
+		popularity = 0.10
+	}
+	set_global_flag = daybreaker_spawned
+	set_country_flag = sol_wartime_change
+	set_cosmetic_tag = EQS_SOL
+	set_faction_name = SOL_faction
+	set_party_name = { ideology = democratic long_name = EQS_republic_long name = EQS_republic }
+	save_global_event_target_as = solar_empire
+	clear_global_event_target = equestria
+	SOL = {
+		set_politics = { ruling_party = democratic }
+		save_global_event_target_as = equestria
+	}
+	clr_country_flag = nightmare_moon
+	if = {
+		limit = { has_unit_leader = 9999 }
+		remove_unit_leader = 9999
+		set_country_flag = EQS_had_luna
+	}
+	if = {
+		limit = { has_unit_leader = 202 }
+		remove_unit_leader = 202
+	}
+	if = {
+		limit = { has_unit_leader = 789 }
+		remove_unit_leader = 789
+	}
+	if = {
+		limit = { has_unit_leader = 205 }
+		remove_unit_leader = 205
+	}
+	every_country = {
+		limit = { original_tag = CRY is_subject_of = EQS }
+		set_country_flag = is_sol_puppet
+	}
+	country_event = { id = solarempire.17 days = 4 }
+	if = {
+		limit = { has_war_with = NLR }
+		every_other_country = {
+			limit = {
+				OR = {
+					is_subject_of = ROOT
+					AND = { is_in_faction_with = ROOT is_subject = no }
+				}
+			}
+			if = {
+				limit = { is_subject = yes is_ai = no }
+				set_rule = { can_decline_call_to_war = yes }
+			}
+			country_event = { id = solarempire.14 hours = 1 }
+		}
+	}
+	set_province_name = { id = 6023 name = "Sol Invicta" }
+	if = {
+		limit = { surrender_progress > 0.4 }
+		set_country_flag = remove_db_70_days
+	}
+	EQS_SOL_remove_ideas = yes
+	country_event = { id = solarempire.1018 }
+	if = {
+		limit = { country_exists = CES }
+		CES = { load_focus_tree = Celestial_State_Focus_db }
+	}
+	if = {
+		limit = {
+			BUF = {
+				is_ai = yes
+				is_subject_of = ROOT
+			}
+		}
+		annex_country = {
+			target = BUF transfer_troops = yes
+		}
+	}
+	#EQS_SOL_show_advisors = yes
+	country_event = { id = solarempire.2 days = 2 }
+	news_event = { id = news.sol.4 hours = 6 }
+}
+
+#ROOT is EQS
+EQS_SOL_civil_war = {
+	set_global_flag = daybreaker_spawned
+	set_global_flag = equestrian_civil_war_daybreaker
+	clr_country_flag = nightmare_moon
+	clr_country_flag = manpower_laws_blocked
+	clr_country_flag = economic_laws_blocked
+	if = {
+		limit = { NOT = { has_completed_focus = Friendship_Games } }
+		complete_national_focus = Friendship_Games
+	}
+	if = {
+		limit = { NOT = { has_completed_focus = examine_the_situation } }
+		complete_national_focus = examine_the_situation
+	}
+	if = {
+		limit = { NOT = { has_completed_focus = Ministry_of_defense } }
+		complete_national_focus = Ministry_of_defense
+	}
+	if = {
+		limit = { NOT = { has_completed_focus = worrisome_changelings } }
+		complete_national_focus = worrisome_changelings
+	}
+	every_country = {
+		limit = { exists = yes is_guaranteed_by = EQS }
+		EQS = { diplomatic_relation = { country = PREV relation = guarantee active = no } }
+	}
+	if = {
+		limit = { has_idea = alicorn_sisters }
+		set_country_flag = luna_alive
+	}
+	if = {
+		limit = { has_unit_leader = 9999 }
+		remove_unit_leader = 9999
+	}
+
+	
+	if = {
+		limit = {
+			NOT = { has_idea = alicorn_sisters }
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.10
+		}
+	}
+	kill_country_leader = yes
+	set_cosmetic_tag = EQS_SOL
+	SOL_calculate_loyalty = yes
+	set_temp_variable = { var = civil_war_size value = 1 }
+	set_temp_variable = { var = civil_war_support_percent value = daybreaker_support }
+	divide_temp_variable = { var = civil_war_support_percent value = 100 }
+	subtract_from_temp_variable = { var = civil_war_size value = civil_war_support_percent }
+	set_party_name = { ideology = democratic long_name = EQS_republic_long name = EQS_republic }
+	divide_temp_variable = { var = civil_war_size value = 2.5 }
+	add_to_temp_variable = { var = civil_war_size value = 0.04 }
+	start_civil_war = {
+		ruling_party = fascism
+		ideology = democratic
+		size = civil_war_size
+		capital = 75
+	}
+	create_country_leader = {
+		name = "Daybreaker"
+		expire = "1965.1.1"
+		picture = GFX_DaybreakerPortrait
+		desc = "POLITICS_DAYBREAKER_DESC"
+		ideology = nazism
+		traits = {
+
+		}
+	}
+	set_politics = { ruling_party = fascism }
+	if = {
+		limit = { is_faction_leader = no }
+		create_faction = "SOL_faction"
+	}
+	else = {
+		set_faction_name = SOL_faction
+	}
+	save_global_event_target_as = solar_empire
+	clear_global_event_target = equestria
+	add_ideas = SOL_civil_war
+	country_event = { id = solarempire.1018 }
+	
+	country_event = { id = solarempire.17 days = 4 }
+	news_event = { id = news.sol.1 hours = 6 }
+	random_other_country = {
+		limit = {
+			original_tag = EQS
+			has_government = democratic
+		}
+		save_global_event_target_as = equestria
+		#load_focus_tree = { tree = equestria_focus keep_completed = yes }
+		set_capital = 75
+		add_political_power = 450
+		set_party_name = { ideology = fascism long_name = EQS_fascism_generic_party_long name = EQS_fascism_generic_party }
+		add_stability = -0.1
+		set_cosmetic_tag = EQS_DEM
+		set_country_flag = sol_civil_war_democratic_target
+		if = {
+			limit = {
+				ROOT = { has_country_flag = luna_alive }
+			}
+			clr_country_flag = luna_alive
+			create_country_leader = {
+				name = "Princess Luna"
+				desc = "LUNA_DESC"
+				picture = GFX_LunaPortrait
+				expire = "1965.1.1"
+				ideology = alicornrule
+				traits = {
+					princess_of_ponies
+				}
+			}
+			set_country_flag = EQD_dem_luna
+			add_stability = -0.1
+			remove_ideas = alicorn_sisters
+			ROOT = {
+				add_stability = -0.1
+			}
+		}
+		else = {
+			set_country_flag = EQS_force_republic
+			complete_national_focus = eqs_come_to_compromise
+			complete_national_focus = eqs_allow_the_vote
+			set_country_flag = congress_president
+			set_cosmetic_tag = EQS_DEM1
+			set_party_name = { ideology = democratic long_name = EQS_republic_long name = EQS_republic }
+			country_event = { hours = 24 id = equestriadem.1 }
+			remove_ideas = alicorn_sisters
+		}
+		add_ideas = SOL_civil_war
+		set_country_flag = { flag = celestia_evil_meter value = 0 }
+		every_unit_leader = {
+			limit = {
+				OR = {
+					has_id = 1
+					has_id = 11
+					has_id = 204
+				}
+			}
+			set_nationality = event_target:solar_empire
+		}
+	}
+	every_other_country = {
+		limit = {
+			OR = {
+				is_subject_of = ROOT
+				AND = { is_in_faction_with = ROOT is_subject = no }
+			}
+		}
+		if = {
+			limit = { is_subject = yes is_ai = no }
+			set_rule = { can_decline_call_to_war = yes }
+		}
+		country_event = { id = solarempire.6 hours = 1 }
+	}
+	every_unit_leader = {
+		limit = {
+			OR = {
+				has_id = 5
+				has_id = 6
+				has_id = 7
+				has_id = 8
+				has_id = 9
+				has_id = 10
+				has_id = 10000
+				has_id = 202
+				has_id = 205
+				has_id = 206
+				has_id = 789
+			}
+		}
+		set_nationality = event_target:equestria
+	}
+	EQS_SOL_remove_ideas = yes
+	if = {
+		limit = { country_exists = CES }
+		CES = { load_focus_tree = Celestial_State_Focus_db }
+	}
+	#EQS_SOL_show_advisors = yes
+}
+
+#ROOT is EQS
+EQS_NLR_civil_war = {
+	set_global_flag = equestrian_civil_war
+	random_list = { 50 = { set_country_flag = SCS_gonna_appear } 50 = { }}
+	news_event = { hours = 6 id = news.200 }
+	country_event = { id = equestria.229 days = 10 }
+	STG = {
+		country_event = { id = stalliongrad.5 days = 2 }
+	}
+	every_other_country = {
+		limit = { exists = yes is_guaranteed_by = ROOT }
+		ROOT = { diplomatic_relation = { country = PREV relation = guarantee active = no } }
+	}
+	every_other_country = {
+		limit = {
+			OR = {
+				is_subject_of = ROOT
+				AND = { is_in_faction_with = ROOT is_subject = no }
+			}
+			NOT = {
+				original_tag = NLR
+			}
+		}
+		if = {
+			limit = { is_subject = yes is_ai = no }
+			set_rule = { can_decline_call_to_war = yes }
+		}
+		country_event = { id = solarempire.5 hours = 1 }
+	}
+	if = {
+		limit = { has_unit_leader = 9999 }
+		remove_unit_leader = 9999
+	}
+	set_stability = 0.6
+	add_popularity = {
+		ideology = democratic
+		popularity = 0.10
+	}
+	add_popularity = {
+		ideology = communism
+		popularity = 0.08
+	}
+	#GRF = {
+		#	transfer_state = 241
+		#}
+	every_state = {
+		limit = {
+			OR = {
+				state = 5
+				state = 1
+				state = 39
+				state = 75
+				state = 12
+				state = 28
+				state = 110
+				state = 13
+				state = 15
+				state = 106
+				state = 16
+				state = 525
+				state = 29
+				state = 109
+				state = 226
+				state = 187
+				state = 157
+				state = 160
+				state = 351
+				state = 107
+				state = 24
+				state = 33
+				state = 32
+				state = 50
+				state = 167
+				state = 184
+				state = 228
+				state = 82
+				state = 40
+				state = 108
+				state = 67
+				state = 653
+				state = 229
+				state = 662
+				state = 352
+				state = 156
+				state = 122
+				state = 116
+				state = 162
+				state = 159
+				state = 183
+				state = 326
+				state = 34
+				state = 88
+				state = 102
+				state = 164
+				state = 26
+				state = 111
+				state = 63
+				state = 188
+				state = 185
+				state = 661
+				state = 113
+				state = 90
+				state = 81
+				state = 231
+				state = 349
+				state = 97
+				state = 84
+				state = 223
+				state = 177
+				state = 115
+				state = 120
+				state = 158
+				state = 348
+				state = 25
+				state = 186
+				state = 232
+				state = 112
+				state = 65
+				state = 86
+				state = 227
+				state = 52
+				state = 79
+				state = 36
+				state = 230
+				state = 182
+				state = 155
+				state = 27
+				state = 35
+				state = 154
+				state = 327
+				state = 31
+				state = 83
+				state = 353
+				state = 350
+				state = 221
+				state = 30
+				state = 17
+				state = 37
+			}
+		}
+		add_core_of = NLR
+	}
+
+	every_state = {
+		limit = {
+			NOT = { is_core_of = NLR }
+			OR = {
+				is_core_of = EQS
+				is_claimed_by = EQS
+			}
+		}
+		add_claim_by = NLR
+	}
+
+	every_owned_state = {
+		limit = {
+			is_controlled_by = PREV
+			OR = {
+				state = 5
+				state = 1
+				state = 39
+				state = 75
+				state = 12
+				state = 28
+				state = 110
+				state = 13
+				state = 15
+				state = 106
+				state = 16
+				state = 525
+				state = 29
+				state = 109
+				state = 226
+				state = 187
+				state = 157
+				state = 160
+				state = 351
+				state = 107
+				state = 24
+				state = 33
+				state = 32
+				state = 50
+				state = 167
+				state = 184
+				state = 228
+				state = 82
+				state = 40
+				state = 108
+				state = 67
+				state = 653
+				state = 229
+				state = 662
+				state = 352
+				state = 156
+				state = 122
+				state = 116
+				state = 162
+				state = 159
+				state = 183
+				state = 326
+				state = 34
+				state = 88
+				state = 102
+				state = 164
+				state = 26
+				state = 111
+				state = 63
+				state = 188
+				state = 185
+				state = 661
+				state = 113
+				state = 90
+				state = 81
+				state = 231
+				state = 349
+				state = 97
+				state = 84
+				state = 223
+				state = 177
+				state = 115
+				state = 120
+				state = 158
+				state = 348
+				state = 25
+				state = 186
+				state = 232
+				state = 112
+				state = 65
+				state = 86
+				state = 227
+				state = 52
+				state = 79
+				state = 36
+				state = 230
+				state = 182
+				state = 155
+				state = 27
+				state = 35
+				state = 154
+				state = 327
+				state = 31
+				state = 83
+				state = 353
+				state = 350
+				state = 221
+				state = 30
+				state = 17
+				state = 37
+			}
+		}
+		NLR = { transfer_state = PREV }
+	}
+	
+	#set_variable = { civil_war_size = 0.3 }
+
+	#Modify civil war size by NMM's agressiveness
+	#if = {
+	#	limit = { 
+	#		check_variable = {
+	#			var = NMM_aggressive
+	#			value = 3
+	#			compare = greater_than_or_equals
+	#		}
+	#	}
+	#	set_variable = { civil_war_size = 0.70 }
+	#}
+	#else_if = {
+	#	limit = {
+	#		check_variable = {
+	#			var = NMM_aggressive
+	#			value = 2
+	#			compare = equals
+	#		}
+	#	}
+	#	set_variable = { civil_war_size = 0.60 }
+	#}
+	#else_if = {
+	#	limit = {
+	#		check_variable = {
+	#			var = NMM_aggressive
+	#			value = 1
+	#			compare = equals
+	#		}
+	#	}
+	#	set_variable = { civil_war_size = 0.50 }
+	#}
+	#else = {
+	#	set_variable = { civil_war_size = 0.30 }
+	#}	
+	#if = { #Tiny size if early discovery
+	#	limit = { has_country_flag = nlr_early_discovery }
+	#	set_variable = { civil_war_size = 0.20 }
+	#}
+	#transfer_units_fraction = {
+	#	target = NLR
+	#   #army_ratio = 0.001
+	#	air_ratio = 0.3
+	#	navy_ratio = 0.3
+	#	stockpile_ratio = 0.3
+	#	keep_unit_leaders_trigger = { always = yes }
+	#}
+	#log = "EQS NLR civil war size: [?civil_war_size]"
+	#clear_variable = civil_war_size
+	create_country_leader = {
+		name = "Chancellor Neighsay"
+		expire = "1965.1.1"
+		picture = "Naysay.tga"
+		desc = "CHANCELLOR_NEIGHSAY_DESC"
+		ideology = fascism_ideology
+		traits = {
+		}
+	}
+	remove_ideas = alicorn_sisters
+	add_ideas = eqs_civil_war
+	40 = {
+		add_building_construction = {
+			type = air_base
+			level = 1
+			instant_build = yes
+		}
+	}
+	every_state = {
+		limit = { is_controlled_by = NLR }
+		teleport_armies = {
+			limit = { tag = EQS }
+			#to_state_array = EQS.controlled_states
+		}	
+	}
+	hidden_effect = {
+			EQS = {
+				transfer_ship = {
+    				type = battleship
+    				target = NLR
+				}
+				transfer_ship = {
+    				type = battleship
+    				target = NLR
+				}
+				transfer_ship = {
+    				type = battle_cruiser
+    				target = NLR
+				}
+				transfer_ship = {
+    				type = battle_cruiser
+    				target = NLR
+				}
+				transfer_ship = {
+    				type = light_cruiser
+    				target = NLR
+				}
+				transfer_ship = {
+   		 			type = destroyer
+   	 				target = NLR
+				}
+				transfer_ship = {
+	    			type = destroyer
+	    			target = NLR
+				}
+				transfer_ship = {
+   		 			type = destroyer
+   	 				target = NLR
+				}
+				transfer_ship = {
+	    			type = destroyer
+	    			target = NLR
+				}
+				transfer_ship = {
+   		 			type = destroyer
+   	 				target = NLR
+				}
+				transfer_ship = {
+	    			type = destroyer
+	    			target = NLR
+				}
+				transfer_ship = {
+   		 			type = destroyer
+   	 				target = NLR
+				}
+				transfer_ship = {
+	    			type = destroyer
+	    			target = NLR
+				}
+				transfer_ship = {
+   		 			type = destroyer
+   	 				target = NLR
+				}
+				transfer_ship = {
+	    			type = destroyer
+	    			target = NLR
+				}
+			}	
+		}
+
+		
+	EQS = {
+		if = {
+			limit = {
+					check_variable = { NMM_partisans = 3 }
+				}
+			add_timed_idea = { idea = EQS_moonshine_partisans_3 days = 180 }
+			}
+		else_if = {
+			limit = {
+					check_variable = { NMM_partisans = 2 }
+				}
+			add_timed_idea = { idea = EQS_moonshine_partisans_2 days = 180 }
+			}
+		else_if = {
+			limit = {
+					check_variable = { NMM_partisans = 1 }
+				}
+			add_timed_idea = { idea = EQS_moonshine_partisans_1 days = 180 }
+			}
+		else = {
+			add_timed_idea = { idea = EQS_moonshine_partisans_0 days = 180 }
+			}
+	}
+	load_oob = "EQS_Civil_War"
+	set_global_flag = { flag = ECW_block_SCS days = 240 }
+	NLR = {
+		if = {
+			limit = {
+				has_global_flag = EQS_Bipen_created
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 789 } }
+				event_target:EQS_Bipen = { set_nationality = NLR }
+			}
+		}
+		else = {
+			create_corps_commander = {
+				name = "Bipen"
+				portrait_path = "gfx/leaders/NLR/Bipen.tga"
+				traits = { night_guard thestral_race_trait }
+				desc = striped_pink_bat
+				skill = 2
+				attack_skill = 2
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 2
+				female = yes
+				id = 789
+			} custom_effect_tooltip = bipen_stats_tp
+			set_global_flag = EQS_Bipen_created
+			hidden_effect = {
+				random_army_leader = {
+					limit = { has_id = 789 }
+					save_global_event_target_as = EQS_Bipen
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = EQS_Selenite_created
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 790 } }
+				event_target:EQS_Selenite = { set_nationality = NLR }
+			}
+		}
+		else = {
+			create_corps_commander = {
+				name = "Selenite"
+				portrait_path = "gfx/leaders/NLR/Selenite.tga"
+				traits = { moonatik thestral_race_trait }
+				desc = NLR_selenite_desc
+				skill = 2
+				attack_skill = 2
+				defense_skill = 3
+				planning_skill = 1
+				logistics_skill = 1
+				id = 790
+				female = yes
+			} custom_effect_tooltip = selenite_stats_tp
+			set_global_flag = EQS_Selenite_created
+			hidden_effect = {
+				random_army_leader = {
+					limit = { has_id = 790 }
+					save_global_event_target_as = EQS_Selenite
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = EQS_Tempest_Wind_created
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 202 } }
+				event_target:EQS_Tempest_Wind = { set_nationality = NLR }
+			}
+		}
+		else = {
+			create_corps_commander = {
+				name = "Tempest Wind"
+				portrait_path = "gfx/leaders/NLR/TempestWind.tga"
+				traits = { night_guard commando panzer_leader thestral_race_trait }
+				skill = 3
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 3
+				female = yes
+				id = 202
+			} custom_effect_tooltip = tempest_wind_stats_tp
+			set_global_flag = EQS_Tempest_Wind_created
+			random_army_leader = {
+				limit = { has_id = 202 }
+				save_global_event_target_as = EQS_Tempest_Wind
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = EQS_Midnight_Oil_created
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 205 } }
+				event_target:EQS_Midnight_Oil = { set_nationality = NLR }
+			}
+		}
+		else = {
+			create_corps_commander = {
+				name = "Midnight Oil"
+				portrait_path = "gfx/leaders/NLR/Cyrus.tga"
+				traits = { night_guard trait_reckless pony_race_trait }
+				skill = 2
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 1
+				logistics_skill = 2
+				id = 205
+			} custom_effect_tooltip = midnight_oil_stats_tp_1
+			set_global_flag = EQS_Midnight_Oil_created
+			random_army_leader = {
+				limit = { has_id = 205 }
+				save_global_event_target_as = EQS_Midnight_Oil
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = EQS_Selenite_created
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 790 } }
+				event_target:EQS_Selenite = { set_nationality = NLR }
+			}
+		}
+		else = {
+			create_corps_commander = {
+				name = "Selenite"
+				portrait_path = "gfx/leaders/NLR/Selenite.tga"
+				traits = { moonatik thestral_race_trait }
+				desc = NLR_selenite_desc
+				skill = 2
+				attack_skill = 2
+				defense_skill = 3
+				planning_skill = 1
+				logistics_skill = 1
+				female = yes
+				id = 790
+			} custom_effect_tooltip = selenite_stats_tp
+			set_global_flag = EQS_Selenite_created
+			random_army_leader = {
+				limit = { has_id = 790 }
+				save_global_event_target_as = EQS_Selenite
+			}
+		}
+		if = {
+			limit = { is_ai = yes }
+			Evil_unicorn_magic = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_game_rule = {
+						rule = equestria_united_status
+						option = EQS_STATUS_CIVIL_WAR
+					}
+				}
+			}
+			country_event = { id = lunas.2 days = 7 }#days to hours applied
+		}
+		country_event = civwar.110
+		country_event = { id = equestria.229 days = 10 } #rarity captured
+		set_country_flag = recovery_idea_bypass
+		set_stability = 0.7
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		
+		load_oob = "NLR_Civil_War"
+		add_ideas = eqs_civil_war
+		if = {
+			limit = { country_exists = EQS }
+			hidden_effect = {
+				create_wargoal = { 
+					type = annex_everything
+					target = EQS
+				}
+			}
+			declare_war_on = {
+				target = EQS type = annex_everything
+			}
+		}
+		clr_country_flag = recovery_idea_bypass
+		add_ideas = NLR_fragile_rule_1
+		### Moonshine national spirits ###
+		country_event = { id = lunas.1 days = 1 }
+		if = {
+			limit = {
+					EQS = { check_variable = { NMM_weaponstealers = 3 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_weaponstealers_3 days = 180 }
+			}
+		else_if = {
+			limit = {
+					EQS = { check_variable = { NMM_weaponstealers = 2 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_weaponstealers_2 days = 180 }
+			}
+		else_if = {
+			limit = {
+					EQS = { check_variable = { NMM_weaponstealers = 1 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_weaponstealers_1 days = 180 }
+			}
+		else = {
+			add_timed_idea = { idea = NLR_moonshine_weaponstealers_0 days = 180 }
+			}
+		if = {
+			limit = {
+					EQS = { check_variable = { NMM_workers = 3 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_workers_3 days = 180 }
+			}
+		else_if = {
+			limit = {
+					EQS = { check_variable = { NMM_workers = 2 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_workers_2 days = 180 }
+			}
+		else_if = {
+			limit = {
+					EQS = { check_variable = { NMM_workers = 1 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_workers_1 days = 180 }
+			}
+		else = {
+			add_timed_idea = { idea = NLR_moonshine_workers_0 days = 180 }
+			}
+		if = {
+			limit = {
+					EQS = { check_variable = { NMM_bats = 3 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_bats_3 days = 180 }
+			}
+		else_if = {
+			limit = {
+					EQS = { check_variable = { NMM_bats = 2 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_bats_2 days = 180 }
+			}
+		else_if = {
+			limit = {
+					EQS = { check_variable = { NMM_bats = 1 } }
+				}
+			add_timed_idea = { idea = NLR_moonshine_bats_1 days = 180 }
+			}
+		else = {
+			add_timed_idea = { idea = NLR_moonshine_bats_0 days = 180 }
+			}
+		create_faction = NLR_lunar_hegemony
+	}
+	every_state = {
+		clr_state_flag = block_NLR_state
+	}
+}
+
+add_to_war_EQS_against_SOL = {
+	#SOL is EQS
+	event_target:equestria = {
+		ROOT = {
+			add_to_war = { targeted_alliance = PREV enemy = EQS }
+		}
+	}
+}
+
+add_to_war_SOL_against_EQS = {
+	#SOL is EQS
+	event_target:equestria = {
+		ROOT = {
+			add_to_war = { enemy = PREV targeted_alliance = EQS }
+		}
+	}
+}
+
+add_to_war_EQS_against_NLR = {
+	event_target:equestria = {
+		ROOT = {
+			add_to_war = { enemy = NLR targeted_alliance = PREV }
+		}
+	}
+}
+
+add_to_war_NLR_against_EQS = {
+	event_target:equestria = {
+		ROOT = {
+			add_to_war = { enemy = PREV targeted_alliance = NLR }
+		}
+	}
+}
+
+spawn_GRF_volunteers = {
+	if = {
+		limit = { NOT = { has_country_flag = has_GRF_volunteers } }
+		division_template = {
+			name = "Free Griffon Division"
+			is_locked = yes
+			priority = 0
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 0 y = 3 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				infantry = { x = 1 y = 3 }
+			}
+		}
+		if = {
+			limit = {
+				capital_scope = {
+					is_fully_controlled_by = PREV
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Weter's Own Volunteer Regiment\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Mystic Warriors\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Fetermyst Guard\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_state = {
+					is_fully_controlled_by = PREV
+					is_coastal = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = PREV
+					is_coastal = yes
+				}
+				create_unit = {
+					division = "name = \"Weter's Own Volunteer Regiment\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Mystic Warriors\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Fetermyst Guard\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = PREV
+				}
+				create_unit = {
+					division = "name = \"Weter's Own Volunteer Regiment\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Mystic Warriors\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Fetermyst Guard\" division_template = \"Free Griffon Division\" start_experience_factor = 0.4 start_equipment_factor = 1"
+					owner = PREV
+				}
+			}
+		}
+	}
+	set_country_flag = has_GRF_volunteers
+}

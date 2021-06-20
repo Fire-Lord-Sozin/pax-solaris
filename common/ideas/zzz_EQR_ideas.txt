@@ -1,0 +1,597 @@
+ideas = {
+	political_advisor = {
+		NLR_cocopommel = {
+			name = cocopommel
+			picture = cocopommel
+			allowed = {
+				original_tag = NLR
+			}
+			visible = {
+				NLR = { has_government = democratic }
+			}
+			available = {
+				has_government = democratic
+			}
+			traits = { captain_of_industry }
+		}
+		NLR_starswirl = {
+			name = starswirl
+			picture = starswirl
+			allowed = {
+				original_tag = NLR
+			}
+			visible = {
+				NLR = { has_government = democratic }
+			}
+			available = {
+				has_government = democratic
+			}
+			research_bonus = {
+				magical_tech = 0.1
+			}
+			modifier = {
+				research_speed_factor = 0.05
+			}
+			traits = { element_of_magic }
+		}
+		EQR_cherry_jubilee = {
+			name = cherry_jubilee
+			picture = cherry_jubilee
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { captain_of_industry }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_venture_capital = {
+			name = venture_capital
+			picture = venture_capital
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { war_industrialist }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_yuma_spurs = {
+			name = yuma_spurs
+			picture = yuma_spurs
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { smooth_talking_charmer }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_swift_justice = {
+			name = CES_swift_justice
+			picture = CES_swift_justice
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { prince_of_terror }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_sweetie_drops = {
+			picture = sweetie_drops
+			name = sweetie_drops
+			allowed = {
+				original_tag = EQR
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+			}
+			ai_will_do = {
+				factor = 1
+			}
+			traits = { agent_of_smile }
+		}
+		EQR_sweetie_drops_lar = {
+			picture = sweetie_drops
+			name = sweetie_drops
+			allowed = {
+				original_tag = EQR
+				has_dlc = "La Resistance"
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			ai_will_do = {
+				factor = 1
+			}
+			traits = { agent_of_smile_lar }
+		}
+	}
+	army_chief = {
+		EQR_stuart = {
+			name = SCS_stuart
+			allowed = { original_tag = EQR }
+			picture = SCS_stuart
+			traits = { army_chief_maneuver_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_rockhoof = {
+			name = rockhoof
+			allowed = { original_tag = EQR }
+			picture = rockhoof
+			traits = { army_entrenchment_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_flash_magnus = {
+			name = flash_magnus
+			allowed = { original_tag = EQR }
+			picture = flash_magnus
+			traits = { army_chief_drill_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	air_chief = {
+		EQR_airchief_henry = {
+			name = CES_airchief_henry
+			picture = CES_airchief_henry
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { air_air_superiority_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_kittyhawk ={
+			name = kittyhawk
+			picture = kittyhawk
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { air_chief_reform_1 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	navy_chief = {
+		
+	}
+	high_command = {
+		NLR_rarity = {
+			ledger = army
+			name = rarity
+			picture = rarity
+			allowed = {
+				original_tag = NLR
+			}
+			visible = {
+				AND = {
+					event_target:solar_empire = { exists = yes } 
+					NLR = { has_government = democratic }
+				}
+			}
+			available = {
+				has_government = democratic
+			}
+			traits = { rarity_the_designer }
+		}
+		EQR_apple_fritter = {
+			ledger = army
+			name = apple_fritter
+			picture = apple_fritter
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { army_logistics_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_limestone = {
+			ledger = army
+			name = limestone
+			picture = limestone
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { army_infantry_1 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_celery = {
+			ledger = army
+			name = CES_celery
+			picture = CES_celery
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { army_regrouping_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	tank_manufacturer = {
+		designer = yes
+		EQR_tank_1 = {
+			name = SCS_tank_1
+			picture = SCS_tank_1
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { fast_tank_manufacturer }
+		}
+		EQR_tank_2 = {
+			name = SCS_tank_2
+			picture = SCS_tank_2
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { heavy_tank_manufacturer }
+		}
+	}
+	naval_manufacturer = {
+		designer = yes
+		EQR_navy_man = {
+			name = SCS_navy_man
+			picture = SCS_navy_man
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { raiding_fleet_naval_manufacturer }
+		}
+		EQR_navy_man_2 = {
+			name = SCS_navy_man_2
+			picture = SCS_navy_man_2
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { coastal_defence_naval_manufacturer }
+		}
+		EQR_navy_man_3 = {
+			name = LSP_navy_man_3
+			picture = LSP_navy_man_3
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { convoy_escort_naval_manufacturer }
+		}
+	}
+	aircraft_manufacturer = {
+		designer = yes
+		EQR_air_man = {
+			name = SCS_air_man
+			picture = SCS_air_man
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { light_aircraft_manufacturer  }
+		}
+		EQR_air_man_2 = {
+			name = SCS_air_man_2
+			picture = SCS_air_man_2
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { medium_aircraft_manufacturer  }
+		}
+		EQR_air_3 = {
+			name = LSP_air_3
+			picture = generic_air_manufacturer_2
+			allowed = {
+				original_tag = EQR
+			}
+			traits = { heavy_aircraft_manufacturer }
+		}
+	}
+	materiel_manufacturer = {
+		EQR_colt_arms = {
+			name = colt_arms
+			picture = generic_infantry_equipment_manufacturer_3
+			allowed = {
+				original_tag = EQR
+			}
+			cost = 50
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+			traits = { infantry_equipment_manufacturer }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_neighchester_arms = {
+			name = neighchester_arms
+			picture = generic_infantry_equipment_manufacturer_1
+			allowed = {
+				original_tag = SCS
+			}
+			cost = 50
+			research_bonus = {
+				infantry_weapons = 0.05
+				support_tech = 0.05
+			}
+			traits = { infantry_equipment_manufacturer }
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		EQR_guns_rearington = {
+			name = LSP_guns_rearington
+			picture = rearington_arms
+			allowed = {
+				original_tag = EQR
+			}
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					instant = yes
+					build_cost_ic = -0.05
+				}
+			}
+			traits = {
+				infantry_equipment_manufacturer
+			}			
+		}
+	}
+	industrial_concern = {
+		EQR_indy_1 = {
+			name = LSP_indy_1
+			picture = LSP_indy_1
+			allowed = {
+				original_tag = EQR
+			}
+			research_bonus = {
+				industry = 0.10
+			}
+			traits = { industrial_concern }
+		}
+		EQR_lec = {
+			name = EQR_lec
+			picture = generic_electronics_concern_1
+			allowed = {
+				original_tag = EQR
+			}
+			research_bonus = {
+				electronics = 0.10
+			}
+			traits = {
+				electronics_concern
+			}
+		}
+		EQR_genpet = {
+			name = LSP_genpet
+			picture = SCS_general_petroleum
+			allowed = {
+				original_tag = EQR
+			}
+			research_bonus = {
+				synth_resources = 0.15
+			}
+			traits = { refinery_concern  }
+			modifier = {
+				political_power_gain = -0.1
+				production_speed_synthetic_refinery_factor = 0.15
+			}
+		}
+		EQR_agri_baron = {
+			name = SCS_agri_baron
+			picture = SCS_agri_baron
+			allowed = {
+				original_tag = EQR
+			}
+			research_bonus = {
+				race_tech = 0.10
+				excavation_tech = 0.05
+			}
+			traits = { SCS_agribaron }
+		}
+	}
+	theorist = {
+		EQR_grannysmith = {
+			picture = grannysmith
+			name = grannysmith
+			ledger = army
+			allowed = {
+				original_tag = EQR
+			}
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			traits = { military_theorist }
+		}
+		EQR_theorist1 = {
+			ledger = air
+			picture = SCS_theorist1
+			name = "Foam Dash"
+			allowed = {
+				original_tag = EQR
+			}
+			traits = {
+				air_warfare_theorist
+			}
+			research_bonus = {
+				air_doctrine = 0.10
+			}
+		}
+	}
+	country = {
+		NLR_recruitment_drive = {
+			picture = NLR_bats3_idea
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				weekly_manpower = 4000
+				army_org_factor = -0.1
+				training_time_factor = -0.2
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+		}
+		NLR_radio_broadcasts = {
+			picture = NLR_radio_broadcasts
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				NLR = {
+					NOT = {
+						exists = no
+						is_subject_of = EQS
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				stability_weekly = -0.002
+				democratic_drift = 0.02
+			}
+			targeted_modifier = { tag = NLR attack_bonus_against = -0.1 }
+		}
+		NLR_airland_battle = {
+			picture = nlh_airland_doctrine
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				air_cas_efficiency = 0.15
+				air_cas_present_factor = 0.15
+				air_fuel_consumption_factor = -0.1
+				experience_gain_air = 0.05
+			}
+		}
+		NLR_mountain_redoubts = {
+			picture = nlh_mountain_redoubt
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				no_supply_grace = 48
+				terrain_penalty_reduction = 0.1
+				army_core_defence_factor = 0.1
+				pocket_penalty = -0.2
+			}
+		}
+		NLR_masters_of_the_night = {
+			picture = lone_princess_luna
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				land_night_attack = 0.2
+				air_night_penalty = -0.2
+			}
+		}
+		NLR_war_rules_1 = {
+            allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NLR_bats0_idea
+			
+			modifier = {
+				army_attack_factor = -0.10
+				war_support_factor = 0.075
+				experience_gain_factor = 0.2
+			}
+		}
+		
+		NLR_war_rules_2 = {
+            allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NLR_bats2_idea
+			
+			modifier = {
+				army_attack_factor = -0.025
+				war_support_factor = 0.025
+				experience_gain_factor = 0.05
+			}
+		}
+		
+		NLR_war_rules_3 = {
+            allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NLR_bats3_idea
+			
+			modifier = {
+				army_attack_factor = 0.10
+				war_support_factor = -0.10
+				experience_gain_factor = -0.20
+			}
+		}
+		NLR_manehattan_industrial_connections = {
+			allowed = { 
+			    always = no 
+			}
+			removal_cost = -1
+			picture = man_five_year_plan_tank
+			
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+		}
+		NLR_our_final_march = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = night_guards
+			available = {
+				event_target:solar_empire = {
+					NOT = {
+						exists = no
+						is_subject = yes
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.1
+				surrender_limit = 0.1
+				mobilization_speed = 0.1
+				conscription_factor = 0.1
+			}
+		}
+	}
+}

@@ -1,0 +1,133 @@
+add_namespace = fightevent
+
+country_event = {
+	id = fightevent.1
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.2
+	}
+}
+country_event = {
+	id = fightevent.2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.3
+	}
+}
+country_event = {
+	id = fightevent.3
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.4
+	}
+}
+country_event = {
+	id = fightevent.4
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.5
+	}
+}
+country_event = {
+	id = fightevent.5
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.6
+	}
+}
+country_event = {
+	id = fightevent.6
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.7
+	}
+}
+country_event = {
+	id = fightevent.7
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.8
+	}
+}
+country_event = {
+	id = fightevent.8
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.9
+	}
+}
+country_event = {
+	id = fightevent.9
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.10
+	}
+}
+country_event = {
+	id = fightevent.10
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.11
+	}
+}
+country_event = {
+	id = fightevent.11
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.12
+	}
+}
+country_event = {
+	id = fightevent.12
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.13
+	}
+}
+country_event = {
+	id = fightevent.13
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.14
+	}
+}
+country_event = {
+	id = fightevent.14
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		country_event = fightevent.15
+	}
+}
+country_event = {
+	id = fightevent.15
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		set_variable = { current_ai_player = ai_controlled_fighters^current_ai_fighter }
+		fight_ai_actions = yes
+		if = {
+			limit = {
+				any_of = {
+					array = ai_controlled_fighters
+					NOT = { is_in_array = { has_taken_turn_array = v } }
+				}
+			}
+			add_to_variable = { var = current_ai_fighter value = 1 }
+			country_event = fightevent.1
+		}
+	}
+}

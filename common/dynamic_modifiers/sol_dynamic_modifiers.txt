@@ -1,0 +1,98 @@
+SOL_uprising = {
+	icon = GFX_modifiers_SOL_uprising_icon
+	enable = {
+		always = yes
+	}
+	army_speed_factor = -0.5
+	local_supplies = -0.5
+	attrition = 0.3
+	disable_strategic_redeployment = 1
+}
+
+SOL_uprising_trains = {
+	icon = GFX_modifiers_SOL_uprising_icon
+	enable = {
+		always = yes
+	}
+	army_speed_factor = -0.5
+	local_supplies = -0.5
+	attrition = 0.3
+}
+
+
+SOL_public_works_modifier = {
+	icon = GFX_idea_public_works
+	enable = { 
+		always = yes
+	}
+	consumer_goods_factor = SOL_dynamic_modifier_civ_use_total
+}
+
+SOL_state_civilian_consolidation = {
+	icon = GFX_decision_railroad
+	enable = { 
+		always = yes
+	}
+	state_resources_factor = 0.1
+	state_production_speed_buildings_factor = 0.1
+	local_building_slots_factor = 0.1
+	army_speed_factor_for_controller = 0.1
+	local_org_regain = 0.1
+}
+
+SOL_dynamic_heatwave_effect = {
+	icon = GFX_SOL_wrath_icon
+	enable = { 
+		always = yes
+	}
+	heat_attrition = 0.1
+	local_org_regain = -0.05
+	supply_consumption_factor = 0.25
+	army_attack_factor = -0.05
+	army_defence_factor = -0.05
+	army_speed_factor = -0.1
+	local_factories = -0.05
+}
+
+SOL_arson_effect = {
+	icon = GFX_modifiers_sabotage_icon
+	enable = { 
+		always = yes
+	}
+	local_factories = -0.5
+	local_supplies = -0.5
+}
+SOL_sabotage_effect = {
+	icon = GFX_modifiers_sabotaged_resource
+	enable = { 
+		always = yes
+	}
+	local_resources_factor = -0.5
+}
+SOL_bombing_effect = {
+	icon = GFX_modifiers_bombing_icon
+	enable = {
+		always = yes
+	}
+	army_speed_factor = -0.5
+	disable_strategic_redeployment = 1
+}
+SOL_information_black_hole = {
+	icon = GFX_modifiers_black_hole_heartland
+	enable = {
+		always = yes
+	}
+	local_intel_to_enemies = -0.5
+}
+SOL_gas_attack = {
+	icon = GFX_modifiers_chemical_attack
+	enable = {
+		always = yes
+	}
+	attrition = 2
+	army_attack_factor = -0.5
+	army_defence_factor = -0.5
+	sickness_chance = 1.5
+	local_org_regain = -1
+}
+

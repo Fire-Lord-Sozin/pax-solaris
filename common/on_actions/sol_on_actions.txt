@@ -1,0 +1,624 @@
+on_actions = {
+	on_state_control_changed = {
+		effect = {
+			FROM = {
+				save_event_target_as = former_controller
+			}
+			if = {
+				limit = {
+					FROM = { tag = NLR }
+					ROOT = { is_SOLAR_EMPIRE = yes }
+				}
+				FROM.FROM = {	
+					save_global_event_target_as = SOL_NLR_last_state
+				}
+			}
+			if = {
+				limit = {
+					has_war_with = FROM
+					tag = event_target:solar_empire
+					has_unit_leader = 1337
+					has_country_leader = { ruling_only = yes name = "Daybreaker" }
+					FROM.FROM = {
+						has_state_flag = SOL_state_fall
+					}
+				}
+				add_to_variable = { var = daybreaker_support value = 3 } #Grants additional support if Daybreaker secures key cities immediately after taking control (the time when she is a Field Marshal)
+				FROM.FROM = {
+					clr_state_flag =  SOL_state_fall
+				}
+				hidden_effect = { SOL_calculate_loyalty = yes }
+			}
+			if = {
+				limit = {
+					has_war_with = event_target:solar_empire
+					event_target:solar_empire = { has_country_leader = { ruling_only = yes name = "Daybreaker" } }
+					FROM.FROM = {
+						is_owned_by = event_target:solar_empire
+						OR = {
+							state = 132 #Shire
+							state = 66 #Los Pegasus
+							state = 75 #Manehattan
+							state = 3 #Canterlot
+							state = 14 #Vanhoover
+							state = 59 #Tall Tale
+							state = 13 #Baltimare
+							state = 136 #Acornage
+							state = 12 #Fillydelphia
+							state = 70 #Whinnyapolis
+							state = 74 #Bales
+							state = 38 #Rockville
+							state = 525 #Albion
+							state = 2 #Ponyville
+						}
+						NOT = { has_state_flag = SOL_timeout }
+
+					}
+				}
+				event_target:solar_empire = {
+					add_to_variable = { var = daybreaker_support value = -5 } #Support is lost if Daybreaker loses key cities
+					hidden_effect = { SOL_calculate_loyalty = yes }
+				}
+				FROM.FROM = { 
+					set_state_flag = {
+						flag = SOL_timeout
+						days = 30
+						value = 1
+					} 
+				}
+			}
+		}
+	}
+	on_weekly_EQS = {
+		effect = {
+			if = {
+				limit = {
+					is_SOLAR_EMPIRE = yes
+					has_country_flag = march_on_canterlot
+					NOT = { has_country_flag = resistance_ceasefire }
+					any_enemy_country = {
+						has_offensive_war_with = EQS 
+						has_government = fascism
+						strength_ratio = {
+							tag = EQS
+							ratio > 0.5
+						}
+					}
+				}
+				random_country = {
+					limit = { 
+						has_offensive_war_with = EQS 
+						has_government = fascism
+						strength_ratio = {
+							tag = EQS
+							ratio > 0.5
+						}
+					}
+					save_global_event_target_as = sol_resistance_enemy
+				}
+				country_event = {
+					id = paxsolaris.37 #If Daybreaker has been attacked by another oppressive country (Crysalis, Sombra, Dark Wing) the resistance will temporarily cease their efforts to undermine her
+					days = 2
+				}
+				set_country_flag = resistance_ceasefire
+				remove_ideas = SOL_public_hostility_0
+				remove_ideas = SOL_public_hostility_1
+				remove_ideas = SOL_public_hostility_2
+				remove_ideas = SOL_public_hostility_3
+				remove_ideas = SOL_public_hostility_4
+				remove_ideas = SOL_public_hostility_5
+				remove_ideas = SOL_military_desertion_0
+				remove_ideas = SOL_military_desertion_1
+				remove_ideas = SOL_military_desertion_2
+				remove_ideas = SOL_military_desertion_3
+				remove_ideas = SOL_military_desertion_4
+				remove_ideas = SOL_military_desertion_5
+				remove_ideas = SOL_resistance_strength_0
+				remove_ideas = SOL_resistance_strength_1
+				remove_ideas = SOL_resistance_strength_2
+				remove_ideas = SOL_resistance_strength_3
+				remove_ideas = SOL_resistance_strength_4
+				remove_ideas = SOL_resistance_strength_5
+				remove_ideas = SOL_harmonist_broadcasts_0
+				remove_ideas = SOL_harmonist_broadcasts_1
+				remove_ideas = SOL_harmonist_broadcasts_2
+				remove_ideas = SOL_harmonist_broadcasts_3
+				remove_ideas = SOL_harmonist_broadcasts_4
+				remove_ideas = SOL_harmonist_broadcasts_5
+				remove_ideas = SOL_resistance_cohesion_1
+				remove_ideas = SOL_resistance_cohesion_2
+				remove_ideas = SOL_resistance_cohesion_3
+				set_variable = { var = solar_resistance_cohesion value = 0 }
+			}
+			add_to_variable = { var = SOL_lead_variable value = weekly_leads }
+			if = {
+				limit = {
+					is_SOLAR_EMPIRE = yes
+					NOT = { has_country_flag = resistance_ceasefire }
+					has_country_flag = march_on_canterlot
+				}
+				random_list = {
+					5 = {
+						modifier = {
+							factor = 0
+							has_country_flag = SOL_benevolent_public_timeout
+						}					
+						country_event = {
+							id = paxsolaris.50 	#Benign public support event
+						}				
+					}
+					5 = {
+						modifier = {
+							factor = 0
+							OR = {
+								NOT = { has_country_flag = SOL_resistance_begins }
+								has_country_flag = resistance_attack_blocked
+								has_country_flag = resistance_ceasefire
+							}
+						}
+						clear_variable = sol_resistance_alert_popup_show
+						SOL_calculate_resistance_target = yes
+						clr_country_flag = SOL_resistance_win
+						clr_country_flag = SOL_imperial_win
+						clr_country_flag = SOL_resistance_propaganda
+						clr_country_flag = SOL_resistance_warehouse
+						clr_country_flag = SOL_resistance_prison
+						random_list = {
+							1 = {
+								set_temp_variable = { outreach_strength_calculation_temp = solar_resistance_strength }
+								divide_temp_variable = { outreach_strength_calculation_temp = 5 }
+								SOL_calculate_probability = yes
+								if = {
+									limit = { has_country_flag = civilian_informants }
+									add_to_variable = { var = outreach_strength_calculation_temp value = -0.1 }
+								}
+								if = {
+									limit = { check_variable = { outreach_strength_calculation_temp > probability_check } }
+									set_country_flag = SOL_resistance_win
+									add_to_variable = { var = solar_resistance_outreach_actions_progress value = 1 }
+								}
+								else = {
+									set_country_flag = SOL_imperial_win
+									SOL_calculate_leads_small = yes
+									add_to_variable = { var = SOL_lead_variable value = lead_counter }
+								}
+								set_country_flag = SOL_resistance_propaganda
+							}
+							1 = {
+								set_temp_variable = { civilian_strength_calculation_temp = solar_civilian_support }
+								divide_temp_variable = { civilian_strength_calculation_temp = 5 }
+								SOL_calculate_probability = yes
+								if = {
+									limit = { has_country_flag = civilian_informants }
+									add_to_variable = { var = civilian_strength_calculation_temp value = 0.1 }
+								}
+								if = { 
+									limit = { check_variable = { civilian_strength_calculation_temp > probability_check } }
+									set_country_flag = SOL_imperial_win
+									SOL_calculate_leads_small = yes
+									add_to_variable = { var = SOL_lead_variable value = lead_counter }
+								}
+								else = {
+									set_country_flag = SOL_resistance_win
+									add_to_variable = { var = solar_resistance_actions_progress value = 1 }
+								}
+								set_country_flag = SOL_resistance_warehouse
+							}
+							1 = {
+								set_temp_variable = { military_strength_calculation_temp = solar_military_support }
+								divide_temp_variable = { military_strength_calculation_temp = 5 }
+								SOL_calculate_probability = yes
+								if = {
+									limit = { has_country_flag = civilian_informants }
+									add_to_variable = { var = military_strength_calculation_temp value = 0.1 }
+								}
+								if = { 
+									limit = { check_variable = { military_strength_calculation_temp > probability_check } }
+									set_country_flag = SOL_imperial_win
+									SOL_calculate_leads_small = yes
+									add_to_variable = { var = SOL_lead_variable value = lead_counter }
+								}
+								else = {
+									set_country_flag = SOL_resistance_win
+									add_to_variable = { var = solar_resistance_actions_progress value = 1 }
+								}
+								set_country_flag = SOL_resistance_prison
+							}
+						}
+						set_variable = { var = sol_resistance_alert_popup_show value = 1 }
+					}
+					10 = {
+						#Random blank to create weeks where nothing happens
+					}
+				}
+			}
+		}
+	}
+	on_daily_EQS = {
+		effect = {
+			if = {
+				limit = {
+					tag = EQS
+				}
+				hidden_effect = { SOL_calculate_loyalty = yes }
+				add_to_variable = { var = daybreaker_support value = daybreaker_support_daily }
+
+				#Magic reserves
+				if = {
+					limit = {
+						EQS = { has_completed_focus = SOL_Imperium_Solis }
+					}
+					hidden_effect = { SOL_calculate_magic = yes }
+					add_to_variable = { var = daybreaker_magic_reserves value = daybreaker_magic_daily_change }
+					clamp_variable = {
+						var = daybreaker_magic_reserves
+						min = 0 
+						max = daybreaker_magic_max
+					}
+					if = {
+						limit = {
+							check_variable = { daybreaker_magic_reserves = 0 }
+						}
+						every_state = {
+							limit = {
+								has_state_flag = SOL_state_has_spell_heatwave
+							}
+							custom_effect_tooltip = SOL_remove_heatwave_tt
+							hidden_effect = {
+								clr_state_flag = SOL_state_has_spell_heatwave
+								remove_province_modifier = {
+									static_modifiers = {
+										SOL_heatwave_effect
+									}
+									province = {
+										all_provinces = yes
+									}
+								}
+								set_variable = { var = wrath_of_sun_icon_var value = 1 }
+							}
+						}
+						every_country = {
+							limit = {
+								has_idea = SOL_blessing_of_day_idea
+							}
+							remove_ideas = SOL_blessing_of_day_idea
+						}
+						every_country = {
+							limit = {
+								has_idea = SOL_curse_of_day_idea
+							}
+							remove_ideas = SOL_curse_of_day_idea
+						}
+						EQS = {
+							set_variable = { var = sol_curse_number value = 0 }
+							set_variable = { var = sol_blessing_number value = 0 }
+							set_variable = { var = sol_heatwave_number value = 0 }
+							SOL_calculate_magic = yes
+						}
+					}
+					if = {
+						limit = {
+							has_variable = sol_magic_screen_show
+						}
+						add_to_variable = { var = sol_magic_screen_show value = 1 }
+					}
+				}
+
+				#Public Works
+				if = {
+					limit = {
+						EQS = { 
+							has_completed_focus = SOL_public_works_program 
+							has_war = no
+						}
+					}
+					SOL_calculate_region_development = yes
+					if = {
+						limit = {
+							check_variable = { sol_ongoing_public_works_num > 0 }
+						}
+						for_each_loop = {
+							array = SOL_ongoing_public_works
+							value = current_region
+							add_to_variable = { var = SOL_public_works_duration_array^current_region value = -1 }
+						}
+
+						SOL_calculate_public_works_progress = yes
+						if = {
+							limit = {
+								NOT = { EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } } }
+							}
+							add_dynamic_modifier = { modifier = SOL_public_works_modifier }
+						}
+					}
+					else_if = {
+						limit = {
+							EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } }
+						}
+						remove_dynamic_modifier = { modifier = SOL_public_works_modifier }
+					}
+				}
+				else_if = {
+					limit = {
+						EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } }
+					}
+					remove_dynamic_modifier = { modifier = SOL_public_works_modifier }
+				}
+
+				#Sarin Attack
+				if = {
+					limit = { has_variable = sol_gas_attack_cooldown }
+					subtract_from_variable = { sol_gas_attack_cooldown = 1 }
+					if = {
+						limit = { 
+							check_variable = { sol_gas_attack_cooldown < 91 } 
+							event_target:SOL_gassed_state = { has_dynamic_modifier = { modifier = SOL_gas_attack } }
+						}
+						event_target:SOL_gassed_state = {
+							remove_dynamic_modifier = { modifier = SOL_gas_attack } 
+							remove_province_modifier = {	
+								static_modifiers = { SOL_gas_attack_province }
+								province = { all_provinces = yes }
+							}
+						}
+					}
+					if = {
+						limit = { check_variable = { sol_gas_attack_cooldown < 1 } }
+						clear_variable = sol_gas_attack_cooldown
+					}
+				}
+			}
+		}
+	}
+	on_declare_war = {
+		effect = {
+			log = "[GetDateText]: ROOT: [Root.GetName] FROM: [From.GetName] on_declare_war"
+			hidden_effect = {
+				if = {
+					limit = {
+						FROM = {
+							is_in_faction = yes
+							is_coalition_member = yes
+						}
+						ROOT = {
+							is_SOLAR_EMPIRE = yes
+						}
+					}
+					FROM = { 
+						save_global_event_target_as = coalition_defender 
+					}
+					every_country = {
+						limit = {
+							NOT = { tag = FROM }
+							is_in_faction_with = FROM
+							is_subject = no
+							is_coalition_member = yes
+						}
+						country_event = {
+							id = coalition.10
+							days = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM = {
+							is_SOLAR_EMPIRE = yes
+							has_country_flag = march_on_canterlot
+							NOT = { has_country_flag = resistance_ceasefire }
+						}
+						ROOT = {
+							has_government = fascism
+							strength_ratio = {
+								tag = EQS
+								ratio > 0.5
+							}
+						}
+					}
+					ROOT = { save_global_event_target_as = sol_resistance_enemy }
+					FROM = {
+						country_event = {
+							id = paxsolaris.37 #If Daybreaker has been attacked by another oppressive country (Crysalis, Sombra, Dark Wing ect) the resistance will temporarily cease their efforts to undermine her
+							days = 2
+						}
+						set_country_flag = resistance_ceasefire
+						remove_ideas = SOL_public_hostility_0
+						remove_ideas = SOL_public_hostility_1
+						remove_ideas = SOL_public_hostility_2
+						remove_ideas = SOL_public_hostility_3
+						remove_ideas = SOL_public_hostility_4
+						remove_ideas = SOL_public_hostility_5
+						remove_ideas = SOL_military_desertion_0
+						remove_ideas = SOL_military_desertion_1
+						remove_ideas = SOL_military_desertion_2
+						remove_ideas = SOL_military_desertion_3
+						remove_ideas = SOL_military_desertion_4
+						remove_ideas = SOL_military_desertion_5
+						remove_ideas = SOL_resistance_strength_0
+						remove_ideas = SOL_resistance_strength_1
+						remove_ideas = SOL_resistance_strength_2
+						remove_ideas = SOL_resistance_strength_3
+						remove_ideas = SOL_resistance_strength_4
+						remove_ideas = SOL_resistance_strength_5
+						remove_ideas = SOL_harmonist_broadcasts_0
+						remove_ideas = SOL_harmonist_broadcasts_1
+						remove_ideas = SOL_harmonist_broadcasts_2
+						remove_ideas = SOL_harmonist_broadcasts_3
+						remove_ideas = SOL_harmonist_broadcasts_4
+						remove_ideas = SOL_harmonist_broadcasts_5
+						remove_ideas = SOL_resistance_cohesion_1
+						remove_ideas = SOL_resistance_cohesion_2
+						remove_ideas = SOL_resistance_cohesion_3
+						set_variable = { var = solar_resistance_cohesion value = 0 }
+					}
+				}
+			}
+		}
+	}
+	on_offer_join_faction = {
+		effect = {
+			log = "[GetDateText] [Root.GetName] on_offer_join_faction FROM = [From.GetName]"
+			if = {
+				limit = {
+					is_coalition_member = yes
+					is_in_faction_with = FROM
+					FROM = {
+						NOT = { has_idea = SOL_coalition_member }
+					}
+				}
+				FROM = {
+					add_ideas = SOL_coalition_member
+					if = {
+						limit = { has_global_flag = coalition_defensive_plan_completed }
+						add_ideas = coalition_defensive_plan_project_bonus
+					}
+					if = {
+						limit = { has_global_flag = coalition_research_completed }
+						add_to_tech_sharing_group = coalition_of_free_tech_share
+					}
+				}
+			}
+		}
+	}
+	on_join_faction = {
+		effect = {
+			log = "[GetDateText] [Root.GetName] on_join_faction FROM = [From.GetName]"
+			if = {
+				limit = {
+					is_coalition_member = yes
+					is_in_faction_with = FROM
+					FROM = {
+						NOT = { has_idea = SOL_coalition_member }
+					}
+				}
+				FROM = {
+					add_ideas = SOL_coalition_member
+					if = {
+						limit = { has_global_flag = coalition_defensive_plan_completed }
+						add_ideas = coalition_defensive_plan_project_bonus
+					}
+					if = {
+						limit = { has_global_flag = coalition_research_completed }
+						add_to_tech_sharing_group = coalition_of_free_tech_share
+					}
+				}
+			}
+		}
+	}
+	on_leave_faction = {
+		effect = {
+			log = "[GetDateText] [Root.GetName] on_leave_faction FROM = [From.GetName]"
+			if = {
+				limit = {
+					is_coalition_member = yes
+					FROM = {
+						is_coalition_member = yes
+					}
+				}
+				remove_ideas = SOL_coalition_member
+				remove_ideas = SOL_coalition_surrender
+				remove_ideas = coalition_defensive_plan_project_bonus
+				remove_from_tech_sharing_group = coalition_of_free_tech_share
+			}
+		}
+	}
+	on_capitulation = {
+		effect = {
+			log = "[GetDateText]: FROM: [From.GetName] ROOT: [Root.GetName] on_capitulation"
+			FROM = {
+				save_global_event_target_as = winning_country
+			}
+			ROOT = {
+				save_global_event_target_as = losing_country
+			}
+			if = {
+				limit = {
+					ROOT = { tag = NLR }
+					FROM = { is_SOLAR_EMPIRE = yes }
+				}
+				if = {
+					limit = { 
+						NLR = {
+							has_country_leader = {
+								ruling_only = yes
+								name = "Nightmare Moon"
+							}
+						}
+					}
+					set_country_flag = paxsolaris_338_nmm
+					EQS = { country_event = paxsolaris.338 }
+				}
+				if = {
+					limit = { 
+						NLR = {
+							has_country_leader = {
+								ruling_only = yes
+								name = "Chancellor Luna"
+							}
+						}
+					}
+					set_country_flag = paxsolaris_338_luna
+					EQS = { country_event = paxsolaris.338 }
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						NOT = {
+							any_other_country = {
+								is_in_faction_with = PREV
+								has_capitulated = no
+								NOT = { tag = EQC }
+							}
+						}
+						OR = {
+							original_tag = NLR
+							original_tag = EQR
+							is_in_faction_with = NLR
+							is_in_faction_with = EQR
+						}
+					}
+					FROM = {
+						is_SOLAR_EMPIRE = yes
+					}
+				}
+				FROM = {
+					if = {
+						limit = { 
+							NLR = { has_capitulated = yes } 
+						}
+						white_peace = NLR
+						annex_country = {
+							target = NLR
+							transfer_troops = no
+						}
+						every_state = {
+							remove_core_of = NLR
+							remove_claim_by = NLR
+						}
+					}
+					if = {
+						limit = { 
+							EQR = { has_capitulated = yes }
+						}
+						white_peace = EQR
+						annex_country = {
+							target = EQR
+							transfer_troops = no
+						}
+						every_state = {
+							remove_core_of = EQR
+							remove_claim_by = EQR
+						}
+					}
+					if = {
+						limit = {
+							EQC = { is_in_faction_with = ROOT }
+						}
+						white_peace = EQC
+					}
+				}
+			}
+		}
+	}
+}

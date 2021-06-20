@@ -1,0 +1,44 @@
+scripted_gui = {
+
+	coalition_votes_gui = {
+		context_type = decision_category
+		
+		window_name = "paxsolaris_votes_container"
+		
+		ai_enabled = {
+			always = no
+		}
+		visible = {
+			ROOT = { has_active_mission = coalition_current_resolution_decision }
+		}
+		dynamic_lists = {
+			votes_yes_list = {
+				array = global.coalition_countries_voting_yes
+				change_scope = yes
+				entry_container = "votes_yes_list_entry"
+			}
+		}
+		dynamic_lists = {
+			votes_no_list = {
+				array = global.coalition_countries_voting_no
+				change_scope = yes
+				entry_container = "votes_no_list_entry"
+			}
+		}
+	}
+
+	sol_coalition_alert_gui = {
+		window_name = "sol_coalition_alert_popup"
+		dirty = sol_coalition_alert_popup_show
+		context_type = player_context
+		visible = {
+			has_variable = sol_coalition_alert_popup_show
+			is_coalition_member = yes
+		}
+		effects = {
+			sol_coalition_alert_close_button_click = {
+				clear_variable = sol_coalition_alert_popup_show
+			}
+		}
+	}
+}

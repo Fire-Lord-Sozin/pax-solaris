@@ -1,0 +1,122 @@
+defined_text = {
+	name = coalition_membership_effects_defensive_plan
+	text = {
+		trigger = {
+			has_idea = coalition_defensive_plan_project_bonus
+		}
+		localization_key = coalition_membership_effects_defensive_plan_yes
+	}
+	text = {
+		localization_key = coalition_membership_effects_no
+	}
+}
+defined_text = { 
+	name = current_proposal_scripted_loc
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_invite_members
+		}
+		localization_key = proposal_invite_members_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_defensive_plan
+		}
+		localization_key =  proposal_defensive_plan_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_fortress
+		}
+		localization_key =  proposal_fortress_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_research
+		}
+		localization_key =  proposal_research_loc
+	}
+	text = {
+		localization_key = proposal_none
+	}
+}
+
+defined_text = { 
+	name = current_proposal_scripted_loc_desc
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_invite_members
+		}
+		localization_key = coalition_invite_members_desc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_defensive_plan
+		}
+		localization_key =  coalition_defensive_plan_propose_desc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_fortress
+		}
+		localization_key =  coalition_fortress_propose_desc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_research
+		}
+		localization_key =  coalition_fortress_research_desc
+	}
+	text = {
+		localization_key = proposal_none
+	}
+}
+defined_text = {
+	name = GetVoteYesEntry
+	text = {
+		trigger = {
+			tag = ROOT
+		}
+		localization_key = VOTE_YES_LIST_ENTRY_US
+	}
+	text = {
+		localization_key = VOTE_YES_LIST_ENTRY_OTHER
+	}
+}
+defined_text = {
+	name = GetVoteNoEntry
+	text = {
+		trigger = {
+			tag = ROOT
+		}
+		localization_key = VOTE_NO_LIST_ENTRY_US
+	}
+	text = {
+		localization_key = VOTE_NO_LIST_ENTRY_OTHER
+	}
+}
+
+defined_test = {
+	name = CoalitionResolutionProposal
+	text = { 
+		trigger = { 
+			has_global_flag = proposal_coalition_active
+		}
+		localization_key = sol_coalition_alert_proposal_description_text
+	}
+	text = {
+		localization_key = sol_coalition_alert_outcome_description_text
+	}
+}
+defined_test = {
+	name = CoalitionResolutionResult
+	text = { 
+		trigger = { 
+			check_variable = { global.coalition_resolution_support_var > global.coalition_resolution_oppose_var }
+		}
+		localization_key = sol_coalition_alert_proposal_passed
+	}
+	text = {
+		localization_key = sol_coalition_alert_proposal_failed
+	}
+}

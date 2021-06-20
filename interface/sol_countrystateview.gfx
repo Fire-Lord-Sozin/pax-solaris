@@ -1,0 +1,18 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_modifiers_SOL_uprising_icon"
+		textureFile = "gfx/interface/modifiers_resistance_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_modifiers_sabotage_icon"
+		textureFile = "gfx/interface/modifiers_sabotage_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_modifiers_bombing_icon"
+		textureFile = "gfx/interface/modifiers_bombing_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_modifiers_chemical_attack"
+		textureFile = "gfx/interface/chemical_attack.dds"
+	}
+}

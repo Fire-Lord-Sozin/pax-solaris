@@ -1,0 +1,18 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_trait_royal_guard"
+		texturefile = "gfx/interface/traits/trait_royal_guard.dds"
+	}
+	spriteType = {
+		name = "GFX_trait_flame_revenant"
+		texturefile = "gfx/interface/traits/trait_flame_revenant.dds"
+	}
+	spriteType = {
+		name = "GFX_trait_sky_commander"
+		texturefile = "gfx/interface/traits/trait_sky_commander.dds"
+	}
+	spriteType = {
+		name = "GFX_trait_nlr_commander_in_chief"
+		texturefile = "gfx/interface/traits/trait_nlr_commander_in_chief.dds"
+	}
+}

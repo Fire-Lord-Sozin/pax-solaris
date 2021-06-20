@@ -1,0 +1,122 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_idea_SOL_revanchism"
+		texturefile = "gfx/interface/ideas/SOL_revanchism.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_SOL_daybreaker_influence"
+		texturefile = "gfx/interface/ideas/SOL_daybreaker_influence.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_SOL_harmonist_broadcasts"
+		texturefile = "gfx/interface/ideas/SOL_harmonist_broadcasts.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_SOL_friendly_harmony"
+		texturefile = "gfx/interface/ideas/idea_friendly_harmony.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_resistance_cohesion"
+		texturefile = "gfx/interface/ideas/idea_resistance_cohesion.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_propaganda"
+		texturefile = "gfx/interface/ideas/idea_sol_propaganda.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_blessing_of_day"
+		texturefile = "gfx/interface/ideas/idea_blessing_of_day.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_curse"
+		texturefile = "gfx/interface/ideas/idea_sol_curse.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_public_works"
+		texturefile = "gfx/interface/ideas/idea_public_works.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_wonderbolts"
+		texturefile = "gfx/interface/ideas/idea_sol_wonderbolts.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_surveilance"
+		texturefile = "gfx/interface/ideas/idea_sol_surveilance.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_buf_genocide"
+		texturefile = "gfx/interface/ideas/idea_buf_genocide.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_resistance_intel"
+		texturefile = "gfx/interface/ideas/idea_resistance_intel.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_coalition_member"
+		texturefile = "gfx/interface/ideas/idea_coalition_member.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_everything_for_equestria"
+		texturefile = "gfx/interface/ideas/idea_everything_for_equestria.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_factories"
+		texturefile = "gfx/interface/ideas/idea_sol_factories.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_a_plan_for_equestria"
+		texturefile = "gfx/interface/ideas/idea_a_plan_for_equestria.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_fuelled_by_hatred"
+		texturefile = "gfx/interface/ideas/idea_fuelled_by_hatred.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_illegitimate_rule"
+		texturefile = "gfx/interface/ideas/idea_illegitimate_rule.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_nothing_left_to_lose"
+		texturefile = "gfx/interface/ideas/idea_nothing_left_to_lose.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_warplan_hydra"
+		texturefile = "gfx/interface/ideas/idea_warplan_hydra.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_new_high_command"
+		texturefile = "gfx/interface/ideas/idea_new_high_command.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_show_no_quarter"
+		texturefile = "gfx/interface/ideas/idea_show_no_quarter.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_biological_weaponry"
+		texturefile = "gfx/interface/ideas/idea_biological_weaponry.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_paramilitary_armies"
+		texturefile = "gfx/interface/ideas/idea_sol_paramilitary_armies.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_neighsay"
+		texturefile = "gfx/interface/ideas/idea_neighsay.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_starswirl"
+		texturefile = "gfx/interface/ideas/idea_starswirl.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_NLR_radio_broadcasts"
+		texturefile = "gfx/interface/ideas/idea_NLR_radio_broadcasts.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_nlh_airland_doctrine"
+		texturefile = "gfx/interface/ideas/idea_nlh_airland_doctrine.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_nlh_mountain_redoubts"
+		texturefile = "gfx/interface/ideas/idea_nlh_mountain_redoubts.dds"
+	}
+}

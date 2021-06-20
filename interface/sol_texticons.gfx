@@ -1,0 +1,32 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_leads_text"
+		texturefile = "gfx/texticons/leads_texticon.dds"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_solar_energy_text"
+		texturefile = "gfx/texticons/solar_energy_texticon.dds"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_health_icon"
+		textureFile = "gfx/interface/sol_fights/health_texticon.dds"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_vitality_icon"
+		textureFile = "gfx/interface/sol_fights/vitality_texticon.dds"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_trait_data_security"
+		texturefile = "gfx/texticons/trait_data_security.dds"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_trait_fanatic_following"
+		texturefile = "gfx/texticons/trait_fanatic_following.dds"
+		legacy_lazy_load = no
+	}		
+}

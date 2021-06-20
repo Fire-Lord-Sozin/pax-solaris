@@ -1,0 +1,92 @@
+﻿l_english:
+  #Coalition Stuff
+ #Coalition stuff
+ SOL_Coalition_of_Free:0 "Coalition of the Free"
+
+
+ SOL_coalition_member:0 "Coalition Member"
+ SOL_coalition_member_desc:0 "This nation is a member of the Coalition of the Free, a loose alliance of nations dedicated to preserving their sovereignity against the tyranny of Empress Daybreaker and [EQS.GetNameDef].\n\n§YEffects from membership:§!§W[coalition_membership_effects_defensive_plan]§!\n\n§YThis faction is a defensive alliance. All nations will automatically come to the aid of one another if they are attacked by §RDaybreaker.§!\n\nThe leader of the Coalition of the Free will not capitulate unless all other Coalition nations have capitulated!§!"
+ coalition_membership_effects_defensive_plan_yes:0 "\nMax planning: §G+10.0%§!\n(@EQS §Y[EQS.GetName]§!)Defence bonus against country: §G+10.0%§!"
+ coalition_membership_effects_no:0 ""
+ coalition_defensive_plan_project_bonus:0 "§YCoalition Member§!"
+
+ is_coalition_member_tt:0 "Is a member of the §YCoalition of the Free.§!"
+ coalition.2.t:0 "A Question of Security"
+ coalition.2.d:0 "Equestria has fallen.\n\nA mere decade ago such an event would be unthinkable. Even those that sought to harm the millennia-old superpower knew it would not go down quietly. Like all others, they never imagined it would fall from within. And that the kind and just ruler nearly all ponies looked up to on some level would be the one to deal the final blow.\n\nFrom the tundra of Olenia to the forests of New Mareland creatures now look up at the sky in dread, knowing the sun that stalks the heavens is no longer their friend. Celestia and the harmonist bastion she ruled is gone. In its place stands Daybreaker, a goddess with millennia of experience hellbent on forging the largest nation on the planet into a global empire. Every one of our citizens knows she will come for us one day. The only question is whether we will meet her with bowed heads or readied guns."
+ coalition.2.a:0 "We will not go down quietly!"
+ coalition.2.b:0 "Perhaps it would be best if we waited before making such a bold declaration."
+ coalition_2_rename:0 "Our §Yfaction§! will be known as the §GCoalition of the Free.§!"
+ coalition_2_create:0 "We will create a §Yfaction§! for the free nations of Equus to rally around."
+ coalition.3.t:0 "Invite to Faction"
+ coalition.3.d:0 "Equestria has fallen.\n\nA mere decade ago such an event would be unthinkable. Even those that sought to harm the millennia-old superpower knew it would not go down quietly. Like all others, they never imagined it would fall from within. And that the kind and just ruler nearly all ponies looked up to on some level would be the one to deal the final blow.\n\nFrom the tundra of Olenia to the forests of New Mareland creatures now look up at the sky in dread, knowing the sun that stalks the heavens is no longer their friend. Celestia and the harmonist bastion she ruled is gone. In its place stands Daybreaker, a goddess with millennia of experience hellbent on forging the largest nation on the planet into a global empire.\n\nBut not all are willing to wait idly while Daybreaker consolidates her power base. [SOL_coalition_leader.GetName] has proclaimed their intentions to stand against the tyrant and has begun spearheading efforts to create a defensive pact between the nations still willing to take a stand. Our military has already advised we carefully consider this offer, fearing that we would stand little chance against Daybreaker alone."
+ coalition.3.a:0 "We will stand united against Daybreaker!"
+ coalition.3.b:0 "The [THIS.GetFactionName] stands against tyranny!"
+ coalition.3.c:0 "This is not our fight."
+ coalition.4.t:0 "[From.GetName] Joins the Coalition"
+ coalition.4.d:0 "[This.GetNewspaperHeader] \nSeeing the threat that Daybreaker poses to freedom, [From.GetNameDef] has decided to accept our offer of joining a defensive pact against [EQS.GetNameDef]. We now stand united."
+ coalition.4.a:0 "Equus will be liberated!"
+
+ SOL_coalition_menu:0 "§GCoalition of the Free§!"
+ SOL_coalition_menu_desc:0 "Equestria is gone. In its place stands a terrifyingly powerful empire hellbent on bending the world to its will. But if Daybreaker expects the world to crumble at her touch, she has another thing coming. Nations across Equus and beyond have banded together under the Coalition of the Free. Can we stand against the sun, or will our civilisation be reduced to ash?"
+ proposal_invite_members_loc:0 "§YInvite [potential_new_member.GetNameWithFlag]§!"
+ proposal_defensive_plan_loc:0 "§YCreate Defensive Plan§!"
+ proposal_fortress_loc:0 "§YCreate Border Fortifications§!"
+ proposal_research_loc:0 "§YCreate Research Group§!"
+ proposal_none:0 "§YNo Pending Proposals§!"
+
+ no_ongoing_resolution:0 "The §YCoalition of the Free§! is not voting on a §Yresolution§!"
+ no_ongoing_project:0  "The §YCoalition of the Free§! can only focus on one §Yproject§! at a time"
+ no_ongoing_commitments:0 "Only one §Ycommitment§! is active for this country"
+ max_commitments:0 "§OMaximum number of commitments has not been reached§!"
+ ongoing_resolution:0 "§YThere is a resolution pending§!"
+
+ coalition_current_resolution_decision:0 "§GResolution:§! [current_proposal_scripted_loc]"
+ coalition_current_resolution_decision_desc:0 "§YCurrent Status:§! §OPending§!\n[current_proposal_scripted_loc_desc]"
+ coalition_current_resolution_decision_support:0 "Support"
+ coalition_current_resolution_decision_support_desc:0 "Support the current resolution."
+ coalition_current_resolution_decision_oppose:0 "Oppose"
+ coalition_current_resolution_decision_oppose_desc:0 "Oppose the current resolution."
+ coalition_resolution_pass:0 "With the current §Yvotes§!, this §Yresolution§! will §Gpass§!"
+ coalition_resolution_fail:0 "With the current §Yvotes§!, this §Yresolution§! will §Rfail§!"
+
+ coalition_invite_members:0 "Invite [From.GetName] to the Coalition"
+ coalition_invite_members_desc:0 "The threat Daybreaker poses to freedom cannot be denied. So long as she sits on the throne in Canterlot, none of us are safe. Mutual cooperation with likeminded nations will help us guarantee the liberty of creatures everywhere."
+
+ coalition_defensive_plan_propose:0 "Propose Defensive Plan"
+ coalition_defensive_plan_propose_desc:0 "To stand a chance against the inevitable Solar onslaught, the greatest military minds of the international community must come together and learn how to use our forces and natural strengths against Daybreaker's legions.\n\n§WThis project will require §Yfive§! §Gcommitments§! to be completed. For each commitment:\n  Add to country: §YDefensive Plan Commitment§! for §Y60§! days\n    Planning Speed: §R-20.0%§!\n    Max planning factor: §R-30.0%§!\n\nWhen project is completed:\n  Add to §YCoalition Members: Defensive Plan§!\n    Max planning: §G+10.0%§!\n    (@EQS §Y[EQS.GetName]§!)Defence bonus against country: §G+10.0%§!§!"
+ coalition_defensive_plan_project:0 "§YCoalition Defensive Plan§!"
+ coalition_defensive_plan_project_desc:0 "§Y[?global.coalition_defensive_plan_project_commitment_num]/5 commitments needed§!\n§Y[?global.coalition_defensive_plan_project_commitment_num_completed]/5 stages to completion§!\n\n§WEffect when completed:\n  Add to §YCoalition Members: Defensive Plan§!\n    Max planning: §G+10.0%§!\n    (@EQS §Y[EQS.GetName]§!)Defence bonus against country: §G+10.0%§!§!"
+ 
+ coalition_fortress_propose:0 "Propose Border Fortifications"
+ coalition_fortress_propose_desc:0 "For centuries there was little reason to militarise the border with Equestria. Times have changed. The Coalition doesn't possess the strength to fight Daybreaker on even footing, and so must fortify our borders to stand a chance.\n\n§WThis project will require §Yfive§! §Gcommitments§! to be completed. For each commitment:\n  Add to country: §YCoalition Fortifications Commitment§! for §Y60§! days\n    Civilian Factory Use: §R10§!\n\nWhen project is completed:\n  Every §YCoalition§! province bordering §Y[EQS.GetNameDef]:§!\n    Add §Y2 Land Fort§!§!"
+ coalition_fortress_project:0 "§YCoalition Border Fortifications§!"
+ coalition_fortress_project_desc:0 "§Y[?global.coalition_fortress_project_commitment_num]/5 commitments needed§!\n§Y[?global.coalition_fortress_project_commitment_num_completed]/5 stages to completion§!\n\n§WEffect when completed:\n  Every §YCoalition§! province bordering §Y[EQS.GetNameDef]:§!\n    Add §Y2 Land Fort§!§!"
+
+ coalition_research_propose:0 "Propose Research Group"
+ coalition_research_propose_desc:0 "In this new age of industrial warfare, holding a technological advantage over your foe is a vital asset. By sharing our research with other Coalition members, we can gain an edge over [EQS.GetNameDef].\n\n§WIf proposal is accepted:\n  Every §YCoalition member§! will gain a §Y15%§! research bonus on technologies researched by faction members.§!"
+
+ coalition_of_free_tech_share_name:0 "Coalition Research Cooperation"
+
+
+ VOTE_YES_GUI_LIST_ENTRY:0 "[This.GetVoteYesEntry]"
+ VOTE_YES_LIST_ENTRY_US:0 "§G[?this.GetNameWithFlag]§!"
+ VOTE_YES_LIST_ENTRY_OTHER:0 "§Y[?this.GetNameWithFlag]§!"
+
+ VOTE_NO_GUI_LIST_ENTRY:0 "[This.GetVoteNoEntry]"
+ VOTE_NO_LIST_ENTRY_US:0 "§G[?this.GetNameWithFlag]§!"
+ VOTE_NO_LIST_ENTRY_OTHER:0 "§Y[?this.GetNameWithFlag]§!"
+
+ SOL_num_votes_yes_tt:0 "For: §G[?global.coalition_resolution_support_var]§!"
+ SOL_num_votes_no_tt:0 "Against: §R[?global.coalition_resolution_oppose_var]§!"
+ SOL_current_resolution_tt:0 "§YVoting On:§! [current_proposal_scripted_loc]"
+
+ coalition_defensive_plan_project_commitment:0 "Defensive Plan Commitment"
+ coalition_defensive_plan_project_commitment_desc:0 "Our top military minds are attending a summit with other Coalition nations to draft a defensive plan, leaving our own military critically understaffed."
+ coalition_fortress_project_commitment:0 "Border Fortifications Commitment"
+ coalition_fortress_project_commitment_desc:0 "As part of our obligations to the §YCoalition of the Free§!, we have donated some of our factories to construct border fortifications along the Equestrian border."
+
+ SOL_coalition_alert_popup_title:0 "§GCOALITION RESOLUTION ALERT§!"
+ sol_coalition_alert_proposal_description_text:0 "§Y[proposed_resolution_nation.GetNameWithFlag]§! has proposed the following resolution: [current_proposal_scripted_loc]"
+ sol_coalition_alert_outcome_description_text:0 "The resolution [current_proposal_scripted_loc] has [CoalitionResolutionResult]" 
+ sol_coalition_alert_proposal_passed:0 "§Gpassed!§!"
+ sol_coalition_alert_proposal_failed:0 "§Rfailed!§!"

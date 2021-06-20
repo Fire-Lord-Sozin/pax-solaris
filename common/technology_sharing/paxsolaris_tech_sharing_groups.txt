@@ -1,0 +1,13 @@
+technology_sharing_group = {
+
+	id = coalition_of_free_tech_share
+	name = coalition_of_free_tech_share_name
+	desc = coalition_of_free_tech_share_desc
+	picture = GFX_technology_sharing_default
+
+	research_sharing_per_country_bonus = 0.15
+
+	available = {
+		is_coalition_member = yes
+	}
+}

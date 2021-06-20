@@ -1,0 +1,485 @@
+guiTypes = {
+	containerWindowType = {
+		name = "SOL_loyalty_display_container"
+		position = { x = 0 y = 0 }
+		size = { width = 150% height = 101 }
+		Orientation = upper_left
+		
+		
+		containerWindowType = {
+			name = "SOL_loyalty_progress_bar"
+			position = { x = 40 y = 0 }
+			size = { width = 400 height = 26 }
+			clipping = yes
+			iconType = {
+				name = "loyalty_progress"
+				spriteType = "GFX_large_loyalty_bar"
+				position = { x = -400 y = 6 }
+			}
+		}
+		iconType = {
+			name = "loyalty_frame"
+			spriteType = "GFX_large_loyalty_bar_bg"
+			position = { x = 15 y = 0 }
+			pdx_tooltip = "SOL_loyalty_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_explainer_tt_delayed"
+		}
+		iconType = {
+			name = "loyalty_boost_1"
+			spriteType = "GFX_loyalty_boost_icon"
+			position = { x = 67 y = 6 }
+			pdx_tooltip = "SOL_loyalty_boost_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_boost_explainer_1_tt_delayed"
+		}
+		iconType = {
+			name = "informants_loyalty"
+			spriteType = "GFX_informants_icon"
+			position = { x = 107 y = 6 }
+			pdx_tooltip = "SOL_informants_loyalty_explainer_tt"
+			pdx_tooltip_delayed = "SOL_informants_loyalty_explainer_tt_delayed"
+			frame = 1
+		}
+		iconType = {
+			name = "loyalty_boost_2"
+			spriteType = "GFX_loyalty_boost_icon"
+			position = { x = 147 y = 6 }
+			pdx_tooltip = "SOL_loyalty_boost_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_boost_explainer_2_tt_delayed"
+		}
+		iconType = {
+			name = "volunteer_militias"
+			spriteType = "GFX_voluneer_militias"
+			position = { x = 187 y = 6 }
+			pdx_tooltip = "SOL_volunteer_militias_loyalty_explainer_tt"
+			pdx_tooltip_delayed = "SOL_volunteer_militias_loyalty_explainer_tt_delayed"
+			frame = 1
+		}
+		iconType = {
+			name = "loyalty_boost_3"
+			spriteType = "GFX_loyalty_boost_icon"
+			position = { x = 227 y = 6 }
+			pdx_tooltip = "SOL_loyalty_boost_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_boost_explainer_3_tt_delayed"
+		}
+		iconType = {
+			name = "inquisition_informants"
+			spriteType = "GFX_inquisition_informants"
+			position = { x = 267 y = 6 }
+			pdx_tooltip = "SOL_inquisition_informants_loyalty_explainer_tt"
+			pdx_tooltip_delayed = "SOL_inquisition_informants_loyalty_explainer_tt_delayed"
+			frame = 1
+		}
+		iconType = {
+			name = "loyalty_boost_4"
+			spriteType = "GFX_loyalty_boost_icon"
+			position = { x = 307 y = 6 }
+			pdx_tooltip = "SOL_loyalty_boost_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_boost_explainer_4_tt_delayed"
+		}
+		iconType = {
+			name = "harmonist_commanders"
+			spriteType = "GFX_harmonist_commanders"
+			position = { x = 347 y = 6 }
+			pdx_tooltip = "SOL_harmonist_commanders_loyalty_explainer_tt"
+			pdx_tooltip_delayed = "SOL_harmonist_commanders_loyalty_explainer_tt_delayed"
+			frame = 1
+		}
+		iconType = {
+			name = "loyalty_boost_5"
+			spriteType = "GFX_loyalty_boost_icon"
+			position = { x = 387 y = 6 }
+			pdx_tooltip = "SOL_loyalty_boost_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_boost_explainer_5_tt_delayed"
+		}
+		instantTextBoxType = {
+			name ="loyalty_text"
+			position = { x = 420 y = 17 }
+			font = "hoi_18mbs"
+			text = "[GetSolarLoyalty]"
+			maxWidth = 60
+			format = left
+			pdx_tooltip = "SOL_loyalty_explainer_tt"
+			pdx_tooltip_delayed = "SOL_loyalty_explainer_tt_delayed"
+		}
+		instantTextBoxType = {
+			name ="SOL_loyalty_explainer_text"
+			position = { x = 10 y = 35 }
+			font = "hoi_16mbs"
+			text = "[SOL_consolidation_menu_explainer]"
+			format = left
+			maxWidth = 480
+			maxHeight = 40
+		}
+	}
+
+	containerWindowType = {
+		name = "SOL_leads_display_container"
+		position = { x = 0 y = 0 }
+		size = { width = 150% height = 30 }
+		Orientation = upper_left
+		
+		instantTextBoxType = {
+			name ="SOL_leads_explainer_text"
+			position = { x = 40 y = 5 }
+			font = "hoi_16mbs"
+			text = "[SOL_lead_explainer_loc_string]"
+			format = right
+			maxWidth = 300
+			maxHeight = 30
+		}
+		
+		containerWindowType = {
+			name = "SOL_leads_stored_display_container"
+			position = { x= 350 y = 0 }
+			size = { width = 124 height = 26 }
+			iconType = {
+				name ="magnifying"
+				spriteType = "GFX_leads_text"
+				position = { x= 5 y = 2 }
+			}
+			background ={
+				name ="background"
+				spriteType = "GFX_generic_box_125"
+			}
+			
+			instantTextBoxType = {
+				name ="SOL_leads_stored_text"
+				position = { x = 0 y = 5 }
+				font = "hoi_16mbs"
+				text = "[SOL_lead_variable_loc_string]"
+				format = right
+				maxWidth = 116
+				maxHeight = 26
+				
+				pdx_tooltip = "SOL_lead_stored_explainer_tt"
+				pdx_tooltip_delayed = "SOL_lead_stored_explainer_tt_delayed"
+			}
+		}
+	}
+	containerWindowType = {
+		name = "magic_start_container"
+		position = { x = 1100 y = 4 }
+		
+		buttonType = {
+			name = "magic_start_bg"
+			spriteType = "GFX_SOL_magic_start_bg"
+			position = { x=0 y=0 }
+			shortcut = "ctrl+d"
+		}
+	}
+
+	containerWindowType = {
+		name = "sol_magic_info_window"
+		size = { width=600 height=450 }
+		moveable = yes
+		clipping = no
+		show_sound = menu_open_window
+		hide_sound = menu_close_window
+		position = { x=670 y=100 }
+
+		Background = {
+			name = "sol_magic_info_window_bg"
+			spriteType = "GFX_SOL_magic_background"
+		}
+		
+		containerWindowType = {
+			name = "SOL_magic_reserves_bar"
+			position = { x = 55 y = 27 }
+			size = { width = 100 height = 330 }
+			clipping = yes
+			pdx_tooltip = "SOL_magic_current_value"
+			pdx_tooltip_delayed = "SOL_magic_current_value_delayed"
+			iconType = {
+				name = "magic_reserves"
+				spriteType = "GFX_SOL_magic_bar_progress"
+				pdx_tooltip = "SOL_magic_current_value"
+				pdx_tooltip_delayed = "SOL_magic_current_value_delayed"
+				position = { x = 0 y = 0 }
+			}
+		}
+		iconType = {
+			name = "magic_frame"
+			spriteType = "GFX_SOL_magic_bar"
+			position = { x = 25 y = 45 }
+			pdx_tooltip = "SOL_magic_current_value"
+			pdx_tooltip_delayed = "SOL_magic_current_value_delayed"
+		}
+		buttonType = {
+			name = "SOL_heatwave_button"
+			spriteType = "GFX_sol_heatwave_button"
+			position = { x = 430 y = 100 }
+		}
+		instantTextBoxType = {
+			name ="SOL_heatwave_button_textbox"
+			position = { x = 470 y = 112 }
+			font = "hoi_18mbs"
+			text = "SOL_heatwave_button_text_tt"
+			format = left
+			alwaystransparent = yes
+			maxWidth = 100
+			maxHeight = 30
+		}
+		buttonType = {
+			name = "SOL_blessing_button"
+			spriteType = "GFX_sol_blessing_button"
+			position = { x = 430 y = 140 }
+		}
+		instantTextBoxType = {
+			name ="SOL_blessing_button_textbox"
+			position = { x = 470 y = 148 }
+			font = "hoi_18mbs"
+			text = "SOL_blessing_button_text_tt"
+			format = left
+			alwaystransparent = yes
+			maxWidth = 100
+			maxHeight = 30
+		}
+		buttonType = {
+			name = "SOL_curse_button"
+			spriteType = "GFX_sol_curse_button"
+			position = { x = 430 y = 176 }
+		}
+		instantTextBoxType = {
+			name ="SOL_curse_button_textbox"
+			position = { x = 470 y = 184 }
+			font = "hoi_18mbs"
+			text = "SOL_curse_button_text_tt"
+			format = left
+			alwaystransparent = yes
+			maxWidth = 100
+			maxHeight = 30
+		}
+		buttonType = {
+			name ="sol_magic_close_button"
+			quadTextureSprite = "GFX_closebutton"
+			clicksound = click_close
+			shortcut = "ESCAPE"
+			position = { x=555 y=13 }
+		}
+	}
+	containerWindowType = {
+		name = "SOL_heatwave_info"
+		size = { width = 250 height = 400 }
+		position = { x = 140 y = 100 }
+		instantTextBoxType = {
+			name ="SOL_spell_heatwave_explainer"
+			position = { x = 0 y = 0 }
+			font = "hoi_16mbs"
+			text = "SOL_spell_explainer_heatwave_tt"
+			format = left
+			maxWidth = 250
+			maxHeight = 400
+		}
+	}
+	containerWindowType = {
+		name = "SOL_blessing_info"
+		size = { width = 250 height = 400 }
+		position = { x = 140 y = 100 }
+		instantTextBoxType = {
+			name ="SOL_spell_blessing_explainer"
+			position = { x = 0 y = 0 }
+			font = "hoi_16mbs"
+			text = "SOL_spell_explainer_blessing_tt"
+			format = left
+			maxWidth = 250
+			maxHeight = 400
+		}
+	}
+	containerWindowType = {
+		name = "SOL_curse_info"
+		size = { width = 250 height = 400 }
+		position = { x = 140 y = 100 }
+		instantTextBoxType = {
+			name ="SOL_spell_curse_explainer"
+			position = { x = 0 y = 0 }
+			font = "hoi_16mbs"
+			text = "SOL_spell_explainer_curse_tt"
+			format = left
+			maxWidth = 250
+			maxHeight = 400
+		}
+	}
+
+
+	containerWindowType = {
+		name = "SOL_state_action_category_container_wrath"
+		position = {x = 0 y = 0 }
+		size = { width= 67 height= 59 }
+		
+		iconType = {
+			name = "SOL_wrath_of_the_sun_button_fake" 
+			position = {x = 434 y = 4 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_wrath_button_greyed"
+			pdx_tooltip = "SOL_cast_spell_tt"
+			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_state_action_category_container_country_wrath"
+		position = {x = 0 y = 0 }
+		size = { width= 67 height= 59 }
+		
+		iconType = {
+			name = "SOL_wrath_of_the_sun_button_country_fake" 
+			position = {x = 434 y = 4 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_wrath_button_greyed"
+			pdx_tooltip = "SOL_cast_spell_country_tt"
+			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
+		}
+	}
+
+	containerWindowType = {
+		name = "SOL_state_action_category_container_mtf"
+		position = {x = 0 y = 0 }
+		size = { width= 67 height= 59 }
+		
+		iconType = {
+			name = "SOL_mobile_task_force_button_fake" 
+			position = {x = 434 y = 59 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_mtf_button_greyed"
+			
+			pdx_tooltip = "SOL_mobile_task_force_tt"
+			pdx_tooltip_delayed = "SOL_mobile_task_force_tt_delayed"
+		}
+	}
+	
+	containerWindowType = {
+		name = "SOL_mobile_task_force_button_clickable_window"
+		buttonType = {
+			name = "SOL_mobile_task_force_button" 
+			position = {x = 434 y = 59 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_mtf_button"
+			
+			pdx_tooltip = "SOL_mobile_task_force_tt"
+			pdx_tooltip_delayed = "SOL_mobile_task_force_tt_delayed"
+		}
+	}
+
+	containerWindowType = {
+		name = "SOL_wrath_of_the_sun_button_clickable_window"
+		buttonType = {
+			name = "SOL_wrath_of_the_sun_button" 
+			position = {x = 434 y = 4 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_wrath_button"
+			pdx_tooltip = "SOL_cast_spell_tt"
+			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_wrath_of_the_sun_cancel_button_clickable_window"
+		buttonType = {
+			name = "SOL_wrath_of_the_sun_cancel_button" 
+			position = {x = 434 y = 4 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_wrath_button_cancel"
+			pdx_tooltip = "SOL_cast_spell_cancel_tt"
+			pdx_tooltip_delayed = "SOL_remove_spell_tt_delayed"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_wrath_of_the_sun_button_country_clickable_window"
+		buttonType = {
+			name = "SOL_wrath_of_the_sun_country_button" 
+			position = {x = 434 y = 4 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_wrath_button"
+			pdx_tooltip = "SOL_cast_spell_country_tt"
+			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_wrath_of_the_sun_cancel_button_country_clickable_window"
+		buttonType = {
+			name = "SOL_wrath_of_the_sun_cancel_country_button" 
+			position = {x = 434 y = 4 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_wrath_button_cancel"
+			pdx_tooltip = "SOL_cast_spell_country_cancel_tt"
+			pdx_tooltip_delayed = "SOL_remove_spell_tt_delayed"
+		}
+	}
+
+	containerWindowType = {
+		name = "sol_resistance_alert_popup"
+		position = { x = 710 y = 310 }
+		size = { width = 500 height = 280 }
+		orientation = upper_left
+		moveable = yes
+		show_sound = diplomatic_notification
+		hide_sound = menu_close_window
+		click_to_front = yes
+		
+		background = {
+			name = "Background"	
+			quadTextureSprite ="GFX_sol_resistance_alert_popup"
+		}
+		instantTextBoxType = {
+			name = "resistance_alert_title"
+			position = { x = 85 y = 30 }
+			textureFile = ""
+			font = "hoi_24header"
+			borderSize = {x = 0 y = 0}
+			text = "SOL_resistance_alert_popup_title"	
+			maxWidth = 320
+			maxHeight = 24
+			fixedsize = yes
+			format = centre
+			vertical_alignment = center			
+		}
+		
+		instantTextBoxType = {
+			name = "resistance_alert_description"
+			position = { x = 85 y = 90 }
+			textureFile = ""
+			font = "hoi_20bs"
+			borderSize = {x = 0 y = 0}
+			text = "sol_resistance_alert_description_text"	
+			maxWidth = 325
+			maxHeight = 130
+			format = centre
+		}	
+		
+		buttonType = {
+			name = "sol_resistance_alert_close_button"
+			position = { x=176 y =231}
+			quadTextureSprite ="GFX_sol_button"
+			buttonText = "OK"
+			buttonFont = "hoi_20bs"
+			clicksound = click_close
+			shortcut = "ESCAPE"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_state_action_chemical_attack"
+		position = {x = 0 y = 0 }
+		size = { width= 67 height= 59 }
+		
+		iconType = {
+			name = "SOL_state_action_chemical_attack_greyed" 
+			position = {x = 434 y = 114 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_chemical_attack_greyed"
+			
+			pdx_tooltip = "SOL_gas_attack_tt"
+			pdx_tooltip_delayed = "SOL_gas_attack_tt_delayed"
+		}
+	}
+	
+	containerWindowType = {
+		name = "SOL_state_action_chemical_attack_clickable"
+		buttonType = {
+			name = "SOL_state_action_chemical_attack_button" 
+			position = {x = 434 y = 114 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_chemical_attack"
+			
+			pdx_tooltip = "SOL_gas_attack_tt"
+			pdx_tooltip_delayed = "SOL_gas_attack_tt_delayed"
+		}
+	}
+}

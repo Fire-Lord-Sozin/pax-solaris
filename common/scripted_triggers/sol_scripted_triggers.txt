@@ -1,0 +1,215 @@
+is_SOLAR_EMPIRE = {
+	custom_trigger_tooltip = {
+		tooltip = is_EQS_SOL_tp
+		tag = EQS
+		has_country_leader = {
+			ruling_only = yes
+			name = "Daybreaker"
+		}
+	}
+}
+is_under_threat = {
+	custom_trigger_tooltip = {
+		tooltip = is_under_threat_tt
+		tag = EQS
+		OR = {
+			any_country = {
+				OR = {
+					tag = CHN
+					tag = CRY
+					tag = STG
+					tag = NLR
+					strength_ratio = {
+						tag = EQS
+						ratio > 0.8
+					}
+					is_major = yes
+				}
+				OR = {
+					is_justifying_wargoal_against = EQS
+					has_wargoal_against = EQS
+					has_war_with = EQS
+					AND = {
+						has_added_tension_amount > 10
+						is_on_equestrian_continent = yes
+						has_border_war_with = EQS
+					}
+				}
+			}
+			AND = {
+				has_war = yes
+				surrender_progress > 0.2
+			}
+		}
+	}	
+}
+is_coalition_member = {
+	custom_trigger_tooltip = {
+		tooltip = is_coalition_member_tt
+		OR = {
+			has_idea = SOL_coalition_member
+		}
+	}
+}
+is_a_player_in_coalition = { 
+	if = {
+		limit = {
+			any_country = {
+				is_coalition_member = yes
+				is_ai = no
+			}
+		}
+		#This gives players complete control over the Coalition's decisions
+		is_ai = no 
+		is_coalition_member = yes
+	}
+}
+is_eligible_for_coalition = {
+	exists = yes
+	is_subject = no
+	has_war = no
+	NOT = { has_country_flag = SOL_refused_membership }
+	is_coalition_member = no
+	OR = {
+		tag = EQC
+		tag = STG
+		tag = DRG
+		tag = CRY
+		tag = YAK
+		tag = JAK
+		tag = GRF
+		tag = PNG
+		tag = PLB
+		tag = CHN
+		tag = OLE
+	}
+	NOT = {
+		AND = {
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		has_government = fascism
+		tag = ROOT
+	}
+	if = {
+		limit = {
+			tag = EQC
+		}
+		OR = {
+			has_country_leader = { ruling_only = yes name = "Lufty Star" }
+			has_government = neutrality
+			has_government = democratic
+		}
+	}
+	else_if = {
+		limit = {
+			tag = STG
+		}
+		has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+	}
+	else = {
+		OR = {
+			has_government = communism
+			has_government = democratic
+		}
+	}
+}
+
+meets_division_requirements_uprising = {
+	EQS = {	
+		if = {
+			limit = { 
+				check_variable = { sol_uprising_division_requirements = 1 }
+			}
+			divisions_in_state = {
+				size > 0
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_uprising_division_requirements = 2 }
+			}
+			divisions_in_state = {
+				size > 1
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_uprising_division_requirements = 3 }
+			}
+			divisions_in_state = {
+				size > 2
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_uprising_division_requirements = 4 }
+			}
+			divisions_in_state = {
+				size > 3
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_uprising_division_requirements = 5 }
+			}
+			divisions_in_state = {
+				size > 4
+				state = PREV
+			}
+		}
+	}	
+}
+meets_division_requirements_attack = {
+	EQS = {	
+		if = {
+			limit = { 
+				check_variable = { sol_attack_division_requirements = 1 }
+			}
+			divisions_in_state = {
+				size > 0
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_attack_division_requirements = 2 }
+			}
+			divisions_in_state = {
+				size > 1
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_attack_division_requirements = 3 }
+			}
+			divisions_in_state = {
+				size > 2
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_attack_division_requirements = 4 }
+			}
+			divisions_in_state = {
+				size > 3
+				state = PREV
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { sol_attack_division_requirements = 5 }
+			}
+			divisions_in_state = {
+				size > 4
+				state = PREV
+			}
+		}
+	}	
+}

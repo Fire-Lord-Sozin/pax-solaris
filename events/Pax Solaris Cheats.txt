@@ -1,0 +1,531 @@
+add_namespace = paxsolaristest
+
+country_event = {
+	id = paxsolaristest.1
+	title = "Loyalty"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Loyalty + 1"
+		add_to_variable = { var = daybreaker_support value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Loyalty + 5"
+		add_to_variable = { var = daybreaker_support value = 5 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Loyalty + 10"
+		add_to_variable = { var = daybreaker_support value = 10 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Loyalty - 1"
+		add_to_variable = { var = daybreaker_support value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Loyalty - 5"
+		add_to_variable = { var = daybreaker_support value = -5 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Loyalty - 10"
+		add_to_variable = { var = daybreaker_support value = -10 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.2
+	title = "Civilian Measures"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Civilian + 1"
+		add_to_variable = { var = solar_civilian_measures value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Civilian -1 "
+		add_to_variable = { var = solar_civilian_measures value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.3
+	title = "Military Measures"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Military + 1"
+		add_to_variable = { var = solar_military_measures value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Military -1 "
+		add_to_variable = { var = solar_military_measures value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.4
+	title = "Civilian Measures Increase"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Civilian + 1"
+		add_to_variable = { var = solar_civilian_measures_progress value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Civilian -1 "
+		add_to_variable = { var = solar_civilian_measures_progress value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.5
+	title = "Military Measures Increase"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Military + 1"
+		add_to_variable = { var = solar_military_measures_progress value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Military -1 "
+		add_to_variable = { var = solar_military_measures_progress value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.6
+	title = "Resistance Suppression"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Resistance + 1"
+		add_to_variable = { var = solar_resistance_suppression value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Resistance -1 "
+		add_to_variable = { var = solar_resistance_suppression value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.7
+	title = "Resistance Suppression Increase"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Resistance + 1"
+		add_to_variable = { var = solar_resistance_suppression_progress value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Resistance -1 "
+		add_to_variable = { var = solar_resistance_suppression_progress value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.8
+	title = "Resistance Activity Increase"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Resistance - 1"
+		add_to_variable = { var = solar_resistance_actions_progress value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Resistance + 1"
+		add_to_variable = { var = solar_resistance_actions_progress value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.9
+	title = "Random Event Tester"
+	is_triggered_only = yes
+	desc = paxsolaristest.9.d
+	immediate = {
+		SOL_calculate_probability = yes
+		set_variable = { var = random_event_tracker_1 value = probability_check }
+	}
+	option = { 
+		name = "Reset"
+		set_variable = { var = random_event_tracker_1 value = 0 }
+		set_variable = { var = random_event_tracker_2 value = 0 }
+		set_variable = { var = random_event_tracker_3 value = 0 }
+		set_variable = { var = random_event_tracker_4 value = 0 }
+	}
+}
+country_event = {
+	id = paxsolaristest.10
+	title = "Outreach Suppression"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Outreach + 1"
+		add_to_variable = { var = solar_resistance_outreach_suppression value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Outreach -1 "
+		add_to_variable = { var = solar_resistance_outreach_suppression value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.11
+	title = "Outreach Suppression Increase"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Outreach + 1"
+		add_to_variable = { var = solar_resistance_outreach_suppression_progress value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Outreach -1 "
+		add_to_variable = { var = solar_resistance_outreach_suppression_progress value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.12
+	title = "Resistance Outreach Activity Increase"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Resistance Outreach - 1"
+		add_to_variable = { var = solar_resistance_outreach_actions_progress value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Resistance Outreach + 1"
+		add_to_variable = { var = solar_resistance_outreach_actions_progress value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+
+country_event = {
+	id = paxsolaristest.13
+	title = "Commandos"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Activate"
+		set_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
+		set_variable = { SOL_mobile_task_force_deployed_var = 0 }
+		set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
+		division_template = {
+			name = "Inquisitorial Pegasi Strike Team"
+			division_names_group = EQS_PAR_02
+			is_locked = yes
+			regiments = {
+				pegasi = { x = 0 y = 0 }
+				pegasi = { x = 0 y = 1 }
+				pegasi = { x = 0 y = 2 }
+				pegasi = { x = 0 y = 3 }
+				pegasi = { x = 0 y = 4 }
+				pegasi = { x = 1 y = 0 }
+				pegasi = { x = 1 y = 1 }
+				pegasi = { x = 1 y = 2 }
+				pegasi = { x = 1 y = 3 }
+				pegasi = { x = 1 y = 4 }
+			}
+			support = {
+				unicorn_company = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				artillery = { x = 0 y = 3 }
+			}
+			priority = 2
+		}
+	}
+}
+country_event = {
+	id = paxsolaristest.14
+	title = "Leads"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "+100"
+		add_to_variable = { var = SOL_lead_variable value = 100 }
+		set_variable = { var = solar_inquisition_decision_medium_duration value = 1 }
+		set_variable = { var = solar_inquisition_decision_low_duration value = 1 }
+	}
+}
+country_event = {
+	id = paxsolaristest.15
+	title = "Cohesion"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Cohesion + 1"
+		add_to_variable = { var = solar_resistance_cohesion value = 1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+	option = { 
+		name = "Cohesion -1 "
+		add_to_variable = { var = solar_resistance_cohesion value = -1 }
+		hidden_effect = { SOL_calculate_loyalty = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.16
+	title = "Resistance Targets"
+	is_triggered_only = yes
+	desc = paxsolaristest.16.d
+	option = {
+		name = "OK"
+	}
+}
+
+country_event = {
+	id = paxsolaristest.17
+	title = "Magic"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "+10"
+		add_to_variable = { var = daybreaker_magic_reserves  value = 10 }
+		hidden_effect = { SOL_calculate_magic = yes }
+	}
+	option = { 
+		name = "-10"
+		add_to_variable = { var = daybreaker_magic_reserves  value = -10 }
+		hidden_effect = { SOL_calculate_magic = yes }
+	}
+}
+country_event = {
+	id = paxsolaristest.18
+	title = "Spell Test"
+	immediate = {
+	}
+	is_triggered_only = yes
+	desc = ""
+	option = {
+		name = "Fuck shit up"
+		75 = {
+			add_dynamic_modifier = {
+				modifier = SOL_sabotage_effect
+				days = 60
+			}
+			if = {
+				limit = { 
+					non_damaged_building_level = {
+						building = synthetic_refinery
+						level > 0		
+					}
+				}
+				damage_building = {
+					type = synthetic_refinery
+					damage = 1
+				}
+			}
+		}
+		custom_effect_tooltip = AttackOutcome_1
+	}
+	option = {
+		name = "2"
+		75 = {
+			add_dynamic_modifier = {
+				modifier = SOL_bombing_effect
+				days = 60
+			}
+			if = {
+				limit = { 
+					non_damaged_building_level = {
+						building = infrastructure
+						level > 2		
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+			}
+		}
+		custom_effect_tooltip = AttackOutcome_1
+	}
+	option = {
+		name = "3"
+		add_timed_idea = {
+			idea = SOL_assassination
+			days = 60
+		}
+		custom_effect_tooltip = AttackOutcome_1
+	}
+	option = {
+		name = "4"
+		add_timed_idea = {
+			idea = SOL_labratory_research
+			days = 60
+		}
+		custom_effect_tooltip = AttackOutcome_1
+	}
+	option = {
+		name = "5"
+		add_timed_idea = {
+			idea = SOL_intel_breach
+			days = 60
+		}
+		custom_effect_tooltip = AttackOutcome_1
+	}	
+}
+country_event = {
+	id = paxsolaristest.20
+	title = "Fight Test"
+	is_triggered_only = yes
+	desc = ""
+	option = {
+		name = "Begin"
+		set_variable = { nightmare_frame = 2 }
+		set_variable = { daybreaker_frame = 2 }
+		set_country_flag = has_daybreaker_nightmare_fight
+		set_country_flag = fight_right_turn
+		set_country_flag = left_side_ai_controlled
+		clr_country_flag = fight_left_turn
+		clr_country_flag = right_side_ai_controlled
+		initiate_sister_fight = yes
+	}
+	option = {
+		name = "End"
+		end_sister_fight = yes
+	}
+	option = {
+		name = "Dialogue"
+		set_variable = { right_display_image = 0 }
+		set_variable = { left_display_image = -1 }
+		set_variable = { left_fight_frame = 1 }
+		set_variable = { right_fight_frame = 2 }
+		set_variable = { fight_dialogue_loc_key = 1 }
+		set_variable = { var = sol_dialogue_var value = 1 }
+	}
+	option = {
+		name = "Clear Dialogue"
+		clear_variable = sol_dialogue_var
+	}
+}
+country_event = {
+	id = paxsolaristest.21
+	title = "Gas Attack"
+	is_triggered_only = yes
+	desc = ""
+	hidden = yes
+	option = {
+		name = "Tear"
+		set_country_flag = unlocked_tear_gas_bombardment_tactic	
+	}
+	option = {
+		name = "Mustard"
+		set_country_flag = SOL_use_gas_attack_ability_flag
+	}
+}
+country_event = {
+	id = paxsolaristest.22
+	title = "Ascend"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Ascend - Luna"
+		clr_country_flag = daybreaker_luna_fight_nightmare_accepted
+		SOL_daybreaker_ascension = yes
+	}
+	option = { 
+		name = "Ascend - NMM"
+		set_country_flag = daybreaker_luna_fight_nightmare_accepted
+		SOL_daybreaker_ascension = yes
+	}
+	option = { 
+		name = "Neither"
+		clr_country_flag = daybreaker_luna_fight_nightmare_accepted
+		SOL_daybreaker_ascension = yes
+	}
+}
+country_event = {
+	id = paxsolaristest.23
+	title = "Focus Trees"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Military"
+		set_country_flag = sol_load_war_focus
+		clr_country_flag = sol_load_prep_focus
+		clr_country_flag = sol_load_peace_focus
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { 
+		name = "Prep"
+		clr_country_flag = sol_load_war_focus
+		set_country_flag = sol_load_prep_focus
+		clr_country_flag = sol_load_peace_focus
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { 
+		name = "Peace"
+		clr_country_flag = sol_load_war_focus
+		clr_country_flag = sol_load_prep_focus
+		set_country_flag = sol_load_peace_focus
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+country_event = {
+	id = paxsolaristest.24
+	title = "Daybreaker Gaming"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Daybreaker Gaming"
+		set_global_flag = SOL_super_event_zigger_show
+	}
+}
+country_event = {
+	id = paxsolaristest.25
+	title = "Event 338"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "NMM"
+		set_country_flag = paxsolaris_338_nmm
+		clr_country_flag = paxsolaris_338_luna
+		country_event = paxsolaris.338
+	}
+	option = { 
+		name = "Luna"
+		clr_country_flag = paxsolaris_338_nmm
+		set_country_flag = paxsolaris_338_luna
+		country_event = paxsolaris.338
+	}
+	option = { 
+		name = "Event Target"
+		39 = { save_global_event_target_as = SOL_NLR_last_state }
+	}
+}
+country_event = {
+	id = paxsolaristest.26
+	title = "Ancient Legends"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Hurricane"
+		create_corps_commander = {
+			name = "Hurricane"
+			portrait_path = "gfx/leaders/EQS/Commander_Hurricane.tga"
+			traits = { flame_revenant sky_commander pony_race_trait }
+			desc = "hurricane_desc"
+			skill = 3
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 4
+			logistics_skill = 3
+		}
+	}
+}

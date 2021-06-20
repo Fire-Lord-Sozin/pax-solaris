@@ -1,0 +1,72 @@
+sound = {
+	name = "sol_fire"
+	file = "hot/sol_fire_file.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_curse"
+	file = "hot/sol_curse.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_blessing"
+	file = "hot/sol_blessing.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_shield"
+	file = "hot/sol_shield.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_attack_daybreaker"
+	file = "hot/sol_attack_daybreaker.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_attack_nightmare"
+	file = "hot/sol_attack_nightmare.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_plasma_shield"
+	file = "hot/sol_plasma_shield.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_supernova"
+	file = "hot/sol_supernova.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_lifebringer"
+	file = "hot/sol_lifebringer.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_ally_of_shadows"
+	file = "hot/sol_ally_of_shadows.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_mistress_of_terror"
+	file = "hot/sol_mistress_of_terror.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "sol_dreamwalker"
+	file = "hot/sol_dreamwalker.wav"
+	volume = 1
+	always_load = yes
+}

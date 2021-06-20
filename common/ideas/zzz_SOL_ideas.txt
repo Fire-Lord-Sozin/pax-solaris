@@ -1,0 +1,2150 @@
+ideas = {
+	political_advisor = {
+
+		padlock = {
+			picture = padlock
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+			traits = { cult_leader }
+		}
+
+		dottedline = {
+			picture = dottedline
+			allowed = {
+				original_tag = EQS
+			}
+			available = {
+				OR = {
+					has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+					has_country_leader = { ruling_only = yes name = "Princesses Celestia and Luna" }
+					has_country_leader = { ruling_only = yes name = "Daybreaker" }
+				}
+			}
+			traits = { armaments_organizer }
+		}
+
+		evil_twilight_sparkle = {
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+				has_global_flag = SOL_twilight_converted
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_country_leader = { ruling_only = yes name = "Daybreaker" }
+				NOT = {
+					any_country_with_original_tag = {
+						original_tag_to_check = CRY
+						has_country_leader = { ruling_only = yes name = "Grand Inquisitor Sunrise Sparkle" }
+					}
+				}
+			}
+			traits = { lady_inquisitor }
+			research_bonus = {
+				magical_tech = 0.1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		sol_neighsay = {
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				OR = {
+					has_completed_focus = SOL_new_blood
+					has_completed_focus = SOL_a_deal_with_the_order
+				}
+			}
+			traits = { technocrat }
+			research_bonus = {
+				magical_tech = 0.05
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	army_chief = {
+
+		scope = {
+
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+
+			traits = { army_chief_organizational_2 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		sunset_shimmer = {
+
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				custom_trigger_tooltip = {
+					tooltip = sunset_returned
+					has_unit_leader = 34
+				}
+			}
+
+			traits = { army_chief_reform_3 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	high_command = {
+
+		benevelle = {
+			ledger = army
+
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+			traits = { army_regrouping_2 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		summersweet = {
+			ledger = air
+
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+
+			traits = { air_airborne_2 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		morninglight = {
+			ledger = army
+
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+
+			traits = { army_commando_1 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		sunnyflare = {
+			ledger = army
+
+			allowed = {
+				original_tag = EQS
+			}
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+
+			traits = { army_artillery_2 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	theorist = {
+		wind_rider = {
+			ledger = air
+
+			allowed = {
+				original_tag = EQS
+			}
+
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+
+			research_bonus = {
+				air_doctrine = 0.10
+			}
+
+			traits = { air_warfare_theorist }
+		}
+		arcane_nova = {
+			ledger = army
+
+			allowed = {
+				original_tag = EQS
+			}
+
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+				NOT = {
+					any_other_country = {
+						has_country_leader = { ruling_only = yes name = "Arcane Nova" }
+					}
+				}
+			}
+
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+			research_bonus = {
+				land_doctrine = 0.075
+				magical_tech = 0.05
+			}
+
+			traits = { military_theorist }
+		}
+	}
+
+	air_chief = {
+
+		blaze = {
+			allowed = {
+				original_tag = EQS
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+			traits = { air_strategic_bombing_3 } #DO IT AGAIN BOMBER BLAZE
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 100
+					has_completed_focus = SOL_strategic_destruction
+				}
+			}
+		}
+
+		thunderlane = {
+			allowed = {
+				original_tag = EQS
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				has_completed_focus = SOL_new_blood
+			}
+			traits = { air_tactical_bombing_2 }
+
+			visible = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 100
+					has_completed_focus = SOL_operational_integrity
+				}
+			}
+		}
+	}
+	country = {
+		SOL_harmonic_resistance_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_subject = no
+				has_government = fascism
+				NOT = {
+					has_idea = SOL_harmonic_resistance_idea2
+					has_idea = SOL_harmonic_resistance_idea3
+				}
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				army_morale_factor = -0.03
+				democratic_drift = 0.02
+				stability_factor = -0.1
+				political_power_cost = 0.1
+			}
+		}
+		SOL_harmonic_resistance_idea2 = {
+			picture = SOL_harmonic_resistance_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_subject = no
+				has_government = fascism
+				NOT = {
+					has_idea = SOL_harmonic_resistance_idea3
+				}
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				army_morale_factor = -0.05
+				democratic_drift = 0.05
+				stability_factor = -0.15
+				war_support_factor = -0.1
+				conscription_factor = -0.1
+				industry_repair_factor = -0.15
+				production_factory_max_efficiency_factor = -0.05
+				production_speed_buildings_factor = -0.10
+				political_power_cost = 0.15
+			}
+		}
+		SOL_harmonic_resistance_idea3 = {
+			picture = SOL_harmonic_resistance_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_subject = no
+				has_government = fascism
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				army_morale_factor = -0.1
+				democratic_drift = 0.08
+				stability_factor = -0.2
+				war_support_factor = -0.2
+				conscription_factor = -0.15
+				industry_repair_factor = -0.15
+				production_factory_max_efficiency_factor = -0.05
+				production_speed_buildings_factor = -0.10
+				political_power_cost = 0.2
+			}
+		}
+	}
+	
+	country = {
+		SOL_civil_war = {
+
+
+			allowed = {
+				always = no
+			}
+			available = {
+				is_subject = no
+				OR = {
+					original_tag = EQS
+					AND = {
+						original_tag = NLR
+						OR = {
+							has_war_with = event_target:solar_empire
+							NOT = { has_completed_focus = NLR_civil_war_end }
+						}
+					}
+					AND = {
+						tag = event_target:equestria
+						OR = {
+							has_war_with = event_target:solar_empire
+							NOT = { has_completed_focus = EQS_Civil_War_End }
+						}
+					}
+					AND = {
+						eqs_has_civil_war = yes
+						any_enemy_country = {
+							is_eqs_civil_war_tag = yes
+						}
+					}
+				}
+			}
+			removal_cost = -1
+			rule = {
+				can_join_factions = no
+			}
+			modifier = {
+				training_time_army_factor = 0.1
+				army_morale_factor = -0.1
+				industrial_capacity_factory = -0.25
+				production_factory_max_efficiency_factor = -0.10
+				production_speed_buildings_factor = -0.3
+				ai_get_ally_desire_factor = -2000
+				ai_join_ally_desire_factor = -2000
+				ai_call_ally_desire_factor = -2000
+				ai_focus_aggressive_factor = 0.3
+			}
+		}
+	}
+
+	country = {
+		SOL_civil_war_measures_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			available = {
+				eqs_has_civil_war_idea = yes
+			}
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				political_power_gain = 0.2
+				army_morale_factor = 0.10
+				stability_factor = 0.05
+				war_support_factor = 0.1
+				resistance_damage_to_garrison = -0.1
+			}
+		}
+	}
+	country = {
+		SOL_defence_of_empire_act_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				training_time_army_factor = -0.1
+				conscription = 0.02
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				justify_war_goal_time = 0.3
+			}
+		}
+	}
+
+	country = {
+		SOL_imperial_bureaucracy_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				political_advisor_cost_factor = -0.2
+				political_power_factor = 0.1
+			}
+		}
+	}
+
+	country = {
+		SOL_Imperial_Corporation_Council_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_speed_arms_factory_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+	}
+
+	country = {
+		SOL_Protect_the_Weak_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				consumer_goods_factor = 0.02
+				stability_factor = 0.15
+				war_support_factor = 0.05
+				army_morale_factor = 0.05
+			}
+		}
+	}
+
+	country = {
+		SOL_legion_of_labor_idea = {
+			picture = generic_production_bonus
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				production_speed_infrastructure_factor = 0.2
+				industry_free_repair_factor = 0.3
+				fascism_drift = 0.01
+			}
+		}
+	}
+
+	country = {
+		SOL_Freedom_from_Fear_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			on_add = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = 0.01 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				drift_defence_factor = 0.2
+				foreign_subversive_activites = -0.2
+				custom_modifier_tooltip = SOL_Freedom_from_Fear_tt
+			}
+		}
+	}
+
+	country = {
+		SOL_Maternal_Guidiance_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				stability_factor = 0.15
+				war_support_factor = 0.15
+				fascism_drift = 0.02
+				army_org_factor = 0.05
+			}
+		}
+	}
+
+	country = {
+		SOL_Imperial_Investigative_Service_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				stability_factor = -0.05
+				fascism_drift = 0.01
+				foreign_subversive_activites = -0.3
+				enemy_operative_detection_chance_factor = 0.15
+				resistance_damage_to_garrison = -0.1
+				encryption_factor = 0.07
+				decryption_factor = 0.05
+			}
+		}
+	}
+
+	country = {
+		eqs_order_idea1 = {
+			picture = SOL_Harmony_through_Order_idea0
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.02
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_speed_arms_factory_factor = 0.1
+				training_time_army_factor = -0.05
+				land_reinforce_rate = 0.05
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+	}
+
+	country = {
+		SOL_Harmony_through_Order_idea0 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				land_reinforce_rate = 0.05
+				army_morale_factor = 0.1
+				political_power_factor = 0.1
+			}
+		}
+	}
+
+	country = {
+		SOL_Firm_but_Fair_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				drift_defence_factor = 0.1
+				conscription_factor = 0.05
+				supply_consumption_factor = -0.05
+			}
+		}
+	}
+
+	country = {
+		SOL_Solar_Cult_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.03
+				stability_factor = 0.10
+				war_support_factor = 0.15
+				political_power_factor = 0.1
+				consumer_goods_factor = -0.01
+				research_speed_factor = -0.05
+			}
+		}
+	}
+
+	country = {
+		SOL_Solar_Cult_idea1 = {
+			picture = SOL_Solar_Cult_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.05
+				stability_factor = 0.15
+				war_support_factor = 0.2
+				political_power_factor = 0.1
+				army_attack_factor = 0.05
+				conscription_factor = 0.05
+				consumer_goods_factor = -0.02
+				research_speed_factor = -0.08
+			}
+		}
+	}
+
+	country = {
+		SOL_Solar_Cult_idea2 = {
+			picture = SOL_Solar_Cult_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.05
+				stability_factor = 0.2
+				war_support_factor = 0.25
+				political_power_factor = 0.1
+				army_attack_factor = 0.05
+				army_core_attack_factor = 0.05
+				army_morale_factor = 0.05
+				conscription_factor = 0.1
+				consumer_goods_factor = -0.03
+				research_speed_factor = -0.11
+			}
+		}
+	}
+
+	country = {
+		SOL_Imperial_Inquisition_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.02
+				drift_defence_factor = 0.25
+				foreign_subversive_activites = -0.25
+				enemy_operative_detection_chance_factor = 0.25
+				resistance_damage_to_garrison = -0.5
+				encryption_factor = 0.05
+				MONTHLY_POPULATION = -0.04
+			}
+		}
+	}
+
+	country = {
+		SOL_Lux_et_Tenebris_idea = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				is_subject = no
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.02
+				conscription_factor = 0.05
+				research_speed_factor = 0.04
+			}
+		}
+	}
+
+	country = {
+		SOL_Lux_et_Tenebris_idea1 = {
+			picture = SOL_Lux_et_Tenebris_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				is_subject = no
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			research_bonus = {
+				magical_tech = 0.08
+			}
+			modifier = {
+				fascism_drift = 0.02
+				conscription_factor = 0.05
+				research_speed_factor = 0.1
+			}
+		}
+	}
+
+	country = {
+		SOL_Lux_et_Tenebris_idea2 = {
+			picture = SOL_Lux_et_Tenebris_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+				is_subject = no
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			research_bonus = {
+				magical_tech = 0.05
+			}
+			modifier = {
+				fascism_drift = 0.02
+				conscription_factor = 0.05
+				research_speed_factor = 0.04
+			}
+		}
+	}
+
+	country = {
+		SOL_Lux_et_Tenebris_idea0 = {
+			picture = SOL_Lux_et_Tenebris_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			#picture = FRA_national_mobilization_focus
+			modifier = {
+				fascism_drift = 0.02
+				conscription_factor = 0.05
+				research_speed_factor = 0.01
+			}
+		}
+	}
+
+	country = {
+		SOL_pb_inf_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+			picture = FRA_national_mobilization_focus
+			modifier = {
+				training_time_army_factor = -0.1
+			}
+		}
+	}
+
+	country = {
+		SOL_pb_magic_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			equipment_bonus = {
+				magical_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+			research_bonus = {
+				magical_tech = 0.05
+			}
+			picture = jap_supremacy_of_will
+		}
+	}
+
+	country = {
+		SOL_napalm = {
+			modifier = {
+				air_bombing_targetting = 0.10
+			}
+
+			picture = air_war_plans_division_focus
+		}
+	}
+
+	country = {
+		SOL_magical_payloads_idea = {
+			modifier = {
+				air_strategic_bomber_bombing_factor = 0.10
+			}
+
+			picture = air_war_plans_division_focus
+		}
+	}
+
+	country = {
+		SOL_sun_never_sets_idea = {
+			modifier = {
+				navy_max_range_factor = 0.10
+			}
+
+			picture = generic_sea_focused_navy
+		}
+	}
+
+	country = {
+		SOL_enemy_debuff_idea = {
+			picture = celestia_sun
+			modifier = {
+				heat_attrition_factor = 0.1
+			}
+			available = {
+				has_war_with = event_target:solar_empire
+				event_target:solar_empire = { has_country_leader = { ruling_only = yes name = "Daybreaker" } }
+			}
+		}
+	}
+
+	country = {
+		SOL_Revanchism = {
+			picture = SOL_revanchism
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_morale_factor = 0.1
+			}
+			on_remove = {
+				country_event = {
+					id = paxsolaris.1
+				}
+			}
+		}
+		SOL_daybreaker_curse1 = {
+			picture = SOL_daybreaker_influence
+			allowed = {
+				always = no
+			}
+			available = {
+				has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+				is_SOLAR_EMPIRE = no
+				has_government = democratic
+			}
+			removal_cost = -1
+			modifier = {
+				fascism_drift = 0.01
+				stability_factor = -0.05
+				political_power_factor = -0.1
+			}
+		}
+		SOL_daybreaker_curse2 = {
+			picture = SOL_daybreaker_influence
+			allowed = {
+				always = no
+			}
+			available = {
+				has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+				is_SOLAR_EMPIRE = no
+				has_government = democratic
+			}
+			removal_cost = -1
+			modifier = {
+				fascism_drift = 0.03
+				stability_factor = -0.1
+				political_power_factor = -0.3
+			}
+		}
+		SOL_daybreaker_curse3 = {
+			picture = SOL_daybreaker_influence
+			allowed = {
+				always = no
+			}
+			available = {
+				has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+				is_SOLAR_EMPIRE = no
+				has_government = democratic
+			}
+			removal_cost = -1
+			modifier = {
+				fascism_drift = 0.05
+				stability_factor = -0.15
+				political_power_factor = -0.5
+			}
+		}
+
+		#RESISTANCE IDEAS
+
+		SOL_public_hostility_5 = {
+			allowed = {
+				always = no
+			}
+			picture = ELF_invincible 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.5
+				production_factory_max_efficiency_factor = -0.5
+				production_speed_buildings_factor = -0.5
+				research_speed_factor = -0.5
+				local_resources_factor = -0.5
+				industry_repair_factor = -0.5
+				army_speed_factor = -0.5
+			}
+		}
+		SOL_public_hostility_4 = {
+			allowed = {
+				always = no
+			}
+			picture = ELF_invincible 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.4
+				production_factory_max_efficiency_factor = -0.4
+				production_speed_buildings_factor = -0.4
+				research_speed_factor = -0.4
+				local_resources_factor = -0.4
+				industry_repair_factor = -0.4
+				army_speed_factor = -0.4
+			}
+		}
+		SOL_public_hostility_3 = {
+			allowed = {
+				always = no
+			}
+			picture = ELF_invincible 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.3
+				production_factory_max_efficiency_factor = -0.3
+				production_speed_buildings_factor = -0.3
+				research_speed_factor = -0.3
+				local_resources_factor = -0.3
+				industry_repair_factor = -0.3
+				army_speed_factor = -0.3
+			}
+		}
+		SOL_public_hostility_2 = {
+			allowed = {
+				always = no
+			}
+			picture = ELF_invincible 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.2
+				production_factory_max_efficiency_factor = -0.2
+				production_speed_buildings_factor = -0.2
+				research_speed_factor = -0.2
+				local_resources_factor = -0.2
+				industry_repair_factor = -0.2
+				army_speed_factor = -0.2
+			}
+		}
+		SOL_public_hostility_1 = {
+			allowed = {
+				always = no
+			}
+			picture = ELF_invincible
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.1
+				production_factory_max_efficiency_factor = -0.1
+				production_speed_buildings_factor = -0.1
+				research_speed_factor = -0.1
+				local_resources_factor = -0.1
+				industry_repair_factor = -0.1
+				army_speed_factor = -0.1
+			}
+		}
+		SOL_public_hostility_0 = {
+			allowed = {
+				always = no
+			}
+			picture = ELF_invincible
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+		}
+
+		SOL_military_desertion_5 = {
+			allowed = {
+				always = no
+			}
+			picture = MAN_garrison_shortcomings_lvl_1 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.5	
+				army_attack_factor = -0.5
+				army_defence_factor = -0.5
+				resistance_target = 0.5
+				army_org_factor = -0.5
+				war_support_factor = -0.5
+				supply_consumption_factor = 0.5
+				offensive_war_stability_factor = -0.5
+			}
+		}
+		SOL_military_desertion_4 = {
+			allowed = {
+				always = no
+			}
+			picture = MAN_garrison_shortcomings_lvl_1 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.4
+				army_attack_factor = -0.4
+				army_defence_factor = -0.4
+				resistance_target = 0.4
+				army_org_factor = -0.4
+				war_support_factor = -0.4
+				supply_consumption_factor = 0.4
+				offensive_war_stability_factor = -0.4
+			}
+		}
+		SOL_military_desertion_3 = {
+			allowed = {
+				always = no
+			}
+			picture = MAN_garrison_shortcomings_lvl_1 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.3
+				army_attack_factor = -0.3
+				army_defence_factor = -0.3
+				resistance_target = 0.3
+				army_org_factor = -0.3
+				war_support_factor = -0.3
+				supply_consumption_factor = 0.3
+				offensive_war_stability_factor = -0.3
+			}
+		}
+		SOL_military_desertion_2 = {
+			allowed = {
+				always = no
+			}
+			picture = MAN_garrison_shortcomings_lvl_1 
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}  
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.2
+				army_attack_factor = -0.2
+				army_defence_factor = -0.2
+				resistance_target = 0.2
+				army_org_factor = -0.2
+				war_support_factor = -0.2
+				supply_consumption_factor = 0.2
+				offensive_war_stability_factor = -0.2
+			}
+		}
+		SOL_military_desertion_1 = {
+			allowed = {
+				always = no
+			}
+			picture = MAN_garrison_shortcomings_lvl_1
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}  
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.1
+				army_attack_factor = -0.1
+				army_defence_factor = -0.1
+				resistance_target = 0.1
+				army_org_factor = -0.1
+				war_support_factor = -0.1
+				supply_consumption_factor = 0.1
+				offensive_war_stability_factor = -0.1
+			}
+		}
+		SOL_military_desertion_0 = {
+			allowed = {
+				always = no
+			}
+			picture = MAN_garrison_shortcomings_lvl_1
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}  
+			removal_cost = -1
+		}
+		SOL_resistance_strength_5 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}  
+			picture = SOL_harmonic_resistance_idea
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.5
+				custom_modifier_tooltip = SOL_resistance_strength_5_tt
+				resistance_damage_to_garrison = 0.5
+				resistance_activity = 0.5
+				resistance_decay = -0.5
+				army_speed_factor = -0.5
+			}
+		}
+		SOL_resistance_strength_4 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonic_resistance_idea
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.4
+				custom_modifier_tooltip = SOL_resistance_strength_4_tt
+				resistance_damage_to_garrison = 0.4
+				resistance_activity = 0.4
+				resistance_decay = -0.4
+				army_speed_factor = -0.4
+			}
+		}
+		SOL_resistance_strength_3 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonic_resistance_idea
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.3
+				custom_modifier_tooltip = SOL_resistance_strength_3_tt
+				resistance_damage_to_garrison = 0.3
+				resistance_activity = 0.3
+				resistance_decay = -0.3
+				army_speed_factor = -0.3
+			}
+		}
+		SOL_resistance_strength_2 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonic_resistance_idea
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.2
+				custom_modifier_tooltip = SOL_resistance_strength_2_tt
+				resistance_damage_to_garrison = 0.2
+				resistance_activity = 0.2
+				resistance_decay = -0.2
+				army_speed_factor = -0.2
+			}
+		}
+		SOL_resistance_strength_1 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonic_resistance_idea
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+				custom_modifier_tooltip = SOL_resistance_strength_1_tt
+				resistance_damage_to_garrison = 0.1
+				resistance_activity = 0.1
+				resistance_decay = -0.1
+				army_speed_factor = -0.1
+			}
+		}
+		SOL_resistance_strength_0 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonic_resistance_idea
+			removal_cost = -1
+		}
+		SOL_harmonist_broadcasts_5 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonist_broadcasts
+			removal_cost = -1
+			modifier = {
+				democratic_drift = 0.1
+				drift_defence_factor = -0.5
+				stability_weekly = -0.005
+				custom_modifier_tooltip = SOL_harmonist_broadcasts_5_tt
+			}
+		}
+		SOL_harmonist_broadcasts_4 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonist_broadcasts
+			removal_cost = -1
+			modifier = {
+				democratic_drift = 0.08
+				drift_defence_factor = -0.4
+				stability_weekly = -0.004
+				custom_modifier_tooltip = SOL_harmonist_broadcasts_4_tt
+			}
+		}
+		SOL_harmonist_broadcasts_3 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}  
+			picture = SOL_harmonist_broadcasts
+			removal_cost = -1
+			modifier = {
+				democratic_drift = 0.06
+				drift_defence_factor = -0.3
+				stability_weekly = -0.003
+				custom_modifier_tooltip = SOL_harmonist_broadcasts_3_tt
+			}
+		}
+		SOL_harmonist_broadcasts_2 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonist_broadcasts
+			removal_cost = -1
+			modifier = {
+				democratic_drift = 0.04
+				drift_defence_factor = -0.2
+				stability_weekly = -0.002
+				custom_modifier_tooltip = SOL_harmonist_broadcasts_2_tt
+			}
+		}
+		SOL_harmonist_broadcasts_1 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = SOL_harmonist_broadcasts
+			removal_cost = -1
+			modifier = {
+				democratic_drift = 0.02
+				drift_defence_factor = -0.1
+				stability_weekly = -0.001
+				custom_modifier_tooltip = SOL_harmonist_broadcasts_1_tt
+			}
+		}
+		SOL_harmonist_broadcasts_0 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}  
+			picture = SOL_harmonist_broadcasts
+			removal_cost = -1
+		}
+		SOL_resistance_cohesion_3 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = resistance_cohesion
+			removal_cost = -1
+			modifier = {
+				civilian_intel_to_others = 50
+				resistance_target_on_our_occupied_states = -0.5
+				surrender_limit = -0.5
+				custom_modifier_tooltip = SOL_resistance_cohesion_resistance_can_rise
+			}
+		}
+		SOL_resistance_cohesion_2 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = resistance_cohesion
+			removal_cost = -1
+			modifier = {
+				civilian_intel_to_others = 30
+				resistance_target_on_our_occupied_states = -0.3
+				surrender_limit = -0.3
+				custom_modifier_tooltip = SOL_resistance_cohesion_foreign_powers
+			}
+		}
+		SOL_resistance_cohesion_1 = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_SOLAR_EMPIRE = yes
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+			picture = resistance_cohesion
+			removal_cost = -1
+			modifier = {
+				civilian_intel_to_others = 10
+				resistance_target_on_our_occupied_states = -0.1
+				surrender_limit = -0.1
+				custom_modifier_tooltip = SOL_resistance_cohesion_organised_events
+				hidden_modifier = {
+
+				}
+			}
+		}
+		friendly_harmony_SOL = {
+			allowed = {
+				always = no
+			}
+			available = {
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject = yes
+						overlord = { has_government = democratic }
+					}
+				}
+			}
+
+			removal_cost = -1
+			picture = SOL_friendly_harmony
+			modifier = {
+				stability_factor = 0.05
+				production_speed_arms_factory_factor = -0.3
+				conscription = -0.007
+				conscription_factor = -0.05
+				training_time_army_factor = 0.2
+				army_morale_factor = 0.05
+				war_support_factor = -0.3
+				ai_focus_defense_factor = 0.15
+				ai_get_ally_desire_factor = -0.2
+				ai_focus_peaceful_factor = 0.15
+			}
+		}
+		SOL_reconstruction_effort = {
+			picture = incomplete_industrialization
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			} 
+
+			removal_cost = -1
+			on_add = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = 0.02 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.1
+				custom_modifier_tooltip = SOL_reconstruction_effort_tt
+			}
+			on_remove = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = -0.02 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+				country_event = {
+					id = paxsolaris.6
+				}
+			}
+		}
+		SOL_postwar_euphoria = { 
+			picture = ROM_king_carol_ii_hedonist
+			allowed = {
+				always = no
+			}
+			available = {
+				is_subject = no
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+			removal_cost = -1
+			on_add = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = 0.015 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
+			modifier = {
+				drift_defence_factor = 0.25
+				army_morale_factor = 0.1
+				stability_factor = 0.1
+				fascism_drift = 0.05
+				war_support_factor = 0.1
+				political_power_gain = 0.1
+				MONTHLY_POPULATION = 0.1
+				custom_modifier_tooltip = SOL_postwar_euphoria_tt
+			}
+			on_remove = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = -0.015 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
+		}
+		SOL_buffalo_genocide = {
+			picture = buf_genocide
+			allowed = {
+				always = no
+			}
+			available = {
+				AND = {
+					89 = { is_owned_and_controlled_by = ROOT }
+					78 = { is_owned_and_controlled_by = ROOT }
+					93 = { is_owned_and_controlled_by = ROOT }
+					80 = { is_owned_and_controlled_by = ROOT }
+				}
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+				89 = { is_owned_and_controlled_by = ROOT }
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+				command_power_gain = -0.5
+			}
+			on_remove = {
+				country_event = {
+					id = paxsolaris.29
+				}
+			}
+		}
+		unicorn_academy5 = {
+			picture = unicorn_academy
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			research_bonus = {
+				magical_tech = 0.08
+			}
+			modifier = {
+				research_speed_factor = 0.10
+			}
+		}
+		SOL_propaganda_idea = { 
+			picture = sol_propaganda
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				is_SOLAR_EMPIRE = yes
+			}
+
+			removal_cost = -1
+			on_add = {
+				add_to_variable = { var = daybreaker_support_daily_propaganda value = 0.015 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
+			modifier = {
+				drift_defence_factor = 0.1
+				fascism_drift = 0.05
+				custom_modifier_tooltip = SOL_propaganda_idea_tt
+			}
+			on_remove = {
+				add_to_variable = { var = daybreaker_support_daily_propaganda value = -0.015 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
+		}
+		SOL_blessing_of_day_idea = { 
+			picture = lau_plantation_idea
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				MONTHLY_POPULATION = 0.2
+				stability_factor = 0.1
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+		}
+		SOL_curse_of_day_idea = { 
+			picture = sol_curse
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				army_speed_factor = -0.05
+			}
+		}
+		SOL_who_dares_wins = {
+			picture = sol_wonderbolts
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				max_command_power = 50
+				extra_paratrooper_supply_grace = 48
+			}
+		}
+		SOL_insight = {
+			picture = sol_surveilance
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				stability_factor = 0.025
+				drift_defence_factor = 0.05
+			}
+		}
+		SOL_assassination = {
+			picture = unhappy_army_2
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				experience_gain_army_factor = -0.5
+				max_planning_factor = -0.2
+				army_morale_factor = -0.1
+			}
+		}
+		SOL_labratory_research = {
+			picture = BAR_science_party
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				research_speed_factor = -0.3
+			}
+		}
+		SOL_intel_breach = {
+			picture = resistance_intel
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				civilian_intel_to_others = 30
+				army_intel_to_others = 30
+			}
+		}
+		SOL_plan_hydra = {
+			picture = warplan_hydra
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				no_supply_grace = 48
+				resistance_target_on_our_occupied_states = 0.2
+				org_loss_when_moving = -0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+		SOL_everything_for_equestria_idea = {
+			picture = everything_for_equestria
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				min_export = -0.15
+				consumer_goods_factor = -0.075
+				industrial_capacity_factory = 0.1
+				conversion_cost_civ_to_mil_factor = -0.25
+				stability_factor = -0.1
+				political_power_cost = 0.5
+			}
+		}
+		SOL_everything_for_equestria_idea1 = {
+			picture = everything_for_equestria
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				min_export = -0.15
+				consumer_goods_factor = -0.075
+				industrial_capacity_factory = 0.1
+				conversion_cost_civ_to_mil_factor = -0.25
+				production_speed_buildings_factor = 0.1
+				global_building_slots_factor = 0.2
+				stability_factor = -0.1
+				political_power_cost = 0.5
+			}
+		}
+		SOL_everything_for_equestria_idea2 = {
+			picture = everything_for_equestria
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				min_export = -0.15
+				consumer_goods_factor = -0.075
+				industrial_capacity_factory = 0.1
+				conversion_cost_civ_to_mil_factor = -0.25
+			}
+		}
+		SOL_everything_for_equestria_idea3 = {
+			picture = everything_for_equestria
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				min_export = -0.15
+				consumer_goods_factor = -0.075
+				industrial_capacity_factory = 0.1
+				conversion_cost_civ_to_mil_factor = -0.25
+				production_speed_buildings_factor = 0.1
+				global_building_slots_factor = 0.2
+			}
+		}
+		SOL_a_plan_for_equestria = {
+			picture = fuelled_by_hatred
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				political_power_factor = -0.05
+				MONTHLY_POPULATION = 0.3
+				production_speed_arms_factory_factor = 0.1
+				war_support_factor = 0.15
+			}
+		}
+		SOL_a_hateful_heart = {
+			picture = fuelled_by_hatred
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				event_target:sol_defeated = {
+					NOT = {
+						exists = no
+						is_subject_of = EQS
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.10
+				recruitable_population_factor = 0.1
+				attrition = -0.05
+			}
+		}
+		SOL_illegitimate_government = {
+			picture = illegitimate_rule
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = -0.1
+				army_org_factor = -0.05
+				training_time_army_factor = 0.1
+				army_morale_factor = -0.05
+				conscription_factor = -0.25
+			}
+		}
+		SOL_nothing_left_to_lose_idea = {
+			picture = nothing_left_to_lose
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				event_target:sol_defeated = {
+					NOT = {
+						exists = no
+						is_subject_of = EQS
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				army_core_defence_factor = 0.1
+				supply_consumption_factor = -0.1
+				army_org_factor = 0.1
+				offensive_war_stability_factor = 0.25
+				defensive_war_stability_factor = 0.25
+			}
+		}
+		SOL_new_high_command = {
+			picture = new_high_command
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				event_target:sol_defeated = {
+					NOT = {
+						exists = no
+						is_subject_of = EQS
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				experience_gain_army = 0.05
+				command_power_gain = 0.05
+				max_command_power = 20
+				planning_speed = 0.1
+			}
+		}
+		SOL_show_no_quarter_idea = {
+			picture = show_no_quarter
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				event_target:sol_defeated = {
+					NOT = {
+						exists = no
+						is_subject_of = EQS
+						has_capitulated = yes
+					}
+				}
+				event_target:solar_empire = {
+					NOT = {
+						exists = no
+						is_subject_of = ROOT
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				army_morale_factor = -0.2
+				attrition = 0.05
+				industry_air_damage_factor = 0.2
+			}
+		}
+		SOL_bioweapon_strike = {
+			picture = biological_weaponry
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				MONTHLY_POPULATION = -0.50
+				conscription_factor = -0.15
+				production_speed_buildings_factor = -0.10
+				army_attack_factor = -0.1
+				army_defence_factor = -0.1
+			}
+		}
+		SOL_paramilitary_armies = {
+			picture = sol_paramilitary_armies
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				AND = {
+					NLR = {
+						NOT = {
+							exists = no
+							is_subject_of = EQS
+							has_capitulated = yes
+						}
+					}
+					EQR = {
+						NOT = {
+							exists = no
+							is_subject_of = EQS
+							has_capitulated = yes
+						}
+					}
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.10
+				recruitable_population_factor = 0.2
+				army_org_factor = -0.2
+				training_time_factor = -0.4
+			}
+		}
+	}
+}

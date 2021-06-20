@@ -1,0 +1,19 @@
+technologies = {
+
+	tech_solar_magic = {
+
+		research_cost = 1
+		allow = {
+			always = no
+		}
+		
+		unicorn_company = {
+			soft_attack = 0.5
+			breakthrough = 0.5
+		}
+		magical_infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.05
+		}
+	}
+}
