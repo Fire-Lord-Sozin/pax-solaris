@@ -23,7 +23,6 @@ is_under_threat = {
 						tag = EQS
 						ratio > 0.8
 					}
-					is_major = yes
 				}
 				OR = {
 					is_justifying_wargoal_against = EQS

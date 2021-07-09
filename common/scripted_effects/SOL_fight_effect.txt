@@ -5,10 +5,6 @@ fight_calculate_effect = {
 		set_variable = { raw_change = spell_1_vitality_recovered^fight_attacker_num }
 		calculate_change = yes
 		add_to_variable = { var = vitality_array^fight_defender_num value = raw_change }
-		
-		set_variable = { duplicates_to_remove = 1 }
-		set_variable = { duplicates_to_remove_from = fight_defender_num }
-		#clear_duplicates = yes
 
 		add_to_array = { status_effect_target_ids = fight_defender_num } #Id of the pony with status effect
 		add_to_array = { status_effect_spell_type = 1 } #Spell origin, prevents doubleups
@@ -52,10 +48,6 @@ fight_calculate_effect = {
 				calculate_change = yes
 				add_to_variable = { var = vitality_array^current_target value = raw_change }
 
-				set_variable = { duplicates_to_remove = 3 }
-				set_variable = { duplicates_to_remove_from = current_target }
-				#clear_duplicates = yes
-
 				add_to_array = { status_effect_target_ids = current_target }
 				add_to_array = { status_effect_spell_type = 3 }
 				add_to_array = { status_effect_duration = 5 } 
@@ -77,10 +69,6 @@ fight_calculate_effect = {
 				calculate_change = yes
 				add_to_variable = { var = vitality_array^current_target value = raw_change }
 
-				set_variable = { duplicates_to_remove = 3 }
-				set_variable = { duplicates_to_remove_from = current_target }
-				#clear_duplicates = yes
-
 				add_to_array = { status_effect_target_ids = current_target }
 				add_to_array = { status_effect_spell_type = 3 }
 				add_to_array = { status_effect_duration = 5 } 
@@ -101,10 +89,6 @@ fight_calculate_effect = {
 				array = right_fighters_array
 				value = current_target
 
-				set_variable = { duplicates_to_remove = 4 }
-				set_variable = { duplicates_to_remove_from = current_target }
-				#clear_duplicates = yes
-
 				add_to_array = { status_effect_target_ids = current_target }
 				add_to_array = { status_effect_spell_type = 4 } 
 				add_to_array = { status_effect_duration = 8 } 
@@ -118,10 +102,6 @@ fight_calculate_effect = {
 			for_each_loop = {
 				array = left_fighters_array
 				value = current_target
-
-				set_variable = { duplicates_to_remove = 4 }
-				set_variable = { duplicates_to_remove_from = current_target }
-				#clear_duplicates = yes
 
 				add_to_array = { status_effect_target_ids = current_target }
 				add_to_array = { status_effect_spell_type = 4 } 
@@ -154,10 +134,6 @@ fight_calculate_effect = {
 					multiply_variable = { var = raw_change value = defence_multiplier_array^current_target  }
 					subtract_from_variable = { var = health_array^current_target value = raw_change }
 
-					set_variable = { duplicates_to_remove = 5 }
-					set_variable = { duplicates_to_remove_from = current_target }
-					#clear_duplicates = yes
-
 					add_to_array = { status_effect_target_ids = current_target }
 					add_to_array = { status_effect_spell_type = 5 } 
 					add_to_array = { status_effect_duration = 5 }
@@ -187,10 +163,6 @@ fight_calculate_effect = {
 					multiply_variable = { var = raw_change value = defence_multiplier_array^current_target }
 					subtract_from_variable = { var = health_array^current_target value = raw_change }
 
-					set_variable = { duplicates_to_remove = 5 }
-					set_variable = { duplicates_to_remove_from = current_target }
-					#clear_duplicates = yes
-
 					add_to_array = { status_effect_target_ids = current_target }
 					add_to_array = { status_effect_spell_type = 5 } 
 					add_to_array = { status_effect_duration = 5 }
@@ -213,10 +185,6 @@ fight_calculate_effect = {
 		calculate_change = yes
 		add_to_variable = { var = health_array^fight_defender_num value = raw_change  }
 
-		set_variable = { duplicates_to_remove = 6 }
-		set_variable = { duplicates_to_remove_from = fight_defender_num }
-		#clear_duplicates = yes
-
 		add_to_array = { status_effect_target_ids = fight_defender_num }
 		add_to_array = { status_effect_spell_type = 6 } 
 		add_to_array = { status_effect_duration = 6 }
@@ -237,10 +205,6 @@ fight_calculate_effect = {
 	}
 	if = {
 		limit = { check_variable = { currently_selected_spell = 7 } }
-
-		set_variable = { duplicates_to_remove = 7 }
-		set_variable = { duplicates_to_remove_from = fight_defender_num }
-		#clear_duplicates = yes
 
 		add_to_array = { status_effect_target_ids = fight_defender_num }
 		add_to_array = { status_effect_spell_type = 7 } 
@@ -268,10 +232,6 @@ fight_calculate_effect = {
 				array = right_fighters_array
 				value = current_target
 
-				set_variable = { duplicates_to_remove = 8 }
-				set_variable = { duplicates_to_remove_from = current_target }
-				#clear_duplicates = yes
-
 				add_to_array = { status_effect_target_ids = current_target }
 				add_to_array = { status_effect_spell_type = 8 }
 				add_to_array = { status_effect_duration = 11 }
@@ -285,11 +245,7 @@ fight_calculate_effect = {
 			for_each_loop = {
 				array = left_fighters_array
 				value = current_target
-
-				set_variable = { duplicates_to_remove = 8 }
-				set_variable = { duplicates_to_remove_from = current_target }
-				#clear_duplicates = yes
-
+				
 				add_to_array = { status_effect_target_ids = current_target }
 				add_to_array = { status_effect_spell_type = 8 }
 				add_to_array = { status_effect_duration = 11 }

@@ -1,0 +1,922 @@
+defined_text = {
+	name = get_sol_dialogue_text
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 1 } }
+		localization_key = sol_dialogue_text_1
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 2 } }
+		localization_key = sol_dialogue_text_2
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 3 } }
+		localization_key = sol_dialogue_text_3
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 4 } }
+		localization_key = sol_dialogue_text_4
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 5 } }
+		localization_key = sol_dialogue_text_5
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 6 } }
+		localization_key = sol_dialogue_text_6
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 7 } }
+		localization_key = sol_dialogue_text_7
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 8 } }
+		localization_key = sol_dialogue_text_8
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 9 } }
+		localization_key = sol_dialogue_text_9
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 10 } }
+		localization_key = sol_dialogue_text_10
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 11 } }
+		localization_key = sol_dialogue_text_11
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 12 } }
+		localization_key = sol_dialogue_text_12
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 13 } }
+		localization_key = sol_dialogue_text_13
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 14 } }
+		localization_key = sol_dialogue_text_14
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 15 } }
+		localization_key = sol_dialogue_text_15
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 16 } }
+		localization_key = sol_dialogue_text_16
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 17 } }
+		localization_key = sol_dialogue_text_17
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 18 } }
+		localization_key = sol_dialogue_text_18
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 19 } }
+		localization_key = sol_dialogue_text_19
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 20 } }
+		localization_key = sol_dialogue_text_20
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 21 } }
+		localization_key = sol_dialogue_text_21
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 22 } }
+		localization_key = sol_dialogue_text_22
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 23 } }
+		localization_key = sol_dialogue_text_23
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 24 } }
+		localization_key = sol_dialogue_text_24
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 25 } }
+		localization_key = sol_dialogue_text_25
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 26 } }
+		localization_key = sol_dialogue_text_26
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 27 } }
+		localization_key = sol_dialogue_text_27
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 28 } }
+		localization_key = sol_dialogue_text_28
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 29 } }
+		localization_key = sol_dialogue_text_29
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 30 } }
+		localization_key = sol_dialogue_text_30
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 31 } }
+		localization_key = sol_dialogue_text_31
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 32 } }
+		localization_key = sol_dialogue_text_32
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 33 } }
+		localization_key = sol_dialogue_text_33
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 34 } }
+		localization_key = sol_dialogue_text_34
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 35 } }
+		localization_key = sol_dialogue_text_35
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 36 } }
+		localization_key = sol_dialogue_text_36
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 37 } }
+		localization_key = sol_dialogue_text_37
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 38 } }
+		localization_key = sol_dialogue_text_38
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 39 } }
+		localization_key = sol_dialogue_text_39
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 40 } }
+		localization_key = sol_dialogue_text_40
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 41 } }
+		localization_key = sol_dialogue_text_41
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 42 } }
+		localization_key = sol_dialogue_text_42
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 43 } }
+		localization_key = sol_dialogue_text_43
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 44 } }
+		localization_key = sol_dialogue_text_44
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 45 } }
+		localization_key = sol_dialogue_text_45
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 46 } }
+		localization_key = sol_dialogue_text_46
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 47 } }
+		localization_key = sol_dialogue_text_47
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 48 } }
+		localization_key = sol_dialogue_text_48
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 49 } }
+		localization_key = sol_dialogue_text_49
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 50 } }
+		localization_key = sol_dialogue_text_50
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 51 } }
+		localization_key = sol_dialogue_text_51
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 52 } }
+		localization_key = sol_dialogue_text_52
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 53 } }
+		localization_key = sol_dialogue_text_53
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 54 } }
+		localization_key = sol_dialogue_text_54
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 55 } }
+		localization_key = sol_dialogue_text_55
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 56 } }
+		localization_key = sol_dialogue_text_56
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 57 } }
+		localization_key = sol_dialogue_text_57
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 58 } }
+		localization_key = sol_dialogue_text_58
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 59 } }
+		localization_key = sol_dialogue_text_59
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 60 } }
+		localization_key = sol_dialogue_text_60
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 61 } }
+		localization_key = sol_dialogue_text_61
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 62 } }
+		localization_key = sol_dialogue_text_62
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 63 } }
+		localization_key = sol_dialogue_text_63
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 64 } }
+		localization_key = sol_dialogue_text_64
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 65 } }
+		localization_key = sol_dialogue_text_65
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 66 } }
+		localization_key = sol_dialogue_text_66
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 67 } }
+		localization_key = sol_dialogue_text_67
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 68 } }
+		localization_key = sol_dialogue_text_68
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 69 } }
+		localization_key = sol_dialogue_text_69
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 70 } }
+		localization_key = sol_dialogue_text_70
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 71 } }
+		localization_key = sol_dialogue_text_71
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 72 } }
+		localization_key = sol_dialogue_text_72
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 73 } }
+		localization_key = sol_dialogue_text_73
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 74 } }
+		localization_key = sol_dialogue_text_74
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 75 } }
+		localization_key = sol_dialogue_text_75
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 76 } }
+		localization_key = sol_dialogue_text_76
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 77 } }
+		localization_key = sol_dialogue_text_77
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 78 } }
+		localization_key = sol_dialogue_text_78
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 79 } }
+		localization_key = sol_dialogue_text_79
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 80 } }
+		localization_key = sol_dialogue_text_80
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 81 } }
+		localization_key = sol_dialogue_text_81
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 82 } }
+		localization_key = sol_dialogue_text_82
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 83 } }
+		localization_key = sol_dialogue_text_83
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 84 } }
+		localization_key = sol_dialogue_text_84
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 85 } }
+		localization_key = sol_dialogue_text_85
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 86 } }
+		localization_key = sol_dialogue_text_86
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 87 } }
+		localization_key = sol_dialogue_text_87
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 88 } }
+		localization_key = sol_dialogue_text_88
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 89 } }
+		localization_key = sol_dialogue_text_89
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 90 } }
+		localization_key = sol_dialogue_text_90
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 91 } }
+		localization_key = sol_dialogue_text_91
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 92 } }
+		localization_key = sol_dialogue_text_92
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 93 } }
+		localization_key = sol_dialogue_text_93
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 94 } }
+		localization_key = sol_dialogue_text_94
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 95 } }
+		localization_key = sol_dialogue_text_95
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 96 } }
+		localization_key = sol_dialogue_text_96
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 97 } }
+		localization_key = sol_dialogue_text_97
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 98 } }
+		localization_key = sol_dialogue_text_98
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 99 } }
+		localization_key = sol_dialogue_text_99
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 100 } }
+		localization_key = sol_dialogue_text_100
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 101 } }
+		localization_key = sol_dialogue_text_101
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 102 } }
+		localization_key = sol_dialogue_text_102
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 103 } }
+		localization_key = sol_dialogue_text_103
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 104 } }
+		localization_key = sol_dialogue_text_104
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 105 } }
+		localization_key = sol_dialogue_text_105
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 106 } }
+		localization_key = sol_dialogue_text_106
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 107 } }
+		localization_key = sol_dialogue_text_107
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 108 } }
+		localization_key = sol_dialogue_text_108
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 109 } }
+		localization_key = sol_dialogue_text_109
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 110 } }
+		localization_key = sol_dialogue_text_110
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 111 } }
+		localization_key = sol_dialogue_text_111
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 112 } }
+		localization_key = sol_dialogue_text_112
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 113 } }
+		localization_key = sol_dialogue_text_113
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 114 } }
+		localization_key = sol_dialogue_text_114
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 115 } }
+		localization_key = sol_dialogue_text_115
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 116 } }
+		localization_key = sol_dialogue_text_116
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 117 } }
+		localization_key = sol_dialogue_text_117
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 118 } }
+		localization_key = sol_dialogue_text_118
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 119 } }
+		localization_key = sol_dialogue_text_119
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 120 } }
+		localization_key = sol_dialogue_text_120
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 121 } }
+		localization_key = sol_dialogue_text_121
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 122 } }
+		localization_key = sol_dialogue_text_122
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 123 } }
+		localization_key = sol_dialogue_text_123
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 124 } }
+		localization_key = sol_dialogue_text_124
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 125 } }
+		localization_key = sol_dialogue_text_125
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 126 } }
+		localization_key = sol_dialogue_text_126
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 127 } }
+		localization_key = sol_dialogue_text_127
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 128 } }
+		localization_key = sol_dialogue_text_128
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 129 } }
+		localization_key = sol_dialogue_text_129
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 130 } }
+		localization_key = sol_dialogue_text_130
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 131 } }
+		localization_key = sol_dialogue_text_131
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 132 } }
+		localization_key = sol_dialogue_text_132
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 133 } }
+		localization_key = sol_dialogue_text_133
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 134 } }
+		localization_key = sol_dialogue_text_134
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 135 } }
+		localization_key = sol_dialogue_text_135
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 136 } }
+		localization_key = sol_dialogue_text_136
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 137 } }
+		localization_key = sol_dialogue_text_137
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 138 } }
+		localization_key = sol_dialogue_text_138
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 139 } }
+		localization_key = sol_dialogue_text_139
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 140 } }
+		localization_key = sol_dialogue_text_140
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 141 } }
+		localization_key = sol_dialogue_text_141
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 142 } }
+		localization_key = sol_dialogue_text_142
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 143 } }
+		localization_key = sol_dialogue_text_143
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 144 } }
+		localization_key = sol_dialogue_text_144
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 145 } }
+		localization_key = sol_dialogue_text_145
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 146 } }
+		localization_key = sol_dialogue_text_146
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 147 } }
+		localization_key = sol_dialogue_text_147
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 148 } }
+		localization_key = sol_dialogue_text_148
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 149 } }
+		localization_key = sol_dialogue_text_149
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 150 } }
+		localization_key = sol_dialogue_text_150
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 151 } }
+		localization_key = sol_dialogue_text_151
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 152 } }
+		localization_key = sol_dialogue_text_152
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 153 } }
+		localization_key = sol_dialogue_text_153
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 154 } }
+		localization_key = sol_dialogue_text_154
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 155 } }
+		localization_key = sol_dialogue_text_155
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 156 } }
+		localization_key = sol_dialogue_text_156
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 157 } }
+		localization_key = sol_dialogue_text_157
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 158 } }
+		localization_key = sol_dialogue_text_158
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 159 } }
+		localization_key = sol_dialogue_text_159
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 160 } }
+		localization_key = sol_dialogue_text_160
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 161 } }
+		localization_key = sol_dialogue_text_161
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 162 } }
+		localization_key = sol_dialogue_text_162
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 163 } }
+		localization_key = sol_dialogue_text_163
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 164 } }
+		localization_key = sol_dialogue_text_164
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 165 } }
+		localization_key = sol_dialogue_text_165
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 166 } }
+		localization_key = sol_dialogue_text_166
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 167 } }
+		localization_key = sol_dialogue_text_167
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 168 } }
+		localization_key = sol_dialogue_text_168
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 169 } }
+		localization_key = sol_dialogue_text_169
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 170 } }
+		localization_key = sol_dialogue_text_170
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 171 } }
+		localization_key = sol_dialogue_text_171
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 172 } }
+		localization_key = sol_dialogue_text_172
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 173 } }
+		localization_key = sol_dialogue_text_173
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 174 } }
+		localization_key = sol_dialogue_text_174
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 175 } }
+		localization_key = sol_dialogue_text_175
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 176 } }
+		localization_key = sol_dialogue_text_176
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 177 } }
+		localization_key = sol_dialogue_text_177
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 178 } }
+		localization_key = sol_dialogue_text_178
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 179 } }
+		localization_key = sol_dialogue_text_179
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 180 } }
+		localization_key = sol_dialogue_text_180
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 181 } }
+		localization_key = sol_dialogue_text_181
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 182 } }
+		localization_key = sol_dialogue_text_182
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 183 } }
+		localization_key = sol_dialogue_text_183
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 184 } }
+		localization_key = sol_dialogue_text_184
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 185 } }
+		localization_key = sol_dialogue_text_185
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 186 } }
+		localization_key = sol_dialogue_text_186
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 187 } }
+		localization_key = sol_dialogue_text_187
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 188 } }
+		localization_key = sol_dialogue_text_188
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 189 } }
+		localization_key = sol_dialogue_text_189
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 190 } }
+		localization_key = sol_dialogue_text_190
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 191 } }
+		localization_key = sol_dialogue_text_191
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 192 } }
+		localization_key = sol_dialogue_text_192
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 193 } }
+		localization_key = sol_dialogue_text_193
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 194 } }
+		localization_key = sol_dialogue_text_194
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 195 } }
+		localization_key = sol_dialogue_text_195
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 196 } }
+		localization_key = sol_dialogue_text_196
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 197 } }
+		localization_key = sol_dialogue_text_197
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 198 } }
+		localization_key = sol_dialogue_text_198
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_key = 199 } }
+		localization_key = sol_dialogue_text_199
+	}
+}
+defined_text = {
+	name = get_sol_dialogue_display_image
+	text = {
+		trigger = { check_variable = { sol_dialogue_pony_key = 0 } }
+		localization_key = sol_dialogue_pony_0
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_pony_key = 1 } }
+		localization_key = sol_dialogue_pony_1
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_pony_key = 2 } }
+		localization_key = sol_dialogue_pony_2
+	}
+}
+defined_text = {
+	name = get_sol_dialogue_pony_1_emotion
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 1 } }
+		localization_key = sol_dialogue_pony_1_emotion_1
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 2 } }
+		localization_key = sol_dialogue_pony_1_emotion_2
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 3 } }
+		localization_key = sol_dialogue_pony_1_emotion_3
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 4 } }
+		localization_key = sol_dialogue_pony_1_emotion_4
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 5 } }
+		localization_key = sol_dialogue_pony_1_emotion_5
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 6 } }
+		localization_key = sol_dialogue_pony_1_emotion_6
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 7 } }
+		localization_key = sol_dialogue_pony_1_emotion_7
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 8 } }
+		localization_key = sol_dialogue_pony_1_emotion_8
+	}
+}
+defined_text = {
+	name = get_sol_dialogue_pony_2_emotion
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 1 } }
+		localization_key = sol_dialogue_pony_2_emotion_1
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 2 } }
+		localization_key = sol_dialogue_pony_2_emotion_2
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 3 } }
+		localization_key = sol_dialogue_pony_2_emotion_3
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 4 } }
+		localization_key = sol_dialogue_pony_2_emotion_4
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 5 } }
+		localization_key = sol_dialogue_pony_2_emotion_5
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 6 } }
+		localization_key = sol_dialogue_pony_2_emotion_6
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 7 } }
+		localization_key = sol_dialogue_pony_2_emotion_7
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_emotion_key = 8 } }
+		localization_key = sol_dialogue_pony_2_emotion_8
+	}
+}
+defined_text = {
+	name = get_sol_dialogue_text_option_1
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 1 } }
+		localization_key = sol_dialogue_text_option_1_1
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 2 } }
+		localization_key = sol_dialogue_text_option_1_2
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 3 } }
+		localization_key = sol_dialogue_text_option_1_3
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 4 } }
+		localization_key = sol_dialogue_text_option_1_4
+	}
+}
+defined_text = {
+	name = get_sol_dialogue_text_option_2
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 1 } }
+		localization_key = sol_dialogue_text_option_2_1
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 2 } }
+		localization_key = sol_dialogue_text_option_2_2
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 3 } }
+		localization_key = sol_dialogue_text_option_2_3
+	}
+	text = {
+		trigger = { check_variable = { sol_dialogue_text_option_key = 4 } }
+		localization_key = sol_dialogue_text_option_2_4
+	}
+}

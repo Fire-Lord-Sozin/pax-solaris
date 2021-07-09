@@ -14,24 +14,18 @@ scripted_gui = {
 				x = var:daybreaker_support_progress_bar_pos
 			}
 		}
-		properties = {
-			informants_loyalty = {
-				frame = var:informants_loyalty_frame_var
+		triggers = {
+			informants_loyalty_visible = {
+				has_country_flag = SOL_unlocked_info_network
 			}
-		}
-		properties = {
-			volunteer_militias = {
-				frame = var:volunteer_militias_frame_var
+			volunteer_militias_visible = {
+				has_country_flag = SOL_unlocked_militias
 			}
-		}
-		properties = {
-			inquisition_informants = {
-				frame = var:inquisition_informants_frame_var
+			inquisition_informants_visible = {
+				has_country_flag = SOL_unlocked_inquisition_informants
 			}
-		}
-		properties = {
-			harmonist_commanders = {
-				frame = var:harmonist_commanders_frame_var
+			harmonist_commanders_visible = {
+				has_country_flag = SOL_unlocked_harmonist_commanders
 			}
 		}
 	}
@@ -106,31 +100,24 @@ scripted_gui = {
 				original_tag = EQS 
 				has_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
 				NOT = { has_country_flag = SOL_recall_pegasi_decision_in_progress_flag }
-				command_power > 9
 				check_variable = {
-					var = SOL_mobile_task_force_deployed_var
-					value = 4
-					compare = less_than_or_equals
+					var = command_power
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = SOL_mobile_task_force_in_reserve_var
+					value = 0
+					compare = greater_than
 				}
 			}
 			THIS = {
-				NOT = { 
-					has_state_flag = SOL_has_already_dispatched_mtf_to_this_state 
-				}
-				OR = {
-					owner = {
-						OR = {
-							is_SOLAR_EMPIRE = yes
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							is_SOLAR_EMPIRE = yes
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
+				NOT = { has_variable = SOL_mobile_task_force_deployed_var }
+				controller = {
+					OR = {
+						is_SOLAR_EMPIRE = yes
+						is_subject_of = EQS
+						is_in_faction_with = EQS
 					}
 				}
 			}
@@ -142,13 +129,11 @@ scripted_gui = {
 			SOL_mobile_task_force_button_click = {
 				hidden_effect = {
 					ROOT = {
-						add_political_power = -15
-						add_command_power = -15
+						add_command_power = -10
 						add_to_variable = { SOL_mobile_task_force_deployed_var = 1 } 
 						subtract_from_variable = { SOL_mobile_task_force_in_reserve_var = 2 }
 					}
 					THIS = {
-						set_state_flag = SOL_has_already_dispatched_mtf_to_this_state
 						if = {
 							limit = {
 								EQS = { check_variable = { solar_military_support = 5 } }
@@ -200,190 +185,35 @@ scripted_gui = {
 							}
 						}
 						else = {
-							if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 1 }
-									}
+							set_variable = { SOL_mobile_task_force_deployed_var = EQS.SOL_mobile_task_force_deployed_var }
+							EQS = {
+								set_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3.distance_to@PREV }
+								divide_variable = { SOL_dispatched_mtf_state_decision_duration_var = 100 }
+								if = {
+									limit = { check_variable = { solar_military_support = 0 } }
+									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 7 }
 								}
-								EQS = {
-									set_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 68.distance_to@PREV }
-									divide_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 100 }
-									if = {
-										limit = { check_variable = { solar_military_support = 0 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 7 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 1 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 5 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 2 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 3 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 3 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 2 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 4 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 1 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 5 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_1_duration_var = 1 }
-									}
+								else_if = {
+									limit = { check_variable = { solar_military_support = 1 } }
+									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 5 }
 								}
-								set_state_flag = SOL_dispatched_mtf_state_decision_1
-								add_to_array = { EQS.SOL_dispatched_mtf_state_decision_1_arr = THIS }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 2 }
-									}
+								else_if = {
+									limit = { check_variable = { solar_military_support = 2 } }
+									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3 }
 								}
-								EQS = {
-									set_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 68.distance_to@PREV }
-									divide_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 100 }
-									if = {
-										limit = { check_variable = { solar_military_support = 0 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 7 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 1 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 5 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 2 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 3 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 3 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 2 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 4 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 1 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 5 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_2_duration_var = 1 }
-									}
+								else_if = {
+									limit = { check_variable = { solar_military_support = 3 } }
+									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 2 }
 								}
-								set_state_flag = SOL_dispatched_mtf_state_decision_2
-								add_to_array = { EQS.SOL_dispatched_mtf_state_decision_2_arr = THIS }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 3 }
-									}
+								else_if = {
+									limit = { check_variable = { solar_military_support = 4 } }
+									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
 								}
-								EQS = {
-									set_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 68.distance_to@PREV }
-									divide_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 100 }
-									if = {
-										limit = { check_variable = { solar_military_support = 0 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 7 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 1 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 5 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 2 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 3 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 3 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 2 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 4 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 1 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 5 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_3_duration_var = 1 }
-									}
+								else_if = {
+									limit = { check_variable = { solar_military_support = 5 } }
+									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
 								}
-								set_state_flag = SOL_dispatched_mtf_state_decision_3
-								add_to_array = { EQS.SOL_dispatched_mtf_state_decision_3_arr = THIS }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 4 }
-									}
-								}
-								EQS = {
-									set_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 68.distance_to@PREV }
-									divide_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 100 }
-									if = {
-										limit = { check_variable = { solar_military_support = 0 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 7 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 1 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 5 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 2 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 3 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 3 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 2 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 4 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 1 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 5 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_4_duration_var = 1 }
-									}
-								}
-								set_state_flag = SOL_dispatched_mtf_state_decision_4
-								add_to_array = { EQS.SOL_dispatched_mtf_state_decision_4_arr = THIS }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 5 }
-									}
-								}
-								EQS = {
-									set_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 68.distance_to@PREV }
-									divide_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 100 }
-									if = {
-										limit = { check_variable = { solar_military_support = 0 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 7 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 1 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 5 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 2 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 3 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 3 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 2 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 4 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 1 }
-									}
-									else_if = {
-										limit = { check_variable = { solar_military_support = 5 } }
-										add_to_variable = { SOL_dispatched_mtf_state_decision_5_duration_var = 1 }
-									}
-								}
-								set_state_flag = SOL_dispatched_mtf_state_decision_5
-								add_to_array = { EQS.SOL_dispatched_mtf_state_decision_5_arr = THIS }
+								activate_targeted_decision = { target = PREV decision = SOL_dispatch_pegasi_decision }
 							}
 						}
 					}
@@ -751,7 +581,6 @@ scripted_gui = {
 		context_type = player_context
 		visible = {
 			has_variable = sol_resistance_alert_popup_show
-			original_tag = EQS 
 		}
 		effects = {
 			sol_resistance_alert_close_button_click = {

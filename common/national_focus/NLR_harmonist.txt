@@ -15,6 +15,18 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus NLH_harmony_in_peril"
 		add_war_support = 0.1
 		add_political_power = 300
+		if = {
+			limit = { 
+				has_country_leader = {
+					ruling_only = yes
+					name = "Luna"
+				}
+			}
+			country_event = { id = lunarep.1 hours = 1 }
+		}
+		else = {
+			country_event = { id = lunarep.2 hours = 1 }
+		}
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -445,6 +457,7 @@ shared_focus = {
 			}
 		}
 		add_ideas = NLR_airland_battle
+		country_event = { id = lunarep.3 hours = 1 }
 	}
 }
 shared_focus = {
@@ -548,6 +561,20 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus NLH_collaborate_with_republicans"
 		add_ideas = NLR_manehattan_industrial_connections
+		if = {
+			limit = {
+				EQR = { 
+					exists = yes
+					has_government = democratic
+				}
+			}
+			EQR = {
+				add_opinion_modifier = { 
+					target = NLR
+					modifier = NLR_Republican_Cooperation
+				} 
+			}
+		}
 		custom_effect_tooltip = nlr_harmonists
 	}
 }
@@ -570,10 +597,10 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus NLH_chiropterran_school_of_war"
 		every_unit_leader = {
+			add_attack = 1
+			add_defense = 1
 			add_logistics = 1
 			add_planning = 1
-			add_defense = 1
-			add_attack = 1
 			add_coordination = 1
 			add_maneuver = 1
 		}

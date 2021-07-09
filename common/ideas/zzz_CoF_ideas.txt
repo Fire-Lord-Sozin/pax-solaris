@@ -7,6 +7,10 @@ ideas = {
 				var:faction_leader = {
 					is_coalition_member = yes
 				}
+				NOT = {
+					is_puppet_of = EQS
+					is_in_faction_with = EQS
+				}
 			}
 			removal_cost = -1
 			allowed = {
@@ -48,6 +52,11 @@ ideas = {
 					clr_global_flag = coalition_ongoing_project
 					clr_global_flag = coalition_defensive_plan_accepted
 					set_global_flag = coalition_defensive_plan_completed
+					set_global_flag = {
+						flag = coalition_recently_completed_project
+						days = 60
+						value = 1
+					}
 				}
 			}
 			removal_cost = -1
@@ -105,6 +114,11 @@ ideas = {
 					clr_global_flag = coalition_ongoing_project
 					clr_global_flag = coalition_fortress_accepted
 					set_global_flag = coalition_fortress_completed
+					set_global_flag = {
+						flag = coalition_recently_completed_project
+						days = 60
+						value = 1
+					}
 				}
 			}
 			removal_cost = -1
@@ -113,6 +127,113 @@ ideas = {
 			}
 			modifier = {
 				civilian_factory_use = 10
+			}
+		}
+	}
+	country = {
+		coalition_high_command_project_commitment = {
+			picture = coalition_high_command
+			available = {
+				is_in_faction = yes
+				var:faction_leader = {
+					is_coalition_member = yes
+				}
+			}
+			on_add = {
+				if = {
+					limit = {
+						NOT = { check_variable = { global.coalition_high_command_project_commitment_num > 4 } }
+					}
+					add_to_variable = { var = global.coalition_high_command_project_commitment_num value = 1 }
+				}
+			}
+			on_remove = {
+				add_to_variable = { var = global.coalition_high_command_project_commitment_num_completed value = 1 }
+				if = {
+					limit = {
+						check_variable = { global.coalition_high_command_project_commitment_num_completed > 4 }
+					}
+					clear_variable = global.coalition_high_command_project_commitment_num
+					clear_variable = global.coalition_high_command_project_commitment_num_completed
+					every_country = {
+						limit = {
+							is_coalition_member = yes
+						}
+						add_ideas = coalition_high_command_project_bonus
+						every_unit_leader = {
+							add_planning = 1
+							add_attack = 1
+						}
+					}
+					clr_global_flag = coalition_ongoing_project
+					clr_global_flag = coalition_high_command_accepted
+					set_global_flag = coalition_high_command_completed
+					set_global_flag = {
+						flag = coalition_recently_completed_project
+						days = 60
+						value = 1
+					}
+				}
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				max_planning_factor = -0.3
+				max_command_power = -20
+				army_attack_factor = -0.05
+			}
+		}
+	}
+	country = {
+		coalition_expeditionary_forces_project_commitment = {
+			picture = pony_militarization
+			available = {
+				is_in_faction = yes
+				var:faction_leader = {
+					is_coalition_member = yes
+				}
+			}
+			on_add = {
+				if = {
+					limit = {
+						NOT = { check_variable = { global.coalition_expeditionary_forces_project_commitment_num > 4 } }
+					}
+					add_to_variable = { var = global.coalition_expeditionary_forces_project_commitment_num value = 1 }
+				}
+			}
+			on_remove = {
+				add_to_variable = { var = global.coalition_expeditionary_forces_project_commitment_num_completed value = 1 }
+				if = {
+					limit = {
+						check_variable = { global.coalition_expeditionary_forces_project_commitment_num_completed > 4 }
+					}
+					clear_variable = global.coalition_expeditionary_forces_project_commitment_num
+					clear_variable = global.coalition_expeditionary_forces_project_commitment_num_completed
+					every_country = {
+						limit = {
+							is_coalition_member = yes
+						}
+						add_ideas = coalition_expeditionary_forces_project_bonus
+					}
+					clr_global_flag = coalition_ongoing_project
+					clr_global_flag = coalition_expeditionary_forces_accepted
+					set_global_flag = coalition_expeditionary_forces_completed
+					set_global_flag = {
+						flag = coalition_recently_completed_project
+						days = 60
+						value = 1
+					}
+				}
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				weekly_manpower = -1000 
+				army_attack_factor = -0.05
 			}
 		}
 	}
@@ -136,6 +257,8 @@ ideas = {
 				surrender_limit = 1
 			}
 		}
+	}
+	hidden_ideas = {
 		coalition_defensive_plan_project_bonus = {
 			picture = coalition_member
 			available = {
@@ -147,11 +270,43 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				max_planning = 0.1
+				max_planning_factor = 0.1
 			}
-			targeted_modifier = {
-				tag = EQS
-				defense_bonus_against = 0.1
+			targeted_modifier = { tag = EQS defense_bonus_against = 0.1 }
+		}
+	}
+	hidden_ideas = {
+		coalition_high_command_project_bonus = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				max_command_power = 20
+				experience_gain_army = 0.05
+			}
+		}
+	}
+	hidden_ideas = {
+		coalition_expeditionary_forces_project_bonus = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				send_volunteer_size = 3
+				send_volunteers_tension = -0.5
+				send_volunteer_divisions_required = -1
 			}
 		}
 	}

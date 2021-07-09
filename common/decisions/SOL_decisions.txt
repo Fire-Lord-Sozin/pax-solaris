@@ -21,12 +21,7 @@ SOL_resistance_menu = {
 				}
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
-		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 100
 		}
@@ -36,9 +31,6 @@ SOL_resistance_menu = {
 		}
 
 		days_remove = 20
-		modifier = {
-			political_power_factor = -0.1
-		}
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_public_measures_improvement"
@@ -80,12 +72,7 @@ SOL_resistance_menu = {
 				}
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
-		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 100
 		}
@@ -95,9 +82,6 @@ SOL_resistance_menu = {
 		}
 
 		days_remove = 20
-		modifier = {
-			political_power_factor = -0.1
-		}
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_military_measures_improvement"
@@ -139,12 +123,7 @@ SOL_resistance_menu = {
 				}
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
-		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 100
 		}
@@ -154,9 +133,6 @@ SOL_resistance_menu = {
 		}
 
 		days_remove = 20
-		modifier = {
-			political_power_factor = -0.1
-		}
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_resistance_suppression_improvement"
@@ -192,12 +168,7 @@ SOL_resistance_menu = {
 				}
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
-		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 100
 		}
@@ -207,9 +178,6 @@ SOL_resistance_menu = {
 		}
 
 		days_remove = 20
-		modifier = {
-			political_power_factor = -0.1
-		}
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_resistance_outreach_suppression_improvement"
@@ -223,48 +191,20 @@ SOL_resistance_menu = {
 			hidden_effect = { SOL_calculate_loyalty = yes }
 		}
 	}
-	SOL_create_narrative = { 
-		icon = GFX_decision_speech
-		priority = 80
-		ai_will_do = {
-			factor = 100
-		}
-		allowed = {
-			always = no
-		}
-		is_good = no
-		days_mission_timeout = 30
-		selectable_mission = yes
-		fire_only_once = no
-		timeout_effect = {
-			country_event = {
-				id = paxsolaris.59
-			}
-		}
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_create_narrative"
-			set_country_flag = SOL_has_narrative
-			country_event = {
-				id = paxsolaris.59
-			}
-		}
-
-		cost = 25
-	}
 	SOL_harmonist_demands = { 
 		icon = GFX_decision_rifles_manehattan
 		priority = 20
 		ai_will_do = {
 			factor = 0
 		}
-		activation = { always = no }
+		allowed = { always = no }
 		available = {
-			always = no
+			hidden_trigger = { always = no }
 		}
 		is_good = no
 		days_mission_timeout = 10
 		selectable_mission = no
-		fire_only_once = no
+		fire_only_once = yes
 		timeout_effect = {
 			if = {
 				limit = { check_variable = { harmonist_demand_counter = 0 } }
@@ -306,6 +246,7 @@ SOL_resistance_menu = {
 			hidden_effect = {
 				if = { 
 					limit = { check_variable = { harmonist_demand_counter < 6 } }
+					remove_mission = SOL_harmonist_demands
 					activate_mission = SOL_harmonist_demands
 				}
 			}
@@ -326,6 +267,16 @@ SOL_resistance_menu = {
 				border_state = var:BUF.SOL_defender_state_vs_@ROOT
 				size > 0
 			}
+			custom_trigger_tooltip = {
+				tooltip = sol_border_war_available
+				BUF = { can_have_border_war_with_ROOT = yes }
+			}
+		}
+		visible = {
+			NOT = { 
+                has_war_with = BUF
+                is_subject_of = BUF #LOL, as if
+            }
 		}
 		highlight_state_targets = {
 			state = var:BUF.SOL_attacker_state_vs_@ROOT
@@ -337,11 +288,7 @@ SOL_resistance_menu = {
 
 		cancel_trigger = {
 			hidden_trigger = {
-				OR = {
-					FROM = {
-						can_have_border_war_with_ROOT = no
-					}
-				}
+				BUF = { can_have_border_war_with_ROOT = no }
 			}
 		}
 
@@ -361,6 +308,10 @@ SOL_resistance_menu = {
 			hidden_effect = {
 				SOL_calculate_loyalty = yes
 				remove_targeted_decision = { target = BUF decision = SOL_attack_buf }
+				BUF = {
+					clear_variable = SOL_attacker_state_vs_@ROOT
+					clear_variable = SOL_defender_state_vs_@ROOT
+				}
 			}
 		}
 
@@ -385,6 +336,80 @@ SOL_resistance_menu = {
 			}
 			hidden_effect = {
 				remove_targeted_decision = { target = BUF decision = SOL_attack_buf }
+				activate_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+			}
+		}
+	}
+	SOL_attack_buf_in_progress = {
+		icon = GFX_decision_sol_border_war
+		allowed = { always = no }
+		fire_only_once = yes
+		selectable_mission = no
+		ai_will_do = {
+			base = 50
+		}
+		available = {		
+			NOT = { has_border_war_with = BUF }
+		}
+		highlight_state_targets = {
+			state = var:BUF.attacker_state_vs_@ROOT
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				BUF = { can_have_border_war_with_ROOT = no }
+			}
+		}
+		days_mission_timeout = 180
+		days_remove = 0
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_attack_buf_in_progress"
+			hidden_effect = {
+				remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Mission cancel SOL_attack_buf_in_progress"
+			cancel_border_war = {
+				dont_fire_events = no
+				attacker = var:BUF.SOL_attacker_state_vs_@ROOT
+				defender = var:BUF.SOL_defender_state_vs_@ROOT
+			}
+			hidden_effect = {
+				BUF = {
+					clear_variable = SOL_attacker_state_vs_@ROOT
+					clear_variable = SOL_defender_state_vs_@ROOT
+				}
+				BUF = { clr_country_flag = target_of_coalition_raid }
+				remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+			}
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Mission timeout SOL_attack_buf_in_progress"
+			if = {
+				limit = {
+					BUF = { divisions_in_state = { state = var:BUF.defender_state_vs_@ROOT size > 0 } }
+				}
+				cancel_border_war = {
+				dont_fire_events = no
+					attacker = var:BUF.SOL_attacker_state_vs_@ROOT
+					defender = var:BUF.SOL_defender_state_vs_@ROOT
+				}
+				hidden_effect = {
+					BUF = {
+						clear_variable = SOL_attacker_state_vs_@ROOT
+						clear_variable = SOL_defender_state_vs_@ROOT
+					}
+					BUF = { clr_country_flag = target_of_coalition_raid }
+					remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+				}
+			}
+			else = {
+				#If the Buffalo have no troops, automatic Daybreaker victory
+				finalize_border_war = {
+					attacker_win = yes
+					attacker = var:BUF.SOL_attacker_state_vs_@ROOT
+					defender = var:BUF.SOL_defender_state_vs_@ROOT
+				}
 			}
 		}
 	}
@@ -396,9 +421,6 @@ SOL_inquisition_mechanic = {
 		priority = 110
 		available = {
 			num_of_civilian_factories_available_for_projects > 9
-			hidden_trigger = { 
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
@@ -408,6 +430,7 @@ SOL_inquisition_mechanic = {
 			NOT = { has_country_flag = upgraded_inquisition }
 			has_completed_focus = SOL_upgrade_inquisition
 		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 100
 		}
@@ -458,21 +481,12 @@ SOL_inquisition_mechanic = {
 		icon = GFX_decision_smash_resistance
 		priority = 85
 		available = {
-			hidden_trigger = {
-				check_variable = { solar_resistance_actions_progress = 0 }
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-				NOT = { check_variable = { solar_resistance_strength = 0 } }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
 		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
 				check_variable = { solar_resistance_actions_progress = 0 }
 				NOT = { check_variable = { solar_resistance_strength = 0 } }
@@ -480,6 +494,7 @@ SOL_inquisition_mechanic = {
 				NOT = { has_country_flag = resistance_strike_in_progress }
 			}
 		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 150
 		}
@@ -645,12 +660,7 @@ SOL_inquisition_mechanic = {
 						event_target:SOL_resistance_stronghold = { save_global_event_target_as = SOL_strike_target_7 } 
 					}
 				}
-				event_target:SOL_resistance_stronghold = { set_state_flag = potential_secondary_strike_target }
-				every_state = {
-					limit = { has_state_flag = potential_secondary_strike_target }
-					add_to_array = { EQS.SOL_strike_at_resistance_target_array = THIS }
-				}
-				event_target:SOL_resistance_stronghold = { clr_state_flag = potential_secondary_strike_target }
+				event_target:SOL_resistance_stronghold = { set_state_flag = SOL_strike_at_the_resistance_target } 
 				random_owned_controlled_state = {
 					limit = {
 						is_core_of = event_target:solar_empire
@@ -662,6 +672,7 @@ SOL_inquisition_mechanic = {
 					}
 					save_global_event_target_as = SOL_secondary_strike_target_1
 					clr_state_flag = potential_secondary_strike_target
+					set_state_flag = SOL_strike_at_the_resistance_target
 				}
 				random_owned_controlled_state = {
 					limit = {
@@ -674,6 +685,7 @@ SOL_inquisition_mechanic = {
 					}
 					save_global_event_target_as = SOL_secondary_strike_target_2
 					clr_state_flag = potential_secondary_strike_target
+					set_state_flag = SOL_strike_at_the_resistance_target
 				}
 				activate_mission = SOL_strike_at_resistance_mission
 			}
@@ -684,16 +696,10 @@ SOL_inquisition_mechanic = {
 		icon = GFX_decision_smash_resistance
 		priority = 83
 		available = {
-			hidden_trigger = {
-				has_active_mission = SOL_strike_at_resistance_mission
-			}
 			custom_trigger_tooltip = {
 				tooltip = ongoingresistancestrike
 				has_active_mission = SOL_strike_at_resistance_mission
 			}
-		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 		}
 		visible = {
 			hidden_trigger = {
@@ -701,31 +707,24 @@ SOL_inquisition_mechanic = {
 				NOT = { has_country_flag = SOL_refined_resistance_strike }
 			}
 		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 150
 		}
 		custom_cost_trigger = {
-			check_variable = {
-				var = command_power
-				value = 10
-				compare = greater_than_or_equals
-			}
 			check_variable = {
 				var = SOL_lead_variable
 				value = 50
 				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = decision_cost_cp_10_leads_50
+		custom_cost_text = decision_cost_leads_50
 		cancel_trigger = {
-			hidden_trigger = {
-				NOT = { has_active_mission = SOL_strike_at_resistance_mission }
-			}
+			NOT = { has_active_mission = SOL_strike_at_resistance_mission }
 		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_refine_strike_results"
 			hidden_effect = {
-				add_command_power = -10
 				subtract_from_variable = { 
 					var = SOL_lead_variable
 					value = 50
@@ -741,10 +740,10 @@ SOL_inquisition_mechanic = {
 			set_country_flag = SOL_refined_resistance_strike
 			custom_effect_tooltip = SOL_refine_strike_results_tt
 			hidden_effect = {
-				clear_array = EQS.SOL_strike_at_resistance_target_array
-				add_to_array = { EQS.SOL_strike_at_resistance_target_array = event_target:SOL_secondary_strike_target_1 }
-				add_to_array = { EQS.SOL_strike_at_resistance_target_array = event_target:SOL_secondary_strike_target_2 }
-				add_to_array = { EQS.SOL_strike_at_resistance_target_array = event_target:SOL_resistance_stronghold }
+				every_state = {
+					limit = { has_state_flag = potential_secondary_strike_target }
+					clr_state_flag = potential_secondary_strike_target
+				}
 			}
 		}
 	}
@@ -755,13 +754,12 @@ SOL_inquisition_mechanic = {
 			OR = {
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_1 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_1 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
-						event_target:SOL_strike_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -770,13 +768,12 @@ SOL_inquisition_mechanic = {
 				}
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_2 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_2 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
-						event_target:SOL_strike_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -785,13 +782,12 @@ SOL_inquisition_mechanic = {
 				}
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_3 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_3 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
-						event_target:SOL_strike_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -800,13 +796,12 @@ SOL_inquisition_mechanic = {
 				}
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_4 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_4 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
-						event_target:SOL_strike_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -815,13 +810,12 @@ SOL_inquisition_mechanic = {
 				}
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_5 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_5 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
-						event_target:SOL_strike_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -830,14 +824,13 @@ SOL_inquisition_mechanic = {
 				}
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_6 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_6 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
 						NOT = { has_country_flag = SOL_twilight_ascended }
-						event_target:SOL_strike_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -846,14 +839,13 @@ SOL_inquisition_mechanic = {
 				}
 				if = {
 					limit = { 
-						NOT = {
-							AND = {
-								event_target:SOL_strike_target_7 = { has_state_flag = potential_secondary_strike_target }
-								has_country_flag = SOL_refined_resistance_strike
+						event_target:SOL_strike_target_7 = { 
+							OR = {
+								has_state_flag = potential_secondary_strike_target 
+								has_state_flag = SOL_strike_at_the_resistance_target
 							}
 						}
 						NOT = { has_country_flag = upgraded_inquisition }
-						event_target:SOL_strike_target_7 = { is_owned_and_controlled_by = event_target:solar_empire }
 					}
 					divisions_in_state = {
 						size > 3
@@ -866,19 +858,14 @@ SOL_inquisition_mechanic = {
 			base = 1200
 		}
 
-		highlight_state_targets = {
-			state = EQS.SOL_strike_at_resistance_target_array^0
-			state = EQS.SOL_strike_at_resistance_target_array^1
-			state = EQS.SOL_strike_at_resistance_target_array^2
-			state = EQS.SOL_strike_at_resistance_target_array^3
-			state = EQS.SOL_strike_at_resistance_target_array^4
-			state = EQS.SOL_strike_at_resistance_target_array^5
-			state = EQS.SOL_strike_at_resistance_target_array^6
+		highlight_states = {
+			OR = {
+				has_state_flag = potential_secondary_strike_target 
+				has_state_flag = SOL_strike_at_the_resistance_target
+			}
 		}
 
-		allowed = {
-			always = no
-		}
+		allowed = {	always = no }
 
 		selectable_mission = yes
 		days_mission_timeout = 30
@@ -896,94 +883,87 @@ SOL_inquisition_mechanic = {
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_1 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_1
 							}
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_2 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_2
 							}
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_3 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_3
 							}
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_4 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_4
 							}
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_5 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_5
 							}
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_6 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_6
 							}
 							NOT = { has_country_flag = SOL_twilight_ascended }
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 					if = {
 						limit = { 
 							event_target:SOL_strike_target_7 = { has_state_flag = potential_secondary_strike_target }
-							NOT = { has_country_flag = SOL_refined_resistance_strike }
 							divisions_in_state = {
 								size > 3
 								state = event_target:SOL_strike_target_7
 							}
 							NOT = { has_country_flag = upgraded_inquisition }
 						}
-						add_to_variable = { var = daybreaker_support value = -2 }
-						add_to_variable = { var = daybreaker_support_temp_loss_tracker value = 2 }
+						add_to_variable = { var = daybreaker_support value = solar_inquisition_decision_loyalty_decrease }
+						subtract_from_variable = { var = daybreaker_support_temp_loss_tracker value = solar_inquisition_decision_loyalty_decrease }
 						add_to_variable = { var = strike_at_resistance_success_rating value = -1 }
 					}
 				}
@@ -997,7 +977,7 @@ SOL_inquisition_mechanic = {
 					}
 					SOL_calculate_leads_medium = yes
 					add_to_variable = { var = SOL_lead_variable value = lead_counter }
-					add_to_variable = { var = SOL_lead_variable_temp_gain_tracker value = lead_counter}
+					add_to_variable = { var = SOL_lead_variable_temp_gain_tracker value = lead_counter }
 					add_to_variable = { var = strike_at_resistance_success_rating value = 1 }
 				}
 				if = {
@@ -1026,18 +1006,30 @@ SOL_inquisition_mechanic = {
 					add_to_variable = { var = SOL_lead_variable value = lead_counter }
 					add_to_variable = { var = SOL_lead_variable_temp_gain_tracker value = lead_counter}
 					set_variable = { var = solar_resistance_actions_progress value = 4 }
-					set_country_flag = {
-						flag = resistance_attack_blocked
-						days = 50
-						value = 1
-					}
+					add_to_variable = { var = resistance_attack_blocked value = 50 }
 					add_to_variable = { var = strike_at_resistance_success_rating value = 5 }
-					country_event = {
-						id = paxsolaris.12
-						days = 3
+					if = {
+						limit = {
+							NOT = { has_country_flag = SOL_highlight_states_decision_unlocked }
+						}
+						country_event = {
+							id = paxsolaris.12
+							days = 3
+						}
 					}
-					clear_array = EQS.SOL_past_resistance_targets
-					clear_variable = SOL_past_resistance_targets_num
+					if = {
+						limit = {
+							NOT = { has_country_flag = SOL_great_march_fired }
+						}
+						country_event = {
+							id = paxsolaris.229
+							days = 1
+						}
+					}
+					every_state = {
+						limit = { has_state_flag = sol_past_resistance_activity }
+						clr_state_flag = sol_past_resistance_activity
+					}
 				}
 				else_if = {
 					limit = {
@@ -1051,11 +1043,7 @@ SOL_inquisition_mechanic = {
 					add_to_variable = { var = SOL_lead_variable value = lead_counter }
 					add_to_variable = { var = SOL_lead_variable_temp_gain_tracker value = lead_counter}
 					set_variable = { var = solar_resistance_actions_progress value = 4 }
-					set_country_flag = {
-						flag = resistance_attack_blocked
-						days = 30
-						value = 1
-					}
+					add_to_variable = { var = resistance_attack_blocked value = 30 }
 					add_to_variable = { var = strike_at_resistance_success_rating value = 3 }
 					if = {
 						limit = {
@@ -1066,10 +1054,20 @@ SOL_inquisition_mechanic = {
 							days = 3
 						}
 					}
-					clear_array = EQS.SOL_past_resistance_targets
-					clear_variable = SOL_past_resistance_targets_num
+					if = {
+						limit = {
+							NOT = { has_country_flag = SOL_great_march_fired }
+						}
+						country_event = {
+							id = paxsolaris.229
+							days = 1
+						}
+					}
+					every_state = {
+						limit = { has_state_flag = sol_past_resistance_activity }
+						clr_state_flag = sol_past_resistance_activity
+					}
 				}
-				SOL_calculate_last_resistance_strike_target = yes
 			}
 			hidden_effect = { SOL_calculate_loyalty = yes }
 			country_event = {
@@ -1082,11 +1080,11 @@ SOL_inquisition_mechanic = {
 			hidden_effect = {
 				every_state = {
 					clr_state_flag = potential_secondary_strike_target
+					clr_state_flag = SOL_strike_at_the_resistance_target
 				}
 			}
 			clr_country_flag = SOL_refined_resistance_strike
 			clr_country_flag = resistance_strike_in_progress
-			clear_array = EQS.SOL_strike_at_resistance_target_array
 			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
 			hidden_effect = { SOL_calculate_loyalty = yes }
 		}
@@ -1095,30 +1093,27 @@ SOL_inquisition_mechanic = {
 		icon = GFX_decision_sol_raid_resistance
 		priority = 80
 		available = {
-			hidden_trigger = {
-				check_variable = { solar_resistance_actions_progress > 0 }
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
 		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
 				check_variable = { solar_resistance_actions_progress > 0 }
 				NOT = { has_country_flag = resistance_strike_in_progress }
 			}
 		}
+		allowed = { original_tag = EQS }
 		ai_will_do = {
 			factor = 100
 		}
 		custom_cost_trigger = {
-			command_power > 4
+			check_variable = {
+				var = command_power
+				value = 5
+				compare = greater_than_or_equals
+			}
 			check_variable = {
 				var = SOL_lead_variable
 				value = 25
@@ -1146,140 +1141,150 @@ SOL_inquisition_mechanic = {
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_initiate_raid_resistance_decision"
 			hidden_effect = {
+				random_list = {
+					1 = { 
+						set_variable = { var = SOL_raid_resistance_base_var value = 1 }
+					}
+					1 = { 
+						modifier = {
+							factor = 0
+							has_country_flag = SOL_twilight_ascended
+						}
+						set_variable = { var = SOL_raid_resistance_base_var value = 2 }
+					}
+					1 = { 
+						modifier = {
+							factor = 0
+							has_country_flag = upgraded_inquisition
+						}
+						set_variable = { var = SOL_raid_resistance_base_var value = 3 }
+					}
+				}
 				random_owned_controlled_state = {
 					limit = {
 						is_core_of = event_target:solar_empire
 						NOT = { state = 3 }
 						NOT = { state = 127 }
 						NOT = { state = event_target:SOL_resistance_stronghold }
+						NOT = { has_variable = SOL_raid_resistance_base_state_var }
 						is_owned_and_controlled_by = event_target:solar_empire
 						distance_to = {
-							value < 1500
+							value < 800
 							target = event_target:SOL_resistance_stronghold
 						}
 					}
 					save_global_event_target_as = SOL_raid_resistance_target_1
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = event_target:solar_empire
-						NOT = { state = 3 }
-						NOT = { state = 127 }
-						NOT = { state = event_target:SOL_raid_resistance_target_1 }
-						NOT = { state = event_target:SOL_resistance_stronghold }
-						is_owned_and_controlled_by = event_target:solar_empire
-						distance_to = {
-							value < 1500
-							target = event_target:SOL_resistance_stronghold
-						}
-					}
-					save_global_event_target_as = SOL_raid_resistance_target_2
-					#set_state_flag = SOL_resistance_base_dummy_target_1_flag
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = event_target:solar_empire
-						NOT = { state = 3 }
-						NOT = { state = 127 }
-						NOT = { state = event_target:SOL_raid_resistance_target_1 }
-						NOT = { state = event_target:SOL_resistance_stronghold }
-						NOT = { state = event_target:SOL_raid_resistance_target_2 }
-						is_owned_and_controlled_by = event_target:solar_empire
-						distance_to = {
-							value < 1500
-							target = event_target:SOL_resistance_stronghold
-						}
-					}
-					save_global_event_target_as = SOL_raid_resistance_target_3
-					#set_state_flag = SOL_resistance_base_dummy_target_2_flag
+					set_variable = { SOL_raid_resistance_base_state_var = 1 }
+					EQS = { activate_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
 				}
 				if = {
-					limit = {
-						AND = {
-							has_country_flag = SOL_twilight_ascended
-							has_country_flag = upgraded_inquisition
+					limit = { NOT = { has_country_flag = SOL_twilight_ascended } }
+					random_owned_controlled_state = {
+						limit = {
+							is_core_of = event_target:solar_empire
+							NOT = { state = 3 }
+							NOT = { state = 127 }
+							NOT = { state = event_target:SOL_resistance_stronghold }
+							NOT = { has_variable = SOL_raid_resistance_base_state_var }
+							is_owned_and_controlled_by = event_target:solar_empire
+							distance_to = {
+								value < 800
+								target = event_target:SOL_resistance_stronghold
+							}
 						}
+						save_global_event_target_as = SOL_raid_resistance_target_2
+						set_variable = { SOL_raid_resistance_base_state_var = 2 }
+						EQS = { activate_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
 					}
-					set_variable = { var = SOL_raid_resistance_base_var value = 1 }
-					activate_mission = SOL_raid_resistance_decision_1
 				}
-				else_if = {
-					limit = {
-						OR = {
-							has_country_flag = SOL_twilight_ascended
-							has_country_flag = upgraded_inquisition
+				if = {
+					limit = { NOT = { has_country_flag = upgraded_inquisition } }
+					random_owned_controlled_state = {
+						limit = {
+							is_core_of = event_target:solar_empire
+							NOT = { state = 3 }
+							NOT = { state = 127 }
+							NOT = { state = event_target:SOL_resistance_stronghold }
+							NOT = { has_variable = SOL_raid_resistance_base_state_var }
+							is_owned_and_controlled_by = event_target:solar_empire
+							distance_to = {
+								value < 800
+								target = event_target:SOL_resistance_stronghold
+							}
 						}
+						save_global_event_target_as = SOL_raid_resistance_target_3
+						set_variable = { SOL_raid_resistance_base_state_var = 3 }
+						EQS = { activate_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
 					}
-					random_list = {
-						1 = { set_variable = { var = SOL_raid_resistance_base_var value = 1 } }
-						1 = { set_variable = { var = SOL_raid_resistance_base_var value = 2 } }
-					}
-					activate_mission = SOL_raid_resistance_decision_1
-					activate_mission = SOL_raid_resistance_decision_2
 				}
-				else = {
-					random_list = {
-						1 = { set_variable = { var = SOL_raid_resistance_base_var value = 1 } }
-						1 = { set_variable = { var = SOL_raid_resistance_base_var value = 2 } }
-						1 = { set_variable = { var = SOL_raid_resistance_base_var value = 3 } }
-
-					}
-					activate_mission = SOL_raid_resistance_decision_1
-					activate_mission = SOL_raid_resistance_decision_2
-					activate_mission = SOL_raid_resistance_decision_3
-				}
-				
 			}
 			custom_effect_tooltip = raid_decision_outcome
 		}
 	}
-	SOL_raid_resistance_decision_1 = {
+	SOL_raid_resistance_decision = {
 		icon = GFX_decision_sol_raid_resistance
 		priority = 79
 		available = {
-			event_target:SOL_raid_resistance_target_1 = {
-				is_controlled_by = ROOT
-			}
 			divisions_in_state = {
 				size > 0
-				state = event_target:SOL_raid_resistance_target_1
+				state = FROM
 			}
 		}
 		ai_will_do = {
 			base = 100
 		}
 		visible = {
-			event_target:SOL_raid_resistance_target_1 = {
-				is_controlled_by = ROOT
+			custom_trigger_tooltip = {
+				tooltip = SOL_state_uprising_controlled_tt
+				any_state = { #Yes, I know this is a weird way to do it. But this is the only way to prevent the game spitting out annoying errors. 
+					state = FROM
+					is_controlled_by = ROOT
+				}
 			}
 		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_raid_resistance_target_1
-		}
 		
-		allowed = {
-			always = no
-		}
+		allowed = { always = no }
 
 		selectable_mission = yes
 		days_mission_timeout = 20
 		fixed_random_seed = no
+		fire_only_once = yes
+
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_raid_resistance_decision_1"
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_raid_resistance_decision"
 			hidden_effect = {
 				if = {
-					limit = { check_variable = { SOL_raid_resistance_base_var = 1 } }
+					limit = { check_variable = { FROM.SOL_raid_resistance_base_state_var = EQS.SOL_raid_resistance_base_var } }
 					country_event = { id = paxsolaris.73 }
-					remove_mission = SOL_raid_resistance_decision_2
-					remove_mission = SOL_raid_resistance_decision_3
+					event_target:SOL_raid_resistance_target_1 = { 
+						clear_variable = SOL_raid_resistance_base_state_var
+						EQS = { remove_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
+					}
+					event_target:SOL_raid_resistance_target_2 = { 
+						clear_variable = SOL_raid_resistance_base_state_var
+						EQS = { remove_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
+					}
+					event_target:SOL_raid_resistance_target_3 = { 
+						clear_variable = SOL_raid_resistance_base_state_var
+						EQS = { remove_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
+					}
 				}
 				else = {
 					random_list = {
 						30 = {
 							country_event = { id = paxsolaris.72 }
-							remove_mission = SOL_raid_resistance_decision_2
-							remove_mission = SOL_raid_resistance_decision_3
+							event_target:SOL_raid_resistance_target_1 = { 
+								clear_variable = SOL_raid_resistance_base_state_var
+								EQS = { remove_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
+							}
+							event_target:SOL_raid_resistance_target_2 = { 
+								clear_variable = SOL_raid_resistance_base_state_var
+								EQS = { remove_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
+							}
+							event_target:SOL_raid_resistance_target_3 = { 
+								clear_variable = SOL_raid_resistance_base_state_var
+								EQS = { remove_targeted_decision = { target = PREV decision = SOL_raid_resistance_decision } }
+							}
 						}
 						30 = {
 							modifier = {
@@ -1293,147 +1298,7 @@ SOL_inquisition_mechanic = {
 			}
 		}
 		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_raid_resistance_decision_1"
-			country_event = { id = paxsolaris.70 }
-		}
-	}
-	SOL_raid_resistance_decision_2 = {
-		icon = GFX_decision_sol_raid_resistance
-		priority = 78
-		available = {
-			event_target:SOL_raid_resistance_target_2 = {
-				is_controlled_by = ROOT
-			}
-			divisions_in_state = {
-				size > 0
-				state = event_target:SOL_raid_resistance_target_2
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		visible = {
-			event_target:SOL_raid_resistance_target_2 = {
-				is_controlled_by = ROOT
-			}
-			NOT = {
-				AND = {
-					has_country_flag = SOL_twilight_ascended
-					has_country_flag = upgraded_inquisition
-				}
-			}
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_raid_resistance_target_2
-		}
-		
-		allowed = {
-			always = no
-		}
-
-		selectable_mission = yes
-		days_mission_timeout = 20
-		fixed_random_seed = no
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_raid_resistance_decision_2"
-			hidden_effect = {
-				if = {
-					limit = { check_variable = { SOL_raid_resistance_base_var = 2 } }
-					country_event = { id = paxsolaris.73 }
-					remove_mission = SOL_raid_resistance_decision_1
-					remove_mission = SOL_raid_resistance_decision_3
-				}
-				else = {
-					random_list = {
-						30 = {
-							country_event = { id = paxsolaris.72 }
-							remove_mission = SOL_raid_resistance_decision_1
-							remove_mission = SOL_raid_resistance_decision_3
-						}
-						30 = {
-							modifier = {
-								add = 40
-								has_country_flag = inquisition_less_detection_chance
-							}
-							country_event = { id = paxsolaris.71 }
-						}
-					}
-				}
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_raid_resistance_decision_2"
-			country_event = { id = paxsolaris.70 }
-		}
-	}
-	SOL_raid_resistance_decision_3 = {
-		icon = GFX_decision_sol_raid_resistance
-		priority = 77
-		available = {
-			event_target:SOL_raid_resistance_target_3 = {
-				is_controlled_by = ROOT
-			}
-			divisions_in_state = {
-				size > 0
-				state = event_target:SOL_raid_resistance_target_3
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		visible = {
-			event_target:SOL_raid_resistance_target_3 = {
-				is_controlled_by = ROOT
-			}
-			NOT = {
-				OR = {
-					has_country_flag = SOL_twilight_ascended
-					has_country_flag = upgraded_inquisition
-				}
-			}
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_raid_resistance_target_3
-		}
-		
-		allowed = {
-			always = no
-		}
-
-		selectable_mission = yes
-		days_mission_timeout = 20
-		fixed_random_seed = no
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_raid_resistance_decision_3"
-			hidden_effect = {
-				if = {
-					limit = { check_variable = { SOL_raid_resistance_base_var = 3 } }
-					country_event = { id = paxsolaris.73 }
-					remove_mission = SOL_raid_resistance_decision_1
-					remove_mission = SOL_raid_resistance_decision_2
-				}
-				else = {
-					random_list = {
-						30 = {
-							country_event = { id = paxsolaris.72 }
-							remove_mission = SOL_raid_resistance_decision_1
-							remove_mission = SOL_raid_resistance_decision_2
-						}
-						30 = {
-							modifier = {
-								add = 40
-								has_country_flag = inquisition_less_detection_chance
-							}
-							country_event = { id = paxsolaris.71 }
-						}
-					}
-				}
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_raid_resistance_decision_3"
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_raid_resistance_decision"
 			country_event = { id = paxsolaris.70 }
 		}
 	}
@@ -1442,21 +1307,12 @@ SOL_inquisition_mechanic = {
 		icon = GFX_decision_information_blackout
 		priority = 60
 		available = {
-			hidden_trigger = {
-				check_variable = { solar_resistance_outreach_actions_progress = 0 }
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-				NOT = { check_variable = { solar_resistance_outreach_strength = 0 } }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
 		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
 				check_variable = { solar_resistance_outreach_actions_progress = 0 }
 				NOT = { check_variable = { solar_resistance_outreach_strength = 0 } }
@@ -1467,6 +1323,7 @@ SOL_inquisition_mechanic = {
 		ai_will_do = {
 			factor = 150
 		}
+		allowed = { original_tag = EQS }
 		custom_cost_trigger = {
 			check_variable = {
 				var = command_power
@@ -1720,18 +1577,20 @@ SOL_inquisition_mechanic = {
 			base = 1200
 		}
 
-		highlight_state_targets = {
-			state = event_target:SOL_information_blackout_target_1
-			state = event_target:SOL_information_blackout_target_2
-			state = event_target:SOL_information_blackout_target_3
-			state = event_target:SOL_information_blackout_target_4
-			state = event_target:SOL_information_blackout_target_5
-			state = event_target:SOL_information_blackout_target_6
-			state = event_target:SOL_information_blackout_target_7
-			state = event_target:SOL_information_blackout_target_8
-			state = event_target:SOL_information_blackout_target_9
-			state = event_target:SOL_information_blackout_target_10
-			state = event_target:SOL_information_blackout_target_11
+		highlight_states = {
+			OR = {
+				state = event_target:SOL_information_blackout_target_1
+				state = event_target:SOL_information_blackout_target_2
+				state = event_target:SOL_information_blackout_target_3
+				state = event_target:SOL_information_blackout_target_4
+				state = event_target:SOL_information_blackout_target_5
+				state = event_target:SOL_information_blackout_target_6
+				state = event_target:SOL_information_blackout_target_7
+				state = event_target:SOL_information_blackout_target_8
+				state = event_target:SOL_information_blackout_target_9
+				state = event_target:SOL_information_blackout_target_10
+				state = event_target:SOL_information_blackout_target_11
+			}
 		}
 
 		allowed = {
@@ -1751,11 +1610,7 @@ SOL_inquisition_mechanic = {
 				SOL_calculate_leads_large = yes
 				add_to_variable = { var = SOL_lead_variable value = lead_counter }
 				set_variable = { var = solar_resistance_outreach_actions_progress value = 4 }
-				set_country_flag = {
-					flag = resistance_attack_blocked
-					days = 30
-					value = 1
-				}
+				add_to_variable = { var = resistance_attack_blocked value = 30 }
 				add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
 				SOL_calculate_loyalty = yes 
 				clr_country_flag = information_strike_in_progress
@@ -1772,20 +1627,12 @@ SOL_inquisition_mechanic = {
 		icon = GFX_decision_sol_arrest_propagandists
 		priority = 58
 		available = {
-			hidden_trigger = {
-				check_variable = { solar_resistance_outreach_actions_progress > 0 }
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
 		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
 				check_variable = { solar_resistance_outreach_actions_progress > 0 }
 				NOT = { has_country_flag = information_strike_in_progress }
@@ -1794,8 +1641,13 @@ SOL_inquisition_mechanic = {
 		ai_will_do = {
 			factor = 100
 		}
+		allowed = { original_tag = EQS }
 		custom_cost_trigger = {
-			command_power > 4
+			check_variable = {
+				var = command_power
+				value = 5
+				compare = greater_than_or_equals
+			}
 			check_variable = {
 				var = SOL_lead_variable
 				value = 25
@@ -1832,413 +1684,99 @@ SOL_inquisition_mechanic = {
 						NOT = { state = event_target:SOL_resistance_stronghold }
 						is_owned_and_controlled_by = event_target:solar_empire
 						distance_to = {
-							value < 1500
+							value < 800
 							target = event_target:SOL_resistance_stronghold
 						}
 					}
 					save_global_event_target_as = SOL_arrest_event_target
 				}
-				random_list = {
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 1 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 2 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 3 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 4 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 5 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 6 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 7 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 8 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 9 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 10 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 11 }
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_first_target value = 12 }
-					}
-				}
-				random_list = {
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 1 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 1 }
+				clear_array = SOL_arrest_sympathisers_targets
+				while_loop_effect = {
+					limit = { check_variable = { SOL_arrest_sympathisers_targets^num < 5 } }
+					random_list = {
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 1 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 1 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 2 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 2 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 2 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 2 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 3 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 3 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 3 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 3 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 4 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 4 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 4 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 4 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 5 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 5 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 5 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 5 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 6 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 6 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 6 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 6 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 7 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 7 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 7 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 7 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 8 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 8 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 8 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 8 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 9 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 9 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 9 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 9 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 10 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 10 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 10 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 10 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 11 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 11 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 11 }
 							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 11 }
 						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_second_target value = 12 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 12 }
+						1 = { 
+							modifier = {
+								factor = 0
+								is_in_array = { SOL_arrest_sympathisers_targets = 12 }
 							}
-						}
-					}
-				}
-				random_list = {
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 1 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 1 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 1 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 2 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 2 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 2 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 3 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 3 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 3 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 4 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 4 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 4 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 5 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 5 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 5 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 6 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 6 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 6 }		
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 7 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 7 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 7 }		
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 8 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 8 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 8 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 9 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 9 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 9 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 10 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 10 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 10 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 11 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 11 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 11 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_third_target value = 12 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 12 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 12 }
-							}
-						}
-					}
-				}
-				random_list = {
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 1 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 1 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 1 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 1 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 2 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 2 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 2 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 2 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 3 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 3 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 3 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 3 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 4 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 4 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 4 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 4 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 5 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 5 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 5 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 5 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 6 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 6 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 6 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 6 }		
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 7 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 7 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 7 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 7 }		
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 8 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 8 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 8 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 8 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 9 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 9 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 9 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 9 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 10 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 10 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 10 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 10 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 11 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 11 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 11 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 11 }
-							}
-						}
-					}
-					1 = { 
-						set_variable = { var = SOL_arrest_sympathisers_fourth_target value = 12 }
-						modifier = {
-							factor = 0
-							OR = {
-								check_variable = { SOL_arrest_sympathisers_first_target = 12 }
-								check_variable = { SOL_arrest_sympathisers_second_target = 12 }
-								check_variable = { SOL_arrest_sympathisers_third_target = 12 }
-							}
+							add_to_array = { SOL_arrest_sympathisers_targets = 12 }
 						}
 					}
 				}
@@ -2246,15 +1784,15 @@ SOL_inquisition_mechanic = {
 				random_list = {
 					1 = { 
 						set_variable = { var = SOL_arrest_sympathisers_target_var value = 1 }
-						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_first_target } 
+						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_targets^0 } 
 					}
 					1 = { 
 						set_variable = { var = SOL_arrest_sympathisers_target_var value = 2 } 
-						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_second_target } 
+						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_targets^1 } 
 					}
 					1 = { 
 						set_variable = { var = SOL_arrest_sympathisers_target_var value = 3 } 
-						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_third_target }
+						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_targets^2 } 
 						modifier = {
 							factor = 0 
 							AND = {
@@ -2265,7 +1803,7 @@ SOL_inquisition_mechanic = {
 					}
 					1 = { 
 						set_variable = { var = SOL_arrest_sympathisers_target_var value = 4 } 
-						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_fourth_target }
+						set_variable = { var = SOL_arrest_sympathisers_target_type_var value = SOL_arrest_sympathisers_targets^3 } 
 						modifier = {
 							factor = 0 
 							OR = {
@@ -2286,9 +1824,6 @@ SOL_inquisition_mechanic = {
 	SOL_investigate_resistance_decision = {
 		icon = GFX_decision_investigate_resistance
 		available = {
-			hidden_trigger = { 
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
@@ -2314,7 +1849,7 @@ SOL_inquisition_mechanic = {
 			custom_effect_tooltip = investigate_four_leads_per_week
 			
 		}
-
+		allowed = { original_tag = EQS }
 		days_remove = 35
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_investigate_resistance_decision"
@@ -2326,19 +1861,13 @@ SOL_inquisition_mechanic = {
 	SOL_highlight_states = {
 		icon = GFX_decision_mark_states
 		available = {
-			hidden_trigger = { 
-				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
-			}
 			custom_trigger_tooltip = {
 				tooltip = inquisitiondecisionongoing
 				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
 			}
 		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
+		allowed = { original_tag = EQS }
 		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
 				NOT = { has_country_flag = SOL_highlight_states_active }
 				has_country_flag = SOL_highlight_states_decision_unlocked
@@ -2377,14 +1906,7 @@ SOL_inquisition_mechanic = {
 	}
 	SOL_highlight_states_mission = {
 		icon = GFX_decision_mark_states
-		available = {
-			always = yes
-		}
-		activation = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		}
 		visible = {
-			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
 				has_country_flag = SOL_highlight_states_active
 			}
@@ -2392,27 +1914,8 @@ SOL_inquisition_mechanic = {
 		ai_will_do = {
 			factor = 0
 		}
-		highlight_state_targets = {
-			state = EQS.SOL_past_resistance_targets^0
-			state = EQS.SOL_past_resistance_targets^1
-			state = EQS.SOL_past_resistance_targets^2
-			state = EQS.SOL_past_resistance_targets^3
-			state = EQS.SOL_past_resistance_targets^4
-			state = EQS.SOL_past_resistance_targets^5
-			state = EQS.SOL_past_resistance_targets^6
-			state = EQS.SOL_past_resistance_targets^7
-			state = EQS.SOL_past_resistance_targets^8
-			state = EQS.SOL_past_resistance_targets^9
-			state = EQS.SOL_past_resistance_targets^10
-			state = EQS.SOL_past_resistance_targets^11
-			state = EQS.SOL_past_resistance_targets^12
-			state = EQS.SOL_past_resistance_targets^13
-			state = EQS.SOL_past_resistance_targets^14
-			state = EQS.SOL_past_resistance_targets^15
-			state = EQS.SOL_past_resistance_targets^16
-			state = EQS.SOL_past_resistance_targets^17
-			state = EQS.SOL_past_resistance_targets^18
-			state = EQS.SOL_past_resistance_targets^19
+		highlight_states = {
+			has_state_flag = sol_past_resistance_activity
 		}
 		highlight_color_while_active = 1
 
@@ -2425,476 +1928,69 @@ SOL_inquisition_mechanic = {
 		}
 		fire_only_once = no
 	}
-	SOL_dispatch_pegasi_decision_1 = {
+	SOL_dispatch_pegasi_decision = {
 		icon = infiltrate_state
-		allowed = {
-			original_tag = EQS
-		}
-
-		visible = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_1
-			}
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-		
+		allowed = { always = no }
+		fire_only_once = yes
+		selectable_mission = no
 		available = {
+			hidden_trigger = { 
+				always = no
+			}
+		}
+		visible = {
+			ROOT = {
+				NOT = { has_country_flag = SOL_recall_pegasi_decision_in_progress_flag }
+			}
 		}
 		
-		state_target = yes
-		target_array = SOL_dispatched_mtf_state_decision_1_arr
-		target_root_trigger = {
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_1
-				OR = {
-					owner = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 100
-		}
-
-		days_remove = SOL_dispatched_mtf_state_decision_1_duration_var
-
-		modifier = {
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_dispatch_pegasi_decision_1 target: [From.GetName]"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_dispatch_pegasi_decision_1 target: [From.GetName]"
-			if = {
-				limit = {
-					FROM = {
-						NOT = {
-                           is_core_of = FROM.OWNER
-                        }
-					}
-				}
-				FROM = { add_resistance = -3 }
-            }
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = SOL_dispatched_mtf_state_decision_duration_var
+		is_good = yes
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_dispatch_pegasi_decision target: [From.GetName]"
 			custom_effect_tooltip = SOL_dispatch_pegasi_decision_spawn_units_tt
 			hidden_effect = {
-				remove_from_array = { SOL_dispatched_mtf_state_decision_1_arr = FROM }
 				FROM = {
-					clr_state_flag = SOL_dispatched_mtf_state_decision_1
-					create_unit = { division = "name = \"IST-1 'Firebolts'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-					create_unit = { division = "name = \"IST-2 'Sunrise'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+					if = {
+						limit = { check_variable = { SOL_mobile_task_force_deployed_var = 1 } }
+						create_unit = { division = "name = \"IST-1 'Firebolts'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+						create_unit = { division = "name = \"IST-2 'Sunrise'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+					}
+					else_if = {
+						limit = { check_variable = { SOL_mobile_task_force_deployed_var = 2 } }
+						create_unit = { division = "name = \"IST-3 'Dawnbreak'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+						create_unit = { division = "name = \"IST-4 'Right Hoof'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+					}
+					else_if = {
+						limit = { check_variable = { SOL_mobile_task_force_deployed_var = 3 } }
+						create_unit = { division = "name = \"IST-5 'Infernos'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+						create_unit = { division = "name = \"IST-6 'The Enforcers'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+					}
+					else_if = {
+						limit = { check_variable = { SOL_mobile_task_force_deployed_var = 4 } }
+						create_unit = { division = "name = \"IST-7 'Chromosphere'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+						create_unit = { division = "name = \"IST-8 'Zealots'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+					}
+					else_if = {
+						limit = { check_variable = { SOL_mobile_task_force_deployed_var = 5 } }
+						create_unit = { division = "name = \"IST-9 'The Faithful'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+						create_unit = { division = "name = \"IST-10 'Midnight Sun'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+					}
 				}
 			}
 		}
 		cancel_trigger = {
 			custom_trigger_tooltip = {
 				tooltip = SOL_has_recalled_pegasi_tt
-				has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-			}
-		}
-	}
-	SOL_dispatch_pegasi_decision_2 = {
-		icon = infiltrate_state
-		allowed = {
-			original_tag = EQS
-		}
-
-		visible = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_2
-			}
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-		
-		available = {
-		}
-		
-		state_target = yes
-		target_array = SOL_dispatched_mtf_state_decision_2_arr
-		target_root_trigger = {
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_2
-				OR = {
-					owner = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 100
-		}
-
-		days_remove = SOL_dispatched_mtf_state_decision_2_duration_var
-
-		modifier = {
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_dispatch_pegasi_decision_2 target: [From.GetName]"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_dispatch_pegasi_decision_2 target: [From.GetName]"
-			if = {
-				limit = {
-					FROM = {
-						NOT = {
-                           is_core_of = FROM.OWNER
-                        }
-					}
-				}
-				FROM = { add_resistance = -3 }
-            }
-			custom_effect_tooltip = SOL_dispatch_pegasi_decision_spawn_units_tt
-			hidden_effect = {
-				remove_from_array = { SOL_dispatched_mtf_state_decision_2_arr = FROM }
-				FROM = {
-					clr_state_flag = SOL_dispatched_mtf_state_decision_2
-					create_unit = { division = "name = \"IST-3 'Dawnbreak'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-					create_unit = { division = "name = \"IST-4 'Right Hoof'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-				}
-			}
-		}
-		cancel_trigger = {
-			custom_trigger_tooltip = {
-				tooltip = SOL_has_recalled_pegasi_tt
-				has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-			}
-		}
-	}
-	SOL_dispatch_pegasi_decision_3 = {
-		icon = infiltrate_state
-		allowed = {
-			original_tag = EQS
-		}
-
-		visible = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_3
-			}
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-		
-		available = {
-		}
-		
-		state_target = yes
-		target_array = SOL_dispatched_mtf_state_decision_3_arr
-		target_root_trigger = {
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_3
-				OR = {
-					owner = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 100
-		}
-
-		days_remove = SOL_dispatched_mtf_state_decision_3_duration_var
-
-		modifier = {
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_dispatch_pegasi_decision_3 target: [From.GetName]"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_dispatch_pegasi_decision_3 target: [From.GetName]"
-			if = {
-				limit = {
-					FROM = {
-						NOT = {
-                           is_core_of = FROM.OWNER
-                        }
-					}
-				}
-				FROM = { add_resistance = -3 }
-            }
-			custom_effect_tooltip = SOL_dispatch_pegasi_decision_spawn_units_tt
-			hidden_effect = {
-				remove_from_array = { SOL_dispatched_mtf_state_decision_3_arr = FROM }
-				FROM = {
-					clr_state_flag = SOL_dispatched_mtf_state_decision_3
-					create_unit = { division = "name = \"IST-5 'Infernos'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-					create_unit = { division = "name = \"IST-6 'The Enforcers'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-				}
-			}
-		}
-		cancel_trigger = {
-			custom_trigger_tooltip = {
-				tooltip = SOL_has_recalled_pegasi_tt
-				has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-			}
-		}
-	}
-	SOL_dispatch_pegasi_decision_4 = {
-		icon = infiltrate_state
-		allowed = {
-			original_tag = EQS
-		}
-
-		visible = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_4
-			}
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-		
-		available = {
-		}
-		
-		state_target = yes
-		target_array = SOL_dispatched_mtf_state_decision_4_arr
-		target_root_trigger = {
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_4
-				OR = {
-					owner = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 100
-		}
-
-		days_remove = SOL_dispatched_mtf_state_decision_4_duration_var
-
-		modifier = {
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_dispatch_pegasi_decision_4 target: [From.GetName]"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_dispatch_pegasi_decision_4 target: [From.GetName]"
-			if = {
-				limit = {
-					FROM = {
-						NOT = {
-                           is_core_of = FROM.OWNER
-                        }
-					}
-				}
-				FROM = { add_resistance = -3 }
-            }
-			custom_effect_tooltip = SOL_dispatch_pegasi_decision_spawn_units_tt
-			hidden_effect = {
-				remove_from_array = { SOL_dispatched_mtf_state_decision_4_arr = FROM }
-				FROM = {
-					clr_state_flag = SOL_dispatched_mtf_state_decision_4
-					create_unit = { division = "name = \"IST-7 'Chromosphere'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-					create_unit = { division = "name = \"IST-8 'Zealots'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-				}
-			}
-		}
-		cancel_trigger = {
-			custom_trigger_tooltip = {
-				tooltip = SOL_has_recalled_pegasi_tt
-				has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-			}
-		}
-	}
-	SOL_dispatch_pegasi_decision_5 = {
-		icon = infiltrate_state
-		allowed = {
-			original_tag = EQS
-		}
-
-		visible = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_5
-			}
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-		
-		available = {
-		}
-		
-		state_target = yes
-		target_array = SOL_dispatched_mtf_state_decision_5_arr
-		target_root_trigger = {
-			ROOT = {
-				NOT = {
-					has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				has_state_flag = SOL_dispatched_mtf_state_decision_5
-				OR = {
-					owner = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 100
-		}
-
-		days_remove = SOL_dispatched_mtf_state_decision_5_duration_var
-
-		modifier = {
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_dispatch_pegasi_decision_5 target: [From.GetName]"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_dispatch_pegasi_decision_5 target: [From.GetName]"
-			if = {
-				limit = {
-					FROM = {
-						NOT = {
-                           is_core_of = FROM.OWNER
-                        }
-					}
-				}
-				FROM = { add_resistance = -3 }
-            }
-			custom_effect_tooltip = SOL_dispatch_pegasi_decision_spawn_units_tt
-			hidden_effect = {
-				remove_from_array = { SOL_dispatched_mtf_state_decision_5_arr = FROM }
-				FROM = {
-					clr_state_flag = SOL_dispatched_mtf_state_decision_5
-					create_unit = { division = "name = \"IST-9 'The Faithful'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-					create_unit = { division = "name = \"IST-10 'Midnight Sun'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-				}
-			}
-		}
-		cancel_trigger = {
-			custom_trigger_tooltip = {
-				tooltip = SOL_has_recalled_pegasi_tt
-				has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
+				ROOT = { has_country_flag = SOL_recall_pegasi_decision_in_progress_flag }
 			}
 		}
 	}
 	SOL_recall_pegasi_decision = {
 		icon = generic_prepare_civil_war
-		allowed = {
-			original_tag = EQS
-		}
+		allowed = { original_tag = EQS }
 		
 		visible = {
 			check_variable = {
@@ -2904,8 +2000,6 @@ SOL_inquisition_mechanic = {
 			}
 		}
 		
-		available = {
-		}
 		
 		ai_will_do = {
 			factor = 50
@@ -2915,9 +2009,6 @@ SOL_inquisition_mechanic = {
 		
 		days_remove = 5
 		
-		modifier = {
-			command_power_gain_mult = -0.25
-		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_recall_pegasi_decision"
 			custom_effect_tooltip = SOL_recall_pegasi_decision_effect_tt
@@ -2954,19 +2045,9 @@ SOL_inquisition_mechanic = {
 				set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
 				every_state = {
 					limit = {
-						has_state_flag = SOL_has_already_dispatched_mtf_to_this_state
+						has_variable = SOL_mobile_task_force_deployed_var
 					}
-					clr_state_flag = SOL_has_already_dispatched_mtf_to_this_state
-					remove_from_array = { SOL_dispatched_mtf_state_decision_1_arr = FROM }
-					remove_from_array = { SOL_dispatched_mtf_state_decision_2_arr = FROM }
-					remove_from_array = { SOL_dispatched_mtf_state_decision_3_arr = FROM }
-					remove_from_array = { SOL_dispatched_mtf_state_decision_4_arr = FROM }
-					remove_from_array = { SOL_dispatched_mtf_state_decision_5_arr = FROM }
-					clr_state_flag = SOL_dispatched_mtf_state_decision_1
-					clr_state_flag = SOL_dispatched_mtf_state_decision_2
-					clr_state_flag = SOL_dispatched_mtf_state_decision_3
-					clr_state_flag = SOL_dispatched_mtf_state_decision_4
-					clr_state_flag = SOL_dispatched_mtf_state_decision_5
+					clear_variable = SOL_mobile_task_force_deployed_var
 				}
 			}
 		}
@@ -2981,8 +2062,11 @@ SOL_resistance_activity = {
 	SOL_resistance_major_attack_1 = {
 		icon = generic_ignite_civil_war
 		priority = 100
+		allowed = { always = no }
 		available = {
-			hidden_trigger = { always = no }
+			hidden_trigger = { 
+				check_variable = { days_mission_timeout@SOL_resistance_major_attack_1 < 1 }
+			}
 			divisions_in_state = {
 				size > 5
 				state = 3
@@ -3017,23 +2101,42 @@ SOL_resistance_activity = {
 			}
 		}
 
-		highlight_state_targets = {
-			state = 3
-			state = 2
-			state = 68
-			state = 1
-			state = 103
-			state = 104
-			state = 39
-			state = 65
+		highlight_states = {
+			OR = {
+				state = 3
+				state = 2
+				state = 68
+				state = 1
+				state = 103
+				state = 104
+				state = 39
+				state = 65
+			}
 		}
-		activation = { always = no }
 		
 		selectable_mission = no
 		days_mission_timeout = SOL_resistance_major_attack_duration
+		days_remove = 0
 		is_good = no
-		fire_only_once = no
-
+		fire_only_once = yes
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_resistance_major_attack_1"
+			hidden_effect = {
+				set_country_flag = major_attack_1_win
+				clr_country_flag = major_attack_1_loss
+				hidden_effect = { SOL_calculate_loyalty = yes }
+				country_event = {
+					id = paxsolaris.211
+				}
+				country_event = {
+					id = paxsolaris.212
+					days = 3
+				}
+				remove_mission = SOL_resistance_major_attack_1
+				activate_mission = SOL_siege_of_whinnyapolis 
+				70 = { set_state_flag = SOL_ongoing_uprising }
+			}
+		}
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_resistance_major_attack_1"
 			effect_tooltip = {
@@ -3085,48 +2188,10 @@ SOL_resistance_activity = {
 			hidden_effect = {
 				if = {
 					limit = {
-						OR = { 
-							AND = {
-								divisions_in_state = {
-									size > 5
-									state = 3
-								}
-								divisions_in_state = {
-									size > 1
-									state = 2
-								}
-								divisions_in_state = {
-									size > 1
-									state = 68
-								}
-								divisions_in_state = {
-									size > 1
-									state = 1
-								}
-								divisions_in_state = {
-									size > 1
-									state = 103
-								}
-								divisions_in_state = {
-									size > 1
-									state = 104
-								}
-								divisions_in_state = {
-									size > 1
-									state = 39
-								}
-								divisions_in_state = {
-									size > 1
-									state = 65
-								}
-							}
-							ROOT = { is_ai = yes }
-						}
+						ROOT = { is_ai = yes }
 					}
-					hidden_effect = {
-						set_country_flag = major_attack_1_win
-						clr_country_flag = major_attack_1_loss
-					}
+					set_country_flag = major_attack_1_win
+					clr_country_flag = major_attack_1_loss
 				}
 				else = {
 					add_political_power = -100
@@ -3145,8 +2210,7 @@ SOL_resistance_activity = {
 					id = paxsolaris.212
 					days = 3
 				}
-				SOL_calculate_leads_medium = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
+				remove_mission = SOL_resistance_major_attack_1
 				activate_mission = SOL_siege_of_whinnyapolis 
 				70 = { set_state_flag = SOL_ongoing_uprising }
 			}
@@ -3155,8 +2219,11 @@ SOL_resistance_activity = {
 	SOL_resistance_major_attack_1_surrounding_troops = {
 		icon = generic_ignite_civil_war
 		priority = 99
+		allowed = { always = no }
 		available = {
-			hidden_trigger = { always = no }
+			hidden_trigger = { 
+				check_variable = { days_mission_timeout@SOL_resistance_major_attack_1_surrounding_troops < 1 }
+			}
 			divisions_in_state = {
 				size > 2
 				state = 3
@@ -3191,23 +2258,42 @@ SOL_resistance_activity = {
 			}
 		}
 
-		highlight_state_targets = {
-			state = 3
-			state = 2
-			state = 68
-			state = 1
-			state = 103
-			state = 104
-			state = 39
-			state = 65
+		highlight_states = {
+			OR = {
+				state = 3
+				state = 2
+				state = 68
+				state = 1
+				state = 103
+				state = 104
+				state = 39
+				state = 65
+			}
 		}
-		activation = { always = no }
 		
 		selectable_mission = no
 		days_mission_timeout = SOL_resistance_major_attack_duration
 		is_good = no
-		fire_only_once = no
-
+		days_remove = 0
+		fire_only_once = yes
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_resistance_major_attack_1"
+			hidden_effect = {
+				set_country_flag = major_attack_1_win
+				clr_country_flag = major_attack_1_loss
+				hidden_effect = { SOL_calculate_loyalty = yes }
+				country_event = {
+					id = paxsolaris.211
+				}
+				country_event = {
+					id = paxsolaris.212
+					days = 3
+				}
+				remove_mission = SOL_resistance_major_attack_1
+				activate_mission = SOL_siege_of_whinnyapolis 
+				70 = { set_state_flag = SOL_ongoing_uprising }
+			}
+		}
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_resistance_major_attack_1_surrounding_troops"
 			effect_tooltip = {
@@ -3259,48 +2345,10 @@ SOL_resistance_activity = {
 			hidden_effect = {
 				if = {
 					limit = {
-						OR = { 
-							AND = {
-								divisions_in_state = {
-									size > 2
-									state = 3
-								}
-								divisions_in_state = {
-									size > 0
-									state = 2
-								}
-								divisions_in_state = {
-									size > 0
-									state = 68
-								}
-								divisions_in_state = {
-									size > 0
-									state = 1
-								}
-								divisions_in_state = {
-									size > 0
-									state = 103
-								}
-								divisions_in_state = {
-									size > 0
-									state = 104
-								}
-								divisions_in_state = {
-									size > 0
-									state = 39
-								}
-								divisions_in_state = {
-									size > 0
-									state = 65
-								}
-							}
-							ROOT = { is_ai = yes }
-						}
+						ROOT = { is_ai = yes }
 					}
-					hidden_effect = {
-						set_country_flag = major_attack_1_win
-						clr_country_flag = major_attack_1_loss
-					}
+					set_country_flag = major_attack_1_win
+					clr_country_flag = major_attack_1_loss
 				}
 				else = {
 					add_political_power = -100
@@ -3319,8 +2367,7 @@ SOL_resistance_activity = {
 					id = paxsolaris.212
 					days = 3
 				}
-				SOL_calculate_leads_medium = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
+				remove_mission = SOL_resistance_major_attack_1
 				activate_mission = SOL_siege_of_whinnyapolis 
 				70 = { set_state_flag = SOL_ongoing_uprising }
 			}
@@ -3340,7 +2387,7 @@ SOL_resistance_activity = {
 			base = 100
 		}
 
-		highlight_state_targets = {
+		highlight_states = {
 			state = 70
 		}
 		
@@ -3351,7 +2398,7 @@ SOL_resistance_activity = {
 		is_good = no
 		days_mission_timeout = 4.9
 		selectable_mission = yes
-		fire_only_once = no
+		fire_only_once = yes
 		
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_siege_of_whinnyapolis"
@@ -3365,6 +2412,7 @@ SOL_resistance_activity = {
 					id = paxsolaris.213
 					days = 10
 				}
+				remove_mission = SOL_siege_of_whinnyapolis
 			}
 		}
 		timeout_effect = {
@@ -3376,6 +2424,7 @@ SOL_resistance_activity = {
 			hidden_effect = {
 				if = { 
 					limit = { check_variable = { SOL_siege_of_whinnyapolis_counter < 5 } }
+					remove_mission = SOL_siege_of_whinnyapolis
 					activate_mission = SOL_siege_of_whinnyapolis
 				}
 				else = {
@@ -3426,72 +2475,19 @@ SOL_resistance_activity = {
 			}
 		}
 	}
-	SOL_resistance_attack = {
-		icon = GFX_decision_resistance_attack
-		priority = 50
-		available = {		
-			hidden_trigger = { always = no }
-			if = {
-				limit = { has_country_flag = first_refine_completed }
-				if = {
-					limit = { 
-						OR = {
-							event_target:SOL_resistance_attack_target_1 = { has_state_flag = resistance_attack_dummy_target }
-							event_target:SOL_resistance_attack_target_1 = { has_state_flag = resistance_attack_true_target }
-						}
-						event_target:SOL_resistance_attack_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
-					}
-					event_target:SOL_resistance_attack_target_1 = { meets_division_requirements_attack = yes }
-				}
-				if = {
-					limit = { 
-						OR = {
-							event_target:SOL_resistance_attack_target_2 = { has_state_flag = resistance_attack_dummy_target }
-							event_target:SOL_resistance_attack_target_2 = { has_state_flag = resistance_attack_true_target }
-						}
-						event_target:SOL_resistance_attack_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
-					}
-					event_target:SOL_resistance_attack_target_2 = { meets_division_requirements_attack = yes }
-				}
-				if = {
-					limit = { 
-						OR = {
-							event_target:SOL_resistance_attack_target_3 = { has_state_flag = resistance_attack_dummy_target }
-							event_target:SOL_resistance_attack_target_3 = { has_state_flag = resistance_attack_true_target }
-						}
-						event_target:SOL_resistance_attack_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
-					}
-					event_target:SOL_resistance_attack_target_3 = { meets_division_requirements_attack = yes }
-				}
-				if = {
-					limit = { 
-						OR = {
-							event_target:SOL_resistance_attack_target_4 = { has_state_flag = resistance_attack_dummy_target }
-							event_target:SOL_resistance_attack_target_4 = { has_state_flag = resistance_attack_true_target }
-						}
-						event_target:SOL_resistance_attack_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
-					}
-					event_target:SOL_resistance_attack_target_4 = { meets_division_requirements_attack = yes }
-				}
-				if = {
-					limit = { 
-						OR = {
-							event_target:SOL_resistance_attack_target_5 = { has_state_flag = resistance_attack_dummy_target }
-							event_target:SOL_resistance_attack_target_5 = { has_state_flag = resistance_attack_true_target }
-						}
-						event_target:SOL_resistance_attack_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
-					}
-					event_target:SOL_resistance_attack_target_5 = { meets_division_requirements_attack = yes }
-				}
-				if = {
-					limit = { 
-						OR = {
-							event_target:SOL_resistance_attack_target_6 = { has_state_flag = resistance_attack_dummy_target }
-							event_target:SOL_resistance_attack_target_6 = { has_state_flag = resistance_attack_true_target }
-						}
-						event_target:SOL_resistance_attack_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
-					}
-					event_target:SOL_resistance_attack_target_6 = { meets_division_requirements_attack = yes }
+	SOL_long_march = {
+		icon = GFX_decision_smash_resistance
+		priority = 97
+		available = {	
+			divisions_in_state = {
+				size > 5
+				state = FROM
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_state_uprising_controlled_tt
+				any_state = { #Yes, I know this is a weird way to do it. But this is the only way to prevent the game spitting out annoying errors. 
+					state = FROM
+					is_controlled_by = ROOT
 				}
 			}
 		}
@@ -3500,24 +2496,212 @@ SOL_resistance_activity = {
 			base = 100
 		}
 
-		highlight_state_targets = {
-			state = EQS.SOL_resistance_attack_target_array^0
-			state = EQS.SOL_resistance_attack_target_array^1
-			state = EQS.SOL_resistance_attack_target_array^2
-			state = EQS.SOL_resistance_attack_target_array^3
-			state = EQS.SOL_resistance_attack_target_array^4
-			state = EQS.SOL_resistance_attack_target_array^5
-		}
-		
-		activation = {
+		allowed = {
 			always = no
 		}
 		
 		is_good = no
-		days_mission_timeout = resistance_attack_mission_dur
-		selectable_mission = no
-		fire_only_once = no
+		days_mission_timeout = 10
+		selectable_mission = yes
+		fire_only_once = yes
 
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_long_march"
+			custom_effect_tooltip = SOL_long_march_fail_tt
+			hidden_effect = {
+				add_to_variable = { SOL_long_march_num = 1 }
+				if = {
+					limit = { check_variable = { SOL_long_march_num < 3 } }
+					remove_targeted_decision = { target = FROM decision = SOL_long_march }
+					activate_targeted_decision = { target = var:SOL_long_march_current_state_array^SOL_long_march_num decision = SOL_long_march }
+				}
+				else = {
+					random_owned_controlled_state = {
+						limit = {
+							NOT = { state = 3 }
+							NOT = { state = 127 }
+							is_owned_and_controlled_by = event_target:solar_empire
+							check_variable = { SOL_public_works_region_id = 2 }
+						}
+						save_global_event_target_as = SOL_resistance_stronghold
+					}
+					country_event = { id = paxsolaris.230 hours = 1 }
+				}
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_long_march"
+			custom_effect_tooltip = paxsolaris_resistance_strength_decrease
+			add_to_variable = { var = solar_resistance_actions_progress value = -1 }
+			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
+			hidden_effect = {
+				SOL_calculate_leads_small = yes
+				add_to_variable = { var = SOL_lead_variable value = lead_counter }
+				add_to_variable = { SOL_long_march_num = 1 }
+				if = {
+					limit = { check_variable = { SOL_long_march_num < 3 } }
+					remove_targeted_decision = { target = FROM decision = SOL_long_march }
+					activate_targeted_decision = { target = var:SOL_long_march_current_state_array^SOL_long_march_num decision = SOL_long_march }
+				}
+				else = {
+					random_owned_controlled_state = {
+						limit = {
+							NOT = { state = 3 }
+							NOT = { state = 127 }
+							is_owned_and_controlled_by = event_target:solar_empire
+							check_variable = { SOL_public_works_region_id = 2 }
+						}
+						save_global_event_target_as = SOL_resistance_stronghold
+					}
+					country_event = { id = paxsolaris.230 hours = 1 }
+				}			
+			}
+		}
+	}
+	SOL_resistance_attack = {
+		icon = GFX_decision_resistance_attack
+		priority = 50
+		allowed = { always = no }
+		fixed_random_seed = no
+		available = {		
+			hidden_trigger = {
+				event_target:SOL_resistance_attack_target_true = { meets_division_requirements_attack = yes }
+				check_variable = { days_mission_timeout@SOL_resistance_attack < 1 }
+			}
+			if = {
+				limit = { has_country_flag = first_refine_completed }
+				OR = {
+					if = {
+						limit = { 
+							OR = {
+								event_target:SOL_resistance_attack_target_1 = { has_state_flag = resistance_attack_dummy_target }
+								event_target:SOL_resistance_attack_target_1 = { has_state_flag = resistance_attack_true_target }
+							}
+							event_target:SOL_resistance_attack_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
+						}
+						event_target:SOL_resistance_attack_target_1 = {
+							custom_trigger_tooltip = {
+								tooltip = SOL_state_attack_division_requirements_tt
+								meets_division_requirements_attack = yes
+							}
+						}
+					}
+					if = {
+						limit = { 
+							OR = {
+								event_target:SOL_resistance_attack_target_2 = { has_state_flag = resistance_attack_dummy_target }
+								event_target:SOL_resistance_attack_target_2 = { has_state_flag = resistance_attack_true_target }
+							}
+							event_target:SOL_resistance_attack_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
+						}
+						event_target:SOL_resistance_attack_target_2 = {
+							custom_trigger_tooltip = {
+								tooltip = SOL_state_attack_division_requirements_tt
+								meets_division_requirements_attack = yes
+							}
+						}
+					}
+					if = {
+						limit = { 
+							OR = {
+								event_target:SOL_resistance_attack_target_3 = { has_state_flag = resistance_attack_dummy_target }
+								event_target:SOL_resistance_attack_target_3 = { has_state_flag = resistance_attack_true_target }
+							}
+							event_target:SOL_resistance_attack_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
+						}
+						event_target:SOL_resistance_attack_target_3 = {
+							custom_trigger_tooltip = {
+								tooltip = SOL_state_attack_division_requirements_tt
+								meets_division_requirements_attack = yes
+							}
+						}
+					}
+					if = {
+						limit = { 
+							OR = {
+								event_target:SOL_resistance_attack_target_4 = { has_state_flag = resistance_attack_dummy_target }
+								event_target:SOL_resistance_attack_target_4 = { has_state_flag = resistance_attack_true_target }
+							}
+							event_target:SOL_resistance_attack_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
+						}
+						event_target:SOL_resistance_attack_target_4 = {
+							custom_trigger_tooltip = {
+								tooltip = SOL_state_attack_division_requirements_tt
+								meets_division_requirements_attack = yes
+							}
+						}
+					}
+					if = {
+						limit = { 
+							OR = {
+								event_target:SOL_resistance_attack_target_5 = { has_state_flag = resistance_attack_dummy_target }
+								event_target:SOL_resistance_attack_target_5 = { has_state_flag = resistance_attack_true_target }
+							}
+							event_target:SOL_resistance_attack_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
+							NOT = { has_country_flag = SOL_twilight_ascended }
+						}
+						event_target:SOL_resistance_attack_target_5 = {
+							custom_trigger_tooltip = {
+								tooltip = SOL_state_attack_division_requirements_tt
+								meets_division_requirements_attack = yes
+							}
+						}
+					}
+					if = {
+						limit = { 
+							OR = {
+								event_target:SOL_resistance_attack_target_6 = { has_state_flag = resistance_attack_dummy_target }
+								event_target:SOL_resistance_attack_target_6 = { has_state_flag = resistance_attack_true_target }
+							}
+							event_target:SOL_resistance_attack_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
+							NOT = { has_country_flag = upgraded_inquisition }
+						}
+						event_target:SOL_resistance_attack_target_6 = {
+							custom_trigger_tooltip = {
+								tooltip = SOL_state_attack_division_requirements_tt
+								meets_division_requirements_attack = yes
+							}
+						}
+					}	
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+
+		highlight_states = {
+			if = {
+				limit = { EQS = { has_country_flag = first_refine_completed } }
+				OR = {
+					has_state_flag = resistance_attack_dummy_target
+					has_state_flag = resistance_attack_true_target
+				}
+			}
+			else = {
+				state = 3
+			}
+		}
+		
+		is_good = no
+		days_mission_timeout = resistance_attack_mission_dur
+		days_remove = 0
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_resistance_attack"
+			hidden_effect = {
+				country_event = paxsolaris.80
+				every_state ={
+					clr_state_flag = resistance_attack_dummy_target
+					clr_state_flag = resistance_attack_true_target
+				}
+				clear_array = EQS.SOL_resistance_attack_target_array
+				clr_country_flag = SOL_has_ongoing_attack
+				remove_mission = SOL_resistance_attack
+			}
+		}
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_resistance_attack"
 			if = {
@@ -3530,42 +2714,20 @@ SOL_resistance_activity = {
 				custom_effect_tooltip = SOL_resistance_attack_outcome_tt_none
 			}
 			hidden_effect = {
-				if = { 
-					limit = {
-						event_target:SOL_resistance_attack_target_true = { meets_division_requirements_attack = yes }
-					}
-					country_event = {
-						id = paxsolaris.80
-						hours = 1
-					}
-				}
-				else = {
-					country_event = {
-						id = paxsolaris.81
-						hours = 1
-					}
-				}
+				country_event = paxsolaris.81
 				every_state ={
 					clr_state_flag = resistance_attack_dummy_target
-				}
-				event_target:SOL_resistance_attack_target_true = { 
 					clr_state_flag = resistance_attack_true_target
 				}
 				clear_array = EQS.SOL_resistance_attack_target_array
+				clr_country_flag = SOL_has_ongoing_attack
+				remove_mission = SOL_resistance_attack
 			}
 		}
 	}
 	SOL_refine_resistance_attack = {
 		icon = GFX_decision_resistance_attack_counter
 		priority = 49
-		available = {
-			hidden_trigger = {
-				has_active_mission = SOL_resistance_attack
-			}
-		}
-		activation = {
-			has_active_mission = SOL_resistance_attack
-		}
 		visible = {
 			has_country_leader = { ruling_only = yes name = "Daybreaker" }
 			hidden_trigger = {
@@ -3596,35 +2758,36 @@ SOL_resistance_activity = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_refine_resistance_attack"
 			if = {
 				limit = { NOT = { has_country_flag = first_refine_completed } }
-				hidden_effect = { SOL_resistance_attack_first_refine = yes }
+				hidden_effect = { 
+					subtract_from_variable = { 
+						var = SOL_lead_variable
+						value = 10
+					}
+				}
 				custom_effect_tooltip = refine_resistance_attack_decision_outcome_first
 				set_country_flag = first_refine_completed
 			}
 			else = {
 				hidden_effect = {
-					subtract_from_variable = { 
+					subtract_from_variable = {
 						var = SOL_lead_variable
 						value = 10
 					}
 					random_state = {
 						limit = { has_state_flag = resistance_attack_dummy_target }
 						clr_state_flag = resistance_attack_dummy_target
-						remove_from_array = { EQS.SOL_resistance_attack_target_array = THIS }
 					}
 					random_state = {
 						limit = { has_state_flag = resistance_attack_dummy_target }
 						clr_state_flag = resistance_attack_dummy_target
-						remove_from_array = { EQS.SOL_resistance_attack_target_array = THIS }
 					}
 					random_state = {
 						limit = { has_state_flag = resistance_attack_dummy_target }
 						clr_state_flag = resistance_attack_dummy_target
-						remove_from_array = { EQS.SOL_resistance_attack_target_array = THIS }
 					}
 				}
 				custom_effect_tooltip = refine_resistance_attack_decision_outcome
 			}
-			
 		}
 	}
 
@@ -3632,39 +2795,44 @@ SOL_resistance_activity = {
 		icon = generic_ignite_civil_war
 		
 		available = {
-			event_target:SOL_uprising_in_state_event_target = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
+			custom_trigger_tooltip = {
+				tooltip = SOL_state_uprising_division_requirements_tt
+				FROM = {
+					meets_division_requirements_uprising = yes
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_state_uprising_controlled_tt
+				any_state = { #Yes, I know this is a weird way to do it. But this is the only way to prevent the game spitting out annoying errors. 
+					state = FROM
+					is_controlled_by = ROOT
+				}
 			}
 		}
 		
 		ai_will_do = {
 			base = 100
 		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target
-		}
-		
 		allowed = {
 			always = no
 		}
-		
 		selectable_mission = yes
 		days_mission_timeout = 30
 		is_good = no
-		fire_only_once = no
-
+		fire_only_once = yes
+		fixed_random_seed = no
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision"
 			custom_effect_tooltip = SOL_state_uprising_pacified
 			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
+			add_to_variable = { sol_number_of_uprisings = -1 }
 			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target = { 
+				FROM = { 
 					clr_state_flag = SOL_ongoing_uprising
 				} 
 				SOL_calculate_leads_small = yes
 				add_to_variable = { var = SOL_lead_variable value = lead_counter }
+				remove_targeted_decision = { target = FROM decision = SOL_state_uprising_decision }
 			}
 		}
 		timeout_effect = {
@@ -3672,11 +2840,12 @@ SOL_resistance_activity = {
 			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
 			custom_effect_tooltip = SOL_will_lose_control_of_state
 			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target
+			remove_state_core = FROM
 			add_political_power = -20
 			add_stability = -0.025
+			add_to_variable = { sol_number_of_uprisings = -1 }
 			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target = { 
+				FROM = { 
 					set_state_flag = SOL_overrun_by_resistance 
 					clr_state_flag = SOL_ongoing_uprising
 					if = {
@@ -3687,399 +2856,9 @@ SOL_resistance_activity = {
 					}
 					else = {
 						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-					
+					}	
 				} 
-			}
-			hidden_effect = { SOL_calculate_loyalty = yes }
-		}
-	}
-	SOL_state_uprising_decision_1 = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			event_target:SOL_uprising_in_state_event_target_1 = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
-			}
-		}
-		
-		ai_will_do = {
-			base = 100
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target_1
-		}
-		
-		allowed = {
-			always = no
-		}
-		
-		selectable_mission = yes
-		days_mission_timeout = 30
-		is_good = no
-		fire_only_once = no
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision_1"
-			custom_effect_tooltip = SOL_state_uprising_pacified_1
-			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_1 = { 
-					clr_state_flag = SOL_ongoing_uprising
-				} 
-				SOL_calculate_leads_small = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_state_uprising_decision_1"
-			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
-			custom_effect_tooltip = SOL_will_lose_control_of_state_1
-			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target_1
-			add_political_power = -20
-			add_stability = -0.025
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_1 = { 
-					set_state_flag = SOL_overrun_by_resistance 
-					clr_state_flag = SOL_ongoing_uprising
-					if = {
-						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
-						}
-						add_dynamic_modifier = { modifier = SOL_uprising_trains }
-					}
-					else = {
-						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-				} 
-			}
-			hidden_effect = { SOL_calculate_loyalty = yes }
-		}
-	}
-	SOL_state_uprising_decision_2 = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			event_target:SOL_uprising_in_state_event_target_2 = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
-			}
-		}
-		
-		ai_will_do = {
-			base = 100
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target_2
-		}
-		
-		allowed = {
-			always = no
-		}
-		
-		selectable_mission = yes
-		days_mission_timeout = 30
-		is_good = no
-		fire_only_once = no
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision_2"
-			custom_effect_tooltip = SOL_state_uprising_pacified_2
-			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_2 = { 
-					clr_state_flag = SOL_ongoing_uprising
-				} 
-				SOL_calculate_leads_small = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_state_uprising_decision_2"
-			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
-			custom_effect_tooltip = SOL_will_lose_control_of_state_2
-			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target_2
-			add_political_power = -20
-			add_stability = -0.025
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_2 = { 
-					set_state_flag = SOL_overrun_by_resistance 
-					clr_state_flag = SOL_ongoing_uprising
-					if = {
-						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
-						}
-						add_dynamic_modifier = { modifier = SOL_uprising_trains }
-					}
-					else = {
-						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-				} 
-			}
-			hidden_effect = { SOL_calculate_loyalty = yes }
-		}
-	}
-	SOL_state_uprising_decision_3 = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			event_target:SOL_uprising_in_state_event_target_3 = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
-			}
-		}
-		
-		ai_will_do = {
-			base = 100
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target_3
-		}
-		
-		allowed = {
-			always = no
-		}
-		
-		selectable_mission = yes
-		days_mission_timeout = 30
-		is_good = no
-		fire_only_once = no
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision_3"
-			custom_effect_tooltip = SOL_state_uprising_pacified_3
-			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_3 = { 
-					clr_state_flag = SOL_ongoing_uprising
-				} 
-				SOL_calculate_leads_small = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_state_uprising_decision_3"
-			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
-			custom_effect_tooltip = SOL_will_lose_control_of_state_3
-			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target_3
-			add_political_power = -20
-			add_stability = -0.025
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_3 = { 
-					set_state_flag = SOL_overrun_by_resistance 
-					clr_state_flag = SOL_ongoing_uprising
-					if = {
-						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
-						}
-						add_dynamic_modifier = { modifier = SOL_uprising_trains }
-					}
-					else = {
-						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-				} 
-			}
-			hidden_effect = { SOL_calculate_loyalty = yes }
-		}
-	}
-	SOL_state_uprising_decision_4 = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			event_target:SOL_uprising_in_state_event_target_4 = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
-			}
-		}
-		
-		ai_will_do = {
-			base = 100
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target_4
-		}
-		
-		allowed = {
-			always = no
-		}
-		
-		selectable_mission = yes
-		days_mission_timeout = 30
-		is_good = no
-		fire_only_once = no
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision_4"
-			custom_effect_tooltip = SOL_state_uprising_pacified_4
-			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_4 = { 
-					clr_state_flag = SOL_ongoing_uprising
-				} 
-				SOL_calculate_leads_small = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_state_uprising_decision_4"
-			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
-			custom_effect_tooltip = SOL_will_lose_control_of_state_4
-			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target_4
-			add_political_power = -20
-			add_stability = -0.025
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_4 = { 
-					set_state_flag = SOL_overrun_by_resistance 
-					clr_state_flag = SOL_ongoing_uprising
-					if = {
-						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
-						}
-						add_dynamic_modifier = { modifier = SOL_uprising_trains }
-					}
-					else = {
-						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-				} 
-			}
-			hidden_effect = { SOL_calculate_loyalty = yes }
-		}
-	}
-	SOL_state_uprising_decision_5 = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			event_target:SOL_uprising_in_state_event_target_5 = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
-			}
-		}
-		
-		ai_will_do = {
-			base = 100
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target_5
-		}
-		
-		allowed = {
-			always = no
-		}
-		
-		selectable_mission = yes
-		days_mission_timeout = 30
-		is_good = no
-		fire_only_once = no
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision_5"
-			custom_effect_tooltip = SOL_state_uprising_pacified_5
-			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_5 = { 
-					clr_state_flag = SOL_ongoing_uprising
-				} 
-				SOL_calculate_leads_small = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_state_uprising_decision_5"
-			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
-			custom_effect_tooltip = SOL_will_lose_control_of_state_5
-			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target_5
-			add_political_power = -20
-			add_stability = -0.025
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_5 = { 
-					set_state_flag = SOL_overrun_by_resistance 
-					clr_state_flag = SOL_ongoing_uprising
-					if = {
-						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
-						}
-						add_dynamic_modifier = { modifier = SOL_uprising_trains }
-					}
-					else = {
-						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-				} 
-			}
-			hidden_effect = { SOL_calculate_loyalty = yes }
-		}
-	}
-	SOL_state_uprising_decision_6 = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			event_target:SOL_uprising_in_state_event_target_6 = {
-				is_controlled_by = ROOT
-				meets_division_requirements_uprising = yes
-			}
-		}
-		
-		ai_will_do = {
-			base = 100
-		}
-
-		highlight_state_targets = {
-			state = event_target:SOL_uprising_in_state_event_target_6
-		}
-		
-		allowed = {
-			always = no
-		}
-		
-		selectable_mission = yes
-		days_mission_timeout = 30
-		is_good = no
-		fire_only_once = no
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision_6"
-			custom_effect_tooltip = SOL_state_uprising_pacified_6
-			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_6 = { 
-					clr_state_flag = SOL_ongoing_uprising
-				} 
-				SOL_calculate_leads_small = yes
-				add_to_variable = { var = SOL_lead_variable value = lead_counter }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_state_uprising_decision_6"
-			add_to_variable = { var = solar_civilian_measures_progress value = -1 }
-			custom_effect_tooltip = SOL_will_lose_control_of_state_6
-			custom_effect_tooltip = paxsolaris_government_consolidation_decrease
-			remove_state_core = event_target:SOL_uprising_in_state_event_target_6
-			add_political_power = -20
-			add_stability = -0.025
-			hidden_effect = { 
-				event_target:SOL_uprising_in_state_event_target_6 = { 
-					set_state_flag = SOL_overrun_by_resistance 
-					clr_state_flag = SOL_ongoing_uprising
-					if = {
-						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
-						}
-						add_dynamic_modifier = { modifier = SOL_uprising_trains }
-					}
-					else = {
-						add_dynamic_modifier = { modifier = SOL_uprising }
-					}
-				} 
+				remove_targeted_decision = { target = FROM decision = SOL_state_uprising_decision }
 			}
 			hidden_effect = { SOL_calculate_loyalty = yes }
 		}

@@ -403,26 +403,20 @@ ideas = {
 			available = {
 				is_subject = no
 				OR = {
-					original_tag = EQS
+					AND = {
+						original_tag = EQS
+						OR = {
+							has_war_with = NLR
+							has_war_with = EQR
+						}
+					}
 					AND = {
 						original_tag = NLR
-						OR = {
-							has_war_with = event_target:solar_empire
-							NOT = { has_completed_focus = NLR_civil_war_end }
-						}
+						has_war_with = event_target:solar_empire
 					}
 					AND = {
-						tag = event_target:equestria
-						OR = {
-							has_war_with = event_target:solar_empire
-							NOT = { has_completed_focus = EQS_Civil_War_End }
-						}
-					}
-					AND = {
-						eqs_has_civil_war = yes
-						any_enemy_country = {
-							is_eqs_civil_war_tag = yes
-						}
+						original_tag = EQR
+						has_war_with = event_target:solar_empire
 					}
 				}
 			}
@@ -838,12 +832,25 @@ ideas = {
 			allowed_civil_war = {
 				is_SOLAR_EMPIRE = yes
 			} 
+			on_add = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = 0.015 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
+			}
 			removal_cost = -1
 			#picture = FRA_national_mobilization_focus
 			modifier = {
 				fascism_drift = 0.02
 				conscription_factor = 0.05
 				research_speed_factor = 0.04
+				custom_modifier_tooltip = SOL_postwar_euphoria_tt
+			}
+			on_remove = {
+				add_to_variable = { var = daybreaker_support_daily_actions value = -0.015 }
+				hidden_effect = {
+					SOL_calculate_loyalty = yes
+				}
 			}
 		}
 	}
@@ -1103,7 +1110,6 @@ ideas = {
 				research_speed_factor = -0.5
 				local_resources_factor = -0.5
 				industry_repair_factor = -0.5
-				army_speed_factor = -0.5
 			}
 		}
 		SOL_public_hostility_4 = {
@@ -1125,7 +1131,6 @@ ideas = {
 				research_speed_factor = -0.4
 				local_resources_factor = -0.4
 				industry_repair_factor = -0.4
-				army_speed_factor = -0.4
 			}
 		}
 		SOL_public_hostility_3 = {
@@ -1147,7 +1152,6 @@ ideas = {
 				research_speed_factor = -0.3
 				local_resources_factor = -0.3
 				industry_repair_factor = -0.3
-				army_speed_factor = -0.3
 			}
 		}
 		SOL_public_hostility_2 = {
@@ -1169,7 +1173,6 @@ ideas = {
 				research_speed_factor = -0.2
 				local_resources_factor = -0.2
 				industry_repair_factor = -0.2
-				army_speed_factor = -0.2
 			}
 		}
 		SOL_public_hostility_1 = {
@@ -1191,7 +1194,6 @@ ideas = {
 				research_speed_factor = -0.1
 				local_resources_factor = -0.1
 				industry_repair_factor = -0.1
-				army_speed_factor = -0.1
 			}
 		}
 		SOL_public_hostility_0 = {
@@ -1221,14 +1223,12 @@ ideas = {
 			} 
 			removal_cost = -1
 			modifier = {
-				political_power_factor = -0.5	
 				army_attack_factor = -0.5
 				army_defence_factor = -0.5
 				resistance_target = 0.5
 				army_org_factor = -0.5
-				war_support_factor = -0.5
-				supply_consumption_factor = 0.5
 				offensive_war_stability_factor = -0.5
+				custom_modifier_tooltip = SOL_military_desertion_5_tt
 			}
 		}
 		SOL_military_desertion_4 = {
@@ -1244,14 +1244,12 @@ ideas = {
 			} 
 			removal_cost = -1
 			modifier = {
-				political_power_factor = -0.4
 				army_attack_factor = -0.4
 				army_defence_factor = -0.4
 				resistance_target = 0.4
 				army_org_factor = -0.4
-				war_support_factor = -0.4
-				supply_consumption_factor = 0.4
 				offensive_war_stability_factor = -0.4
+				custom_modifier_tooltip = SOL_military_desertion_4_tt
 			}
 		}
 		SOL_military_desertion_3 = {
@@ -1267,14 +1265,12 @@ ideas = {
 			} 
 			removal_cost = -1
 			modifier = {
-				political_power_factor = -0.3
 				army_attack_factor = -0.3
 				army_defence_factor = -0.3
 				resistance_target = 0.3
 				army_org_factor = -0.3
-				war_support_factor = -0.3
-				supply_consumption_factor = 0.3
 				offensive_war_stability_factor = -0.3
+				custom_modifier_tooltip = SOL_military_desertion_3_tt
 			}
 		}
 		SOL_military_desertion_2 = {
@@ -1290,14 +1286,12 @@ ideas = {
 			}  
 			removal_cost = -1
 			modifier = {
-				political_power_factor = -0.2
 				army_attack_factor = -0.2
 				army_defence_factor = -0.2
 				resistance_target = 0.2
 				army_org_factor = -0.2
-				war_support_factor = -0.2
-				supply_consumption_factor = 0.2
 				offensive_war_stability_factor = -0.2
+				custom_modifier_tooltip = SOL_military_desertion_2_tt
 			}
 		}
 		SOL_military_desertion_1 = {
@@ -1313,14 +1307,12 @@ ideas = {
 			}  
 			removal_cost = -1
 			modifier = {
-				political_power_factor = -0.1
 				army_attack_factor = -0.1
 				army_defence_factor = -0.1
 				resistance_target = 0.1
 				army_org_factor = -0.1
-				war_support_factor = -0.1
-				supply_consumption_factor = 0.1
 				offensive_war_stability_factor = -0.1
+				custom_modifier_tooltip = SOL_military_desertion_1_tt
 			}
 		}
 		SOL_military_desertion_0 = {
@@ -1351,7 +1343,6 @@ ideas = {
 			modifier = {
 				stability_factor = -0.5
 				custom_modifier_tooltip = SOL_resistance_strength_5_tt
-				resistance_damage_to_garrison = 0.5
 				resistance_activity = 0.5
 				resistance_decay = -0.5
 				army_speed_factor = -0.5
@@ -1372,7 +1363,6 @@ ideas = {
 			modifier = {
 				stability_factor = -0.4
 				custom_modifier_tooltip = SOL_resistance_strength_4_tt
-				resistance_damage_to_garrison = 0.4
 				resistance_activity = 0.4
 				resistance_decay = -0.4
 				army_speed_factor = -0.4
@@ -1393,7 +1383,6 @@ ideas = {
 			modifier = {
 				stability_factor = -0.3
 				custom_modifier_tooltip = SOL_resistance_strength_3_tt
-				resistance_damage_to_garrison = 0.3
 				resistance_activity = 0.3
 				resistance_decay = -0.3
 				army_speed_factor = -0.3
@@ -1414,7 +1403,6 @@ ideas = {
 			modifier = {
 				stability_factor = -0.2
 				custom_modifier_tooltip = SOL_resistance_strength_2_tt
-				resistance_damage_to_garrison = 0.2
 				resistance_activity = 0.2
 				resistance_decay = -0.2
 				army_speed_factor = -0.2
@@ -1435,7 +1423,6 @@ ideas = {
 			modifier = {
 				stability_factor = -0.1
 				custom_modifier_tooltip = SOL_resistance_strength_1_tt
-				resistance_damage_to_garrison = 0.1
 				resistance_activity = 0.1
 				resistance_decay = -0.1
 				army_speed_factor = -0.1
@@ -1575,7 +1562,6 @@ ideas = {
 			picture = resistance_cohesion
 			removal_cost = -1
 			modifier = {
-				civilian_intel_to_others = 50
 				resistance_target_on_our_occupied_states = -0.5
 				surrender_limit = -0.5
 				custom_modifier_tooltip = SOL_resistance_cohesion_resistance_can_rise
@@ -1594,7 +1580,6 @@ ideas = {
 			picture = resistance_cohesion
 			removal_cost = -1
 			modifier = {
-				civilian_intel_to_others = 30
 				resistance_target_on_our_occupied_states = -0.3
 				surrender_limit = -0.3
 				custom_modifier_tooltip = SOL_resistance_cohesion_foreign_powers
@@ -1613,13 +1598,9 @@ ideas = {
 			picture = resistance_cohesion
 			removal_cost = -1
 			modifier = {
-				civilian_intel_to_others = 10
 				resistance_target_on_our_occupied_states = -0.1
 				surrender_limit = -0.1
 				custom_modifier_tooltip = SOL_resistance_cohesion_organised_events
-				hidden_modifier = {
-
-				}
 			}
 		}
 		friendly_harmony_SOL = {
@@ -1675,6 +1656,11 @@ ideas = {
 			}
 			on_remove = {
 				add_to_variable = { var = daybreaker_support_daily_actions value = -0.02 }
+				set_country_flag = SOL_reconstruction_complete
+				every_state = {
+					limit = { has_state_flag =  SOL_wartorn_state }
+					clr_state_flag =  SOL_wartorn_state
+				}
 				hidden_effect = {
 					SOL_calculate_loyalty = yes
 				}
@@ -2051,15 +2037,6 @@ ideas = {
 			removal_cost = -1
 			allowed = {
 				always = no
-			}
-			available = {
-				event_target:sol_defeated = {
-					NOT = {
-						exists = no
-						is_subject_of = EQS
-						has_capitulated = yes
-					}
-				}
 			}
 			modifier = {
 				experience_gain_army = 0.05

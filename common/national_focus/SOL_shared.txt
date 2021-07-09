@@ -26,7 +26,7 @@ shared_focus = {
 		y = 7
 		x = 0 
 		trigger = {
-			has_country_flag = SOL_first_tree_completed
+			NOT = { has_country_flag = SOL_first_tree_completed }
 			has_country_flag = march_on_canterlot
 		}
 	}
@@ -314,7 +314,6 @@ shared_focus = {
 				}
 			}
 		}
-		has_war = no
 	}
 	cost = 4.3
 	ai_will_do = {
@@ -690,7 +689,7 @@ shared_focus = {
 }
 shared_focus = {
 	id = SOL_integrate_south
-	icon = GFX_goal_appleloosa
+	icon = GFX_SOL_region_southwest
 	prerequisite = {
 		focus = SOL_hear_them_out
 		focus = SOL_send_in_the_tanks
@@ -1037,8 +1036,7 @@ shared_focus = {
 		custom_effect_tooltip = SOL_bounty_hunter_tt
 		add_to_variable = { var = weekly_leads_modifier value = 2 }
 		hidden_effect = { SOL_calculate_loyalty = yes }
-		set_variable = { var = informants_loyalty_frame_var value = 2 }
-
+		set_country_flag = SOL_unlocked_info_network
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESISTANCE }
 }
@@ -1314,12 +1312,13 @@ shared_focus = {
 		custom_effect_tooltip = SOL_Imperial_Inquisition_tt1
 		set_variable = { var = solar_inquisition_decision_medium_duration value = 30 }
 		set_variable = { var = solar_inquisition_decision_low_duration value = 20 }
+		set_variable = { var = solar_inquisition_decision_loyalty_decrease value = -2 }
 		set_variable = { var = solar_inquisition_max_decisions value = 1 }
 		country_event = {
 			id = paxsolaris.36
 			hours = 1
 		}
-		set_variable = { var = inquisition_informants_frame_var value = 2 }
+		set_country_flag = SOL_unlocked_inquisition_informants
 	}
 	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL }
 }
@@ -1366,7 +1365,7 @@ shared_focus = {
 			id = paxsolaris.39
 			hours = 1
 		}
-		set_variable = { var = volunteer_militias_frame_var value = 2 }
+		set_country_flag = SOL_unlocked_militias
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESISTANCE }
 }
@@ -2167,7 +2166,7 @@ shared_focus = {
 }
 shared_focus = {
 	id = SOL_integrate_northwest
-	icon = GFX_goal_som_railway
+	icon = GFX_SOL_region_north
 	available = {
 		has_country_leader = {
 			ruling_only = yes
@@ -2303,7 +2302,7 @@ shared_focus = {
 }
 shared_focus = {
 	id = SOL_integrate_southeast
-	icon = GFX_goal_NLR_Choo_Choo
+	icon = GFX_SOL_region_southeast
 	available = {
 		has_country_leader = {
 			ruling_only = yes

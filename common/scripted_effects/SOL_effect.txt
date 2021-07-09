@@ -204,17 +204,9 @@ SOL_calculate_loyalty = {
 			add_ideas = SOL_public_hostility_0
 		}
 
-		if = {
-			limit = {
-				NOT = { check_variable = { solar_civilian_support_change_temp = solar_civilian_support } }
-			}
-			SOL_calculate_region_development = yes
-		}
-
 		#MILITARY RESISTANCE
 
 		set_variable = { var = solar_military_support value = 0 }
-		round_variable = solar_military_defeats
 		add_to_variable = {
 			var = solar_military_support
 			value = solar_popular_support
@@ -222,10 +214,6 @@ SOL_calculate_loyalty = {
 		add_to_variable = {
 			var = solar_military_support
 			value = solar_military_measures
-		}
-		add_to_variable = {
-			var = solar_military_support
-			value = solar_military_defeats
 		}
 		add_to_variable = {
 			var = solar_military_support
@@ -247,6 +235,7 @@ SOL_calculate_loyalty = {
 			remove_ideas = SOL_military_desertion_2
 			remove_ideas = SOL_military_desertion_1
 			remove_ideas = SOL_military_desertion_0
+			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0.02 }
 		}
 		if = {
 			limit = { 
@@ -259,6 +248,7 @@ SOL_calculate_loyalty = {
 			remove_ideas = SOL_military_desertion_2
 			remove_ideas = SOL_military_desertion_1
 			remove_ideas = SOL_military_desertion_0
+			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0.016 }
 		}
 		if = {
 			limit = { 
@@ -271,6 +261,7 @@ SOL_calculate_loyalty = {
 			remove_ideas = SOL_military_desertion_2
 			remove_ideas = SOL_military_desertion_1
 			remove_ideas = SOL_military_desertion_0
+			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0.012 }
 		}
 		if = {
 			limit = { 
@@ -283,6 +274,7 @@ SOL_calculate_loyalty = {
 			add_ideas = SOL_military_desertion_2
 			remove_ideas = SOL_military_desertion_1
 			remove_ideas = SOL_military_desertion_0
+			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0.008 }
 		}
 		if = {
 			limit = { 
@@ -295,6 +287,7 @@ SOL_calculate_loyalty = {
 			remove_ideas = SOL_military_desertion_2
 			add_ideas = SOL_military_desertion_1
 			remove_ideas = SOL_military_desertion_0
+			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0.004 }
 		}
 		if = {
 			limit = { 
@@ -307,6 +300,7 @@ SOL_calculate_loyalty = {
 			remove_ideas = SOL_military_desertion_2
 			remove_ideas = SOL_military_desertion_1
 			add_ideas = SOL_military_desertion_0
+			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0 }
 		}
 
 
@@ -475,7 +469,7 @@ SOL_calculate_loyalty = {
 
 		if = {
 			limit = {
-				NOT = { has_active_mission = SOL_resistance_attack }
+				NOT = { has_country_flag = SOL_has_ongoing_attack }
 				check_variable = { solar_resistance_strength > 0 }
 				check_variable = { solar_resistance_cohesion > 0 }
 			}
@@ -580,7 +574,7 @@ SOL_calculate_loyalty = {
 			add_ideas = SOL_harmonist_broadcasts_5
 			set_variable = { var = daybreaker_support_daily_resistance_outreach value = -0.1 }
 		}
-		#PR Nightmare, basically the chance of bad news reaching the general public
+		#PR Nightmare, basically the chance of news being received poorly
 		set_variable = { var = pr_nightmare value = solar_resistance_outreach_strength }
 		multiply_variable { var = pr_nightmare value = 0.2 }
 
@@ -932,7 +926,7 @@ SOL_calculate_leads_huge = {
 }
 SOL_calculate_resistance_target = {
 	random_list = {
-		40 = {
+		20 = {
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = event_target:solar_empire
@@ -941,14 +935,14 @@ SOL_calculate_resistance_target = {
 					NOT = { state = event_target:SOL_resistance_stronghold }
 					is_owned_and_controlled_by = event_target:solar_empire
 					distance_to = {
-						value < 800
+						value < 200
 						target = event_target:SOL_resistance_stronghold
 					}
 				}
 				save_global_event_target_as = SOL_resistance_activity
 			}
 		}
-		40 = {
+		60 = {
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = event_target:solar_empire
@@ -957,11 +951,11 @@ SOL_calculate_resistance_target = {
 					NOT = { state = event_target:SOL_resistance_stronghold }
 					is_owned_and_controlled_by = event_target:solar_empire
 					distance_to = {
-						value > 800
+						value > 200
 						target = event_target:SOL_resistance_stronghold
 					}
 					distance_to = {
-						value < 1200
+						value < 800
 						target = event_target:SOL_resistance_stronghold
 					}
 				}
@@ -977,7 +971,7 @@ SOL_calculate_resistance_target = {
 					NOT = { state = event_target:SOL_resistance_stronghold }
 					is_owned_and_controlled_by = event_target:solar_empire
 					distance_to = {
-						value > 1000
+						value > 800
 						target = event_target:SOL_resistance_stronghold
 					}
 				}
@@ -985,308 +979,7 @@ SOL_calculate_resistance_target = {
 			}
 		}
 	}
-	add_to_array = { EQS.SOL_past_resistance_targets = event_target:SOL_resistance_activity }
-	add_to_variable = { var = SOL_past_resistance_targets_num value = 1 }
-}
-SOL_calculate_last_resistance_strike_target = {
-	if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_7 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			NOT = { has_country_flag = upgraded_inquisition }
-			event_target:SOL_strike_target_7 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_7
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 7 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_6 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
-			NOT = { has_country_flag = SOL_twilight_ascended }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_6
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 6 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_5 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_5
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 5 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_4 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_4
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 4 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_3 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_3
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 3 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_2 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_2
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 2 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_1 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_1
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_last_state_target value = 1 }
-	}
-
-	if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_1 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_1
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_2 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			NOT = { has_country_flag = SOL_twilight_ascended }
-			event_target:SOL_strike_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_2
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 2 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_3 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_3
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 3 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_4 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_4
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 4 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_5 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_5
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 5 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_6 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
-			NOT = { has_country_flag = SOL_twilight_ascended }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_6
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 6 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				AND = {
-					event_target:SOL_strike_target_7 = { has_state_flag = potential_secondary_strike_target }
-					has_country_flag = SOL_refined_resistance_strike
-				}
-			}
-			event_target:SOL_strike_target_7 = { is_owned_and_controlled_by = event_target:solar_empire }
-			NOT = { has_country_flag = upgraded_inquisition }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_7
-			}
-		}
-		set_variable = { var = SOL_strike_at_resistance_first_state_target value = 7 }
-	}
-}
-SOL_decision_mission_target = { #This makes sure that each new uprising doesn't assign their state target to an in-progress mission
-	event_target:SOL_uprising_in_state_temp_target = {
-		set_state_flag = SOL_ongoing_uprising
-	}
-	if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target
-		}
-		activate_mission = SOL_state_uprising_decision
-	}
-	else_if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision_1 }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target_1
-		}
-		activate_mission = SOL_state_uprising_decision_1
-	}
-	else_if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision_2 }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target_2
-		}
-		activate_mission = SOL_state_uprising_decision_2
-	}
-	else_if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision_3 }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target_3
-		}
-		activate_mission = SOL_state_uprising_decision_3
-	}
-	else_if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision_4 }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target_4
-		}
-		activate_mission = SOL_state_uprising_decision_4
-	}
-	else_if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision_5 }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target_5
-		}
-		activate_mission = SOL_state_uprising_decision_5
-	}
-	else_if = {
-		limit = { 
-			NOT = { has_active_mission = SOL_state_uprising_decision_6 }
-		}
-		event_target:SOL_uprising_in_state_temp_target = {
-			save_global_event_target_as = SOL_uprising_in_state_event_target_6
-		}
-		activate_mission = SOL_state_uprising_decision_6
-	}
+	event_target:SOL_resistance_activity = { set_state_flag = sol_past_resistance_activity }
 }
 SOL_calculate_magic = {
 	if = {
@@ -1697,6 +1390,14 @@ SOL_calculate_region_development = {
 				var = SOL_public_works_region_development_civilian^current_region
 				value = SOL_public_works_region_development_special^current_region
 			}
+			set_variable = { var = SOL_public_works_region_development_wartorn^current_region value = 0 }
+			every_state = {
+				limit = { 
+					check_variable = { SOL_public_works_region_id = EQS.current_region } 
+					has_state_flag =  SOL_wartorn_state
+				}
+				EQS = { add_to_variable = { var = SOL_public_works_region_development_wartorn^current_region value = -0.25 } }
+			}
 			add_to_variable = {
 				var = SOL_public_works_region_development_civilian^current_region
 				value = SOL_public_works_region_development_wartorn^current_region
@@ -1708,6 +1409,20 @@ SOL_calculate_region_development = {
 				var = SOL_public_works_region_development_military^current_region
 				value = solar_military_support 
 			}
+			set_variable = { var = SOL_public_works_region_development_occupied^current_region value = 0 }
+			every_state = {
+				limit = { 
+					check_variable = { SOL_public_works_region_id = EQS.current_region } 
+					NOT = { is_controlled_by = EQS }
+					is_owned_by = EQS
+					controller = { has_war_with = EQS }
+				}
+				EQS = { add_to_variable = { var = SOL_public_works_region_development_occupied^current_region value = -0.5 } }
+			}
+			add_to_variable = { 
+				var = SOL_public_works_region_development_military^current_region
+				value = SOL_public_works_region_development_occupied^current_region
+			}
 
 			#RESISTANCE
 			set_variable = { var = SOL_public_works_region_development_resistance^current_region value = 0 }
@@ -1715,12 +1430,11 @@ SOL_calculate_region_development = {
 				var = SOL_public_works_region_development_resistance^current_region
 				value = solar_resistance_strength
 			}
-			
 			set_variable = { var = SOL_public_works_region_development_foreign^current_region value = 0 }
 			every_state = {
 				limit = { 
 					check_variable = { SOL_public_works_region_id = EQS.current_region } 
-					NOT = { is_controlled_by = EQS }
+					NOT = { is_owned_by = EQS }
 				}
 				EQS = { add_to_variable = { var = SOL_public_works_region_development_foreign^current_region value = -0.5 } }
 			}
@@ -1728,7 +1442,6 @@ SOL_calculate_region_development = {
 				var = SOL_public_works_region_development_resistance^current_region
 				value = SOL_public_works_region_development_foreign^current_region
 			}
-
 			set_variable = { var = SOL_public_works_region_development_overrun^current_region value = 0 }
 			every_state = {
 				limit = { 
@@ -1791,7 +1504,6 @@ SOL_calculate_region_development = {
 		else = {
 			set_variable = { var = SOL_public_works_region_frame^current_region value = 1 }
 		}
-		#add_to_variable = { var = current_region value = 1 }
 	}
 	if = {
 		limit = {
@@ -1889,7 +1601,7 @@ SOL_calculate_public_works_industry_use = {
 
 SOL_attack_reroll = {
 	random_list = {
-		40 = {
+		20 = {
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = event_target:solar_empire
@@ -1898,14 +1610,14 @@ SOL_attack_reroll = {
 					NOT = { state = event_target:SOL_resistance_stronghold }
 					is_owned_and_controlled_by = event_target:solar_empire
 					distance_to = {
-						value < 800
+						value < 200
 						target = event_target:SOL_resistance_stronghold
 					}
 				}
 				save_global_event_target_as = SOL_resistance_attack_target_true
 			}
 		}
-		40 = {
+		60 = {
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = event_target:solar_empire
@@ -1914,11 +1626,11 @@ SOL_attack_reroll = {
 					NOT = { state = event_target:SOL_resistance_stronghold }
 					is_owned_and_controlled_by = event_target:solar_empire
 					distance_to = {
-						value > 800
+						value > 200
 						target = event_target:SOL_resistance_stronghold
 					}
 					distance_to = {
-						value < 1200
+						value < 800
 						target = event_target:SOL_resistance_stronghold
 					}
 				}
@@ -1934,7 +1646,7 @@ SOL_attack_reroll = {
 					NOT = { state = event_target:SOL_resistance_stronghold }
 					is_owned_and_controlled_by = event_target:solar_empire
 					distance_to = {
-						value > 1000
+						value > 800
 						target = event_target:SOL_resistance_stronghold
 					}
 				}
@@ -1942,6 +1654,7 @@ SOL_attack_reroll = {
 			}
 		}
 	}
+	event_target:SOL_resistance_attack_target_true = { set_state_flag = sol_past_resistance_activity }
 	random_list = { 
 		1 = {
 			set_variable = { var = SOL_resistance_attack_type value = 1 }
@@ -2144,24 +1857,13 @@ SOL_attack_reroll = {
 			event_target:SOL_resistance_attack_target_true = { save_global_event_target_as = SOL_resistance_attack_target_6 }
 		}
 	}
+	event_target:SOL_resistance_attack_target_true = { set_state_flag = resistance_attack_true_target }
 	set_variable = { var = resistance_attack_mission_dur value = 6 }
 	subtract_from_variable = { var = resistance_attack_mission_dur value = solar_resistance_strength }
 	multiply_variable = { var = resistance_attack_mission_dur value = 30 }
 	clr_country_flag = first_refine_completed
+	set_country_flag = SOL_has_ongoing_attack
 	activate_mission = SOL_resistance_attack
-}
-SOL_resistance_attack_first_refine = {
-	event_target:SOL_resistance_attack_target_true = { 
-		set_state_flag = resistance_attack_true_target
-		set_state_flag = resistance_attack_dummy_target
-	}
-	every_state = {
-		limit = { has_state_flag = resistance_attack_dummy_target }
-		add_to_array = { EQS.SOL_resistance_attack_target_array = THIS }
-	}
-	event_target:SOL_resistance_attack_target_true = { 
-		clr_state_flag = resistance_attack_dummy_target
-	}
 }
 SOL_calculate_division_requirements = {
 	set_variable = { var = sol_uprising_division_requirements value = 4 }
@@ -2189,8 +1891,87 @@ SOL_calculate_division_requirements = {
 	}
 	set_variable = { var = sol_attack_division_requirements value = sol_uprising_division_requirements }
 	add_to_variable = { var = sol_attack_division_requirements value = 1 }
-	clamp_variable = {
-		var = sol_attack_division_requirements
-		min = 1
+}
+SOL_calculate_population = {
+	set_variable = { var = sol_local_pop_thousands value = 0 }
+	set_variable = { sol_increment = 10000 }
+	while_loop_effect = {
+		limit = {
+			check_variable = { sol_increment > 0.01 }
+		}
+		set_variable = { sol_pop_counter = 0 }
+		while_loop_effect = {
+			limit = { state_population_k > sol_local_pop_thousands }
+			add_to_variable = { sol_local_pop_thousands = sol_increment }
+		}
+		subtract_from_variable = { sol_local_pop_thousands = sol_increment }
+		divide_variable = { sol_increment = 10 }
 	}
+	clear_variable = sol_increment
+}
+SOL_calculate_border_porosity = {
+	set_variable = { var = sol_border_porosity_factor value = 0 }
+	add_to_variable = { 
+		var = sol_border_porosity_factor
+		value = sol_border_porosity_factor_military_consolidation
+	}
+	add_to_variable = { 
+		var = sol_border_porosity_factor
+		value = sol_border_porosity_factor_custom_effects
+	}
+	if = {
+		limit = { has_country_flag = sol_raid_loss }
+		add_to_variable = { var = sol_border_porosity_factor value = 0.004 }
+	}
+	set_variable = { var = sol_border_porosity_land value = 1 }
+	subtract_from_variable = { var = sol_border_porosity_land value = sol_border_porosity_factor }
+	set_variable = { var = sol_border_porosity_coastal value = 2 }
+	subtract_from_variable = { var = sol_border_porosity_coastal value = sol_border_porosity_factor }
+	divide_variable = { var = sol_border_porosity_coastal value = 2 }
+	set_variable = { var = sol_land_border_length value = 0 }
+	every_state = {
+		limit = { 
+			is_owned_and_controlled_by = EQS
+			any_neighbor_state = { owner = { is_coalition_member = yes } }
+			is_in_home_area = yes
+		}
+		EQS = { add_to_variable = { var = sol_land_border_length value = 1 } }
+	}
+	set_variable = { var = sol_coastal_border_length value = 0 }
+	every_state = {
+		limit = { 
+			is_owned_and_controlled_by = EQS
+			is_coastal = yes
+			is_in_home_area = yes		
+		}
+		EQS = { add_to_variable = { var = sol_coastal_border_length value = 1 } }
+	}
+	if = {
+		limit = { check_variable = { sol_land_border_length > 0 } }
+		set_variable = { var = sol_porosity_calc_temp value = 1 }
+		set_variable = { var = sol_border_porosity_land_per_state value = sol_border_porosity_land }
+		while_loop_effect = {
+			limit = { check_variable = { sol_porosity_calc_temp < sol_land_border_length } }
+			multiply_variable = { var = sol_border_porosity_land value = sol_border_porosity_land_per_state }
+			add_to_variable = { var = sol_porosity_calc_temp value = 1 }
+		}
+	}
+	else = {
+		set_variable = { var = sol_border_porosity_land value = 1 }
+	}
+	if = {
+		limit = { check_variable = { sol_coastal_border_length > 0 } }
+		set_variable = { var = sol_porosity_calc_temp value = 1 }
+		set_variable = { var = sol_border_porosity_coastal_per_state value = sol_border_porosity_coastal }
+		while_loop_effect = {
+			limit = { check_variable = { sol_porosity_calc_temp < sol_coastal_border_length } }
+			multiply_variable = { var = sol_border_porosity_coastal value = sol_border_porosity_coastal_per_state }
+			add_to_variable = { var = sol_porosity_calc_temp value = 1 }
+		}
+	}
+	else = {
+		set_variable = { var = sol_border_porosity_coastal value = 1 }
+	}
+	set_variable = { var = sol_border_porosity value = sol_border_porosity_land }
+	multiply_variable = { var = sol_border_porosity value = sol_border_porosity_coastal }
 }

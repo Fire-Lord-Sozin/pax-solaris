@@ -827,7 +827,7 @@ shared_focus = {
 		}
 		hidden_effect = {
 			if = {
-				limit = { event_target:sol_defeated = { tag = CHN} }
+				limit = { event_target:sol_defeated = { tag = CHN } }
 				country_event = { id = paxsolaris.54 days = 7 }
 				CHN = { country_event = { id = paxsolaris.54 days = 7 } }
 			}
@@ -935,6 +935,7 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_cull_the_traitors"
+		country_event = { id = paxsolaris.55 hours = 1 }
 		remove_ideas = SOL_illegitimate_government
 		add_popularity = {
 			ideology = fascism
@@ -1103,6 +1104,10 @@ shared_focus = {
 					target = PREV
 				}
 			}
+		}
+		if = {
+			limit = { has_idea = SOL_civil_war }
+			remove_ideas = SOL_civil_war
 		}
 		if = {
 			limit = {

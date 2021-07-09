@@ -1647,10 +1647,10 @@ can_have_border_war_with_ROOT = {
 	is_neighbor_of = ROOT
 	NOT = {
 		ROOT = { is_subject_of = PREV }
-		AND = {
-			is_subject = yes
-			overlord = {
+		any_country = {
+			AND = {
 				has_subject = ROOT
+				has_subject = PREV
 			}
 		}
 		has_non_aggression_pact_with = ROOT

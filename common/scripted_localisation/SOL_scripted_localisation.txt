@@ -313,20 +313,11 @@ defined_text = {
 	text = {
 		trigger = {
 			THIS = {
-				OR = {
-					owner = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
-					}
-					controller = {
-						OR = {
-							original_tag = EQS
-							is_subject_of = EQS
-							is_in_faction_with = EQS
-						}
+				controller = {
+					OR = {
+						original_tag = EQS
+						is_subject_of = EQS
+						is_in_faction_with = EQS
 					}
 				}
 			}
@@ -343,7 +334,7 @@ defined_text = {
 	text = {
 		trigger = {
 			THIS = { 
-				NOT = { has_state_flag = SOL_has_already_dispatched_mtf_to_this_state }
+				NOT = { has_variable = SOL_mobile_task_force_deployed_var }
 			}
 		}
 		localization_key = SOL_mtf_action_state_requirement_notdeployedyet_met_tt
@@ -351,7 +342,7 @@ defined_text = {
 	text = {
 		trigger = {
 			THIS = { 
-				has_state_flag = SOL_has_already_dispatched_mtf_to_this_state
+				has_variable = SOL_mobile_task_force_deployed_var
 			}
 		}
 		localization_key = SOL_mtf_action_state_requirement_notdeployedyet_unmet_tt
@@ -376,9 +367,9 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				check_variable = {
-					var = SOL_mobile_task_force_deployed_var
-					value = 4
-					compare = less_than_or_equals
+					var = SOL_mobile_task_force_in_reserve_var
+					value = 0
+					compare = greater_than
 				}
 			}
 		}
@@ -507,24 +498,19 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = GetDecisionCostCP10Leads50
+	name = GetDecisionCostLeads50
 	text = {
-		trigger = {
-			check_variable = {
-				var = command_power
-				value = 10
-				compare = greater_than_or_equals
-			}
+		trigger = {			
 			check_variable = {
 				var = SOL_lead_variable
 				value = 50
 				compare = greater_than_or_equals
 			}
 		}
-		localization_key = decision_cost_cp_10_leads_50
+		localization_key = decision_cost_leads_50
 	}
 	text = {
-		localization_key = decision_cost_cp_10_leads_50_blocked
+		localization_key = decision_cost_leads_50_blocked
 	}
 }
 defined_text = {
@@ -776,160 +762,64 @@ defined_text = {
 	name = LoyaltyBoost6TT
 	text = {
 		trigger = {
-			AND = {
-				check_variable = { 
-					var = daybreaker_support 
-					value = 20
-					compare = greater_than_or_equals
-				}
-				check_variable = { informants_loyalty_frame_var > 1 }
+			check_variable = { 
+				var = daybreaker_support 
+				value = 20
+				compare = greater_than_or_equals
 			}
 		}
 		localization_key = LoyaltyBoostActive6
 	}
 	text = {
-		trigger = {
-			AND = {
-				check_variable = { daybreaker_support < 20 }
-				check_variable = { informants_loyalty_frame_var > 1 }
-			}
-		}
 		localization_key = LoyaltyBoostInactive6
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
 	}
 }
 defined_text = { 
 	name = LoyaltyBoost7TT
 	text = {
 		trigger = {
-			AND = {
-				check_variable = { 
-					var = daybreaker_support 
-					value = 40
-					compare = greater_than_or_equals
-				}
-				check_variable = { volunteer_militias_frame_var > 1 }
+			check_variable = { 
+				var = daybreaker_support 
+				value = 40
+				compare = greater_than_or_equals
 			}
 		}
 		localization_key = LoyaltyBoostActive7
 	}
 	text = {
-		trigger = {
-			AND = {
-				check_variable = { daybreaker_support < 40 }
-				check_variable = { volunteer_militias_frame_var > 1 }
-			}
-		}
 		localization_key = LoyaltyBoostInactive7
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
 	}
 }
 defined_text = { 
 	name = LoyaltyBoost8TT
 	text = {
 		trigger = {
-			AND = {
-				check_variable = { 
-					var = daybreaker_support 
-					value = 60
-					compare = greater_than_or_equals
-				}
-				check_variable = { inquisition_informants_frame_var > 1 }
+			check_variable = { 
+				var = daybreaker_support 
+				value = 60
+				compare = greater_than_or_equals
 			}
 		}
 		localization_key = LoyaltyBoostActive8
 	}
 	text = {
-		trigger = {
-			AND = {
-				check_variable = { daybreaker_support < 60 }
-				check_variable = { inquisition_informants_frame_var > 1 }
-			}
-		}
 		localization_key = LoyaltyBoostInactive8
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
 	}
 }
 defined_text = { 
 	name = LoyaltyBoost9TT
 	text = {
 		trigger = {
-			AND = {
-				check_variable = { 
-					var = daybreaker_support 
-					value = 80
-					compare = greater_than_or_equals
-				}
-				check_variable = { harmonist_commanders_frame_var > 1 }
+			check_variable = { 
+				var = daybreaker_support 
+				value = 80
+				compare = greater_than_or_equals
 			}
 		}
 		localization_key = LoyaltyBoostActive9
 	}
 	text = {
-		trigger = {
-			AND = {
-				check_variable = { daybreaker_support < 80 }
-				check_variable = { harmonist_commanders_frame_var > 1 }
-			}
-		}
 		localization_key = LoyaltyBoostInactive9
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
-	}
-}
-defined_text = {
-	name = LoyaltyBoostTitle1
-	text = {
-		trigger = {
-			check_variable = { informants_loyalty_frame_var > 1 }
-		}
-		localization_key = LoyaltyBoostTitleActive1
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
-	}
-}
-defined_text = {
-	name = LoyaltyBoostTitle2
-	text = {
-		trigger = {
-			check_variable = { volunteer_militias_frame_var > 1 }
-		}
-		localization_key = LoyaltyBoostTitleActive2
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
-	}
-}
-defined_text = {
-	name = LoyaltyBoostTitle3
-	text = {
-		trigger = {
-			check_variable = { inquisition_informants_frame_var > 1 }
-		}
-		localization_key = LoyaltyBoostTitleActive3
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
-	}
-}
-defined_text = {
-	name = LoyaltyBoostTitle4
-	text = {
-		trigger = {
-			check_variable = { harmonist_commanders_frame_var > 1 }
-		}
-		localization_key = LoyaltyBoostTitleActive4
-	}
-	text = {
-		localization_key = LoyaltyBoostEmpty
 	}
 }
 
@@ -937,12 +827,17 @@ defined_text = {
 	name = resistance_strike_mission_target_1
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_1 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_1
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_1_raided
@@ -955,12 +850,17 @@ defined_text = {
 	name = resistance_strike_mission_target_2
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_2 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_2
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_2_raided
@@ -973,12 +873,17 @@ defined_text = {
 	name = resistance_strike_mission_target_3
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_3 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_3
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_3_raided
@@ -991,12 +896,17 @@ defined_text = {
 	name = resistance_strike_mission_target_4
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_4 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_4
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_4_raided
@@ -1009,12 +919,17 @@ defined_text = {
 	name = resistance_strike_mission_target_5
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_5 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_5
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_5_raided
@@ -1027,13 +942,17 @@ defined_text = {
 	name = resistance_strike_mission_target_6
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_6 = { has_state_flag = potential_secondary_strike_target }
-			
-			NOT = { has_country_flag = SOL_twilight_ascended }
-			event_target:SOL_strike_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_6
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_6_raided
@@ -1046,315 +965,23 @@ defined_text = {
 	name = resistance_strike_mission_target_7
 	text = {
 		trigger = {
-			event_target:SOL_strike_target_7 = { has_state_flag = potential_secondary_strike_target }
-			
-			NOT = { has_country_flag = upgraded_inquisition }
-			event_target:SOL_strike_target_7 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_7
+			THIS = {
+				OR = {
+					has_state_flag = potential_secondary_strike_target 
+					has_state_flag = SOL_strike_at_the_resistance_target
+				}
+			}
+			EQS = {
+				divisions_in_state = {
+					size > 3
+					state = PREV
+				}
 			}
 		}
 		localization_key = resistance_strike_mission_target_7_raided
 	}
 	text = {
 		localization_key = resistance_strike_mission_target_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_1
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_1 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_1 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_1
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_1_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_2
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_2 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_2
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_2_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_3
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_3 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_3
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_3_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_4
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_4 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_4
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_4_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_5
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_5 = { has_state_flag = potential_secondary_strike_target }
-			
-			event_target:SOL_strike_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_5
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_5_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_6
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_6 = { has_state_flag = potential_secondary_strike_target }
-			
-			NOT = { has_country_flag = SOL_twilight_ascended }
-			event_target:SOL_strike_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_6
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_6_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_debrief_7
-	text = {
-		trigger = {
-			event_target:SOL_strike_target_7 = { has_state_flag = potential_secondary_strike_target }
-			
-			NOT = { has_country_flag = upgraded_inquisition }
-			event_target:SOL_strike_target_7 = { is_owned_and_controlled_by = event_target:solar_empire }
-			divisions_in_state = {
-				size > 3
-				state = event_target:SOL_strike_target_7
-			}
-		}
-		localization_key = resistance_strike_mission_target_debrief_7_raided
-	}
-	text = {
-		localization_key = resistance_strike_mission_target_debrief_missed
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_1
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 1 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 1 } }
-		}
-		localization_key = resistance_strike_mission_target_list_1_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 1 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 1 } }
-		}
-		localization_key = resistance_strike_mission_target_list_1_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 1 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 1 }
-		}
-		localization_key = resistance_strike_mission_target_list_1_raided_start
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_2
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 2 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 2 } }
-		}
-		localization_key = resistance_strike_mission_target_list_2_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 2 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 2 } }
-		}
-		localization_key = resistance_strike_mission_target_list_2_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 2 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 2 }
-		}
-		localization_key = resistance_strike_mission_target_list_2_raided_start
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_3
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 3 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 3 } }
-		}
-		localization_key = resistance_strike_mission_target_list_3_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 3 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 3 } }
-		}
-		localization_key = resistance_strike_mission_target_list_3_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 3 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 3 }
-		}
-		localization_key = resistance_strike_mission_target_list_3_raided_start
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_4
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 4 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 4 } }
-		}
-		localization_key = resistance_strike_mission_target_list_4_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 4 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 4 } }
-		}
-		localization_key = resistance_strike_mission_target_list_4_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 4 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 4 }
-		}
-		localization_key = resistance_strike_mission_target_list_4_raided_start
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_5
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 5 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 5 } }
-		}
-		localization_key = resistance_strike_mission_target_list_5_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 5 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 5 } }
-		}
-		localization_key = resistance_strike_mission_target_list_5_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 5 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 5 }
-		}
-		localization_key = resistance_strike_mission_target_list_5_raided_start
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_6
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 6 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 6 } }
-		}
-		localization_key = resistance_strike_mission_target_list_6_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 6 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 6 } }
-		}
-		localization_key = resistance_strike_mission_target_list_6_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 6 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 6 }
-		}
-		localization_key = resistance_strike_mission_target_list_6_raided_start
-	}
-}
-defined_text = {
-	name = resistance_strike_mission_target_list_7
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 7 } }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 7 } }
-		}
-		localization_key = resistance_strike_mission_target_list_7_raided
-	}
-	text = {
-		trigger = {
-			check_variable = { SOL_strike_at_resistance_last_state_target = 7 }
-			NOT = { check_variable = { SOL_strike_at_resistance_first_state_target = 7 } }
-		}
-		localization_key = resistance_strike_mission_target_list_7_raided_end
-	}
-	text = {
-		trigger = {
-			NOT = { check_variable = { SOL_strike_at_resistance_last_state_target = 7 } }
-			check_variable = { SOL_strike_at_resistance_first_state_target = 7 }
-		}
-		localization_key = resistance_strike_mission_target_list_7_raided_start
 	}
 }
 defined_text = {
@@ -1950,73 +1577,73 @@ defined_text = {
 	name = ArrestPropagandaTitleFirstDesc
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 1 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 1 }
 		}
 		localization_key = ArrestPropagandaTitle1
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 2 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 2 }
 		}
 		localization_key = ArrestPropagandaTitle2
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 3 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 3 }
 		}
 		localization_key = ArrestPropagandaTitle3
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 4 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 4 }
 		}
 		localization_key = ArrestPropagandaTitle4
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 5 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 5 }
 		}
 		localization_key = ArrestPropagandaTitle5
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 6 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 6 }
 		}
 		localization_key = ArrestPropagandaTitle6
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 7 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 7 }
 		}
 		localization_key = ArrestPropagandaTitle7
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 8 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 8 }
 		}
 		localization_key = ArrestPropagandaTitle8
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 9 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 9 }
 		}
 		localization_key = ArrestPropagandaTitle9
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 10 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 10 }
 		}
 		localization_key = ArrestPropagandaTitle10
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 11 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 11 }
 		}
 		localization_key = ArrestPropagandaTitle11
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_first_target = 12 }
+			check_variable = { SOL_arrest_sympathisers_targets^0 = 12 }
 		}
 		localization_key = ArrestPropagandaTitle12
 	}
@@ -2025,73 +1652,73 @@ defined_text = {
 	name = ArrestPropagandaTitleSecondDesc
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 1 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 1 }
 		}
 		localization_key = ArrestPropagandaTitle1
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 2 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 2 }
 		}
 		localization_key = ArrestPropagandaTitle2
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 3 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 3 }
 		}
 		localization_key = ArrestPropagandaTitle3
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 4 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 4 }
 		}
 		localization_key = ArrestPropagandaTitle4
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 5 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 5 }
 		}
 		localization_key = ArrestPropagandaTitle5
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 6 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 6 }
 		}
 		localization_key = ArrestPropagandaTitle6
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 7 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 7 }
 		}
 		localization_key = ArrestPropagandaTitle7
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 8 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 8 }
 		}
 		localization_key = ArrestPropagandaTitle8
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 9 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 9 }
 		}
 		localization_key = ArrestPropagandaTitle9
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 10 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 10 }
 		}
 		localization_key = ArrestPropagandaTitle10
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 11 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 11 }
 		}
 		localization_key = ArrestPropagandaTitle11
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_second_target = 12 }
+			check_variable = { SOL_arrest_sympathisers_targets^1 = 12 }
 		}
 		localization_key = ArrestPropagandaTitle12
 	}
@@ -2100,73 +1727,73 @@ defined_text = {
 	name = ArrestPropagandaTitleThirdDesc
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 1 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 1 }
 		}
 		localization_key = ArrestPropagandaTitle1
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 2 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 2 }
 		}
 		localization_key = ArrestPropagandaTitle2
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 3 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 3 }
 		}
 		localization_key = ArrestPropagandaTitle3
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 4 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 4 }
 		}
 		localization_key = ArrestPropagandaTitle4
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 5 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 5 }
 		}
 		localization_key = ArrestPropagandaTitle5
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 6 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 6 }
 		}
 		localization_key = ArrestPropagandaTitle6
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 7 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 7 }
 		}
 		localization_key = ArrestPropagandaTitle7
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 8 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 8 }
 		}
 		localization_key = ArrestPropagandaTitle8
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 9 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 9 }
 		}
 		localization_key = ArrestPropagandaTitle9
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 10 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 10 }
 		}
 		localization_key = ArrestPropagandaTitle10
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 11 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 11 }
 		}
 		localization_key = ArrestPropagandaTitle11
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_third_target = 12 }
+			check_variable = { SOL_arrest_sympathisers_targets^2 = 12 }
 		}
 		localization_key = ArrestPropagandaTitle12
 	}
@@ -2175,73 +1802,73 @@ defined_text = {
 	name = ArrestPropagandaTitleFourthDesc
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 1 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 1 }
 		}
 		localization_key = ArrestPropagandaTitle1
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 2 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 2 }
 		}
 		localization_key = ArrestPropagandaTitle2
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 3 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 3 }
 		}
 		localization_key = ArrestPropagandaTitle3
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 4 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 4 }
 		}
 		localization_key = ArrestPropagandaTitle4
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 5 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 5 }
 		}
 		localization_key = ArrestPropagandaTitle5
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 6 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 6 }
 		}
 		localization_key = ArrestPropagandaTitle6
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 7 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 7 }
 		}
 		localization_key = ArrestPropagandaTitle7
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 8 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 8 }
 		}
 		localization_key = ArrestPropagandaTitle8
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 9 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 9 }
 		}
 		localization_key = ArrestPropagandaTitle9
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 10 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 10 }
 		}
 		localization_key = ArrestPropagandaTitle10
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 11 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 11 }
 		}
 		localization_key = ArrestPropagandaTitle11
 	}
 	text = {
 		trigger = {
-			check_variable = { SOL_arrest_sympathisers_fourth_target = 12 }
+			check_variable = { SOL_arrest_sympathisers_targets^3 = 12 }
 		}
 		localization_key = ArrestPropagandaTitle12
 	}
@@ -2399,7 +2026,6 @@ defined_text = {
 				event_target:SOL_resistance_attack_target_2 = { has_state_flag = resistance_attack_dummy_target }
 				event_target:SOL_resistance_attack_target_2 = { has_state_flag = resistance_attack_true_target }
 			}
-			event_target:SOL_resistance_attack_target_2 = { is_owned_and_controlled_by = event_target:solar_empire }
 			event_target:SOL_resistance_attack_target_2 = { 
 				is_owned_and_controlled_by = event_target:solar_empire 
 				meets_division_requirements_attack = yes
@@ -2419,7 +2045,6 @@ defined_text = {
 				event_target:SOL_resistance_attack_target_3 = { has_state_flag = resistance_attack_dummy_target }
 				event_target:SOL_resistance_attack_target_3 = { has_state_flag = resistance_attack_true_target }
 			}
-			event_target:SOL_resistance_attack_target_3 = { is_owned_and_controlled_by = event_target:solar_empire }
 			event_target:SOL_resistance_attack_target_3 = { 
 				is_owned_and_controlled_by = event_target:solar_empire 
 				meets_division_requirements_attack = yes
@@ -2439,7 +2064,6 @@ defined_text = {
 				event_target:SOL_resistance_attack_target_4 = { has_state_flag = resistance_attack_dummy_target }
 				event_target:SOL_resistance_attack_target_4 = { has_state_flag = resistance_attack_true_target }
 			}
-			event_target:SOL_resistance_attack_target_4 = { is_owned_and_controlled_by = event_target:solar_empire }
 			event_target:SOL_resistance_attack_target_4 = { 
 				is_owned_and_controlled_by = event_target:solar_empire 
 				meets_division_requirements_attack = yes
@@ -2459,7 +2083,6 @@ defined_text = {
 				event_target:SOL_resistance_attack_target_5 = { has_state_flag = resistance_attack_dummy_target }
 				event_target:SOL_resistance_attack_target_5 = { has_state_flag = resistance_attack_true_target }
 			}
-			event_target:SOL_resistance_attack_target_5 = { is_owned_and_controlled_by = event_target:solar_empire }
 			event_target:SOL_resistance_attack_target_5 = { 
 				is_owned_and_controlled_by = event_target:solar_empire 
 				meets_division_requirements_attack = yes
@@ -2479,7 +2102,6 @@ defined_text = {
 				event_target:SOL_resistance_attack_target_6 = { has_state_flag = resistance_attack_dummy_target }
 				event_target:SOL_resistance_attack_target_6 = { has_state_flag = resistance_attack_true_target }
 			}
-			event_target:SOL_resistance_attack_target_6 = { is_owned_and_controlled_by = event_target:solar_empire }
 			event_target:SOL_resistance_attack_target_6 = { 
 				is_owned_and_controlled_by = event_target:solar_empire 
 				meets_division_requirements_attack = yes
@@ -2646,15 +2268,66 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = sol_resistance_alert_title_text_type
+	text = {
+		trigger = {
+			has_country_flag = SOL_coalition_raid
+		}
+		localization_key = sol_resistance_alert_title_coalition
+	}
+	text = {
+		localization_key = sol_resistance_alert_title_resistance
+	}
+}
+defined_text = {
+	name = sol_resistance_alert_description
+	text = {
+		trigger = {
+			has_country_flag = SOL_coalition_raid
+		}
+		localization_key = sol_resistance_alert_description_coalition
+	}
+	text = {
+		localization_key = sol_resistance_alert_description_resistance
+	}
+}
+defined_text = {
+	name = sol_coalition_border_raid_desc
+	text = {
+		trigger = {
+			has_country_flag = SOL_coalition_raid
+			NOT = {
+				has_country_flag = SOL_coalition_raid_win
+				has_country_flag = SOL_coalition_raid_lose
+			}
+		}
+		localization_key = sol_coalition_border_raid_desc_begin
+	}
+	text = {
+		trigger = {
+			has_country_flag = SOL_coalition_raid_win
+		}
+		localization_key = sol_coalition_border_raid_desc_win
+	}
+	text = {
+		trigger = {
+			has_country_flag = SOL_coalition_raid_lose
+		}
+		localization_key = sol_coalition_border_raid_desc_lose
+	}
+}
+defined_text = {
 	name = sol_resistance_alert_description_text_consequence
 	text = {
 		trigger = {
+			has_country_flag = SOL_resistance_win
 			has_country_flag = SOL_resistance_propaganda
 		}
 		localization_key = paxsolaris_resistance_outreach_increase
 	}
 	text = {
 		trigger = {
+			has_country_flag = SOL_resistance_win
 			OR = {
 				has_country_flag = SOL_resistance_supply
 				has_country_flag = SOL_resistance_prison
@@ -2823,6 +2496,18 @@ defined_text = {
 			NOT = { check_variable = { SOL_public_works_region_development_wartorn^currently_selected_region = 0 } }
 		}
 		localization_key = SOL_wartorn_public_works_yes
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_occupied_public_works
+	text = {
+		trigger = {
+			NOT = { check_variable = { SOL_public_works_region_development_occupied^currently_selected_region = 0 } }
+		}
+		localization_key = SOL_occupied_public_works_yes
 	}
 	text = { 
 		localization_key = SOL_public_works_no
@@ -3021,5 +2706,54 @@ defined_text = {
 	}
 	text = {
 		localization_key = sol_military_other
+	}
+}
+defined_text = {
+	name = paxsolaris_341_getdesc
+	text = {
+		trigger = {
+			AND = {
+				EQR = { exists = yes }
+				NLR = {
+					exists = yes
+					NOT = {
+						has_country_leader = {
+							ruling_only = yes
+							name = "Nightmare Moon"
+						}
+					}
+				}
+			}
+		}
+		localization_key = paxsolaris_341_getdesc_nlreqr
+	}
+	text = {
+		trigger = {
+			AND = {
+				EQR = { exists = no }
+				NLR = {
+					exists = yes
+					NOT = {
+						has_country_leader = {
+							ruling_only = yes
+							name = "Nightmare Moon"
+						}
+					}
+				}
+			}
+		}
+		localization_key = paxsolaris_341_getdesc_nlr
+	}
+	text = {
+		trigger = {
+			NLR = {
+				exists = yes
+				has_country_leader = {
+					ruling_only = yes
+					name = "Nightmare Moon"
+				}
+			}
+		}
+		localization_key = paxsolaris_341_getdesc_nmm
 	}
 }

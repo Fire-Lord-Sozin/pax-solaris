@@ -1,0 +1,55 @@
+scripted_gui = {
+	sol_dialogue_window_gui = {
+		window_name = "sol_dialogue_window"
+		dirty = sol_dialogue_window_var
+		context_type = player_context
+		visible = {
+			has_variable = sol_dialogue_window_var
+			original_tag = EQS 
+		}
+		triggers = {
+			sol_dialogue_text_option_1_visible = {
+				has_variable = sol_dialogue_text_option_key 
+			}
+			sol_dialogue_text_option_2_visible = {
+				has_variable = sol_dialogue_text_option_key 
+			}
+			sol_dialogue_text_option_1_button_visible = {
+				has_variable = sol_dialogue_text_option_key 
+			}
+			sol_dialogue_text_option_2_button_visible = {
+				has_variable = sol_dialogue_text_option_key 
+			}
+			sol_dialogue_text_visible = {
+				NOT = { has_variable = sol_dialogue_text_option_key }
+			}
+			dialogue_display_visible = {
+				NOT = { has_variable = sol_dialogue_text_option_key }
+			}
+			sol_dialogue_next_button_visible = {
+				NOT = { has_variable = sol_dialogue_text_option_key }
+			}
+		}
+		effects = {
+			sol_dialogue_next_button_click = {
+				add_to_variable = { var = sol_dialogue_window_var value = 1 }
+				sol_dialogue_display_effect = yes
+			}
+			sol_dialogue_text_option_1_button_click = {
+				clear_variable = sol_dialogue_text_option_key 
+				set_variable = { sol_dialogue_window_var = 1000 }
+				sol_dialogue_display_effect = yes
+			}
+			sol_dialogue_text_option_2_button_click = {
+				clear_variable = sol_dialogue_text_option_key 
+				set_variable = { sol_dialogue_window_var = 2000 }
+				sol_dialogue_display_effect = yes
+			}
+		}
+		properties = {
+			dialogue_display = {
+				image = "[get_sol_dialogue_display_image]"
+			}
+		}
+	}
+}

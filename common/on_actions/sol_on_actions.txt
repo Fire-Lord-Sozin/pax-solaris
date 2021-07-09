@@ -16,14 +16,13 @@ on_actions = {
 			if = {
 				limit = {
 					has_war_with = FROM
-					tag = event_target:solar_empire
 					has_unit_leader = 1337
 					has_country_leader = { ruling_only = yes name = "Daybreaker" }
 					FROM.FROM = {
 						has_state_flag = SOL_state_fall
 					}
 				}
-				add_to_variable = { var = daybreaker_support value = 3 } #Grants additional support if Daybreaker secures key cities immediately after taking control (the time when she is a Field Marshal)
+				add_to_variable = { var = daybreaker_support value = 3 } #Grants additional support if Daybreaker secures key cities as Field Marshal. 
 				FROM.FROM = {
 					clr_state_flag =  SOL_state_fall
 				}
@@ -31,8 +30,21 @@ on_actions = {
 			}
 			if = {
 				limit = {
-					has_war_with = event_target:solar_empire
-					event_target:solar_empire = { has_country_leader = { ruling_only = yes name = "Daybreaker" } }
+					has_war_with = FROM
+					has_country_leader = { ruling_only = yes name = "Daybreaker" }
+					NOT = { has_country_flag = SOL_reconstruction_complete }
+					FROM.FROM = {
+						has_variable = SOL_public_works_region_id
+					}
+				}
+				FROM.FROM = {
+					set_state_flag =  SOL_wartorn_state
+				}
+			}
+			if = {
+				limit = {
+					has_war_with = FROM
+					FROM = { has_country_leader = { ruling_only = yes name = "Daybreaker" } }
 					FROM.FROM = {
 						is_owned_by = event_target:solar_empire
 						OR = {
@@ -55,14 +67,14 @@ on_actions = {
 
 					}
 				}
-				event_target:solar_empire = {
+				FROM = {
 					add_to_variable = { var = daybreaker_support value = -5 } #Support is lost if Daybreaker loses key cities
 					hidden_effect = { SOL_calculate_loyalty = yes }
 				}
 				FROM.FROM = { 
 					set_state_flag = {
 						flag = SOL_timeout
-						days = 30
+						days = 90
 						value = 1
 					} 
 				}
@@ -152,7 +164,7 @@ on_actions = {
 							factor = 0
 							OR = {
 								NOT = { has_country_flag = SOL_resistance_begins }
-								has_country_flag = resistance_attack_blocked
+								NOT = { check_variable = { resistance_attack_blocked > 0 } }
 								has_country_flag = resistance_ceasefire
 							}
 						}
@@ -163,6 +175,9 @@ on_actions = {
 						clr_country_flag = SOL_resistance_propaganda
 						clr_country_flag = SOL_resistance_warehouse
 						clr_country_flag = SOL_resistance_prison
+						clr_country_flag = SOL_coalition_raid
+						clr_country_flag = SOL_coalition_raid_win
+						clr_country_flag = SOL_coalition_raid_lose
 						random_list = {
 							1 = {
 								set_temp_variable = { outreach_strength_calculation_temp = solar_resistance_strength }
@@ -309,7 +324,6 @@ on_actions = {
 					limit = {
 						EQS = { 
 							has_completed_focus = SOL_public_works_program 
-							has_war = no
 						}
 					}
 					SOL_calculate_region_development = yes
@@ -343,6 +357,12 @@ on_actions = {
 						EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } }
 					}
 					remove_dynamic_modifier = { modifier = SOL_public_works_modifier }
+				}
+
+				#Resistance Block
+				if = {
+					limit = { check_variable = { resistance_attack_blocked > 0 } }
+					subtract_from_variable = { resistance_attack_blocked = 1 }
 				}
 
 				#Sarin Attack
@@ -473,6 +493,14 @@ on_actions = {
 						add_ideas = coalition_defensive_plan_project_bonus
 					}
 					if = {
+						limit = { has_global_flag = coalition_high_command_completed }
+						add_ideas = coalition_high_command_project_bonus
+					}
+					if = {
+						limit = { has_global_flag = coalition_expeditionary_forces_completed }
+						add_ideas = coalition_expeditionary_forces_project_bonus
+					}
+					if = {
 						limit = { has_global_flag = coalition_research_completed }
 						add_to_tech_sharing_group = coalition_of_free_tech_share
 					}
@@ -498,6 +526,14 @@ on_actions = {
 						add_ideas = coalition_defensive_plan_project_bonus
 					}
 					if = {
+						limit = { has_global_flag = coalition_high_command_completed }
+						add_ideas = coalition_high_command_project_bonus
+					}
+					if = {
+						limit = { has_global_flag = coalition_expeditionary_forces_completed }
+						add_ideas = coalition_expeditionary_forces_project_bonus
+					}
+					if = {
 						limit = { has_global_flag = coalition_research_completed }
 						add_to_tech_sharing_group = coalition_of_free_tech_share
 					}
@@ -515,9 +551,13 @@ on_actions = {
 						is_coalition_member = yes
 					}
 				}
-				remove_ideas = SOL_coalition_member
-				remove_ideas = SOL_coalition_surrender
-				remove_ideas = coalition_defensive_plan_project_bonus
+				remove_ideas = {
+					SOL_coalition_member
+					SOL_coalition_surrender
+					coalition_defensive_plan_project_bonus
+					coalition_high_command_project_bonus
+					coalition_expeditionary_forces_project_bonus
+				}
 				remove_from_tech_sharing_group = coalition_of_free_tech_share
 			}
 		}
@@ -534,7 +574,12 @@ on_actions = {
 			if = {
 				limit = {
 					ROOT = { tag = NLR }
-					FROM = { is_SOLAR_EMPIRE = yes }
+					FROM = {
+						OR = {
+							is_SOLAR_EMPIRE = yes
+							is_in_faction_with = event_target:solar_empire
+						}
+					}
 				}
 				if = {
 					limit = { 
@@ -545,79 +590,209 @@ on_actions = {
 							}
 						}
 					}
-					set_country_flag = paxsolaris_338_nmm
-					EQS = { country_event = paxsolaris.338 }
+					EQS = { 
+						clr_country_flag = paxsolaris_338_luna
+						set_country_flag = paxsolaris_338_nmm
+						country_event = paxsolaris.338 
+					}
 				}
 				if = {
 					limit = { 
 						NLR = {
 							has_country_leader = {
 								ruling_only = yes
-								name = "Chancellor Luna"
+								name = "Luna"
 							}
 						}
 					}
-					set_country_flag = paxsolaris_338_luna
-					EQS = { country_event = paxsolaris.338 }
+					EQS = {
+						clr_country_flag = paxsolaris_338_nmm
+						set_country_flag = paxsolaris_338_luna
+						country_event = paxsolaris.338 
+					}
 				}
-			}
-			if = {
-				limit = {
-					ROOT = {
+				if = {
+					limit = { 
 						NOT = {
-							any_other_country = {
-								is_in_faction_with = PREV
-								has_capitulated = no
-								NOT = { tag = EQC }
+							AND = {
+								EQR = { has_capitulated = no } 
+								NLR = { is_in_faction_with = EQR }
 							}
 						}
-						OR = {
-							original_tag = NLR
-							original_tag = EQR
+					}
+					every_state = {
+						remove_core_of = NLR
+						remove_claim_by = NLR
+					}
+					every_country = {
+						limit = {
 							is_in_faction_with = NLR
-							is_in_faction_with = EQR
+							NOT = {
+								tag = NLR
+								tag = EQR
+							}
 						}
-					}
-					FROM = {
-						is_SOLAR_EMPIRE = yes
-					}
-				}
-				FROM = {
-					if = {
-						limit = { 
-							NLR = { has_capitulated = yes } 
-						}
-						white_peace = NLR
-						annex_country = {
-							target = NLR
-							transfer_troops = no
-						}
-						every_state = {
-							remove_core_of = NLR
-							remove_claim_by = NLR
+						if = {
+							limit = { has_war_with = event_target:solar_empire }
+							set_country_flag = { flag = bypass_on_peaceconference_ended days = 1 value = 1 }
+							white_peace = event_target:solar_empire
+							every_enemy_country = {
+								limit = {
+									is_in_faction_with = event_target:solar_empire
+								}
+								white_peace = ROOT
+							}
 						}
 					}
 					if = {
-						limit = { 
-							EQR = { has_capitulated = yes }
-						}
-						white_peace = EQR
-						annex_country = {
-							target = EQR
-							transfer_troops = no
+						limit = {
+							EQR = { has_capitulated = yes } 
 						}
 						every_state = {
 							remove_core_of = EQR
 							remove_claim_by = EQR
 						}
+						every_country = {
+							limit = {
+								is_in_faction_with = EQR
+								NOT = {
+									tag = NLR
+									tag = EQR
+								}
+							}
+							if = {
+								limit = { has_war_with = event_target:solar_empire }
+								set_country_flag = { flag = bypass_on_peaceconference_ended days = 1 value = 1 }
+								white_peace = event_target:solar_empire
+								every_enemy_country = {
+									limit = {
+										is_in_faction_with = event_target:solar_empire
+									}
+									white_peace = ROOT
+								}
+							}
+						}	
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { tag = EQR }
+					FROM = {
+						OR = {
+							is_SOLAR_EMPIRE = yes
+							is_in_faction_with = event_target:solar_empire
+						}
+					}
+				}
+				if = {
+					limit = { 
+						NOT = {
+							AND = {
+								NLR = { has_capitulated = no } 
+								EQR = { is_in_faction_with = NLR }
+							}
+						}
 					}
 					if = {
 						limit = {
-							EQC = { is_in_faction_with = ROOT }
+							NLR = { has_capitulated = yes } 
 						}
-						white_peace = EQC
+						every_state = {
+							remove_core_of = NLR
+							remove_claim_by = NLR
+						}
+						every_country = {
+							limit = {
+								is_in_faction_with = NLR
+								NOT = {
+									tag = NLR
+									tag = EQR
+								}
+							}
+							if = {
+								limit = { has_war_with = event_target:solar_empire }
+								set_country_flag = { flag = bypass_on_peaceconference_ended days = 1 value = 1 }
+								white_peace = event_target:solar_empire
+								every_enemy_country = {
+									limit = {
+										is_in_faction_with = event_target:solar_empire
+									}
+									white_peace = ROOT
+								}
+							}
+						}
+					}
+					every_state = {
+						remove_core_of = EQR
+						remove_claim_by = EQR
+					}
+					every_country = {
+						limit = {
+							is_in_faction_with = EQR
+							NOT = {
+								tag = NLR
+								tag = EQR
+							}
+						}
+						if = {
+							limit = { has_war_with = event_target:solar_empire }
+							set_country_flag = { flag = bypass_on_peaceconference_ended days = 1 value = 1 }
+							white_peace = event_target:solar_empire
+							every_enemy_country = {
+								limit = {
+									is_in_faction_with = event_target:solar_empire
+								}
+								white_peace = ROOT
+							}
+						}
 					}
 				}
+			}
+		}
+	}
+	on_puppet = {
+		effect = {
+			log = "[GetDateText]: ROOT: [Root.GetName] FROM: [From.GetName] on_puppet"
+			if = {
+				limit = { 
+					FROM = { 
+						is_SOLAR_EMPIRE = yes
+					}
+					ROOT = { 
+						OR = {
+							original_tag = NLR
+							original_tag = NMS
+							original_tag = CES
+							original_tag = JUN
+							original_tag = BAL
+							original_tag = VAN
+							original_tag = SCS
+							original_tag = LSP
+							original_tag = ZRS
+							original_tag = EQR
+							original_tag = BUF
+						}
+					}
+				}
+				FROM = {
+					annex_country = { target = ROOT  }
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_coalition_member = yes
+					is_faction_leader = yes
+					any_allied_country = {
+						has_capitulated = no
+					}
+					NOT = { has_idea = SOL_coalition_surrender }
+				}
+				add_ideas = SOL_coalition_surrender
 			}
 		}
 	}
