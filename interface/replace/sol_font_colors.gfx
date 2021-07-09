@@ -24,7 +24,9 @@ bitmapfonts = {
 		r = { 165 111 191 } #Rarity
 
 		#PAX SOLARIS
-		N = { 41 41 255 }
+		N = { 50 50 255 }
+
+		S = { 153 0 230 }
 		
 	}
 }

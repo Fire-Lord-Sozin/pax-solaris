@@ -12,6 +12,28 @@ country_event = {
 	}
 }
 country_event = {
+	id = lunarep.2
+	title = lunarep.2.t
+	desc = lunarep.2.d
+	picture = GFX_event_luna_ready_for_war
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.2"}
+	is_triggered_only = yes
+	option = {
+		name = lunarep.2.a
+	}
+}
+country_event = {
+	id = lunarep.3
+	title = lunarep.3.t
+	desc = lunarep.3.d
+	picture = GFX_event_ponies_in_battle
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.3"}
+	is_triggered_only = yes
+	option = {
+		name = lunarep.3.a
+	}
+}
+country_event = {
 	id = lunarep.10
 	title = lunarep.10.t
 	desc = lunarep.10.d

@@ -40,6 +40,12 @@
 
  NLH_harmony_in_peril:0 "Harmony in Peril"
  NLH_harmony_in_peril_desc:0 "Princess Celestia, the eternal matron of harmony and ruler of millions, is gone. In her place Empress Daybreaker rises like the sun, ready to plunge Equestria into an era of tyranny and slaughter. Harmony now faces its greatest trial yet, brought upon it by the pony who was once its greatest defender. But if we are to die, we will not do so in silence!"
+ lunarep.1.t:0 "The State of the Nation"
+ lunarep.1.d:0 "Luna surveyed the report with a worried frown. She had hoped the resistance in the east would be more... unified. Not squabbling bands of republicans and Nightmare cultists only working together for lack of a better option. Luna was under no illusions that she was anything but a compromise leader, chosen by the republicans to appease the thestrals who were suspiciously well prepared for fighting a civil war. Her ‘Lunar Republic’ was anything but, and the republicans made no attempts to hide their distaste for her.\n\nAnd the thestrals, they were worse. When Daybreaker had declared the birth of the Solar Empire, they had rebelled. Not out of any attachment to the old Equestrian system, but to cast down their hated solar enemy when her popularity was at an all time low. They would work with the republicans, but Luna knew they would rather be following the orders of her darker alter ego. She loathed to surround herself with ponies like this, but to dismiss them would be to dismiss the majority of her soldiers and generals.\n\nBut if she gave them too much power, she would only alienate the republicans who controlled the Manehattan industry and research institutions. The thought made her heart feel heavy. Luna may have been taking on more responsibilities before Daybreaker’s ascension, but she was under no illusions that Celestia hadn’t been the one running this nation. She had no idea how to play a careful political balancing act all while leading a nation to victory. If Celestia couldn’t do it, what hope did she have?\n\nThe night princess took a deep breath to steady her nerves. She had promised Celestia that she would be freed from the clutches of her personal demon. And Luna didn’t intend on breaking that promise, no matter how hopeless the path ahead seemed."
+ lunarep.1.a:0 "“My sister, my country... I do this for you!”"
+ lunarep.2.t:0 "The State of the Nation"
+ lunarep.2.d:0 "[NLR.GetLeader] surveyed the report with a worried frown. She had hoped the resistance in the east would be more... unified. Not squabbling bands of republicans and Nightmare cultists only working together for lack of a better option. [NLR.GetLeader] was under no illusions that she was anything but a compromise leader, chosen by the republicans to appease the thestrals who were suspiciously well prepared for fighting a civil war. Her ‘Lunar Republic’ was anything but, and the republicans made no attempts to hide their distaste for her.\n\nAnd the thestrals, they were worse. When Daybreaker had declared the birth of the Solar Empire, they had rebelled. Not out of any attachment to the old Equestrian system, but to cast down their hated solar enemy when her popularity was at an all time low. They would work with the republicans, but [NLR.GetLeader] knew they would rather be following the orders of her princess’ darker self. She loathed to surround herself with ponies like this, but to dismiss them would be to dismiss the majority of her soldiers and generals.\n\nBut if she gave them too much power, she would only alienate the republicans who controlled the Manehattan industry and research institutions. The thought made her heart feel heavy. [NLR.GetLeader] had served Princess Luna faithfully her life, but she wasn’t ready to play a careful political balancing act while leading a nation to victory over a millennia old alicorn. But [NLR.GetLeader] knew that the ponies of Equestria were relying on her. She was no alicorn, but she would fight to her last breath for the freedom of her people."
+ lunarep.2.a:0 "Whatever it takes, Equestria will be free!"
 
  NLH_recruitment_drive:0 "Recruitment Drive"
  NLH_recruitment_drive_desc:0 "With Twilight missing, there will be no last minute saving grace to stop Daybreaker. It now falls upon the regular ponies of Equestria to fight for harmony. For our freedom, no price can be too high."
@@ -67,9 +73,10 @@
  lunarep.12.c:0 "Galaxy Rose would help improve morale around here."
  lunarep.12.e:0 "Caltrop Deekay has experience we can use."
  lunarep.12.f:0 "Midnight Oil doesn't seem too bad."
- nlr_thestrals:0 "This will §Yenpower§! the §Nthestrals§!"
- nlr_harmonists:0 "This will §Yenpower§! the §Pharmonists§!"
+ nlr_thestrals:0 "This will §Yempower§! the §Nthestrals§!"
+ nlr_harmonists:0 "This will §Yempower§! the §Pharmonists§!"
  nlr_commander_in_chief:0 "Commander-In-Chief"
+ nlr_commander_in_chief_desc:0 "This pony has been assigned additional responsibilities in managing our efforts on the frontlines."
 
  NLH_lessons_of_the_shadowbolts:0 "Lessons of the Shadowbolts"
  NLH_lessons_of_the_shadowbolts_desc:0 "A thousand years ago, the Shadowbolts were one of the finest aerial forces to grace the sky. It was through their efforts that Nightmare Moon nearly secured victory over Celestia's army. While most of us reject the cause they fought for, it cannot be denied that their tactics were effective. If we are to ever secure victory over Daybreaker, we cannot afford to not use every tool available to us."
@@ -104,6 +111,9 @@
  NLH_battlefield_support_doctrine_desc:0 "While some call Daybreaker insane, [NLR.GetLeader] knows better than to underestimate her. Daybreaker has reminded us all why Celestia was once feared throughout the world for her power and strategic brilliance. To secure victory, we cannot rely on faith and ponypower alone. We need our own tactics, something that Daybreaker would not expect. Our advisors believe the answer lies in the use of aircraft."
  NLR_airland_battle:0 "Airland Combat"
  NLR_airland_battle_desc:0 "[NLR.GetNameDef] has successfully created a system of close coordination between the airforce and army, using light bombers to support the efforts of guerilla fighters in small-scale battles designed to bleed and harass their enemies."
+ lunarep.3.t:0 "A Mad Dash"
+ lunarep.3.d:0 "“C’mon, c’mon… Just keep going…” The batpony muttered to herself through heavy breaths.\n\nScreams and screeches alike filled the dusty air; distant cries of pain silenced by even louder gunfire. Their carefully erected trenches could only hold on against the barrage of artillery and legions of solar militia for so long. If their lines broke, there would be nothing stopping the sun fetishists from cutting a bloody path to the city beyond. But Moonlight Sonata refused to let that happen.\n\nHer hooves darted over the soft mud and shifting rocks, barely avoiding rubble and remains from whatever mess was being thrown around by the artillery shells. How easy it would be to fly over it all, were it not for the guns that would make mincemeat out of any creature in their path. She pushed the thought of being gutted out of her head, gritted her teeth and continued running to the FOB.\n\nIt was gone. The whole structure had collapsed in on itself after a lucky shell had gone straight into the middle of the sandbags and detonated an ammunition cache. Just like that, their last line to the other militias had been destroyed.\n\n“No… No! This can’t be it!” The poor soldier cried out.\n\nShe dashed to what was left of the structure, over the piles of splintered wood and mutilated bodies in the search for anything that could be used to send the orders. The guttural cries of the dying hung over the batpony like the sun over her head as she redoubled her search. Finally, buried beneath a pile of debris, she found it. A functioning radio, covered in dust but still humming with magical energy.\n\nMoments later, Moonlight had collapsed on the ground. Her work was done, the message had gone through. Help was on the way. She could already hear the bombers scouring the solar forces off the face of the mountain."
+ lunarep.3.a:0 "The brave soldier fell asleep, listening to their roaring engines overhead."
 
  NLH_mountain_redoubts:0 "Mountain Redoubts"
  NLH_mountain_redoubts_desc:0 "It has become increasingly clear that if we keep fighting this war the conventional way, Daybreaker will slaughter us one by one until she stands upon the ashes of Manehattan. We need something better. We need small groups of insurgents waging a war of attrition across Equestria, supplied by air highways and protected by inhospitable terrain."
@@ -118,7 +128,7 @@
  NLH_rules_of_engagement_desc:0 "Despite some factions in our government believing otherwise, Daybreaker's supporters are still Equestrians. Were it not for Daybreaker, they would be our neighbours or even our family. This war has turned friend against friend and left only suffering in its wake. Are we to continue pulling our punches and stay true to our beliefs, even if it means giving Daybreaker an advantage?"
  lunarep.13.t:0 "A Matter of Rivalry"
  lunarep.13.d:0 "War is such a messy affair. Across Equestria, brother fights brother in a brutal conflict where the only victors are the timberwolves that come to pick apart the remains. Daybreaker was quick to do away with any semblance of decency in this civil war, instructing her army of fanatics to take no mercy upon us. Now there is pressure on [NLR.GetLeader] to do the same. Despite her best efforts to stay true to the principles of harmony and only use violence on combatants who refuse to surrender, she finds herself surrounded by advisors and generals clambering for the restrictions placed upon them to be lifted. These advisors, most of them originating from the thestral clans, argue that the lives of those that have thrown their lot in with Daybreaker are a small price to pay for victory.\n\nOpposing them are the harmonist hardliners. They argue that if [NLR.GetLeader] removes these restrictions, she will be no better than Daybreaker. Despite the potential military advantage, they are determined to stay true to Equestrian principles and not abandon harmony."
- lunarep.13.a:0 "Daybreaker may be willing to betray harmony, but we will not."
+ lunarep.13.a:0 "Daybreaker may be willing to betray harmony, but we are not."
  lunarep.13.b:0 "Perhaps some restrictions could be loosened..."
  lunarep.13.c:0 "If a few civilians must die to stop Daybreaker, then so be it."
  NLR_war_rules_1:0 "Rules of Engagement: Strict"
@@ -130,8 +140,10 @@
 
  NLH_collaborate_with_republicans:0 "Collaborate with the Republicans"
  NLH_collaborate_with_republicans_desc:0 "To the republicans across Equestria, [NLR.GetLeader] is an unpopular leader. They see the enduring legacy of Nightmare Moon plaguing our system and claim our government will only lead to the creation of another insane alicorn. If we wish to win over their support, we should take actions towards curbing Nightmare influence in our nation and creating democratic institutions."
- NLR_manehattan_industrial_connections:0 "Industrial Connections"
+ NLR_manehattan_industrial_connections:0 "Support of the Republicans"
  NLR_manehattan_industrial_connections_desc:0 "It always pays to have a good relationship with the ponies producing your guns."
+ NLR_Republican_Cooperation:0 "Republican Collaboration"
+ 
 
  NLH_chiropterran_school_of_war:0 "The Chiropterran School of War"
  NLH_chiropterran_school_of_war_desc:0 "We will gain nothing by alienating our most loyal subjects to appease indecisive republicans. Useless concepts like 'democracy' will not defeat Daybreaker. Chiropterra may be a nation of Nightmare Moon supporters, but they are willing to give our soldiers and generals much needed training. All we have to do is overlook their religous affiliations."
@@ -141,7 +153,7 @@
  luna_defiant_followers:0 "Defiant Followers"
 
  NLH_equestrias_twilight:0 "§NEquestria's Twilight§!"
- NLH_equestrias_twilight_desc:0 "Our nation rests on a precipice. The events of the next few months will decide the fate of harmony itself, whether it is to be born anew or snuffed out in the wake of Daybreaker's asension. But we are ready to write history. All we have to do is march forward and claim our victory.\n§NNo matter the costs, Equestria will be saved!§!"
+ NLH_equestrias_twilight_desc:0 "Our nation rests on a precipice. The events of the next few months will decide the fate of harmony itself, whether it is to be born anew or snuffed out in the wake of Daybreaker's ascension. But we are ready to write history. All we have to do is march forward and claim our victory.\n§NNo matter the costs, Equestria will be saved!§!"
  NLR_our_final_march:0 "Our Final March"
  NLR_our_final_march_desc:0 "While we still draw breath, we have not yet been defeated. Front lines may collapse and cities may be put to the flame, but so long as we remain willing to fight we have not yet been defeated. Let the solar tyrant know that we will never yield to her!"
 

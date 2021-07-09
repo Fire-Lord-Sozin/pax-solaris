@@ -82,3 +82,45 @@ soundeffect = {
 	}
 	volume = 3
 }
+soundeffect = {
+	name = "daybreaker_voice_long_ev"
+	sounds = {
+		sound = "daybreaker_voice_long"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "daybreaker_voice_medium_ev"
+	sounds = {
+		sound = "daybreaker_voice_medium"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "daybreaker_voice_short_ev"
+	sounds = {
+		sound = "daybreaker_voice_short"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "twilight_voice_long_ev"
+	sounds = {
+		sound = "twilight_voice_long"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "twilight_voice_medium_ev"
+	sounds = {
+		sound = "twilight_voice_medium"
+	}
+	volume = 3
+}
+soundeffect = {
+	name = "twilight_voice_short_ev"
+	sounds = {
+		sound = "twilight_voice_short"
+	}
+	volume = 3
+}

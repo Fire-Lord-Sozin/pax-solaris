@@ -5,14 +5,18 @@
 
 
  SOL_coalition_member:0 "Coalition Member"
- SOL_coalition_member_desc:0 "This nation is a member of the Coalition of the Free, a loose alliance of nations dedicated to preserving their sovereignity against the tyranny of Empress Daybreaker and [EQS.GetNameDef].\n\n§YEffects from membership:§!§W[coalition_membership_effects_defensive_plan]§!\n\n§YThis faction is a defensive alliance. All nations will automatically come to the aid of one another if they are attacked by §RDaybreaker.§!\n\nThe leader of the Coalition of the Free will not capitulate unless all other Coalition nations have capitulated!§!"
- coalition_membership_effects_defensive_plan_yes:0 "\nMax planning: §G+10.0%§!\n(@EQS §Y[EQS.GetName]§!)Defence bonus against country: §G+10.0%§!"
+ SOL_coalition_member_desc:0 "This nation is a member of the Coalition of the Free, a loose alliance of nations dedicated to preserving their sovereignity against the tyranny of Empress Daybreaker and [EQS.GetNameDef].\n\n§YEffects from membership:§!§W[coalition_membership_effects_defensive_plan][coalition_membership_effects_high_command][coalition_membership_effects_expeditionary_forces]§!\n\n§YThis faction is a defensive alliance. All nations will automatically come to the aid of one another if they are attacked by §RDaybreaker.§!\n\nThe leader of the Coalition of the Free will not capitulate unless all other Coalition nations have capitulated!§!"
+ coalition_membership_effects_defensive_plan_yes:0 "\n  Max planning: §G+10.0%§!\n  (@EQS §Y[EQS.GetName]§!)Defence bonus against country: §G+10.0%§!"
+ coalition_membership_effects_high_command_yes:0 "\n  Army Experience Gain: §G+0.05%§! daily\n  Maximum Command Power: §G+20§!"
+ coalition_membership_effects_expeditionary_forces_yes:0 "\n  Send volunteers tension limit: §G-50.0%§!\n  Max volunteer force divisions: §G+3§!\n  Dvisions required for sending volunteer force: §G-100.0%§!"
  coalition_membership_effects_no:0 ""
- coalition_defensive_plan_project_bonus:0 "§YCoalition Member§!"
+ coalition_defensive_plan_project_bonus:0 "§YCoalition Member:§! Defensive Plan"
+ coalition_high_command_project_bonus:0 "§YCoalition Member:§! Integrated High Command"
+ coalition_expeditionary_forces_project_bonus:0 "§YCoalition Member:§! Expeditionary Forces"
 
  is_coalition_member_tt:0 "Is a member of the §YCoalition of the Free.§!"
  coalition.2.t:0 "A Question of Security"
- coalition.2.d:0 "Equestria has fallen.\n\nA mere decade ago such an event would be unthinkable. Even those that sought to harm the millennia-old superpower knew it would not go down quietly. Like all others, they never imagined it would fall from within. And that the kind and just ruler nearly all ponies looked up to on some level would be the one to deal the final blow.\n\nFrom the tundra of Olenia to the forests of New Mareland creatures now look up at the sky in dread, knowing the sun that stalks the heavens is no longer their friend. Celestia and the harmonist bastion she ruled is gone. In its place stands Daybreaker, a goddess with millennia of experience hellbent on forging the largest nation on the planet into a global empire. Every one of our citizens knows she will come for us one day. The only question is whether we will meet her with bowed heads or readied guns."
+ coalition.2.d:0 "Equestria has fallen.\n\nA mere decade ago such an event would be unthinkable. Even those that sought to harm the millennia-old superpower knew it would not go down quietly. Like all others, they never imagined it would fall from within. And that the kind and just ruler nearly all ponies looked up to on some level would be the one to deal the final blow.\n\nFrom the tundra of Olenia to the forests of New Mareland, creatures now look up at the sky in dread, knowing the sun that stalks the heavens is no longer their friend. Celestia and the harmonist bastion she ruled is gone. In its place stands Daybreaker, a goddess with millennia of experience hellbent on forging the largest nation on the planet into a global empire. Every one of our citizens knows she will come for us one day. The only question is whether we will meet her with bowed heads or readied guns."
  coalition.2.a:0 "We will not go down quietly!"
  coalition.2.b:0 "Perhaps it would be best if we waited before making such a bold declaration."
  coalition_2_rename:0 "Our §Yfaction§! will be known as the §GCoalition of the Free.§!"
@@ -32,11 +36,16 @@
  proposal_defensive_plan_loc:0 "§YCreate Defensive Plan§!"
  proposal_fortress_loc:0 "§YCreate Border Fortifications§!"
  proposal_research_loc:0 "§YCreate Research Group§!"
+ proposal_high_command_loc:0 "§YIntegrate High Command§!"
+ proposal_expeditionary_forces_loc:0 "§YCoalition Expeditionary Forces§!"
+ proposal_probing_raids_loc:0 "§YBegin Probing Raids§!"
  proposal_none:0 "§YNo Pending Proposals§!"
 
  no_ongoing_resolution:0 "The §YCoalition of the Free§! is not voting on a §Yresolution§!"
  no_ongoing_project:0  "The §YCoalition of the Free§! can only focus on one §Yproject§! at a time"
  no_ongoing_commitments:0 "Only one §Ycommitment§! is active for this country"
+ no_recently_completed_project:0 "The §YCoalition of the Free§! has not recently completed a §Yproject§!"
+ no_recently_completed_raid:0 "We have not recently conducted a §Yprobing raid§!"
  max_commitments:0 "§OMaximum number of commitments has not been reached§!"
  ongoing_resolution:0 "§YThere is a resolution pending§!"
 
@@ -64,9 +73,33 @@
 
  coalition_research_propose:0 "Propose Research Group"
  coalition_research_propose_desc:0 "In this new age of industrial warfare, holding a technological advantage over your foe is a vital asset. By sharing our research with other Coalition members, we can gain an edge over [EQS.GetNameDef].\n\n§WIf proposal is accepted:\n  Every §YCoalition member§! will gain a §Y15%§! research bonus on technologies researched by faction members.§!"
-
  coalition_of_free_tech_share_name:0 "Coalition Research Cooperation"
 
+ coalition_high_command_propose:0 "Propose Integrated High Command"
+ coalition_high_command_propose_desc:0 "History has taught us the value of cooperation. By furthering the integration of our armies with the creation of a unified military authority, we can improve the skills of our officers by sharing experiences.\n\n§WThis project will require §Yfive§! §Gcommitments§! to be completed. For each commitment:\n  Add to country: §YIntegraded High Command Commitment§! for §Y60§! days\n    Division Attack: §R-5.0%§!\n    Max planning factor: §R-30.0%§!\n    Maximum Command Power: §R-20§!\n\nWhen project is completed:\n  Add to §YCoalition Members: Integrated High Command§!\n    Army Experience Gain: §G+0.05%§! daily\n    Maximum Command Power: §G+20§!\n  Every Unit Leader:\n    Add Attack Skill: §G1§!\n    Add Planning Skill: §G1§!§!"
+ coalition_high_command_project:0 "§YCoalition High Command§!"
+ coalition_high_command_project_desc:0 "§Y[?global.coalition_high_command_project_commitment_num]/5 commitments needed§!\n§Y[?global.coalition_high_command_project_commitment_num_completed]/5 stages to completion§!\n\n§WEffect when completed:\n  Add to §YCoalition Members: Integrated High Command§!\n    Army Experience Gain: §G+0.05%§! daily\n    Maximum Command Power: §G+20§!\n  Every Unit Leader:\n    Add Attack Skill: §G1§!\n    Add Planning Skill: §G1§!§!"
+
+ coalition_expeditionary_forces_propose:0 "Propose Coalition Expeditionary Forces"
+ coalition_expeditionary_forces_propose_desc:0 "With our high commands now working as one entity, the Coalition of the Free can now take the next step in creating a united force to oppose Daybreaker. In anticipation of Solar military action, we will create divisions of volunteer forces to be rapidly deployed to nations in need of protection.\n\n§WThis project will require §Yfive§! §Gcommitments§! to be completed. For each commitment:\n  Add to country: §YExpeditionary Forces Commitment§! for §Y60§! days\n    Weekly Ponypower: §R-1000§!\n    Division Attack: §R-5.0%§!\n\nWhen project is completed:\n  Add to §YCoalition Members: Expeditionary Forces§!\n    Send volunteers tension limit: §G-50.0%§!\n    Max volunteer force divisions: §G+3§!\n    Dvisions required for sending volunteer force: §G-100.0%§!§!"
+ coalition_expeditionary_forces_project:0 "§YCoalition Expeditionary Forces§!"
+ coalition_expeditionary_forces_project_desc:0 "§Y[?global.coalition_expeditionary_forces_project_commitment_num]/5 commitments needed§!\n§Y[?global.coalition_expeditionary_forces_project_commitment_num_completed]/5 stages to completion§!\n\n§WEffect when completed:\n  Add to §YCoalition Members: Integrated High Command§!\n    Send volunteers tension limit: §G-50.0%§!\n    Max volunteer force divisions: §G+3§!\n    Dvisions required for sending volunteer force: §G-100.0%§!§!"
+
+ coalition_probing_raids_propose:0 "Begin Probing Raids"
+ coalition_probing_raids_propose_desc:0 "Now that we have prepared ourselves, we can finally begin taking action against Daybreaker directly by launching a series of small-scale skirmishes along the solar border, throwing her military into chaos and weakening the borders of her nation.\n\n§WIf proposal is accepted:\n  §YCoalition member§! bordering §O[EQS.GetNameWithFlag]§! will get decisions to start border wars. If victorious:\n    §YSolar Military Consolidation§! will §Gdecrease§! by (§G1§!) point to the next stage!\n    The §OSolar§! border will become more §Gporous§! for §Y30 days!§!§!"
+ 
+ coalition_has_divisions_on_border:0 "We have §Ydivisions§! on the §O[FROM.GetNameWithFlag]§! border"
+ no_raid_in_progress:0 "No other §YCoalition§! nation is preparing a probing raid against §O[FROM.GetNameWithFlag]§!"
+
+ coalition_prepare_raid:0 "Prepare Raid Against [FROM.GetNameWithFlag]"
+ coalition_prepare_raid_desc:0 "Instruct our generals to begin drafting plans for a small-scale border war with Daybreaker's army."
+
+ coalition_initiate_raid:0 "Initiate Raid Against [FROM.GetNameWithFlag]"
+ coalition_initiate_raid_desc:0 "Our preparations are complete, now we must strike before Daybreaker can catch wind of our plan."
+
+ coalition_raid_in_progress:0 "Ongoing Raid Against [FROM.GetNameWithFlag]"
+ coalition_raid_in_progress_desc:0 "We only have a limited amount of time to complete our mission objectives before Daybreaker rallies her forces, so we must act quickly."
+ sol_raid_outcome:0 "§YSolar Military Consolidation§! will §Gdecrease§! by (§G1§!) point to the next stage!\nThe §OSolar§! border will become more §Gporous§! for §Y30 days!§!"
 
  VOTE_YES_GUI_LIST_ENTRY:0 "[This.GetVoteYesEntry]"
  VOTE_YES_LIST_ENTRY_US:0 "§G[?this.GetNameWithFlag]§!"
@@ -84,9 +117,16 @@
  coalition_defensive_plan_project_commitment_desc:0 "Our top military minds are attending a summit with other Coalition nations to draft a defensive plan, leaving our own military critically understaffed."
  coalition_fortress_project_commitment:0 "Border Fortifications Commitment"
  coalition_fortress_project_commitment_desc:0 "As part of our obligations to the §YCoalition of the Free§!, we have donated some of our factories to construct border fortifications along the Equestrian border."
+ coalition_high_command_project_commitment:0 "Integrated High Command Commitment"
+ coalition_high_command_project_commitment_desc:0 "We have sent many of our officers to learn under the generals and field marshals of other nations, leaving our own military critically understaffed."
+ coalition_expeditionary_forces_project_commitment:0 "Expeditionary Forces Commitment"
+ coalition_expeditionary_forces_project_commitment_desc:0 "Volunteers from our military have been sent across the border to train with other Coalition forces, receiving specialised training in anticipation of rapid deployment into regions contested by §O[EQS.GetNameDef].§!"
 
- SOL_coalition_alert_popup_title:0 "§GCOALITION RESOLUTION ALERT§!"
+ SOL_coalition_alert_popup_title:0 "§GCOALITION ALERT§!"
+ sol_coalition_alert_raid_description_text:0 "The probing raid organised by §Y[coalition_raid_aggressor.GetNameWithFlag]§! has [CoalitionRaidResult]"
  sol_coalition_alert_proposal_description_text:0 "§Y[proposed_resolution_nation.GetNameWithFlag]§! has proposed the following resolution: [current_proposal_scripted_loc]"
  sol_coalition_alert_outcome_description_text:0 "The resolution [current_proposal_scripted_loc] has [CoalitionResolutionResult]" 
  sol_coalition_alert_proposal_passed:0 "§Gpassed!§!"
  sol_coalition_alert_proposal_failed:0 "§Rfailed!§!"
+ sol_coalition_alert_raid_win:0 "§Gsucceeded!§!\n\n§YSolar Military Consolidation§! will §Gdecrease§! by (§G1§!) point to the next stage!\nThe §O[EQS.GetNameWithFlag]§! border will become more §Gporous§! for §Y30 days!§!"
+ sol_coalition_alert_raid_fail:0 "been §Rrepelled§! by §O[EQS.GetNameWithFlag]!§!"

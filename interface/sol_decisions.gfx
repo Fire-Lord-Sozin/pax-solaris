@@ -44,6 +44,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/decisions/decision_sol_border_war.dds"
 	}
 	spriteType = {
+		name = "GFX_decision_coalition_border_war"
+		texturefile = "gfx/interface/decisions/decision_coalition_border_war.dds"
+	}
+	spriteType = {
 		name = "GFX_decision_investigate_resistance"
 		texturefile = "gfx/interface/decisions/decision_investigate_resistance.dds"
 	}
@@ -98,5 +102,13 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_decision_celestia_stress"
 		texturefile = "gfx/interface/decisions/decision_celestia_stress.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_coalition_high_command"
+		texturefile = "gfx/interface/decisions/decision_coalition_high_command.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_coalition_expeditionary_forces"
+		texturefile = "gfx/interface/decisions/decision_coalition_expeditionary_forces.dds"
 	}
 }

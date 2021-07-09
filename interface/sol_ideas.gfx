@@ -119,4 +119,8 @@ spriteTypes = {
 		name = "GFX_idea_nlh_mountain_redoubts"
 		texturefile = "gfx/interface/ideas/idea_nlh_mountain_redoubts.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_coalition_high_command"
+		texturefile = "gfx/interface/ideas/idea_coalition_high_command.dds"
+	}
 }

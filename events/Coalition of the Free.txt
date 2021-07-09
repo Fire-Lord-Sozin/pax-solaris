@@ -402,12 +402,12 @@ country_event = {
 			factor = 100
 		}
 		event_target:SOL_coalition_leader = { add_to_faction = ROOT }
-		#add_ideas = SOL_coalition_member
-		every_country = {
-			limit = {
-				is_subject_of = ROOT
+		ROOT = {
+			add_ai_strategy = {
+				type = alliance
+				id = event_target:SOL_coalition_leader
+				value = 200
 			}
-			#add_ideas = SOL_coalition_member
 		}
 		event_target:SOL_coalition_leader = { country_event = { id = coalition.4 } }
 	}
@@ -543,6 +543,30 @@ country_event = {
 					limit = { is_coalition_member = yes }
 					add_to_tech_sharing_group = coalition_of_free_tech_share
 				}
+				set_global_flag = {
+					flag = coalition_recently_completed_project
+					days = 60
+					value = 1
+				}
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_high_command }
+				set_global_flag = coalition_high_command_accepted
+				set_global_flag = coalition_ongoing_project
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_expeditionary_forces }
+				set_global_flag = coalition_expeditionary_forces_accepted
+				set_global_flag = coalition_ongoing_project
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_probing_raids }
+				set_global_flag = coalition_probing_raids_completed
+				set_global_flag = {
+					flag = coalition_recently_completed_project
+					days = 60
+					value = 1
+				}
 			}
 		}
 		else = {	
@@ -580,11 +604,37 @@ country_event = {
 					days = 180
 				}
 			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_high_command }
+				set_global_flag = {
+					flag = coalition_high_command_rejected
+					value = 1 
+					days = 180
+				}
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_expeditionary_forces }
+				set_global_flag = {
+					flag = coalition_expeditionary_forces_rejected
+					value = 1 
+					days = 180
+				}
+			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_probing_raids }
+				set_global_flag = {
+					flag = coalition_probing_raids_rejected
+					value = 1 
+					days = 180
+				}
+			}
 		}
 		remove_mission = coalition_current_resolution_decision_support
 		remove_mission = coalition_current_resolution_decision_oppose
 		remove_mission = coalition_current_resolution_decision
 		clr_global_flag = proposal_coalition_active
+		clr_global_flag = coalition_border_war_lose
+		clr_global_flag = coalition_border_war_win
 		every_country = {
 			limit = {
 				is_coalition_member = yes
@@ -604,9 +654,94 @@ country_event = {
 		clr_global_flag = proposal_coalition_defensive_plan
 		clr_global_flag = proposal_coalition_fortress
 		clr_global_flag = proposal_coalition_research
+		clr_global_flag = proposal_coalition_high_command
+		clr_global_flag = proposal_coalition_expeditionary_forces
+		clr_global_flag = proposal_coalition_probing_raids
 		clear_array = global.coalition_countries_voting_yes
 		clear_array = global.coalition_countries_voting_no
 		set_variable = { var = global.coalition_resolution_support_var value = 0 }
 		set_variable = { var = global.coalition_resolution_oppose_var value = 0 }
+	}
+}
+country_event = {
+	id = coalition.15 #Border War Lose
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.15"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		set_global_flag = coalition_border_war_lose
+		clr_global_flag = coalition_border_war_win
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_coalition_member = yes
+				}
+				set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+			}
+		}
+	}
+}
+country_event = {
+	id = coalition.16 #Border War Win
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.16"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		clr_global_flag = coalition_border_war_lose
+		set_global_flag = coalition_border_war_win
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_coalition_member = yes
+				}
+				set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+			}
+		}
+	}
+}
+country_event = {
+	id = coalition.17 #Border War Win, SOlar Empire
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.17"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		clear_variable = sol_resistance_alert_popup_show
+		clr_country_flag = SOL_resistance_win
+		clr_country_flag = SOL_imperial_win
+		clr_country_flag = SOL_resistance_propaganda
+		clr_country_flag = SOL_resistance_warehouse
+		clr_country_flag = SOL_resistance_prison
+		clr_country_flag = SOL_coalition_raid 
+		clr_country_flag = SOL_coalition_raid_win
+		clr_country_flag = SOL_coalition_raid_lose
+		set_country_flag = SOL_coalition_raid 
+		set_country_flag = SOL_coalition_raid_win
+		set_variable = { var = sol_resistance_alert_popup_show value = 1 }
+	}
+}
+country_event = {
+	id = coalition.18 #Border War Lose, Solar Empire
+	immediate = {log = "[GetDateText]: [Root.GetName]: event coalition.18"}
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		clear_variable = sol_resistance_alert_popup_show
+		clr_country_flag = SOL_resistance_win
+		clr_country_flag = SOL_imperial_win
+		clr_country_flag = SOL_resistance_propaganda
+		clr_country_flag = SOL_resistance_warehouse
+		clr_country_flag = SOL_resistance_prison
+		clr_country_flag = SOL_coalition_raid 
+		clr_country_flag = SOL_coalition_raid_win
+		clr_country_flag = SOL_coalition_raid_lose
+		set_country_flag = SOL_coalition_raid 
+		set_country_flag = SOL_coalition_raid_lose
+		set_variable = { var = sol_resistance_alert_popup_show value = 1 }
+		custom_effect_tooltip = sol_raid_outcome
+		set_country_flag = {
+			flag = sol_raid_loss
+			value = 1
+			days = 30
+		}
 	}
 }

@@ -119,12 +119,12 @@ guiTypes = {
 		
 		instantTextBoxType = {
 			name = "coalition_alert_description"
-			position = { x = 85 y = 90 }
+			position = { x = 60 y = 90 }
 			textureFile = ""
 			font = "hoi_18mbs"
 			borderSize = {x = 0 y = 0}
 			text = "[CoalitionResolutionProposal]"	
-			maxWidth = 325
+			maxWidth = 375
 			maxHeight = 130
 			format = centre
 		}	

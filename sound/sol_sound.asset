@@ -70,3 +70,39 @@ sound = {
 	volume = 1
 	always_load = yes
 }
+sound = {
+	name = "daybreaker_voice_long"
+	file = "hot/daybreaker_voice_long.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "daybreaker_voice_medium"
+	file = "hot/daybreaker_voice_medium.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "daybreaker_voice_short"
+	file = "hot/daybreaker_voice_short.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "twilight_voice_long"
+	file = "hot/twilight_voice_long.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "twilight_voice_medium"
+	file = "hot/twilight_voice_medium.wav"
+	volume = 1
+	always_load = yes
+}
+sound = {
+	name = "twilight_voice_short"
+	file = "hot/twilight_voice_short.wav"
+	volume = 1
+	always_load = yes
+}

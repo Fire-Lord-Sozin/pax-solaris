@@ -67,4 +67,8 @@ spriteTypes = {
 		name = "GFX_event_daybreaker_oil"
 		texturefile = "gfx/event_pictures/event_daybreaker_oil.dds"
 	}
+	spriteType = {
+		name = "GFX_event_hrm_poster"
+		texturefile = "gfx/event_pictures/event_hrm_poster.dds"
+	}
 }

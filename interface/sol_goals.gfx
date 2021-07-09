@@ -199,4 +199,16 @@ spriteTypes = {
 		name = "GFX_SOL_into_the_inferno"
 		texturefile = "gfx/interface/goals/SOL_into_the_inferno.dds"
 	}
+	spriteType = {
+		name = "GFX_SOL_region_north"
+		texturefile = "gfx/interface/goals/SOL_region_north.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_region_southwest"
+		texturefile = "gfx/interface/goals/SOL_region_southwest.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_region_southeast"
+		texturefile = "gfx/interface/goals/SOL_region_southeast.dds"
+	}
 }

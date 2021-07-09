@@ -13,6 +13,12 @@ category = {
 		sol_ally_of_shadows_ev
 		sol_mistress_of_terror_ev
 		sol_dreamwalker_ev
+		daybreaker_voice_long_ev
+		daybreaker_voice_medium_ev
+		daybreaker_voice_short_ev
+		twilight_voice_long_ev
+		twilight_voice_medium_ev
+		twilight_voice_short_ev
 	}
 	compressor = master_compressor
 }

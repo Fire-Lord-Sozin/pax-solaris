@@ -150,19 +150,14 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.9
-	title = "Random Event Tester"
+	title = "Border Porosity Test"
 	is_triggered_only = yes
 	desc = paxsolaristest.9.d
 	immediate = {
-		SOL_calculate_probability = yes
-		set_variable = { var = random_event_tracker_1 value = probability_check }
+		SOL_calculate_border_porosity = yes
 	}
 	option = { 
-		name = "Reset"
-		set_variable = { var = random_event_tracker_1 value = 0 }
-		set_variable = { var = random_event_tracker_2 value = 0 }
-		set_variable = { var = random_event_tracker_3 value = 0 }
-		set_variable = { var = random_event_tracker_4 value = 0 }
+		name = "Okay"
 	}
 }
 country_event = {
@@ -221,11 +216,10 @@ country_event = {
 	desc = ""
 	option = { 
 		name = "Activate"
+		clr_country_flag = SOL_recall_pegasi_decision_in_progress_flag
 		set_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
-		set_variable = { SOL_mobile_task_force_deployed_var = 0 }
-		set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
 		division_template = {
-			name = "Inquisitorial Pegasi Strike Team"
+			name = "Inquisitorial Strike Team"
 			division_names_group = EQS_PAR_02
 			is_locked = yes
 			regiments = {
@@ -243,11 +237,13 @@ country_event = {
 			support = {
 				unicorn_company = { x = 0 y = 0 }
 				recon = { x = 0 y = 1 }
-				engineer = { x = 0 y = 2 }
+				signal_company = { x = 0 y = 2 }
 				artillery = { x = 0 y = 3 }
 			}
 			priority = 2
 		}
+		set_variable = { SOL_mobile_task_force_deployed_var = 0 }
+		set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
 	}
 }
 country_event = {
@@ -256,8 +252,9 @@ country_event = {
 	is_triggered_only = yes
 	desc = ""
 	option = { 
-		name = "+100"
-		add_to_variable = { var = SOL_lead_variable value = 100 }
+		name = "+200"
+		complete_national_focus = SOL_Imperial_Inquisition
+		add_to_variable = { var = SOL_lead_variable value = 200 }
 		set_variable = { var = solar_inquisition_decision_medium_duration value = 1 }
 		set_variable = { var = solar_inquisition_decision_low_duration value = 1 }
 	}
@@ -269,12 +266,12 @@ country_event = {
 	desc = ""
 	option = { 
 		name = "Cohesion + 1"
-		add_to_variable = { var = solar_resistance_cohesion value = 1 }
+		add_to_variable = { var = solar_resistance_cohesion_actions value = 1 }
 		hidden_effect = { SOL_calculate_loyalty = yes }
 	}
 	option = { 
 		name = "Cohesion -1 "
-		add_to_variable = { var = solar_resistance_cohesion value = -1 }
+		add_to_variable = { var = solar_resistance_cohesion_actions value = -1 }
 		hidden_effect = { SOL_calculate_loyalty = yes }
 	}
 }
@@ -282,9 +279,19 @@ country_event = {
 	id = paxsolaristest.16
 	title = "Resistance Targets"
 	is_triggered_only = yes
-	desc = paxsolaristest.16.d
+	desc = ""
 	option = {
 		name = "OK"
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
+		SOL_calculate_resistance_target = yes
 	}
 }
 
@@ -489,43 +496,66 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.25
-	title = "Event 338"
+	title = "Pop Calculator"
 	is_triggered_only = yes
 	desc = ""
 	option = { 
-		name = "NMM"
-		set_country_flag = paxsolaris_338_nmm
-		clr_country_flag = paxsolaris_338_luna
-		country_event = paxsolaris.338
-	}
-	option = { 
-		name = "Luna"
-		clr_country_flag = paxsolaris_338_nmm
-		set_country_flag = paxsolaris_338_luna
-		country_event = paxsolaris.338
-	}
-	option = { 
-		name = "Event Target"
-		39 = { save_global_event_target_as = SOL_NLR_last_state }
+		name = "Calculate"
 	}
 }
 country_event = {
 	id = paxsolaristest.26
-	title = "Ancient Legends"
+	title = "Test"
 	is_triggered_only = yes
 	desc = ""
 	option = { 
-		name = "Hurricane"
-		create_corps_commander = {
-			name = "Hurricane"
-			portrait_path = "gfx/leaders/EQS/Commander_Hurricane.tga"
-			traits = { flame_revenant sky_commander pony_race_trait }
-			desc = "hurricane_desc"
-			skill = 3
-			attack_skill = 4
-			defense_skill = 3
-			planning_skill = 4
-			logistics_skill = 3
-		}
+		name = "One"
+		set_country_flag = sol_dialogue_twilight_first
+		set_variable = { sol_dialogue_window_var = 1 }
+		sol_dialogue_display_effect = yes
+	}
+	option = { 
+		name = "Lose"
+		set_country_flag = sol_dialogue_twilight_lose
+		set_variable = { sol_dialogue_window_var = 1 }
+		sol_dialogue_display_effect = yes
+	}
+	option = { 
+		name = "Three"
+		set_country_flag = sol_dialogue_twilight_third
+		set_variable = { sol_dialogue_window_var = 1 }
+		sol_dialogue_display_effect = yes
+	}
+	option = { 
+		name = "Four"
+		set_country_flag = sol_dialogue_twilight_fourth
+		set_variable = { sol_dialogue_window_var = 1 }
+		sol_dialogue_display_effect = yes
+	}
+}
+country_event = {
+	id = paxsolaristest.27
+	title = "Test"
+	is_triggered_only = yes
+	desc = ""
+	option = { 
+		name = "Defence Plan"
+		add_to_variable = { var = global.coalition_defensive_plan_project_commitment_num value = 4 }
+		add_to_variable = { var = global.coalition_defensive_plan_project_commitment_num_completed value = 4 }
+	}
+	option = { 
+		name = "High Command"
+		add_to_variable = { var = global.coalition_high_command_project_commitment_num value = 4 }
+		add_to_variable = { var = global.coalition_high_command_project_commitment_num_completed value = 4 }
+	}
+	option = { 
+		name = "Expeditionary Forces"
+		add_to_variable = { var = global.coalition_expeditionary_forces_project_commitment_num value = 4 }
+		add_to_variable = { var = global.coalition_expeditionary_forces_project_commitment_num_completed value = 4 }
+	}
+	option = {
+		name = "reset"
+		remove_ideas = coalition_high_command_project_bonus
+		clr_global_flag = coalition_recently_completed_project
 	}
 }

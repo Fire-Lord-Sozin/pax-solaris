@@ -1,0 +1,78 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_sol_debate_background_tea"
+		texturefile = "gfx/interface/sol_dialogue/sol_debate_background_tea.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_debate_button"
+		texturefile = "gfx/interface/sol_dialogue/sol_debate_button.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_debate_option"
+		texturefile = "gfx/interface/sol_dialogue/sol_debate_option.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_1"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_1.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_2"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_2.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_3"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_3.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_4"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_4.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_5"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_5.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_6"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_6.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_7"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_7.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_twilight_8"
+		texturefile = "gfx/interface/sol_dialogue/sol_twilight_8.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_1"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_1.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_2"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_2.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_3"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_3.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_4"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_4.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_5"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_5.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_6"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_6.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_7"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_7.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_daybreaker_8"
+		texturefile = "gfx/interface/sol_dialogue/sol_daybreaker_8.dds"
+	}
+}

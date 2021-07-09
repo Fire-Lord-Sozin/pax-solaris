@@ -1,0 +1,6 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_Feitanakin"
+		texturefile = "gfx/leaders/NLH/Feitanakin.tga"
+	}
+}
