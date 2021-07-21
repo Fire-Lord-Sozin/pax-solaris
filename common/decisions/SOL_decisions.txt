@@ -2440,7 +2440,7 @@ SOL_resistance_activity = {
 					limit = { 
 						non_damaged_building_level = {
 							building = infrastructure
-							level > 2		
+							level > 1	
 						}
 					}
 					damage_building = {
@@ -2526,6 +2526,7 @@ SOL_resistance_activity = {
 						save_global_event_target_as = SOL_resistance_stronghold
 					}
 					country_event = { id = paxsolaris.230 hours = 1 }
+					country_event = { id = paxsolaris.231 days = 20 }
 				}
 			}
 		}
@@ -2554,6 +2555,7 @@ SOL_resistance_activity = {
 						save_global_event_target_as = SOL_resistance_stronghold
 					}
 					country_event = { id = paxsolaris.230 hours = 1 }
+					country_event = { id = paxsolaris.231 days = 20 }
 				}			
 			}
 		}
@@ -2563,6 +2565,7 @@ SOL_resistance_activity = {
 		priority = 50
 		allowed = { always = no }
 		fixed_random_seed = no
+		is_good = no
 		available = {		
 			hidden_trigger = {
 				event_target:SOL_resistance_attack_target_true = { meets_division_requirements_attack = yes }
@@ -2683,8 +2686,25 @@ SOL_resistance_activity = {
 				state = 3
 			}
 		}
-		
-		is_good = no
+		cancel_trigger = {
+			hidden_trigger = {
+				has_country_flag = resistance_ceasefire
+				check_variable = { resistance_attack_blocked > 0 }
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_resistance_attack"
+			hidden_effect = {
+				every_state ={
+					clr_state_flag = resistance_attack_dummy_target
+					clr_state_flag = resistance_attack_true_target
+				}
+				clear_array = EQS.SOL_resistance_attack_target_array
+				clr_country_flag = SOL_has_ongoing_attack
+				remove_mission = SOL_resistance_attack
+			}
+		}
+
 		days_mission_timeout = resistance_attack_mission_dur
 		days_remove = 0
 		selectable_mission = no
@@ -2790,7 +2810,47 @@ SOL_resistance_activity = {
 			}
 		}
 	}
-
+	SOL_resistance_cohesion = {
+		icon = GFX_decision_resistance_cohesion
+		priority = 40
+		allowed = { always = no }
+		fixed_random_seed = no
+		available = {		
+			hidden_trigger = {
+				check_variable = { days_mission_timeout@SOL_resistance_cohesion < 1 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_country_flag = resistance_ceasefire
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_resistance_cohesion"
+			hidden_effect = {
+				clr_country_flag = SOL_has_ongoing_cohesion
+				remove_mission = SOL_resistance_cohesion
+			}
+		}
+		is_good = no
+		days_mission_timeout = 180
+		days_remove = 0
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_resistance_cohesion"
+			custom_effect_tooltip = paxsolaris_resistance_cohesion_increase
+			hidden_effect = {
+				add_to_variable = { var = solar_resistance_cohesion_actions_progress value = 1 }
+				clr_country_flag = SOL_has_ongoing_cohesion
+				remove_mission = SOL_resistance_cohesion
+			}
+		}
+	}
 	SOL_state_uprising_decision = {
 		icon = generic_ignite_civil_war
 		

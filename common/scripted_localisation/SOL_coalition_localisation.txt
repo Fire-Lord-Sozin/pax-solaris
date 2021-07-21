@@ -34,6 +34,25 @@ defined_text = {
 		localization_key = coalition_membership_effects_no
 	}
 }
+defined_text = {
+	name = coalition_membership_effects_recognise_hrm
+	text = {
+		trigger = {
+			OR = {
+				has_idea = coalition_recognise_hrm_project_bonus_1
+				has_idea = coalition_recognise_hrm_project_bonus_2
+				has_idea = coalition_recognise_hrm_project_bonus_3
+				has_idea = coalition_recognise_hrm_project_bonus_4
+				has_idea = coalition_recognise_hrm_project_bonus_5
+			}
+			check_variable = { global.SOL_coalition_hrn_collaboration_var > 0 }
+		}
+		localization_key = coalition_membership_effects_recognise_hrm_yes
+	}
+	text = {
+		localization_key = coalition_membership_effects_no
+	}
+}
 defined_text = { 
 	name = current_proposal_scripted_loc
 	text = {
@@ -77,6 +96,12 @@ defined_text = {
 			has_global_flag = proposal_coalition_probing_raids
 		}
 		localization_key =  proposal_probing_raids_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_recognise_hrm
+		}
+		localization_key =  proposal_recognise_hrm_loc
 	}
 	text = {
 		localization_key = proposal_none
@@ -128,6 +153,12 @@ defined_text = {
 		localization_key =  coalition_probing_raids_propose_desc
 	}
 	text = {
+		trigger = {
+			has_global_flag = proposal_coalition_recognise_hrm
+		}
+		localization_key =  coalition_recognise_hrm_propose_desc
+	}
+	text = {
 		localization_key = proposal_none
 	}
 }
@@ -157,27 +188,6 @@ defined_text = {
 }
 
 defined_test = {
-	name = CoalitionResolutionProposal
-	text = { 
-		trigger = { 
-			OR ={
-				has_global_flag = coalition_border_war_win
-				has_global_flag = coalition_border_war_lose
-			}
-		}
-		localization_key = sol_coalition_alert_raid_description_text
-	}
-	text = { 
-		trigger = { 
-			has_global_flag = proposal_coalition_active
-		}
-		localization_key = sol_coalition_alert_proposal_description_text
-	}
-	text = {
-		localization_key = sol_coalition_alert_outcome_description_text
-	}
-}
-defined_test = {
 	name = CoalitionResolutionResult
 	text = { 
 		trigger = { 
@@ -193,14 +203,30 @@ defined_test = {
 	name = CoalitionRaidResult
 	text = { 
 		trigger = { 
-			has_global_flag = coalition_border_war_win
+			check_variable = { sol_alert_outcome_var = 1 }
 		}
 		localization_key = sol_coalition_alert_raid_win
 	}
 	text = {
 		trigger = { 
-			has_global_flag = coalition_border_war_lose
+			check_variable = { sol_alert_outcome_var = 2 }
 		}
 		localization_key = sol_coalition_alert_raid_fail
+	}
+}
+defined_text = {
+	name = GetDecisionCostInfantryEquipment1000
+	text = {
+		trigger = {
+			check_variable = {
+				var = num_equipment@infantry_equipment
+				value = 1000
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = decision_cost_infantry_equipment_1000
+	}
+	text = {
+		localization_key = decision_cost_infantry_equipment_1000_blocked
 	}
 }

@@ -2232,113 +2232,152 @@ defined_text = {
 }
 
 defined_text = {
-	name = sol_resistance_alert_description_text_outcome
+	name = sol_alert_title_text_type
 	text = {
 		trigger = {
-			has_country_flag = SOL_resistance_win
+			check_variable = { sol_alert_title_var = 1 }
 		}
-		localization_key = sol_resistance_alert_description_text_loss
+		localization_key = sol_alert_title_resistance_attack
 	}
 	text = {
 		trigger = {
-			has_country_flag = SOL_imperial_win
+			check_variable = { sol_alert_title_var = 2 }
 		}
-		localization_key = sol_resistance_alert_description_text_win
+		localization_key = sol_alert_title_coalition_attack
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_title_var = 3 }
+		}
+		localization_key = SOL_coalition_alert_popup_title
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_title_var = 4 }
+		}
+		localization_key = sol_alert_title_nuke
 	}
 }
+
 defined_text = {
 	name = sol_resistance_alert_description_text_type
 	text = {
 		trigger = {
-			has_country_flag = SOL_resistance_propaganda
+			check_variable = { sol_alert_desc_var = 1 }
 		}
 		localization_key = sol_resistance_alert_description_propaganda
 	}
 	text = {
 		trigger = {
-			has_country_flag = SOL_resistance_warehouse
+			check_variable = { sol_alert_desc_var = 2 }
 		}
 		localization_key = sol_resistance_alert_description_warehouse
 	}
 	text = {
 		trigger = {
-			has_country_flag = SOL_resistance_prison
+			check_variable = { sol_alert_desc_var = 3 }
 		}
 		localization_key = sol_resistance_alert_description_prison
 	}
-}
-defined_text = {
-	name = sol_resistance_alert_title_text_type
 	text = {
 		trigger = {
-			has_country_flag = SOL_coalition_raid
-		}
-		localization_key = sol_resistance_alert_title_coalition
-	}
-	text = {
-		localization_key = sol_resistance_alert_title_resistance
-	}
-}
-defined_text = {
-	name = sol_resistance_alert_description
-	text = {
-		trigger = {
-			has_country_flag = SOL_coalition_raid
-		}
-		localization_key = sol_resistance_alert_description_coalition
-	}
-	text = {
-		localization_key = sol_resistance_alert_description_resistance
-	}
-}
-defined_text = {
-	name = sol_coalition_border_raid_desc
-	text = {
-		trigger = {
-			has_country_flag = SOL_coalition_raid
-			NOT = {
-				has_country_flag = SOL_coalition_raid_win
-				has_country_flag = SOL_coalition_raid_lose
-			}
+			check_variable = { sol_alert_desc_var = 4 }
 		}
 		localization_key = sol_coalition_border_raid_desc_begin
 	}
 	text = {
 		trigger = {
-			has_country_flag = SOL_coalition_raid_win
+			check_variable = { sol_alert_desc_var = 5 }
 		}
 		localization_key = sol_coalition_border_raid_desc_win
 	}
 	text = {
 		trigger = {
-			has_country_flag = SOL_coalition_raid_lose
+			check_variable = { sol_alert_desc_var = 6 }
 		}
 		localization_key = sol_coalition_border_raid_desc_lose
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_desc_var = 7 }
+		}
+		localization_key = sol_coalition_resistance_funded_desc
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_desc_var = 8 }
+		}
+		localization_key = sol_coalition_alert_proposal_description_text
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_desc_var = 9}
+		}
+		localization_key = sol_coalition_alert_outcome_description_text
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_desc_var = 10 }
+		}
+		localization_key = sol_coalition_alert_raid_description_text
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_desc_var = 11 }
+		}
+		localization_key = sol_nuke_alert
+	}
+}
+
+defined_text = {
+	name = sol_resistance_alert_description_text_outcome
+	text = {
+		trigger = {
+			check_variable = { sol_alert_outcome_var = 2 }
+		}
+		localization_key = sol_resistance_alert_description_text_loss
+	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_outcome_var = 1 }
+		}
+		localization_key = sol_resistance_alert_description_text_win
 	}
 }
 defined_text = {
 	name = sol_resistance_alert_description_text_consequence
 	text = {
 		trigger = {
-			has_country_flag = SOL_resistance_win
-			has_country_flag = SOL_resistance_propaganda
+			check_variable = { sol_alert_outcome_var = 2 }
+			check_variable = { sol_alert_desc_var = 1 }
 		}
 		localization_key = paxsolaris_resistance_outreach_increase
 	}
 	text = {
 		trigger = {
-			has_country_flag = SOL_resistance_win
+			check_variable = { sol_alert_outcome_var = 2 }
 			OR = {
-				has_country_flag = SOL_resistance_supply
-				has_country_flag = SOL_resistance_prison
+				check_variable = { sol_alert_desc_var = 2 }
+				check_variable = { sol_alert_desc_var = 3 }
+				check_variable = { sol_alert_desc_var = 7 }
 			}
 		}
 		localization_key = paxsolaris_resistance_strength_increase
 	}
-	text = {	
+	text = {
+		trigger = {
+			check_variable = { sol_alert_outcome_var = 1 }
+			OR = {
+				check_variable = { sol_alert_desc_var = 1 }
+				check_variable = { sol_alert_desc_var = 2 }
+				check_variable = { sol_alert_desc_var = 3 }
+				check_variable = { sol_alert_desc_var = 7 }
+			}
+		}	
 		localization_key = paxsolaris_leads_increase_riot
 	}
 }
+
 defined_text = {
 	name = SOL_gas_attack_neighbour_state
 	text = {
@@ -2755,5 +2794,20 @@ defined_text = {
 			}
 		}
 		localization_key = paxsolaris_341_getdesc_nmm
+	}
+}
+defined_text = {
+	name = cohesion_event_2_desc
+	text = {
+		trigger = { has_country_flag = SOL_buffalo_problems_flag_nothing }
+		localization_key = cohesion_event_2_desc_1
+	}
+	text = {
+		trigger = { has_country_flag = SOL_buffalo_problems_flag_work }
+		localization_key = cohesion_event_2_desc_2
+	}
+	text = {
+		trigger = { has_country_flag = SOL_buffalo_problems_flag_genocide }
+		localization_key = cohesion_event_2_desc_3
 	}
 }

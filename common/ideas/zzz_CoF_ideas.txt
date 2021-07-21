@@ -310,4 +310,71 @@ ideas = {
 			}
 		}
 	}
+	hidden_ideas = {
+		coalition_recognise_hrm_project_bonus_1 = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			targeted_modifier = { tag = EQS defense_bonus_against = 0.05 }
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.05 }
+		}
+		coalition_recognise_hrm_project_bonus_2 = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			targeted_modifier = { tag = EQS defense_bonus_against = 0.1 }
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.1 }
+		}
+		coalition_recognise_hrm_project_bonus_3 = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			targeted_modifier = { tag = EQS defense_bonus_against = 0.15 }
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.15 }
+		}
+		coalition_recognise_hrm_project_bonus_4 = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			targeted_modifier = { tag = EQS defense_bonus_against = 0.2 }
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.2 }
+		}
+		coalition_recognise_hrm_project_bonus_5 = {
+			picture = coalition_member
+			available = {
+				is_in_faction = yes
+				is_coalition_member = yes
+			}
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			targeted_modifier = { tag = EQS defense_bonus_against = 0.25 }
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.25 }
+		}
+	}
 }

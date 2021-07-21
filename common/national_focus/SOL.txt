@@ -1,0 +1,45 @@
+focus_tree = {
+	id = paxsolaris_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 15
+			original_tag = EQS
+			is_SOLAR_EMPIRE = yes
+		}
+	}
+	default = no
+	#################################################
+	###### Minor states problem #######################
+	#################################################
+	continuous_focus_position = { 
+		x = 3000 
+		y = 025 
+	}
+	initial_show_position = {
+		x = 20
+		y = 2
+		offset = {
+			x = 0
+			y = 5
+			trigger = {
+				has_country_flag = march_on_canterlot
+			}
+		}
+	}
+
+
+	shared_focus = SOL_Imperium_Solis
+	shared_focus = SOL_investigate_resistance
+	shared_focus = SOL_Imperial_Inquisition
+	shared_focus = SOL_Solar_Cult
+	shared_focus = SOL_integrate_southeast
+	shared_focus = SOL_integrate_northwest
+	shared_focus = SOL_economic_miracle
+	shared_focus = SOL_remilitarisation
+	shared_focus = SOL_all_hail_the_sun_empress
+	shared_focus = SOL_solar_economy
+	shared_focus = SOL_united_under_the_sun
+}

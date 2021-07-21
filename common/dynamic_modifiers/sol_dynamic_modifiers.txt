@@ -95,4 +95,3 @@ SOL_gas_attack = {
 	sickness_chance = 1.5
 	local_org_regain = -1
 }
-

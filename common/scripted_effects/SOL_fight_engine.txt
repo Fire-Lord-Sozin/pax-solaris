@@ -1,0 +1,434 @@
+#This is the fight engine. Do not modify this unless you know what you're doing. 
+
+fight_calculate_effect = {
+	clear_array = missed_targets
+	fight_handle_spells = yes
+	set_variable = { actions_display_attacker = fight_attacker_num }
+	set_variable = { actions_display_defender = fight_defender_num }
+
+	set_variable { var = background_darkener_frame value = 1 }
+	for_each_loop = {
+		array = fighters_array
+		if = {
+			limit = { NOT = { is_in_array = { dead_fighters = v } } }
+			set_variable = { var = damage_frame_array^v value = 1 }
+		}
+		else = {
+			set_variable = { var = damage_frame_array^v value = 3 }
+		}
+	}
+
+	add_to_array = { has_taken_turn_array = fight_attacker_num }
+	
+	for_each_loop = {
+		array = fighters_array
+		set_variable = { attack_multiplier_array^v = 1 }
+		set_variable = { defence_multiplier_array^v = 1 }
+		set_variable = { evasion_array^v = evasion_initial_array^v }
+		set_variable = { health_change_array^v = 0 }
+		set_variable = { vitality_change_array^v = 0 }
+	}
+	clear_array = active_effects
+	for_each_loop = {
+		array = status_effect_target_ids
+		value = current_target
+		index = current_target_index
+
+		if = {
+			limit = {
+				NOT = {
+					any_of = {
+						array = active_effects
+						value = active_effects_value
+						index = active_effects_index
+
+						check_variable = { status_effect_target_ids^active_effects_index = current_target }
+						check_variable = { active_effects_value = status_effect_spell_type^current_target_index }
+					}
+					is_in_array = { dead_fighters = current_target }
+				}
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 1 } }
+				add_to_variable = { attack_multiplier_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 2 } }
+				subtract_from_variable = { defence_multiplier_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 5 } }
+				add_to_variable = { evasion_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 3 } }
+				subtract_from_variable = { health_change_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 4 } }
+				subtract_from_variable = { vitality_change_array^current_target = status_effect_magnitude^current_target_index }
+			}
+		}
+		add_to_array = { active_effects = status_effect_spell_type^current_target_index }
+	}
+
+
+	fight_calculate_pos = yes
+	percentify = yes
+	clear_variable = currently_selected_spell
+
+	handle_custom_effects = yes
+	if = {
+		limit = { NOT = { has_variable = sol_dialogue_var } }
+		fight_handle_turns = yes
+		available_actions = yes
+	}
+
+	add_to_variable = { var = sol_fight_var value = 1 }
+}
+fight_handle_turns = {
+	if = {
+		limit = {
+			has_country_flag = fight_right_turn
+			all_of = {
+				array = right_fighters_array
+				is_in_array = { has_taken_turn_array = v }
+			}
+		}
+		clr_country_flag = fight_right_turn
+		set_country_flag = fight_left_turn
+		for_each_loop = {
+			array = left_fighters_array
+			remove_from_array = { has_taken_turn_array = v }
+		}
+		handle_status_effects = yes
+		if = {
+			limit = { has_country_flag = left_side_ai_controlled }
+			clear_array = ai_players_temp
+			for_each_loop = {
+				array = ai_controlled_fighters
+				if = {
+					limit = { NOT = { is_in_array = { dead_fighters = v } } }
+					add_to_array = { ai_players_temp = v }
+				}
+			}
+			set_variable = { var = current_ai_fighter value = 0 }
+			country_event = fightevent.1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = fight_left_turn
+			all_of = {
+				array = left_fighters_array
+				is_in_array = { has_taken_turn_array = v }
+			}
+		}
+		clr_country_flag = fight_left_turn
+		set_country_flag = fight_right_turn
+		for_each_loop = {
+			array = right_fighters_array
+			remove_from_array = { has_taken_turn_array = v }
+		}
+		handle_status_effects = yes
+		if = {
+			limit = { has_country_flag = right_side_ai_controlled }
+			clear_array = ai_players_temp
+			for_each_loop = {
+				array = ai_controlled_fighters
+				if = {
+					limit = { NOT = { is_in_array = { dead_fighters = v } } }
+					add_to_array = { ai_players_temp = v }
+				}
+			}
+			set_variable = { var = current_ai_fighter value = 0 }
+			country_event = fightevent.1
+		}
+	}
+	for_each_loop = {
+		array = dead_fighters
+		add_to_array = { has_taken_turn_array = v }
+	}
+}
+fight_calculate_pos = {
+	for_each_loop = {
+		array = fighters_array
+		value = current_health_target
+		index = current_health_index
+		if = {
+			limit = {
+				check_variable = {
+					var = health_array^current_health_target
+					value = 0
+					compare = less_than_or_equals
+				}
+			}
+			add_to_array = { dead_fighters = current_health_target }
+			set_variable = { var = damage_frame_array^current_health_target value = 3 }
+			if = {
+				limit = {
+					is_in_array = { right_fighters_array = current_health_target }
+					all_of = {
+						array = right_fighters_array
+						is_in_array = { dead_fighters = v }
+					}
+				}
+				set_country_flag = sol_fight_left_win
+				handle_victory = yes
+			}
+			if = {
+				limit = {
+					is_in_array = { left_fighters_array = current_health_target }
+					all_of = {
+						array = left_fighters_array
+						is_in_array = { dead_fighters = v }
+					}
+				}
+				set_country_flag = sol_fight_right_win
+				handle_victory = yes
+			}
+		}
+		if = {
+			limit = { is_in_array = { dead_fighters = current_health_target } }
+			set_variable = { health_array^current_health_target = 0 }
+			set_variable = { vitality_array^current_health_target = 0 }
+		}
+		clamp_variable = {
+			var = health_array^current_health_target
+			min = 0
+			max = max_health_array^current_health_target
+		}
+		clamp_variable = {
+			var = vitality_array^current_health_target
+			min = 0
+			max = max_vitality_array^current_health_target
+		}
+		if = {
+			limit = { is_in_array = { right_fighters_array = current_health_target } }
+			set_variable = { health_pos_array^current_health_target = 224 }
+			set_temp_variable = { defender_health_bar_pos = health_array^current_health_target }
+			divide_temp_variable = { defender_health_bar_pos = max_health_array^current_health_target }
+			multiply_temp_variable = { defender_health_bar_pos = 223 }
+			round_temp_variable = defender_health_bar_pos
+			subtract_from_variable = { health_pos_array^current_health_target = defender_health_bar_pos }
+
+			set_variable = { vitality_pos_array^current_health_target = 218 }
+			set_temp_variable = { defender_vitality_bar_pos = vitality_array^current_health_target }
+			divide_temp_variable = { defender_vitality_bar_pos = max_vitality_array^current_health_target }
+			multiply_temp_variable = { defender_vitality_bar_pos = 198 }
+			round_temp_variable = defender_vitality_bar_pos
+			subtract_from_variable = { vitality_pos_array^current_health_target = defender_vitality_bar_pos }
+		}
+		else = {
+			set_variable = { health_pos_array^current_health_target = -238 }
+			set_temp_variable = { defender_health_bar_pos = health_array^current_health_target }
+			divide_temp_variable = { defender_health_bar_pos = max_health_array^current_health_target }
+			multiply_temp_variable = { defender_health_bar_pos = 223 }
+			round_temp_variable = defender_health_bar_pos
+			add_to_variable = { health_pos_array^current_health_target = defender_health_bar_pos }
+
+			set_variable = { vitality_pos_array^current_health_target = -213 }
+			set_temp_variable = { defender_vitality_bar_pos = vitality_array^current_health_target }
+			divide_temp_variable = { defender_vitality_bar_pos = max_vitality_array^current_health_target }
+			multiply_temp_variable = { defender_vitality_bar_pos = 198 }
+			round_temp_variable = defender_vitality_bar_pos
+			add_to_variable = { vitality_pos_array^current_health_target = defender_vitality_bar_pos }
+		}
+	}
+}
+calculate_change = {
+	random_list = {
+		1 = { add_to_variable = { raw_change = 0 } }
+		1 = { add_to_variable = { raw_change = 1 } }
+		1 = { add_to_variable = { raw_change = 2 } }
+		1 = { add_to_variable = { raw_change = 3 } }
+		1 = { add_to_variable = { raw_change = 4 } }
+		1 = { add_to_variable = { raw_change = 5 } }
+		1 = { add_to_variable = { raw_change = -1 } }
+		1 = { add_to_variable = { raw_change = -2 } }
+		1 = { add_to_variable = { raw_change = -3 } }
+		1 = { add_to_variable = { raw_change = -4 } }
+		1 = { add_to_variable = { raw_change = -5 } }
+	}
+}
+available_actions = {
+	for_each_loop = {
+		array = fighters_array
+		set_variable = { var = spell_1_frame_array^v value = 1 }
+		set_variable = { var = spell_2_frame_array^v value = 1 }
+		set_variable = { var = spell_3_frame_array^v value = 1 }
+		set_variable = { var = spell_4_frame_array^v value = 1 }
+		set_variable = { var = spell_5_frame_array^v value = 1 }
+		if = {
+			limit = { 
+				OR = {
+					is_in_array = { array = has_taken_turn_array value = v }
+					is_in_array = { array = ai_controlled_fighters value = v } #Player can't cast the spells from a fighter if they've taken their turn, are AI or dead
+					is_in_array = { array = dead_fighters value = v } 
+				}
+			}
+			set_variable = { var = spell_1_frame_array^v value = 2 }
+			set_variable = { var = spell_2_frame_array^v value = 2 }
+			set_variable = { var = spell_3_frame_array^v value = 2 }
+			set_variable = { var = spell_4_frame_array^v value = 2 }
+			set_variable = { var = spell_5_frame_array^v value = 2 }
+		}
+		if = {
+			limit = { check_variable = { spell_2_cost_array^v > vitality_array^v } }
+			set_variable = { var = spell_2_frame_array^v value = 2 }
+		}
+		if = {
+			limit = { check_variable = { spell_3_cost_array^v > vitality_array^v } }
+			set_variable = { var = spell_3_frame_array^v value = 2 }
+		}
+		if = {
+			limit = { check_variable = { spell_4_cost_array^v > vitality_array^v } }
+			set_variable = { var = spell_4_frame_array^v value = 2 }
+		}
+		if = {
+			limit = { check_variable = { spell_5_cost_array^v > vitality_array^v } }
+			set_variable = { var = spell_5_frame_array^v value = 2 }
+		}
+	}
+}
+handle_status_effects = {
+	if = {
+		limit = { has_country_flag = fight_right_turn }
+		for_each_loop = {
+			array = right_fighters_array
+			add_to_variable = { health_array^v = health_change_array^v }
+			add_to_variable = { vitality_array^v = vitality_change_array^v }
+		}
+	}
+	if = {
+		limit = { has_country_flag = fight_left_turn }
+		for_each_loop = {
+			array = left_fighters_array
+			add_to_variable = { health_array^v = health_change_array^v }
+			add_to_variable = { vitality_array^v = vitality_change_array^v }
+		}
+	}
+	for_each_loop = {
+		array = status_effect_target_ids
+		subtract_from_variable = { status_effect_duration^i = 1 }
+		if = {
+			limit = { check_variable = { status_effect_duration^i < 1 } }
+			set_variable = { status_effect_target_ids^i = -1000 }
+			set_variable = { status_effect_spell_type^i = -1000 }
+			set_variable = { status_effect_duration^i = -1000 }
+			set_variable = { status_effect_type_id^i = -1000 }
+			set_variable = { status_effect_magnitude^i = -1000 }
+		}
+	}
+	if = {
+		limit = { is_in_array = { status_effect_target_ids = -1000 } }
+		remove_from_array = { status_effect_target_ids = -1000 }
+		remove_from_array = { status_effect_spell_type = -1000 }
+		remove_from_array = { status_effect_duration = -1000 }
+		remove_from_array = { status_effect_type_id = -1000 }
+		remove_from_array = { status_effect_magnitude = -1000 }
+	}
+
+	for_each_loop = {
+		array = fighters_array
+		set_variable = { attack_multiplier_array^v = 1 }
+		set_variable = { defence_multiplier_array^v = 1 }
+		set_variable = { evasion_array^v = evasion_initial_array^v }
+		set_variable = { health_change_array^v = 0 }
+		set_variable = { vitality_change_array^v = 0 }
+	}
+	clear_array = active_effects
+	for_each_loop = {
+		array = status_effect_target_ids
+		value = current_target
+		index = current_target_index
+
+		if = {
+			limit = {
+				NOT = {
+					any_of = {
+						array = active_effects
+						value = active_effects_value
+						index = active_effects_index
+
+						check_variable = { status_effect_target_ids^active_effects_index = current_target }
+						check_variable = { active_effects_value = status_effect_spell_type^current_target_index }
+					}
+					is_in_array = { dead_fighters = current_target }
+				}
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 1 } }
+				add_to_variable = { attack_multiplier_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 2 } }
+				subtract_from_variable = { defence_multiplier_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 5 } }
+				add_to_variable = { evasion_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 3 } }
+				subtract_from_variable = { health_change_array^current_target = status_effect_magnitude^current_target_index }
+			}
+			if = {
+				limit = { check_variable = { status_effect_type_id^current_target_index = 4 } }
+				subtract_from_variable = { vitality_change_array^current_target = status_effect_magnitude^current_target_index }
+			}
+		}
+		add_to_array = { active_effects = status_effect_spell_type^current_target_index }
+	}
+}
+percentify = {
+	for_each_loop = {
+		array = fighters_array
+		set_variable = { var = attack_percent_array^v value = attack_multiplier_array^v }
+		subtract_from_variable = { var = attack_percent_array^v value = 1 }
+		multiply_variable = { var = attack_percent_array^v value = 100 }
+		
+		set_variable = { var = defence_percent_array^v value = 1 }
+		subtract_from_variable = { var = defence_percent_array^v value = defence_multiplier_array^v }
+		multiply_variable = { var = defence_percent_array^v value = 100 }
+	}
+}
+fight_probability_calc = { 
+	random_list = {
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 0 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 10 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 20 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 30 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 40 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 50 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 60 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 70 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 80 } }
+		1 = { set_temp_variable = { var = probability_check_temp_1 value = 90 } }
+	}
+	random_list = {
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 0 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 1 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 2 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 3 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 4 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 5 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 6 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 7 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 8 } }
+		1 = { set_temp_variable = { var = probability_check_temp_2 value = 9 } }
+	}
+	add_to_temp_variable = { probability_check_temp_1 = probability_check_temp_2 }
+	set_variable = { var = fight_probability value = probability_check_temp_1 }
+}
+block_spells = {
+	set_country_flag = fight_spells_blocked
+	for_each_loop = {
+		array = fighters_array
+		set_variable = { var = spell_1_frame_array^v value = 2 }
+		set_variable = { var = spell_2_frame_array^v value = 2 }
+		set_variable = { var = spell_3_frame_array^v value = 2 }
+		set_variable = { var = spell_4_frame_array^v value = 2 }
+		set_variable = { var = spell_5_frame_array^v value = 2 }
+	}
+}

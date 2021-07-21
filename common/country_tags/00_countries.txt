@@ -120,3 +120,4 @@ JEV = "countries/EviConfederation.txt"
 #Pax Solaris Nations Start Here
 
 EQR = "countries/EquestrianRepublic.txt"
+HRM = "countries/HarmonyRestorationMovement.txt"

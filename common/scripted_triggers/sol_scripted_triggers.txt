@@ -57,6 +57,20 @@ is_a_player_in_coalition = {
 				is_coalition_member = yes
 				is_ai = no
 			}
+			NOT = {
+				has_idea = detached_country
+				has_idea = communal_society
+				has_idea = tribal_society
+				has_idea = tribal_society2
+				has_idea = tribal_society3
+				has_idea = tribal_society4
+				has_idea = agrarian_society
+				has_idea = agrarian_society2
+				has_idea = agrarian_society3
+				has_idea = agrarian_society4
+				has_idea = agrarian_society5
+				has_idea = agrarian_society6
+			}
 		}
 		#This gives players complete control over the Coalition's decisions
 		is_ai = no 
@@ -89,6 +103,18 @@ is_eligible_for_coalition = {
 		}
 		has_government = fascism
 		tag = ROOT
+		has_idea = detached_country
+		has_idea = communal_society
+		has_idea = tribal_society
+		has_idea = tribal_society2
+		has_idea = tribal_society3
+		has_idea = tribal_society4
+		has_idea = agrarian_society
+		has_idea = agrarian_society2
+		has_idea = agrarian_society3
+		has_idea = agrarian_society4
+		has_idea = agrarian_society5
+		has_idea = agrarian_society6
 	}
 	if = {
 		limit = {
@@ -104,7 +130,11 @@ is_eligible_for_coalition = {
 		limit = {
 			tag = STG
 		}
-		has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+		OR = {
+			has_country_leader = { ruling_only = yes name = "Altidiya" }
+			has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+			has_completed_focus = vasya_leader
+		}
 	}
 	else = {
 		OR = {
@@ -211,4 +241,35 @@ meets_division_requirements_attack = {
 			}
 		}
 	}	
+}
+has_solar_civil_war = {
+	custom_trigger_tooltip = {
+		tooltip = has_solar_civil_war_tt
+		OR = {
+			AND = {
+				tag = EQS
+				OR = {
+					has_war_with = HRM
+				}
+			}
+			AND = {
+				has_war_with = EQS
+				EQS = {
+					has_country_leader = {
+						ruling_only = yes
+						name = "Daybreaker"
+					}
+				}
+				OR = {
+					tag = HRM
+				}
+			}
+		}
+	}
+}
+low_resistance_strength = {
+	check_variable = { solar_civilian_support > 2 }
+	check_variable = { solar_military_support > 2 } 
+	check_variable = { solar_resistance_strength < 4 }
+	check_variable = { solar_resistance_outreach_strength < 4 } 
 }

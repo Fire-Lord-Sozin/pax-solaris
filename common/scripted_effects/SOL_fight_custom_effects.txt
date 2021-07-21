@@ -1,0 +1,579 @@
+fight_handle_spells = {
+	if = {
+		limit = { check_variable = { currently_selected_spell = 1 } }
+		set_variable = { raw_change = spell_1_vitality_recovered^fight_attacker_num }
+		calculate_change = yes
+		add_to_variable = { var = vitality_array^fight_defender_num value = raw_change }
+
+		add_to_array = { status_effect_target_ids = fight_defender_num } #Id of the pony with status effect
+		add_to_array = { status_effect_spell_type = 1 } #Spell origin, prevents doubleups
+		add_to_array = { status_effect_duration = 2 } #Duration in turns
+		add_to_array = { status_effect_type_id = 2 } #Type of status effect. 1 = attack bonus, 2 = defence bonus, 3 = health/turn, 4 = vitality/turn, 5 = evasion
+		add_to_array = { status_effect_magnitude = 0.25 } #Magnitide of type
+		subtract_from_variable = { defence_multiplier_array^fight_defender_num = 0.25 }
+		set_variable = { action_display_var = 1 }
+		sound_effect = "sol_shield_ev"
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 2 } }
+		fight_probability_calc = yes
+		if = {
+			limit = { check_variable = { fight_probability > evasion_array^fight_defender_num } }
+			set_variable = { raw_change = spell_2_damage_array^fight_attacker_num }
+			calculate_change = yes
+			multiply_variable = { var = raw_change value = attack_multiplier_array^fight_attacker_num }
+			multiply_variable = { var = raw_change value = defence_multiplier_array^fight_defender_num }
+			subtract_from_variable = { var = health_array^fight_defender_num value = raw_change }
+		}
+		else = {
+			add_to_array = { missed_targets = fight_defender_num }
+		}
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^2 }
+		set_variable = { action_display_var = 2 }
+		attack_sound = yes		
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 3 } }
+		if = {
+			limit = { is_in_array = { right_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = right_fighters_array
+				value = current_target
+
+				set_variable = { raw_change = 35 }
+				calculate_change = yes
+				add_to_variable = { var = health_array^current_target value = raw_change }
+				set_variable = { raw_change = 35 }
+				calculate_change = yes
+				add_to_variable = { var = vitality_array^current_target value = raw_change }
+
+				add_to_array = { status_effect_target_ids = current_target }
+				add_to_array = { status_effect_spell_type = 3 }
+				add_to_array = { status_effect_duration = 5 } 
+				add_to_array = { status_effect_type_id = 1 } 
+				add_to_array = { status_effect_magnitude = 0.25 }
+				add_to_variable = { attack_multiplier_array^current_target = 0.2 }
+			}
+		}
+		if = {
+			limit = { is_in_array = { left_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = left_fighters_array
+				value = current_target
+
+				set_variable = { raw_change = 35 }
+				calculate_change = yes
+				add_to_variable = { var = health_array^current_target value = raw_change }
+				set_variable = { raw_change = 35 }
+				calculate_change = yes
+				add_to_variable = { var = vitality_array^current_target value = raw_change }
+
+				add_to_array = { status_effect_target_ids = current_target }
+				add_to_array = { status_effect_spell_type = 3 }
+				add_to_array = { status_effect_duration = 5 } 
+				add_to_array = { status_effect_type_id = 1 } 
+				add_to_array = { status_effect_magnitude = 0.25 }
+				add_to_variable = { attack_multiplier_array^current_target = 0.2 }
+			}
+		}
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^3 }
+		set_variable = { action_display_var = 3 }
+		sound_effect = "sol_lifebringer_ev"
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 4 } }
+		if = {
+			limit = { is_in_array = { right_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = right_fighters_array
+				value = current_target
+
+				add_to_array = { status_effect_target_ids = current_target }
+				add_to_array = { status_effect_spell_type = 4 } 
+				add_to_array = { status_effect_duration = 8 } 
+				add_to_array = { status_effect_type_id = 2 } 
+				add_to_array = { status_effect_magnitude = 0.5 }
+				subtract_from_variable = { defence_multiplier_array^current_target = 0.5 }
+			}
+		}
+		if = {
+			limit = { is_in_array = { left_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = left_fighters_array
+				value = current_target
+
+				add_to_array = { status_effect_target_ids = current_target }
+				add_to_array = { status_effect_spell_type = 4 } 
+				add_to_array = { status_effect_duration = 8 } 
+				add_to_array = { status_effect_type_id = 2 } 
+				add_to_array = { status_effect_magnitude = 0.5 }
+				subtract_from_variable = { defence_multiplier_array^current_target = 0.5 }
+			}
+		}		
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^4 }
+		set_variable = { action_display_var = 4 }
+		sound_effect = "sol_plasma_shield_ev"
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 5 } }
+		if = {
+			limit = { is_in_array = { right_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = right_fighters_array
+				value = current_target 
+
+				fight_probability_calc = yes
+				add_to_variable = { var = fight_probability value = 50 }
+				if = {
+					limit = { check_variable = { fight_probability > evasion_array^current_target } }
+					set_variable = { raw_change = 60 }
+					calculate_change = yes
+					calculate_change = yes
+					multiply_variable = { var = raw_change value = attack_multiplier_array^fight_attacker_num }
+					multiply_variable = { var = raw_change value = defence_multiplier_array^current_target  }
+					subtract_from_variable = { var = health_array^current_target value = raw_change }
+
+					add_to_array = { status_effect_target_ids = current_target }
+					add_to_array = { status_effect_spell_type = 5 } 
+					add_to_array = { status_effect_duration = 5 }
+					add_to_array = { status_effect_type_id = 3 } 
+					add_to_array = { status_effect_magnitude = 10 }
+					subtract_from_variable = { health_change_array^current_target = 10 }
+				}
+				else = {
+					add_to_array = { missed_targets = current_target }
+				}
+			}
+		}
+		if = {
+			limit = { is_in_array = { left_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = left_fighters_array
+				value = current_target 
+
+				fight_probability_calc = yes
+				add_to_variable = { var = fight_probability value = 40 }
+				if = {
+					limit = { check_variable = { fight_probability > evasion_array^current_target } }
+					set_variable = { raw_change = 60 }
+					calculate_change = yes
+					calculate_change = yes
+					multiply_variable = { var = raw_change value = attack_multiplier_array^fight_attacker_num }
+					multiply_variable = { var = raw_change value = defence_multiplier_array^current_target }
+					subtract_from_variable = { var = health_array^current_target value = raw_change }
+
+					add_to_array = { status_effect_target_ids = current_target }
+					add_to_array = { status_effect_spell_type = 5 } 
+					add_to_array = { status_effect_duration = 5 }
+					add_to_array = { status_effect_type_id = 3 } 
+					add_to_array = { status_effect_magnitude = 10 }
+					subtract_from_variable = { health_change_array^current_target = 10 }
+				}
+				else = {
+					add_to_array = { missed_targets = current_target }
+				}
+			}
+		}
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^5 }	
+		set_variable = { action_display_var = 5 }
+		sound_effect = "sol_supernova_ev"
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 6 } }
+		set_variable = { raw_change = 25 }
+		calculate_change = yes
+		add_to_variable = { var = health_array^fight_defender_num value = raw_change  }
+
+		add_to_array = { status_effect_target_ids = fight_defender_num }
+		add_to_array = { status_effect_spell_type = 6 } 
+		add_to_array = { status_effect_duration = 6 }
+		add_to_array = { status_effect_type_id = 2 }
+		add_to_array = { status_effect_magnitude = 0.25 }
+		subtract_from_variable = { defence_multiplier_array^fight_defender_num = 0.25 }
+
+		add_to_array = { status_effect_target_ids = fight_defender_num }
+		add_to_array = { status_effect_spell_type = 6.5 } 
+		add_to_array = { status_effect_duration = 5 } 
+		add_to_array = { status_effect_type_id = 3 } 
+		add_to_array = { status_effect_magnitude = -10 }
+		subtract_from_variable = { health_change_array^fight_defender_num = -10 }
+
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^6 }
+		set_variable = { action_display_var = 6 }
+		sound_effect = "sol_ally_of_shadows_ev"
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 7 } }
+
+		add_to_array = { status_effect_target_ids = fight_defender_num }
+		add_to_array = { status_effect_spell_type = 7 } 
+		add_to_array = { status_effect_duration = 10 }
+		add_to_array = { status_effect_type_id = 1 }
+		add_to_array = { status_effect_magnitude = -0.75 }
+		add_to_variable = { attack_multiplier_array^fight_defender_num = -0.75 }
+
+		add_to_array = { status_effect_target_ids = fight_defender_num }
+		add_to_array = { status_effect_spell_type = 7.5 } 
+		add_to_array = { status_effect_duration = 10 }
+		add_to_array = { status_effect_type_id = 5 }
+		add_to_array = { status_effect_magnitude = 70 }
+		add_to_variable = { evasion_array^fight_defender_num = 70 }
+
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^7 }
+		set_variable = { action_display_var = 7 }
+		sound_effect = "sol_dreamwalker_ev"
+	}
+	if = {
+		limit = { check_variable = { currently_selected_spell = 8 } }
+		if = {
+			limit = { is_in_array = { right_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = right_fighters_array
+				value = current_target
+
+				add_to_array = { status_effect_target_ids = current_target }
+				add_to_array = { status_effect_spell_type = 8 }
+				add_to_array = { status_effect_duration = 11 }
+				add_to_array = { status_effect_type_id = 2 }
+				add_to_array = { status_effect_magnitude = -0.5 }
+				subtract_from_variable = { defence_multiplier_array^current_target = -0.5 }
+			}
+		}
+		if = {
+			limit = { is_in_array = { left_fighters_array = fight_defender_num } }
+			for_each_loop = {
+				array = left_fighters_array
+				value = current_target
+				
+				add_to_array = { status_effect_target_ids = current_target }
+				add_to_array = { status_effect_spell_type = 8 }
+				add_to_array = { status_effect_duration = 11 }
+				add_to_array = { status_effect_type_id = 2 }
+				add_to_array = { status_effect_magnitude = -0.5 }
+				subtract_from_variable = { defence_multiplier_array^current_target = -0.5 }
+			}
+		}
+		subtract_from_variable = { var = vitality_array^fight_attacker_num value = spell_cost^8 }
+		set_variable = { action_display_var = 8 }
+		sound_effect = "sol_mistress_of_terror_ev"
+	}
+}
+attack_sound = {
+	if = {
+		limit = { check_variable = { fighter_names_array^fight_attacker_num = 0 } }
+		sound_effect = "sol_attack_daybreaker_ev"
+	}
+	if = {
+		limit = { check_variable = { fighter_names_array^fight_attacker_num = 1 } }
+		sound_effect = "sol_attack_nightmare_ev"
+	}
+}
+handle_custom_effects = {
+	add_to_variable = { number_of_turns = 1 }
+	if = {
+		limit = { has_country_flag = has_daybreaker_nightmare_fight }
+		if = {
+			limit = { 
+				check_variable = { number_of_turns = 2 } 
+				NOT = { is_in_array = { used_dialogue = 1 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 2 }
+			set_variable = { fight_dialogue_loc_key = 1 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 1 }			
+		}
+		else_if = {
+			limit = { 
+				check_variable = { number_of_turns = 3 }
+				NOT = { is_in_array = { used_dialogue = 2 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = -1 }
+			set_variable = { left_display_image = 1 }
+			set_variable = { left_fight_frame = 2 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 2 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 2 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^nightmare_fight_num < 100 } 
+				NOT = { is_in_array = { used_dialogue = 3 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 2 }
+			set_variable = { fight_dialogue_loc_key = 3 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 3 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^daybreaker_fight_num < 100 } 
+				NOT = { is_in_array = { used_dialogue = 4 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = -1 }
+			set_variable = { left_display_image = 1 }
+			set_variable = { left_fight_frame = 2 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 4 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 4 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^nightmare_fight_num < 30 } 
+				NOT = { is_in_array = { used_dialogue = 5 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 2 }
+			set_variable = { fight_dialogue_loc_key = 5 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 5 }
+		}
+	}
+	if = {
+		limit = { has_country_flag = has_celestia_nightmare_fight }
+		if = {
+			limit = { 
+				check_variable = { number_of_turns = 2 } 
+				NOT = { is_in_array = { used_dialogue = 6 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 6 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 6 }			
+		}
+		else_if = {
+			limit = { 
+				check_variable = { number_of_turns = 3 }
+				NOT = { is_in_array = { used_dialogue = 7 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = -1 }
+			set_variable = { left_display_image = 1 }
+			set_variable = { left_fight_frame = 2 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 7 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 7 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^nightmare_fight_num < 100 } 
+				NOT = { is_in_array = { used_dialogue = 8 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 8 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 8 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^daybreaker_fight_num < 100 } 
+				NOT = { is_in_array = { used_dialogue = 9 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = -1 }
+			set_variable = { left_display_image = 1 }
+			set_variable = { left_fight_frame = 2 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 9 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 9 }
+		}
+	}
+	if = {
+		limit = { has_country_flag = has_daybreaker_luna_fight }
+		if = {
+			limit = { 
+				check_variable = { number_of_turns = 5 } 
+				NOT = { is_in_array = { used_dialogue = 10 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = -1 }
+			set_variable = { left_display_image = 1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 10 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 10 }			
+		}
+		else_if = {
+			limit = { 
+				check_variable = { number_of_turns = 6 }
+				NOT = { is_in_array = { used_dialogue = 11 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 2 }
+			set_variable = { fight_dialogue_loc_key = 11 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 11 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^nightmare_fight_num < 100 } 
+				NOT = { is_in_array = { used_dialogue = 12 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = 0 }
+			set_variable = { left_display_image = -1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 2 }
+			set_variable = { fight_dialogue_loc_key = 12 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 12 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^daybreaker_fight_num < 150 } 
+				check_variable = { nightmare_frame = 1 }
+				NOT = { is_in_array = { used_dialogue = 13 } }
+			}
+			block_spells = yes
+			set_variable = { right_display_image = -1 }
+			set_variable = { left_display_image = 1 }
+			set_variable = { left_fight_frame = 1 }
+			set_variable = { right_fight_frame = 1 }
+			set_variable = { fight_dialogue_loc_key = 13 }
+			add_to_variable = { var = sol_dialogue_var value = 1 }
+			add_to_array = { used_dialogue = 13 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = { health_array^nightmare_fight_num < 70 } 
+				NOT = {
+					has_country_flag = daybreaker_luna_fight_nightmare_accepted
+					has_country_flag = daybreaker_luna_fight_nightmare_rejected
+				}
+			}
+			block_spells = yes
+			country_event = paxsolaris.326
+		}
+	}
+}
+handle_victory = {
+	if = {
+		limit = { has_country_flag = has_daybreaker_nightmare_fight }
+		if = {
+			limit = { has_country_flag = sol_fight_right_win }
+			if = { 
+				limit = { EQS = { is_ai = no } }
+				EQS = { country_event = paxsolaris.316 }
+			}
+			else = {
+				NLR = { country_event = paxsolaris.316 }
+			}
+		}
+		if = {
+			limit = { has_country_flag = sol_fight_left_win }
+			if = { 
+				limit = { EQS = { is_ai = no } }
+				EQS = { country_event = paxsolaris.318 }
+			}
+			else = {
+				NLR = { country_event = paxsolaris.318 }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = has_celestia_nightmare_fight }
+		if = {
+			limit = { has_country_flag = sol_fight_right_win }
+			if = { 
+				limit = { EQS = { is_ai = no } }
+				EQS = { country_event = paxsolaris.317 }
+			}
+			else = {
+				NLR = { country_event = paxsolaris.317 }
+			}
+		}
+		if = {
+			limit = { has_country_flag = sol_fight_left_win }
+			if = { 
+				limit = { EQS = { is_ai = no } }
+				EQS = { country_event = paxsolaris.319 }
+			}
+			else = {
+				NLR = { country_event = paxsolaris.319 }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = has_daybreaker_luna_fight }
+		if = {
+			limit = { has_country_flag = left_side_ai_controlled } #Daybreaker is Player
+			if = {
+				limit = { has_country_flag = sol_fight_right_win }
+				if = { 
+					limit = { has_country_flag = daybreaker_luna_fight_nightmare_accepted }
+					EQS = { country_event = paxsolaris.334 }
+				}
+				else = {
+					if = {
+						limit = { EQS = { is_under_threat = yes } }
+						set_country_flag = paxsolaris_338_luna
+						39 = { save_global_event_target_as = SOL_NLR_last_state }
+						EQS = { country_event = paxsolaris.338 }
+					}
+					else = {
+						EQS = { country_event = paxsolaris.332 }
+					}
+				}
+			}
+			else = {
+				set_variable = { var = sol_game_over value = 1 }
+			}
+		}
+		if = {
+			limit = { has_country_flag = right_side_ai_controlled } #Luna is Player
+			if = {
+				limit = { has_country_flag = sol_fight_left_win }
+				if = { 
+					limit = { has_country_flag = daybreaker_luna_fight_nightmare_accepted }
+					EQS = { country_event = paxsolaris.335 }
+				}
+				else = {
+					EQS = { country_event = paxsolaris.333 }
+				}
+			}
+			else = {
+				if = {
+					limit = { EQS = { is_under_threat = yes } }
+					set_variable = { var = sol_game_over value = 1 } #If Daybreaker is under threat, the player would get a game over because there would be no civil war. So we replay the fight. 
+				}
+				else = {
+					if = { 
+						limit = { has_country_flag = daybreaker_luna_fight_nightmare_accepted }
+						EQS = { country_event = paxsolaris.334 }
+					}
+					else = {
+						EQS = { country_event = paxsolaris.332 }
+					}
+				}
+			}
+		}
+	}
+}

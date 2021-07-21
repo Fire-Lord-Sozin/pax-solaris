@@ -55,6 +55,11 @@ SOL_coalition_menu = {
 				add = 10
 				has_global_flag = proposal_coalition_research
 			}
+			modifier = {
+				add = 10
+				has_global_flag = proposal_coalition_recognise_hrm
+				has_government = democratic
+			}
 		}
 		allowed = {
 			always = no
@@ -117,6 +122,11 @@ SOL_coalition_menu = {
 				add = 10
 				has_global_flag = proposal_coalition_fortress
 				NOT = { is_neighbor_of = EQS }
+			}
+			modifier = {
+				add = 100
+				has_global_flag = proposal_coalition_recognise_hrm
+				tag = STG
 			}
 		}
 		allowed = {
@@ -357,14 +367,15 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			ROOT = {	
@@ -421,14 +432,15 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			ROOT = {	
@@ -485,14 +497,15 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			ROOT = {	
@@ -550,14 +563,15 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			ROOT = {	
@@ -615,14 +629,15 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			ROOT = {	
@@ -680,14 +695,73 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
+				}
+			}
+			ROOT = {	
+				save_global_event_target_as = proposed_resolution_nation
+			}
+		}
+	}
+	coalition_recognise_hrm_propose = {
+		icon = GFX_decision_investigate_resistance
+		priority = 74
+		fire_only_once = no
+		ai_will_do = {
+			factor = 200
+		}
+		visible = {
+			hidden_trigger = {
+				is_a_player_in_coalition = yes
+				NOT = { has_global_flag = coalition_recognise_hrm_rejected }
+				NOT = { has_global_flag = coalition_recognise_hrm_accepted }
+				NOT = { has_global_flag = coalition_recognise_hrm_completed }
+				has_global_flag = coalition_recognise_hrm_available
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = no_ongoing_resolution
+				NOT = { has_active_mission = coalition_current_resolution_decision }
+			}
+		}
+		allowed = {
+			always = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision coalition_recognise_hrm_propose"
+			set_global_flag = proposal_coalition_recognise_hrm
+			set_global_flag = proposal_coalition_active
+			hidden_effect = { 
+				every_country = {
+					limit = {
+						is_coalition_member = yes
+					}
+					activate_mission = coalition_current_resolution_decision
+					activate_mission = coalition_current_resolution_decision_support
+					activate_mission = coalition_current_resolution_decision_oppose
+				}
+				country_event = {
+					id = coalition.11
+					days = 5
+				}
+				every_country = {
+					limit = {
+						is_coalition_member = yes
+						NOT = { tag = ROOT }
+					}
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			ROOT = {	
@@ -762,14 +836,15 @@ SOL_coalition_menu = {
 					id = coalition.11
 					days = 5
 				}
-				clr_global_flag = coalition_border_war_lose
-				clr_global_flag = coalition_border_war_win
 				every_country = {
 					limit = {
 						is_coalition_member = yes
 						NOT = { tag = ROOT }
 					}
-					set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 3 }
+					set_variable = { sol_alert_desc_var = 8 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 			}
 			FROM = {
@@ -777,6 +852,114 @@ SOL_coalition_menu = {
 			}
 			ROOT = {	
 				save_global_event_target_as = proposed_resolution_nation
+			}
+		}
+	}
+	coalition_support_resistance = {
+		icon = GFX_decision_investigate_resistance
+		targets = { EQS }
+		target_trigger = {
+			FROM = {
+				is_SOLAR_EMPIRE = yes
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				is_coalition_member = yes
+				NOT = {
+					has_war_with = FROM
+					is_subject_of = FROM 
+				}
+				FROM = {
+					exists = yes
+					NOT = { tag = ROOT }
+					NOT = { has_country_flag = coalition_recent_support }
+					can_ROOT_get_wargoal_on_THIS = yes
+					NOT = {
+						ROOT = { is_subject_of = PREV }
+						any_country = {
+							AND = {
+								has_subject = ROOT
+								has_subject = PREV
+							}
+						}
+						has_non_aggression_pact_with = ROOT
+						has_guaranteed = ROOT
+					}
+				}
+				has_global_flag = coalition_recognise_hrm_completed
+			}
+		}
+		available = {
+			custom_trigger_tooltip = { 
+				tooltip = no_recent_support
+				FROM = { NOT = { has_country_flag = coalition_recent_support } }
+			}
+			custom_trigger_tooltip = { 
+				tooltip = no_current_support
+				NOT = { has_global_flag = coalition_in_progress_support }
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		days_remove = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = num_equipment@infantry_equipment
+				value = 1000
+			}
+		}
+		custom_cost_text = decision_cost_infantry_equipment_1000
+		modifier = {			
+			civilian_factory_use = 2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision coalition_support_resistance target: [From.GetName]"
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+				    type = infantry_equipment
+				    amount = -1000
+				}
+				EQS = { SOL_calculate_border_porosity = yes }
+				set_global_flag = coalition_in_progress_support
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove coalition_support_resistance target: [From.GetName]"
+			custom_effect_tooltip = coalition_support_resistance_tt
+			hidden_effect = {
+				clr_global_flag = coalition_in_progress_support
+				EQS = {
+					SOL_calculate_border_porosity = yes
+					SOL_calculate_probability = yes
+					if = {
+						limit = { check_variable = { sol_infiltrate_chance > probability_check } }
+						add_to_variable = { var = solar_resistance_actions_progress value = 1 } 
+						set_country_flag = {
+							flag = coalition_recent_support
+							days = 30
+							value = 1
+						}
+						clear_variable = sol_alert_popup_show
+						set_variable = { sol_alert_title_var = 2 }
+						set_variable = { sol_alert_desc_var = 7 }
+						set_variable = { sol_alert_outcome_var = 2 }
+						set_variable = { var = sol_alert_popup_show value = 1 }
+					}
+					else = {
+						clear_variable = sol_alert_popup_show
+						SOL_calculate_leads_small = yes
+						add_to_variable = { var = SOL_lead_variable value = lead_counter }
+						set_variable = { sol_alert_title_var = 2 }
+						set_variable = { sol_alert_desc_var = 7 }
+						set_variable = { sol_alert_outcome_var = 1 }
+						set_variable = { var = sol_alert_popup_show value = 1 }
+					}
+				}
 			}
 		}
 	}
@@ -832,11 +1015,10 @@ SOL_coalition_menu = {
 				NOT = { FROM = { has_country_flag = target_of_coalition_raid } }
 			}
 		}
-		target_array = neighbors
+		targets = { EQS }
 		target_trigger = {
 			FROM = {
 				is_SOLAR_EMPIRE = yes
-				is_neighbor_of = ROOT
 			}
 		}
 		highlight_states = {
@@ -996,17 +1178,10 @@ SOL_coalition_menu = {
 				ROOT = { save_global_event_target_as = coalition_raid_aggressor }
 				var:FROM.defender_state_vs_@ROOT = { save_global_event_target_as = coalition_raid_target_state }
 				EQS = {
-					clear_variable = sol_resistance_alert_popup_show
-					clr_country_flag = SOL_resistance_win
-					clr_country_flag = SOL_imperial_win
-					clr_country_flag = SOL_resistance_propaganda
-					clr_country_flag = SOL_resistance_warehouse
-					clr_country_flag = SOL_resistance_prison
-					clr_country_flag = SOL_coalition_raid 
-					clr_country_flag = SOL_coalition_raid_win
-					clr_country_flag = SOL_coalition_raid_lose
-					set_country_flag = SOL_coalition_raid 
-					set_variable = { var = sol_resistance_alert_popup_show value = 1 }
+					clear_variable = sol_alert_popup_show
+					set_variable = { sol_alert_title_var = 2 }
+					set_variable = { sol_alert_desc_var = 4 }
+					set_variable = { var = sol_alert_popup_show value = 1 }
 				}
 				remove_targeted_decision = { target = FROM decision = coalition_initiate_raid }
 				activate_targeted_decision = { target = FROM decision = coalition_raid_in_progress }

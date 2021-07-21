@@ -284,17 +284,6 @@ scripted_gui = {
 						}
 						sound_effect = "sol_fire_ev"
 					}
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 4 } }
-						}
-						EQS = {
-							launch_nuke = {
-								state = PREV
-								use_nuke = no
-							}
-						}
-					}
 				}
 			}
 		}
@@ -575,16 +564,33 @@ scripted_gui = {
 	}
 
 
-	sol_resistance_alert_gui = {
-		window_name = "sol_resistance_alert_popup"
-		dirty = sol_resistance_alert_popup_show
+	sol_alert_gui = {
+		window_name = "sol_alert_popup"
+		dirty = sol_alert_popup_show
 		context_type = player_context
 		visible = {
-			has_variable = sol_resistance_alert_popup_show
+			has_variable = sol_alert_popup_show
+			is_ai = no 
+			NOT = { has_country_flag = SOL_has_disabled_alerts }
 		}
 		effects = {
-			sol_resistance_alert_close_button_click = {
-				clear_variable = sol_resistance_alert_popup_show
+			sol_alert_close_button_click = {
+				clear_variable = sol_alert_popup_show
+			}
+			alert_disable_bg_click = {
+				set_country_flag = SOL_has_disabled_alerts
+			}
+		}
+	}
+	sol_alert_enable_gui = {
+		window_name = "alert_enable_container"
+		context_type = player_context
+		visible = {
+			has_country_flag = SOL_has_disabled_alerts
+		}
+		effects = {
+			alert_enable_bg_click = {
+				clr_country_flag = SOL_has_disabled_alerts
 			}
 		}
 	}

@@ -30,7 +30,7 @@ SOL_calculate_loyalty = {
 			limit = { 
 				check_variable = { 
 					var = daybreaker_support 
-					value = 40
+					value = 20
 					compare = greater_than_or_equals
 				}
 			}
@@ -112,7 +112,6 @@ SOL_calculate_loyalty = {
 		}
 		#THE CIVILIAN RESISTANCE
 
-		set_variable = { var = solar_civilian_support_change_temp value = solar_civilian_support }
 		set_variable = { var = solar_civilian_support value = 0 }
 		add_to_variable = {
 			var = solar_civilian_support
@@ -206,6 +205,7 @@ SOL_calculate_loyalty = {
 
 		#MILITARY RESISTANCE
 
+		set_variable = { var = solar_military_support_temp value = solar_military_support }
 		set_variable = { var = solar_military_support value = 0 }
 		add_to_variable = {
 			var = solar_military_support
@@ -303,7 +303,12 @@ SOL_calculate_loyalty = {
 			set_variable = { var = sol_border_porosity_factor_military_consolidation value = 0 }
 		}
 
-
+		if = {
+			limit = {
+				NOT = { check_variable = { solar_military_support_temp = solar_military_support } }
+			}
+			SOL_calculate_border_porosity = yes
+		}
 		#RESISTANCE COUNTER-ACTIVITY
 		if = {
 			limit = { 
@@ -375,6 +380,7 @@ SOL_calculate_loyalty = {
 		
 		#HARMONY RESTORATION MOVEMENT STRENGTH
 
+		set_variable = { var = solar_resistance_strength_temp value = solar_resistance_strength }
 		set_variable = { var = solar_resistance_strength value = 0 }
 		add_to_variable = {
 			var = solar_resistance_strength
@@ -469,11 +475,10 @@ SOL_calculate_loyalty = {
 
 		if = {
 			limit = {
-				NOT = { has_country_flag = SOL_has_ongoing_attack }
-				check_variable = { solar_resistance_strength > 0 }
-				check_variable = { solar_resistance_cohesion > 0 }
+				NOT = { check_variable = { solar_resistance_strength_temp = solar_resistance_strength } }
+				has_global_flag = coalition_recognise_hrm_completed
 			}
-			SOL_attack_reroll = yes
+			SOL_coalition_hrn_collaboration = yes
 		}
 		#RESISTANCE OUTREACH STRENGTH
 
@@ -629,6 +634,27 @@ SOL_calculate_loyalty = {
 			add_ideas = SOL_resistance_cohesion_3
 		}
 
+		if = {
+			limit = {
+				NOT = { has_country_flag = SOL_has_ongoing_attack }
+				NOT = { has_country_flag = resistance_ceasefire }
+				NOT = { check_variable = { resistance_attack_blocked > 0 } }
+				check_variable = { solar_resistance_strength > 0 }
+				check_variable = { solar_resistance_cohesion > 0 }
+			}
+			SOL_attack_reroll = yes
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = SOL_has_ongoing_cohesion }
+				NOT = { has_country_flag = resistance_ceasefire }
+				NOT = { check_variable = { resistance_attack_blocked > 0 } }
+				has_country_flag = cohesion_missions_active
+			}
+			set_country_flag = SOL_has_ongoing_cohesion
+			activate_mission = SOL_resistance_cohesion
+		}
+
 		#THE PROGRESS BAR
 		set_variable = { var = daybreaker_support_progress_bar_pos value = daybreaker_support }
 		multiply_variable = { var = daybreaker_support_progress_bar_pos value = 4 }
@@ -650,7 +676,6 @@ SOL_calculate_loyalty = {
 			value = daybreaker_support_daily_actions
 		}
 		set_variable = { var = daybreaker_support_weekly value = daybreaker_support_daily }
-		multiply_variable = { var = daybreaker_support_weekly value = 7 }
 		multiply_variable = { var = daybreaker_support_daily value = loyalty_scaling_factor }
 		multiply_variable = { var = daybreaker_support_daily value = 0.01 }
 		
@@ -718,74 +743,6 @@ SOL_calculate_probability = { #Yeah I didn't like doing this either, but the val
 	set_variable = { var = probability_check value = probability_check_temp_1 }
 }
 
-SOL_calculate_outreach_win_chance = {
-	set_temp_variable = { daybreaker_support_calculation_temp = 100 }
-	subtract_from_temp_variable = { daybreaker_support_calculation_temp = daybreaker_support }
-	divide_temp_variable = { daybreaker_support_calculation_temp = 100 }
-	set_temp_variable = { outreach_strength_calculation_temp = solar_resistance_outreach_strength }
-	divide_temp_variable = { outreach_strength_calculation_temp = 5 }
-	multiply_temp_variable = { outreach_strength_calculation_temp = daybreaker_support_calculation_temp }
-
-	#SQUARE ROOT CALCULATION - You would not believe how hard this was
-	set_temp_variable = { iteration_temp_0 = 0.5 }
-	set_temp_variable = { squared_value = outreach_strength_calculation_temp }
-	divide_temp_variable = { squared_value = iteration_temp_0 }
-	add_to_temp_variable = { iteration_temp_0 = squared_value }
-	divide_temp_variable = { iteration_temp_0 = 2 }
-
-	set_temp_variable = { iteration_temp_1 = iteration_temp_0 }
-	set_temp_variable = { squared_value = outreach_strength_calculation_temp }
-	divide_temp_variable = { squared_value = iteration_temp_1 }
-	add_to_temp_variable = { iteration_temp_1 = squared_value }
-	divide_temp_variable = { iteration_temp_1 = 2 }
-
-	set_temp_variable = { iteration_temp_2 = iteration_temp_1 }
-	set_temp_variable = { squared_value = outreach_strength_calculation_temp }
-	divide_temp_variable = { squared_value = iteration_temp_2 }
-	add_to_temp_variable = { iteration_temp_2 = squared_value }
-	divide_temp_variable = { iteration_temp_2 = 2 }
-
-	set_temp_variable = { iteration_temp_3 = iteration_temp_2 }
-	set_temp_variable = { squared_value = outreach_strength_calculation_temp }
-	divide_temp_variable = { squared_value = iteration_temp_2 }
-	add_to_temp_variable = { iteration_temp_3 = squared_value }
-	divide_temp_variable = { iteration_temp_3 = 2 }
-
-	set_temp_variable = { iteration_temp_4 = iteration_temp_3 }
-	set_temp_variable = { squared_value = outreach_strength_calculation_temp }
-	divide_temp_variable = { squared_value = iteration_temp_4 }
-	add_to_temp_variable = { iteration_temp_4 = squared_value }
-	divide_temp_variable = { iteration_temp_4 = 2 }
-
-	set_temp_variable = { iteration_temp_5 = iteration_temp_4 }
-	set_temp_variable = { squared_value = outreach_strength_calculation_temp }
-	divide_temp_variable = { squared_value = iteration_temp_5 }
-	add_to_temp_variable = { iteration_temp_5 = squared_value }
-	divide_temp_variable = { iteration_temp_5 = 2 }
-
-
-	if = {
-		limit = { has_country_flag = SOL_counterprotest }
-		add_to_temp_variable = { iteration_temp_5 = -0.1 }
-	}
-	if = {
-		limit = { has_country_flag = protest_police }
-		add_to_temp_variable = { iteration_temp_5 = 0.05 }
-	}
-	if = {
-		limit = { 
-			OR = {
-				has_country_flag = protest_military 
-				has_country_flag = protest_mutiny
-			}
-		}
-		add_to_temp_variable = { iteration_temp_5 = 0.1 }
-	}
-
-	set_variable = { var = resistance_outreach_win_chance value = iteration_temp_5 } 
-	set_variable = { var = resistance_outreach_win_chance_percent value = resistance_outreach_win_chance }
-	multiply_variable = { var = resistance_outreach_win_chance_percent value = 100 } #This is so the tooltip displays the value as a percent instead of decimal
-}
 SOL_calculate_leads_small = {
 	random_list = {
 		0.5 = {
@@ -1713,7 +1670,7 @@ SOL_attack_reroll = {
 				event_target:SOL_resistance_attack_target_true = {
 					non_damaged_building_level = {
 						building = infrastructure
-						level > 2		
+						level > 1		
 					}
 				}
 			}
@@ -1920,7 +1877,12 @@ SOL_calculate_border_porosity = {
 		value = sol_border_porosity_factor_custom_effects
 	}
 	if = {
-		limit = { has_country_flag = sol_raid_loss }
+		limit = {
+			OR = {
+				has_country_flag = sol_porosity_increase
+				has_country_flag = sol_raid_loss 
+			}
+		}
 		add_to_variable = { var = sol_border_porosity_factor value = 0.004 }
 	}
 	set_variable = { var = sol_border_porosity_land value = 1 }
@@ -1974,4 +1936,93 @@ SOL_calculate_border_porosity = {
 	}
 	set_variable = { var = sol_border_porosity value = sol_border_porosity_land }
 	multiply_variable = { var = sol_border_porosity value = sol_border_porosity_coastal }
+
+	set_variable = { var = sol_infiltrate_chance value = 1 }
+	subtract_from_variable = { var = sol_infiltrate_chance value = sol_border_porosity }
+}
+SOL_coalition_hrn_collaboration = {
+	if = {
+		limit = { 
+			check_variable = { solar_resistance_strength = 0 } 
+		}
+		every_country = {
+			limit = { is_coalition_member = yes }
+			remove_ideas = coalition_recognise_hrm_project_bonus_1
+			remove_ideas = coalition_recognise_hrm_project_bonus_2
+			remove_ideas = coalition_recognise_hrm_project_bonus_3
+			remove_ideas = coalition_recognise_hrm_project_bonus_4
+			remove_ideas = coalition_recognise_hrm_project_bonus_5
+		}
+		clear_variable = global.SOL_coalition_hrn_collaboration_var
+	}
+	if = {
+		limit = { 
+			check_variable = { solar_resistance_strength = 1 } 
+		}
+		every_country = {
+			limit = { is_coalition_member = yes }
+			add_ideas = coalition_recognise_hrm_project_bonus_1
+			remove_ideas = coalition_recognise_hrm_project_bonus_2
+			remove_ideas = coalition_recognise_hrm_project_bonus_3
+			remove_ideas = coalition_recognise_hrm_project_bonus_4
+			remove_ideas = coalition_recognise_hrm_project_bonus_5
+		}
+		set_variable = { var = global.SOL_coalition_hrn_collaboration_var value = 5 }
+	}
+	if = {
+		limit = { 
+			check_variable = { solar_resistance_strength = 2 } 
+		}
+		every_country = {
+			limit = { is_coalition_member = yes }
+			remove_ideas = coalition_recognise_hrm_project_bonus_1
+			add_ideas = coalition_recognise_hrm_project_bonus_2
+			remove_ideas = coalition_recognise_hrm_project_bonus_3
+			remove_ideas = coalition_recognise_hrm_project_bonus_4
+			remove_ideas = coalition_recognise_hrm_project_bonus_5
+		}
+		set_variable = { var = global.SOL_coalition_hrn_collaboration_var value = 10 }
+	}
+	if = {
+		limit = { 
+			check_variable = { solar_resistance_strength = 3 } 
+		}
+		every_country = {
+			limit = { is_coalition_member = yes }
+			remove_ideas = coalition_recognise_hrm_project_bonus_1
+			remove_ideas = coalition_recognise_hrm_project_bonus_2
+			add_ideas = coalition_recognise_hrm_project_bonus_3
+			remove_ideas = coalition_recognise_hrm_project_bonus_4
+			remove_ideas = coalition_recognise_hrm_project_bonus_5
+		}
+		set_variable = { var = global.SOL_coalition_hrn_collaboration_var value = 15 }
+	}
+	if = {
+		limit = { 
+			check_variable = { solar_resistance_strength = 4 } 
+		}
+		every_country = {
+			limit = { is_coalition_member = yes }
+			remove_ideas = coalition_recognise_hrm_project_bonus_1
+			remove_ideas = coalition_recognise_hrm_project_bonus_2
+			remove_ideas = coalition_recognise_hrm_project_bonus_3
+			add_ideas = coalition_recognise_hrm_project_bonus_4
+			remove_ideas = coalition_recognise_hrm_project_bonus_5
+		}
+		set_variable = { var = global.SOL_coalition_hrn_collaboration_var value = 20 }
+	}
+	if = {
+		limit = { 
+			check_variable = { solar_resistance_strength = 5 } 
+		}
+		every_country = {
+			limit = { is_coalition_member = yes }
+			remove_ideas = coalition_recognise_hrm_project_bonus_1
+			remove_ideas = coalition_recognise_hrm_project_bonus_2
+			remove_ideas = coalition_recognise_hrm_project_bonus_3
+			remove_ideas = coalition_recognise_hrm_project_bonus_4
+			add_ideas = coalition_recognise_hrm_project_bonus_5
+		}
+		set_variable = { var = global.SOL_coalition_hrn_collaboration_var value = 25 }
+	}
 }

@@ -174,6 +174,7 @@ SOL_daybreaker_ascension = {
 		remove_unit_leader = 9999
 	}
 	load_focus_tree = paxsolaris_focus
+	hidden_effect = { mark_focus_tree_layout_dirty = yes }
 	set_stability = 0.6
 
 	#INITIAL VARIABLES
@@ -214,9 +215,26 @@ SOL_daybreaker_ascension = {
 	SOL_remove_ideas = yes
 	every_state = {
 		limit = {
+			has_variable = SOL_public_works_region_id
+			NOT = { has_state_flag = SOL_wartorn_state }
+		}
+		set_state_flag =  SOL_wartorn_state
+	}
+	every_state = {
+		limit = {
 			AND = {
 				is_owned_by = STG
 				is_core_of = STG
+			}
+		}
+		remove_core_of = EQS
+		add_claim_by = EQS
+	}
+	every_state = {
+		limit = {
+			OR = {
+				state = 89
+				state = 78
 			}
 		}
 		remove_core_of = EQS
@@ -289,6 +307,10 @@ SOL_daybreaker_threatened = {
 			save_global_event_target_as = sol_defeated
 		}
 		set_country_flag = victory_parade_CHN
+		if = {
+			limit = { 136 = { is_controlled_by = CHN } }
+			set_country_flag = paxsolaris_56_yes
+		}
 	}
 	else_if = {
 		limit = { has_war_with = NLR }

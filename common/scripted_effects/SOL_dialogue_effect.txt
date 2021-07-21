@@ -234,6 +234,7 @@ sol_dialogue_display_effect = {
 		}
 		if = {
 			limit = { check_variable = { sol_dialogue_window_var = 2021 } }
+			add_to_variable = { var = sol_dialogue_twilight_correct_num value = 1 }
 			clr_country_flag = sol_dialogue_twilight_first
 			clear_variable = sol_dialogue_window_var
 		}
@@ -449,6 +450,7 @@ sol_dialogue_display_effect = {
 		}
 		if = {
 			limit = { check_variable = { sol_dialogue_window_var = 2017 } }
+			add_to_variable = { var = sol_dialogue_twilight_correct_num value = 1 }
 			clr_country_flag = sol_dialogue_twilight_second
 			clear_variable = sol_dialogue_window_var
 		}
@@ -815,6 +817,7 @@ sol_dialogue_display_effect = {
 		}
 		if = {
 			limit = { check_variable = { sol_dialogue_window_var = 1026 } }
+			add_to_variable = { var = sol_dialogue_twilight_correct_num value = 1 }
 			clr_country_flag = sol_dialogue_twilight_third
 			clear_variable = sol_dialogue_window_var
 		}
@@ -1161,6 +1164,7 @@ sol_dialogue_display_effect = {
 		}
 		if = {
 			limit = { check_variable = { sol_dialogue_window_var = 2013 } }
+			add_to_variable = { var = sol_dialogue_twilight_correct_num value = 1 }
 			clr_country_flag = sol_dialogue_twilight_fourth
 			clear_variable = sol_dialogue_window_var
 		}

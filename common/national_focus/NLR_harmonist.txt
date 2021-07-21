@@ -1,3 +1,21 @@
+focus_tree = {
+	id = lunar_republic_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 15
+			tag = NLR
+			EQS = { has_country_flag = sol_ascension_luna_rebellion }
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 2275 y = 655 }
+
+	shared_focus = NLH_harmony_in_peril
+}
+
 shared_focus = {
 	id = NLH_harmony_in_peril
 	icon = GFX_goal_NLR_tree_of_harmony
@@ -379,13 +397,21 @@ shared_focus = {
 				limit = {
 					NOT = {
 						tag = EQS
-						tag = EQR
 						tag = NLR
-					}
-					OR = {
-						has_idea = modern_society
-						has_idea = outdated_industry2
-						has_idea = outdated_industry
+						is_in_faction_with = EQS
+						is_in_faction_with = NLR
+						has_idea = detached_country
+						has_idea = communal_society
+						has_idea = tribal_society
+						has_idea = tribal_society2
+						has_idea = tribal_society3
+						has_idea = tribal_society4
+						has_idea = agrarian_society
+						has_idea = agrarian_society2
+						has_idea = agrarian_society3
+						has_idea = agrarian_society4
+						has_idea = agrarian_society5
+						has_idea = agrarian_society6
 					}
 					has_army_size = {
 					    size > 24
