@@ -28,5 +28,10 @@ spriteTypes = {
 		name = "GFX_trait_fanatic_following"
 		texturefile = "gfx/texticons/trait_fanatic_following.dds"
 		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_infantry_weapons_texticon"
+		texturefile = "gfx/texticons/infantry_weapons_texticon.dds"
+		legacy_lazy_load = no
 	}		
 }

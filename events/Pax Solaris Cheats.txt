@@ -150,11 +150,79 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.9
-	title = "Border Porosity Test"
+	title = "HRM Test"
 	is_triggered_only = yes
-	desc = paxsolaristest.9.d
+	desc = ""
 	immediate = {
-		SOL_calculate_border_porosity = yes
+		hidden_effect = {
+			clear_variable = sol_alert_popup_show
+			SOL_calculate_resistance_target = yes
+
+			random_list = {
+				1 = {
+					set_temp_variable = { outreach_strength_calculation_temp = solar_resistance_strength }
+					divide_temp_variable = { outreach_strength_calculation_temp = 5 }
+					SOL_calculate_probability = yes
+					if = {
+						limit = { has_country_flag = civilian_informants }
+						add_to_variable = { var = outreach_strength_calculation_temp value = -0.1 }
+					}
+					if = {
+						limit = { check_variable = { outreach_strength_calculation_temp > probability_check } }
+						set_variable = { sol_alert_outcome_var = 2 }
+						add_to_variable = { var = solar_resistance_outreach_actions_progress value = 1 }
+					}
+					else = {
+						set_variable = { sol_alert_outcome_var = 1 }
+						SOL_calculate_leads_small = yes
+						add_to_variable = { var = SOL_lead_variable value = lead_counter }
+					}
+					set_variable = { sol_alert_desc_var = 1 }
+				}
+				1 = {
+					set_temp_variable = { civilian_strength_calculation_temp = solar_civilian_support }
+					divide_temp_variable = { civilian_strength_calculation_temp = 5 }
+					SOL_calculate_probability = yes
+					if = {
+						limit = { has_country_flag = civilian_informants }
+						add_to_variable = { var = civilian_strength_calculation_temp value = 0.1 }
+					}
+					if = { 
+						limit = { check_variable = { civilian_strength_calculation_temp > probability_check } }
+						set_variable = { sol_alert_outcome_var = 1 }
+						SOL_calculate_leads_small = yes
+						add_to_variable = { var = SOL_lead_variable value = lead_counter }
+					}
+					else = {
+						set_variable = { sol_alert_outcome_var = 2 }
+						add_to_variable = { var = solar_resistance_actions_progress value = 1 }
+					}
+					set_variable = { sol_alert_desc_var = 2 }
+				}
+				1 = {
+					set_temp_variable = { military_strength_calculation_temp = solar_military_support }
+					divide_temp_variable = { military_strength_calculation_temp = 5 }
+					SOL_calculate_probability = yes
+					if = {
+						limit = { has_country_flag = civilian_informants }
+						add_to_variable = { var = military_strength_calculation_temp value = 0.1 }
+					}
+					if = { 
+						limit = { check_variable = { military_strength_calculation_temp > probability_check } }
+						set_variable = { sol_alert_outcome_var = 1 }
+						SOL_calculate_leads_small = yes
+						add_to_variable = { var = SOL_lead_variable value = lead_counter }
+					}
+					else = {
+						set_variable = { sol_alert_outcome_var = 2 }
+						add_to_variable = { var = solar_resistance_actions_progress value = 1 }
+					}
+					set_variable = { sol_alert_desc_var = 3 }
+				}
+			}
+			set_variable = { sol_alert_title_var = 1 }
+			set_variable = { var = sol_alert_popup_show value = 1 }
+		}
 	}
 	option = { 
 		name = "Okay"
@@ -351,7 +419,7 @@ country_event = {
 				limit = { 
 					non_damaged_building_level = {
 						building = infrastructure
-						level > 2		
+						level > 1		
 					}
 				}
 				damage_building = {

@@ -111,4 +111,8 @@ spriteTypes = {
 		name = "GFX_decision_coalition_expeditionary_forces"
 		texturefile = "gfx/interface/decisions/decision_coalition_expeditionary_forces.dds"
 	}
+	spriteType = {
+		name = "GFX_decision_resistance_cohesion"
+		texturefile = "gfx/interface/decisions/decision_resistance_cohesion.dds"
+	}
 }

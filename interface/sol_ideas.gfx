@@ -123,4 +123,12 @@ spriteTypes = {
 		name = "GFX_idea_coalition_high_command"
 		texturefile = "gfx/interface/ideas/idea_coalition_high_command.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_cohesion_attack_oil"
+		texturefile = "gfx/interface/ideas/idea_cohesion_attack_oil.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_nightmares"
+		texturefile = "gfx/interface/ideas/idea_sol_nightmares.dds"
+	}
 }

@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  #PAX SOLARIS IDEAS
  SOL_Revanchism:0 "Solar Revanchism"
  SOL_Revanchism_desc:0 "For too long has ponykind been forced to live under the yoke of foreign scum. Now is the time for our Empress to prove herself and reclaim Equestria!\n\n§RIf you don't control all of Equestria (not including Stalliongrad) when this idea has timed out, you will suffer a decrease in loyalty!§!"
@@ -168,150 +168,22 @@ l_english:
 
  sol_neighsay:0 "Chancellor Neighsay"
 
+ SOL_oil_shortage:0 "Oil Shortage"
+ SOL_oil_shortage_desc:0 "[THIS.GetNameDef] is plagued with critical shortages of oil. Until normal production resumes, our fuel reserves will plummet and our armies will have difficulty moving."
+
+ SOL_changeling_interferance:0 "Changeling Interference"
+ SOL_changeling_interferance_desc:0 "Our enemies in the resistance have made contact with the vile shapeshifters from the northwest. Until we can learn to detect their magic, the resistance will be greatly bolstered by their natural talents."
+ SOL_changeling_interferance_attack_bonus:0 "§RResistance Attacks§! will be §R30%§! more likely to §Rsucceed!§!"
+
+ SOL_nightmares:0 "Nightmares"
+ SOL_nightmares_desc:0 "Across Equestria, ponies loyal to Daybreaker have been struck with vivid nightmares. These dark visions have kept them from a restful sleep, decreasing productivity and the chance of mistakes across all sectors. Until we can locate and eliminate the source of these nightmares, they will continue to haunt our ponies."
+
  #NATIONAL FOCUS
  #Tooltips
  SOL_no_states_of_civilian_consolidation_to_be_completed:0 "There are no stages of §GGovernment Consolidation§! ready to be completed."
  SOL_no_states_of_military_consolidation_to_be_completed:0 "There are no stages of §YMilitary Consolidation§! ready to be completed."
  SOL_no_states_of_resistance_suppression_to_be_completed:0 "There are no stages of §RResistance Suppression§! ready to be completed."
  SOL_no_states_of_outreach_suppression_to_be_completed:0 "There are no stages of §OInformation Suppression§! ready to be completed."
-
- sol_magic_activation_tt:0 "§OUnlocks Solar Magic Abilities§!\n\nSolar Magic Abilities can be accessed from the icon in the top bar or with the shortcut £GFX_ctrl + £GFX_d)\n"
- SOL_protector_tt:0 "§OBenevolent Rule:§! You will gain 2% more loyalty for accepting the Harmonist demands"
- SOL_mother_tt:0 "§OMother Knows Best:§! You will gain 2% more loyalty for compromising with the Harmonists"
- SOL_goddess_tt:0 "§OKneel to the Sun:§! You get access to more extreme ways of dealing with the Harmonists"
- 
- SOL_hear_them_out:0 "The Six Demands"
- SOL_hear_them_out_desc:0 "While many of the demands made by the protestors are destructive at best, they do raise a few valid points. [This.GetNameDef] is at peace, we can talk about scaling back some of our more extreme policies. The Equestrian citizens deserve to have their voice heard."
- SOL_hear_them_out_loyalty_tt:0 "§YYou will receive six demands from the Harmonists. For each you will have three options:\n   §GAccept§! for a total loyalty §Gincrease§! of §G30%§! (or §G42%§! with Empress-Protector)\n   §OCompromise§! for §Ono§! loyalty boost (or a total of §G12%§! with Empress-Mother)\n   §RRefuse§! for a total loyalty §Rdecrease§! of §R30%§!§!"
-
- SOL_send_in_the_tanks:0 "Crush the Protestors"
- SOL_send_in_the_tanks_desc:0 "The authority of the Empress is absolute. That these ponies would march upon Canterlot itself and dare to think they can usurp the throne of the Sun Goddess only proves they cannot be reasoned with. Our military will make them pay for their disobedience. "
- SOL_harmonist_riots_happened:0 "§OThe March on Canterlot has happened§!"
-
- SOL_reconstruction_equestria:0 "Rebuild Equestria"
- SOL_reconstruction_equestria_desc:0 "After the war, much of Equestria was left in ruins. What happened can never be undone, but at the very least we can restore some semblance of normality by sweeping away the rubble and rebuilding our homeland."
- SOL_reconstruction_effort_focus_tt:0 "§YAll §Rwartime devastation§! modifiers will be §Gremoved!§!§!"
-
- SOL_victory_parade:0 "Triumph of the Sun"
- SOL_victory_parade_desc:0 "With the complete and utter defeat of [sol_defeated.GetNameDef], the supremacy of our nation has been proven at last. Let it be known to everypony, from the orchards of Appleloosa to the factories of Whinnyapolis that [This.GetNameDef] stands triumphant over our foes. As we taste victory, let them taste only ash."
- SOL_victory_parade_goal_bypass:0 "§OYou were not threatened when you ascended§!"
-
- SOL_new_order:0 "The New Order"
- SOL_new_order_desc:0 "Glory to the Empress of the Sun! As she rises, so too must Equestria rise with her. Every town, village and hamlet across the nation must learn their place within true harmony."
-
- SOL_support_the_eea:0 "Reach out to the EEA"
- SOL_support_the_eea_desc:0 "While there are many ponies and organisations who are virulently opposed to Empress Daybreaker, the Equestria Education Association is not one of them. Chancellor Neighsay and his colleagues were outspoken critics of the old system and some of the first ponies to pledge their loyalty to the Empress upon her ascension. It is only natural that he and the EEA serve a vital role in the new order."
- unicorn_academy5:0 "Spark of Knowledge"
-
- SOL_new_curriculum:0 "A New Curriculum"
- SOL_new_curriculum_desc:0 "Working with the EEA, we have outlined a new curriculum to be taught in all schools across Equestria. The young are the future of the Empire, no longer will they be corrupted by the lies of false harmony. They will learn of true harmony, the kind that can only be fostered through order and only embraced by ponies. Proper schooling will teach them a love of their nation and Empress."
- 
- SOL_anti_celestia_propaganda:0 "Anti-Celestia Propaganda"
- SOL_anti_celestia_propaganda_desc:0 "No matter which of the three tribes they belong to, the ponies of Equestria have always looked up to Princess Celestia. Her wisdom, maternal demeanor and mystical powers have made her a god-like figure in their eyes. But now they are unsure. It would be best if Daybreaker can win over the loyalty of Celestia's former supporters."
- 
- SOL_shut_down_school:0 "Shut Down the School of Friendship"
- SOL_shut_down_school_desc:0 "[This.GetNameDef] is still plagued with the legacy of the old system. This 'School of Friendship' dares to preach the lies that ponykind could ever have a peaceful future with the creatures that infest this world. It must be destroyed so that [This.GetNameDef] can build a brighter future on the ashes."
- 
- SOL_police_state:0 "Integrate the Police"
- SOL_police_state_desc:0 "Equestria's police system is managed on a regional basis, with each state maintaining their own police department. This means that certain departments may not be too inclined to enforce our laws. Daybreaker will not stand for this! All police departments across Equestria will be made to serve her and only her."
- 
- SOL_integrate_south:0 "Integrate the Southwest"
- SOL_integrate_south_desc:0 "The Southwest has always been on the fringes of Equestrian civilisation. A lawless land beholden to nopony, not even the Empress. This cannot continue. They will be brought into the light of the sun like all of Equestria! But first we have to deal with some troublesome pests..."
- 
- SOL_investigate_resistance:0 "Investigate the Resistance"
- SOL_investigate_resistance_desc:0 "While [THIS.GetNameDef] is victorious, we are not without enemies. Ponies still clinging to the old ways have taken up arms against our nation and Empress. But to combat a threat, we must first know where to find it."
- SOL_investigate_resistance_tt:0 "§OResistance activity has been noticed§!"
-
- SOL_radio_interception:0 "Radio Triangulation"
- SOL_radio_interception_desc:0 "Wireless communication is now by far the most common means of communication in [THIS.GetNameDef], especially among insurgent groups. With specialised technology, we will have the ability to triangulate the location of these radio signals and strike at the resistance holdouts directly."
- 
- SOL_bounty_hunters:0 "Civilian Informants"
- SOL_bounty_hunters_desc:0 "The High Command may loathe to admit it, but Daybreaker knows her armies cannot be everywhere. Everypony has a price, and by placing bounties on resistance members and paying for any usable information on resistance activity we can have civilian interests working with us against enemies of the state."
- SOL_bounty_hunter_tt:0 "Weekly £GFX_leads_text  §OLead§! Gain: §G+2§!\nWhen §GLoyalty§! exceeds §Y20%§!, resistance attacks will be §G+10%§! more likely to fail."
-
- SOL_imperial_codebreakers:0 "Imperial Codebreakers"
- SOL_imperial_codebreakers_desc:0 "Despite our radio detection systems and extensive informant network, we have struggled to crack the codes used by the resistance. This must change. Recent advancements in the field of cryptography will allow us to detect and interpret coded messeges quickly enough to act against the resistance."
- 
- SOL_surveillance:0 "Project I.N.S.I.G.H.T"
- SOL_surveillance_desc:0 "Knowledge is power and power is control. So to have total control, you must first know everything. Every step, every action and every thought must be laid bear before the light of the Empress."
- 
- SOL_internal_passports:0 "Internal Passports"
- SOL_internal_passports_desc:0 "While requiring passports to travel between the different regions of [THIS.GetNameDef] may be extreme, it cannot be denied that insurgent movements would be hindered by roadblocks and checkpoints between high-risk areas. For the security of our fair land, no price is too high."
- 
- SOL_reeducation_camps:0 "Indoctrination Program"
- SOL_reeducation_camps_desc:0 "Despite our best efforts, there are still some who refuse to accept the Empress' Truth of New Harmony. They must be taught the error of their ways. By creating specialised agencies that run parallel to our civilian administration, we can make sure more ponies are brought into the sun's light."
- 
- SOL_Imperial_Inquisition:0 "Form the Imperial Inquisition"
- SOL_Imperial_Inquisition_desc:0 "Recent events have made it quite clear our nation is woefully ill-equipped to deal with our internal foes. Establishing a proper intelligence agency will allow the Empire to keep tabs on its enemies, internal and external. Dissidents cannot be allowed to prosper and disturb our Harmony, and so they shall be rooted out."
- SOL_Imperial_Inquisition_tt:0 "§RThe Harmony Restoration Movement has formed§!"
- SOL_Imperial_Inquisition_tt1:0 "§CThese decisions will allow you to attack the §RHarmony Restotation Movement§! directly§!"
-
- SOL_civilian_militias:0 "Solar National Guard"
- SOL_civilian_militias_desc:0 "Across [THIS.GetNameDef], there are thousands if not millions of loyal and able-bodied ponies who either just fell short of the requirements for military service or were refused entry because their occupations were essential for the war effort. A volunteer National Guard should be created so they too can serve the Empress."
- SOL_civilian_militias_tt:0 "When §GLoyalty§! exceeds §Y40%§!, resistance §Rattacks§! and §Ruprisings§! will require §Gone less§! division to suppress"
-
- SOL_Inquisition_Law:0 "Inquisitorial Law"
- SOL_Inquisition_Law_desc:0 "The Imperial Inquisitors are the instruments of Empress Daybreaker's will, but their exact status within [THIS.GetNameDef] isn't properly defined. Our advisors have requested that we put to paper the exact responsibilities and authorities the Imperial Inquisition can wield."
-
- SOL_propaganda:0 "Solar Propaganda"
- SOL_propaganda_desc:0 "Information is a powerful weapon. It can drive ponies to glory or ruin. This is why we cannot allow our enemies to win over the minds of ponykind. The war of ideas has begun, and Empress Daybreaker intends on winning. The first step will be improving our propaganda machine."
-
- SOL_the_list:0 "Daybreaker's List"
- SOL_the_list_desc:0 "The resistance to Daybreaker’s rule survives on the funding and shelter provided to them by civilian sympathisers. At the current stage of the investigation, few sympathisers have been identified. But with close examination of the public statements, political leanings and known associates of certain ponies, the Inquisition can create a list of potential suspects to investigate further."
- SOL_the_list_tt:0 "You will gain £GFX_leads_text  40 §OLeads§! by compiling a list of civilian sympathisers."
-
- SOL_upgrade_inquisition:0 "Upgrade the Inquisition"
- SOL_upgrade_inquisition_desc:0 "The Imperial Inquisition has already proven itself vital in bringing Daybreaker's justice upon the traitorous fools that plague [THIS.GetnameDef]. But there is always room for improvement."
- SOL_upgrade_inquisition_tt:0 "Unlocks §CUpgrade the Inquisition§! Decisions."
-
- SOL_pressure_dissidents:0 "Pressure Dissidents"
- SOL_pressure_dissidents_desc:0 "There is no room under the benevolent light of the sun for those who reject the Empress. Using our list of potential resistance sympathisers, it won't be hard to find loved ones that can be threatened to keep the dissidents cowed."
-
- SOL_legacy_of_hurricane:0 "Legacy of Hurricane"
- SOL_legacy_of_hurricane_desc:0 "It is no secret that the pegasi have a long history of militant authoritarianism. What a shame that it has been forgotten. To reawaken this dormant culture, [THIS.GetNameDef] must harken to the era of Commander Hurricane, when soldier-kings ruled the skies."
- SOL_legacy_of_hurricane_tt:0 "Unlocks Ability to deploy §CInquisitorial Strike Teams§! anywhere in §O[THIS.GetNameDef].§!"
-
- SOL_imperial_truth:0 "The Imperial Truth"
-
- SOL_expand_our_domain:0 "Expand Our Domain"
-
- SOL_expand_the_inquisition:0 "Expand The Inquisition"
- SOL_expand_the_inquisition_desc:0 "The Imperial Inquistion. Their name strikes fear into Daybreaker's enemies and haunts the nightmares of her allies. By providing the Inquisition the funding they need to make their presence known in every town and hamlet, we will make sure nopony can hide from purifying light of the Empress."
- SOL_expand_the_inquisition_tt:0 "The maximum number of §CImperial Inquisition§! decisions that can be active simultaneously will §Gincrease§! by §Gone!§!§!"
-
- SOL_economic_miracle:0 "Solar Economic Miracle"
-
- SOL_direct_rule_from_canterlot:0 "Direct Rule from Canterlot"
-
- SOL_reopen_school_for_gifted_unicorns:0 "Reopen the School for Gifted Unicorns"
-
- SOL_charter_of_pony_rights:0 "Charter of Pony Rights"
-
- SOL_integrate_northwest:0 "Integrate the North"
-
- SOL_decentralised_inquisitorial_policing:0 "Decentralised Inquisitorial Policing"
-
- SOL_imperial_royal_guard:0 "The Imperial Royal Guard"
-
- SOL_tighten_the_noose:0 "Tighten the Noose"
-
- SOL_integrate_southeast:0 "Integrate the Southeast"
-
- SOL_remilitarisation:0 "Revive War Production"
-
- SOL_equestria_rising:0 "Equestria Rising"
-
- SOL_battalion_chaplains:0 "Frontline Chaplains"
-
- SOL_inquisitorial_integration:0 "Inquisitorial Integration"
-
- SOL_daybreaker_military:0 "Daybreaker's Military"
-
- SOL_state_approved_doctrine:0 "State Approved Doctrine"
-
- SOL_public_works_program:0 "Public Works Program"
- SOL_public_works_program_desc:0 "A new dawn comes to Equestria. The future is now ours to write! And yet we find outselves limited by crumbling roads and dated railways. While other nations enjoy the fruits of the modern era, much of our vast lands can still only be accessed by primitive pony-drawn carts. This must change for [THIS.GetNameDef] to ascend as the superpower it was destined to be."
- SOL_public_works_program_tt:0 "§GUnlocks Solar Public Works Programs§!\n\nSolar Public Works Program decisions can be accessed from the icon in the top bar or with the shortcut £GFX_ctrl + £GFX_p)\n\n§YFor every Pubic Works Program completed:§!\n§GGovernment Consolidation§! will §Gincrease§! by (§G1§!) point to the next stage!\n§GLoyalty Increases by [?sol_public_works_loyalty_increase]%§!\n§YEvery state in region:§!\n  Add §G2§! Building Slots.\n  Add §Y2 Infrastructure.§!\n  Add to states: §YImproved Infrastructure§!\n    Organization Regain: §G+10.00%§!\n    Max Factories in State: §G+10%§!\n    Division Speed: §G+10.00%§!\n    Local Available Resources: §G+10%§!\n    Local Construction Speed: §G+10%§!§!"
 
  SOL_all_hail_the_sun_empress:0 "All Hail the Sun-Empress"
  SOL_all_hail_the_sun_empress_desc:0 "Princess Celestia, the eternal matron of harmony and ruler of millions, is gone. In her place Empress Daybreaker rises like the sun, ready to forge Equestria into a global superpower and avenge centuries of unprovoked attacks against ponykind. All those who plotted against Equestria will be dragged into the light and made to pay dearly for their crimes. Daybreaker will accept nothing less."
@@ -413,9 +285,303 @@ l_english:
  SOL_into_the_inferno:0 "§OInto the Inferno§!"
  SOL_into_the_inferno_desc:0 "The time has come for ponykind to paint Equestria's future in blood. The stage is set, the world is within our grasp. Now we must march into the crucible with our hearts hardened and our sprits free of doubt. Many will suffer, but out of the ashes we will rise like a phoenix.\n§OOnwards, ponies! Our future awaits!§!"
 
+ sol_magic_activation_tt:0 "§OUnlocks Solar Magic Abilities§!\n\nSolar Magic Abilities can be accessed from the icon in the top bar or with the shortcut £GFX_ctrl + £GFX_d)\n"
+ SOL_protector_tt:0 "§OBenevolent Rule:§! You will gain 2% more loyalty for accepting the Harmonist demands"
+ SOL_mother_tt:0 "§OMother Knows Best:§! You will gain 2% more loyalty for compromising with the Harmonists"
+ SOL_goddess_tt:0 "§OKneel to the Sun:§! You get access to more extreme ways of dealing with the Harmonists"
+ 
+ SOL_hear_them_out:0 "The Six Demands"
+ SOL_hear_them_out_desc:0 "While many of the demands made by the protestors are destructive at best, they do raise a few valid points. [This.GetNameDef] is at peace, we can talk about scaling back some of our more extreme policies. The Equestrian citizens deserve to have their voice heard."
+ SOL_hear_them_out_loyalty_tt:0 "§YYou will receive six demands from the Harmonists. For each you will have three options:\n   §GAccept§! for a total loyalty §Gincrease§! of §G30%§!\n   §OCompromise§! for §Ono§! loyalty boost\n   §RRefuse§! for a total loyalty §Rdecrease§! of §R30%§!§!"
+
+ SOL_send_in_the_tanks:0 "Crush the Protestors"
+ SOL_send_in_the_tanks_desc:0 "The authority of the Empress is absolute. That these ponies would march upon Canterlot itself and dare to think they can usurp the throne of the Sun Goddess only proves they cannot be reasoned with. Our military will make them pay for their disobedience. "
+ SOL_harmonist_riots_happened:0 "§OThe March on Canterlot has happened§!"
+
+ SOL_reconstruction_equestria:0 "Rebuild Equestria"
+ SOL_reconstruction_equestria_desc:0 "After the war, much of Equestria was left in ruins. What happened can never be undone, but at the very least we can restore some semblance of normality by sweeping away the rubble and rebuilding our homeland."
+ SOL_reconstruction_effort_focus_tt:0 "All §Rwartime devastation§! modifiers will be §Gremoved§! and future §Rdevastation§! will be automatically §Grepaired!§!"
+
+ SOL_victory_parade:0 "Triumph of the Sun"
+ SOL_victory_parade_desc:0 "With the complete and utter defeat of [sol_defeated.GetNameDef], the supremacy of our nation has been proven at last. Let it be known to everypony, from the orchards of Appleloosa to the factories of Whinnyapolis that [This.GetNameDef] stands triumphant over our foes. As we taste victory, let them taste only ash."
+ SOL_victory_parade_goal_bypass:0 "§OYou were not threatened when you ascended§!"
+
+ SOL_new_order:0 "The New Order"
+ SOL_new_order_desc:0 "Glory to the Empress of the Sun! As she rises, so too must Equestria rise with her. Every town, village and hamlet across the nation must learn their place within true harmony."
+
+ SOL_support_the_eea:0 "Reach out to the EEA"
+ SOL_support_the_eea_desc:0 "While there are many ponies and organisations who are virulently opposed to Empress Daybreaker, the Equestria Education Association is not one of them. Chancellor Neighsay and his colleagues were outspoken critics of the old system and some of the first ponies to pledge their loyalty to the Empress upon her ascension. It is only natural that he and the EEA serve a vital role in the new order."
+ unicorn_academy5:0 "Spark of Knowledge"
+
+ SOL_new_curriculum:0 "A New Curriculum"
+ SOL_new_curriculum_desc:0 "Working with the EEA, we have outlined a new curriculum to be taught in all schools across Equestria. The young are the future of the Empire, no longer will they be corrupted by the lies of false harmony. They will learn of true harmony, the kind that can only be fostered through order and only embraced by ponies. Proper schooling will teach them a love of their nation and Empress."
+ 
+ SOL_anti_celestia_propaganda:0 "Anti-Celestia Propaganda"
+ SOL_anti_celestia_propaganda_desc:0 "No matter which of the three tribes they belong to, the ponies of Equestria have always looked up to Princess Celestia. Her wisdom, maternal demeanor and mystical powers have made her a god-like figure in their eyes. But now they are unsure. It would be best if Daybreaker can win over the loyalty of Celestia's former supporters."
+ 
+ SOL_shut_down_school:0 "Shut Down the School of Friendship"
+ SOL_shut_down_school_desc:0 "[This.GetNameDef] is still plagued with the legacy of the old system. This 'School of Friendship' dares to preach the lies that ponykind could ever have a peaceful future with the creatures that infest this world. It must be destroyed so that [This.GetNameDef] can build a brighter future on the ashes."
+ 
+ SOL_police_state:0 "Integrate the Police"
+ SOL_police_state_desc:0 "Equestria's police system is managed on a regional basis, with each state maintaining their own police department. This means that certain departments may not be too inclined to enforce our laws. Daybreaker will not stand for this! All police departments across Equestria will be made to serve her and only her."
+ 
+ SOL_integrate_south:0 "Integrate the Southwest"
+ SOL_integrate_south_desc:0 "The Southwest has always been on the fringes of Equestrian civilisation. A lawless land beholden to nopony, not even the Empress. This cannot continue. They will be brought into the light of the sun like all of Equestria! But first we have to deal with some troublesome pests..."
+ 
+ SOL_investigate_resistance:0 "Investigate the Resistance"
+ SOL_investigate_resistance_desc:0 "While [THIS.GetNameDef] is victorious, we are not without enemies. Ponies still clinging to the old ways have taken up arms against our nation and Empress. But to combat a threat, we must first know where to find it."
+ SOL_investigate_resistance_tt:0 "§OResistance activity has been noticed§!"
+
+ SOL_radio_interception:0 "Radio Triangulation"
+ SOL_radio_interception_desc:0 "Wireless communication is now by far the most common means of communication in [THIS.GetNameDef], especially among insurgent groups. With specialised technology, we will have the ability to triangulate the location of these radio signals and strike at the resistance holdouts directly."
+ 
+ SOL_bounty_hunters:0 "Civilian Informants"
+ SOL_bounty_hunters_desc:0 "The High Command may loathe to admit it, but Daybreaker knows her armies cannot be everywhere. Everypony has a price, and by placing bounties on resistance members and paying for any usable information on resistance activity we can have civilian interests working with us against enemies of the state."
+ SOL_bounty_hunter_tt:0 "Weekly £GFX_leads_text  §OLead§! Gain: §G+2§!\nWhen §GLoyalty§! exceeds §Y20%§!, resistance attacks will be §G+10%§! more likely to fail."
+
+ SOL_imperial_codebreakers:0 "Imperial Codebreakers"
+ SOL_imperial_codebreakers_desc:0 "Despite our radio detection systems and extensive informant network, we have struggled to crack the codes used by the resistance. This must change. Recent advancements in the field of cryptography will allow us to detect and interpret coded messeges quickly enough to act against the resistance."
+ 
+ SOL_surveillance:0 "Project I.N.S.I.G.H.T"
+ SOL_surveillance_desc:0 "Knowledge is power and power is control. So to have total control, you must first know everything. Every step, every action and every thought must be laid bear before the light of the Empress."
+ 
+ SOL_internal_passports:0 "Internal Passports"
+ SOL_internal_passports_desc:0 "While requiring passports to travel between the different regions of [THIS.GetNameDef] may be extreme, it cannot be denied that insurgent movements would be hindered by roadblocks and checkpoints between high-risk areas. For the security of our fair land, no price is too high."
+ 
+ SOL_reeducation_camps:0 "Indoctrination Program"
+ SOL_reeducation_camps_desc:0 "Despite our best efforts, there are still some who refuse to accept the Empress' Truth of New Harmony. They must be taught the error of their ways. By creating specialised agencies that run parallel to our civilian administration, we can make sure more ponies are brought into the sun's light."
+ 
+ SOL_Imperial_Inquisition:0 "Form the Imperial Inquisition"
+ SOL_Imperial_Inquisition_desc:0 "Recent events have made it quite clear our nation is woefully ill-equipped to deal with our internal foes. Establishing a proper intelligence agency will allow the Empire to keep tabs on its enemies, internal and external. Dissidents cannot be allowed to prosper and disturb our Harmony, and so they shall be rooted out."
+ SOL_Imperial_Inquisition_tt:0 "§RThe Harmony Restoration Movement has formed§!"
+ SOL_Imperial_Inquisition_tt1:0 "§CThese decisions will allow you to attack the §RHarmony Restotation Movement§! directly§!"
+
+ SOL_civilian_militias:0 "Solar National Guard"
+ SOL_civilian_militias_desc:0 "Across [THIS.GetNameDef], there are thousands if not millions of loyal and able-bodied ponies who either just fell short of the requirements for military service or were refused entry because their occupations were essential for the war effort. A volunteer National Guard should be created so they too can serve the Empress."
+ SOL_civilian_militias_tt:0 "When §GLoyalty§! exceeds §Y40%§!, resistance §Rattacks§! and §Ruprisings§! will require §Gone less§! division to suppress"
+
+ SOL_Inquisition_Law:0 "Inquisitorial Law"
+ SOL_Inquisition_Law_desc:0 "The Imperial Inquisitors are the instruments of Empress Daybreaker's will, but their exact status within [THIS.GetNameDef] isn't properly defined. Our advisors have requested that we put to paper the exact responsibilities and authorities the Imperial Inquisition can wield."
+
+ SOL_propaganda:0 "Solar Propaganda"
+ SOL_propaganda_desc:0 "Information is a powerful weapon. It can drive ponies to glory or ruin. This is why we cannot allow our enemies to win over the minds of ponykind. The war of ideas has begun, and Empress Daybreaker intends on winning. The first step will be improving our propaganda machine."
+
+ SOL_the_list:0 "Daybreaker's List"
+ SOL_the_list_desc:0 "The resistance to Daybreaker’s rule survives on the funding and shelter provided to them by civilian sympathisers. At the current stage of the investigation, few sympathisers have been identified. But with close examination of the public statements, political leanings and known associates of certain ponies, the Inquisition can create a list of potential suspects to investigate further."
+ SOL_the_list_tt:0 "You will gain £GFX_leads_text  40 §OLeads§! by compiling a list of civilian sympathisers."
+
+ SOL_upgrade_inquisition:0 "Upgrade the Inquisition"
+ SOL_upgrade_inquisition_desc:0 "The Imperial Inquisition has already proven itself vital in bringing Daybreaker's justice upon the traitorous fools that plague [THIS.GetnameDef]. But there is always room for improvement."
+ SOL_upgrade_inquisition_tt:0 "Unlocks §CUpgrade the Inquisition§! Decisions."
+
+ SOL_pressure_dissidents:0 "Pressure Dissidents"
+ SOL_pressure_dissidents_desc:0 "There is no room under the benevolent light of the sun for those who reject the Empress. Using our list of potential resistance sympathisers, it won't be hard to find loved ones that can be threatened to keep the dissidents cowed."
+
+ SOL_legacy_of_hurricane:0 "Legacy of Hurricane"
+ SOL_legacy_of_hurricane_desc:0 "It is no secret that the pegasi have a long history of militant authoritarianism. What a shame that it has been forgotten. To reawaken this dormant culture, [THIS.GetNameDef] must harken to the era of Commander Hurricane, when soldier-kings ruled the skies."
+ SOL_legacy_of_hurricane_tt:0 "Unlocks Ability to deploy §CInquisitorial Strike Teams§! anywhere in §O[THIS.GetNameDef].§!"
+
+ SOL_decapitate_the_resistance:0 "Decapitate the Resistance"
+ SOL_decapitate_the_resistance_desc:0 "In spite of our best efforts, the Harmony Restoration Movement has managed to solidify their presence in our nation like a cancer. But they have made one critical mistake. They tied their existence to just two mares: Starlight Glimmer and Trixie Lulamoon. Without them, the resistance would crumble into infighting and be easy pickings for the Inquisition."
+ SOL_decapitate_the_resistance_tt:0 "§CThe Imperial Inquisition§! will attempt to capture §SStarlight Glimmer§! and §NTrixie Lulamoon§!\n§YIf Successful:§!"
+ sol_hrm_final_move_tt:0 "§RHarmony Restoration Movement§! has made their §Nfinal move§!"
+
+ SOL_expand_our_domain:0 "Expand Our Domain"
+ SOL_expand_our_domain_desc:0 "For so long, ponykind has done nothing as other nations slowly picked away at our ancestral homelands. The griffons, the changelings, even the deer. They have all expanded at the expense of ponies. Now is the time to reclaim these lands, to execute our divine right and take what belongs to the children of the sun!"
+ SOL_coming_soon_tt:0 "§RComing Soon!§!"
+
+ SOL_expand_the_inquisition:0 "Expand The Inquisition"
+ SOL_expand_the_inquisition_desc:0 "The Imperial Inquistion. Their name strikes fear into Daybreaker's enemies and haunts the nightmares of her allies. By providing the Inquisition the funding they need to make their presence known in every town and hamlet, we will make sure nopony can hide from purifying light of the Empress."
+ SOL_expand_the_inquisition_tt:0 "The maximum number of §CImperial Inquisition§! decisions that can be active simultaneously will §Gincrease§! by §Gone!§!§!"
+
+ SOL_imperial_truth:0 "The Imperial Truth"
+
+ SOL_economic_miracle:0 "Solar Economic Miracle"
+
+ SOL_direct_rule_from_canterlot:0 "Direct Rule from Canterlot"
+
+ SOL_reopen_school_for_gifted_unicorns:0 "Reopen the School for Gifted Unicorns"
+
+ SOL_charter_of_pony_rights:0 "Charter of Pony Rights"
+
+ SOL_integrate_northwest:0 "Integrate the North"
+
+ SOL_decentralised_inquisitorial_policing:0 "Decentralised Inquisitorial Policing"
+
+ SOL_imperial_royal_guard:0 "The Imperial Royal Guard"
+
+ SOL_tighten_the_noose:0 "Tighten the Noose"
+
+ SOL_integrate_southeast:0 "Integrate the Southeast"
+
+ SOL_remilitarisation:0 "Revive War Production"
+
+ SOL_equestria_rising:0 "Equestria Rising"
+
+ SOL_battalion_chaplains:0 "Frontline Chaplains"
+
+ SOL_inquisitorial_integration:0 "Inquisitorial Integration"
+
+ SOL_daybreaker_military:0 "Daybreaker's Military"
+
+ SOL_state_approved_doctrine:0 "State Approved Doctrine"
+
+
+
+ SOL_solar_economy:0 "The Solar Economy"
+
+ SOL_machine_tool_proliferation:0 "Machine Tool Proliferation"
+
+ SOL_public_works_program:0 "Public Works Program"
+ SOL_public_works_program_desc:0 "A new dawn comes to Equestria. The future is now ours to write! And yet we find outselves limited by crumbling roads and dated railways. While other nations enjoy the fruits of the modern era, much of our vast lands can still only be accessed by primitive pony-drawn carts. This must change for [THIS.GetNameDef] to ascend as the superpower it was destined to be."
+ SOL_public_works_program_tt:0 "§GUnlocks Solar Public Works Programs§!\n\nSolar Public Works Program decisions can be accessed from the icon in the top bar or with the shortcut £GFX_ctrl + £GFX_p)\n\n§YFor every Pubic Works Program completed:§!\n§GGovernment Consolidation§! will §Gincrease§! by (§G1§!) point to the next stage!\n§GLoyalty Increases by [?sol_public_works_loyalty_increase]%§!\n§YEvery state in region:§!\n  Add §G2§! Building Slots.\n  Add §Y2 Infrastructure.§!\n  Add to states: §YImproved Infrastructure§!\n    Organization Regain: §G+10.00%§!\n    Max Factories in State: §G+10%§!\n    Division Speed: §G+10.00%§!\n    Local Available Resources: §G+10%§!\n    Local Construction Speed: §G+10%§!§!"
+
+ SOL_meet_with_union_leaders:0 "Meet with Union Leaders"
+
+ SOL_Protect_the_Weak:0 "Protect the Weak"
+ SOL_Protect_the_Weak_desc:0 "While defending Equestria from threats both foreign and domestic, we cannot forget about those who are unable to provide for themselves. After all, is it not the duty of a mother to make sure none of her children go hungry? This sad state of affairs where the common pony is left without food to eat and a roof over their heads cannot continue."
+
+ SOL_shut_down_protests:0 "Shut Down the Protests"
+
+ SOL_Imperial_Corporation_Council:0 "Imperial Corporation Council"
+ SOL_Imperial_Corporation_Council_desc:0 "It should be self-evident that private enterprise and free market competition is the fastest way to generate wealth. That said, they too need guidance ensure their efforts are for the benefit of the Empire. By creating a state council staffed by Imperial bureaucrats and industrialists, we can make this a mutually beneficial relationship."
+
+ SOL_legion_of_labor:0 "Legion of Labour"
+ SOL_legion_of_labor_desc:0 "Every pony under the sun's light should have the right to earn an honest living. A group of patriots have promoted the idea of an Empire-sponsored work organisation, providing the jobless with purpose and pay, while working for the betterment of the Empire."
+
+ SOL_agricultural_aid:0 "Agricultural Aid"
+
+ SOL_agricultural_mechanisation:0 "Mechanised Agriculture"
+
+ SOL_national_standards:0 "National Standards"
+
+ SOL_imperial_smelting:0 "Imperial Smelting"
+
+ SOL_mining_projects:0 "Mining Projects"
+
+ SOL_earth_pony_magic:0 "Earth Pony Magic"
+
+ SOL_black_gold:0 "Black Gold"
+
+ SOL_new_urban_planning:0 "New Urban Planning"
+
+ SOL_the_three_port_cities:0 "The Three Port Cities"
+
+ SOL_modern_naval_technology:0 "Modern Naval Technology"
+
+ SOL_secure_the_coastlines:0 "Secure the Coastlines"
+
+ SOL_naval_aeronautics:0 "Naval Aeronautics"
+
+ SOL_the_solar_fleet:0 "The Solar Fleet"
+
+ SOL_condemn_the_nobility:0 "Condemn the Nobility"
+
+ SOL_pardon_the_revolutionaries:0 "Pardon the Revolutionaries"
+
+ SOL_reapproach_stalliongrad:0 "Reapproach Stalliongrad"
+
+ SOL_invite_union_leaders:0 "Invite Union Leaders"
+
+ SOL_investigate_industrialists:0 "Investigate Industrialists"
+
+ SOL_empress_of_the_proletariat:0 "Empress of the Proletariat"
+
+ SOL_union_with_stalliongrad:0 "Union with Stalliongrad"
+
+ SOL_liberate_severyana:0 "Liberate Stalliongrad"
+
+ SOL_the_marksist_threat:0 "The Marksist Threat"
+
+ SOL_root_out_the_communists:0 "Root Out the Communists"
+
+ SOL_denounce_stalliongrad:0 "Denounce Stalliongrad"
+
+ SOL_contact_dissidents:0 "Contact Dissidents"
+
+ SOL_operation_mongoose:0 "Operation Mongoose"
+
+ SOL_the_counter_revolution:0 "The Counter-Revolution"
+
+ SOL_reclaim_the_rogue_province:0 "Reclaim the Rogue Province"
+
+
+ SOL_united_under_the_sun:0 "United Under the Sun"
+
+ SOL_imperial_academy:0 "The Imperial Academy"
+
+ SOL_tactical_teleportation:0 "Tactical Teleportation"
+
+ SOL_a_magical_army:0 "A Magical Army"
+
+ SOL_pegasi_scouts:0 "Pegasi Spotting Teams"
+
+ SOL_infantry_modernisation:0 "Infantry Modernisation"
+
+ SOL_flamethrowers:0 "Flamethrowers"
+
+ SOL_the_warrior_empress:0 "The Warrior-Empress"
+
+ SOL_the_imperial_logistics_department:0 "The Solar Logistics Department"
+
+ SOL_secure_supply_networks:0 "Secure Supply Networks"
+
+ SOL_the_great_purge:0 "The Great Purge"
+
+ SOL_the_empress_pardon:0 "The Empress' Pardon"
+
+ SOL_doctrinal_refinement:0 "Doctrinal Refinement"
+
+ SOL_a_disciplined_army:0 "A Disciplined Army"
+
+ SOL_the_solar_continental_command:0 "The Solar Continental Command"
+
+ SOL_the_lightbringers:0 "The Lightbringers"
+
+ SOL_the_imperial_investigative_service:0 "The Imperial Investigative Service"
+
+ SOL_the_solar_special_service:0 "The Solar Special Service"
+
+ SOL_pressure_the_dragons:0 "Pressure the Dragons"
+
+ SOL_the_crystal_mines:0 "Draconic Crystal Mines"
+
+ SOL_magical_weaponry_proliferation:0 "Magical Weaponry Proliferation"
+
+ SOL_napalm_payloads:0 "Napalm Payloads"
+
+ SOL_the_solar_bomber_fleet:0 "The Solar Bombing Fleet"
+
+ SOL_payload_calibration:0 "Payload Calibration"
+
+ SOL_light_aircraft_modernisation:0 "Light Aircraft Modernisation"
+
+ SOL_combined_arms:0 "Combined Arms Strategies"
+
+ SOL_pegasi_magic_applications:0 "Pegasi Magic Applications"
+
+ SOL_claim_the_stratosphere:0 "Claim the Stratosphere!"
+
+ SOL_sarin_munitions:0 "Sarin Munitions"
+
+ SOL_a_storm_of_steel:0 "A Storm of Steel"
+
+ SOL_tank_production_focus:0 "Tank Production Focus"
+
+ SOL_a_mechanised_army:0 "A Mechanised Army"
+
+ SOL_motorised_production_focus:0 "Motorised Production Focus"
+
+ SOL_engine_optimisation:0 "Engine Optimisation"
+
+ SOL_earth_pony_sappers:0 "Earth Pony Demolition Brigades"
+
  #PAX SOLARIS EVENTS
  #Event Tooltips
  is_under_threat_tt:0 "§OEquestria is Threatened§!"
+ has_solar_civil_war_tt:0 "The §RWar of the Eclipse§! is ongoing!"
+ sol_war_of_the_eclipse_begun_tt:0 "The §RWar of the Eclipse§! has begun!"
+ sol_war_of_the_eclipse_not_begun_tt:0 "The §RWar of the Eclipse§! has not begun!"
 
  paxsolaris_loyalty_increase_1:0 "§GLoyalty Increases by 1%§!"
  paxsolaris_loyalty_increase_2:0 "§GLoyalty Increases by 2%§!"
@@ -448,6 +614,7 @@ l_english:
 
  paxsolaris_resistance_strength_increase:0 "§RResistance Strength§! will §Rincrease§! by (§R1§!) point to the next stage!"
  paxsolaris_resistance_outreach_increase:0 "§OResistance Outreach§! will §Rincrease§! by (§R1§!) point to the next stage!"
+ paxsolaris_resistance_cohesion_increase:0 "§NResistance Cohesion§! will §Rincrease§! by (§R1§!) point to the next stage!"
 
  paxsolaris_information_suppression_reset:0 "Progress to the next level of §OInformation Suppression§! will be §Rreset!§!"
 
@@ -474,10 +641,9 @@ l_english:
  resistanceoutreachaction_increase_3:0 "§RResistance Outreach will increase by three levels!§!"
  resistancecohesionaction_increase_3:0 "§RResistance Cohesion will increase by three levels!§!"
 
- inquisitionaction:0 "§RResistance Strength§! will §Rdecrease§! by (§G1§!) level!"
+ inquisitionaction:0 "§RResistance Strength§! will §Gdecrease§! by (§G1§!) level!"
+ inquisitioncohesionaction:0 "§NResistance Cohesion§! will §Gdecrease§! by (§G1§!) level!"
 
- paxsolaris_government_consolidation_decrease_southeast:0 "§RGovernment Instability§! will §Rincrease§! by (§R1§!) level in the §YSoutheast!§!"
- paxsolaris_government_consolidation_decrease_southwest:0 "§RGovernment Instability§! will §Rincrease§! by (§R1§!) level in the §YSouthwest!§!"
 
  sol_border_war_available:0 "§Y[ROOT.GetNameWithFlag]§! can have a border war with §Y[THIS.GetNameWithFlag]§!"
 
@@ -600,7 +766,7 @@ l_english:
  paxsolaris.25.a:0 "Daybreaker will be stopped!"
 
  paxsolaris.26.t:0 "Buffaloes are Resisting Our Rule!"
- paxsolaris.26.d:0 "As expected, the buffalo have not taken kindly to their natural role beneath ponykind. We have received numerous reports of fringe tribes driving our administrators from their lands and sabotaging construction projects using stolen weapons. Our most important outposts in the area remain untouched but it is only a matter of time before the buffalo become brave enough to attack those too. Something must be done.\n\nTwo proposals sit on Daybreaker’s desk. One suggests withdrawing from most of the buffalo land and concentrating on our most important outposts. This would mean we would only have nominal control over buffalo lands and give the buffalo the opportunity to aid the resistance (especially in the event of an uprising) but would be the cheapest option and wouldn't burden our military. The other suggests gathering the buffalo into work camps overseen by the military. Our military will monitor the detained buffalo around the clock and use them as hostages to pacify the buffalo our search parties might have missed. However, this would add additional burden to our military. The buffalo would be unable to assist the resistance unless the resistance managed to send agents to liberate them.\n\nOf course there are tentative suggestions of a third solution to the buffalo question. A final solution."
+ paxsolaris.26.d:0 "As expected, the buffalo have not taken kindly to their natural role beneath ponykind. We have received numerous reports of fringe tribes driving our administrators from their lands and sabotaging construction projects using stolen weapons. Our most important outposts in the area remain untouched but it is only a matter of time before the buffalo become brave enough to attack those too. Something must be done.\n\nTwo proposals sit on Daybreaker’s desk. One suggests withdrawing from most of the buffalo land and concentrating on our most important outposts. This would mean we would only have nominal control over buffalo lands and give the buffalo the opportunity to aid the resistance (especially in the event of an uprising) but would be the cheapest option and wouldn't burden our military. The other suggests gathering the buffalo into work camps overseen by the military. Our military will monitor the detained buffalo around the clock and use them as hostages to pacify the buffalo our search parties might have missed. However, this would add additional burden to our military. The buffalo would be unable to assist the resistance unless the resistance managed to send agents to liberate them. Both propose driving the buffalo inland, minimising the impact they have on Equestria.\n\nOf course there are tentative suggestions of a third solution to the buffalo question. A final solution."
  paxsolaris_26_a:0 "[SOL_uprising_outcome]"
  paxsolaris_26_c:0 "§YWhen genocide is complete:§!"
  paxsolaris.26.a:0 "Withdraw to our strongholds, let the buffalo keep their wastes."
@@ -661,18 +827,18 @@ l_english:
  paxsolaris.39.b:0 "We cannot risk insurgents crippling our military."
 
  paxsolaris.40.t:0 "In Nomine Daybreaker?"
- paxsolaris.40.d:0 "When the Imperial Inquisition was founded, it was in response to a national crisis. There was little time to formalise their exact role in [THIS.GetNameDef]. As it stands, even the lowest Inquisitors can accost anypony in the government short of Daybreaker herself. Advisors and administrators have admitted this has impeded their ability to do their jobs. While nopony would dare to speak out against the Imperial Inquisition directly, Empress Daybreaker has received tentative requests from her advisors for her to outline what rules the Inquisition must abide by. A choice must be made on whether to limit the authority of the Inquisition or let them continue wielding nigh-unlimited power in her name."
+ paxsolaris.40.d:0 "When the Imperial Inquisition was founded, it was in response to a national crisis. There was little time to formalise their exact role in [THIS.GetNameDef]. As it stands, even the lowest inquisitors can accost anypony in the government short of Daybreaker herself. Advisors and administrators have admitted this has impeded their ability to do their jobs. While nopony would dare to speak out against the Imperial Inquisition directly, Empress Daybreaker has received tentative requests from her advisors for her to outline what rules the Inquisition must abide by. A choice must be made on whether to limit the authority of the Inquisition or let them continue wielding nigh-unlimited power in her name."
  paxsolaris.40.a:0 "Perhaps some limitations could be introduced."
  paxsolaris.40.b:0 "Did I stutter when I said they act in my name?"
  paxsolaris_40_a_tt:0 "The §CImperial Inquisition§! will be §Gregulated.§!\n  Daily Loyalty Gain: §G+0.005%§!\n  §RInquisition decisions will take five more days to complete!§!\n  §RLoyalty decrease§! from §Yattacking dummy targets§! will be §Gdecreased§! by §G1%§!"
  paxsolaris_40_b_tt:0 "The §CImperial Inquisition§! will §Rhave complete autonomy.§!\n  Weekly £GFX_leads_text  §OLead§! Gain: §G+4§!\n  §GInquisition decisions will take five less days to complete!§!"
 
  paxsolaris.41.t:0 "Changelings in the Resistance?"
- paxsolaris.41.d:0 "[This.GetNewspaperHeader]Yes, you heard it here folks! Close investigation conducted by the Imperial Inquisition into the infamous Siege of Whinnyapolis have revealed that at least a fifth of all resistance members are actually disguised Changelings! After careful interrogation, the Inquisition managed to force some Changelings to drop their disguise and give up the identities of other Changeling spies operating in [THIS.GetNameDef]. When pressed further, the Changelings admitted they use the Harmony Restoration Movement as a front to lure ponies into isolated locations and feed upon them.\n\nThe Imperial Inquisition has issued a formal statement, asking that ponies report suspicious activity to their local Inquisitor to help combat the Changeling threat."
+ paxsolaris.41.d:0 "[This.GetNewspaperHeader]Yes, you heard it here folks! Close investigation conducted by the Imperial Inquisition into the infamous Siege of Whinnyapolis have revealed that at least a fifth of all resistance members are actually disguised Changelings! After careful interrogation, the Inquisition managed to force some Changelings to drop their disguise and give up the identities of other Changeling spies operating in [THIS.GetNameDef]. When pressed further, the Changelings admitted they use the Harmony Restoration Movement as a front to lure ponies into isolated locations and feed upon them.\n\nThe Imperial Inquisition has issued a formal statement, asking that ponies report suspicious activity to their local inquisitor to help combat the Changeling threat."
  paxsolaris.41.a:0 "Shame about those Changelings..."
 
  paxsolaris.42.t:0 "She's Checking it Twice"
- paxsolaris.42.d:0 "An army marches on its stomach. That saying has been around since Daybreaker herself was but a foal. It is just as applicable today, for even in this new age of warfare cutting off an enemy's supplies remains an effective strategy. Which is why Daybreaker had instructed the Imperial Inquisition to compile a blacklist of all known or suspected dissidents within [THIS.GetNameDef]. After all, the first step to cutting off the supplies to the Harmony Restoration Movement is identifying their suppliers.\n\nDotted Line brushed aside empty coffee cups and takeout boxes to grab another file from the mountain at the centre of his desk. He studied each one closely, occasionally glancing up to speak with the other analysts at the table. They talked with a dull hum, throwing out names and figures then making quick decisions on whether to mark them down for further investigation or discount them entirely. The artists, the engineers, the scholars, the rich, anypony who had so much as criticised Daybreaker’s rule or were known to have spent more than a minute around Starlight Glimmer or Trixie Lulamoon were all added to the growing pile of names. Some of these names were surely red herrings and false leads. Others would have bugs placed in their homes and Inquisitors tailing them in the streets. A few would require... special treatment."
+ paxsolaris.42.d:0 "An army marches on its stomach. That saying has been around since Daybreaker herself was but a foal. It is just as applicable today, for even in this new age of warfare cutting off an enemy's supplies remains an effective strategy. Which is why Daybreaker had instructed the Imperial Inquisition to compile a blacklist of all known or suspected dissidents within [THIS.GetNameDef]. After all, the first step to cutting off the supplies to the Harmony Restoration Movement is identifying their suppliers.\n\nDotted Line brushed aside empty coffee cups and takeout boxes to grab another file from the mountain at the centre of his desk. He studied each one closely, occasionally glancing up to speak with the other analysts at the table. They talked with a dull hum, throwing out names and figures then making quick decisions on whether to mark them down for further investigation or discount them entirely. The artists, the engineers, the scholars, the rich, anypony who had so much as criticised Daybreaker’s rule or were known to have spent more than a minute around Starlight Glimmer or Trixie Lulamoon were all added to the growing pile of names. Some of these names were surely red herrings and false leads. Others would have bugs placed in their homes and inquisitors tailing them in the streets. A few would require... special treatment."
  paxsolaris.42.a:0 "There will be no hiding from Daybreaker’s light."
 
  paxsolaris.43.t:0 "A Friend of a Friend"
@@ -716,7 +882,7 @@ l_english:
  SOL_benevolent_civilian_event_response_3:0 "I will not punish my little ponies for removing an undesirable."
 
  paxsolaris.51.t:0 "The Birth of an Empire"
- paxsolaris.51.d:0 "The teeming masses of ponies stood at the footsteps of the palace. News reporters bustled and shoved each other for a better view while civilians waited in tense silence for their princess to appear upon the balcony. Everyone had heard the rumours. Mysterious lights in the sky. Soldiers abducting people in the middle of the night. Nervous generals telling stories of a monster of fire and hatred. The people needed to hear their princess say everything was going to be alright.\n\nThey cried out in fear as an alicorn appeared on the balcony. It was Celestia, but she was almost unrecognisable. Her rainbow mane was gone, replaced by a tongue of fire lashing out against the world. Her form was clad in golden armour, shining like the core of the sun. She surveyed them with burning, inequine eyes. And finally, she spoke.\n\n“My little ponies, I have failed to protect you,” Her words filled the crowd with an alien warmth. “I have failed to protect Equestria! I failed because I was afraid to do what was necessary! I allowed weakness and sentiment to blind me to the threats we faced. This ends today! No longer will I be a weak and distant ruler. I will bring about a new system of government, one that will guarantee ponykind’s safety for as long as the sun shines upon this world!”\n\nCelestia took to the skies, hovering in the sky above them like a second sun. She cast her light across the crowd, forcing them to look away. But when their eyes adjusted, the light no longer felt harsh. It felt comforting, like the embrace of a mother. It soothed their fears and inflamed their passion. One by one, they each turned back to their princess.\n\n“It is time for ponykind to forge a new path. One that will bring our nation the glory and power we have always deserved! The road ahead is dark and full of perils, but through my light we will charge forward and destroy all those who stand in our way!”\n\nA few ponies began to stomp in agreement. It began slowly, but soon the palace grounds were filled with the sounds of applause.\n\n“Let the coming months serve as the gauntlet of fire through which we will cleanse ourselves of weakness! Let the parasitic changelings and scheming griffons know our wrath! For today, the Solar Empire is born! And I, Empress Daybreaker, will bring you eternal victory!”"
+ paxsolaris.51.d:0 "The teeming masses of ponies trembled under the burning, inequine gaze of the fiery alicorn. Everyone had heard the rumours. Mysterious lights in the sky. Soldiers abducting people in the middle of the night. Nervous generals telling stories of a monster of fire and hatred. They had come to hear Celestia dismiss them, but now stood terror-stricken before the living proof that all those dreadful rumours were true.\n\n“My loyal subjects, do not be afraid!” Celestia’s words filled the crowd with an alien warmth. “You have no reason to fear me. Even if I have changed, I am still here to protect and watch over you. Gaze upon this new form, for it will be the one that tears to shreds the enemies at our gates! The days where I would offer a hoof to a world hellbent on hurting my beloved ponies are over! Now is the time for them to be reminded why they once feared the sun’s chosen children!”\n\nCelestia took to the skies, hovering in the sky above them like a second sun. She cast her light across the crowd, forcing them to look away. But when their eyes adjusted, the light no longer felt harsh. It felt comforting, like the tender embrace of a mother. It soothed their fears and inflamed their passion. One by one, they each turned back to their princess.\n\n“Changelings, griffons, traitors, it matters not. I will leave them all trembling at my hooves, begging for the mercy they never showed us! I will make them watch as their pitiful nations are broken and everything they ever loved crumbles to ash! Under my light, ponykind will forge a new path. One that will bring our nation the power and glory we have always deserved! We will sweep across this world like a storm of fire, annihilating all who would dare to oppose us! The very earth will fear our wrath, and Tartarus itself will bar its gates for fear of us kicking them down!”\n\nA few ponies began to stomp in agreement. It began slowly, but soon the palace grounds were filled with the sounds of applause.\n\n“Let the coming months serve as the gauntlet of fire through which we will cleanse ourselves of weakness! Let the parasitic changelings and scheming griffons know our wrath! For today, the Solar Empire is born! And I, Empress Daybreaker, will bring you eternal victory!”"
  paxsolaris.51.a:0 "The cheers were deafening."
 
  paxsolaris.52.t:0 "Paramilitary Status Report"
@@ -735,32 +901,36 @@ l_english:
  paxsolaris.55.d:0 "Internal Security Report – Ongoing Operation Dossier 49-456\n\nFailure to comply with security clearance checks before the viewing of this document will result in immediate termination of personnel in breach of procedure. SUN3-4 designation or above is required to request access to these files, any personnel with privilege below SUN3-4 will result in immediate denial of such a request.\n\n##S.M.I.L.E##\n\nSeventeen targets liquidated on contact with allied operatives, five captured and undergoing information extraction. Target ‘Sweetie Drops’ missing, search ongoing. Resistance light, standard operating procedure effective. Local pacification forces used to quell opposition to vertical integration of targets. Coordination with imperial armed forces and loyalist generals exceptionally efficient, advise promotion of young officer REDACTED in light of extreme operational integrity. Canterlot cell of S.M.I.L.E resistance supressed, potentially still in operation. Testimony of captured operatives indicates further depth to antagonistic operations.\n\nTranscript- “Ah... huh... Oh... Oh Celestia... Please no more... They’re... There’s more of them... Not just us... Oh Celestia... My legs... I can’t feel my legs!” -End of Transcript\n\nFurther operations in and surrounding Canterlot requested. – Granted\nExpanded access to operatives requested. – Granted\n\n##Courtiers##\n\nTwo-hundred-and-seventy-one nobles arrested and sent to REDACTED re-education centre; eight nobles killed. Significant resistance from nobility with economic ties to previous regime. Suggest cross-referencing noble-owned company profit margins with list of suspects to identify likely traitors and resistance members. Younger members of the nobility notably satisfied with change in government, suggest the rearranging of titles to benefit emerging solarist nobles. Operations overall effective, no evidence indicates need to proceed with undermining of politically and economically influential figures.\n\nRedistribution of operatives from court to S.M.I.L.E operations requested – Granted"
  paxsolaris.55.a:0 "Internal Security Report – Ongoing Operation Dossier 49-457..."
 
+ paxsolaris.56.t:0 "Out of the Frying Pan"
+ paxsolaris.56.d:0 "The ponies of Acornage were excited to see their kin again. After months of having the love sucked out of them by their changeling occupiers, it was a relief to see Equestrian soldiers marching through the streets. Colts bounded over to meet their liberators whilst fillies brought out any spare food that had been saved from rationing.\n\nBut the adults knew what had happened to their home. They knew about Daybreaker and the new policies and ideas she had forced upon the nation. In a way, they were scared. Terrified even. The hope that they had held on to so tightly still stood, but it had been tarnished by the knowledge that they would never be able to go back to the way things had once been. Those trucks, those guns, those planes... they were emblazoned with an unfamiliar flag that only served to remined them of just how different things would be from now on.\n\n“Dad! Dad! Have you seen the tanks?! They’re so... Big and loud and just awesome! I want to drive one of them when I join the army!” A young pony exclaimed brightly to his father.\n\n“The army? Thought you wanted to go into engineering. Well, you’re young yet; it’s up to you what you want to do when the time comes, I suppose,” He returned with a stony face.\n\nIn a few years, his son might not have a choice in the matter. As the war had worsened for their occupiers, it had become less and less unusual to see changelings far too young for service clutching rifles in their shivering hooves. Would Daybreaker do the same?\n\nThe stallion sighed and went back to preparing lunch for the family, letting his son run back outside to go and talk with the soldiers again. He refused to worry about hypotheticals. Yesterday, his greatest fear had been that one of those damn bugs would take too much love and leave his wife or son in a permanent coma. It had already happened to so many of his friends. Compared to that, how bad could Daybreaker be? The world he grew up in may never return, but at least Daybreaker’s world was safe."
+ paxsolaris.56.a:0 "And right now, that was enough."
+
  SOL_create_narrative:0 "Create [SOL_protest_event_in_state.GetName] Narrative"
  SOL_create_narrative_desc:0 "The pro-Harmonists were planning to assassinate the mayor. No, they were trying to poison the water supply! Before we instruct our media outlets to report on this tragedy, it is of the utmost importance for them to understand what happened in [SOL_protest_event_in_state.GetName]. Or at least what we want to tell ponies happened. We shall investigate every detail and see what story we can piece together, mixing facts with exaggerations to give us an advantage over the resistance outreach network.\n\nThe public's chance of supporting the resistance for this protest is §Y[?resistance_outreach_win_chance_percent]%§! but you can reduce this by 10% by creating a narrative."
 
  paxsolaris.70.t:0 "Missed Opportunity"
- paxsolaris.70.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out from behind his cover, magic swirling around his horn.\n\nIn a flash of light Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The unicorn swept his aim across every nook and cranny, never dropping his shield. But the only evidence there had ever been resistance agents in this building were scraps of propaganda littering the ground, now covered in a light coating of dust. The sound of shattering glass reached his ears as a pegasi Inquisitor breached the upstairs window. Despite the mounting evidence, Sparking Flame didn’t drop his guard until he’d searched each room one by one.\n\nNopony was here.\n\nSparking Flame sighed and reached for the radio at his flank, switching to the unencrypted frequency. “We were too late. The resistance has already scrubbed this place.”"
+ paxsolaris.70.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out from behind his cover, magic swirling around his horn.\n\nIn a flash of light Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The unicorn swept his aim across every nook and cranny, never dropping his shield. But the only evidence there had ever been resistance agents in this building were scraps of propaganda littering the ground, now covered in a light coating of dust. The sound of shattering glass reached his ears as a pegasi inquisitor breached the upstairs window. Despite the mounting evidence, Sparking Flame didn’t drop his guard until he’d searched each room one by one.\n\nNopony was here.\n\nSparking Flame sighed and reached for the radio at his flank, switching to the unencrypted frequency. “We were too late. The resistance has already scrubbed this place.”"
  paxsolaris.70.a:0 "I want to know who was responsible for this blunder!"
  paxsolaris.71.t:0 "Wrong Target"
- paxsolaris.71.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out of his cover, magic swirling around his horn.\n\nIn a flash of light, Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The unicorn swept his aim across every nook and cranny, never dropping his shield. A mare shrieked as his aim fell upon her, clutching a terrified stallion like he was her lifeline.\n\n“Please, take what you want! Just don’t hurt us!” The stallion begged.\n\nThe sound of shattering glass reached his ears as a pegasi Inquisitor breached the upstairs window. Sparking Flame ignored it and pointed the gun at the couple. “Stay where you are. My associates are going to search the place.”\n\nMinutes ticked by but Sparking Flame’s aim never wavered. The two ponies hugged each other, the stallion trying desperately to comfort his wife as she cried terrified tears. But soon enough the other Inquisitor arrived. She shook her head.\n\nSparking Flame sighed and clipped the gun back to his flank then turned to the two terrified ponies. “We apologise for the disturbance.”\n\nThey just looked at him in disbelief, but the Inquisitors were already leaving. Sparking Flame reached for the radio at his flank and switched to the unencrypted frequency. “We got the wrong building.”"
+ paxsolaris.71.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out of his cover, magic swirling around his horn.\n\nIn a flash of light, Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The unicorn swept his aim across every nook and cranny, never dropping his shield. A mare shrieked as his aim fell upon her, clutching a terrified stallion like he was her lifeline.\n\n“Please, take what you want! Just don’t hurt us!” The stallion begged.\n\nThe sound of shattering glass reached his ears as a pegasi inquisitor breached the upstairs window. Sparking Flame ignored it and pointed the gun at the couple. “Stay where you are. My associates are going to search the place.”\n\nMinutes ticked by but Sparking Flame’s aim never wavered. The two ponies hugged each other, the stallion trying desperately to comfort his wife as she cried terrified tears. But soon enough the other inquisitor arrived. She shook her head.\n\nSparking Flame sighed and clipped the gun back to his flank then turned to the two terrified ponies. “We apologise for the disturbance.”\n\nThey just looked at him in disbelief, but the inquisitors were already leaving. Sparking Flame reached for the radio at his flank and switched to the unencrypted frequency. “We got the wrong building.”"
  paxsolaris.71.a:0 "Make sure those damages are paid for."
  paxsolaris.72.t:0 "Wrong Target"
- paxsolaris.72.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out of his cover, magic swirling around his horn.\n\nIn a flash of light, Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The unicorn swept his aim across every nook and cranny, never dropping his shield. A mare shrieked as his aim fell upon her, clutching a terrified stallion like he was her lifeline.\n\n“Please, take what you want! Just don’t hurt us!” The stallion begged.\n\nThe sound of shattering glass reached his ears as a pegasi Inquisitor breached the upstairs window. Sparking Flame ignored it and pointed the gun at the couple. “Stay where you are. My associates are going to search the place.”\n\nMinutes ticked by but Sparking Flame’s aim never wavered. The two ponies hugged each other, the stallion trying desperately to comfort his wife as she cried terrified tears. But soon enough the other Inquisitor arrived. She shook her head.\n\nSparking Flame sighed and clipped the gun back to his flank then turned to the two terrified ponies. “We apologise for the disturbance.”\n\nThey just looked at him in disbelief, but the Inquisitors were already leaving. But they weren’t alone. Across the street a thestral watched the events unfolding with a worried frown. As the two ponies left, she reached for her own radio. “The Inquisitors are on to us. Tell all our assets in the area to lay low.”\n\nThe next time Sparking Flame launched a raid, all he found was empty rooms and mocking propaganda."
+ paxsolaris.72.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out of his cover, magic swirling around his horn.\n\nIn a flash of light, Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The unicorn swept his aim across every nook and cranny, never dropping his shield. A mare shrieked as his aim fell upon her, clutching a terrified stallion like he was her lifeline.\n\n“Please, take what you want! Just don’t hurt us!” The stallion begged.\n\nThe sound of shattering glass reached his ears as a pegasi inquisitor breached the upstairs window. Sparking Flame ignored it and pointed the gun at the couple. “Stay where you are. My associates are going to search the place.”\n\nMinutes ticked by but Sparking Flame’s aim never wavered. The two ponies hugged each other, the stallion trying desperately to comfort his wife as she cried terrified tears. But soon enough the other inquisitor arrived. She shook her head.\n\nSparking Flame sighed and clipped the gun back to his flank then turned to the two terrified ponies. “We apologise for the disturbance.”\n\nThey just looked at him in disbelief, but the inquisitors were already leaving. But they weren’t alone. Across the street a thestral watched the events unfolding with a worried frown. As the two ponies left, she reached for her own radio. “The inquisitors are on to us. Tell all our assets in the area to lay low.”\n\nThe next time Sparking Flame launched a raid, all he found was empty rooms and mocking propaganda."
  paxsolaris.72.a:0 "Once again the resistance has slipped through our fingers!"
  paxsolaris.73.t:0 "Resistance Cell Crushed!"
- paxsolaris.73.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out of his cover, magic swirling around his horn.\n\nIn a flash of light, Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The sound of gunfire filled the room as bullets ricocheted off the unicorn's shield. Sparking Flame aimed his gun and fired two quick shots into his attacker. The earth pony shooter collapsed in a heap, blood spilling out across the floor. Sparking Flame then leveled his gun at the two other ponies in the room.\n\n“Imperial Inquisition! Drop your weapons and get on the ground!” He ordered.\n\n“You’ll never take me alive, bootlickers!” One of the ponies snarled. Before he could even raise his gun there was a deafening crack and the pony’s head exploded open.\n\nSparking Flame pointed his gun at the remaining pony. “If you don’t want to end up like your friend, you’ll do as I say.”\n\nReluctantly, the last pony kicked his weapon away and dropped to the ground. A few minutes later another Inquisitor entered from the back of the room.\n\n“We hit the jackpot!” She told Sparking Flame. “Names, dates, locations. It’s all here!”\n\n“Good. Cuff this one and let’s bring this intel back to HQ.”"
+ paxsolaris.73.d:0 "The first rays of sunlight cast long shadows over the dingy apartment block. Inquisitor Sparking Flame crept forward slowly, keeping himself concealed behind the industrial scrap that surrounded the derelict building. He counted down the seconds then leapt out of his cover, magic swirling around his horn.\n\nIn a flash of light, Sparking Flame found himself standing at the doorway. He formed a shield and blasted the door off its hinges, storming the building with his rifle levitating at eye level. The sound of gunfire filled the room as bullets ricocheted off the unicorn's shield. Sparking Flame aimed his gun and fired two quick shots into his attacker. The earth pony shooter collapsed in a heap, blood spilling out across the floor. Sparking Flame then leveled his gun at the two other ponies in the room.\n\n“Imperial Inquisition! Drop your weapons and get on the ground!” He ordered.\n\n“You’ll never take me alive, bootlickers!” One of the ponies snarled. Before he could even raise his gun there was a deafening crack and the pony’s head exploded open.\n\nSparking Flame pointed his gun at the remaining pony. “If you don’t want to end up like your friend, you’ll do as I say.”\n\nReluctantly, the last pony kicked his weapon away and dropped to the ground. A few minutes later another inquisitor entered from the back of the room.\n\n“We hit the jackpot!” She told Sparking Flame. “Names, dates, locations. It’s all here!”\n\n“Good. Cuff this one and let’s bring this intel back to HQ.”"
  paxsolaris.73.a:0 "Another three traitors given the Empress' justice."
 
  paxsolaris.74.t:0 "Inquisition Upgraded!"
- paxsolaris.74.d:0 "The Inquisition had never been more equipped. Where hundreds of ponies once spent days sifting through thousands of records now stands a titanic electro-magical computer capable of doing the analysis of an entire department in only a few hours. Every bleeding-edge technology thinkable had been poured into these new facilities, from hoof-print scans and fur matching to near-instantaneous undetectable communication between Inquisitors across the country. Even regional centers were now equipped with codebreakers, shattering the primitive encryptions of resistance networks quicker than ever before.\n\nWith these new technologies at their command, the Imperial Inquisition can track resistance activity with never before seen precision and accuracy."
+ paxsolaris.74.d:0 "The Inquisition had never been more equipped. Where hundreds of ponies once spent days sifting through thousands of records now stands a titanic electro-magical computer capable of doing the analysis of an entire department in only a few hours. Every bleeding-edge technology thinkable had been poured into these new facilities, from hoof-print scans and fur matching to near-instantaneous undetectable communication between inquisitors across the country. Even regional centers were now equipped with codebreakers, shattering the primitive encryptions of resistance networks quicker than ever before.\n\nWith these new technologies at their command, the Imperial Inquisition can track resistance activity with never before seen precision and accuracy."
  paxsolaris.74.a:0 "You cannot hide from the sun."
 
  paxsolaris.75.t:0 "Post-Operation Debriefing"
- paxsolaris.75.d:0 "OPERATION: COUNTERSTRIKE\n\nDATE: [GetDateText]\n\nABSTRACT: Joint Imperial Royal Guard-Inquisitorial nation-wide crackdown on known and suspected strongholds of the Harmony Restoration Movement.\n\nSUCCESS RATING: [resistance_strike_mission_success_rating_desc]\n\nMISSION DEBRIEFING: Acting on leads gathered from interrogations and captured resistance intelligence, Inquisitorial forces across the nation coordinated with the Imperial Royal Guards for a series of crippling strikes against resistance across Equestria.[resistance_strike_mission_stronghold_desc]"
+ paxsolaris.75.d:0 "OPERATION: COUNTERSTRIKE\n\nDATE: [GetDateText]\n\nABSTRACT: Joint Imperial Royal Guard-Inquisitorial nation-wide crackdown on known and suspected strongholds of the Harmony Restoration Movement.\n\nSUCCESS RATING: [resistance_strike_mission_success_rating_desc]\n\nMISSION DEBRIEFING: Acting on leads gathered from interrogations and captured resistance intelligence, inquisitorial forces across the nation coordinated with the Imperial Royal Guards for a series of crippling strikes against resistance across Equestria.[resistance_strike_mission_stronghold_desc]"
  paxsolaris.75.a:0 "Next Page"
 
  resistance_strike_mission_success_rating_comment_failure:0 "Somepony is getting banished to the moon for this..."
- resistance_strike_mission_success_rating_comment_partial_success:0 "I will be watching those Inquisitors closely..."
+ resistance_strike_mission_success_rating_comment_partial_success:0 "I will be watching those inquisitors closely..."
  resistance_strike_mission_success_rating_comment_success:0 "They flee like the vermin they are!"
  resistance_strike_mission_success_rating_comment_resounding_success:0 "The benevolence of the sun does not extend to those who reject its light." 
 
@@ -786,7 +956,7 @@ l_english:
  resistance_strike_mission_recommendations_worse:0 "\n\nRECOMMENDATION: We should revise our counterinsurgency strategy to prevent mistakes like this from occurring in the future."
 
  paxsolaris.76.t:0 "Post-Operation Debriefing"
- paxsolaris.76.d:0 "OPERATION: COUNTERSTRIKE\n\nDATE: [GetDateText]\n\nABSTRACT: Joint Military-Inquisitorial nation-wide crackdown on known and suspected strongholds of the Harmony Restoration Movement.\n\nSUCCESS RATING: [resistance_strike_mission_success_rating_desc]\n\nMISSION DEBRIEFING: Acting on leads gathered from interrogations and captured resistance intelligence, Inquisitorial forces across the nation coordinated with the military for a series of crippling strikes against resistance assets across Equestria.[resistance_strike_mission_secondary_targets_desc][resistance_strike_mission_failures_desc][resistance_strike_mission_recommendations]"
+ paxsolaris.76.d:0 "OPERATION: COUNTERSTRIKE\n\nDATE: [GetDateText]\n\nABSTRACT: Joint Military-Inquisitorial nation-wide crackdown on known and suspected strongholds of the Harmony Restoration Movement.\n\nSUCCESS RATING: [resistance_strike_mission_success_rating_desc]\n\nMISSION DEBRIEFING: Acting on leads gathered from interrogations and captured resistance intelligence, inquisitorial forces across the nation coordinated with the military for a series of crippling strikes against resistance assets across Equestria.[resistance_strike_mission_secondary_targets_desc][resistance_strike_mission_failures_desc][resistance_strike_mission_recommendations]"
  paxsolaris.76.a:0 "[resistance_strike_mission_success_rating_comment]"
 
  paxsolaris_75_tt_50_days:0 "The §RHarmony Restoration Movement§! will be §Gcrippled§! for §G50 days!§!"
@@ -802,14 +972,14 @@ l_english:
  paxsolaris.77.e:0 "... the [ArrestPropagandaTitleFourthDesc]."
 
  ArrestPropagandaLocation1:0 "Local police searches had discovered resistance pamphlets in seemingly random locations across [SOL_arrest_event_target.GetName]. At first the Inquisition searched for links between the ponies discovered with the propaganda, but could find none. In fact, they all appeared to be model citizens. The kind of ponies who would usually be pious supporters of Daybreaker, were they not resistance sympathisers."
- ArrestPropagandaLocation2:0 "A few weeks ago, [SOL_arrest_event_target.GetName] Inquisitors began detecting resistance broadcasts. Following standard procedure, they triangulated the location and went to investigate only to find nothing. After days of trying, it was eventually determined that the broadcasting array must be mobile, moving too quickly for the Inquisitors to pin down its exact location."
+ ArrestPropagandaLocation2:0 "A few weeks ago, [SOL_arrest_event_target.GetName] inquisitors began detecting resistance broadcasts. Following standard procedure, they triangulated the location and went to investigate only to find nothing. After days of trying, it was eventually determined that the broadcasting array must be mobile, moving too quickly for the inquisitors to pin down its exact location."
  ArrestPropagandaLocation3:0 "Oddly enough, the resistance pamphlets in [SOL_arrest_event_target.GetName] were not discovered by the police or the Inquisition. Instead, a loyal pony turned it in. He claims to have found the pamphlet at the foot of his front door."
  ArrestPropagandaLocation4:0 "The resistance pamphlets were discovered circulating among the workers in one of [SOL_arrest_event_target.GetName] industrial sectors as part of a routine factory inspection. The inspector called in the police who called in the Inquisition, who later identified the pamphlets as belonging to an anarchist group believed to be operating nearby."
  ArrestPropagandaLocation5:0 "A spy operating within a local resistance cell reported that resistance activists have begun to coordinate their efforts by passing along coded maps. Interestingly, these pamphlets have been carefully designed to appear as maps of the city to the untrained eye, but actually serve as lists of meeting spots for local resistance agents."
  ArrestPropagandaLocation6:0 "Unlike most propaganda discovered by the Inquisition, this latest wave of propaganda appears to have been encoded well enough to bamboozle anypony without knowledge of decryption algorithms."
- ArrestPropagandaLocation7:0 "One week ago, Inquisitorial assets operating within a small-scale resistance cell discovered that the cell leader was receiving coded messages through a telegraph line. The Inquisition managed to wiretap the line, but reports have circulated suggesting the existence of other telegraph lines the resistance has somehow installed parallel to our own used to coordinate their efforts within [SOL_arrest_event_target.GetName]."
+ ArrestPropagandaLocation7:0 "One week ago, inquisitorial assets operating within a small-scale resistance cell discovered that the cell leader was receiving coded messages through a telegraph line. The Inquisition managed to wiretap the line, but reports have circulated suggesting the existence of other telegraph lines the resistance has somehow installed parallel to our own used to coordinate their efforts within [SOL_arrest_event_target.GetName]."
  ArrestPropagandaLocation8:0 "One loyal pony came forward with hundreds of resistance pamphlets he claims to have found stuffed into a crate of peaches he’d bought from a local market. Inquisitors were quick to the scene, discovering a few vendors acting as middlemares for the resistance. One by one they cracked and confessed to being resistance agents, but none could identify the primary supplier."
- ArrestPropagandaLocation9:0 "These pamphlets were discovered in a military base by a sergeant following up on an anonymous tip from one of his soldiers. Initial investigation reveals that soldiers had been passing treasonous material between each other, but the Inquisitors could not identify how the propaganda was reaching the base."
+ ArrestPropagandaLocation9:0 "These pamphlets were discovered in a military base by a sergeant following up on an anonymous tip from one of his soldiers. Initial investigation reveals that soldiers had been passing treasonous material between each other, but the inquisitors could not identify how the propaganda was reaching the base."
  ArrestPropagandaLocation10:0 "Following up on a noise complaint, local police arrested dozens of teenage ponies but discovered that buried among their collection of tape decks were recorded speeches of known resistance leaders. Inquisitors were called in, but interrogation revealed nothing useful."
  ArrestPropagandaLocation11:0 "Ponies in the business district of [SOL_arrest_event_target.GetName] awoke one morning to find their stores vandalised with disturbing imagery of fiery death surrounded by slogans calling Daybreaker a monster. Inquisitors were unable to identify the suspect with surveillance footage."
  ArrestPropagandaLocation12:0 "A recent report on resistance funding has revealed that resistance cells operating in [SOL_arrest_event_target.GetName] are better funded than ever before. Evidence points towards [SOL_arrest_event_target.GetName]’s idle rich. Further investigation is needed, but right now the Inquisition must identify the link between the resistance and their wealthy benefactors."
@@ -829,14 +999,14 @@ l_english:
  ArrestPropagandaWin2:0 "The train driver confessed to having installed a broadcasting array into one of the carriages of her cargo train, using the mobility it provided to confuse our triangulation equipment. It had been a clever plan, but not clever enough to fool the Imperial Inquisition."
  ArrestPropagandaWin3:0 "The delivery mare confessed to using her mail route as a way of distributing resistance propaganda to the neighbourhoods of [SOL_arrest_event_target.GetName]. An ill-conceived plan from the start, it did not take long for Winter Star to find the scheduled routes of the state postal service and implicate her as a traitor."
  ArrestPropagandaWin4:0 "The steelworker had to be dragged kicking and screaming from his home. Much to Winter Star’s pleasure, he hadn’t bothered to lie about distributing anarchist pamphlets. In fact, he seemed to brag about it. But he lost his smug attitude once the interrogators pulled out the electrodes."
- ArrestPropagandaWin5:0 "Needless to say, Winter Star had received a lot of odd looks when he suggested one of [SOL_arrest_event_target.GetName]’s top urban developers was a resistance agent. But it hadn’t taken him long to realise the mare had been masterfully selecting meeting spots far away from both present and future Inquisitorial assets. If only she hadn’t failed to consider that her own comrades might be spies, maybe she’d still be free."
+ ArrestPropagandaWin5:0 "Needless to say, Winter Star had received a lot of odd looks when he suggested one of [SOL_arrest_event_target.GetName]’s top urban developers was a resistance agent. But it hadn’t taken him long to realise the mare had been masterfully selecting meeting spots far away from both present and future inquisitorial assets. If only she hadn’t failed to consider that her own comrades might be spies, maybe she’d still be free."
  ArrestPropagandaWin6:0 "With a bit of ego-stroking, the mathematician began loudly bragging about how he had created an ‘unbreakable’ formula to code the messages of the local resistance cell. Solving the equation would’ve taken the average pony days. Unless of course they circumvented it with basic frequency analysis. Winter Star had taken particular pleasure in telling him that."
- ArrestPropagandaWin7:0 "The terrified electrician hadn’t lasted long under interrogation before admitting to having secretly laid telegraph lines running parallel to the city power grid. She had reluctantly given them a map of all telegraph lines in the state. Winter Star smiled to himself. He’d be instructing the Inquisitors to wiretap those very soon."
- ArrestPropagandaWin8:0 "After an hour of driving, the Inquisitiors had finally returned back to base with an angry mare struggling in her handcuffs. She had lasted longer than the average pony, but with the threat of the Inquisitors returning to her farm and taking one of her siblings, the mare finally relented and told them how she would hide resistance intel in her produce to smuggle it into the city."
+ ArrestPropagandaWin7:0 "The terrified electrician hadn’t lasted long under interrogation before admitting to having secretly laid telegraph lines running parallel to the city power grid. She had reluctantly given them a map of all telegraph lines in the state. Winter Star smiled to himself. He’d be instructing the inquisitors to wiretap those very soon."
+ ArrestPropagandaWin8:0 "After an hour of driving, the Inquisitiors had finally returned back to base with an angry mare struggling in her handcuffs. She had lasted longer than the average pony, but with the threat of the inquisitors returning to her farm and taking one of her siblings, the mare finally relented and told them how she would hide resistance intel in her produce to smuggle it into the city."
  ArrestPropagandaWin9:0 "It did not take long for the army cook to crack under torture and admit to sending messages in and out of the base concealed in the MREs. The Inquisition had arrested his co-conspirators within the hour, bringing the total number of traitors captured to four. A successful day by any metric."
- ArrestPropagandaWin10:0 "Winter Star knew he was in for a long day the moment he laid eyes on the stallion dragged into the building. He claimed to be a ‘visionary musical artist’ of some new style called ‘jazz’ the Inquisitor could just tell was going to be forgotten in a few years. Thankfully he quit bragging once the interrogators got to work. Soon enough he was giving them everything he knew."
+ ArrestPropagandaWin10:0 "Winter Star knew he was in for a long day the moment he laid eyes on the stallion dragged into the building. He claimed to be a ‘visionary musical artist’ of some new style called ‘jazz’ the inquisitor could just tell was going to be forgotten in a few years. Thankfully he quit bragging once the interrogators got to work. Soon enough he was giving them everything he knew."
  ArrestPropagandaWin11:0 "It had taken them two days to locate the artist responsible for the graffiti. The stallion had no address or listed place of work. But after long hours of asking around they finally found him camping out in one of the local parks. The artist was infuriatingly vague, refusing to cooperate with any servants of ‘the mare’. Until of course the interrogators brought out the electrodes."
- ArrestPropagandaWin12:0 "The socialite had needed to be muscled through the door by no less than three Inquisitors. She had complained loudly the whole time, calling them brutes and savages. Winter Star could still feel his ears ringing. To his surprise, she had lasted a lot longer than he expected under interrogation but was soon giving up the names of the rich benefactors she had persuaded to support the resistance."
+ ArrestPropagandaWin12:0 "The socialite had needed to be muscled through the door by no less than three inquisitors. She had complained loudly the whole time, calling them brutes and savages. Winter Star could still feel his ears ringing. To his surprise, she had lasted a lot longer than he expected under interrogation but was soon giving up the names of the rich benefactors she had persuaded to support the resistance."
 
  ArrestDescriptionList2:0 "a [ArrestPropagandaTitleFirstDesc] and a [ArrestPropagandaTitleSecondDesc]."
  ArrestDescriptionList3:0 "a [ArrestPropagandaTitleFirstDesc], a [ArrestPropagandaTitleSecondDesc] and a [ArrestPropagandaTitleThirdDesc]."
@@ -870,8 +1040,8 @@ l_english:
  paxsolaris.81.t:0 "Resistance Strikes [SOL_resistance_attack_target_true_temp.GetName]!"
  paxsolaris.81.d:0 "[This.GetNewspaperHeader][ResistanceAttackOutcome_Desc]"
  AttackOutcome_Desc_1:0 "At 1:13 AM last night the ponies of [SOL_resistance_attack_target_true_temp.GetName] were awoken by speakers blasting warnings about a fire ravaging the city. An emergency order was given by the city mayor, forcefully evacuating thousands of ponies at risk of inhaling dangerous toxic fumes. Firefighters were ordered to do whatever possible to contain the fire, but it was far too late to save the [SOL_resistance_attack_target_true_temp.GetName] industrial district.\n\nThe struggle lasted long into the next day beforel the pegasi finally managed to gather enough rain clouds to extinguish the fire. Post-crisis investigation conducted by the Inquisition suggest this blaze was deliberately started by resistance agents to cripple [THIS.GetNameDef]’s industry."
- AttackOutcome_Desc_2:0 "Local steelworkers arrived at work today to find their worksite had been cordoned off as a crime scene. The [SOL_resistance_attack_target_true_temp.GetName] Inquisitors issued an official apology, stating that a terrified night shift security guard had called them in after roving gangs of ponies were spotted sabotaging the steelworks. They arrived to discover molten metal had been poured on the machinery, rendering millions of bits of equipment completely inoperable.\n\nWhile the investigation into this attack has only just begun, the Inquisition has already confirmed those responsible were members of the Harmony Restoration Movement."
- AttackOutcome_Desc_3:0 "A scheduled shipment of ammunition had to be delayed today when reports reached the local military garrison of a vital bridge spanning the [SOL_resistance_attack_target_true_temp.GetName] River being destroyed. Thankfully the bridge was free of ponies when the blast went off, but the destruction of nearby infrastructure including the state’s largest dam is expected to cost the government millions. State infrastructure has been temporarily shut down while Inquisitors search for any additional bombs the resistance might have planted.\n\nMillions of ponies have already felt the sting as the price of essential goods soars in light of the paralysed logistics network and emergency water restrictions. Meanwhile the military struggles to keep order in the now isolated state."
+ AttackOutcome_Desc_2:0 "Local steelworkers arrived at work today to find their worksite had been cordoned off as a crime scene. The [SOL_resistance_attack_target_true_temp.GetName] inquisitors issued an official apology, stating that a terrified night shift security guard had called them in after roving gangs of ponies were spotted sabotaging the steelworks. They arrived to discover molten metal had been poured on the machinery, rendering millions of bits of equipment completely inoperable.\n\nWhile the investigation into this attack has only just begun, the Inquisition has already confirmed those responsible were members of the Harmony Restoration Movement."
+ AttackOutcome_Desc_3:0 "A scheduled shipment of ammunition had to be delayed today when reports reached the local military garrison of a vital bridge spanning the [SOL_resistance_attack_target_true_temp.GetName] River being destroyed. Thankfully the bridge was free of ponies when the blast went off, but the destruction of nearby infrastructure including the state’s largest dam is expected to cost the government millions. State infrastructure has been temporarily shut down while inquisitors search for any additional bombs the resistance might have planted.\n\nMillions of ponies have already felt the sting as the price of essential goods soars in light of the paralysed logistics network and emergency water restrictions. Meanwhile the military struggles to keep order in the now isolated state."
  AttackOutcome_Desc_4:0 "A prominent [THIS.GetAdjective] general was assassinated in broad daylight earlier today outside of a famous [SOL_resistance_attack_target_true_temp.GetName] cafe. The general was enjoying a week of paid leave for his service to [THIS.GetNameDef] when he was shot twice by a gunmare believed to have been an assassin sent by the Harmony Restoration Movement.\n\nFirst responders were quick to the scene but were unable to save the general, who passed away from his injuries in hospital less than an hour later. This assassination has thrown the [SOL_resistance_attack_target_true_temp.GetName] garrison into chaos as the army is left without a clear leader to follow. It is expected that the absence of this general will send waves up the command chain."
  AttackOutcome_Desc_5:0 "Last night a group of resistance agents successfully broke into a prominent [SOL_resistance_attack_target_true_temp.GetName] research facility, taking the opportunity to destroy any files they could find and gun down the facility staff. This facility was responsible for producing some of [THIS.GetNameDef]’s greatest advancements and its loss will delay Imperial research efforts immensely.\n\nThe Inquisition suspects the resistance may have made off with some of the files and passed them on to foreign powers, but these rumours are currently unconfirmed. Upon the conclusion of their preliminary investigation the Inquisition allowed grieving families to gather at the site to pay tribute to their departed loved ones."
  AttackOutcome_Desc_6:0 "Early last morning the Harmony Restoration Movement mounted an assault against the [SOL_resistance_attack_target_true_temp.GetName] garrison command building. Despite their superior numbers, the Imperial Army was caught unaware by the ferocity of the attack and were unable to stop the resistance from breaching the building.\n\nThe resistance did not press their advantage, instead using their access to the command building to steal important documents on Imperial troop movements in the area which the Inquisition suspects they have sent to foreign powers. The high command is scrambling to draft new plans to replace the ones stolen by the resistance."
@@ -1082,7 +1252,7 @@ l_english:
  paxsolaris.220.a:0 "“It will be done, my Empress.”"
 
  paxsolaris.221.t:0 "The Audit"
- paxsolaris.221.d:0 "Dotted Line doubled over, unable to hold back his laughter. Sparking Flame sniggered at the sight and offered another beer to the stallion while he sipped his own through a straw. It was the only way he could drink with his jaw still in a cast.\n\n“Did you really say that in front of Starlight Glimmer?” Dotted finally managed to say. Sparking nodded and the grey unicorn burst into another fit of laughter. “You’re a bloody madmare. I don’t think my Inquisition could afford another stallion like you in our ranks.”\n\n“Ah, but it’s not your Inquisition anymore, is it?” Sparking shot back. “Last I heard, you’re serving out your last week before returning to the Civil Service.”\n\n“Oh yes, my ‘demotion’,” Dotted rolled his eyes. “I sure will miss the long hours and constant stress of managing an entire intelligence agency by myself. I tell you, when I got the news I was so shocked my jaw hit the floor.”\n\n“Oh go fu- AH!” Sparking cried out as he accidentally moved his broken jaw. He glared as Dotted Line laughed at his discomfort. But that laughter died when he spotted the figure standing in the doorway.\n\n“Drinking on the job?” Sunset Shimmer scowled at the two stallions. “You’re supposed to be hunting the resistance.”\n\nDotted Line shivered at the sight of the mare. Sunset Shimmer had shown up from gods knows where and had already been granted command over the entire Imperial Royal Guard. She had wasted no time in reforming them into the cold and merciless executors of Daybreaker’s will. The rumours he’d heard about what the Royal Guard had been turned into were enough to make even him nervous.\n\n“Leave us,” Sunset ordered. Sparking Flame gave his friend a sympathetic look then quickly left, not wishing to invoke Sunset’s ire. Now alone, Sunset turned to the grey stallion. “The Empress has called for a complete audit of all Inquisitorial personnel. You will provide me with files on everypony who works here.”\n\n“I do hope the Empress is not displeased by the delay this audit will cause.”\n\n“Leave Daybreaker to me. Just get the files sorted. Expect my arrival early tomorrow morning.”\n\n“How detailed do you want these files?” Dotted Line asked. “You must remember that we are on a time schedule. If we spend too long hunting traitors in the Inquisition we give the traitors abroad time to strengthen themselves.”"
+ paxsolaris.221.d:0 "Dotted Line doubled over, unable to hold back his laughter. Sparking Flame sniggered at the sight and offered another beer to the stallion while he sipped his own through a straw. It was the only way he could drink with his jaw still in a cast.\n\n“Did you really say that in front of Starlight Glimmer?” Dotted finally managed to say. Sparking nodded and the grey unicorn burst into another fit of laughter. “You’re a bloody madmare. I don’t think my Inquisition could afford another stallion like you in our ranks.”\n\n“Ah, but it’s not your Inquisition anymore, is it?” Sparking shot back. “Last I heard, you’re serving out your last week before returning to the Civil Service.”\n\n“Oh yes, my ‘demotion’,” Dotted rolled his eyes. “I sure will miss the long hours and constant stress of managing an entire intelligence agency by myself. I tell you, when I got the news I was so shocked my jaw hit the floor.”\n\n“Oh go fu- AH!” Sparking cried out as he accidentally moved his broken jaw. He glared as Dotted Line laughed at his discomfort. But that laughter died when he spotted the figure standing in the doorway.\n\n“Drinking on the job?” Sunset Shimmer scowled at the two stallions. “You’re supposed to be hunting the resistance.”\n\nDotted Line shivered at the sight of the mare. Sunset Shimmer had shown up from gods knows where and had already been granted command over the entire Imperial Royal Guard. She had wasted no time in reforming them into the cold and merciless executors of Daybreaker’s will. The rumours he’d heard about what the Royal Guard had been turned into were enough to make even him nervous.\n\n“Leave us,” Sunset ordered. Sparking Flame gave his friend a sympathetic look then quickly left, not wishing to invoke Sunset’s ire. Now alone, Sunset turned to the grey stallion. “The Empress has called for a complete audit of all inquisitorial personnel. You will provide me with files on everypony who works here.”\n\n“I do hope the Empress is not displeased by the delay this audit will cause.”\n\n“Leave Daybreaker to me. Just get the files sorted. Expect my arrival early tomorrow morning.”\n\n“How detailed do you want these files?” Dotted Line asked. “You must remember that we are on a time schedule. If we spend too long hunting traitors in the Inquisition we give the traitors abroad time to strengthen themselves.”"
  paxsolaris.221.a:0 "“A delay is unacceptable. Narrow your search to only the most important ponies.”"
  paxsolaris.221.b:0 "“You can disregard any files you deem unimportant.”"
  paxsolaris.221.c:0 "“I don't care about your delay. Just find me what I need to exterminate these traitors.”"
@@ -1098,7 +1268,7 @@ l_english:
  paxsolaris.223.a:0 "Those that betray Daybreaker did not deserve forgiveness."
 
  paxsolaris.224.t:0 "The Spy Revealed"
- paxsolaris.224.d:0 "Inquisitors leapt to the side as Sunset Shimmer stormed down the hallway to Dotted Line’s office, flanked on either side by two heavily armed Imperial Royal Guards. Not bothering to knock, Sunset flung open his door.\n\nThe grey stallion leapt up in shock. “What is the meaning of this!?”\n\nSunset scowled. “You’re smart enough to know why I’m here. There was an information leak. Starlight Glimmer and Trixie Lulamoon were given advanced warning about our attack, that’s why they managed to evacuate so many ponies. The Imperial Royal Guards are clean. That leaves your Inquisition as the weak link.”\n\n“Er, yes. I have been conducting a very thorough second audit and have located the spy,” Dotted told her. “I was just about to give the arrest order before you barged in here.”\n\n“It’s an Imperial Royal Guard matter now. Show me to the spy’s office,” Sunset commanded.\n\nDotted Line sighed. “Very well then. Though I would appreciate it if you let me manage Inquisitorial affairs.”\n\n“Your concern is noted and disregarded,” Sunset snapped back. She commanded her two soldiers to follow Dotted Line as he led them through the Inquisition’s headquarters. Trailing behind, Sunset took the moment to survey the ponies she passed. They flinched away when her gaze fell upon them.\n\nFinally, they arrived at an office. The blinds were closed and the door locked. Sunset wasted no time blasting the door off and marching inside, but what she saw gave her pause. A pegasus stallion hung in the middle of the room, dangling from the ceiling by a piece of rope tied around his neck.\n\n“Damn it all, he took his own life,” Dotted Line sighed. “He must have known something he didn’t want us torturing out of him.”\n\nBut Sunset had spotted a piece of paper tied to the stallion’s wing. She levitated it to her eyes and began reading. As she read, the unicorn mare began to tremble with rage. Embers flaked off the letter as it vibrated in her magical grip. In a burst of fire the letter was gone and Sunset let the ashes lazily drift to the floor.\n\n“What did it say?” Dotted Line asked.\n\n“Never mind that. Just make sure this doesn’t happen again, or it’ll be your head on the chopping block,” Sunset glared at the stallion. She turned to her two guards and gestured to the hanging pegasus."
+ paxsolaris.224.d:0 "Inquisitors leapt to the side as Sunset Shimmer stormed down the hallway to Dotted Line’s office, flanked on either side by two heavily armed Imperial Royal Guards. Not bothering to knock, Sunset flung open his door.\n\nThe grey stallion leapt up in shock. “What is the meaning of this!?”\n\nSunset scowled. “You’re smart enough to know why I’m here. There was an information leak. Starlight Glimmer and Trixie Lulamoon were given advanced warning about our attack, that’s why they managed to evacuate so many ponies. The Imperial Royal Guards are clean. That leaves your Inquisition as the weak link.”\n\n“Er, yes. I have been conducting a very thorough second audit and have located the spy,” Dotted told her. “I was just about to give the arrest order before you barged in here.”\n\n“It’s an Imperial Royal Guard matter now. Show me to the spy’s office,” Sunset commanded.\n\nDotted Line sighed. “Very well then. Though I would appreciate it if you let me manage inquisitorial affairs.”\n\n“Your concern is noted and disregarded,” Sunset snapped back. She commanded her two soldiers to follow Dotted Line as he led them through the Inquisition’s headquarters. Trailing behind, Sunset took the moment to survey the ponies she passed. They flinched away when her gaze fell upon them.\n\nFinally, they arrived at an office. The blinds were closed and the door locked. Sunset wasted no time blasting the door off and marching inside, but what she saw gave her pause. A pegasus stallion hung in the middle of the room, dangling from the ceiling by a piece of rope tied around his neck.\n\n“Damn it all, he took his own life,” Dotted Line sighed. “He must have known something he didn’t want us torturing out of him.”\n\nBut Sunset had spotted a piece of paper tied to the stallion’s wing. She levitated it to her eyes and began reading. As she read, the unicorn mare began to tremble with rage. Embers flaked off the letter as it vibrated in her magical grip. In a burst of fire the letter was gone and Sunset let the ashes lazily drift to the floor.\n\n“What did it say?” Dotted Line asked.\n\n“Never mind that. Just make sure this doesn’t happen again, or it’ll be your head on the chopping block,” Sunset glared at the stallion. She turned to her two guards and gestured to the hanging pegasus."
  paxsolaris.224.a:0 "“Bring the body back to Ruby Mountain. I’ll handle the interrogation.”"
 
  paxsolaris.225.t:0 "A Morale Boost"
@@ -1121,13 +1291,133 @@ l_english:
  paxsolaris.229.d:0 "“How are you holding up?” Trixie asked, laying a bandaged hoof on her friend’s shoulder.\n\n“I was shot twice, saw months of work be shelled into rubble and nearly burnt out my horn teleporting an entire room of ponies halfway across the state,” Starlight sighed, rubbing her horn tenderly. “Take a wild guess.”\n\nThe mood at the camp was dismal. The ponies that managed to escape were huddled around fireplaces built under hastily erected tarpaulins that barely did anything to keep out the rain. There were no trees for miles in every direction, just desolate wind-blasted stone. When the storm broke, they would be easy pickings for Daybreaker’s pegasi.\n\n“Well at least we survive to fight another day,” Starlight tried to stay positive, though her expression betrayed her inner grief. She’d left hundreds of her friends for dead during the siege. And they were the lucky ones. The thought of what those psychopaths in the Imperial Royal Guard would do to the survivors sickened Starlight to her stomach. Even Trixie shivered at the thought.\n\n“It was foolish to establish a stronghold so close to Canterlot,” Trixie silently cursed herself to Tartarus and back. “We can’t make the same mistake. I say we flee east to put as much distance between us and Daybreaker as possible. The ponies of the east haven’t given up on harmony yet.”\n\n“And we can contact the foreign nations for support!” Starlight added. “I still have contacts in Griffonia from my socialist days.”\n\n“Yes, that too,” Trixie agreed. She didn’t have it in her to tell Starlight that her friends had likely abandoned her. It would not surprise Trixie if the only aid they received was from nations trying to keep Daybreaker’s gaze directed inwards. It wasn’t like they ever cared before. Why would they start now?\n\nStarlight turned back to the trembling mass of ponies, each trying to leach whatever warmth they could from the fire. A few cried. Others tossed and turn in a restless sleep, their dreams plagued with the memories of friends they would never see again."
  paxsolaris.229.a:0 "But Starlight would make sure their sacrifice was not in vain."
 
+ SOL_long_march:0 "The Long March"
+ SOL_long_march_desc:0 "After the crippling defeat inflicted upon them by nascent Imperial Inquisition and Imperial Royal Guard, the §RHarmony Restoration Movement§! has been forced to retreat from the §YHeartland§!. Until they reach the east coast, they are vulnerable. We should take advantage of their momentary volunerability to cut them down even more."
+ SOL_long_march_fail_tt:0 "§RThe Harmony Restoration Movement§! will slip by us!"
+
  paxsolaris.230.t:0 "Cat and Mouse"
  paxsolaris.230.d:0 "Winter Star surveyed the map of the east coast with an angry scowl. For the past month, the Harmony Restoration Movement had been slowly moving east. It would have been impossible to muster the forces necessary to lock down the entire region, but the Inquisition had made sure they were harassed every step of the way. They had inflicted heavy losses against the organisation, but the real prize had eluded them. The organisers of the Harmony Restoration Movement were still at large.\n\nAnd now the ball was in their court. The ponies of the east were not nearly as loyal as their cousins in the heartland or frontier. Manehattan had been a hotbed of resistance activity from day one, so Starlight and Trixie would find plenty of supporters to shelter them now that they had gone to ground. It would be challenging to dig them out, even more so now that the high command of the resistance had scattered across the entire east coast. Worse, the foreign nations were beginning to show interest in their plight. Even political support would lend a lot of credence to Harmony Restoration Movement, let alone if the foreign nations managed to sneak supplies and weapons across the solar border.\n\nBut Winter Star was prepared to leave no stone unturned until he found those traitors and dragged them out into the light of the sun to pay for their crimes. They could only hide for so long. Sooner or later, they would make a mistake. And when they did..."
  paxsolaris.230.a:0 "The Inquisition would be waiting for them."
 
- SOL_long_march:0 "The Long March"
- SOL_long_march_desc:0 "After the crippling defeat inflicted upon them by nascent Imperial Inquisition and Imperial Royal Guard, the §RHarmony Restoration Movement§! has been forced to retreat from the §YHeartland§!. Until they reach the east coast, they are vulnerable. We should take advantage of their momentary volunerability to cut them down even more."
- SOL_long_march_fail_tt:0 "§RThe Harmony Restoration Movement§! will slip by us!"
+ paxsolaris.231.t:0 "Back to Square One"
+ paxsolaris.231.d:0 "“So why did you need me again?” Velvet asked his commander. Crimson Nova was a pegasus of routine. He would not break their training schedule for just anything.\n\n“Comrade Lulamoon has got new orders for us,” Crimson Nova replied. “She says Comrade Glimmer wanted you to be there when she gave them.”\n\nVelvet nodded and followed the pegasus into the large tent. He recognised many of the faces from his last meeting with the representatives of the resistance leaders; but others were missing. Their places in the circle had been left vacant, almost like a tribute to their fallen owners. But Velvet knew what had happened. For the sake of morale, Crimson Nova had tried to silence any talk about the attack on the resistance headquarters. But it was hard to keep a lid on the details with [THIS.GetNameDef] broadcasting the news on every station. At least the weeks of inactivity had helped improve Velvet’s ability to pretend to be upset.\n\nTrixie sat tall and powerful at the centre of the circle, but even Velvet’s untrained eyes could tell the effort was causing her pain. But she refused to show it. As he expected, Starlight was nowhere to be found. It seems the duo would not risk having both of the Harmony Restoration Movement’s leaders in the same place again.\n\n“Are we all here?” Trixie asked. She didn’t wait for an answer before launching on. “Good. I’ll make this quick, I don’t want to give Daybreaker another second of reprieve. Starlight has been negotiating with a few foreign governments and believes they are willing to lend their support to our effort. But first, they need us to prove we are worth supporting.”\n\nAn angry look passed over her face, but it was gone so quickly Velvet suspected he might have imagined it.\n\n“I have faith that we, the Great and Powerful resistance, can meet this challenge. Starlight and I have made plans with the Manehattan cell we believe will guarantee the support of the other nations. But you have an equally important task. I need the Whinnyapolis cell to wiretap a telegraph line used by Imperial forces along the northeastern border.”\n\nCrimson Nova nodded."
+ paxsolaris.231.a:0 "“My soldiers are at your command, Comrade Lulamoon.”"
+
+ paxsolaris.232.t:0 "Choice 3: From Severyana with Love"
+ paxsolaris.232.d:0 "Velvet paced through the forest, deep in thought. He knew he couldn’t stay out here for long, the others would grow suspicious. But he needed some time alone to weigh his options.\n\nTrixie’s spies reported that the Imperial Army regularly sends detailed reports on the state of the border to Canterlot via telegraph. The line was patrolled by pegasi scouts, but Crimson Nova was confident the Whinnyapolis cell could wiretap it quickly enough to avoid detection. But that was only the first hurdle. Any data they received would be heavily encoded, so as the only codebreaker in the Whinnyapolis cell it would fall on Velvet’s shoulders to interpret what they received.\n\nThe Inquisition had not yet managed to contact him and reestablish communications in the new location, so it would be impossible to warn them. No matter what he did, Velvet would be receiving classified reports on every Imperial military force in the Severyana region tomorrow morning. If these were leaked to the international world it would allow foreign governments to support the resistance directly via sneaking equipment and ponies across the border.\n\nVelvet only had two options. He could decode the reports accurately, compromising the security of the Severyana border until the Inquisition discovered the leak. Or he could lie about the contents of the report and claim the original intelligence was a false lead designed to fool the resistance once his treachery was discovered. They would believe him, but it would cast a lot of unwanted suspicion in his direction.\n\nThe earth pony sighed, finally resigning himself to a decision. When the intelligence arrived, Velvet would..."
+ paxsolaris.232.a:0 "...decode the reports truthfully."
+ paxsolaris.232.b:0 "...lie to protect Imperial border security."
+ paxsolaris_232_a:0 "§RBorder Porosity Factor§! will §Rincrease§! by §R0.004§! for §Y120 days!§!"
+
+ paxsolaris.233.t:0 "Harmonists Strike Manehattan!"
+ paxsolaris.233.d:0 "Under the cover of last night’s heavy rainfall, the Harmony Restoration Movement landed yet another blow against the solar administration, seizing a broadcasting tower just outside the city of Manehattan. Starlight Glimmer delivered a speech, declaring her intentions to overthrow Daybreaker and establish a harmonist democracy. She pleaded with the international world to support her efforts, arguing that if she falls then nothing will stop Daybreaker bringing war to every corner of the world. The remaining hours of the broadcast were spent reading messages from Manehattanite civilians to their friends and family in Aquileia, the Riverlands and beyond, asking them to agitate for action against Daybreaker. \n\nThe Imperial Royal Guard reclaimed the broadcasting array by midafternoon, but by then Starlight Glimmer and most of the resistance agents had slipped away."
+ paxsolaris.233.a:0 "Damnable traitors."
+
+ paxsolaris.234.t:0 "Harmonist Resistance Formalised"
+ paxsolaris.234.d:0 "Earlier today, nations along the west coast of Griffonia picked up a powerful pirate transmission originating from the Equestrian city of Manehattan. The news quickly spread across the continent, from Haukhamn to Nimbusi.  It would seem the local harmonic resistance to Daybreaker’s rule has made the bold move of declaring their intentions of overthrowing the solar alicorn to the world. Starlight Glimmer, a leader of one of the strongest anti-Daybreaker factions within Equestria, has asked that we provide her with any support we can. To highlight the importance of this struggle to our nation, she read out messages from our citizens trapped in Manehattan.\n\nWhile some see Starlight’s message as overly idealistic, her words have nonetheless drawn attention and sympathy towards the nascent rebel leader. She has reminded the world that Equestria is not yet beyond saving. Grassroots activists have begun agitating for our government to intervene in the conflict while our advisors and generals have suggested that working with the Harmony Restoration Movement might be our only chance of defeating Daybreaker before she can consolidate her rule and bring the full might of the world’s sole superpower against us."
+ paxsolaris.234.a:0 "Starlight’s proposal is worth putting to a vote."
+ paxsolaris.234.b:0 "The Harmony Restoration Movement will have our support!"
+ HRM_recognised_HRM:0 "Recognised Harmony Restoration Movement"
+ EQS_recognised_HRM:0 "Recognised Harmony Restoration Movement"
+ paxsolaris.234.c:0 "We won’t risk drawing Daybreaker’s ire to support idealistic rabble."
+
+ paxsolaris.235.t:0 "The Calm Before the Eclipse"
+ paxsolaris.235.d:0 "Daybreaker levitated a teacup to her lips, a serene smile on her face. Across from her, Sunset Shimmer was giving the alicorn a disbelieving look.\n\n“Forgive me, your majesty, but are you feeling alright? I expected more of a reaction from this news.”\n\n“Why?” Daybreaker placed the teacup back on the table. “I am not surprised to hear the world has recognised that so-called ‘harmonist’ rabble as the rightful government of Equestria. They acted exactly as I expected them to.”\n\n“But by recognising the Harmony Restoration Movement, Starlight and Trixie have received more legitimacy than any other resistance movement could dream of,” Sunset scowled. “Because of this, Starlight and Trixie have organised most if not all of those vile traitors under their leadership.”\n\n“Don’t get me wrong, Sunset. I desire nothing more than to flay each and every one of them alive then move on to their gutless foreign supporters,” Daybreaker consoled, wrapping one of her wings around the yellow unicorn. “The world did not support Starlight and Trixie out of altruism. They did it because they hope the Harmony Restoration Movement will starve off their demise for just a little while longer. Like a criminal facing a firing squad, they’re terrified. But that’s not the reason I’m smiling.”\n\nDaybreaker grinned, her eyes shining like supernovas. “The more centralised the resistance gets, the more their existence is tied to just a handful of ponies. We can now utterly shatter all resistance to the new order with just one decapitating strike. And once Starlight and Trixie are dead, the next phase of our plan can begin.”\n\nUnderstanding dawned on Sunset’s face. She bowed her head, partially to hide her viscous smile."
+ paxsolaris.235.a:0 "“I will make sure they suffer a painful end.”"
+
+ paxsolaris.236.t:0 "A Conquered Nation"
+ paxsolaris.236.d:0 "“Please, accept this offering as a token of our appreciation,” An elderly buffalo placed a small feathered headdress on Starlight’s head, bowing respectfully to her.\n\n“Your kindness is much appreciated, Chief Skycoat,” Starlight mimicked his bow. “But you needn't thank me. I am happy to help. After all, we share the same struggle.”\n\nA few of the buffalo grit their teeth at her words. Starlight was focused on Chief Skycoat so she didn’t see it, but Velvet had gotten good enough at reading others to pick up the subtle tensing of the other buffalo’s shoulders, as if they were fighting the urge to lash out at the pink unicorn. Their ragged coats and sunken faces told him they had been through a harrowing ordeal to get here. Even the children clutching their mother’s fur seemed weak and malnourished. No doubt the adults took exception to the idea that a pony like Starlight understood the depths of their pain.\n\nVelvet couldn’t help but feel slightly guilty. [cohesion_event_2_desc] After that, it was no surprise they were resentful towards ponies. But at the same time, he felt slightly angry towards them. Without ponies like Starlight, these buffalo wouldn’t have a hope in Tartarus of winning. They shouldn’t be scorning her when she’d come all this way to help them.\n\n“And you believe you can help us with our plan?” Chief Skycoat asked, bringing Velvet out of his thoughts.\n\n“Most certainly. I had some friends in Manehattan develop a code for us to use and brought along a friend with a background in code breaking,” Starlight motioned to him. “He can encode and decode the messages for you, which will allow you to coordinate the final phase of the plan with the other groups without the Imperial Royal Guard listening in. Isn’t that right, Velvet?”\n\nThe earth pony nodded. “Shouldn’t be too hard, but the code will only hold for a few hours, so you’ll have to move quickly before the Guard discovers your actions.”\n\n“And remember, once you send the messages you need to get moving as soon as possible,” Starlight reminded them. “Daybreaker’s forces can still triangulate your position.”\n\nChief Skycoat nodded."
+ paxsolaris.236.a:0 "“We move out once the sun sets.”"
+ cohesion_event_2_desc_1:0 "Information from the buffalo territories was scarce, but what rumours Velvet heard told of bloody skirmishes between buffalo militias and Imperial outposts."
+ cohesion_event_2_desc_2:0 "From what Velvet had heard, the entire region was treated as a source of cheap labour for the oil industry. The buffalo that hadn’t been captured waged a bloody insurgency against Daybreaker in the mountains."  
+ cohesion_event_2_desc_3:0 "The buffalo territories had basically become a fiefdom of the Imperial Royal Guard. They kept a tight lid on their actions, but the rumours he heard were enough to sicken even a Daybreaker loyalist like him."
+ 
+ paxsolaris.237.t:0 "Choice 4: Ayandi Black Gold"
+ paxsolaris.237.d:0 "This plan was deceptively simple. There were half a dozen oil refineries across the state that supplied oil to the entire southwest. The buffalo were planning to destroy them. But to have any chance of winning, they would need to lure the garrisons out of their defensive positions then attack the undefended refineries. And this required communication between the various groups so they could track where the Imperial forces were. The last thing Chief Skycoat wanted was to attack a refinery with the defences still intact.\n\nThe leaders of the various strike teams had learnt some of Starlight’s code. It would be Velvet’s job to receive the messages, quickly decode them, relay the information to Starlight and then reply with whatever message she gave. Truthfully, it required very little in the way of actual code breaking skills since he had the codebook in his hooves. Were it not for the buffalo being technologically backwards, this process could be automated. But years of experience had taught him how to decode messages faster than the average pony, so the job fell to him.\n\nBut now he had to make a decision. This plan had a decent chance of succeeding. If they pulled it off, it would cripple the solar oil supply for months and impact logistics across the entire southwest. Right now, Velvet was alone with a powerful radio. He could send a coded warning to the Inquisition before the attack. It would be almost impossible to trace the leak to him, but the risk was there.\n\nAnd despite himself, he couldn’t help but feel apprehensive about sending thousands of buffalo to their deaths. It was hard not to sympathise with them. If he warned the Inquisition, then the blood of these buffalo would be on his hooves. Wives would be widowed and children left orphaned. But could he really prioritise their lives over the security of his country?"
+ paxsolaris.237.a:0 "Velvet knew he couldn’t bear the weight of the guilt."
+ paxsolaris.237.b:0 "For his country, no price was too high."
+ paxsolaris_237_a:0 "§YEvery State§! in the §YSouthwest Region:§!\n  The §YSynthetic Refineries§! receive §R1.00§! levels of damage.\n  Add to state: §YSabotaged Refineries§! for §Y120§! days\n    Resource Gain Efficiency: §R-50.00%§!"
+
+ paxsolaris.238.t:0 "Choice 4: Ayandi Black Gold – Success"
+ paxsolaris.238.d:0 "It was like a scene from Tartarus. Great tongues of fire lashed out from the burning refineries, devouring the fragile prefab buildings and suffocating the stars with noxious black smoke. Velvet’s eyes watered as he peered through the haze, scanning for any sign of the victorious buffalo and trying to ignore the misshapen lumps lying still in the desert sand illuminated by the inferno.\n\nThe buffalo had spared nopony. Guards, engineers, even the workers. It was a massacre, and Velvet had seen it all. The destruction of imperial oil supplies was forgotten to him, because all his mind could do was replay what he’d seen through the binoculars. Those vivid memories of the buffalo gunning down every pony they could find, not sparing a single soul. Merciful Empress, he should have warned the garrisons when he had the chance. He never expected the buffalo would use the advantage he’d given them to enact such a brutal revenge.\n\nHis eyes met Starlight’s and they shared an identical expression of mute horror. She seemed to be pleading with him. For what, he didn’t know. Velvet grabbed every resistance codebook they’d taken with them and dragged Starlight away from the tents."
+ paxsolaris.238.a:0 "He didn’t want to be there when the buffalo returned."
+
+ paxsolaris.239.t:0 "Choice 4: Ayandi Black Gold – Failure"
+ paxsolaris.239.d:0 "It was early morning when the buffalo returned. They limped back over the mountain crest, their tired legs carrying them over the final hurdle before they collapsed to the ground. Of the returning buffalo, few of them bore serious wounds. It didn’t take long for Velvet to realise why. To escape the Imperial Royal Guards, they needed to be fast. The wounded would have been left behind to die.\n\nBut it was their faces that told Velvet all he needed to know. Their anger still burned bright, but it had no direction. Rather, it seemed like the buffalo were just angry at fate itself for heaping yet another defeat upon their shoulders. Velvet might have done his duty to Daybreaker, but he couldn’t help but feel bad.\n\nVelvet left with Starlight soon after. Both could sense the anger burning inside their once allies. It wouldn’t be long before the buffalo decided to blame them for the ill-fated attack. Starlight took hold of him and teleported away, leaving the buffalo to pick up the pieces of their ruined home."
+ paxsolaris.239.a:0 "Duty was a heavy burden."
+
+ paxsolaris.240.t:0 "Don’t Shoot the Messenger"
+ paxsolaris.240.d:0 "“Quickly, we need to get her inside!” Lefty cried as he helped roll the injured pony onto Velvet’s back.\n\nThe earth pony didn’t question why an injured mare had shown up at the door to the resistance safe house, or why the ‘pony’ bled a sickly green substance. There was no time to question these things as Lefty directed him to carefully place the limp body on the upstairs bed so the pegasus could begin tending to her wounds. The minutes ticked by. As Velvet expected, the ‘unicorn’s’ flesh was less responsive than it should be. With Lefty’s frustration growing, the mare slowly regained consciousness.\n\n“W-where am I?” She asked in a weak voice. Her forehooves tensed, but Lefty kept her restrained.\n\n“It’s okay, we’re friends,” Lefty consoled. “Please, I’m going to need you to relax. You’ve been shot. I need to treat your wound.”\n\n“No, it’s fine. I can-”\n\n“Enough of this!” Velvet interrupted. “My friend is trying to help you. So why don’t you drop that disguise and make it easier for him?”\n\nThe mare flinched at his voice. Slowly, she nodded, and her form was engulfed by green fire. When it faded away, her lilac coat was gone, replaced by a hard chitin exoskeleton.\n\n“You’re a changeling!” Lefty exclaimed, instinctively flinching back.\n\n“No, please! I... my name is Cephoidea,” The changeling pleaded. “I’m with Thorax! He wanted me to find the leaders of the Harmony Restoration Movement and offer them support. Your comrades in Vanhoover told me this was a safe house and I- ah!” She flinched as her movements aggravated the wound.\n\n“Damn it, you’re still hurt,” Lefty cursed, forgetting his earlier hostility. “Velvet, get me some hot water. I need to clean-” He was interrupted by a knocking on the door.\n\nCephoidea twitched, her chitin somehow growing pale. “It’s the Inquisition! I’m so sorry, I thought I lost them!”\n\n“Shush, it’s fine,” Lefty consoled. He turned to Velvet. “Can you talk to them? Please, I don’t think she can move and-”\n\n“It’s fine,” Velvet interrupted. He quickly raced down the stairs as the knocking grew harder. Finally, he opened the door and found himself staring into the piercing green eyes of a familiar orange unicorn."
+ paxsolaris.240.a:0 "“Fancy seeing you here,” Sparking Flame said."
+
+ paxsolaris.241.t:0 "Choice 5: A Changeling of Heart"
+ paxsolaris.241.d:0 "“Sparking? What are you doing here?” Velvet whispered. Despite the circumstances, it was good to see his friend alive. The last time Velvet had seen the stallion, he was being dragged away to be shot with Velvet powerless to do anything to save him.\n\n“I’m looking for a changeling,” Sparking replied, his voice gruff and serious.\n\n“Good heavens! A changeling? Here? Well I can’t say I know anything but I’ll be happy to help in any way I can,” Velvet raised his voice enough for Lefty to hear, briefly glancing upwards to let Sparking know there were others in the safehouse.\n\nThe unicorn gave a slow nod. “I appreciate the hospitality. Would you mind stepping outside for questioning?”\n\nThe door creaked shut behind him as Velvet stepped out into the frigid night air. Once they were out of earshot, the unicorn turned to Velvet and gave him a piercing stare. “So, is the changeling in there?”\n\nVelvet nodded. “She collapsed at our doorstep with a bullet in her torso. Your handywork, I presume?”\n\nSparking nodded, giving Velvet a rare smile. “You would be correct.”\n\n“Why is she so important? She mentioned something about working for Thorax?” Velvet asked. He had of course heard of the changeling defector. S.M.I.L.E owed much of their understanding of the changeling language to him.\n\n“She wasn’t lying,” Sparking replied. “We captured a few of her allies in Vanhoover and they gave her up. It was decided to make capturing or killing her a priority, but I’ll hold off for now to preserve your cover. Just send her to the Shire safe house. We’ve got that place monitored.”\n\n“Shire? That’s back the way she came. If send her there and you capture her, it won’t look good for me.”\n\n“Sorry, but capturing the changeling is a priority and Shire is the only city that guarantees success.”\n\n“Look, I’ve already made a lot of risks here. Starlight has me managing the underground communication networks of the entire frontier. If I get outed as a spy, she’ll scrub every safe houses as a precaution, even if I never learnt their exact location.”\n\n“Perhaps you’re right,” Sparking sighed. “But high command isn’t going to like it. Tell you what, you know the resistance better than I do. I’ll let you make the call.”"
+ paxsolaris.241.a:0 "“I’ll let her continue on, I can’t risk blowing my cover now.”"
+ paxsolaris.241.b:0 "“Perhaps you’re right. We can’t risk changeling involvement.”"
+
+ paxsolaris.242.t:0 "Choice 5: A Changeling of Heart – Continue On"
+ paxsolaris.242.d:0 "“Thank you so much for everything you’ve done,” Cephoidea beamed at them, having disguised herself as a yellow pegasus.\n\n“Oh, it was my pleasure. Come back if you every get shot again,” Lefty winked, making the changeling giggle.\n\n“With an invitation like that, how could I refuse?”\n\nVelvet watched the two interact with a silent detachment. It was hard to maintain a happy smile when his mind was at war with itself. Had he done the right thing? Sure, his position in the resistance was important. But was it important enough to let the changelings establish ties with the Harmony Restoration Movement? Even with the new changeling detection technologies, it could prove difficult for the Inquisition to deal with shapeshifting armies.\n\nCephoidea kissed Lefty’s cheek and closed the door behind her, leaving the two stallions alone in the safehouse. After a while, Lefty turned to Velvet.\n\n“She was nice.”"
+ paxsolaris.242.a:0 "Velvet just grunted in reply."
+
+ paxsolaris.243.t:0 "Choice 5: A Changeling of Heart – False Path"
+ paxsolaris.243.d:0 "“Thank you so much for everything you’ve done,” Cephoidea beamed at them, having disguised herself as a yellow pegasus.\n\n“Please, there’s no need to thank us,” Velvet replied. Silently, he wished she would just leave. It was hard enough meeting her gaze and knowing he’d sent her to die or be tortured. But having her thank him for it? That was worse.\n\n“I hope you reach Shire safely,” Lefty said, helping the changeling with her saddlebags. He gave Velvet an unreadable look over her shoulder.\n\n“I’m sure I’ll be fine. Velvet is right. The last thing the Inquisition would expect me to do is double back.”\n\n“Yeah... I’m sure you’ll be fine,” Lefty said, but he didn’t seem to believe his own words.\n\nCephoidea kissed Lefty’s cheek and closed the door behind her, leaving the two stallions alone in the safehouse. After a while, Lefty turned to Velvet."
+ paxsolaris.243.a:0 "“I’m going upstairs.”"
+
+ paxsolaris.244.t:0 "Children of the Night"
+ paxsolaris.244.d:0 "“Look Chief Orchid Light, I think you misunderstand,” Velvet insisted. “Starlight only sent me to Ayacachtli so I could teach you how to use the new radios.”\n\n“No, you misunderstand,” The thestral chief grinned. “I don’t care why you’re here. You reek of shame and treachery. Until you prove yourself by spilling the blood of a solar heretic, you are of no use to me.”\n\nA trickle of fear ran down Velvet’s spine. The thestral tribes of the south possessed ancient magic even the mages of Canterlot could only guess at. Did they somehow know he was a spy? The thought made his heart skip a beat.\n\n“Look, I didn’t come all this way just to be-” He began, but his words were silenced by two of the chief’s guards pressing bayonets to his neck.\n\n“I don’t care,” Orchid Light replied. “You’re lucky I don’t just kill you now. I’m sure I could make up something about an Inquisitorial task force to satisfy Starlight. Unless you want me to send you back to Manehattan in pieces, you will do as I say.”\n\nVelvet glared at the thestral, but his shaking knees betrayed his fear. With no other option, he nodded.\n\n“I knew we could come to an arrangement,” Orchid Light waved his hoof, prompting his guards to stand down and let Velvet breath again. “Our Moonspeakers tell of a great evil that stalks these jungles. Slaves of the sun’s light more fanatical than any before. They hold an ancient moonstone sacred to Nightmare Moon in a base in the mountains east of here. You will recover it for us.”\n\n“You expect me to break into a fortified base by myself!?”\n\n“No, I expect you to die. But if you come back with the moonstone, I will be pleasantly surprised. I’d like to remind you that you don’t really have a choice.”\n\nVelvet closed his eyes and took a deep, shuddering breath to steady his nerves. When he opened his eyes, there was no fear left in them."
+ paxsolaris.244.a:0 "“Fine, I’ll do it.”"
+
+ paxsolaris.245.t:0 "Choice 6: Ancient Grudges"
+ paxsolaris.245.d:0 "This couldn’t be right. The thestrals said this bunker was home to dozens of solar cultists. Yet it was empty and looked like it had been for centuries. The concrete was cracked and covered in slimy moss. Parts of the roof had caved in, letting sunlight flood the interior. Hoof-high puddles of putrid water covered the floor. This place felt... wrong. Like it shouldn’t be here. Strange images flickered in the corner of his eye, but they were gone before Velvet could focus on them. With his heart hammering in his chest, Velvet stepped forward and found himself standing before a hoof-sized white object resting on a pedestal, surrounded by empty crates and dust. It was the moonstone. But why would the cultists leave behind a priceless magical-\n\n“Greetings, Velvet,” A voice interrupted his thoughts.\n\nVelvet spun around and found himself facing a blue unicorn stallion dressed in a white and gold robe. He tried to speak, but terror sucked the words from his mouth.\n\n“W-who are you?” Velvet managed to stutter. He could have sworn the room had had been empty when he stepped in.\n\n“That’s not important. What’s important is who you are. Velvet Arrow, friend of Starlight Glimmer and spy for the Imperial Inquisition.”\n\nVelvet fumbled through his saddle bags and produced a pistol, aiming it at the unicorn’s head. “How do you know that!? Answer me or I’ll blow your damn head off!”\n\n“Please, there is no need for that,” The unicorn ignited his horn, levitating the moonstone into Velvet’s saddlebag. “Just take the moonstone back to the thestrals. Let them use its magic to plague the dreams of ponies with nightmares. It will only make the retribution that comes to them that much worse.”\n\n“That still doesn’t answer my-” Velvet began, but in the blink of the eye the unicorn was gone. There was no flash of teleportation. He just disappeared, like he’d never existed at all.\n\nNow alone, Velvet weighed his options. That... hallucination(?)... had given him the moonstone. He could return to Ayacachtli before the sun set, completing his mission in record time. And yet, a part of him was terrified about carrying out the final order of an apparition. Perhaps it would be best to just leave this jungle as soon as possible."
+ paxsolaris.245.a:0 "No, he would see this task through."
+ paxsolaris.245.b:0 "It was time to cut his losses."
+
+ paxsolaris.246.t:0 "Choice 6: Ancient Grudges – See it Through"
+ paxsolaris.246.d:0 "“Excellent work, Velvet,” Orchid Light smiled, examining the moonstone with his hooves. “Truthfully, I did not expect you to survive. You were there only to probe the solar defences. I am nonetheless pleased to have the moonstone in my possession once more.”\n\nBut the earth pony wasn’t paying attention. His eyes were unfocused, staring off into space. He didn’t react as the thestral chief stood up from his throne to address his gathered subjects.\n\n“My friends! Today, we have recovered yet another piece of our glorious heritage stolen from us by the loathsome solarists! With this artefact, we will channel the power of the night goddess and plague the dreams of our enemies with nightmares most foul! Every moment of sleep will become unbearable torment for them, until their very existence becomes akin to a nightmare! Let us give thanks to Nightmare Moon, for the Evenfall approaches!”\n\nThe thestrals cheered at their chief’s words, but the sound didn’t register for Velvet Arrow. His mind was still inside that accursed bunker, surrounded by flickering images of past and future. Had that pony been a ghost?"
+ paxsolaris.246.a:0 "...or something far worse?"
+
+ paxsolaris.247.t:0 "Choice 6: Ancient Grudges – Cut Your Losses"
+ paxsolaris.247.d:0 "“So you’re saying that the thestrals refused your help?” Starlight asked, surveying Velvet with narrowed eyes.\n\n“They would not trust me until I had ‘spilt the blood of a solar heretic’ and tried to make me assault a fortress by myself,” Velvet replied, keeping his expression neutral. “It was some kind of sick joke to them, one that I had no intention of playing.”\n\n“Blast that Orchid Light,” Starlight cursed, turning away from Velvet to glare out the window as if she could kill the thestral chief from halfway across Equestria. “I try to help him fight a mutual foe, and he spurns my efforts even as his people suffer. Don’t worry Velvet, you are not to blame. Did you at least recover anything useful?”\n\n“Nope,” Velvet answered far too quickly. Starlight shot him a suspicious glance but didn’t comment. That was probably for the best. He didn’t plan on telling her how he’d offloaded the moonstone to the first Inquisition outpost he found. The sooner he forgot about that thing, the sooner he could forget about that strange bunker in the mountains.\n\nHe would never forget the feeling of being in that accursed place, surrounded by flickering images of past and future. Had that pony been a ghost?"
+ paxsolaris.247.a:0 "...or something far worse?"
+
+ paxsolaris.248.t:0 "Final Preparations"
+ paxsolaris.248.d:0 "Velvet peered down at report, his eyes rapidly darting between the original and the decoded copy. As the resistance had grown, Velvet had taken on the role of liaison between Crimson Nova and the entire Bales-Whinnyapolis region, coding orders to be sent out and decoding what came back... but he’d never received something like this. These were reconnaissance reports, which in itself wasn’t unusual. It was the sheer number that gave him pause. Dozens of reports on bridges, railways and roads bordering the eastern seaboard.\n\nHe tore the last decoded copy from the typewriter and stepped away from his desk. Perhaps he’d risk asking the pegaus himself? Velvet stepped into the small office, not bothering to knock. But instead of Crimson Nova, he found himself staring at a pink unicorn.\n\n“Velvet!” Starlight greeted him with a warm smile. “I didn’t expect you.”\n\n“Sorry, I had no idea you were here,” Velvet hastily apologised. “Crimson Nova doesn’t like knocking. He says it wastes valuable time. Where is he, by the way?”\n\n“He’s out checking our warehouse stock for a plan of mine. You can report what you have straight to me.”\n\n“It’s nothing special. I’ve just finished decoding the reconnaissance reports,” Velvet replied, placing down the typed copies on Starlight’s desk. She rifled through them, growing more excited with every sheet.\n\n“‘Nothing special’ indeed,” Starlight grinned. “These are very important documents, Velvet. They’re key to the final stages of our efforts against Daybreaker. Now normally, you’d be hearing this from Crimson. But I’ll tell you in person. After all, we’re friends.”\n\n“We are?” Velvet asked. He’d never thought about it before. Sure, Starlight was nice. And sure, he enjoyed his brief moments around her.\n\n“Of course! You did save my life, after all. Don’t you think that makes us friends?”\n\n“Yeah, I suppose that does,” He replied, feeling his heart clench in his chest. Some friend he’d been, abusing Starlight’s trust at every opportunity. If he was Starlight’s friend, he must be the worst friend in Equestria.\n\n“Anyway, I’ve devised a plan with Trixie that will give the resistance a much-needed advantage in the east,” Starlight continued, oblivious to Velvet’s inner thoughts. “We’re going to destroy all major roads and railways leading to the eastern seaboard.”"
+ paxsolaris.248.a:0 "“We’re what!?”"
+
+ paxsolaris.249.t:0 "Final Preparations"
+ paxsolaris.249.d:0 "“Yes, I know the plan sounds ambitious,” Starlight admitted. “I don’t expect it to go off without a hitch. But the reports from our scouts say that many of these bridges are only lightly defended. Thanks to our efforts, the Imperial Army has been spread thin. Now we can finally take advantage of that. If this plan works, the supplies Daybreaker sends to the east coast will slow to a trickle and we’ll finally be able to come out of the shadows and fight her directly.”\n\nVelvet took a second to try and steady his nerves. This was big. Far bigger than anything the resistance had attempted before. Even the attack on Canterlot had been nothing compared to this.\n\n“And what would you have me do?”\n\n“You’ll be in charge of coordinating the strike teams along the Manesbury River via radio. If all goes according to plan, the bridges spanning the river should be rubble before the Inquisition manages to triangulate your position.”\n\nOkay, this was fine. He could still get a warning out to the Inquisition before the attack.\n\n“By the way, you should meet Crimson Nova outside. The strike teams are moving out in a few hours.”\n\nVelvet silently cursed, but he managed to force a determined look on his face. “I understand, Starlight.”\n\nHe gave a quick salute and turned to leave, his mind already whirling with plans. There was no time to use the radio he’d stashed in the forest. He’d need to contact the Inquisition another way. Just before he was about to leave, he felt something grip his saddlebags.\n\n“Oh and Velvet?”\n\nHe slowly turned around to face Starlight, meeting her purple eyes with his own."
+ paxsolaris.249.a:0 "“Good luck.”"
+
+ paxsolaris.250.t:0 "Choice 7: The Manesbury Bridge"
+ paxsolaris.250.d:0 "Velvet paced across the old farmhouse, glancing nervously between the idle radio and the window. Far beneath him, he could just make out the Manesbury river under the light of the moon. By now, the resistance agents would be moving into position, ready to take the first step on the road to plunging Equestria into civil war.\n\nBut Velvet wasn’t alone. Another resistance agent leaned against the wall, idly chewing on a sandwich as he waited for the confirmation signals to come in. More waited around the farmhouse, their eyes scanning for Imperial forces. Velvet ignored them as his mind whirled with ideas. He needed to figure something out. But only one solution presented itself. Velvet would need to use the resistance’s own radio to contact the Inquisition. It might be too late to prevent the attack. But he could save enough to give Imperial forces along the east coast a fighting chance.\n\nTo do that, his companion would need to die. There was no way Velvet could use the radio without him seeing. If he killed this resistance agent, the others would come investigating. He’d be fighting for his life, with a good chance of being killed. Even if he managed to fight them all off, his cover wouldn’t last the night.\n\nBut at this point, did it even really matter? What happened over the next few days would decide the fate of the new order. This wasn’t about his cover anymore. This was about whether he was willing to sacrifice everything for Daybreaker and the empire she stood for."
+ paxsolaris.250.a:0 "And Velvet just couldn’t bring himself to do it."
+ paxsolaris.250.b:0 "And Velvet would do anything for his nation."
+ paxsolaris_250_a:0 "§RWe will be unable to strategically deploy to the eastern seaboard!§!"
+ paxsolaris_250_b:0 "§YHollow Shades, Flower Wreath§! and §YDeepfall Forests§! will be §Gspared!§!"
+
+ paxsolaris.251.t:0 "Choice 7: The Manesbury Bridge – Destruction"
+ paxsolaris.251.d:0 "“General Shinespark! I... I have some bad news,” A nervous soldier reported.\n\n“Well, spit it out!” The unicorn general demanded. The sun had just risen, and Aurora Shinespark already wanted to strangle something. Overnight, the loathsome resistance had made their move, destroying countless roads, railways and bridges. She had awoken to reports from garrisons across the east coast of resistance fighters laying siege to their strongholds. Imperial control over the area was crumbling and it seemed like there wasn’t a damn thing she could do about it.\n\nOh how desperately Aurora wished she could take her tank battalion and put all of those traitors to the flame. But first, she needed to know which passageways had survived the attack.\n\n“I’m sorry, ma’am. But all the major transit methods have been destroyed. Nothing that remains could hold the weight of a tank company.”\n\nAurora snarled in frustration and sent a beam of magic at the wall. She turned to the terrified soldier, fixing him with her fiery eyes."
+ paxsolaris.251.a:0 "“Get me the engineers. We’ll assault Manehattan the old fashioned way.”"
+
+ paxsolaris.252.t:0 "Choice 7: The Manesbury Bridge – Salvation"
+ paxsolaris.252.d:0 "“Would you mind getting me a glass of water?” Velvet asked the stallion.\n\n“Get it yourself,” He replied, taking another bite of his sandwich.\n\n“I’m operating the radio. I can’t leave,” Velvet replied. The stallion sighed and turned away from Velvet. Now that the stallion’s backed was turned, Velvet drew his pistol. He took a deep breath then steadied his aim.\n\nA bang pierced the still night air and the stallion crumpled to a heap on the ground. There was no time to waste. Velvet toppled one of the shelves and jammed it against the door just as the sound of hoofsteps reached his ears. He fumbled for the microphone as his other hoof tuned the radio to the Inquisition emergency frequency.\n\n“Canterlot-Echo-Mare-Sierra-Nine-Nine Priority One! Resistance attacking Hooflied, Starswirl, Brockwik and Whinnyapolis bridges! Requesting immediate action!”\n\n“Hey, open this damn door!”\n\n“Perform immediate check on all major roads across the Manesbury river ASAP,” Velvet continued, ignoring the banging of the stallions trying to breach the door. “Get word out to all Imperial forces in the area!”"
+ paxsolaris.252.a:0 "He flinched as the door’s hinges finally gave way."
+
+ paxsolaris.253.t:0 "Choice 7: The Manesbury Bridge – Salvation"
+ paxsolaris.253.d:0 "A large pegasus pushed through the ruins of Velvet’s hastily made barricade. Velvet rolled away and drew his pistol, firing two quick shots into the pegasus. He collapsed to the ground, giving Velvet a moment to toss a chair at the window and leap through the broken glass just two other ponies barged in. He tossed his gun aside and used all four legs to race up the mountain, trying to put as much distance between him and the farmhouse. Just as Velvet was about to leap over the fence, he felt something grab his tail and drag him to the ground.\n\n“You traitor!” A pegasus screamed as he drove a hoof into Velvet’s face. The earth pony kicked out, using his strength to slam the pegasus into the dirt. But another had caught up with the duo and tackled Velvet to the ground. Just as his assailant reached for a gun, a bang resounded through the air. The pony’s hold went limp and Velvet pushed the body away.\n\n“You alright?” A voice called out. Velvet looked up to see a pegasus, dressed in the black and grey camouflage of the Inquisitorial Strike Teams.\n\n“I’m fine! Quickly, get to the bridge!” Velvet cried, pointing a hoof at the river below. The pegasus nodded and took off, leaving Velvet alone with the two corpses.\n\nEvery part of Velvet’s body ached, but he still managed a bitter smile. He’d done his duty. But then he thought about Starlight’s parting words and his smile faded. Yes, he’d done his duty..."
+ paxsolaris.253.a:0 "But at what cost?"
+
+ paxsolaris.254.t:0 "A Roadtrip with Trixie"
+ paxsolaris.254.d:0 "Velvet heaved a sigh of relief as a familiar black convertible rounded the corner. His pickup had arrived, and not a moment too soon. Velvet didn’t want to spend another moment waiting on this dirty sidewalk to be taken back to the Whinnyapolis base. As the car pulled up, Velvet moved to open the back door only for pink telekinetic aura to fling it open. A blue unicorn was waiting inside, fixing him with a piercing stare.\n\n“We need to talk,” Trixie Lulamoon said.\n\nGulping nervously, Velvet climbed into the car and took a seat next to the mare. She remained silent as the driver took off, taking them far outside the city limits. Only when they were on the highway did she speak again. \n\n“I’ve been keeping tabs on you, Velvet Arrow. And I’ve noticed a certain trend. It seems that any plans we make involving you have a habit of failing. Care to comment?”\n\nVelvet’s heart froze and his blood turned icy. But he schooled his face into a mask of neutrality and managed to force his mouth to speak.\n\n“I’m sorry, I guess I’ve just been unlucky.”\n\nTrixie’s violet eyes watched him like a hawk watching its prey. “If you’re a spy, you’re a smart one. The Inquisition has seized every record they could get their grubby hooves on and you have yet to screw up enough to truly damn yourself, so I can’t take action. Yet. But I’ll be watching you, Velvet Arrow. If you don’t fix these ‘unlucky accidents’...”\n\nVelvet flinched back as the unicorn’s horn ignited, producing a thin blade of pure magic under his throat."
+ paxsolaris.254.a:0 "“...I won’t hesitate to end you.”"
+
+ paxsolaris.255.t:0 "A Dinner with Starlight"
+ paxsolaris.255.d:0 "“Commander Glimmer, you wanted to see me?” Velvet approached the mare, giving her a quick salute.\n\nShe arrived unannounced at the new Whinnyapolis base for a meeting with Crimson Nova, but Velvet thought she would’ve teleported away by now. Not be sitting alone in the cramped office space while the others had dinner downstairs.\n\n“Please, Starlight is fine,” The unicorn replied. She levitated a small plate of baked beans in his nose. “I was hoping you would join me for dinner. It’s not much, but I wanted to thank you again for saving my life.”\n\nVelvet took a seat next to the unicorn and accepted the plate with a smile. “You know, you don’t need to thank me. I was just in the right place at the right time.”\n\n“That does not diminish your act. You thought I was about to be killed and your first instinct was to save me. That tells me you’re a good pony.”\n\nThe earth pony heaved a bitter sigh. “If you knew half the things I’ve done, you wouldn’t think so.”\n\n“I’m hardly in any position to judge a pony for their past,” Starlight countered. “Nothing you’ve done could compare to the sins I’ve committed. I don’t deserve to be leading the resistance. But if not me, who? Luna, Twilight, the Element Bearers... they’re all gone.”\n\n“What about Commander Lulamoon?”\n\nStarlight smiled at the mention of the showmare. “Trixie is the best friend I could ask for. I would trust the world to her. But while Trixie may not like Daybreaker, she’s not wholly opposed to her. She only joined the resistance because she knew how important it was to me. I know that if I died, Trixie would take over. But she would be doing it for me, not because she wanted to.”\n\n“Well that settles it then. You’re not the same mare you once were. You’ve gone from brainwashed ponies to refusing to make a friend do something she doesn’t want to do, even if she would carry out your orders without hesitation. You’ve changed.”\n\n‘Unlike me,’ Velvet thought. A moment of silence passed, with Starlight giving him an unreadable expression. Slowly, a smile formed on her face."
+ paxsolaris.255.a:0 "“Thanks, Velvet. I needed to hear that.”"
+
+ paxsolaris.256.t:0 "Despair"
+ paxsolaris.256.d:0 "“I just don’t understand,” Starlight mumbled, staring at the reports with disbelieving eyes. These lines had been burned in her memory from dozens of reads, yet Starlight was no closer to figuring out why these plans had failed. She ran a hoof through her mane, ignoring the clumps of hair that came away with it.\n\n“We have another traitor on our hooves,” Trixie replied, carefully sipping from a porcelain teacup.\n\n“Yes, but who? I’ve cross-referenced the ponies from each of the plans and I can’t find a single lead,” Starlight sighed, cradling her head in her hooves. Why was this so hard? She just wanted to do the right thing. But it seemed like the universe was hellbent on stopping her every step of the way.\n\n“How about Velvet Arrow?” Trixie proposed. “He’s been involved in-“\n\n“No!” Starlight cut her off. “He saved my life! He wouldn’t do that!” She turned away, her voice falling to a whisper. “...He wouldn’t do that.”\n\n“You’re putting the entire resistance at stake because you can’t see what’s in front of you!” Trixie shot back.\n\n“Like you care!” Starlight spat, standing up baring her teeth to the blue unicorn. “We both know you’re a Daybreaker sympathiser! Maybe the real traitor is YOU!”\n\nTrixie gasped in shock, the teacup falling from her telekinetic grip. “HOW DARE YOU! I didn’t have to help you with this band of dissidents! I did anyway, because that’s what friends do. But if you’re too blind to see that, perhaps I should leave!”\n\n“No, Trixie. I-” Starlight bowed her head, feeling tears well up in her eyes. “I’m sorry. You’ve always been there for me. I’m just so confused and I’m sorry for lashing out. Stay. Please, I... I need you.”\n\nAs Starlight began to sob, Trixie closed the distance between them and pulled her friend into a hug, gently rubbing her back."
+ paxsolaris.256.a:0 "“It’s okay. I’m not going anywhere.”"
 
  paxsolaris.299.t:0 "Control"
  paxsolaris.299.d_warroom:0 "The fire rushing through her body howled in fury, scratching and clawing at the alicorn’s mind. It promised so much. Freedom from the shackles that bound her to weakness. A new future for her nation and species. The power to incinerate every foe that dared threaten ponykind. And Celestia was tempted. More than she had ever been tempted before.\n\nBut she grit her teeth and brought her wrath to heel. Her power was great. She could do anything she wanted. But at what cost? Celestia would not sacrifice her sanity and walk the same path the likes of Sombra, Chrysalis and Nightmare Moon had walked before. Ponykind did not deserve to be subjugated by her any more than they deserved to be subjugated by tyrants like them.\n\nCelestia opened her eyes and found the war room had been destroyed by her magic. Red-hot slag dripped from the ceiling and onto the distorted floor. The maps that displayed her domain had been reduced to ashes. Her own regalia was now gathered in molten pools at her hooves. The day princess sighed and cast her magic out to heal the damage her temporary loss of control had wrought. Just as she was redonning her regalia, a knock came from the door.\n\n“Um, princess? The generals are waiting for you.”\n\nCelestia forced a smile on her face, trying to ignore the burning pain in her chest."
@@ -1458,11 +1748,11 @@ l_english:
  UpgradeInquisitionTitle3:0 "Upgrade Inquisition: 3/5"
  UpgradeInquisitionTitle4:0 "Upgrade Inquisition: 4/5"
  UpgradeInquisitionTitle5:0 "Upgrade Inquisition: 5/5"
- UpgradeInquisitionDescription1:0 "§YUpgrade 1/5: Enigma§!\n\nWe shall equip even regional Inquisition bases with encryption machines, allowing for secure communication between Inquisitorial assets and decreasing the chances of the resistance preempting our movements.\n\n§GFailed raids or arrests are 20% less likely to alert the resistance!§!"
+ UpgradeInquisitionDescription1:0 "§YUpgrade 1/5: Enigma§!\n\nWe shall equip even regional Inquisition bases with encryption machines, allowing for secure communication between inquisitorial assets and decreasing the chances of the resistance preempting our movements.\n\n§GFailed raids or arrests are 20% less likely to alert the resistance!§!"
  UpgradeInquisitionDescription2:0 "§YUpgrade 2/5: Radios§!\n\nWhile our specialised field operatives carry radios, this is not enough for real time communication between operatives and their handlers. State of the art portable radios will be issued, allowing for better coordination and decision making on our operations.\n\n§GInquisition decisions will take ten less days to complete!§!"
  UpgradeInquisitionDescription3:0 "§YUpgrade 3/5: Interrogation§!\n\nOur interrogation methods could do with some improvement, to say the least. Current practices involve causing as much physical pain as possible, but our top interrogators claim it pays to understand the psychology of subjects. All interrogators will be trained in newer methods of interrogation, allowing us to extract more information from resistance fighters.\n\n§GYou will gain more leads from interrogations!§!"
- UpgradeInquisitionDescription4:0 "§YUpgrade 4/5: Communication Arrays§!\n\nThe Solar Inquisitors are the best of the best, there is no doubt about that. Our investigators are the best detectives Equestria has to offer, our operatives the best soldiers. But there is simply not enough Inquisitors to cover our vast territory. In fact, most resistance activity is identified by local police officers. By improving communication between the Inquisition and law enforcement groups we can stay informed on the activities of the Equestrian population.\n\n§GThe maximum amount of Inquisition decisions that can be active simultaneously will increase be one!§!"
- UpgradeInquisitionDescription5:0 "§YUpgrade 5/5: Computational Analysis§!\n\nPonies are creatures of habit. Who they talk to, what they talk about, where they travel: it’s all a pattern. There are patterns everywhere for those who know where to look. With access to the greatest computational technology in the world, [This.GetNameDef] can analyze these patterns in real time allowing us to track and even preempt resistance activity.\n\n§GThe number of false targets will decrease by one for all Inquisitorial decisions!§!"
+ UpgradeInquisitionDescription4:0 "§YUpgrade 4/5: Communication Arrays§!\n\nThe Solar Inquisitors are the best of the best, there is no doubt about that. Our investigators are the best detectives Equestria has to offer, our operatives the best soldiers. But there is simply not enough inquisitors to cover our vast territory. In fact, most resistance activity is identified by local police officers. By improving communication between the Inquisition and law enforcement groups we can stay informed on the activities of the Equestrian population.\n\n§GThe maximum amount of Inquisition decisions that can be active simultaneously will increase be one!§!"
+ UpgradeInquisitionDescription5:0 "§YUpgrade 5/5: Computational Analysis§!\n\nPonies are creatures of habit. Who they talk to, what they talk about, where they travel: it’s all a pattern. There are patterns everywhere for those who know where to look. With access to the greatest computational technology in the world, [This.GetNameDef] can analyze these patterns in real time allowing us to track and even preempt resistance activity.\n\n§GThe number of false targets will decrease by one for all inquisitorial decisions!§!"
 
  inquisitiondecisionongoing:0 "§COnly §G[?solar_inquisition_max_decisions]§! Inquisitorial decisions can be active at once!\nCurrently Active: §R[?solar_inquisition_ongoing_decisions]§!§!"
  decision_cost_cp_10:0 "£GFX_command_power §Y10§!"
@@ -1484,7 +1774,7 @@ l_english:
  decision_cost_leads_10_tooltip:0 "It costs [This.GetDecisionCostLeads10] to take this decision"
 
  SOL_initiate_raid_resistance_decision:0 "Search for Resistance Holdouts"
- SOL_initiate_raid_resistance_decision_desc:0 "We will instruct our Inquisitors to examine the leads we have gathered to identify potential resistance bases. If successful §RResistance Strength§! will §Gdecrease§! by (§G1§!) point to the next stage."
+ SOL_initiate_raid_resistance_decision_desc:0 "We will instruct our inquisitors to examine the leads we have gathered to identify potential resistance bases. If successful §RResistance Strength§! will §Gdecrease§! by (§G1§!) point to the next stage."
  raid_decision_outcome:0 "§CWill create a list of possible resistance cell locations§!"
 
  RaidDescriptionUpgradeYes:0 "By applying advanced algorithms the Inquisition was able to eliminate one location. "
@@ -1496,7 +1786,7 @@ l_english:
  SOL_raid_resistance_decision_desc:0 "Through careful analysis of resistance activity the Inquisition has narrowed the location of a resistance holdout to three possible locations. [RaidDescriptionUpgrade][RaidDescriptionTwilight]Time is of the essence, if we pick the wrong target there or delay our attack there is a chance the resistance might catch word of it and evacuate their real base."
 
  SOL_strike_at_the_resistance:0 "Strike the Resistance!"
- SOL_strike_at_the_resistance_desc:0 "It's time to take the fight to the §RHarmony Restoration Movement!§! We will instruct our Inquisitors to comb through all the leads we have amassed to locate the current resistance stronghold. If successful, §RResistance Strength§! will §Gdecrease§! by (§G1§!) level!"
+ SOL_strike_at_the_resistance_desc:0 "It's time to take the fight to the §RHarmony Restoration Movement!§! We will instruct our inquisitors to comb through all the leads we have amassed to locate the current resistance stronghold. If successful, §RResistance Strength§! will §Gdecrease§! by (§G1§!) level!"
  strike_decision_outcome:0 "§CWill create a list of possible resistance stronghold locations§!"
 
  SOL_refine_strike_results:0 "Refine Target Results"
@@ -1540,7 +1830,7 @@ l_english:
  highlight_decision_outcome:0 "§CWill highlight past resistance activity§!\n§RThis will be considered an active Inquisitiorial decision§!"
 
  SOL_highlight_states_mission:0 "Stop Cataloguing Resistance Activity"
- SOL_highlight_states_mission_desc:0 "Instruct our Inquisitors to divert their efforts elsewhere."
+ SOL_highlight_states_mission_desc:0 "Instruct our inquisitors to divert their efforts elsewhere."
 
  SOL_resistance_activity:0 "§RThe [ResistanceCategoryDesc]§!"
  SOL_resistance_activity_desc:0 "By far the greatest internal threat [This.GetNameDef] faces are the members of the §R[ResistanceCategoryDesc].§! They hide in Equestria's vast wilderness or in large groups of sympathetic ponies and plot the Empire's downfall. There can be no reasoning with them, these ponies have clung to the old ways like a mother to their child. If [This.GetNameDef] is to survive, we cannot allow the §R[ResistanceCategoryDesc]§! to grow stronger.\n[SOL_resistance_suppression_stage_progress_resistance]\n[SOL_resistance_outreach_suppression_stage_progress_resistance]\n[SOL_resistance_cohesion_suppression_stage_progress_resistance]"
@@ -1607,7 +1897,7 @@ l_english:
 
 
  SOL_refine_resistance_attack:0 "Investigate Resistance Activity"
- SOL_refine_resistance_attack_desc:0 "With the integrity of [THIS.GetNameDef] at stake, we cannot allow for uncertainty. Instructing our Inquisitors to press informants and captured agents for information on the imminent attack will narrow down the number of potential targets to just a few states."
+ SOL_refine_resistance_attack_desc:0 "With the integrity of [THIS.GetNameDef] at stake, we cannot allow for uncertainty. Instructing our inquisitors to press informants and captured agents for information on the imminent attack will narrow down the number of potential targets to just a few states."
  refine_resistance_attack_decision_outcome_first:0 "§CWill generate a list of potential targets and reveal the type of attack§!"
  refine_resistance_attack_decision_outcome:0 "§CWill reduce the number of potential targets by up to three§!"
 
@@ -1623,20 +1913,31 @@ l_english:
  SOL_uprising_outcome_no_trains:0 "Add to state: §YUprising§!\n  Division Speed: §R-50.00%§!\n  Local Supplies: §R-50%§!\n  Division Attrition: §R+30%§!\n  Strategic Redeployment Disabled: §RYes§!"
  SOL_uprising_outcome_trains:0 "Add to state: §YUprising§!\n  Division Speed: §R-50.00%§!\n  Local Supplies: §R-50%§!\n  Division Attrition: §R+30%§!"
 
- SOL_resistance_alert_popup_title:0 "[sol_resistance_alert_title_text_type]"
- sol_resistance_alert_title_coalition:0 "§RCOALITION ATTACK ALERT§!"
- sol_resistance_alert_title_resistance:0 "§RRESISTANCE ATTACK ALERT§!"
- sol_resistance_alert_description_text:0 "[sol_resistance_alert_description]"
- sol_resistance_alert_description_coalition:0 "[sol_coalition_border_raid_desc]"
+ SOL_alert_popup_title:0 "[sol_alert_title_text_type]"
+ sol_alert_title_coalition_attack:0 "§RCOALITION ATTACK ALERT§!"
+ sol_alert_title_resistance_attack:0 "§RRESISTANCE ATTACK ALERT§!"
+ sol_alert_title_nuke:0 "§YNUCLEAR STRIKE§!"
+
+ sol_alert_description_text:0 "[sol_resistance_alert_description_text_type]"
+ sol_resistance_alert_description_propaganda:0 "A [ResistanceCategoryDesc] plot to spread §Opropaganda§! in §Y[SOL_resistance_activity.GetName]§! has [sol_resistance_alert_description_text_outcome]\n\n[sol_resistance_alert_description_text_consequence]"
+ sol_resistance_alert_description_warehouse:0 "A [ResistanceCategoryDesc] plot to §Rraid§! §YImperial§! warehouses in §Y[SOL_resistance_activity.GetName]§! has [sol_resistance_alert_description_text_outcome]\n\n[sol_resistance_alert_description_text_consequence]"
+ sol_resistance_alert_description_prison:0 "A [ResistanceCategoryDesc] plot to §Rliberate§! §YImperial§! prisoner of war camps in §Y[SOL_resistance_activity.GetName]§! has [sol_resistance_alert_description_text_outcome]\n\n[sol_resistance_alert_description_text_consequence]"
  sol_coalition_border_raid_desc_begin:0 "§Y[coalition_raid_target_state.GetName]§! is being attacked by Coalition raiders moving in from the §Y[coalition_raid_aggressor.GetName]§! border!"
- sol_coalition_border_raid_desc_lose:0 "Our forces in §Y[coalition_raid_target_state.GetName]§! have been §Rdefeated§! by the Coalition raiders!\n\n§YMilitary Consolidation§! will §Rdecrease§! by (§R1§!) point to the next stage!\nOur border will become more §Rporous§! for §Y30 days!§!"
- sol_coalition_border_raid_desc_win:0 "We have §Crepelled§! the Coalition attack on §Y[coalition_raid_target_state.GetName]§!, sending their raiders back across the border!"
- sol_resistance_alert_description_resistance:0 "A [ResistanceCategoryDesc] plot to [sol_resistance_alert_description_text_type] has [sol_resistance_alert_description_text_outcome]\n\n[sol_resistance_alert_description_text_consequence]"
+ sol_coalition_border_raid_desc_lose:0 "Our forces in §Y[coalition_raid_target_state.GetName]§! have been §Rdefeated§! by the Coalition raiders!\n\n§YMilitary Consolidation§! will §Rdecrease§! by (§R1§!) point to the next stage!\n§RSolar Border Porosity Factor§! will §Rincrease§! by §R0.004§! for §R30 days!§!"
+ sol_coalition_border_raid_desc_win:0 "Our forces in §Y[coalition_raid_target_state.GetName]§! have §Grepelled§! the Coalition raiders!"
+ sol_coalition_resistance_funded_desc:0 "A §YCoalition of the Free§! plot to slip past our borders and deliver weapons to the §RHarmony Restoration Movement§! [sol_resistance_alert_description_text_outcome]\n\n[sol_resistance_alert_description_text_consequence]"
+ sol_nuke_alert:0 "§Y[nuked_state.GetName]§! has been nuked by §Y[nuker_country.GetNameWithFlag]!§!"
+
+
  sol_resistance_alert_description_text_loss:0 "§Rsucceeded!§!"
  sol_resistance_alert_description_text_win:0 "been §Cfoiled!§!"
- sol_resistance_alert_description_propaganda:0 "spread §Opropaganda§! in §Y[SOL_resistance_activity.GetName]§!"
- sol_resistance_alert_description_warehouse:0 "§Rraid§! §YImperial§! warehouses in §Y[SOL_resistance_activity.GetName]§!"
- sol_resistance_alert_description_prison:0 "§Rliberate§! §YImperial§! prisoner of war camps in §Y[SOL_resistance_activity.GetName]§!"
+
+ alert_disable_bg_tt:0 "§RDisable Alerts§!"
+ alert_disable_bg_delayed:0 "§LAlerts can be enabled again via the top bar§!"
+ alert_enable_bg_tt:0 "§GEnable Alerts§!"
+
+ SOL_resistance_cohesion:0 "Resistance Organising"
+ SOL_resistance_cohesion_desc:0 "Now that the Harmony Restoration Movement has emerged as the strongest resistance group opposing Daybreaker, the other resistance movements have begun to band around the nascent rebellion. If this trend continues, the enemies of [THIS.GetNameDef] may soon have the strength to challenge the new order directly."
  #GUIs
  SOL_spell_explainer_heatwave_tt:0 "§OSpell: Heatwave\n\nTarget Type: State\n\nDescription: Concentrate the energy of the sun upon an area to trigger a devastating heatwave, causing discomfort, exhaustion and death.\n\nCost: £GFX_solar_energy_text  §Y[?sol_heatwave_cost] + [?sol_heatwave_cost_daily]/day§!§!"
  SOL_spell_explainer_blessing_tt:0 "§OSpell: Blessing of the Sun\n\nTarget Type: Country\n\nDescription: Carefully moderate the energy of a sun in an area to create the perfect environment for crops to grow and civilisation to prosper.\n\nCost: £GFX_solar_energy_text  §Y[?sol_blessing_cost] + [?sol_blessing_cost_daily]/day§!"
@@ -2555,6 +2856,8 @@ l_english:
  SOL_rb_marines_desc:0 "In order to project power all across the world, we must not only have a large and powerful navy, but it is also important for us to have a dedicated Marine Corps. These Imperial Marines will carry out naval invasions with ease, and allow us to spread the light of the Empress to even the darkest corners of the world."
  SOL_twilight_ascend:0 "Ascension"
  SOL_twilight_ascend_desc:0 "The time has come for the former student of the Empress, once known as Twilight Sparkle, to join Her Imperial Majesty in her radiating glory. No longer will she serve those who would seek to shatter the Harmony of the Empire, but she will instead work for the benefit of the Empress, and bring about Harmony through Order."
+ SOL_twilight_ascend_tt:0 "§ODaybreaker§! will attempt to §Rconvert§! §STwilight Sparkle!§! You will require §Ythree§! successful interactions to perfom this action without §Rmind control.§!\n\nIf successful:"
+ SOL_twilight_ascend_tt_2:0 "\nIf you use §Rmind control:§!"
 
  SOL_bat_problems:0 "The Bat Problem"
  SOL_bat_problems_desc:0 "Now that we have our hooves firmly planted on the ground and our rule is secured, we must solve the issue of thestrals as soon as possible. These "children of the night" have to be dealt with in an appropriate manner."
@@ -2629,6 +2932,10 @@ l_english:
  lady_inquisitor_planning:0 "Lady Inquisitor"
  evil_twilight_sparkle:0 "Sunrise Sparkle"
  sunset_shimmer:0 "Sunset Shimmer"
+ paxsolaris_lady_inquisitor:0 "Lady Inquisitor"
+ paxsolaris_lady_inquisitor_dulled:0 "Lady Inquisitor"
+ paxsolaris_lady_inquisitor_tt:0 "Daily Loyalty Gain: §G+0.02%§!
+ paxsolaris_lady_inquisitor_dulled_tt:0 "Daily Loyalty Gain: §G+0.01%§!
 
  blaze:0 "Blaze "Bomber" Firehooves"
  thunderlane:0 "Thunderlane"

@@ -211,4 +211,16 @@ spriteTypes = {
 		name = "GFX_SOL_region_southeast"
 		texturefile = "gfx/interface/goals/SOL_region_southeast.dds"
 	}
+	spriteType = {
+		name = "GFX_SOL_anti_harmony"
+		texturefile = "gfx/interface/goals/SOL_anti_harmony.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_capture_starxie"
+		texturefile = "gfx/interface/goals/SOL_capture_starxie.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_bombing_fleet"
+		texturefile = "gfx/interface/goals/SOL_bombing_fleet.dds"
+	}
 }

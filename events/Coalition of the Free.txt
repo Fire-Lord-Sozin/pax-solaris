@@ -6,6 +6,7 @@ country_event = {
 	hidden = yes
 	is_triggered_only = yes
 	option = {
+		#Priority: Player Stalliongrad with communist support, Player Harmonist Crystal Empire, Player Harmonist New Mareland, Player Thorax, Player Stalliongrad, Player Crystal Empire, Player New Mareland, AI versions of the previous
 		if = {
 			limit = {
 				OR = {
@@ -29,7 +30,11 @@ country_event = {
 							is_faction_leader = no
 						}
 					}
-					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Altidiya" }
+						has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+						has_completed_focus = vasya_leader
+					}
 					NOT = { has_country_flag = SOL_refused_leadership }
 				}
 			}
@@ -101,7 +106,11 @@ country_event = {
 							is_faction_leader = no
 						}
 					}
-					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Altidiya" }
+						has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+						has_completed_focus = vasya_leader
+					}
 					NOT = { has_country_flag = SOL_refused_leadership }
 				}
 			}
@@ -168,7 +177,11 @@ country_event = {
 							is_faction_leader = no
 						}
 					}
-					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Altidiya" }
+						has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+						has_completed_focus = vasya_leader
+					}
 					NOT = { has_country_flag = SOL_refused_leadership }
 				}
 			}
@@ -236,7 +249,11 @@ country_event = {
 							is_faction_leader = no
 						}
 					}
-					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Altidiya" }
+						has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+						has_completed_focus = vasya_leader
+					}
 					NOT = { has_country_flag = SOL_refused_leadership }
 				}
 			}
@@ -322,52 +339,7 @@ country_event = {
 		}
 		every_country = {
 			limit = {
-				exists = yes
-				is_subject = no
-				has_war = no
-				OR = {
-					tag = EQC
-					tag = STG
-					tag = DRG
-					tag = CRY
-					tag = YAK
-					tag = JAK
-					tag = GRF
-					tag = PNG
-					tag = PLB
-					tag = CHN
-					tag = OLE
-				}
-				NOT = {
-					AND = {
-						is_in_faction = yes
-						is_faction_leader = no
-					}
-					has_government = fascism
-					tag = ROOT
-				}
-				if = {
-					limit = {
-						tag = EQC
-					}
-					OR = {
-						has_country_leader = { ruling_only = yes name = "Lufty Star" }
-						has_government = neutrality
-						has_government = democratic
-					}
-				}
-				else_if = {
-					limit = {
-						tag = STG
-					}
-					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
-				}
-				else = {
-					OR = {
-						has_government = communism
-						has_government = democratic
-					}
-				}
+				is_eligible_for_coalition = yes
 			}
 			country_event = {
 				id = coalition.3
@@ -425,9 +397,22 @@ country_event = {
 				exists = yes
 				is_subject = no
 				has_war = no
+				NOT = { has_country_flag = SOL_refused_membership }
 				NOT = {
 					has_government = fascism
 					tag = ROOT
+					has_idea = detached_country
+					has_idea = communal_society
+					has_idea = tribal_society
+					has_idea = tribal_society2
+					has_idea = tribal_society3
+					has_idea = tribal_society4
+					has_idea = agrarian_society
+					has_idea = agrarian_society2
+					has_idea = agrarian_society3
+					has_idea = agrarian_society4
+					has_idea = agrarian_society5
+					has_idea = agrarian_society6
 				}
 				if = {
 					limit = {
@@ -443,7 +428,11 @@ country_event = {
 					limit = {
 						tag = STG
 					}
-					has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+					OR = {
+						has_country_leader = { ruling_only = yes name = "Altidiya" }
+						has_country_leader = { ruling_only = yes name = "Vasiliy Pantsushenko" }
+						has_completed_focus = vasya_leader
+					}
 				}
 				else = {
 					OR = {
@@ -456,13 +445,6 @@ country_event = {
 		}
 		dismantle_faction = yes
 		event_target:SOL_coalition_leader = { add_to_faction = ROOT }
-		#add_ideas = SOL_coalition_member
-		every_country = {
-			limit = {
-				is_subject_of = ROOT
-			}
-			#add_ideas = SOL_coalition_member
-		}
 		event_target:SOL_coalition_leader = { country_event = { id = coalition.4 } }
 	}
 	option = {
@@ -568,6 +550,32 @@ country_event = {
 					value = 1
 				}
 			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_recognise_hrm }
+				set_global_flag = coalition_recognise_hrm_completed
+				EQS = { SOL_coalition_hrn_collaboration = yes }
+				EQS = { SOL_calculate_border_porosity = yes }
+				set_global_flag = {
+					flag = coalition_recently_completed_project
+					days = 60
+					value = 1
+				}
+				every_country = {
+					limit = { is_coalition_member = yes }
+					EQS = {
+						add_opinion_modifier = { 
+							target = PREV
+							modifier = EQS_recognised_HRM
+						} 
+					}
+					HRM = {
+						add_opinion_modifier = { 
+							target = PREV
+							modifier = HRM_recognised_HRM
+						} 
+					}
+				}
+			}
 		}
 		else = {	
 			if = {
@@ -628,6 +636,14 @@ country_event = {
 					days = 180
 				}
 			}
+			else_if = {
+				limit = { has_global_flag = proposal_coalition_recognise_hrm }
+				set_global_flag = {
+					flag = coalition_recognise_hrm_rejected
+					value = 1 
+					days = 180
+				}
+			}
 		}
 		remove_mission = coalition_current_resolution_decision_support
 		remove_mission = coalition_current_resolution_decision_oppose
@@ -638,8 +654,12 @@ country_event = {
 		every_country = {
 			limit = {
 				is_coalition_member = yes
+				is_ai = no
 			}
-			set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+			clear_variable = sol_alert_popup_show
+			set_variable = { sol_alert_title_var = 3 }
+			set_variable = { sol_alert_desc_var = 9 }
+			set_variable = { var = sol_alert_popup_show value = 1 }
 		}
 		country_event = { id = coalition.12 hours = 1 }
 	}
@@ -657,6 +677,7 @@ country_event = {
 		clr_global_flag = proposal_coalition_high_command
 		clr_global_flag = proposal_coalition_expeditionary_forces
 		clr_global_flag = proposal_coalition_probing_raids
+		clr_global_flag = proposal_coalition_recognise_hrm
 		clear_array = global.coalition_countries_voting_yes
 		clear_array = global.coalition_countries_voting_no
 		set_variable = { var = global.coalition_resolution_support_var value = 0 }
@@ -669,14 +690,16 @@ country_event = {
 	hidden = yes
 	is_triggered_only = yes
 	option = {
-		set_global_flag = coalition_border_war_lose
-		clr_global_flag = coalition_border_war_win
 		hidden_effect = {
 			every_country = {
 				limit = {
 					is_coalition_member = yes
 				}
-				set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+				clear_variable = sol_alert_popup_show
+				set_variable = { sol_alert_title_var = 3 }
+				set_variable = { sol_alert_desc_var = 10 }
+				set_variable = { sol_alert_outcome_var = 1 }
+				set_variable = { var = sol_alert_popup_show value = 1 }
 			}
 		}
 	}
@@ -687,14 +710,16 @@ country_event = {
 	hidden = yes
 	is_triggered_only = yes
 	option = {
-		clr_global_flag = coalition_border_war_lose
-		set_global_flag = coalition_border_war_win
 		hidden_effect = {
 			every_country = {
 				limit = {
 					is_coalition_member = yes
 				}
-				set_variable = { var = sol_coalition_alert_popup_show value = 1 }
+				clear_variable = sol_alert_popup_show
+				set_variable = { sol_alert_title_var = 3 }
+				set_variable = { sol_alert_desc_var = 10 }
+				set_variable = { sol_alert_outcome_var = 1 }
+				set_variable = { var = sol_alert_popup_show value = 1 }
 			}
 		}
 	}
@@ -705,18 +730,10 @@ country_event = {
 	hidden = yes
 	is_triggered_only = yes
 	option = {
-		clear_variable = sol_resistance_alert_popup_show
-		clr_country_flag = SOL_resistance_win
-		clr_country_flag = SOL_imperial_win
-		clr_country_flag = SOL_resistance_propaganda
-		clr_country_flag = SOL_resistance_warehouse
-		clr_country_flag = SOL_resistance_prison
-		clr_country_flag = SOL_coalition_raid 
-		clr_country_flag = SOL_coalition_raid_win
-		clr_country_flag = SOL_coalition_raid_lose
-		set_country_flag = SOL_coalition_raid 
-		set_country_flag = SOL_coalition_raid_win
-		set_variable = { var = sol_resistance_alert_popup_show value = 1 }
+		clear_variable = sol_alert_popup_show
+		set_variable = { sol_alert_title_var = 2 }
+		set_variable = { sol_alert_desc_var = 5 }
+		set_variable = { var = sol_alert_popup_show value = 1 }
 	}
 }
 country_event = {
@@ -725,23 +742,16 @@ country_event = {
 	hidden = yes
 	is_triggered_only = yes
 	option = {
-		clear_variable = sol_resistance_alert_popup_show
-		clr_country_flag = SOL_resistance_win
-		clr_country_flag = SOL_imperial_win
-		clr_country_flag = SOL_resistance_propaganda
-		clr_country_flag = SOL_resistance_warehouse
-		clr_country_flag = SOL_resistance_prison
-		clr_country_flag = SOL_coalition_raid 
-		clr_country_flag = SOL_coalition_raid_win
-		clr_country_flag = SOL_coalition_raid_lose
-		set_country_flag = SOL_coalition_raid 
-		set_country_flag = SOL_coalition_raid_lose
-		set_variable = { var = sol_resistance_alert_popup_show value = 1 }
+		clear_variable = sol_alert_popup_show
+		set_variable = { sol_alert_title_var = 2 }
+		set_variable = { sol_alert_desc_var = 6 }
+		set_variable = { var = sol_alert_popup_show value = 1 }
 		custom_effect_tooltip = sol_raid_outcome
 		set_country_flag = {
 			flag = sol_raid_loss
 			value = 1
 			days = 30
 		}
+		hidden_effect = { SOL_calculate_border_porosity = yes }
 	}
 }

@@ -14,22 +14,18 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_informants_icon"
 		textureFile = "gfx/interface/informants_icon.dds"
-		noOfFrames = 2
 	}
 	spriteType = {
 		name = "GFX_voluneer_militias"
 		textureFile = "gfx/interface/voluneer_militias.dds"
-		noOfFrames = 2
 	}
 	spriteType = {
 		name = "GFX_inquisition_informants"
 		textureFile = "gfx/interface/inquisition_informants.dds"
-		noOfFrames = 2
 	}
 	spriteType = {
 		name = "GFX_harmonist_commanders"
 		textureFile = "gfx/interface/harmonist_commanders.dds"
-		noOfFrames = 2
 	}
 	spriteType = {
 		name = "GFX_SOL_mtf_button"
@@ -98,5 +94,9 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_SOL_chemical_attack_greyed"
 		texturefile = "gfx/interface/SOL_chemical_attack_greyed.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_alert_enable_bg"
+		texturefile = "gfx/interface/SOL_alert_enable_bg.dds"
 	}
 }

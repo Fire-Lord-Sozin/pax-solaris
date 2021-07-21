@@ -405,7 +405,7 @@ guiTypes = {
 	}
 
 	containerWindowType = {
-		name = "sol_resistance_alert_popup"
+		name = "sol_alert_popup"
 		position = { x = 710 y = 310 }
 		size = { width = 500 height = 280 }
 		orientation = upper_left
@@ -419,12 +419,12 @@ guiTypes = {
 			quadTextureSprite ="GFX_sol_resistance_alert_popup"
 		}
 		instantTextBoxType = {
-			name = "resistance_alert_title"
+			name = "alert_title"
 			position = { x = 85 y = 30 }
 			textureFile = ""
 			font = "hoi_24header"
 			borderSize = {x = 0 y = 0}
-			text = "SOL_resistance_alert_popup_title"	
+			text = "SOL_alert_popup_title"	
 			maxWidth = 320
 			maxHeight = 24
 			fixedsize = yes
@@ -433,25 +433,44 @@ guiTypes = {
 		}
 		
 		instantTextBoxType = {
-			name = "resistance_alert_description"
+			name = "alert_description"
 			position = { x = 60 y = 90 }
 			textureFile = ""
 			font = "hoi_20bs"
 			borderSize = {x = 0 y = 0}
-			text = "sol_resistance_alert_description_text"	
+			text = "sol_alert_description_text"	
 			maxWidth = 375
 			maxHeight = 130
 			format = centre
 		}	
 		
 		buttonType = {
-			name = "sol_resistance_alert_close_button"
+			name = "sol_alert_close_button"
 			position = { x=176 y =231}
 			quadTextureSprite ="GFX_sol_button"
 			buttonText = "OK"
 			buttonFont = "hoi_20bs"
 			clicksound = click_close
 			shortcut = "ESCAPE"
+		}
+		buttonType = {
+			name = "alert_disable_bg"
+			spriteType = "GFX_cancel_conversion_button"
+			pdx_tooltip = "alert_disable_bg_tt"
+			pdx_tooltip_delayed = "alert_disable_bg_delayed"
+			position = { x=20 y=20 }
+			clicksound = click_close
+		}
+	}
+	containerWindowType = {
+		name = "alert_enable_container"
+		position = { x = 1070 y = 2 }
+		
+		buttonType = {
+			name = "alert_enable_bg"
+			spriteType = "GFX_SOL_alert_enable_bg"
+			position = { x=0 y=0 }
+			pdx_tooltip = "alert_enable_bg_tt"
 		}
 	}
 	containerWindowType = {
