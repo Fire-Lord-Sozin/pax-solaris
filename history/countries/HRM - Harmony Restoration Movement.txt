@@ -121,15 +121,13 @@ set_stability = 0.5
 set_war_support = 0.5
 
 create_country_leader = {
-	name = "Fancy Pants"
+	name = "Selenite"
+	picture = "gfx/leaders/NLR/Selenite.tga"
+	desc = NLR_selenite_desc
 	expire = "1965.1.1"
-	picture = "gfx/leaders/EQS/Prez-PM_Pants.tga"
 	ideology = centrism 
-	desc = ""
-	traits = {
-	}
+	female = yes
 }
-
 create_country_leader = {
 	name = "Chancellor Neighsay"
 	expire = "1965.1.1"

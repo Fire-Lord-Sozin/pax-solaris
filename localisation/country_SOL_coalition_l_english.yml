@@ -55,6 +55,7 @@
  no_recently_completed_raid:0 "We have not recently conducted a §Yprobing raid§!"
  no_recent_support:0 "§S[HRM.GetNameWithFlag]§! has not recently been supported by any §YCoalition Nation§!"
  no_current_support:0 "Only one §YCoalition Nation§! can attempt to sneak past the solar border at a time!"
+ resistance_can_accept:0 "§S[HRM.GetNameWithFlag]§! can accept our support"
  max_commitments:0 "§OMaximum number of commitments has not been reached§!"
  ongoing_resolution:0 "§YThere is a resolution pending§!"
 

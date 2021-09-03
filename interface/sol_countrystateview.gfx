@@ -15,4 +15,28 @@ spriteTypes = {
 		name = "GFX_modifiers_chemical_attack"
 		textureFile = "gfx/interface/chemical_attack.dds"
 	}
+	spriteType = {
+		name = "GFX_SOL_native_reservations"
+		textureFile = "gfx/interface/SOL_native_reservations.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_urban_planning"
+		textureFile = "gfx/interface/SOL_urban_planning.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_hardened_infrastructure"
+		textureFile = "gfx/interface/SOL_hardened_infrastructure.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_genocidal_occupation"
+		textureFile = "gfx/interface/SOL_genocidal_occupation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_settler_colonies"
+		textureFile = "gfx/interface/SOL_settler_colonies.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_policed_ghettos"
+		textureFile = "gfx/interface/SOL_policed_ghettos.dds"
+	}
 }

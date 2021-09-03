@@ -131,4 +131,100 @@ spriteTypes = {
 		name = "GFX_idea_sol_nightmares"
 		texturefile = "gfx/interface/ideas/idea_sol_nightmares.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_sol_science_idea"
+		texturefile = "gfx/interface/ideas/idea_sol_science_idea.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_HRM_harmonic_resistance"
+		texturefile = "gfx/interface/ideas/HRM_harmonic_resistance.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_building_fleet"
+		texturefile = "gfx/interface/ideas/idea_sol_building_fleet.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_economic_stimulus"
+		texturefile = "gfx/interface/ideas/idea_sol_economic_stimulus.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_solar_justice_system"
+		texturefile = "gfx/interface/ideas/idea_solar_justice_system.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_the_imperial_academy"
+		texturefile = "gfx/interface/ideas/idea_sol_the_imperial_academy.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_washouts"
+		texturefile = "gfx/interface/ideas/idea_washouts.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_star_hunter"
+		texturefile = "gfx/interface/ideas/idea_sol_star_hunter.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_aztlan_armaments"
+		texturefile = "gfx/interface/ideas/idea_aztlan_armaments.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_canterlot_electric"
+		texturefile = "gfx/interface/ideas/idea_canterlot_electric.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_motorised_production_focus"
+		texturefile = "gfx/interface/ideas/idea_sol_motorised_production_focus.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_tank_production_focus"
+		texturefile = "gfx/interface/ideas/idea_sol_tank_production_focus.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_daybreaker_youth"
+		texturefile = "gfx/interface/ideas/idea_daybreaker_youth.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_spy"
+		texturefile = "gfx/interface/ideas/idea_sol_spy.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_special_forces_boost"
+		texturefile = "gfx/interface/ideas/idea_sol_special_forces_boost.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_the_last_stand_of_freedom"
+		texturefile = "gfx/interface/ideas/idea_sol_the_last_stand_of_freedom.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_purge"
+		texturefile = "gfx/interface/ideas/idea_sol_purge.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_worker_strikes"
+		texturefile = "gfx/interface/ideas/idea_sol_worker_strikes.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_protect_the_weak"
+		texturefile = "gfx/interface/ideas/idea_sol_protect_the_weak.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_magical_weaponry_proliferation"
+		texturefile = "gfx/interface/ideas/idea_magical_weaponry_proliferation.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_sol_government_instability"
+		texturefile = "gfx/interface/ideas/idea_sol_government_instability.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_solis_obterere"
+		texturefile = "gfx/interface/ideas/idea_solis_obterere.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_solar_naval_arsenal"
+		texturefile = "gfx/interface/ideas/idea_solar_naval_arsenal.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_six_diamonds"
+		texturefile = "gfx/interface/ideas/idea_six_diamonds.dds"
+	}
 }

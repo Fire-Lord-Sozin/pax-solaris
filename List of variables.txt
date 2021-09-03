@@ -8,7 +8,6 @@ solar_civilian_resistance_actions - The value taken off from resistance activity
 
 solar_military_support - Current support from military. Increases with national focuses, decreases with being forced to attack civilians. 
 solar_military_measures - Improvements made from decisions
-solar_military_defeats - Value based off Daybreaker's military performance. 
 solar_military_resistance_actions - Value taken off from resistance actions
 
 solar_resistance_strength  - Resistance strength. High value is bad, unlike the other ones. 

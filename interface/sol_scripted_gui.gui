@@ -157,6 +157,21 @@ guiTypes = {
 		}
 	}
 	containerWindowType = {
+		name = "SOL_heart_of_an_empire_container"
+		position = {x = 330 y = 465 }
+		size = { width= 68 height= 70 }
+		
+		iconType = {
+			name = "SOL_heart_of_an_empire_icon" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_idea_fuelled_by_hatred"
+			
+			pdx_tooltip = "SOL_heart_of_an_empire_tt"
+			pdx_tooltip_delayed = "SOL_heart_of_an_empire_tt_delayed"
+		}
+	}
+	containerWindowType = {
 		name = "magic_start_container"
 		position = { x = 1100 y = 4 }
 		
@@ -169,188 +184,22 @@ guiTypes = {
 	}
 
 	containerWindowType = {
-		name = "sol_magic_info_window"
-		size = { width=600 height=450 }
-		moveable = yes
-		clipping = no
-		show_sound = menu_open_window
-		hide_sound = menu_close_window
-		position = { x=670 y=100 }
-
-		Background = {
-			name = "sol_magic_info_window_bg"
-			spriteType = "GFX_SOL_magic_background"
-		}
-		
-		containerWindowType = {
-			name = "SOL_magic_reserves_bar"
-			position = { x = 55 y = 27 }
-			size = { width = 100 height = 330 }
-			clipping = yes
-			pdx_tooltip = "SOL_magic_current_value"
-			pdx_tooltip_delayed = "SOL_magic_current_value_delayed"
-			iconType = {
-				name = "magic_reserves"
-				spriteType = "GFX_SOL_magic_bar_progress"
-				pdx_tooltip = "SOL_magic_current_value"
-				pdx_tooltip_delayed = "SOL_magic_current_value_delayed"
-				position = { x = 0 y = 0 }
-			}
-		}
-		iconType = {
-			name = "magic_frame"
-			spriteType = "GFX_SOL_magic_bar"
-			position = { x = 25 y = 45 }
-			pdx_tooltip = "SOL_magic_current_value"
-			pdx_tooltip_delayed = "SOL_magic_current_value_delayed"
-		}
-		buttonType = {
-			name = "SOL_heatwave_button"
-			spriteType = "GFX_sol_heatwave_button"
-			position = { x = 430 y = 100 }
-		}
-		instantTextBoxType = {
-			name ="SOL_heatwave_button_textbox"
-			position = { x = 470 y = 112 }
-			font = "hoi_18mbs"
-			text = "SOL_heatwave_button_text_tt"
-			format = left
-			alwaystransparent = yes
-			maxWidth = 100
-			maxHeight = 30
-		}
-		buttonType = {
-			name = "SOL_blessing_button"
-			spriteType = "GFX_sol_blessing_button"
-			position = { x = 430 y = 140 }
-		}
-		instantTextBoxType = {
-			name ="SOL_blessing_button_textbox"
-			position = { x = 470 y = 148 }
-			font = "hoi_18mbs"
-			text = "SOL_blessing_button_text_tt"
-			format = left
-			alwaystransparent = yes
-			maxWidth = 100
-			maxHeight = 30
-		}
-		buttonType = {
-			name = "SOL_curse_button"
-			spriteType = "GFX_sol_curse_button"
-			position = { x = 430 y = 176 }
-		}
-		instantTextBoxType = {
-			name ="SOL_curse_button_textbox"
-			position = { x = 470 y = 184 }
-			font = "hoi_18mbs"
-			text = "SOL_curse_button_text_tt"
-			format = left
-			alwaystransparent = yes
-			maxWidth = 100
-			maxHeight = 30
-		}
-		buttonType = {
-			name ="sol_magic_close_button"
-			quadTextureSprite = "GFX_closebutton"
-			clicksound = click_close
-			shortcut = "ESCAPE"
-			position = { x=555 y=13 }
-		}
-	}
-	containerWindowType = {
-		name = "SOL_heatwave_info"
-		size = { width = 250 height = 400 }
-		position = { x = 140 y = 100 }
-		instantTextBoxType = {
-			name ="SOL_spell_heatwave_explainer"
-			position = { x = 0 y = 0 }
-			font = "hoi_16mbs"
-			text = "SOL_spell_explainer_heatwave_tt"
-			format = left
-			maxWidth = 250
-			maxHeight = 400
-		}
-	}
-	containerWindowType = {
-		name = "SOL_blessing_info"
-		size = { width = 250 height = 400 }
-		position = { x = 140 y = 100 }
-		instantTextBoxType = {
-			name ="SOL_spell_blessing_explainer"
-			position = { x = 0 y = 0 }
-			font = "hoi_16mbs"
-			text = "SOL_spell_explainer_blessing_tt"
-			format = left
-			maxWidth = 250
-			maxHeight = 400
-		}
-	}
-	containerWindowType = {
-		name = "SOL_curse_info"
-		size = { width = 250 height = 400 }
-		position = { x = 140 y = 100 }
-		instantTextBoxType = {
-			name ="SOL_spell_curse_explainer"
-			position = { x = 0 y = 0 }
-			font = "hoi_16mbs"
-			text = "SOL_spell_explainer_curse_tt"
-			format = left
-			maxWidth = 250
-			maxHeight = 400
-		}
-	}
-
-
-	containerWindowType = {
-		name = "SOL_state_action_category_container_wrath"
-		position = {x = 0 y = 0 }
-		size = { width= 67 height= 59 }
-		
-		iconType = {
-			name = "SOL_wrath_of_the_sun_button_fake" 
-			position = {x = 434 y = 4 }
-			orientation = "UPPER_LEFT"
-			spriteType = "GFX_SOL_wrath_button_greyed"
-			pdx_tooltip = "SOL_cast_spell_tt"
-			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
-		}
-	}
-	containerWindowType = {
-		name = "SOL_state_action_category_container_country_wrath"
-		position = {x = 0 y = 0 }
-		size = { width= 67 height= 59 }
-		
-		iconType = {
-			name = "SOL_wrath_of_the_sun_button_country_fake" 
-			position = {x = 434 y = 4 }
-			orientation = "UPPER_LEFT"
-			spriteType = "GFX_SOL_wrath_button_greyed"
-			pdx_tooltip = "SOL_cast_spell_country_tt"
-			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
-		}
-	}
-
-	containerWindowType = {
-		name = "SOL_state_action_category_container_mtf"
-		position = {x = 0 y = 0 }
-		size = { width= 67 height= 59 }
+		name = "SOL_mobile_task_force"
+		position = {x = 460 y = 100 }
+		size = { width= 67 height= 325 }
 		
 		iconType = {
 			name = "SOL_mobile_task_force_button_fake" 
-			position = {x = 434 y = 59 }
+			position = {x = 0 y = 0 }
 			orientation = "UPPER_LEFT"
 			spriteType = "GFX_SOL_mtf_button_greyed"
 			
 			pdx_tooltip = "SOL_mobile_task_force_tt"
-			pdx_tooltip_delayed = "SOL_mobile_task_force_tt_delayed"
+			pdx_tooltip_delayed = "SOL_mobile_task_force_tt_delayed_unmet"
 		}
-	}
-	
-	containerWindowType = {
-		name = "SOL_mobile_task_force_button_clickable_window"
 		buttonType = {
 			name = "SOL_mobile_task_force_button" 
-			position = {x = 434 y = 59 }
+			position = {x = 0 y = 0 }
 			orientation = "UPPER_LEFT"
 			spriteType = "GFX_SOL_mtf_button"
 			
@@ -358,51 +207,7 @@ guiTypes = {
 			pdx_tooltip_delayed = "SOL_mobile_task_force_tt_delayed"
 		}
 	}
-
-	containerWindowType = {
-		name = "SOL_wrath_of_the_sun_button_clickable_window"
-		buttonType = {
-			name = "SOL_wrath_of_the_sun_button" 
-			position = {x = 434 y = 4 }
-			orientation = "UPPER_LEFT"
-			spriteType = "GFX_SOL_wrath_button"
-			pdx_tooltip = "SOL_cast_spell_tt"
-			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
-		}
-	}
-	containerWindowType = {
-		name = "SOL_wrath_of_the_sun_cancel_button_clickable_window"
-		buttonType = {
-			name = "SOL_wrath_of_the_sun_cancel_button" 
-			position = {x = 434 y = 4 }
-			orientation = "UPPER_LEFT"
-			spriteType = "GFX_SOL_wrath_button_cancel"
-			pdx_tooltip = "SOL_cast_spell_cancel_tt"
-			pdx_tooltip_delayed = "SOL_remove_spell_tt_delayed"
-		}
-	}
-	containerWindowType = {
-		name = "SOL_wrath_of_the_sun_button_country_clickable_window"
-		buttonType = {
-			name = "SOL_wrath_of_the_sun_country_button" 
-			position = {x = 434 y = 4 }
-			orientation = "UPPER_LEFT"
-			spriteType = "GFX_SOL_wrath_button"
-			pdx_tooltip = "SOL_cast_spell_country_tt"
-			pdx_tooltip_delayed = "SOL_cast_spell_tt_delayed"
-		}
-	}
-	containerWindowType = {
-		name = "SOL_wrath_of_the_sun_cancel_button_country_clickable_window"
-		buttonType = {
-			name = "SOL_wrath_of_the_sun_cancel_country_button" 
-			position = {x = 434 y = 4 }
-			orientation = "UPPER_LEFT"
-			spriteType = "GFX_SOL_wrath_button_cancel"
-			pdx_tooltip = "SOL_cast_spell_country_cancel_tt"
-			pdx_tooltip_delayed = "SOL_remove_spell_tt_delayed"
-		}
-	}
+	
 
 	containerWindowType = {
 		name = "sol_alert_popup"
@@ -451,7 +256,7 @@ guiTypes = {
 			buttonText = "OK"
 			buttonFont = "hoi_20bs"
 			clicksound = click_close
-			shortcut = "ESCAPE"
+			shortcut = "RETURN"
 		}
 		buttonType = {
 			name = "alert_disable_bg"
@@ -499,6 +304,84 @@ guiTypes = {
 			
 			pdx_tooltip = "SOL_gas_attack_tt"
 			pdx_tooltip_delayed = "SOL_gas_attack_tt_delayed"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_sunlight_window_button"
+		buttonType = {
+			name = "SOL_sunlight_window_button_clickable" 
+			position = {x = 382 y = 8 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_sol_sunlight_open"
+			pdx_tooltip = "SOL_sunlight_window_button_tt"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_sunlight_window"
+		position = {x = 659 y = 100 }
+		size = { width = 566 height = 568 }
+		show_sound = menu_open_window
+		Orientation = upper_left
+		moveable = yes
+		clipping = no
+		Background = {
+			name = "sol_sunlight_background"
+			spriteType = "GFX_sol_sunlight_background"
+		}
+		buttonType = {
+			name ="sol_sunlight_close_button"
+			quadTextureSprite = "GFX_sol_sunlight_close"
+			clicksound = click_close
+			shortcut = "ESCAPE"
+			position = { x=529 y=4 }
+		}
+		iconType = {
+			name = "sol_sunlight_twilight"
+			spriteType = "GFX_sol_sunlight_twilight"
+			position = { x = 66 y = 103 }
+			pdx_tooltip = "sol_twilight_sparkle_tt"
+			pdx_tooltip_delayed = "sol_twilight_sparkle_tt_delayed"
+		}
+		iconType = {
+			name = "sol_sunlight_twilight_allies"
+			spriteType = "GFX_sol_sunlight_twilight_allies"
+			position = { x = 4 y = 483 }
+			pdx_tooltip = "sol_twilight_sparkle_allies_tt"
+			pdx_tooltip_delayed = "sol_twilight_sparkle_allies_tt_delayed"
+		}
+		instantTextboxType = {
+			name = "sol_sunlight_twilight_textbox"
+			position = { x = 68 y = 320 }
+			font = "hoi_18mbs"
+			text = "sol_sunlight_twilight_textbox"
+			maxWidth = 170
+			maxHeight = 36
+			format = center
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "sol_sunlight_sunset"
+			spriteType = "GFX_sol_sunlight_sunset"
+			position = { x = 323 y = 103 }
+			pdx_tooltip = "sol_sunset_shimmer_tt"
+			pdx_tooltip_delayed = "sol_sunset_shimmer_tt_delayed"
+		}
+		iconType = {
+			name = "sol_sunlight_sunset_allies"
+			spriteType = "GFX_sol_sunlight_sunset_allies"
+			position = { x = 484 y = 482 }
+			pdx_tooltip = "sol_sunset_shimmer_allies_tt"
+			pdx_tooltip_delayed = "sol_sunset_shimmer_allies_tt_delayed"
+		}
+		instantTextboxType = {
+			name = "sol_sunlight_sunset_textbox"
+			position = { x = 325 y = 320 }
+			font = "hoi_18mbs"
+			text = "sol_sunlight_sunset_textbox"
+			maxWidth = 170
+			maxHeight = 36
+			format = center
+			alwaystransparent = yes
 		}
 	}
 }

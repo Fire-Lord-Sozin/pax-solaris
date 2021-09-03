@@ -194,24 +194,91 @@ guiTypes = {
 		buttonType = {
 			name = "SOL_infrastructure_improvement_button"
 			spriteType = "GFX_sol_domestic_button"
-			position = { x = 00 y = 240 }
+			position = { x = 50 y = 240 }
 			pdx_tooltip = SOL_infrastructure_improvement_button_tt
 		}
 		instantTextBoxType = {
 			name ="SOL_infrastructure_improvement_textbox"
-			position = { x = 00 y = 245 }
+			position = { x = 55 y = 245 }
 			font = "hoi_20bs"
 			text = "SOL_infrastructure_improvement_text_tt"
 			format = center
 			alwaystransparent = yes
-			maxWidth = 180
+			maxWidth = 170
 			maxHeight = 30
 		}
 		iconType = {
 			name = "SOL_infrastructure_improvement_button_cover"
 			spriteType = "GFX_sol_domestic_button_cover"
-			position = { x = 0 y = 240 }
+			position = { x = 50 y = 240 }
 			pdx_tooltip = public_work_available_tt
+		}
+
+		buttonType = {
+			name = "SOL_urban_planning_button"
+			spriteType = "GFX_sol_domestic_button"
+			position = { x = 270 y = 240 }
+			pdx_tooltip = SOL_urban_planning_button_tt
+		}
+		instantTextBoxType = {
+			name ="SOL_urban_planning_textbox"
+			position = { x = 275 y = 245 }
+			font = "hoi_20bs"
+			text = "SOL_urban_planning_text_tt"
+			format = center
+			alwaystransparent = yes
+			maxWidth = 170
+			maxHeight = 30
+		}
+		iconType = {
+			name = "SOL_urban_planning_button_cover"
+			spriteType = "GFX_sol_domestic_button_cover"
+			position = { x = 270 y = 240 }
+			pdx_tooltip = urban_planning_available_tt
+		}
+		buttonType = {
+			name = "SOL_agmech_button"
+			spriteType = "GFX_sol_domestic_button"
+			position = { x = 50 y = 310 }
+			pdx_tooltip = SOL_agmech_button_tt
+		}
+		instantTextBoxType = {
+			name ="SOL_agmech_textbox"
+			position = { x = 55 y = 315 }
+			font = "hoi_20bs"
+			text = "SOL_agmech_text_tt"
+			format = center
+			alwaystransparent = yes
+			maxWidth = 170
+			maxHeight = 30
+		}
+		iconType = {
+			name = "SOL_agmech_button_cover"
+			spriteType = "GFX_sol_domestic_button_cover"
+			position = { x = 50 y = 310 }
+			pdx_tooltip = agmech_available_tt
+		}
+		buttonType = {
+			name = "SOL_infrastructure_hardening_button"
+			spriteType = "GFX_sol_domestic_button"
+			position = { x = 270 y = 310 }
+			pdx_tooltip = SOL_infrastructure_hardening_button_tt
+		}
+		instantTextBoxType = {
+			name ="SOL_infrastructure_hardening_textbox"
+			position = { x = 275 y = 315 }
+			font = "hoi_20bs"
+			text = "SOL_infrastructure_hardening_text_tt"
+			format = center
+			alwaystransparent = yes
+			maxWidth = 170
+			maxHeight = 30
+		}
+		iconType = {
+			name = "SOL_infrastructure_hardening_button_cover"
+			spriteType = "GFX_sol_domestic_button_cover"
+			position = { x = 270 y = 310 }
+			pdx_tooltip = infrastructure_hardening_available_tt
 		}
 	}
 }

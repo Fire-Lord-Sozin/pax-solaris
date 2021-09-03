@@ -115,4 +115,28 @@ spriteTypes = {
 		name = "GFX_decision_resistance_cohesion"
 		texturefile = "gfx/interface/decisions/decision_resistance_cohesion.dds"
 	}
+	spriteType = {
+		name = "GFX_decision_offer_bounties"
+		texturefile = "gfx/interface/decisions/decision_offer_bounties.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_sol_starxie"
+		texturefile = "gfx/interface/decisions/decision_sol_starxie.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solar_unite_equestria"
+		texturefile = "gfx/interface/decisions/decision_solar_unite_equestria.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solis_obterere"
+		texturefile = "gfx/interface/decisions/decision_solis_obterere.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solar_naval_arsenal"
+		texturefile = "gfx/interface/decisions/decision_solar_naval_arsenal.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_six_diamonds"
+		texturefile = "gfx/interface/decisions/decision_six_diamonds.dds"
+	}
 }

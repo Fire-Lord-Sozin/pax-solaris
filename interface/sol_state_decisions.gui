@@ -1,0 +1,47 @@
+guiTypes = {
+	containerWindowType = {
+		name = "SOL_state_decision_menu"
+		position = {x = 430 y = 4 }
+		size = { width= 64 height= 127 }
+		
+		iconType = {
+			name = "SOL_state_decision_menu_frame" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_solar_state_frame"
+		}
+		buttonType = {
+			name = "SOL_state_decision_menu_button" 
+			position = {x = 10 y = 18 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_solar_state_button"
+			
+			pdx_tooltip = "SOL_state_decision_menu_button_tt"
+			pdx_tooltip_delayed = "SOL_state_decision_menu_button_delayed_tt"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_develop_settler_colonies"
+		position = {x = 460 y = 100 }
+		size = { width= 67 height= 325 }
+		
+		iconType = {
+			name = "SOL_develop_settler_colonies_button_fake" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_colonies_button_greyed"
+			
+			pdx_tooltip = "SOL_develop_settler_colonies_tt"
+			pdx_tooltip_delayed = "SOL_develop_settler_colonies_tt_delayed_unmet"
+		}
+		buttonType = {
+			name = "SOL_develop_settler_colonies_button" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_colonies_button"
+			
+			pdx_tooltip = "SOL_develop_settler_colonies_tt"
+			pdx_tooltip_delayed = "SOL_develop_settler_colonies_tt_delayed"
+		}
+	}
+}

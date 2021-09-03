@@ -28,26 +28,6 @@ spriteTypes = {
 		textureFile = "gfx/interface/harmonist_commanders.dds"
 	}
 	spriteType = {
-		name = "GFX_SOL_mtf_button"
-		texturefile = "gfx/interface/SOL_mtf_button.dds"
-	}
-	spriteType = {
-		name = "GFX_SOL_mtf_button_greyed"
-		texturefile = "gfx/interface/SOL_mtf_button_greyed.dds"
-	}
-	spriteType = {
-		name = "GFX_SOL_wrath_button"
-		texturefile = "gfx/interface/SOL_wrath_button.dds"
-	}
-	spriteType = {
-		name = "GFX_SOL_wrath_button_greyed"
-		texturefile = "gfx/interface/SOL_wrath_button_greyed.dds"
-	}
-	spriteType = {
-		name = "GFX_SOL_wrath_button_cancel"
-		texturefile = "gfx/interface/SOL_wrath_button_cancel.dds"
-	}
-	spriteType = {
 		name = "GFX_SOL_wrath_icon"
 		textureFile = "gfx/interface/SOL_wrath_icon.dds"
 	}
@@ -98,5 +78,33 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_SOL_alert_enable_bg"
 		texturefile = "gfx/interface/SOL_alert_enable_bg.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_background"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_background.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_close"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_close.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_open"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_open.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_twilight"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_twilight.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_sunset"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_sunset.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_twilight_allies"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_twilight_allies.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_sunlight_sunset_allies"
+		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_sunset_allies.dds"
 	}
 }

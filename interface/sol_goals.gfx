@@ -8,8 +8,8 @@ spriteTypes = {
 		texturefile = "gfx/interface/goals/goal_celestia_propaganda.dds"
 	}
 	spriteType = {
-		name = "GFX_goal_sol_rebuild_equestria"
-		texturefile = "gfx/interface/goals/goal_sol_rebuild_equestria.dds"
+		name = "GFX_SOL_rebuild_equestria"
+		texturefile = "gfx/interface/goals/SOL_rebuild_equestria.dds"
 	}
 	spriteType = {
 		name = "GFX_goal_investigate_resistance"
@@ -28,16 +28,8 @@ spriteTypes = {
 		texturefile = "gfx/interface/goals/goal_sol_reeducation.dds"
 	}
 	spriteType = {
-		name = "GFX_goal_sol_propaganda"
-		texturefile = "gfx/interface/goals/goal_propaganda_sol.dds"
-	}
-	spriteType = {
 		name = "GFX_goal_sol_inquisition_law"
 		texturefile = "gfx/interface/goals/goal_sol_inquisition_law.dds"
-	}
-	spriteType = {
-		name = "GFX_goal_sol_the_list"
-		texturefile = "gfx/interface/goals/goal_sol_the_list.dds"
 	}
 	spriteType = {
 		name = "GFX_goal_sol_upgrade_inquisition"
@@ -46,10 +38,6 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_goal_legacy_of_hurricane"
 		texturefile = "gfx/interface/goals/goal_legacy_of_hurricane.dds"
-	}
-	spriteType = {
-		name = "GFX_goal_sol_railroads"
-		texturefile = "gfx/interface/goals/goal_sol_railroad.dds"
 	}
 	spriteType = {
 		name = "GFX_goal_sol_expand_inquisition"
@@ -222,5 +210,313 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_SOL_bombing_fleet"
 		texturefile = "gfx/interface/goals/SOL_bombing_fleet.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_cut_the_loose_end"
+		texturefile = "gfx/interface/goals/SOL_cut_the_loose_end.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_darkness_rises_begins"
+		texturefile = "gfx/interface/goals/SOL_darkness_rises_begins.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_infiltrate_our_enemies"
+		texturefile = "gfx/interface/goals/SOL_infiltrate_our_enemies.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_secure_the_north"
+		texturefile = "gfx/interface/goals/SOL_secure_the_north.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_test_their_strength"
+		texturefile = "gfx/interface/goals/SOL_test_their_strength.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_unthinkable_option"
+		texturefile = "gfx/interface/goals/SOL_the_unthinkable_option.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_a_glorious_legacy"
+		texturefile = "gfx/interface/goals/SOL_a_glorious_legacy.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_blood_for_the_altar"
+		texturefile = "gfx/interface/goals/SOL_blood_for_the_altar.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_reconciliation"
+		texturefile = "gfx/interface/goals/SOL_reconciliation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_crystal_province"
+		texturefile = "gfx/interface/goals/SOL_the_crystal_province.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_fourth_tribe"
+		texturefile = "gfx/interface/goals/SOL_the_fourth_tribe.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_southeast_secured"
+		texturefile = "gfx/interface/goals/SOL_the_southeast_secured.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_sun_and_the_moon"
+		texturefile = "gfx/interface/goals/SOL_the_sun_and_the_moon.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_agricultural_aid"
+		texturefile = "gfx/interface/goals/SOL_agricultural_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_black_gold"
+		texturefile = "gfx/interface/goals/SOL_black_gold.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_condemn_the_nobility"
+		texturefile = "gfx/interface/goals/SOL_condemn_the_nobility.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_earth_pony_magic"
+		texturefile = "gfx/interface/goals/SOL_earth_pony_magic.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_integrate_the_police"
+		texturefile = "gfx/interface/goals/SOL_integrate_the_police.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_internal_passports"
+		texturefile = "gfx/interface/goals/SOL_internal_passports.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_invite_union_leaders"
+		texturefile = "gfx/interface/goals/SOL_invite_union_leaders.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_machine_tool_proliferation"
+		texturefile = "gfx/interface/goals/SOL_machine_tool_proliferation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_meet_with_union_leaders"
+		texturefile = "gfx/interface/goals/SOL_meet_with_union_leaders.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_mining_projects"
+		texturefile = "gfx/interface/goals/SOL_mining_projects.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_modern_naval_technology"
+		texturefile = "gfx/interface/goals/SOL_modern_naval_technology.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_national_standards"
+		texturefile = "gfx/interface/goals/SOL_national_standards.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_naval_aeronautics"
+		texturefile = "gfx/interface/goals/SOL_naval_aeronautics.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_new_urban_planning"
+		texturefile = "gfx/interface/goals/SOL_new_urban_planning.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_pardon_the_revolutionaries"
+		texturefile = "gfx/interface/goals/SOL_pardon_the_revolutionaries.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_radio_triangulation"
+		texturefile = "gfx/interface/goals/SOL_radio_triangulation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_reapproach_stalliongrad"
+		texturefile = "gfx/interface/goals/SOL_reapproach_stalliongrad.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_secure_the_coastlines"
+		texturefile = "gfx/interface/goals/SOL_secure_the_coastlines.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_shut_down_the_protests"
+		texturefile = "gfx/interface/goals/SOL_shut_down_the_protests.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_solar_economy"
+		texturefile = "gfx/interface/goals/SOL_the_solar_economy.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_solar_fleet"
+		texturefile = "gfx/interface/goals/SOL_the_solar_fleet.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_solar_special_service"
+		texturefile = "gfx/interface/goals/SOL_the_solar_special_service.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_three_port_cities"
+		texturefile = "gfx/interface/goals/SOL_the_three_port_cities.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_union_with_stalliongrad"
+		texturefile = "gfx/interface/goals/SOL_union_with_stalliongrad.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_mechanised_agriculture"
+		texturefile = "gfx/interface/goals/SOL_mechanised_agriculture.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_marksist_threat"
+		texturefile = "gfx/interface/goals/SOL_the_marksist_threat.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_contact_dissidents"
+		texturefile = "gfx/interface/goals/SOL_contact_dissidents.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_operation_mongoose"
+		texturefile = "gfx/interface/goals/SOL_operation_mongoose.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_root_out_the_communists"
+		texturefile = "gfx/interface/goals/SOL_root_out_the_communists.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_denounce_stalliongrad"
+		texturefile = "gfx/interface/goals/SOL_denounce_stalliongrad.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_counter_revolution"
+		texturefile = "gfx/interface/goals/SOL_the_counter_revolution.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_reclaim_the_rogue_province"
+		texturefile = "gfx/interface/goals/SOL_reclaim_the_rogue_province.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_a_magical_army"
+		texturefile = "gfx/interface/goals/SOL_a_magical_army.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_a_mechanised_army"
+		texturefile = "gfx/interface/goals/SOL_a_mechanised_army.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_a_tank_army"
+		texturefile = "gfx/interface/goals/SOL_a_tank_army.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_claim_the_stratosphere"
+		texturefile = "gfx/interface/goals/SOL_claim_the_stratosphere.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_combined_arms_strategies"
+		texturefile = "gfx/interface/goals/SOL_combined_arms_strategies.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_draconic_crystal_mines"
+		texturefile = "gfx/interface/goals/SOL_draconic_crystal_mines.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_earth_pony_demolition_brigades"
+		texturefile = "gfx/interface/goals/SOL_earth_pony_demolition_brigades.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_engine_optimisation"
+		texturefile = "gfx/interface/goals/SOL_engine_optimisation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_flamethrowers"
+		texturefile = "gfx/interface/goals/SOL_flamethrowers.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_heavy_aircraft_optimisation"
+		texturefile = "gfx/interface/goals/SOL_heavy_aircraft_optimisation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_light_aircraft_optimisation"
+		texturefile = "gfx/interface/goals/SOL_light_aircraft_optimisation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_magical_weaponry_proliferation"
+		texturefile = "gfx/interface/goals/SOL_magical_weaponry_proliferation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_motorised_production_focus"
+		texturefile = "gfx/interface/goals/SOL_motorised_production_focus.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_payload_calibration"
+		texturefile = "gfx/interface/goals/SOL_payload_calibration.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_pegasi_magic_applications"
+		texturefile = "gfx/interface/goals/SOL_pegasi_magic_applications.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_pegasi_spotting_teams"
+		texturefile = "gfx/interface/goals/SOL_pegasi_spotting_teams.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_pressure_the_dragons"
+		texturefile = "gfx/interface/goals/SOL_pressure_the_dragons.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_secure_supply_networks"
+		texturefile = "gfx/interface/goals/SOL_secure_supply_networks.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_tactical_teleportation"
+		texturefile = "gfx/interface/goals/SOL_tactical_teleportation.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_tank_production_focus"
+		texturefile = "gfx/interface/goals/SOL_tank_production_focus.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_empress_pardon"
+		texturefile = "gfx/interface/goals/SOL_the_empress_pardon.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_imperial_academy"
+		texturefile = "gfx/interface/goals/SOL_the_imperial_academy.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_mandatory_registration"
+		texturefile = "gfx/interface/goals/SOL_mandatory_registration.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_love_for_loyalty"
+		texturefile = "gfx/interface/goals/SOL_love_for_loyalty.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_fear_and_paranoia"
+		texturefile = "gfx/interface/goals/SOL_fear_and_paranoia.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_destroy_their_legacy"
+		texturefile = "gfx/interface/goals/SOL_destroy_their_legacy.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_changelings_of_the_sun"
+		texturefile = "gfx/interface/goals/SOL_changelings_of_the_sun.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_purge_the_guard"
+		texturefile = "gfx/interface/goals/SOL_purge_the_guard.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_study_their_methods"
+		texturefile = "gfx/interface/goals/SOL_study_their_methods.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_fate_of_the_changelings"
+		texturefile = "gfx/interface/goals/SOL_the_fate_of_the_changelings.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_the_new_frontier"
+		texturefile = "gfx/interface/goals/SOL_the_new_frontier.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_expand_our_domain"
+		texturefile = "gfx/interface/goals/SOL_expand_our_domain.dds"
 	}
 }
