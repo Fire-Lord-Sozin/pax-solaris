@@ -4,7 +4,7 @@ scripted_gui = {
 		context_type = player_context
 		visible = {
 			original_tag = EQS 
-			has_completed_focus = SOL_public_works_program
+			has_country_flag = sol_has_unlocked_public_works
 		}
 		effects = {
 			sol_domestic_show_bg_click = {
@@ -24,7 +24,7 @@ scripted_gui = {
 		visible = {
 			has_variable = sol_public_works_screen_show
 			original_tag = EQS 
-			has_completed_focus = SOL_public_works_program
+			has_country_flag = sol_has_unlocked_public_works
 		}
 		effects = {
 			sol_domestic_close_button_click = {
@@ -138,20 +138,20 @@ scripted_gui = {
 									}
 									OR = {
 										is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+										is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+										is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+										is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
 									}
 									is_in_array = { SOL_completed_public_works = currently_selected_region }
 									has_war = yes
 								}
-								OR = {
-									check_variable = { SOL_dynamic_modifier_civ_use_total < 1 } 
-									num_of_available_civilian_factories > 5
-								}
+								check_variable = { SOL_public_works_industry_use_after < 1 }
+								NOT = { has_idea = SOL_worker_strikes }
 							}
 							set_variable = { var = SOL_public_works_duration_array^currently_selected_region value = sol_public_works_duration }
 							add_to_variable = { var = sol_ongoing_public_works_num value = 1 }
 							add_to_array = { array = SOL_ongoing_public_works value = currently_selected_region }
 							add_to_variable = { var = sol_public_works_screen_show value = 1 }
-							set_country_flag = SOL_heartland_public_works_in_progress
 							SOL_calculate_public_works_progress = yes
 							if = {
 								limit = {
@@ -159,13 +159,166 @@ scripted_gui = {
 								}
 								add_dynamic_modifier = { modifier = SOL_public_works_modifier }
 							}
+							if = {
+								limit = { NOT = { has_country_flag = sol_strikes_triggered } }
+								set_country_flag = sol_strikes_triggered
+								country_event = { id = paxsolaris.138 days = 2 }
+							}
+						}
+					}
+				}
+			}
+			SOL_urban_planning_button_click = {
+				hidden_effect = {
+					ROOT = {
+						if = {
+							limit = {
+								NOT = {
+									any_state = {
+										AND = {
+											check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+											NOT = { is_controlled_by = event_target:solar_empire }
+										}
+									}
+									OR = {
+										is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+										is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+									}
+									is_in_array = { SOL_completed_urban_planning = currently_selected_region }
+									has_war = yes
+								}
+								check_variable = { SOL_urban_planning_industry_use_after < 1 }
+								NOT = { has_idea = SOL_worker_strikes }
+							}
+							set_variable = { var = SOL_public_works_duration_array^currently_selected_region value = sol_urban_planning_duration }
+							add_to_variable = { var = sol_ongoing_public_works_num value = 1 }
+							add_to_array = { array = SOL_ongoing_urban_planning value = currently_selected_region }
+							add_to_variable = { var = sol_public_works_screen_show value = 1 }
+							SOL_calculate_public_works_progress = yes
+							if = {
+								limit = {
+									NOT = { EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } } }
+								}
+								add_dynamic_modifier = { modifier = SOL_public_works_modifier }
+							}
+							if = {
+								limit = { NOT = { has_country_flag = sol_strikes_triggered } }
+								set_country_flag = sol_strikes_triggered
+								country_event = { id = paxsolaris.138 days = 30 }
+							}
+						}
+					}
+				}
+			}
+			SOL_agmech_button_click = {
+				hidden_effect = {
+					ROOT = {
+						if = {
+							limit = {
+								NOT = {
+									any_state = {
+										AND = {
+											check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+											NOT = { is_controlled_by = event_target:solar_empire }
+										}
+									}
+									OR = {
+										is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+										is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+										is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+									}
+									is_in_array = { SOL_completed_agmech = currently_selected_region }
+									has_war = yes
+								}
+								check_variable = { SOL_agmech_industry_use_after < 1 }
+								NOT = { has_idea = SOL_worker_strikes }
+							}
+							set_variable = { var = SOL_public_works_duration_array^currently_selected_region value = sol_agmech_duration }
+							add_to_variable = { var = sol_ongoing_public_works_num value = 1 }
+							add_to_array = { array = SOL_ongoing_agmech value = currently_selected_region }
+							add_to_variable = { var = sol_public_works_screen_show value = 1 }
+							SOL_calculate_public_works_progress = yes
+							if = {
+								limit = {
+									NOT = { EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } } }
+								}
+								add_dynamic_modifier = { modifier = SOL_public_works_modifier }
+							}
+							if = {
+								limit = { NOT = { has_country_flag = sol_strikes_triggered } }
+								set_country_flag = sol_strikes_triggered
+								country_event = { id = paxsolaris.138 days = 30 }
+							}
+						}
+					}
+				}
+			}
+			SOL_infrastructure_hardening_button_click = {
+				hidden_effect = {
+					ROOT = {
+						if = {
+							limit = {
+								any_state = {
+									AND = {
+										check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+										NOT = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } }
+										is_controlled_by = EQS
+									}
+								}
+								NOT = {		
+									OR = {
+										is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+										is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+										is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+										is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+									}
+								}
+								check_variable = { SOL_infrastructure_hardening_industry_use_after < 1 }
+								NOT = { has_idea = SOL_worker_strikes }
+							}
+							set_variable = { var = SOL_infrastructure_hardening_num_states_this_region value = 0 }
+							every_controlled_state = {
+								limit = {
+									AND = {
+										check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+										NOT = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } }
+										is_controlled_by = EQS
+									}
+								}
+								EQS = { add_to_variable = { var = SOL_infrastructure_hardening_num_states_this_region value = 1 } }
+								set_state_flag = SOL_ongoing_infrastructure_hardening
+							}
+							set_variable = { var = SOL_infrastructure_hardening_num_states_this_project^currently_selected_region value = SOL_infrastructure_hardening_num_states_this_region }
+							set_variable = { var = SOL_public_works_duration_array^currently_selected_region value = sol_infrastructure_hardening_duration }
+							add_to_variable = { var = sol_ongoing_public_works_num value = 1 }
+							add_to_array = { array = SOL_ongoing_infrastructure_hardening value = currently_selected_region }
+							add_to_variable = { var = sol_public_works_screen_show value = 1 }
+							SOL_calculate_public_works_progress = yes
+							if = {
+								limit = {
+									NOT = { EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } } }
+								}
+								add_dynamic_modifier = { modifier = SOL_public_works_modifier }
+							}
+							if = {
+								limit = { NOT = { has_country_flag = sol_strikes_triggered } }
+								set_country_flag = sol_strikes_triggered
+								country_event = { id = paxsolaris.138 days = 30 }
+							}
 						}
 					}
 				}
 			}
 		}
 		triggers = {
+			SOL_infrastructure_improvement_button_visible = {
+				has_completed_focus = SOL_public_works_program
+			}
+			SOL_infrastructure_improvement_textbox_visible = {
+				has_completed_focus = SOL_public_works_program
+			}
 			SOL_infrastructure_improvement_button_cover_visible = {
+				has_completed_focus = SOL_public_works_program
 				OR = {
 					any_state = {
 						AND = {
@@ -175,15 +328,93 @@ scripted_gui = {
 					}
 					OR = {
 						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
 					}
 					is_in_array = { SOL_completed_public_works = currently_selected_region }
 					has_war = yes
-					NOT = { 
-						OR = {
-							check_variable = { SOL_dynamic_modifier_civ_use_total < 1 } 
-							num_of_available_civilian_factories > 5
+					NOT = { check_variable = { SOL_public_works_industry_use_after < 1 } }
+					has_idea = SOL_worker_strikes
+				}
+			}
+			SOL_urban_planning_button_visible = {
+				has_completed_focus = SOL_new_urban_planning
+			}
+			SOL_urban_planning_textbox_visible = {
+				has_completed_focus = SOL_new_urban_planning
+			}
+			SOL_urban_planning_button_cover_visible = {
+				has_completed_focus = SOL_new_urban_planning
+				OR = {
+					any_state = {
+						AND = {
+							check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+							NOT = { is_controlled_by = event_target:solar_empire }
 						}
 					}
+					OR = {
+						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+					}
+					is_in_array = { SOL_completed_urban_planning = currently_selected_region }
+					has_war = yes
+					NOT = { check_variable = { SOL_urban_planning_industry_use_after < 1 } }
+					has_idea = SOL_worker_strikes
+				}
+			}
+			SOL_agmech_button_visible = {
+				has_completed_focus = SOL_agricultural_mechanisation
+			}
+			SOL_agmech_textbox_visible = {
+				has_completed_focus = SOL_agricultural_mechanisation
+			}
+			SOL_agmech_button_cover_visible = {
+				has_completed_focus = SOL_agricultural_mechanisation
+				OR = {
+					any_state = {
+						AND = {
+							check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+							NOT = { is_controlled_by = event_target:solar_empire }
+						}
+					}
+					OR = {
+						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+					}
+					is_in_array = { SOL_completed_agmech = currently_selected_region }
+					has_war = yes
+					NOT = { check_variable = { SOL_agmech_industry_use_after < 1 } }
+					has_idea = SOL_worker_strikes
+				}
+			}
+			SOL_infrastructure_hardening_button_visible = {
+				has_completed_focus = SOL_secure_supply_networks
+			}
+			SOL_infrastructure_hardening_textbox_visible = {
+				has_completed_focus = SOL_secure_supply_networks
+			}
+			SOL_infrastructure_hardening_button_cover_visible = {
+				has_completed_focus = SOL_secure_supply_networks
+				OR = {
+					NOT = {
+						any_state = {
+							AND = {
+								check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+								NOT = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } }
+								is_controlled_by = EQS
+							}
+						}
+					}
+					OR = {
+						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+						is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+					}
+					NOT = { check_variable = { SOL_infrastructure_hardening_industry_use_after < 1 } }
+					has_idea = SOL_worker_strikes
 				}
 			}
 		}

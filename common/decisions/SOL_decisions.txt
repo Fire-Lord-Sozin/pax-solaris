@@ -1,3 +1,688 @@
+SOL_securing_our_domain = {
+	SOL_attack_buf = {
+
+		icon = GFX_decision_sol_border_war
+
+		allowed = { always = no } #Activated from effect
+
+		available = {
+			var:BUF.SOL_attacker_state_vs_@ROOT = {
+				is_fully_controlled_by = EQS
+			}
+			divisions_in_border_state = {
+				state = var:BUF.SOL_attacker_state_vs_@ROOT
+				border_state = var:BUF.SOL_defender_state_vs_@ROOT
+				size > 0
+			}
+			custom_trigger_tooltip = {
+				tooltip = sol_border_war_available
+				BUF = { can_have_border_war_with_ROOT = yes }
+			}
+		}
+		visible = {
+			NOT = { 
+                has_war_with = BUF
+                is_subject_of = BUF #LOL, as if
+            }
+		}
+		highlight_state_targets = {
+			state = var:BUF.SOL_attacker_state_vs_@ROOT
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				BUF = { can_have_border_war_with_ROOT = no }
+			}
+		}
+
+		fire_only_once = yes 
+
+		selectable_mission = yes
+
+		days_mission_timeout = 90
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_attack_buf"
+			custom_effect_tooltip = SOL_attack_buf_tt
+			add_to_variable = { var = solar_resistance_actions_progress value = 1 }
+			add_to_variable = { var = daybreaker_support value = -5 }
+			add_political_power = -100
+			add_stability = -0.05
+			hidden_effect = {
+				SOL_calculate_loyalty = yes
+				remove_targeted_decision = { target = BUF decision = SOL_attack_buf }
+				BUF = {
+					clear_variable = SOL_attacker_state_vs_@ROOT
+					clear_variable = SOL_defender_state_vs_@ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_attack_buf"
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = var:BUF.SOL_attacker_state_vs_@ROOT
+					num_provinces = 4
+					on_win = paxsolaris.23
+					on_lose = paxsolaris.24
+					on_cancel = paxsolaris.24
+				}
+
+				defender = {
+					state = var:BUF.SOL_defender_state_vs_@ROOT
+					num_provinces = 4
+					on_win = paxsolaris.25
+					on_cancel = paxsolaris.25
+				}
+			}
+			hidden_effect = {
+				remove_targeted_decision = { target = BUF decision = SOL_attack_buf }
+				activate_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+			}
+		}
+	}
+	SOL_attack_buf_in_progress = {
+		icon = GFX_decision_sol_border_war
+		allowed = { always = no }
+		fire_only_once = yes
+		selectable_mission = no
+		ai_will_do = {
+			base = 50
+		}
+		available = {		
+			NOT = { has_border_war_with = BUF }
+		}
+		highlight_state_targets = {
+			state = var:BUF.attacker_state_vs_@ROOT
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				BUF = { can_have_border_war_with_ROOT = no }
+			}
+		}
+		days_mission_timeout = 180
+		days_remove = 0
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_attack_buf_in_progress"
+			hidden_effect = {
+				remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Mission cancel SOL_attack_buf_in_progress"
+			cancel_border_war = {
+				dont_fire_events = no
+				attacker = var:BUF.SOL_attacker_state_vs_@ROOT
+				defender = var:BUF.SOL_defender_state_vs_@ROOT
+			}
+			hidden_effect = {
+				BUF = {
+					clear_variable = SOL_attacker_state_vs_@ROOT
+					clear_variable = SOL_defender_state_vs_@ROOT
+				}
+				BUF = { clr_country_flag = target_of_coalition_raid }
+				remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+			}
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Mission timeout SOL_attack_buf_in_progress"
+			if = {
+				limit = {
+					BUF = { divisions_in_state = { state = var:BUF.defender_state_vs_@ROOT size > 0 } }
+				}
+				cancel_border_war = {
+				dont_fire_events = no
+					attacker = var:BUF.SOL_attacker_state_vs_@ROOT
+					defender = var:BUF.SOL_defender_state_vs_@ROOT
+				}
+				hidden_effect = {
+					BUF = {
+						clear_variable = SOL_attacker_state_vs_@ROOT
+						clear_variable = SOL_defender_state_vs_@ROOT
+					}
+					BUF = { clr_country_flag = target_of_coalition_raid }
+					remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
+				}
+			}
+			else = {
+				#If the Buffalo have no troops, automatic Daybreaker victory
+				finalize_border_war = {
+					attacker_win = yes
+					attacker = var:BUF.SOL_attacker_state_vs_@ROOT
+					defender = var:BUF.SOL_defender_state_vs_@ROOT
+				}
+			}
+		}
+	}
+	buffalo_oil_drilling = {
+		icon = oil
+		allowed = {
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+			custom_trigger_tooltip = {
+				tooltip = sol_controls_all_BUF_cores
+				NOT = {
+					any_state = {
+						OR = {
+							state = 78
+							state = 89
+						}
+						NOT = { is_controlled_by = EQS }
+					}
+				}
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 78
+				state = 89
+			}
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_buffalo_oil_drilling
+			hidden_trigger = {
+				89 = { has_state_flag = eqs_buffalo_state }
+				78 = { has_state_flag = eqs_buffalo_state }
+			}
+			custom_trigger_tooltip = {
+				tooltip = sol_controls_all_DRG_cores
+				NOT = {
+					any_state = {
+						OR = {
+							state = 78
+							state = 89
+						}
+						NOT = { is_controlled_by = EQS }
+					}
+				}
+			}
+			89 = {
+				NOT = {
+					has_state_flag = buffalo_oil_drilling
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 5
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove buffalo_oil_drilling"
+			89 = { set_state_flag = buffalo_oil_drilling }
+			89 = {
+				add_resource = {
+					type = oil
+					amount = 19
+				}
+				set_temp_variable = { var = sol_pony_population_change_temp value = 180 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 180000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			78 = {
+				add_resource = {
+					type = oil
+					amount = 24
+				}
+				set_temp_variable = { var = sol_pony_population_change_temp value = 205 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 205000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			country_event = { id = paxsolaris.62 hours = 6 }
+		}
+	}
+	SOL_strike_foe = {
+		icon = GFX_decision_mark_states
+		priority = 20
+		visible = {
+			FROM = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+				OR = {
+					any_country = {
+						any_owned_state = { has_state_flag = SOL_target_for_annexation }
+						is_subject_of = PREV
+					}
+					any_owned_state = { has_state_flag = SOL_target_for_annexation }
+				}
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				NOT = {
+					FROM = {
+						exists = yes
+						NOT = { has_war_with = ROOT }
+						OR = {
+							any_country = {
+								any_owned_state = { has_state_flag = SOL_target_for_annexation }
+								is_subject_of = PREV
+							}
+							any_owned_state = { has_state_flag = SOL_target_for_annexation }
+						}
+					}
+				}
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_strike_foe"
+			hidden_effect = { 
+				remove_targeted_decision = { target = FROM decision = SOL_strike_foe }
+			}
+		}	
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 0
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 1.2
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = SOL_military_desertion_5
+					has_idea = SOL_military_desertion_4
+					has_idea = SOL_military_desertion_3
+				}
+			}
+		}
+		allowed = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = yes
+		fixed_random_seed = no
+		days_remove = 70
+		war_with_target_on_remove = yes
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_strike_foe"
+			EQS = {
+				declare_war_on = {
+				    target = FROM
+				    type = annex_everything
+				}
+			}
+			hidden_effect = { remove_targeted_decision = { target = FROM decision = SOL_strike_foe } }
+		}
+	}
+	dragon_crystal_mining = {
+		icon = crystals
+		allowed = {
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 9
+			custom_trigger_tooltip = {
+				tooltip = sol_controls_all_DRG_cores
+				NOT = {
+					any_state = {
+						OR = {
+							state = 17
+							state = 6
+							state = 4
+							state = 37
+							state = 7
+							state = 9
+							state = 8
+							state = 10
+							state = 328
+						}
+						NOT = { is_controlled_by = EQS }
+					}
+				}
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 6
+				state = 7
+				state = 9
+				state = 8
+			}
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_dragon_crystal_mining
+			custom_trigger_tooltip = {
+				tooltip = sol_controls_all_DRG_cores
+				NOT = {
+					any_state = {
+						OR = {
+							state = 17
+							state = 6
+							state = 4
+							state = 37
+							state = 7
+							state = 9
+							state = 8
+							state = 10
+							state = 328
+						}
+						NOT = { is_controlled_by = EQS }
+					}
+				}
+			}
+			6 = {
+				NOT = {
+					has_state_flag = dragon_crystal_mining
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 10
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove dragon_crystal_mining"
+			6 = { set_state_flag = dragon_crystal_mining }
+			6 = {
+				add_resource = {
+					type = crystals
+					amount = 12
+				}
+				set_temp_variable = { var = sol_pony_population_change_temp value = 120 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 120000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			7 = {
+				add_resource = {
+					type = crystals
+					amount = 8
+				}
+				set_temp_variable = { var = sol_pony_population_change_temp value = 80 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 80000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			8 = {
+				add_resource = {
+					type = crystals
+					amount = 10
+				}
+				set_temp_variable = { var = sol_pony_population_change_temp value = 100 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 100000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			9 = {
+				add_resource = {
+					type = crystals
+					amount = 10
+				}
+				set_temp_variable = { var = sol_pony_population_change_temp value = 90 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 90000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			10 = {
+				set_temp_variable = { var = sol_pony_population_change_temp value = 20 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 20000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			328 = {
+				set_temp_variable = { var = sol_pony_population_change_temp value = 10 }
+				hidden_effect = { SOL_pony_population_recalculate = yes }
+				add_manpower = 10000
+				hidden_effect = { 
+					if = {
+						limit = {
+							NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+							check_variable = { sol_pony_percentage > 0.4 }
+						}
+						add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					}
+				}
+				custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+			}
+			country_event = { id = paxsolaris.91 hours = 6 }
+		}
+	}
+	SOL_unlock_solis_obterere = {
+		icon = GFX_decision_solis_obterere
+		
+		ai_will_do = {
+			base = 30
+		}
+		
+		visible = { has_completed_focus = SOL_Imperial_Corporation_Council }
+		
+		allowed = {
+			tag = EQS
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = SOL_no_ongoing_merges
+				NOT = { has_country_flag = SOL_ongoing_merge }
+			}
+		}
+		fire_only_once = yes
+		days_remove = 1
+		modifier = {
+			political_power_cost =0.5
+		}
+		
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_unlock_solis_obterere"
+			set_country_flag = SOL_ongoing_merge 
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_unlock_solis_obterere"
+			clr_country_flag = SOL_ongoing_merge
+			set_country_flag = sol_unlocked_solis_obterere
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = solis_obterere
+		}
+	}
+	SOL_unlock_six_diamonds = {
+		icon = GFX_decision_six_diamonds
+		
+		ai_will_do = {
+			base = 30
+		}
+		
+		visible = { has_completed_focus = SOL_Imperial_Corporation_Council }
+		
+		allowed = {
+			tag = EQS
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = SOL_no_ongoing_merges
+				NOT = { has_country_flag = SOL_ongoing_merge }
+			}
+		}
+		fire_only_once = yes
+		days_remove = 1
+		modifier = {
+			political_power_cost = 0.5
+		}
+		
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_unlock_six_diamonds"
+			set_country_flag = SOL_ongoing_merge 
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_unlock_six_diamonds"
+			clr_country_flag = SOL_ongoing_merge
+			set_country_flag = sol_unlocked_six_diamonds
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = six_diamonds
+		}
+	}
+	SOL_unlock_solar_naval_arsenal = {
+		icon = GFX_decision_solar_naval_arsenal
+		
+		ai_will_do = {
+			base = 30
+		}
+		
+		visible = { has_completed_focus = SOL_Imperial_Corporation_Council }
+		
+		allowed = {
+			tag = EQS
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = SOL_no_ongoing_merges
+				NOT = { has_country_flag = SOL_ongoing_merge }
+			}
+		}
+		fire_only_once = yes
+		days_remove = 1
+		modifier = {
+			political_power_cost = 0.5
+		}
+		
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_unlock_solar_naval_arsenal"
+			set_country_flag = SOL_ongoing_merge 
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_unlock_solar_naval_arsenal"
+			clr_country_flag = SOL_ongoing_merge
+			set_country_flag = sol_unlocked_solar_naval_arsenal
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = solar_naval_arsenal
+		}
+	}
+	SOL_develop_settler_colony_decision = {
+		icon = GFX_SOL_settler_colonies
+		allowed = { always = no }
+		fire_only_once = yes
+		selectable_mission = no
+		available = {
+			hidden_trigger = { 
+				always = no
+			}
+		}
+		cancel_trigger = {
+			FROM = {
+				NOT = { is_owned_and_controlled_by = EQS }
+			}
+		}
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 1
+		is_good = yes
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_develop_settler_colony_decision target: [From.GetName]"
+			hidden_effect = {
+				FROM = {
+					subtract_from_variable = { var = EQS.SOL_develop_settler_colony_civ_fac_use_total value = SOL_develop_settler_colony_civ_fac_use }
+					clear_variable = SOL_develop_settler_colony_civ_fac_use
+				}
+			}
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_develop_settler_colony_decision target: [From.GetName]"
+			FROM = {
+				hidden_effect = {
+					subtract_from_variable = { var = EQS.SOL_develop_settler_colony_civ_fac_use_total value = SOL_develop_settler_colony_civ_fac_use }
+					clear_variable = SOL_develop_settler_colony_civ_fac_use
+					add_dynamic_modifier = { modifier = SOL_settler_colonies }
+					
+					#Some may call this unecessary. To them I say fuck you. 
+					set_temp_variable = { var = sol_numerator value = state_population_k }
+					multiply_temp_variable = { var = sol_numerator value = 10 }
+					set_temp_variable = { var = sol_denominator value = 0.99 }
+					subtract_from_temp_variable = { var = sol_denominator value = sol_pony_percentage }
+					divide_temp_variable = { var = sol_numerator value = sol_denominator }
+					round_temp_variable = sol_numerator
+					add_manpower = var:sol_numerator
+					add_to_variable = { var = sol_pony_percentage value = 0.01 }
+				}
+				custom_effect_tooltip = SOL_develop_settler_colony_decision_tt
+			}
+		}
+	}
+}
+
 SOL_resistance_menu = {
 	SOL_public_measures_improvement = { 
 		icon = GFX_decision_daybreaker_support
@@ -251,168 +936,7 @@ SOL_resistance_menu = {
 				}
 			}
 		}
-	}
-	SOL_attack_buf = {
-
-		icon = GFX_decision_sol_border_war
-
-		allowed = { always = no } #Activated from effect
-
-		available = {
-			var:BUF.SOL_attacker_state_vs_@ROOT = {
-				is_fully_controlled_by = EQS
-			}
-			divisions_in_border_state = {
-				state = var:BUF.SOL_attacker_state_vs_@ROOT
-				border_state = var:BUF.SOL_defender_state_vs_@ROOT
-				size > 0
-			}
-			custom_trigger_tooltip = {
-				tooltip = sol_border_war_available
-				BUF = { can_have_border_war_with_ROOT = yes }
-			}
-		}
-		visible = {
-			NOT = { 
-                has_war_with = BUF
-                is_subject_of = BUF #LOL, as if
-            }
-		}
-		highlight_state_targets = {
-			state = var:BUF.SOL_attacker_state_vs_@ROOT
-		}
-
-		ai_will_do = {
-			base = 100
-		}
-
-		cancel_trigger = {
-			hidden_trigger = {
-				BUF = { can_have_border_war_with_ROOT = no }
-			}
-		}
-
-		fire_only_once = yes 
-
-		selectable_mission = yes
-
-		days_mission_timeout = 30
-
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_attack_buf"
-			custom_effect_tooltip = SOL_attack_buf_tt
-			add_to_variable = { var = solar_resistance_actions_progress value = 1 }
-			add_to_variable = { var = daybreaker_support value = -5 }
-			add_political_power = -100
-			add_stability = -0.05
-			hidden_effect = {
-				SOL_calculate_loyalty = yes
-				remove_targeted_decision = { target = BUF decision = SOL_attack_buf }
-				BUF = {
-					clear_variable = SOL_attacker_state_vs_@ROOT
-					clear_variable = SOL_defender_state_vs_@ROOT
-				}
-			}
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_attack_buf"
-			start_border_war = {
-				change_state_after_war = no
-				attacker = {
-					state = var:BUF.SOL_attacker_state_vs_@ROOT
-					num_provinces = 4
-					on_win = paxsolaris.23
-					on_lose = paxsolaris.24
-					on_cancel = paxsolaris.24
-				}
-
-				defender = {
-					state = var:BUF.SOL_defender_state_vs_@ROOT
-					num_provinces = 4
-					on_win = paxsolaris.25
-					on_cancel = paxsolaris.25
-				}
-			}
-			hidden_effect = {
-				remove_targeted_decision = { target = BUF decision = SOL_attack_buf }
-				activate_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
-			}
-		}
-	}
-	SOL_attack_buf_in_progress = {
-		icon = GFX_decision_sol_border_war
-		allowed = { always = no }
-		fire_only_once = yes
-		selectable_mission = no
-		ai_will_do = {
-			base = 50
-		}
-		available = {		
-			NOT = { has_border_war_with = BUF }
-		}
-		highlight_state_targets = {
-			state = var:BUF.attacker_state_vs_@ROOT
-		}
-		cancel_trigger = {
-			hidden_trigger = {
-				BUF = { can_have_border_war_with_ROOT = no }
-			}
-		}
-		days_mission_timeout = 180
-		days_remove = 0
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOL_attack_buf_in_progress"
-			hidden_effect = {
-				remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
-			}
-		}
-		cancel_effect = {
-			log = "[GetDateText]: [Root.GetName]: Mission cancel SOL_attack_buf_in_progress"
-			cancel_border_war = {
-				dont_fire_events = no
-				attacker = var:BUF.SOL_attacker_state_vs_@ROOT
-				defender = var:BUF.SOL_defender_state_vs_@ROOT
-			}
-			hidden_effect = {
-				BUF = {
-					clear_variable = SOL_attacker_state_vs_@ROOT
-					clear_variable = SOL_defender_state_vs_@ROOT
-				}
-				BUF = { clr_country_flag = target_of_coalition_raid }
-				remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
-			}
-		}
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Mission timeout SOL_attack_buf_in_progress"
-			if = {
-				limit = {
-					BUF = { divisions_in_state = { state = var:BUF.defender_state_vs_@ROOT size > 0 } }
-				}
-				cancel_border_war = {
-				dont_fire_events = no
-					attacker = var:BUF.SOL_attacker_state_vs_@ROOT
-					defender = var:BUF.SOL_defender_state_vs_@ROOT
-				}
-				hidden_effect = {
-					BUF = {
-						clear_variable = SOL_attacker_state_vs_@ROOT
-						clear_variable = SOL_defender_state_vs_@ROOT
-					}
-					BUF = { clr_country_flag = target_of_coalition_raid }
-					remove_targeted_decision = { target = BUF decision = SOL_attack_buf_in_progress }
-				}
-			}
-			else = {
-				#If the Buffalo have no troops, automatic Daybreaker victory
-				finalize_border_war = {
-					attacker_win = yes
-					attacker = var:BUF.SOL_attacker_state_vs_@ROOT
-					defender = var:BUF.SOL_defender_state_vs_@ROOT
-				}
-			}
-		}
-	}
+	}	
 }
 
 SOL_inquisition_mechanic = {
@@ -449,32 +973,37 @@ SOL_inquisition_mechanic = {
 		}
 		remove_effect = { 
 			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_upgrade_inquisition_decision"
-			add_to_variable = { var = inquisition_upgrade_process value = 1 }
 			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
 			if = {
-				limit = { check_variable = { inquisition_upgrade_process = 1 } }
+				limit = { check_variable = { inquisition_upgrade_process = 0 } }
 				set_country_flag = inquisition_less_detection_chance
+				custom_effect_tooltip = SOL_upgrade_inquisition_decision_reward_1
 			}
 			if = { 
-				limit = { check_variable = { inquisition_upgrade_process = 2 } }
+				limit = { check_variable = { inquisition_upgrade_process = 1 } }
 				add_to_variable = { var = solar_inquisition_decision_medium_duration value = -10 }
 				add_to_variable = { var = solar_inquisition_decision_low_duration value = -10 }
+				custom_effect_tooltip = SOL_upgrade_inquisition_decision_reward_2
 			}
 			if = {
-				limit = { check_variable = { inquisition_upgrade_process = 3 } }
+				limit = { check_variable = { inquisition_upgrade_process = 2 } }
 				set_country_flag = inquisition_additional_leads
+				custom_effect_tooltip = SOL_upgrade_inquisition_decision_reward_3
+			}
+			if = { 
+				limit = { check_variable = { inquisition_upgrade_process = 3 } }
+				add_to_variable = { var = solar_inquisition_max_decisions value = 1 }
+				custom_effect_tooltip = SOL_upgrade_inquisition_decision_reward_4
 			}
 			if = { 
 				limit = { check_variable = { inquisition_upgrade_process = 4 } }
-				add_to_variable = { var = solar_inquisition_max_decisions value = 1 }
-			}
-			if = { 
-				limit = { check_variable = { inquisition_upgrade_process = 5 } }
 				set_country_flag = upgraded_inquisition
+				custom_effect_tooltip = SOL_upgrade_inquisition_decision_reward_5
 				country_event = {
 					id = paxsolaris.74
 				}
 			}
+			add_to_variable = { var = inquisition_upgrade_process value = 1 }
 		}
 	}
 	SOL_strike_at_the_resistance = { 
@@ -1820,7 +2349,724 @@ SOL_inquisition_mechanic = {
 		}
 	}
 
+	#Capture Starlight/Trixie
+	SOL_operation_eveningstar = {
+		priority = 40
+		icon = GFX_decision_sol_starxie
+		allowed = {
+			original_tag = EQS
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_met
+				check_variable = {
+					var = SOL_capture_starxie_progress_var
+					value = 80
+					compare = greater_than_or_equals
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = SOL_capture_starxie_progress_var
+						value = 80
+						compare = greater_than_or_equals
+					}
+				}
+				if = {
+					limit = { 
+						121 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size > 3
+						state = 121
+					}
+				}
+			}
+		}
+		highlight_states = {
+			if = {
+				limit = {
+					check_variable = {
+						var = EQS.SOL_capture_starxie_progress_var
+						value = 80
+						compare = greater_than_or_equals
+					}
+				}
+				state = 121
+			}
+			else = {
+				state = 3
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			NOT = { has_country_flag = SOL_operation_eveningstar_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
 
+		custom_cost_trigger = {
+			check_variable = {
+				var = command_power
+				value = 20
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_20_cp
+		fire_only_once = no
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_operation_eveningstar"
+			hidden_effect = {
+				add_command_power = -20
+				set_country_flag = SOL_capture_starxie_progress
+			}
+			custom_effect_tooltip = SOL_decapitate_the_resistance_tt
+			custom_effect_tooltip = inquisitioncohesionaction
+			custom_effect_tooltip = SOL_no_organised_activity
+			clr_country_flag = SOL_capture_starxie_progress
+			set_country_flag = SOL_operation_eveningstar_completed
+			country_event = { id = paxsolaris.275 hours = 1 }
+		}
+
+	}
+	SOL_capture_remnants = {
+		priority = 39
+		icon = GFX_decision_sol_raid_resistance
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+			if = {
+				limit = { 
+					188 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 1
+					state = 188
+				}
+			}
+			if = {
+				limit = { 
+					184 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 1
+					state = 184
+				}
+			}
+			if = {
+				limit = { 
+					226 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 1
+					state = 226
+				}
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			NOT = { has_country_flag = SOL_capture_remnants_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		cancel_trigger = {
+			OR = {
+				if = {
+					limit = { 
+						188 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size < 2
+						state = 188
+					}
+				}
+				if = {
+					limit = { 
+						184 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size < 2
+						state = 184
+					}
+				}
+				if = {
+					limit = { 
+						226 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size < 2
+						state = 226
+					}
+				}
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 188
+				state = 184
+				state = 226
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_capture_remnants"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+
+		custom_cost_trigger = {
+			check_variable = {
+				var = command_power
+				value = 15
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = SOL_lead_variable
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_cp_15_leads_10
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_capture_remnants"
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				add_command_power = -15
+				subtract_from_variable = { 
+					var = SOL_lead_variable
+					value = 10
+				}
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_capture_remnants"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 10 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_10
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			country_event = { id = paxsolaris.270 hours = 1 }
+			set_country_flag = SOL_capture_remnants_completed 
+		}
+	}
+	SOL_capture_organiser = {
+		priority = 38
+		icon = GFX_decision_sol_arrest_propagandists
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+			if = {
+				limit = { 
+					178 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 2
+					state = 178
+				}
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			NOT = { has_country_flag = SOL_capture_organiser_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		cancel_trigger = {
+			if = {
+				limit = { 
+					178 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size < 3
+					state = 178
+				}
+			}
+		}
+		highlight_states = {
+			state = 178
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_capture_organiser"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+
+		custom_cost_trigger = {
+			check_variable = {
+				var = command_power
+				value = 15
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = SOL_lead_variable
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_cp_15_leads_10
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_capture_organiser"
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				add_command_power = -15
+				subtract_from_variable = { 
+					var = SOL_lead_variable
+					value = 10
+				}
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_capture_organiser"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 15 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_15
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			country_event = { id = paxsolaris.271 hours = 1 }
+			set_country_flag = SOL_capture_organiser_completed
+		}
+	}
+	SOL_offer_bounties = {
+		priority = 37
+		icon = GFX_decision_offer_bounties
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			NOT = { has_country_flag = SOL_offer_bounties_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+
+		cost = 15
+		modifier = {			
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_offer_bounties"
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_offer_bounties"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 5 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_5
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			set_country_flag = SOL_offer_bounties_completed
+		}
+	}
+	SOL_contact_foreign_loyalists = {
+		priority = 36
+		icon = modern_city
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			NOT = { has_country_flag = SOL_contact_foreign_loyalists_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+
+		cost = 30
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_contact_foreign_loyalists"
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_contact_foreign_loyalists"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 10 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_10
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			set_country_flag = SOL_contact_foreign_loyalists_completed
+		}
+	}
+	SOL_investigate_traitors = {
+		priority = 35
+		icon = GFX_decision_investigate_resistance
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			check_variable = {
+				var = SOL_capture_starxie_progress_var
+				value = 40
+				compare = greater_than_or_equals
+			}
+			NOT = { has_country_flag = SOL_investigate_traitors_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+
+		custom_cost_trigger = {
+			check_variable = {
+				var = command_power
+				value = 15
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = SOL_lead_variable
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_cp_15_leads_10
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_investigate_traitors"
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				add_command_power = -15
+				subtract_from_variable = { 
+					var = SOL_lead_variable
+					value = 10
+				}
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_investigate_traitors"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 15 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_15
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			country_event = { id = paxsolaris.272 hours = 1 }
+			set_country_flag = SOL_investigate_traitors_completed
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SOL_capture_starxie_progress_var
+							value = 80
+							compare = greater_than_or_equals
+						}
+					}
+					country_event = { id = paxsolaris.274 hours = 1 }
+				}
+			}
+		}
+	}
+	SOL_honeypot_operation = {
+		priority = 34
+		icon = GFX_decision_resistance_attack
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			check_variable = {
+				var = SOL_capture_starxie_progress_var
+				value = 40
+				compare = greater_than_or_equals
+			}
+			NOT = { has_country_flag = SOL_honeypot_operation_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+
+		custom_cost_trigger = {
+			check_variable = {
+				var = num_equipment@infantry_equipment
+				value = 1000
+			}
+		}
+		custom_cost_text = decision_cost_infantry_equipment_1000
+		modifier = {			
+			civilian_factory_use = 10
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_honeypot_operation "
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+				    type = infantry_equipment
+				    amount = -1000
+				}
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_honeypot_operation"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 15 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_15
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			country_event = { id = paxsolaris.273 hours = 1 }
+			set_country_flag = SOL_honeypot_operation_completed
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SOL_capture_starxie_progress_var
+							value = 80
+							compare = greater_than_or_equals
+						}
+					}
+					country_event = { id = paxsolaris.274 hours = 1 }
+				}
+			}
+		}
+	}
+	SOL_escalate_thestral_raids = {
+		priority = 33
+		icon = GFX_decision_sol_border_war
+
+		allowed = {
+			original_tag = EQS
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = inquisitiondecisionongoing
+				check_variable = { solar_inquisition_ongoing_decisions < solar_inquisition_max_decisions }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOL_capture_starxie_progress_only_one
+				NOT = { has_country_flag = SOL_capture_starxie_progress }
+			}
+			if = {
+				limit = { 
+					32 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 1
+					state = 32
+				}
+			}
+			if = {
+				limit = { 
+					52 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 1
+					state = 52
+				}
+			}
+			if = {
+				limit = { 
+					350 = { is_owned_and_controlled_by = event_target:solar_empire }
+				}
+				divisions_in_state = {
+					size > 1
+					state = 350
+				}
+			}
+		}
+		visible = {
+			has_country_flag = sol_capture_starxie_decisions
+			check_variable = {
+				var = SOL_capture_starxie_progress_var
+				value = 40
+				compare = greater_than_or_equals
+			}
+			NOT = { has_country_flag = SOL_escalate_thestral_raids_completed }
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = solar_inquisition_decision_medium_duration
+		fire_only_once = no
+		cancel_trigger = {
+			OR = { 
+				if = {
+					limit = { 
+						32 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size < 2
+						state = 32
+					}
+				}
+				if = {
+					limit = { 
+						52 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size < 2
+						state = 52
+					}
+				}
+				if = {
+					limit = { 
+						350 = { is_owned_and_controlled_by = event_target:solar_empire }
+					}
+					divisions_in_state = {
+						size < 2
+						state = 350
+					}
+				}
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 32
+				state = 52
+				state = 350
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_escalate_thestral_raids"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = num_equipment@infantry_equipment
+				value = 1000
+			}
+		}
+		custom_cost_text = decision_cost_infantry_equipment_1000
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOL_escalate_thestral_raids"
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = 1 }
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+				    type = infantry_equipment
+				    amount = -1000
+				}
+				set_country_flag = SOL_capture_starxie_progress
+			}
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_escalate_thestral_raids"
+			clr_country_flag = SOL_capture_starxie_progress
+			add_to_variable = { var = SOL_capture_starxie_progress_var value = 10 }
+			custom_effect_tooltip = SOL_capture_starxie_progress_add_10
+			add_to_variable = { var = solar_inquisition_ongoing_decisions value = -1 }
+			set_country_flag = SOL_escalate_thestral_raids_completed
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SOL_capture_starxie_progress_var
+							value = 80
+							compare = greater_than_or_equals
+						}
+					}
+					country_event = { id = paxsolaris.274 hours = 1 }
+				}
+			}
+		}
+	}
+
+	#Repeatable Missions
 	SOL_investigate_resistance_decision = {
 		icon = GFX_decision_investigate_resistance
 		available = {
@@ -1928,6 +3174,7 @@ SOL_inquisition_mechanic = {
 		}
 		fire_only_once = no
 	}
+
 	SOL_dispatch_pegasi_decision = {
 		icon = infiltrate_state
 		allowed = { always = no }
@@ -2690,6 +3937,7 @@ SOL_resistance_activity = {
 			hidden_trigger = {
 				has_country_flag = resistance_ceasefire
 				check_variable = { resistance_attack_blocked > 0 }
+				has_country_flag = sol_resistance_decapitated
 			}
 		}
 		cancel_effect = {
@@ -2827,6 +4075,7 @@ SOL_resistance_activity = {
 		cancel_trigger = {
 			hidden_trigger = {
 				has_country_flag = resistance_ceasefire
+				has_country_flag = sol_resistance_decapitated
 			}
 		}
 		cancel_effect = {
@@ -2881,11 +4130,28 @@ SOL_resistance_activity = {
 		is_good = no
 		fire_only_once = yes
 		fixed_random_seed = no
+		cancel_trigger = {
+			hidden_trigger = {
+				any_state = { #Yes, I know this is a weird way to do it. But this is the only way to prevent the game spitting out annoying errors. 
+					state = FROM
+					NOT = { is_controlled_by = ROOT } 
+				}
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_state_uprising_decision"
+			hidden_effect = { 
+				FROM = { 
+					clr_state_flag = SOL_ongoing_uprising
+				} 
+				remove_targeted_decision = { target = FROM decision = SOL_state_uprising_decision }
+			}
+		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOL_state_uprising_decision"
 			custom_effect_tooltip = SOL_state_uprising_pacified
 			custom_effect_tooltip = SOL_state_uprising_decision_lead_gain_tt
-			add_to_variable = { sol_number_of_uprisings = -1 }
 			hidden_effect = { 
 				FROM = { 
 					clr_state_flag = SOL_ongoing_uprising
@@ -2903,14 +4169,13 @@ SOL_resistance_activity = {
 			remove_state_core = FROM
 			add_political_power = -20
 			add_stability = -0.025
-			add_to_variable = { sol_number_of_uprisings = -1 }
 			hidden_effect = { 
 				FROM = { 
 					set_state_flag = SOL_overrun_by_resistance 
 					clr_state_flag = SOL_ongoing_uprising
 					if = {
 						limit = {
-							EQS = { has_tech = CHN_armoured_trains }
+							has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus }
 						}
 						add_dynamic_modifier = { modifier = SOL_uprising_trains }
 					}
@@ -2923,6 +4188,592 @@ SOL_resistance_activity = {
 			hidden_effect = { SOL_calculate_loyalty = yes }
 		}
 	}
+}
+
+SOL_uniting_equestria = {
+	SOL_demand_breakaway = {
+		icon = GFX_decision_sol_border_war
+		priority = 30
+		targets = { SCS LSP BAL VAN NMS CES JUN }
+		visible = {
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				NOT = { has_country_flag = SOL_refused_annexation_demands }
+				if = {
+					limit = { is_subject = yes }
+					OVERLORD = { NOT = { has_country_flag = SOL_refused_annexation_demands } }
+				}
+				exists = yes
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				NOT = {
+					FROM = {
+						NOT = { has_war_with = ROOT }
+						NOT = { has_country_flag = SOL_refused_annexation_demands }
+						if = {
+							limit = { is_subject = yes }
+							OVERLORD = { NOT = { has_country_flag = SOL_refused_annexation_demands } }
+						}
+						exists = yes
+					}
+				}
+			}
+		}
+		allowed = {
+			tag = EQS
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 15
+		}
+		days_remove = 10
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_demand_breakaway: [From.GetName]"
+			if = {
+				limit = {
+					FROM = {
+						is_subject = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				FROM = { save_global_event_target_as = sol_demanded_nation }
+				FROM.OVERLORD = { country_event = paxsolaris.130 }
+			}
+			else = {
+				FROM = {
+					country_event = paxsolaris.133
+				}
+			}
+		}
+	}
+	SOL_invade_nation = {
+		icon = GFX_decision_mark_states
+		priority = 20
+		visible = {
+			FROM = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+				OR = {
+					any_country = {
+						OR = {
+							tag = SCS
+							tag = LSP
+							tag = BAL
+							tag = VAN
+							tag = NMS
+							tag = CES
+							tag = JUN
+						}
+						is_subject_of = PREV
+					}
+					OR = {
+						tag = SCS
+						tag = LSP
+						tag = BAL
+						tag = VAN
+						tag = NMS
+						tag = CES
+						tag = JUN
+					}
+				}
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				NOT = {
+					FROM = {
+						exists = yes
+						NOT = { has_war_with = ROOT }
+						OR = {
+							any_country = {
+								OR = {
+									tag = SCS
+									tag = LSP
+									tag = BAL
+									tag = VAN
+									tag = NMS
+									tag = CES
+									tag = JUN
+								}
+								is_subject_of = PREV
+							}
+							OR = {
+								tag = SCS
+								tag = LSP
+								tag = BAL
+								tag = VAN
+								tag = NMS
+								tag = CES
+								tag = JUN
+							}
+						}
+					}
+				}
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel SOL_invade_nation"
+			hidden_effect = { 
+				FROM = { clr_country_flag = SOL_refused_annexation_demands } 
+				remove_targeted_decision = { target = FROM decision = SOL_invade_nation }
+			}
+		}	
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 0
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 1.2
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = SOL_military_desertion_5
+					has_idea = SOL_military_desertion_4
+					has_idea = SOL_military_desertion_3
+				}
+			}
+		}
+		allowed = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = yes
+		fixed_random_seed = no
+		days_remove = 70
+		war_with_target_on_remove = yes
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOL_invade_nation"
+			if = {
+				limit = {
+					any_country = {
+						OR = {
+							tag = SCS
+							tag = LSP
+							tag = BAL
+							tag = VAN
+							tag = NMS
+							tag = CES
+							tag = JUN
+						}
+						is_subject_of = FROM
+					}
+				}
+				every_country = {
+					limit = { 
+						OR = {
+							tag = SCS
+							tag = LSP
+							tag = BAL
+							tag = VAN
+							tag = NMS
+							tag = CES
+							tag = JUN
+						}
+						is_subject_of = FROM
+					}
+					EQS = {
+						declare_war_on = {
+						    target = PREV
+						    type = annex_everything
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							tag = SCS
+							tag = LSP
+							tag = BAL
+							tag = VAN
+							tag = NMS
+							tag = CES
+							tag = JUN
+						}
+					}
+				}
+				EQS = {
+					declare_war_on = {
+					    target = FROM
+					    type = annex_everything
+					}
+				}
+			}
+			hidden_effect = { remove_targeted_decision = { target = FROM decision = SOL_invade_nation } }
+		}
+	}
+}
+
+prospect_for_resources = {
+	SOL_raven_highground_ores = {
+
+		icon = tungsten
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 230
+		}
+		available = {
+			has_tech = excavation3
+			230 = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_prospecting
+			230 = { is_owned_and_controlled_by = ROOT }
+			230 = {
+				NOT = {
+					has_state_flag = raven_highground_ores
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@tungsten < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_raven_highground_ores"
+			230 = { set_state_flag = raven_highground_ores }
+			230 = {
+				add_resource = {
+					type = tungsten
+					amount = 20
+				}
+			}
+		}
+	}
+	SOL_smokey_mountain_chromium = {
+
+		icon = chromium
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 18
+		}
+		available = {
+			has_tech = excavation3
+			18 = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_prospecting
+			18 = { is_owned_and_controlled_by = ROOT }
+			18 = {
+				NOT = {
+					has_state_flag = smokey_mountain_chromium
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@chromium < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_smokey_mountain_chromium"
+			18 = { set_state_flag = smokey_mountain_chromium }
+			18 = {
+				add_resource = {
+					type = chromium
+					amount = 12
+				}
+			}
+		}
+	}
+	SOL_whinnyapolis_mega_foundaries = {
+
+		icon = generic_construction
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 70
+		}
+		available = {
+			has_tech = assembly_line_production
+			70 = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_production
+			70 = { is_owned_and_controlled_by = ROOT }
+			70 = {
+				NOT = {
+					has_state_flag = whinnyapolis_mega_foundaries
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@steel < 5 }
+				add = 1
+			}
+			modifier = {
+				check_variable = { resource@chromium < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_whinnyapolis_mega_foundaries"
+			70 = { set_state_flag = whinnyapolis_mega_foundaries }
+			70 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+				add_resource = {
+					type = chromium
+					amount = 10
+				}
+			}
+		}
+	}
+	SOL_april_grove_aluminium = {
+
+		icon = aluminium
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 107
+		}
+		available = {
+			has_tech = excavation3
+			107 = { is_owned_and_controlled_by = ROOT }
+			107 = {
+				has_state_flag = apple_groove_mines_developed
+			}
+			num_of_civilian_factories_available_for_projects > 2
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_prospecting
+			107 = { is_owned_and_controlled_by = ROOT }
+			107 = {
+				NOT = {
+					has_state_flag = april_grove_aluminium
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 70
+		days_remove = 70
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@aluminium < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_april_grove_aluminium"
+			107 = { set_state_flag = april_grove_aluminium }
+			107 = {
+				add_resource = {
+					type = aluminium
+					amount = 20
+				}
+			}
+		}
+	}
+	SOL_marechester_forges = {
+
+		icon = steel
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 170
+		}
+		available = {
+			has_tech = assembly_line_production
+			170 = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_production
+			170 = { is_owned_and_controlled_by = ROOT }
+			170 = {
+				NOT = {
+					has_state_flag = marechester_forges
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 70
+		days_remove = 70
+
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@steel < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_marechester_forges"
+			170 = { set_state_flag = marechester_forges }
+			170 = {
+				add_resource = {
+					type = steel
+					amount = 16
+				}
+			}
+		}
+	}
+	SOL_twilight_range_crystal_deposits = {
+
+		icon = crystals
+
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 128
+		}
+		available = {
+			has_tech = excavation3
+			128 = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_prospecting
+			128 = { is_owned_and_controlled_by = ROOT }
+			128 = {
+				NOT = {
+					has_state_flag = mareland_minerals
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 70
+		days_remove = 70
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@crystals < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_twilight_range_crystal_deposits"
+			128 = { set_state_flag = mareland_minerals }
+			128 = {
+				add_resource = {
+					type = crystals
+					amount = 20
+				}
+			}
+		}
+	}
+	SOL_itzomitl_rubber_plantations = {
+
+		icon = rubber
+
+		allowed = {
+			original_tag = EQS
+		}
+		highlight_states = {
+			state = 352
+		}
+		available = {
+			has_tech = improved_rubber_processing 
+			352 = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		visible = {
+			has_country_flag = SOL_unlocked_new_resource_prospecting
+			352 = { is_owned_and_controlled_by = ROOT }
+			352 = {
+				NOT = {
+					has_state_flag = itzomitl_rubber_plantations
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 70
+		days_remove = 70
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				check_variable = { resource@rubber < 5 }
+				add = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOL_itzomitl_rubber_plantations"
+			352 = { set_state_flag = itzomitl_rubber_plantations }
+			352 = {
+				add_resource = {
+					type = rubber
+					amount = 22
+				}
+			}
+		}
+	}
+
 }
 
 SOL_spells_cancel = {

@@ -42,23 +42,11 @@ ideas = {
 				original_tag = EQS
 			}
 			visible = {
-				is_SOLAR_EMPIRE = no
+				is_SOLAR_EMPIRE = no	
 			}
 			available = {
+				is_SOLAR_EMPIRE = no
 				has_government = democratic
-				if = {
-					limit = { OR = { has_global_flag = SOL_twilight_converted is_SOLAR_EMPIRE = yes } }
-					NOT = { has_global_flag = SOL_twilight_converted }
-					hidden_trigger = { always = no }
-				}
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					NOT = {
-						event_target:solar_empire = {
-							has_country_flag = SOL_has_twilight
-						}
-					}
-				}
 				NOT = { AND = {
 					any_country_with_original_tag = {
 						original_tag_to_check = CRY
@@ -80,16 +68,11 @@ ideas = {
 				original_tag = EQS
 			}
 			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
+				is_SOLAR_EMPIRE = no
 			}
 			available = {
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
-				}
+				has_government = democratic
+				NOT = { has_country_leader = { ruling_only = yes name = "Fancy Pants"} }
 			}
 
 			traits = { captain_of_industry }
@@ -108,6 +91,10 @@ ideas = {
 				if = {
 					limit = { event_target:solar_empire = { exists = yes } }
 					tag = event_target:solar_empire
+				}
+				if = {
+					limit = { has_country_flag = SOL_purge_2 }
+					NOT = { has_country_flag = SOL_purge_2 }
 				}
 			}
 
@@ -136,10 +123,10 @@ ideas = {
 			}
 
 			available = {
-				NOT = { has_government = communism }
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					tag = event_target:solar_empire
+				OR = {
+					has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+					has_country_leader = { ruling_only = yes name = "Princesses Celestia and Luna" }
+					has_country_leader = { ruling_only = yes name = "Daybreaker" }
 				}
 				OR = {
 					is_SOLAR_EMPIRE = yes
@@ -239,6 +226,12 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
@@ -246,10 +239,6 @@ ideas = {
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
 					has_global_flag = EQS_completed_advisors
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
 				}
 			}
 
@@ -273,14 +262,7 @@ ideas = {
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_new_officers
-					}
-				}
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					tag = event_target:solar_empire
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 
@@ -303,14 +285,7 @@ ideas = {
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_new_officers
-					}
-				}
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					tag = event_target:solar_empire
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 
@@ -333,6 +308,12 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
@@ -357,9 +338,10 @@ ideas = {
 				original_tag = EQS
 			}
 			visible = {
-				is_SOLAR_EMPIRE = no
+				is_SOLAR_EMPIRE = no	
 			}
 			available = {
+				is_SOLAR_EMPIRE = no
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
@@ -367,10 +349,6 @@ ideas = {
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
 					has_global_flag = EQS_completed_advisors
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
 				}
 			}
 
@@ -393,16 +371,19 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_new_officers
-					}
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 			traits = { air_chief_reform_1 }
@@ -429,14 +410,7 @@ ideas = {
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_new_officers
-					}
-				}
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					tag = event_target:solar_empire
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 
@@ -459,6 +433,12 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
@@ -490,20 +470,19 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_new_officers
-					}
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 
@@ -526,16 +505,19 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_new_officers
-					}
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 			traits = { army_infantry_1 }
@@ -552,12 +534,10 @@ ideas = {
 				original_tag = EQS
 			}
 			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
+				is_SOLAR_EMPIRE = no
 			}
 			available = {
+				is_SOLAR_EMPIRE = no
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Advisors
@@ -565,10 +545,6 @@ ideas = {
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
 					has_global_flag = EQS_completed_advisors
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
 				}
 			}
 			traits = { army_armored_2 }
@@ -589,13 +565,14 @@ ideas = {
 				is_SOLAR_EMPIRE = no	
 			}
 			available = {
+				is_SOLAR_EMPIRE = no
 				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
+					limit = { is_original_EQS = yes }
+					has_completed_focus = Advisors
 				}
 				if = {
-					limit = { country_exists = NLR }
-					NOT = { has_global_flag = rarity_captured }
+					limit = { is_SOLAR_EMPIRE = yes }
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 
@@ -612,12 +589,6 @@ ideas = {
 			allowed = {
 				original_tag = EQS
 			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
 			available = {
 				if = {
 					limit = { is_original_EQS = yes }
@@ -625,14 +596,11 @@ ideas = {
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_advisors
-						has_completed_focus = SOL_air_force
-					}
+					has_global_flag = EQS_completed_advisors
 				}
 				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
+					limit = { has_country_flag = SOL_purge_3 }
+					NOT = { has_country_flag = SOL_purge_3 }
 				}
 			}
 			traits = { air_combat_academy }
@@ -649,13 +617,13 @@ ideas = {
 			}
 
 			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Hire_Generals
-				}
 				custom_trigger_tooltip = {
 					tooltip = HAS_UNIT_LEADER_SENTINEL
 					hidden_trigger = { has_unit_leader = 19 }
+				}
+				if = {
+					limit = { has_country_flag = SOL_purge_2 }
+					NOT = { has_country_flag = SOL_purge_2 }
 				}
 			}
 			traits = { army_regrouping_1 }
@@ -672,17 +640,13 @@ ideas = {
 			}
 
 			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Hire_Generals
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
-				}
 				custom_trigger_tooltip = {
 					tooltip = HAS_UNIT_LEADER_FIZZLEPOP
 					hidden_trigger = { has_unit_leader = 12 }
+				}
+				if = {
+					limit = { has_country_flag = SOL_purge_1 }
+					NOT = { has_country_flag = SOL_purge_1 }
 				}
 			}
 			traits = { army_chief_maneuver_1 }
@@ -706,17 +670,19 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Extreme_war_comittee
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_Extreme_war_comittee
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 			research_bonus = {
@@ -740,17 +706,19 @@ ideas = {
 				}	
 			}
 			available = {
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = SOL_harmonic_commanders_leave
+						has_country_flag = SOL_purge_finished
+					}	
+				}
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = Extreme_war_comittee
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_Extreme_war_comittee
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 			research_bonus = {
@@ -770,6 +738,7 @@ ideas = {
 				is_SOLAR_EMPIRE = no	
 			}
 			available = {
+				is_SOLAR_EMPIRE = no	
 				if = {
 					limit = { is_original_EQS = yes }
 					has_completed_focus = EQS_WMD
@@ -777,10 +746,6 @@ ideas = {
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
 					has_global_flag = EQS_completed_EQS_WMD
-				}
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
 				}
 			}
 			research_bonus = {
@@ -804,14 +769,7 @@ ideas = {
 				}
 				if = {
 					limit = { is_SOLAR_EMPIRE = yes }
-					OR = {
-						has_global_flag = EQS_completed_EQS_WMD
-						has_completed_focus = SOL_WMD
-					}
-				}
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					tag = event_target:solar_empire
+					has_global_flag = EQS_completed_advisors
 				}
 			}
 
@@ -837,6 +795,19 @@ ideas = {
 			allowed = {
 				original_tag = EQS
 			}
+			available = { 
+				NOT = {
+					has_country_flag = SOL_harmonic_commanders_leave
+					has_country_flag = SOL_purge_finished
+				}
+			}
+			visible = { 
+				NOT = {
+					has_country_flag = SOL_harmonic_commanders_leave
+					has_country_flag = SOL_purge_finished
+				}
+			}
+
 
 			research_bonus = {
 				armor = 0.12
@@ -852,8 +823,6 @@ ideas = {
 			}
 
 
-
-
 			research_bonus = {
 				armor = 0.10
 			}
@@ -864,7 +833,6 @@ ideas = {
 			}
 		}
 		sirius = {
-
 
 			allowed = {
 				original_tag = EQS
@@ -912,7 +880,18 @@ ideas = {
 				original_tag = EQS
 			}
 
-
+			available = { 
+				NOT = {
+					has_country_flag = SOL_harmonic_commanders_leave
+					has_country_flag = SOL_purge_finished
+				}
+			}
+			visible = { 
+				NOT = {
+					has_country_flag = SOL_harmonic_commanders_leave
+					has_country_flag = SOL_purge_finished
+				}
+			}
 			research_bonus = {
 				infantry_weapons = 0.10
 			}
@@ -971,6 +950,18 @@ ideas = {
 			allowed = {
 				original_tag = EQS
 			}
+			available = { 
+				NOT = {
+					has_country_flag = SOL_harmonic_commanders_leave
+					has_country_flag = SOL_purge_finished
+				}
+			}
+			visible = { 
+				NOT = {
+					has_country_flag = SOL_harmonic_commanders_leave
+					has_country_flag = SOL_purge_finished
+				}
+			}
 
 
 
@@ -993,7 +984,12 @@ ideas = {
 				original_tag = EQS
 			}
 
-
+			available = {
+				if = {
+					limit = { has_country_flag = SOL_purge_3 }
+					NOT = { has_country_flag = SOL_purge_3 }
+				}
+			}
 			research_bonus = {
 				air_equipment = 0.10
 			}

@@ -50,6 +50,7 @@ SOL_daybreaker_ascension = {
 				multiply_temp_variable = { sol_local_pop = -1 }
 				add_manpower = sol_local_pop
 				add_manpower = 1
+				set_variable = { sol_majority_race_id = 1 }
 				set_building_level = {
 					type = infrastructure
 					level = 0
@@ -215,16 +216,10 @@ SOL_daybreaker_ascension = {
 	SOL_remove_ideas = yes
 	every_state = {
 		limit = {
-			has_variable = SOL_public_works_region_id
-			NOT = { has_state_flag = SOL_wartorn_state }
-		}
-		set_state_flag =  SOL_wartorn_state
-	}
-	every_state = {
-		limit = {
 			AND = {
 				is_owned_by = STG
 				is_core_of = STG
+				check_variable = { SOL_public_works_region_id = 9 }
 			}
 		}
 		remove_core_of = EQS
@@ -267,9 +262,16 @@ SOL_daybreaker_ascension = {
 	calculate_initial_loyalty = yes
 	SOL_daybreaker_spawn_militias = yes
 	country_event = { id = paxsolaris.342 days = 3 }
+	set_variable = { var = sol_ascension_surrender_progress value = EQS.surrender_progress }
+	add_to_variable = { var = sol_ascension_surrender_progress value = 0.2 }
 }
 SOL_daybreaker_threatened = {
 	set_country_flag = sol_wartime_change
+	set_country_flag = {
+	    flag = sol_turning_the_tide
+	    days = 120
+	    value = 1
+	}
 	if = {
 		limit = {
 			OR = {
@@ -337,22 +339,18 @@ SOL_daybreaker_threatened = {
 		limit = {
 			any_country = {
 				has_war_with = EQS
-				OR = {
-					strength_ratio = {
-						tag = EQS
-						ratio > 0.8
-					}
+				strength_ratio = {
+					tag = EQS
+					ratio > 0.8
 				}
 			}
 		}
 		random_other_country = {
 			limit = {
 				has_war_with = EQS
-				OR = {
-					strength_ratio = {
-						tag = EQS
-						ratio > 0.8
-					}
+				strength_ratio = {
+					tag = EQS
+					ratio > 0.8
 				}
 			}
  			save_global_event_target_as = sol_defeated
@@ -463,11 +461,9 @@ SOL_daybreaker_threatened = {
 						has_border_war_with = EQS
 					}
 				}
-				OR = {
-					strength_ratio = {
-						tag = EQS
-						ratio > 0.8
-					}
+				strength_ratio = {
+					tag = EQS
+					ratio > 0.8
 				}
 			}
 		}
@@ -483,11 +479,9 @@ SOL_daybreaker_threatened = {
 						has_border_war_with = EQS
 					}
 				}
-				OR = {
-					strength_ratio = {
-						tag = EQS
-						ratio > 0.8
-					}
+				strength_ratio = {
+					tag = EQS
+					ratio > 0.8
 				}
 			}
  			save_global_event_target_as = sol_defeated
@@ -496,22 +490,11 @@ SOL_daybreaker_threatened = {
 	}
 	if = {
 		limit = { 
-			NOT = { 
-				STG = {
-					OR = {
-						is_justifying_wargoal_against = EQS
-						has_wargoal_against = EQS
-						has_war_with = EQS
-						AND = {
-							has_added_tension_amount > 10
-							is_on_equestrian_continent = yes
-							has_border_war_with = EQS
-						}
-					}
-				}
-				NLR = { exists = yes }
+			NOT = { STG = { has_war_with = EQS } }
+			any_state = {
+				check_variable = { SOL_public_works_region_id = 9 }
+				is_owned_by = EQS
 			}
-			has_war_with = STG
 		}
 		STG = { country_event = { id = paxsolaris.321 days = 1 } }
 	}
@@ -824,6 +807,15 @@ SOL_daybreaker_threatened = {
 			set_nationality = SOL
 		}
 	}
+	every_unit_leader = {
+		limit = {
+			OR = {
+				has_id = 5
+				has_id = 9
+			}
+		}
+		set_nationality = SOL
+	}
 }
 SOL_daybreaker_peaceful = {
 	set_country_flag = sol_load_peace_focus
@@ -831,6 +823,10 @@ SOL_daybreaker_peaceful = {
 	set_country_flag = SOL_harmonic_commanders_leave
 	add_ideas = SOL_civil_war
 	add_ideas = SOL_illegitimate_government
+	if = {
+		limit = { NOT = { has_completed_focus = Hire_Generals } }
+		EQS_create_new_commanders = yes
+	}
 	EQR = {
 		set_politics = { ruling_party = democratic }
 		save_global_event_target_as = equestria
@@ -1566,7 +1562,6 @@ SOL_daybreaker_peaceful = {
 					state = 49
 					state = 47
 					state = 14
-					state = 72
 					state = 45
 					state = 86
 					state = 15
@@ -1703,10 +1698,6 @@ SOL_daybreaker_peaceful = {
 					has_id = 10000
 					has_id = 73241
 					has_id = 15
-					has_trait = tinyman
-					has_trait = imbecile
-					has_id = 14
-					has_id = 10
 				}
 			}
 			set_nationality = SOL
@@ -2093,10 +2084,6 @@ calculate_initial_loyalty = {
 		}
 		set_variable = { var = daybreaker_support value = 45 }
 	}
-	if = {
-		limit = { has_offensive_war = yes }
-		add_to_variable = { var = daybreaker_support value = -10 } #Ponies will not support a warmonger
-	}
 	if = { 
 		limit = { any_enemy_country = { controls_state = 132 } EQS = { owns_state = 132 } } #Shire - More support if ponies feel threatened
 		add_to_variable = { var = daybreaker_support value = 2 }
@@ -2182,130 +2169,6 @@ calculate_initial_loyalty = {
 			is_under_threat = yes
 		} 
 		add_to_variable = { var = daybreaker_support value = 10 } #Ponies want more protection if they are being attacked
-
-		if = { #Ponies won't support extreme measures if they're already winning
-			limit = { has_defensive_war_with = CHN } #Less support if winning defensive war with Changelings
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 259 } EQS = { controls_state = 259 } } } #Vraks
-				add_to_variable = { var = daybreaker_support value = -3 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 251 } EQS = { controls_state = 251} } } #Vesalipolis
-				add_to_variable = { var = daybreaker_support value = -10 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 309 } EQS = { controls_state = 309} } } #Lyctida
-				add_to_variable = { var = daybreaker_support value = -3 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 252 } EQS = { controls_state = 252} } } #Ditrysium
-				add_to_variable = { var = daybreaker_support value = -3 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 262 } EQS = { controls_state = 262} } } #Soryth
-				add_to_variable = { var = daybreaker_support value = -3 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 316 } EQS = { controls_state = 316} } } #Volistad
-				add_to_variable = { var = daybreaker_support value = -3 }
-			}
-		}
-
-		if = {
-			limit = { has_defensive_war_with = STG } #Less support if winning defensive war with Stalliongrad
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 166 } EQS = { controls_state = 166 } } } #Petershoof
-				add_to_variable = { var = daybreaker_support value = -5 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 153 } EQS = { controls_state = 153 } } } #Stalliongrad
-				add_to_variable = { var = daybreaker_support value = -10 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 225 } EQS = { controls_state = 225 } } } #Konzan + Sladiky
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 233 } EQS = { controls_state = 233 } } } #Stavropon
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 332 } EQS = { controls_state = 332 } } } #Ravenskoye
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 235 } EQS = { controls_state = 235 } } } #Caramel Marks
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-		}
-
-		if = {
-			limit = { has_defensive_war_with = CRY } #Less support if winning defensive war with Crystal Empire
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 344 } EQS = { controls_state = 344 } } } #Crystal City
-				add_to_variable = { var = daybreaker_support value = -10 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 98 } EQS = { controls_state = 98 } } } #Rainbow Falls
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 324 } EQS = { controls_state = 324 } } } #Hedgewards
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 146 } EQS = { controls_state = 146 } } } #Ponytown
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 343 } EQS = { controls_state = 343 } } } #Evergreen
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 143 } EQS = { controls_state = 143 } } } #Quebuck
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 142 } EQS = { controls_state = 142 } } } #Snowybury
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-		}
-
-		if = {
-			limit = { has_defensive_war_with = NLR } #Less support if winning defensive war with Lunar Empire
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 75 } EQS = { controls_state = 75 } } } #Manehattan
-				add_to_variable = { var = daybreaker_support value = -10 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 106 } EQS = { controls_state = 106 } } } #Mareway
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 12 } EQS = { controls_state = 12 } } } #Fillydelphia
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 525 } EQS = { controls_state = 525 } } } #Albion
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 187 } EQS = { controls_state = 187 } } } #Bridlepolis
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 226 } EQS = { controls_state = 226 } } } #Stratusburg
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 349 } EQS = { controls_state = 349 } } } #Detrot
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-			if = {
-				limit = { OR = { any_allied_country = { controls_state = 231 } EQS = { controls_state = 231 } } } #Prance
-				add_to_variable = { var = daybreaker_support value = -1 }
-			}
-		}
 	}
 	clamp_variable = {
 		var = daybreaker_support
@@ -2315,4 +2178,20 @@ calculate_initial_loyalty = {
 	set_variable = { var = daybreaker_support_progress_bar_pos value = daybreaker_support }
 	multiply_variable = { var = daybreaker_support_progress_bar_pos value = 4 }
 	add_to_variable = { var = daybreaker_support_progress_bar_pos value = -400 }
+}
+SOL_luna_victory_effects = {
+	set_cosmetic_tag = EQS_DEM
+	kill_country_leader = yes
+	create_country_leader = {
+		name = "Princess Luna"
+		desc = "LUNA_DESC"
+		picture = GFX_LunaPortrait
+		expire = "1965.1.1"
+		ideology = alicornrule
+		traits = {
+			princess_of_ponies
+		}
+	}
+	add_stability = -0.1
+	remove_ideas = alicorn_sisters
 }

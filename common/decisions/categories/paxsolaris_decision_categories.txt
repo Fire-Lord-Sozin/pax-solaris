@@ -1,3 +1,30 @@
+SOL_securing_our_domain = {
+	allowed = {
+		original_tag = EQS
+	}
+	icon = GFX_decision_solar_unite_equestria
+	priority = {
+		base = 122
+	}
+	visible = {
+		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+	}
+	visible_when_empty = no
+}
+SOL_uniting_equestria = {
+	allowed = {
+		original_tag = EQS
+	}
+	icon = GFX_decision_solar_unite_equestria
+	priority = {
+		base = 121
+	}
+	visible = {
+		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+		has_country_flag = SOL_uniting_equestria_decision_unlock
+	}
+	visible_when_empty = no
+}
 SOL_resistance_menu = {
 	allowed = {
 		original_tag = EQS

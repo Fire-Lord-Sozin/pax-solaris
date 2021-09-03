@@ -1,4 +1,4 @@
-﻿defined_text = { # Loyalty to Daybreaker
+defined_text = { # Loyalty to Daybreaker
 	name = GetSolarLoyalty
 	text = {
 		trigger = {
@@ -127,6 +127,82 @@ defined_text = {
 			}
 		}
 		localization_key = daybreaker_support_daily_actions_positive
+	}
+}
+defined_text = {
+	name = SOL_daybreaker_support_daily_economic_laws
+	text = {
+		trigger = {
+			check_variable = { daybreaker_support_daily_economic_laws < 0 }
+		}
+		localization_key = daybreaker_support_daily_economic_laws_negative
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = daybreaker_support_daily_economic_laws
+				value = 0
+				compare = greater_than_or_equals 
+			}
+		}
+		localization_key = daybreaker_support_daily_economic_laws_positive
+	}
+}
+defined_text = {
+	name = SOL_daybreaker_support_daily_trade_laws
+	text = {
+		trigger = {
+			check_variable = { daybreaker_support_daily_trade_laws < 0 }
+		}
+		localization_key = daybreaker_support_daily_trade_laws_negative
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = daybreaker_support_daily_trade_laws
+				value = 0
+				compare = greater_than_or_equals 
+			}
+		}
+		localization_key = daybreaker_support_daily_trade_laws_positive
+	}
+}
+defined_text = {
+	name = SOL_daybreaker_support_daily_conscription_laws
+	text = {
+		trigger = {
+			check_variable = { daybreaker_support_daily_conscription_laws < 0 }
+		}
+		localization_key = daybreaker_support_daily_conscription_laws_negative
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = daybreaker_support_daily_conscription_laws
+				value = 0
+				compare = greater_than_or_equals 
+			}
+		}
+		localization_key = daybreaker_support_daily_conscription_laws_positive
+	}
+}
+defined_text = {
+	name = SOL_daybreaker_support_daily_laws
+	text = {
+		trigger = {
+			check_variable = { daybreaker_support_daily_laws < 0 }
+		}
+		localization_key = daybreaker_support_daily_laws_negative
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = daybreaker_support_daily_laws
+				value = 0
+				compare = greater_than_or_equals 
+			}
+		}
+		localization_key = daybreaker_support_daily_laws_positive
 	}
 }
 defined_text = {
@@ -437,6 +513,22 @@ defined_text = {
 	}
 	text = {
 		localization_key = decision_cost_cp_10_blocked
+	}
+}
+defined_text = {
+	name = GetDecisionCostPP20
+	text = {
+		trigger = {
+			check_variable = {
+				var = political_power
+				value = 20
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = decision_cost_pp_20
+	}
+	text = {
+		localization_key = decision_cost_pp_20_blocked
 	}
 }
 defined_text = {
@@ -1195,7 +1287,7 @@ defined_text = {
 	name = SOL_uprising_outcome
 	text = {
 		trigger = {
-			EQS = { has_tech = CHN_armoured_trains }
+			has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus }
 		}
 		localization_key = SOL_uprising_outcome_trains
 	}
@@ -2257,6 +2349,12 @@ defined_text = {
 		}
 		localization_key = sol_alert_title_nuke
 	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_title_var = 5 }
+		}
+		localization_key = sol_alert_title_public_work
+	}
 }
 
 defined_text = {
@@ -2327,7 +2425,57 @@ defined_text = {
 		}
 		localization_key = sol_nuke_alert
 	}
+	text = {
+		trigger = {
+			check_variable = { sol_alert_desc_var = 12 }
+		}
+		localization_key = sol_public_work_desc
+	}
 }
+defined_text = {
+	name = alert_region_name
+	text = {
+		trigger = { check_variable = { alert_region = 1 } }
+		localization_key = public_works_getname1
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 2 } }
+		localization_key = public_works_getname2
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 3 } }
+		localization_key = public_works_getname3
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 4 } }
+		localization_key = public_works_getname4
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 5 } }
+		localization_key = public_works_getname5
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 6 } }
+		localization_key = public_works_getname6
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 7 } }
+		localization_key = public_works_getname7
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 8 } }
+		localization_key = public_works_getname8
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 9 } }
+		localization_key = public_works_getname9
+	}
+	text = {
+		trigger = { check_variable = { alert_region = 10 } }
+		localization_key = public_works_getname10
+	}
+}
+
 
 defined_text = {
 	name = sol_resistance_alert_description_text_outcome
@@ -2553,6 +2701,18 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = SOL_infrastructure_hardening_public_works
+	text = {
+		trigger = {
+			NOT = { check_variable = { SOL_public_works_region_development_infrastructure_hardening^currently_selected_region = 0 } }
+		}
+		localization_key = SOL_infrastructure_hardening_public_works_yes
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
 	name = SOL_foreign_public_works
 	text = {
 		trigger = {
@@ -2638,6 +2798,9 @@ defined_text = {
 			NOT = {
 				OR = {
 					is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+					is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+					is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+					is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
 				}
 			}
 		}
@@ -2662,6 +2825,52 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = urban_planning_available_triggers_completed
+	text = {
+		trigger = {
+			NOT = {
+				is_in_array = { SOL_completed_urban_planning = currently_selected_region }
+			}
+		}
+		localization_key = urban_planning_available_triggers_completed_met
+	}
+	text = { 
+		localization_key = urban_planning_available_triggers_completed_unmet
+	}
+}
+defined_text = {
+	name = agmech_available_triggers_completed
+	text = {
+		trigger = {
+			NOT = {
+				is_in_array = { SOL_completed_agmech = currently_selected_region }
+			}
+		}
+		localization_key = agmech_available_triggers_completed_met
+	}
+	text = { 
+		localization_key = agmech_available_triggers_completed_unmet
+	}
+}
+defined_text = {
+	name = infrastructure_hardening_available_triggers_completed
+	text = {
+		trigger = {
+			any_state = {
+				AND = {
+					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+					NOT = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } }
+					is_controlled_by = EQS
+				}
+			}
+		}
+		localization_key = infrastructure_hardening_available_triggers_completed_met
+	}
+	text = { 
+		localization_key = infrastructure_hardening_available_triggers_completed_unmet
+	}
+}
+defined_text = {
 	name = public_work_available_triggers_war
 	text = {
 		trigger = {
@@ -2676,11 +2885,58 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = public_work_available_triggers_strikes
+	text = {
+		trigger = {
+			has_idea = SOL_worker_strikes
+		}
+		localization_key = public_work_available_triggers_strikes_unmet
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
 	name = public_work_available_triggers_factories
 	text = {
 		trigger = {
-			check_variable = { SOL_dynamic_modifier_civ_use_total < 1 }
-			num_of_available_civilian_factories > 5
+			check_variable = { SOL_public_works_industry_use_after < 1 }
+		}
+		localization_key = public_work_available_triggers_factories_met
+	}
+	text = { 
+		localization_key = public_work_available_triggers_factories_unmet
+	}
+}
+defined_text = {
+	name = urban_planning_available_triggers_factories
+	text = {
+		trigger = {
+			check_variable = { SOL_urban_planning_industry_use_after < 1 }
+		}
+		localization_key = public_work_available_triggers_factories_met
+	}
+	text = { 
+		localization_key = public_work_available_triggers_factories_unmet
+	}
+}
+defined_text = {
+	name = agmech_available_triggers_factories
+	text = {
+		trigger = {
+			check_variable = { SOL_agmech_industry_use_after < 1 }
+		}
+		localization_key = public_work_available_triggers_factories_met
+	}
+	text = { 
+		localization_key = public_work_available_triggers_factories_unmet
+	}
+}
+defined_text = {
+	name = infrastructure_hardening_available_triggers_factories
+	text = {
+		trigger = {
+			check_variable = { SOL_infrastructure_hardening_industry_use_after < 1 }
 		}
 		localization_key = public_work_available_triggers_factories_met
 	}
@@ -2697,6 +2953,24 @@ defined_text = {
 		localization_key = SOL_infrastructure_improvement_text_tt
 	}
 	text = {
+		trigger = {
+			is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+		}
+		localization_key = SOL_urban_planning_text_tt
+	}
+	text = {
+		trigger = {
+			is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+		}
+		localization_key = SOL_agmech_text_tt
+	}
+	text = {
+		trigger = {
+			is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+		}
+		localization_key = SOL_infrastructure_hardening_text_tt
+	}
+	text = {
 		localization_key = SOL_no_ongoing_public_works
 	}
 }
@@ -2705,25 +2979,46 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				any_state = {
-					AND = {
-						check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-						NOT = { is_controlled_by = event_target:solar_empire }
+				AND = {
+					OR = {
+						any_state = {
+							AND = {
+								check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+								NOT = { is_controlled_by = event_target:solar_empire }
+							}
+						}
+						has_war = yes
+					}
+					OR = {
+						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
 					}
 				}
-				has_war = yes
+				AND = {
+					has_idea = SOL_worker_strikes
+					OR = {
+						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+						is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+					}
+				}
 			}
-			OR = {
-				is_in_array = { SOL_ongoing_public_works = currently_selected_region }
-			}
+			
 		}
 		localization_key = SOL_days_remaining_on_hold
 	}
 	text = {
 		trigger = {
-			is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+			OR = {
+				is_in_array = { SOL_ongoing_public_works = currently_selected_region }
+				is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
+				is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+				is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+			}
 		}
-		localization_key = SOL_days_remaining_infrastructure_improvement
+		localization_key = SOL_days_remaining_yes
 	}
 	text = {
 		localization_key = SOL_public_works_no
@@ -2809,5 +3104,267 @@ defined_text = {
 	text = {
 		trigger = { has_country_flag = SOL_buffalo_problems_flag_genocide }
 		localization_key = cohesion_event_2_desc_3
+	}
+}
+defined_text = {
+	name = SOL_state_decision_menu_active 
+	text = {
+		trigger = { 
+			EQS = { 
+				NOT = { has_variable = sol_display_state_decisions } 
+			} 
+		}
+		localization_key = SOL_state_decision_menu_button_tt_enable
+	}
+	text = {
+		localization_key = SOL_state_decision_menu_button_tt_disable
+	}
+}
+defined_text = {
+	name = SOL_state_type 
+	text = {
+		trigger = {
+			THIS = {
+				has_dynamic_modifier = { modifier = SOL_native_reservations }
+			}
+		}
+		localization_key = SOL_state_type_segregated
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_dynamic_modifier = { modifier = SOL_policed_ghettos }
+			}
+		}
+		localization_key = SOL_state_type_policed
+	}
+	text = {
+		trigger = {
+			THIS = {
+				is_core_of = EQS
+				is_owned_by = EQS
+				has_variable = SOL_public_works_region_id 
+				NOT = { state = 17 }
+				NOT = { state = 78 }
+				NOT = { state = 89 }
+			}
+		}
+		localization_key = SOL_state_type_integral_core
+	}
+	text = {
+		trigger = {
+			THIS = {
+				is_core_of = EQS
+				is_owned_by = EQS
+			}
+		}
+		localization_key = SOL_state_type_core
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_dynamic_modifier = { modifier = SOL_genocide }
+			}
+		}
+		localization_key = SOL_state_type_purification
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					has_dynamic_modifier = { modifier = SOL_pony_settlement }
+				}
+			}
+		}
+		localization_key = SOL_state_type_settled
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_state_flag = SOL_completed_genocide
+			}
+		}
+		localization_key = SOL_state_type_depopulated
+	}
+	text = {
+		trigger = {
+			THIS = {
+				is_owned_by = EQS
+			}
+		}
+		localization_key = SOL_state_type_occupied
+	}
+	text = {
+		localization_key = SOL_state_nothing
+	}
+}
+defined_text = {
+	name = SOL_state_type_compliance_base
+	text = {
+		trigger = {
+			THIS = { has_variable = sol_compliance_base }
+		}
+		localization_key = SOL_state_type_compliance_base_yes
+	}
+	text = {
+		localization_key = SOL_state_nothing
+	}
+}
+defined_text = {
+	name = SOL_state_type_compliance_limit
+	text = {
+		trigger = {
+			THIS = { has_variable = sol_compliance_limit }
+		}
+		localization_key = SOL_state_type_compliance_limit_yes
+	}
+	text = {
+		localization_key = SOL_state_nothing
+	}
+}
+defined_text = {
+	name = SOL_state_type_compliance_to_core
+	text = {
+		trigger = {
+			THIS = { has_variable = sol_compliance_to_core }
+		}
+		localization_key = SOL_state_type_compliance_to_core_yes
+	}
+	text = {
+		localization_key = SOL_state_nothing
+	}
+}
+defined_text = {
+	name = SOL_state_race
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 1 } }
+		localization_key = SOL_state_race_1
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 2 } }
+		localization_key = SOL_state_race_2
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 3 } }
+		localization_key = SOL_state_race_3
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 4 } }
+		localization_key = SOL_state_race_4
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 5 } }
+		localization_key = SOL_state_race_5
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 6 } }
+		localization_key = SOL_state_race_6
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 7 } }
+		localization_key = SOL_state_race_7
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 8 } }
+		localization_key = SOL_state_race_8
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 9 } }
+		localization_key = SOL_state_race_9
+	}
+	text = {
+		trigger = { check_variable = { sol_majority_race_id = 10 } }
+		localization_key = SOL_state_race_10
+	}
+	text = {
+		localization_key = SOL_state_race_other
+	}
+}
+defined_text = {
+	name = SOL_develop_settler_colony_requirement_owned_controlled
+	text = {
+		trigger = {
+			THIS = { is_owned_and_controlled_by = EQS }
+		}
+		localization_key = SOL_develop_settler_colony_requirement_owned_controlled_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_owned_controlled_unmet
+	}
+}
+defined_text = {
+	name = SOL_develop_settler_colony_requirement_core
+	text = {
+		trigger = {
+			THIS = { NOT = { is_core_of = EQS } }
+		}
+		localization_key = SOL_develop_settler_colony_requirement_core_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_core_unmet
+	}
+}
+defined_text = {
+	name = SOL_develop_settler_colony_requirement_no_colony
+	text = {
+		trigger = {
+			THIS = { 
+				NOT = {
+					has_variable = SOL_develop_settler_colony_civ_fac_use
+					OR = {
+						has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+						has_dynamic_modifier = { modifier = SOL_pony_settlement }
+						has_dynamic_modifier = { modifier = SOL_settler_colonies }
+					}
+				} 
+			}
+		}
+		localization_key = SOL_develop_settler_colony_requirement_no_colony_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_no_colony_unmet
+	}
+}
+defined_text = {
+	name = SOL_develop_settler_colony_requirement_factories_available
+	text = {
+		trigger = {
+			THIS = { 
+				set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
+				multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.005 }
+				add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
+				round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
+				meta_trigger = {
+					text = {
+						check_variable = {
+							var = EQS.num_of_civilian_factories_available_for_projects
+							value = [SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP]
+							compare = greater_than_or_equals
+						}
+					}
+					SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP = SOL_develop_settler_colony_civ_fac_use_temp
+				}
+			}
+		}
+		localization_key = SOL_develop_settler_colony_requirement_factories_available_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_factories_available_unmet
+	}
+}
+defined_text = {
+	name = SOL_twilight_sparkle_stats
+	text = {
+		trigger = {
+			has_idea = sol_sunrise_sparkle
+		}
+		localization_key = SOL_twilight_sparkle_stats_full
+	}
+	text = {
+		trigger = {
+			has_idea = sol_sunrise_sparkle_dulled
+		}
+		localization_key = SOL_twilight_sparkle_stats_dulled
 	}
 }

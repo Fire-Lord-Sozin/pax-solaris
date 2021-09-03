@@ -899,6 +899,13 @@ SOL_coalition_menu = {
 				tooltip = no_current_support
 				NOT = { has_global_flag = coalition_in_progress_support }
 			}
+			custom_trigger_tooltip = { 
+				tooltip = resistance_can_accept
+				EQS = {
+					check_variable = { resistance_attack_blocked > 0 }
+					has_country_flag = resistance_ceasefire
+				}
+			}
 		}
 		fire_only_once = no
 		days_re_enable = 60

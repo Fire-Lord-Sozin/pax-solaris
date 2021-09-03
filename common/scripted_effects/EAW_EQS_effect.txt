@@ -1464,13 +1464,16 @@ EQS_NLR_civil_war = {
 	#}
 	#log = "EQS NLR civil war size: [?civil_war_size]"
 	#clear_variable = civil_war_size
-	create_country_leader = {
-		name = "Chancellor Neighsay"
-		expire = "1965.1.1"
-		picture = "Naysay.tga"
-		desc = "CHANCELLOR_NEIGHSAY_DESC"
-		ideology = fascism_ideology
-		traits = {
+	if = {
+		limit = { NOT = { has_government = fascism } }
+		create_country_leader = {
+			name = "Chancellor Neighsay"
+			expire = "1965.1.1"
+			picture = "Naysay.tga"
+			desc = "CHANCELLOR_NEIGHSAY_DESC"
+			ideology = fascism_ideology
+			traits = {
+			}
 		}
 	}
 	remove_ideas = alicorn_sisters

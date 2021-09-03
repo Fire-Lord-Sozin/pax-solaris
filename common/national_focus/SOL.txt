@@ -42,4 +42,5 @@ focus_tree = {
 	shared_focus = SOL_all_hail_the_sun_empress
 	shared_focus = SOL_solar_economy
 	shared_focus = SOL_united_under_the_sun
+	shared_focus = SOL_the_fate_of_the_changelings
 }

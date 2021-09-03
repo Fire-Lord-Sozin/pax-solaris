@@ -8,6 +8,16 @@ is_SOLAR_EMPIRE = {
 		}
 	}
 }
+is_solar_breakaway = {
+	OR = {
+		tag = HRM
+	}
+}
+has_solar_resistance = {
+	OR = {
+		tag = HRM
+	}
+}
 is_under_threat = {
 	custom_trigger_tooltip = {
 		tooltip = is_under_threat_tt
@@ -272,4 +282,23 @@ low_resistance_strength = {
 	check_variable = { solar_military_support > 2 } 
 	check_variable = { solar_resistance_strength < 4 }
 	check_variable = { solar_resistance_outreach_strength < 4 } 
+}
+is_solar_core = {
+	OR = {
+		original_tag = NLR
+		original_tag = NMS
+		original_tag = CES
+		original_tag = JUN
+		original_tag = BAL
+		original_tag = VAN
+		original_tag = SCS
+		original_tag = LSP
+		original_tag = ZRS
+		original_tag = EQR
+		original_tag = BUF
+		original_tag = CRY
+		original_tag = STG
+
+		original_tag = HRM
+	}
 }

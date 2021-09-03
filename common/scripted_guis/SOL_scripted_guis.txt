@@ -43,526 +43,193 @@ scripted_gui = {
 			has_completed_focus = SOL_Imperial_Inquisition
 		}
 	}
+	SOL_heart_of_an_empire_gui = {
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		
+		window_name = "SOL_heart_of_an_empire_container"
+		
+		visible = {
+			ROOT = {
+				original_tag = EQS
+			}
+			THIS = {
+				has_dynamic_modifier = { modifier = SOL_heart_of_an_empire }
+			}
+		}
+	}
 
-	SOL_state_action_category_wrath_gui = {
+	SOL_mobile_task_force_gui = {
+		window_name = "SOL_mobile_task_force"
 		context_type = selected_state_context
 		parent_window_token = selected_state_view
-		
-		visible = {
-			ROOT = {
-				original_tag = EQS
-				has_completed_focus = SOL_Imperium_Solis
-				OR = {
-					check_variable = { sol_magic_currently_selected_spell = 1 }
-				}
-			}
-		}
-		
-		window_name = "SOL_state_action_category_container_wrath"
-	}
-	SOL_state_action_category_country_wrath_gui = {
-		context_type = selected_country_context
-		parent_window_token = selected_state_view
-		
-		visible = {
-			ROOT = {
-				original_tag = EQS
-				has_completed_focus = SOL_Imperium_Solis
-				OR = {
-					check_variable = { sol_magic_currently_selected_spell = 2 }
-					check_variable = { sol_magic_currently_selected_spell = 3 }
-				}
-			}
-		}
-		
-		window_name = "SOL_state_action_category_container_country_wrath"
-	}
-	SOL_state_action_category_mtf_gui = {
-		context_type = selected_state_context
-		parent_window_token = selected_state_view
-		
+		dirty = EQS.sol_display_state_decisions
 		visible = {
 			ROOT = {
 				original_tag = EQS
 				has_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
-			}
-		}
-		
-		window_name = "SOL_state_action_category_container_mtf"
-	}
-
-	SOL_mobile_task_force_clickable_gui = {
-		context_type = selected_state_context
-		parent_window_token = selected_state_view
-		
-		visible = {
-			ROOT = {
-				original_tag = EQS 
-				has_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
-				NOT = { has_country_flag = SOL_recall_pegasi_decision_in_progress_flag }
-				check_variable = {
-					var = command_power
-					value = 10
-					compare = greater_than_or_equals
-				}
-				check_variable = {
-					var = SOL_mobile_task_force_in_reserve_var
-					value = 0
-					compare = greater_than
-				}
-			}
-			THIS = {
-				NOT = { has_variable = SOL_mobile_task_force_deployed_var }
-				controller = {
-					OR = {
-						is_SOLAR_EMPIRE = yes
-						is_subject_of = EQS
-						is_in_faction_with = EQS
-					}
-				}
-			}
-		}
-		
-		window_name = "SOL_mobile_task_force_button_clickable_window"
-		
-		effects = {
-			SOL_mobile_task_force_button_click = {
-				hidden_effect = {
-					ROOT = {
-						add_command_power = -10
-						add_to_variable = { SOL_mobile_task_force_deployed_var = 1 } 
-						subtract_from_variable = { SOL_mobile_task_force_in_reserve_var = 2 }
-					}
-					THIS = {
-						if = {
-							limit = {
-								EQS = { check_variable = { solar_military_support = 5 } }
-							}
-							if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 1 }
-									}
-								}
-								create_unit = { division = "name = \"IST-1 'Firebolts'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-								create_unit = { division = "name = \"IST-2 'Sunrise'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 2 }
-									}
-								}
-								create_unit = { division = "name = \"IST-3 'Dawnbreak'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-								create_unit = { division = "name = \"IST-4 'Right Hoof'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 3 }
-									}
-								}
-								create_unit = { division = "name = \"IST-5 'Infernos'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-								create_unit = { division = "name = \"IST-6 'The Enforcers'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 4 }
-									}
-								}
-								create_unit = { division = "name = \"IST-7 'Chromosphere'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-								create_unit = { division = "name = \"IST-8 'Zealots'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-							}
-							else_if = {
-								limit = { 
-									EQS = {
-										check_variable = { SOL_mobile_task_force_deployed_var = 5 }
-									}
-								}
-								create_unit = { division = "name = \"IST-9 'The Faithful'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-								create_unit = { division = "name = \"IST-10 'Midnight Sun'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
-							}
-						}
-						else = {
-							set_variable = { SOL_mobile_task_force_deployed_var = EQS.SOL_mobile_task_force_deployed_var }
-							EQS = {
-								set_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3.distance_to@PREV }
-								divide_variable = { SOL_dispatched_mtf_state_decision_duration_var = 100 }
-								if = {
-									limit = { check_variable = { solar_military_support = 0 } }
-									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 7 }
-								}
-								else_if = {
-									limit = { check_variable = { solar_military_support = 1 } }
-									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 5 }
-								}
-								else_if = {
-									limit = { check_variable = { solar_military_support = 2 } }
-									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3 }
-								}
-								else_if = {
-									limit = { check_variable = { solar_military_support = 3 } }
-									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 2 }
-								}
-								else_if = {
-									limit = { check_variable = { solar_military_support = 4 } }
-									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
-								}
-								else_if = {
-									limit = { check_variable = { solar_military_support = 5 } }
-									add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
-								}
-								activate_targeted_decision = { target = PREV decision = SOL_dispatch_pegasi_decision }
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	SOL_wrath_of_the_sun_clickable_gui = {
-		context_type = selected_state_context
-		parent_window_token = selected_state_view
-		ai_enabled = {
-			always = no
-		}
-		visible = {
-			ROOT = {
-				original_tag = EQS 
-				has_completed_focus = SOL_Imperium_Solis
-				OR = {
-					AND = {
-						check_variable = { sol_magic_currently_selected_spell = 1 }
-						check_variable = { 
-							var = daybreaker_magic_reserves 
-							value = sol_heatwave_cost
-							compare = greater_than_or_equals
-						}
-					}
-					AND = {
-						check_variable = { sol_magic_currently_selected_spell = 4 }
-					}
-				}
-			}
-			THIS = {
-				NOT = {
-					AND = {
-						has_state_flag = SOL_state_has_spell_heatwave
-						ROOT = { check_variable = { sol_magic_currently_selected_spell = 1 } }
-					}
-				}
-			}
-		}
-		
-		window_name = "SOL_wrath_of_the_sun_button_clickable_window"
-		
-		effects = {
-			SOL_wrath_of_the_sun_button_click = {
-				hidden_effect = {
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 1 } }
-						}
-						THIS = {
-							set_state_flag = SOL_state_has_spell_heatwave
-							add_province_modifier = {
-								static_modifiers = {
-									SOL_heatwave_effect
-								}
-								province = {
-									all_provinces = yes
-								}
-							}
-							add_dynamic_modifier = { modifier = SOL_dynamic_heatwave_effect }
-						}
-						EQS = {
-							subtract_from_variable = { var = daybreaker_magic_reserves value = sol_heatwave_cost }
-							add_to_variable = { var = sol_heatwave_number value = 1 }
-							SOL_calculate_magic = yes
-						}
-						sound_effect = "sol_fire_ev"
-					}
-				}
-			}
-		}
-	}
-	SOL_wrath_of_the_sun_cancel_clickable_gui = {
-		context_type = selected_state_context
-		parent_window_token = selected_state_view
-		
-		visible = {
-			ROOT = {
-				original_tag = EQS 
-				has_completed_focus = SOL_Imperium_Solis
-				OR = {
-					check_variable = { sol_magic_currently_selected_spell = 1 }
-				}
-			}
-			THIS = {
-				OR = {
-					AND = {
-						has_state_flag = SOL_state_has_spell_heatwave
-						ROOT = { check_variable = { sol_magic_currently_selected_spell = 1 } }
-					}
-				}
-			}
-		}
-		
-		window_name = "SOL_wrath_of_the_sun_cancel_button_clickable_window"
-		
-		effects = {
-			SOL_wrath_of_the_sun_cancel_button_click = {
-				hidden_effect = {
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 1 } }
-						}
-						THIS = {
-							clr_state_flag = SOL_state_has_spell_heatwave
-							remove_dynamic_modifier = { modifier = SOL_dynamic_heatwave_effect }
-							remove_province_modifier = {
-								static_modifiers = {
-									SOL_heatwave_effect
-								}
-								province = {
-									all_provinces = yes
-								}
-							}
-						}
-						EQS = {
-							add_to_variable = { var = sol_heatwave_number value = -1 }
-							SOL_calculate_magic = yes
-						}
-					}
-				}
-			}
-		}
-	}
-
-	SOL_wrath_of_the_sun_country_clickable_gui = {
-		context_type = selected_country_context
-		parent_window_token = selected_state_view
-		ai_enabled = {
-			always = no
-		}
-		visible = {
-			ROOT = {
-				original_tag = EQS 
-				has_completed_focus = SOL_Imperium_Solis
-				OR = {
-					AND = {
-						check_variable = { sol_magic_currently_selected_spell = 2 }
-						check_variable = { 
-							var = daybreaker_magic_reserves 
-							value = sol_blessing_cost
-							compare = greater_than_or_equals
-						}
-					}
-					AND = {
-						check_variable = { sol_magic_currently_selected_spell = 3 }
-						check_variable = { 
-							var = daybreaker_magic_reserves 
-							value = sol_curse_cost
-							compare = greater_than_or_equals
-						}
-					}
-				}
-			}
-			THIS = {
-				NOT = {
-					AND = {
-						has_idea = SOL_blessing_of_day_idea
-						ROOT = { check_variable = { sol_magic_currently_selected_spell = 2 } }
-					}
-					AND = {
-						has_idea = SOL_curse_of_day_idea
-						ROOT = { check_variable = { sol_magic_currently_selected_spell = 3 } }
-					}
-				}
-			}
-		}
-		
-		window_name = "SOL_wrath_of_the_sun_button_country_clickable_window"
-		
-		effects = {
-			SOL_wrath_of_the_sun_country_button_click = {
-				hidden_effect = {
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 2 } }
-						}
-						THIS = {
-							add_ideas = SOL_blessing_of_day_idea
-						}
-						sound_effect = "sol_blessing_ev"
-						EQS = {
-							subtract_from_variable = { var = daybreaker_magic_reserves value = sol_blessing_cost }
-							add_to_variable = { var = sol_blessing_number value = 1 }
-							SOL_calculate_magic = yes
-						}
-					}
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 3 } }
-						}
-						THIS = {
-							add_ideas = SOL_curse_of_day_idea
-						}
-						sound_effect = "sol_curse_ev"
-						EQS = {
-							subtract_from_variable = { var = daybreaker_magic_reserves value = sol_curse_cost }
-							add_to_variable = { var = sol_curse_number value = 1 }
-							SOL_calculate_magic = yes
-						}
-					}
-				}
-			}
-		}
-	}
-	SOL_wrath_of_the_sun_cancel_country_clickable_gui = {
-		context_type = selected_country_context
-		parent_window_token = selected_state_view
-		
-		visible = {
-			ROOT = {
-				original_tag = EQS 
-				has_completed_focus = SOL_Imperium_Solis
-				OR = {
-					check_variable = { sol_magic_currently_selected_spell = 2 }
-					check_variable = { sol_magic_currently_selected_spell = 3 }
-				}
-			}
-			THIS = {
-				OR = {
-					AND = {
-						has_idea = SOL_blessing_of_day_idea
-						ROOT = { check_variable = { sol_magic_currently_selected_spell = 2 } }
-					}
-					AND = {
-						has_idea = SOL_curse_of_day_idea
-						ROOT = { check_variable = { sol_magic_currently_selected_spell = 3 } }
-					}
-				}
-			}
-		}
-		
-		window_name = "SOL_wrath_of_the_sun_cancel_button_country_clickable_window"
-		
-		effects = {
-			SOL_wrath_of_the_sun_cancel_country_button_click = {
-				hidden_effect = {
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 2 } }
-						}
-						THIS = {
-							remove_ideas = SOL_blessing_of_day_idea
-						}
-						EQS = {
-							add_to_variable = { var = sol_blessing_number value = -1 }
-							SOL_calculate_magic = yes
-						}
-					}
-					if = {
-						limit = {
-							ROOT = { check_variable = { sol_magic_currently_selected_spell = 3 } }
-						}
-						THIS = {
-							remove_ideas = SOL_curse_of_day_idea
-						}
-						EQS = {
-							add_to_variable = { var = sol_curse_number value = -1 }
-							SOL_calculate_magic = yes
-						}
-					}
-				}
-			}
-		}
-	}
-
-	magic_start_clickable_gui = {
-		window_name = "magic_start_container"
-		context_type = player_context
-		visible = {
-			original_tag = EQS 
-			has_completed_focus = SOL_Imperium_Solis
-		}
-		effects = {
-			magic_start_bg_click = {
-				set_variable = {
-					sol_magic_screen_show = 1
-				}
-				hidden_effect = { 
-					SOL_calculate_magic = yes
-				}
-			}
-		}
-	}
-	sol_magic_info_window_gui = {
-		window_name = "sol_magic_info_window"
-		dirty = sol_magic_screen_show
-		context_type = player_context
-		visible = {
-			has_variable = sol_magic_screen_show
-			original_tag = EQS 
-			has_completed_focus = SOL_Imperium_Solis
-		}
-		effects = {
-			sol_magic_close_button_click = {
-				clear_variable = sol_magic_screen_show
-			}
-			SOL_heatwave_button_click = {
-				set_variable = { var = sol_magic_currently_selected_spell value = 1 }
-			}
-			SOL_blessing_button_click = {
-				set_variable = { var = sol_magic_currently_selected_spell value = 2 }
-			}
-			SOL_curse_button_click = {
-				set_variable = { var = sol_magic_currently_selected_spell value = 3 }
+				has_variable = sol_display_state_decisions
 			}
 		}
 		properties = {
-			magic_reserves = {
-				y = var:daybreaker_magic_progress_bar_pos
+			SOL_mobile_task_force_button_fake = {
+				y = var:EQS.SOL_mobile_task_force_pos
+			}
+			SOL_mobile_task_force_button = {
+				y = var:EQS.SOL_mobile_task_force_pos
+			}
+		}
+		triggers = {
+			SOL_mobile_task_force_button_visible = {
+				ROOT = {
+					NOT = { has_country_flag = SOL_recall_pegasi_decision_in_progress_flag }
+					check_variable = {
+						var = command_power
+						value = 10
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SOL_mobile_task_force_in_reserve_var
+						value = 0
+						compare = greater_than
+					}
+				}
+				THIS = {
+					NOT = { has_variable = SOL_mobile_task_force_deployed_var }
+					controller = {
+						OR = {
+							is_SOLAR_EMPIRE = yes
+							is_subject_of = EQS
+							is_in_faction_with = EQS
+						}
+					}
+				}
+			}
+		}
+		effects = {
+			SOL_mobile_task_force_button_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							ROOT = {
+								NOT = { has_country_flag = SOL_recall_pegasi_decision_in_progress_flag }
+								check_variable = {
+									var = command_power
+									value = 10
+									compare = greater_than_or_equals
+								}
+								check_variable = {
+									var = SOL_mobile_task_force_in_reserve_var
+									value = 0
+									compare = greater_than
+								}
+							}
+							THIS = {
+								NOT = { has_variable = SOL_mobile_task_force_deployed_var }
+								controller = {
+									OR = {
+										is_SOLAR_EMPIRE = yes
+										is_subject_of = EQS
+										is_in_faction_with = EQS
+									}
+								}
+							}
+						}
+						ROOT = {
+							add_command_power = -10
+							add_to_variable = { SOL_mobile_task_force_deployed_var = 1 } 
+							subtract_from_variable = { SOL_mobile_task_force_in_reserve_var = 2 }
+							add_to_variable = { var = sol_display_state_decisions value = 1 }
+						}
+						THIS = {
+							if = {
+								limit = {
+									EQS = { check_variable = { solar_military_support = 5 } }
+								}
+								if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_mobile_task_force_deployed_var = 1 }
+										}
+									}
+									create_unit = { division = "name = \"IST-1 'Firebolts'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"IST-2 'Sunrise'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_mobile_task_force_deployed_var = 2 }
+										}
+									}
+									create_unit = { division = "name = \"IST-3 'Dawnbreak'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"IST-4 'Right Hoof'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_mobile_task_force_deployed_var = 3 }
+										}
+									}
+									create_unit = { division = "name = \"IST-5 'Infernos'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"IST-6 'The Enforcers'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_mobile_task_force_deployed_var = 4 }
+										}
+									}
+									create_unit = { division = "name = \"IST-7 'Chromosphere'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"IST-8 'Zealots'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_mobile_task_force_deployed_var = 5 }
+										}
+									}
+									create_unit = { division = "name = \"IST-9 'The Faithful'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"IST-10 'Midnight Sun'\" division_template = \"Inquisitorial Strike Team\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+							}
+							else = {
+								set_variable = { SOL_mobile_task_force_deployed_var = EQS.SOL_mobile_task_force_deployed_var }
+								EQS = {
+									set_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3.distance_to@PREV }
+									divide_variable = { SOL_dispatched_mtf_state_decision_duration_var = 100 }
+									if = {
+										limit = { check_variable = { solar_military_support = 0 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 7 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 1 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 5 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 2 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 3 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 2 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 4 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 5 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
+									}
+									activate_targeted_decision = { target = PREV decision = SOL_dispatch_pegasi_decision }
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
-	SOL_heatwave_info_gui = {
-		context_type = player_context
-		dirty = sol_magic_currently_selected_spell
-		window_name = "SOL_heatwave_info"
-		parent_window_name = "sol_magic_info_window"
-		visible = {
-			check_variable = {
-				sol_magic_currently_selected_spell = 1
-			}
-		}
-	}
-	SOL_blessing_info_gui = {
-		context_type = player_context
-		dirty = sol_magic_currently_selected_spell
-		window_name = "SOL_blessing_info"
-		parent_window_name = "sol_magic_info_window"
-		visible = {
-			check_variable = {
-				sol_magic_currently_selected_spell = 2
-			}
-		}
-	}
-	SOL_curse_info_gui = {
-		context_type = player_context
-		dirty = sol_magic_currently_selected_spell
-		window_name = "SOL_curse_info"
-		parent_window_name = "sol_magic_info_window"
-		visible = {
-			check_variable = {
-				sol_magic_currently_selected_spell = 3
-			}
-		}
-	}
-
 
 	sol_alert_gui = {
 		window_name = "sol_alert_popup"
@@ -591,6 +258,50 @@ scripted_gui = {
 		effects = {
 			alert_enable_bg_click = {
 				clr_country_flag = SOL_has_disabled_alerts
+			}
+		}
+	}
+
+	SOL_sunlight_window_button_gui = {
+		context_type = player_context
+		parent_window_token = politics_tab
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_country_flag = SOL_twilight_ascended
+				is_subject = no
+			}
+		}
+		
+		window_name = "SOL_sunlight_window_button"
+		
+		effects = {
+			SOL_sunlight_window_button_clickable_click = { 
+				hidden_effect = { 
+					if = {
+						limit = { NOT = { has_variable = sol_show_sunlight_gui } }
+						set_variable = { var = sol_show_sunlight_gui value = 1 } 
+					}
+					else = {
+						clear_variable = sol_show_sunlight_gui
+					}
+				}
+			}
+		}
+	}
+	SOL_sunlight_window_gui = {
+		context_type = player_context
+		dirty = sol_show_sunlight_gui
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_variable = sol_show_sunlight_gui
+			}
+		}
+		window_name = "SOL_sunlight_window"
+		effects = { 
+			sol_sunlight_close_button_click = {
+				clear_variable = sol_show_sunlight_gui
 			}
 		}
 	}

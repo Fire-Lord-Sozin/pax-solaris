@@ -150,82 +150,13 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.9
-	title = "HRM Test"
+	title = ""
 	is_triggered_only = yes
 	desc = ""
-	immediate = {
-		hidden_effect = {
-			clear_variable = sol_alert_popup_show
-			SOL_calculate_resistance_target = yes
-
-			random_list = {
-				1 = {
-					set_temp_variable = { outreach_strength_calculation_temp = solar_resistance_strength }
-					divide_temp_variable = { outreach_strength_calculation_temp = 5 }
-					SOL_calculate_probability = yes
-					if = {
-						limit = { has_country_flag = civilian_informants }
-						add_to_variable = { var = outreach_strength_calculation_temp value = -0.1 }
-					}
-					if = {
-						limit = { check_variable = { outreach_strength_calculation_temp > probability_check } }
-						set_variable = { sol_alert_outcome_var = 2 }
-						add_to_variable = { var = solar_resistance_outreach_actions_progress value = 1 }
-					}
-					else = {
-						set_variable = { sol_alert_outcome_var = 1 }
-						SOL_calculate_leads_small = yes
-						add_to_variable = { var = SOL_lead_variable value = lead_counter }
-					}
-					set_variable = { sol_alert_desc_var = 1 }
-				}
-				1 = {
-					set_temp_variable = { civilian_strength_calculation_temp = solar_civilian_support }
-					divide_temp_variable = { civilian_strength_calculation_temp = 5 }
-					SOL_calculate_probability = yes
-					if = {
-						limit = { has_country_flag = civilian_informants }
-						add_to_variable = { var = civilian_strength_calculation_temp value = 0.1 }
-					}
-					if = { 
-						limit = { check_variable = { civilian_strength_calculation_temp > probability_check } }
-						set_variable = { sol_alert_outcome_var = 1 }
-						SOL_calculate_leads_small = yes
-						add_to_variable = { var = SOL_lead_variable value = lead_counter }
-					}
-					else = {
-						set_variable = { sol_alert_outcome_var = 2 }
-						add_to_variable = { var = solar_resistance_actions_progress value = 1 }
-					}
-					set_variable = { sol_alert_desc_var = 2 }
-				}
-				1 = {
-					set_temp_variable = { military_strength_calculation_temp = solar_military_support }
-					divide_temp_variable = { military_strength_calculation_temp = 5 }
-					SOL_calculate_probability = yes
-					if = {
-						limit = { has_country_flag = civilian_informants }
-						add_to_variable = { var = military_strength_calculation_temp value = 0.1 }
-					}
-					if = { 
-						limit = { check_variable = { military_strength_calculation_temp > probability_check } }
-						set_variable = { sol_alert_outcome_var = 1 }
-						SOL_calculate_leads_small = yes
-						add_to_variable = { var = SOL_lead_variable value = lead_counter }
-					}
-					else = {
-						set_variable = { sol_alert_outcome_var = 2 }
-						add_to_variable = { var = solar_resistance_actions_progress value = 1 }
-					}
-					set_variable = { sol_alert_desc_var = 3 }
-				}
-			}
-			set_variable = { sol_alert_title_var = 1 }
-			set_variable = { var = sol_alert_popup_show value = 1 }
-		}
-	}
 	option = { 
-		name = "Okay"
+		name = "End Puppet"
+		set_country_flag = SOL_twilight_ascended
+		add_ideas = sol_sunrise_sparkle
 	}
 }
 country_event = {
@@ -381,79 +312,15 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.18
-	title = "Spell Test"
+	title = "Compliance Test"
 	immediate = {
+		224 = { set_variable = { EQS.sol_state_compliance = compliance_speed } }
 	}
 	is_triggered_only = yes
-	desc = ""
+	desc = paxsolaristest.18.d
 	option = {
-		name = "Fuck shit up"
-		75 = {
-			add_dynamic_modifier = {
-				modifier = SOL_sabotage_effect
-				days = 60
-			}
-			if = {
-				limit = { 
-					non_damaged_building_level = {
-						building = synthetic_refinery
-						level > 0		
-					}
-				}
-				damage_building = {
-					type = synthetic_refinery
-					damage = 1
-				}
-			}
-		}
-		custom_effect_tooltip = AttackOutcome_1
+		name = ""
 	}
-	option = {
-		name = "2"
-		75 = {
-			add_dynamic_modifier = {
-				modifier = SOL_bombing_effect
-				days = 60
-			}
-			if = {
-				limit = { 
-					non_damaged_building_level = {
-						building = infrastructure
-						level > 1		
-					}
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 2
-				}
-			}
-		}
-		custom_effect_tooltip = AttackOutcome_1
-	}
-	option = {
-		name = "3"
-		add_timed_idea = {
-			idea = SOL_assassination
-			days = 60
-		}
-		custom_effect_tooltip = AttackOutcome_1
-	}
-	option = {
-		name = "4"
-		add_timed_idea = {
-			idea = SOL_labratory_research
-			days = 60
-		}
-		custom_effect_tooltip = AttackOutcome_1
-	}
-	option = {
-		name = "5"
-		add_timed_idea = {
-			idea = SOL_intel_breach
-			days = 60
-		}
-		custom_effect_tooltip = AttackOutcome_1
-	}	
 }
 country_event = {
 	id = paxsolaristest.20
@@ -491,17 +358,25 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.21
-	title = "Gas Attack"
+	title = "Urban Planning"
 	is_triggered_only = yes
 	desc = ""
 	hidden = yes
 	option = {
 		name = "Tear"
-		set_country_flag = unlocked_tear_gas_bombardment_tactic	
+		complete_national_focus = SOL_new_urban_planning
+		set_variable = { var = sol_urban_planning_duration value = 3 }
+		complete_national_focus = SOL_agricultural_mechanisation
+		set_variable = { var = sol_agmech_duration value = 3 }
+		complete_national_focus = SOL_public_works_program
+		set_variable = { var = sol_public_works_duration value = 5 }
+		complete_national_focus = SOL_secure_supply_networks
+		set_variable = { var = sol_infrastructure_hardening_duration value = 2 }
 	}
 	option = {
-		name = "Mustard"
-		set_country_flag = SOL_use_gas_attack_ability_flag
+		name = "Upgrade"
+		set_variable = { var = sol_agmech_duration value = 250 }
+		set_variable = { var = sol_urban_planning_duration value = 200 }	
 	}
 }
 country_event = {
@@ -564,11 +439,78 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.25
-	title = "Pop Calculator"
+	title = "Compliance Tester"
 	is_triggered_only = yes
 	desc = ""
 	option = { 
 		name = "Calculate"
+		SOL_calculate_race = yes
+	}
+	option = { 
+		name = "Settlements"
+		6 = {
+			add_resource = {
+				type = crystals
+				amount = 12
+			}
+			add_manpower = 120000
+			add_to_variable = { var = sol_pony_population_k value = 120 }
+			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+		}
+		7 = {
+			add_resource = {
+				type = crystals
+				amount = 8
+			}
+			add_manpower = 80000
+			add_to_variable = { var = sol_pony_population_k value = 80 }
+			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+		}
+		8 = {
+			add_resource = {
+				type = crystals
+				amount = 10
+			}
+			add_manpower = 100000
+			add_to_variable = { var = sol_pony_population_k value = 100 }
+			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+		}
+		9 = {
+			add_resource = {
+				type = crystals
+				amount = 10
+			}
+			add_manpower = 90000
+			add_to_variable = { var = sol_pony_population_k value = 90 }
+			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+		}
+		10 = {
+			add_manpower = 20000
+			add_to_variable = { var = sol_pony_population_k value = 20 }
+			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+		}
+		328 = {
+			add_manpower = 10000
+			add_to_variable = { var = sol_pony_population_k value = 10 }
+			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
+		}
+	}
+	option = { 
+		name = "Change Limit"
+		clr_country_flag = SOL_buffalo_problems_flag_work
+		set_country_flag = SOL_buffalo_problems_flag_genocide
+	}
+	option = { 
+		name = "Set Compliance"
+		89 = {
+			set_variable = { var = compliance value = 20 }
+		}
 	}
 }
 country_event = {

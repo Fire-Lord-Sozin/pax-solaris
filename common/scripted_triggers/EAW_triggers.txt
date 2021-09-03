@@ -495,6 +495,7 @@ is_griffon_continent_country = {
 		original_tag = JRV
 		original_tag = JAS
 		original_tag = JEV
+		original_tag = EQC
 	}
 }
 
@@ -616,7 +617,6 @@ is_griffon_continent_griffon_country = {
 		original_tag = JGF
 		original_tag = JKR
 		original_tag = JOS
-		original_tag = JAS
 		original_tag = JEV
 	}
 }
@@ -935,6 +935,7 @@ country_with_custom_advisors = {
 		original_tag = TAL
 
 		original_tag = EQR
+		original_tag = HRM
 	}
 }
 country_with_custom_designers = {
@@ -1002,6 +1003,7 @@ country_with_custom_designers = {
 		original_tag = TA
 
 		original_tag = EQR
+		original_tag = HRM
 	}
 }
 country_with_custom_spymaster = {
@@ -1017,7 +1019,7 @@ country_with_custom_spymaster = {
 		original_tag = ELF
 
 		original_tag = EQR
-
+		original_tag = HRM
 	}
 }
 owns_major_griffon_city = {
@@ -1649,10 +1651,10 @@ can_have_border_war_with_ROOT = {
 	is_neighbor_of = ROOT
 	NOT = {
 		ROOT = { is_subject_of = PREV }
-		any_country = {
-			AND = {
+		AND = {
+			is_subject = yes
+			overlord = {
 				has_subject = ROOT
-				has_subject = PREV
 			}
 		}
 		has_non_aggression_pact_with = ROOT

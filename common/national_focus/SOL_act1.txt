@@ -294,8 +294,11 @@ shared_focus = {
 		    category = race_tech
 		}
 		if = {
-			limit = { amount_research_slots < 4 }
+			limit = {
+				amount_research_slots < 5
+			}
 			add_research_slot = 1
+			custom_effect_tooltip = CZE_war_college_effect_2_tt
 		}
 	}
 	search_filters = { FOCUS_FILTER_RESEARCH }
@@ -325,7 +328,7 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_unexplored_magic"
-		set_technology = { tech_solar_magic = 1 popup = yes }
+		set_technology = { tech_solar_magic = 1 popup = no }
 		custom_effect_tooltip = tech_solar_magic_buff
 		if = {
 			limit = { NOT = { has_idea = magical_trainingidea } }
@@ -641,6 +644,14 @@ shared_focus = {
 			category = artillery
 			category = support_tech
 		}
+		custom_effect_tooltip = available_designer
+		show_ideas_tooltip = aztlan_armaments
+		custom_effect_tooltip = available_designer
+		show_ideas_tooltip = vickers_hoofstrong
+		custom_effect_tooltip = available_designer
+		show_ideas_tooltip = the_washouts
+		custom_effect_tooltip = available_industrial_concern
+		show_ideas_tooltip = canterlot_electric
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS }
 }
@@ -669,10 +680,262 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_new_blood"
-		country_event = { id = paxsolaris.337 hours = 1 }
-		custom_effect_tooltip = equestria_advisors
-		custom_effect_tooltip = equestria_generals
 		add_ideas = SOL_new_high_command
+		country_event = { id = paxsolaris.337 hours = 1 }
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = sol_neighsay
+		custom_effect_tooltip = available_chief_of_army
+		show_ideas_tooltip = scope
+		custom_effect_tooltip = available_chief_of_army
+		show_ideas_tooltip = sol_on_stage
+		custom_effect_tooltip = available_chief_of_navy
+		show_ideas_tooltip = sol_star_hunter
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = benevelle
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = summersweet
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = morninglight
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = sunnyflare
+		custom_effect_tooltip = available_theorist
+		show_ideas_tooltip = wind_rider
+		custom_effect_tooltip = available_theorist
+		show_ideas_tooltip = arcane_nova
+		custom_effect_tooltip = available_chief_of_airforce
+		show_ideas_tooltip = blaze
+		custom_effect_tooltip = available_chief_of_airforce
+		show_ideas_tooltip = thunderlane
+		effect_tooltip = {
+			create_corps_commander = {
+				name = "Shining Star"
+				portrait_path = "gfx/leaders/SOL/Pak.tga"
+				traits = { trait_unpredictable arrow pony_race_trait }
+				skill = 2
+				attack_skill = 3
+				defense_skill = 3
+				planning_skill = 1
+				logistics_skill = 1
+			} custom_effect_tooltip = shining_star_pak_stats_tp
+			create_corps_commander = {
+				name = "Scroup Whitemares"
+				portrait_path = "gfx/leaders/SOL/Raspberry.tga"
+				traits = { trait_scroup_raspberry pony_race_trait }
+				skill = 2
+				attack_skill = 1
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 2
+			} custom_effect_tooltip = scroup_whitemares_stats_tp
+			create_corps_commander = {
+				name = "Aurora Shinespark"
+				portrait_path = "gfx/leaders/SOL/Aurora_Shinespark.tga"
+				traits = { harsh_leader pony_race_trait promising_general }
+				skill = 2
+				attack_skill = 3
+				defense_skill = 1
+				planning_skill = 2
+				logistics_skill = 2
+			} custom_effect_tooltip = aurora_shinespark_stats_tp
+			create_corps_commander = {
+				name = "Midwinter Halo"
+				portrait_path = "gfx/leaders/SOL/Midwinter.tga"
+				traits = { commando harsh_leader pony_race_trait }
+				skill = 2
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 4
+				logistics_skill = 3
+				id = 35
+			} custom_effect_tooltip = midwinter_halo_stats_tp
+			if = {
+				limit = { NOT = { has_global_flag = EQS_Eisenstadt_created } }
+				create_corps_commander = {
+					name = "August von Eisenstadt"
+					portrait_path = "gfx/leaders/EQS/mageytash.tga"
+					traits = { career_officer pony_race_trait }
+					skill = 2
+					id = 11
+					attack_skill = 3
+					defense_skill = 2
+					planning_skill = 2
+					logistics_skill = 2
+				} custom_effect_tooltip = august_von_eisenstadt_stats_tp
+				set_global_flag = EQS_Eisenstadt_created
+			}
+			if = {
+				limit = { NOT = { has_global_flag = EQS_Comet_Trail_created } }
+				if = {
+					limit = { has_dlc = "Waking the Tiger" }
+					create_corps_commander = {
+						name = "Comet Trail"
+						portrait_path = "gfx/leaders/CES/Stemis.tga"
+						traits = { supply_raider thestral_race_trait }
+						skill = 2
+						attack_skill = 3
+						defense_skill = 2
+						planning_skill = 1
+						logistics_skill = 3
+						id = 204
+					} custom_effect_tooltip = comet_trail_stats_tp
+					else = {
+						create_corps_commander = {
+							name = "Comet Trail"
+							portrait_path = "gfx/leaders/CES/Stemis.tga"
+							traits = { supply_raider_no_wtt thestral_race_trait }
+							skill = 2
+							attack_skill = 3
+							defense_skill = 2
+							planning_skill = 1
+							logistics_skill = 3
+							id = 204
+						} custom_effect_tooltip = comet_trail_stats_tp
+					}
+				}
+				set_global_flag = EQS_Comet_Trail_created
+				random_army_leader = {
+					limit = { has_id = 204 }
+					save_global_event_target_as = EQS_Comet_Trail
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_unit_leader = 204 } }
+				event_target:EQS_Comet_Trail = { set_nationality = ROOT }
+			}
+			create_corps_commander = {
+				name = "Capsaicin"
+				portrait_path = "gfx/leaders/SOL/Spice.tga"
+				traits = { urban_assault_specialist pony_race_trait }
+				skill = 2
+				attack_skill = 3
+				defense_skill = 4
+				planning_skill = 2
+				logistics_skill = 3
+				id = 36
+			} custom_effect_tooltip = capsaicin_stats_tp
+			create_corps_commander = {
+				name = "Comm Rush"
+				portrait_path = "gfx/leaders/SOL/Comm Rush.tga"
+				traits = { pony_race_trait }
+				skill = 2
+				attack_skill = 4
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 3
+				id = 37
+			} custom_effect_tooltip = comm_rush_stats_tp
+			create_corps_commander = {
+				name = "Stormchaser"
+				portrait_path = "gfx/leaders/SOL/Stormchaser.tga"
+				traits = { stormchaser pony_race_trait }
+				skill = 2
+				attack_skill = 2
+				defense_skill = 4
+				planning_skill = 3
+				logistics_skill = 1
+				id = 38
+			} custom_effect_tooltip = stormchaser_stats_tp
+			if = {
+				limit = { NOT = { has_unit_leader = 31 } }
+				create_corps_commander = {
+					name = "Allen Spark"
+					portrait_path = "gfx/leaders/EQS/Allen.tga"
+					traits = { commando pony_race_trait }
+					skill = 1
+					attack_skill = 2
+					defense_skill = 2
+					planning_skill = 1
+					logistics_skill = 3
+					id = 31
+				} custom_effect_tooltip = allen_spark_stats_tp
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 32 } }
+				create_corps_commander = {
+					name = "Fireflight"
+					portrait_path = "gfx/leaders/EQS/Fireflight.tga"
+					traits = { fireflight pony_race_trait }
+					skill = 1
+					attack_skill = 3
+					defense_skill = 1
+					planning_skill = 2
+					logistics_skill = 2
+					id = 32
+				} custom_effect_tooltip = fireflight_stats_tp
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 33 } }
+				create_corps_commander = {
+					name = "Sun Marble"
+					portrait_path = "gfx/leaders/EQS/Wilson.tga"
+					traits = { commando career_officer pony_race_trait }
+					skill = 1
+					attack_skill = 2
+					defense_skill = 2
+					planning_skill = 2
+					logistics_skill = 3
+					id = 33
+				} custom_effect_tooltip = sun_marble_stats_tp
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 39 } }
+				create_corps_commander = {
+					name = "Swift Wing"
+					desc = "swift_milf_desc"
+					portrait_path = "gfx/leaders/EQS/Swift_Wing.tga"
+					traits = { trait_swift_wing pony_race_trait }
+					skill = 2
+					attack_skill = 3
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 2
+					female = yes
+					id = 39
+				} custom_effect_tooltip = swift_wing_stats_tp
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 30 } }
+				create_corps_commander = {
+					name = "Bernard Hoofgonery"
+					portrait_path = "gfx/leaders/EQS/ComradeKir.tga"
+					traits = { pony_race_trait }
+					skill = 2
+					attack_skill = 2
+					defense_skill = 2
+					planning_skill = 3
+					logistics_skill = 3
+					id = 30
+				} custom_effect_tooltip = bernard_hoofgonery_stats_tp
+			}
+			if = {
+				limit = { NOT = { has_unit_leader = 12 } }
+				create_corps_commander = {
+					name = "Fizzlepop Berrytwist"
+					portrait_path = "gfx/leaders/EQS/TempestShadow.tga"
+					traits = { fortress_buster pony_race_trait }
+					skill = 3
+					id = 12
+					female = yes
+					attack_skill = 4
+					defense_skill = 2
+					planning_skill = 2
+					logistics_skill = 1
+					desc = "EQS_tempy_desc"
+				} custom_effect_tooltip = fizzlepop_berrytwist_stats_tp
+			}
+			create_navy_leader = {
+				name = "Star Hunter"
+				portrait_path = "gfx/leaders/EQS/Star_Hunter.tga"
+				traits = { pony_race_trait aviation_enthusiast }
+				skill = 3
+				attack_skill = 2
+				defense_skill = 2
+				maneuvering_skill = 3
+				coordination_skill = 3
+				id = 440000
+			} custom_effect_tooltip = sol_star_hunter_stats_tp
+		}
+		hidden_effect = { set_global_flag = EQS_completed_advisors }
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS }
 }
@@ -982,7 +1245,6 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_pledge_of_devotion"
-		custom_effect_tooltip = SOL_pledge_of_devotion_tt
 		add_ideas = SOL_paramilitary_armies
 
 	}
@@ -1065,7 +1327,6 @@ shared_focus = {
 			idea = SOL_Revanchism 
 			days = 365
 		}
-		country_event = { id = solarempire.2 hours = 1 }
 		if = {	
 			limit = { 
 				NOT = { 
@@ -1084,6 +1345,17 @@ shared_focus = {
 			    type = annex_everything
 			}
 		}
+		
+		if = {
+			limit = { 
+				OR = { 
+					check_variable = { sol_ascension_surrender_progress < surrender_progress } 
+					check_variable = { surrender_progress > 0.4 }
+				}
+			}
+			country_event = { id = paxsolaris.136 hours = 1 }
+		}
+
 		if = {
 			limit = { has_idea = SOL_civil_war }
 			remove_ideas = SOL_civil_war
@@ -1096,6 +1368,24 @@ shared_focus = {
 			mark_focus_tree_layout_dirty = yes
 			custom_effect_tooltip = MAN_load_a_new_focus_tree
 			set_country_flag = SOL_first_tree_completed
+		}
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						tag = SCS
+						tag = LSP
+						tag = BAL
+						tag = VAN
+						tag = NMS
+						tag = CES
+						tag = JUN
+					}
+					exists = yes
+				}
+			}
+			set_country_flag = SOL_uniting_equestria_decision_unlock
+			custom_effect_tooltip = SOL_reclaim_breakaways_tt
 		}
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ANNEXATION }

@@ -36,13 +36,13 @@ on_actions = {
 			if = {
 				limit = {
 					has_war_with = FROM
-					has_unit_leader = 1337
+					has_country_flag = sol_turning_the_tide
 					has_country_leader = { ruling_only = yes name = "Daybreaker" }
 					FROM.FROM = {
 						has_state_flag = SOL_state_fall
 					}
 				}
-				add_to_variable = { var = daybreaker_support value = 3 } #Grants additional support if Daybreaker secures key cities as Field Marshal. 
+				add_to_variable = { var = daybreaker_support value = 3 }
 				FROM.FROM = {
 					clr_state_flag =  SOL_state_fall
 				}
@@ -60,6 +60,16 @@ on_actions = {
 				}
 				FROM.FROM = {
 					set_state_flag =  SOL_wartorn_state
+				}
+			}
+			if = {
+				limit = {
+					FROM = { is_SOLAR_EMPIRE = yes }
+					FROM.FROM = { has_state_flag = SOL_overrun_by_resistance }
+				}
+				FROM.FROM = {
+					clr_state_flag = SOL_overrun_by_resistance 
+					add_core_of = EQS
 				}
 			}
 			if = {
@@ -89,7 +99,7 @@ on_actions = {
 					}
 				}
 				FROM = {
-					add_to_variable = { var = daybreaker_support value = -5 } #Support is lost if Daybreaker loses key cities
+					add_to_variable = { var = daybreaker_support value = -3 } #Support is lost if Daybreaker loses key cities
 					hidden_effect = { SOL_calculate_loyalty = yes }
 				}
 				FROM.FROM = { 
@@ -101,64 +111,10 @@ on_actions = {
 	on_weekly_EQS = {
 		effect = {
 			if = {
-				limit = {
-					is_SOLAR_EMPIRE = yes
-					has_country_flag = march_on_canterlot
-					NOT = { has_country_flag = resistance_ceasefire }
-					any_enemy_country = {
-						has_offensive_war_with = EQS 
-						has_government = fascism
-						strength_ratio = {
-							tag = EQS
-							ratio > 0.5
-						}
-					}
-				}
-				random_country = {
-					limit = { 
-						has_offensive_war_with = EQS 
-						has_government = fascism
-						strength_ratio = {
-							tag = EQS
-							ratio > 0.5
-						}
-					}
-					save_global_event_target_as = sol_resistance_enemy
-				}
-				country_event = {
-					id = paxsolaris.37 #If Daybreaker has been attacked by another oppressive country (Crysalis, Sombra, Dark Wing) the resistance will temporarily cease their efforts to undermine her
-					days = 2
-				}
-				set_country_flag = resistance_ceasefire
-				remove_ideas = SOL_public_hostility_0
-				remove_ideas = SOL_public_hostility_1
-				remove_ideas = SOL_public_hostility_2
-				remove_ideas = SOL_public_hostility_3
-				remove_ideas = SOL_public_hostility_4
-				remove_ideas = SOL_public_hostility_5
-				remove_ideas = SOL_military_desertion_0
-				remove_ideas = SOL_military_desertion_1
-				remove_ideas = SOL_military_desertion_2
-				remove_ideas = SOL_military_desertion_3
-				remove_ideas = SOL_military_desertion_4
-				remove_ideas = SOL_military_desertion_5
-				remove_ideas = SOL_resistance_strength_0
-				remove_ideas = SOL_resistance_strength_1
-				remove_ideas = SOL_resistance_strength_2
-				remove_ideas = SOL_resistance_strength_3
-				remove_ideas = SOL_resistance_strength_4
-				remove_ideas = SOL_resistance_strength_5
-				remove_ideas = SOL_harmonist_broadcasts_0
-				remove_ideas = SOL_harmonist_broadcasts_1
-				remove_ideas = SOL_harmonist_broadcasts_2
-				remove_ideas = SOL_harmonist_broadcasts_3
-				remove_ideas = SOL_harmonist_broadcasts_4
-				remove_ideas = SOL_harmonist_broadcasts_5
-				remove_ideas = SOL_resistance_cohesion_1
-				remove_ideas = SOL_resistance_cohesion_2
-				remove_ideas = SOL_resistance_cohesion_3
+				limit = { NOT = { has_country_flag = resistance_ceasefire } }
+				add_to_variable = { var = SOL_lead_variable value = weekly_leads }
 			}
-			add_to_variable = { var = SOL_lead_variable value = weekly_leads }
+			
 			if = {
 				limit = {
 					is_SOLAR_EMPIRE = yes
@@ -166,16 +122,7 @@ on_actions = {
 					has_country_flag = march_on_canterlot
 				}
 				random_list = {
-					5 = {
-						modifier = {
-							factor = 0
-							has_country_flag = SOL_benevolent_public_timeout
-						}					
-						country_event = {
-							id = paxsolaris.50 	#Benign public support event
-						}				
-					}
-					5 = {
+					1 = {
 						modifier = {
 							factor = 0
 							OR = {
@@ -188,11 +135,19 @@ on_actions = {
 						SOL_calculate_resistance_target = yes
 						random_list = {
 							1 = {
-								set_temp_variable = { outreach_strength_calculation_temp = solar_resistance_strength }
-								divide_temp_variable = { outreach_strength_calculation_temp = 5 }
+								set_variable = { outreach_strength_calculation_temp = solar_resistance_strength }
+								divide_variable = { outreach_strength_calculation_temp = 5 }
 								SOL_calculate_probability = yes
 								if = {
 									limit = { has_country_flag = civilian_informants }
+									add_to_variable = { var = outreach_strength_calculation_temp value = -0.05 }
+								}
+								if = {
+									limit = { has_completed_focus = SOL_decentralised_inquisitorial_policing }
+									add_to_variable = { var = outreach_strength_calculation_temp value = -0.1 }
+								}
+								if = {
+									limit = { event_target:SOL_resistance_activity = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } } }
 									add_to_variable = { var = outreach_strength_calculation_temp value = -0.1 }
 								}
 								if = {
@@ -212,11 +167,19 @@ on_actions = {
 								set_variable = { sol_alert_desc_var = 1 }
 							}
 							1 = {
-								set_temp_variable = { civilian_strength_calculation_temp = solar_civilian_support }
-								divide_temp_variable = { civilian_strength_calculation_temp = 5 }
+								set_variable = { civilian_strength_calculation_temp = solar_civilian_support }
+								divide_variable = { civilian_strength_calculation_temp = 5 }
 								SOL_calculate_probability = yes
 								if = {
 									limit = { has_country_flag = civilian_informants }
+									add_to_variable = { var = civilian_strength_calculation_temp value = 0.05 }
+								}
+								if = {
+									limit = { has_completed_focus = SOL_decentralised_inquisitorial_policing }
+									add_to_variable = { var = civilian_strength_calculation_temp value = 0.1 }
+								}
+								if = {
+									limit = { event_target:SOL_resistance_activity = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } } }
 									add_to_variable = { var = civilian_strength_calculation_temp value = 0.1 }
 								}
 								if = {
@@ -236,11 +199,19 @@ on_actions = {
 								set_variable = { sol_alert_desc_var = 2 }
 							}
 							1 = {
-								set_temp_variable = { military_strength_calculation_temp = solar_military_support }
-								divide_temp_variable = { military_strength_calculation_temp = 5 }
+								set_variable = { military_strength_calculation_temp = solar_military_support }
+								divide_variable = { military_strength_calculation_temp = 5 }
 								SOL_calculate_probability = yes
 								if = {
 									limit = { has_country_flag = civilian_informants }
+									add_to_variable = { var = military_strength_calculation_temp value = 0.05 }
+								}
+								if = {
+									limit = { has_completed_focus = SOL_decentralised_inquisitorial_policing }
+									add_to_variable = { var = military_strength_calculation_temp value = 0.1 }
+								}
+								if = {
+									limit = { event_target:SOL_resistance_activity = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } } }
 									add_to_variable = { var = military_strength_calculation_temp value = 0.1 }
 								}
 								if = {
@@ -263,10 +234,43 @@ on_actions = {
 						set_variable = { sol_alert_title_var = 1 }
 						set_variable = { var = sol_alert_popup_show value = 1 }
 					}
-					10 = {
+					3 = {
 						#Random blank to create weeks where nothing happens
 					}
 				}
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							has_country_flag = SOL_benevolent_public_timeout
+						}					
+						country_event = {
+							id = paxsolaris.50 	#Benign public support event
+						}				
+					}
+					3 = {
+						#Random blank to create weeks where nothing happens
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = SOL_economic_miracle
+					check_variable = {
+						var = num_of_factories
+						value = SOL_next_growth_stage
+						compare = greater_than_or_equals
+					}
+				}
+				set_variable = { SOL_next_growth_stage = num_of_factories }
+				multiply_variable = { SOL_next_growth_stage = 1.1 }
+				round_variable = SOL_next_growth_stage
+				add_to_variable = { SOL_next_growth_stage = 1 }
+				set_variable = { SOL_number_of_factories_gained = num_of_factories }
+				divide_variable = { SOL_number_of_factories_gained = 100 }
+				round_variable = SOL_number_of_factories_gained
+				add_to_variable = { SOL_number_of_factories_gained = 1 }
+				add_offsite_building = { type = industrial_complex level = SOL_number_of_factories_gained }
 			}
 		}
 	}
@@ -275,10 +279,16 @@ on_actions = {
 			if = {
 				limit = {
 					tag = EQS
+					EQS = { exists = yes }
+					has_country_leader = { ruling_only = yes name = "Daybreaker" }
 				}
-				hidden_effect = { SOL_calculate_loyalty = yes }
-				add_to_variable = { var = daybreaker_support value = daybreaker_support_daily }
-
+				SOL_calculate_law_loyalty = yes
+				if = {
+					limit = { NOT = { has_country_flag = resistance_ceasefire } }
+					hidden_effect = { SOL_calculate_loyalty = yes }
+					add_to_variable = { var = daybreaker_support value = daybreaker_support_daily }
+				}
+				
 				#Magic reserves
 				if = {
 					limit = {
@@ -344,7 +354,7 @@ on_actions = {
 				if = {
 					limit = {
 						EQS = { 
-							has_completed_focus = SOL_public_works_program 
+							has_country_flag = sol_has_unlocked_public_works 
 						}
 					}
 					SOL_calculate_region_development = yes
@@ -352,12 +362,37 @@ on_actions = {
 						limit = {
 							check_variable = { sol_ongoing_public_works_num > 0 }
 						}
-						for_each_loop = {
-							array = SOL_ongoing_public_works
-							value = current_region
-							add_to_variable = { var = SOL_public_works_duration_array^current_region value = -1 }
+						if = {
+							limit = { 
+								has_war = no #Public Works are put on hold when there is an ongoing war
+								NOT = { has_idea = SOL_worker_strikes }
+							}
+							for_each_loop = {
+								array = SOL_ongoing_public_works
+								value = current_region
+								add_to_variable = { var = SOL_public_works_duration_array^current_region value = -1 }
+							}
+							for_each_loop = {
+								array = SOL_ongoing_urban_planning
+								value = current_region
+								add_to_variable = { var = SOL_public_works_duration_array^current_region value = -1 }
+							}
+							for_each_loop = {
+								array = SOL_ongoing_agmech
+								value = current_region
+								add_to_variable = { var = SOL_public_works_duration_array^current_region value = -1 }
+							}
 						}
-
+						if = {
+							limit = {
+								NOT = { has_idea = SOL_worker_strikes }
+							}
+							for_each_loop = {
+								array = SOL_ongoing_infrastructure_hardening
+								value = current_region
+								add_to_variable = { var = SOL_public_works_duration_array^current_region value = -1 }
+							}
+						}
 						SOL_calculate_public_works_progress = yes
 						if = {
 							limit = {
@@ -372,12 +407,6 @@ on_actions = {
 						}
 						remove_dynamic_modifier = { modifier = SOL_public_works_modifier }
 					}
-				}
-				else_if = {
-					limit = {
-						EQS = { has_dynamic_modifier = { modifier = SOL_public_works_modifier } }
-					}
-					remove_dynamic_modifier = { modifier = SOL_public_works_modifier }
 				}
 
 				#Resistance Block
@@ -407,6 +436,99 @@ on_actions = {
 						limit = { check_variable = { sol_gas_attack_cooldown < 1 } }
 						clear_variable = sol_gas_attack_cooldown
 					}
+				}
+
+				#Compliance Limit/Base/Core
+				every_state = {
+					limit = {
+						has_variable = sol_compliance_limit
+						is_controlled_by = EQS
+						NOT = { is_core_of = EQS }
+						check_variable = { compliance > sol_compliance_limit }
+					}
+					set_compliance = sol_compliance_limit 
+				}
+				every_state = {
+					limit = {
+						has_variable = sol_compliance_base
+						is_controlled_by = EQS
+						NOT = { is_core_of = EQS }
+						check_variable = { compliance < sol_compliance_base }
+					}
+					set_compliance = sol_compliance_base 
+				}
+				every_state = {
+					limit = {
+						has_variable = sol_compliance_to_core
+						is_controlled_by = EQS
+						NOT = { is_core_of = EQS }
+						check_variable = {
+							var = compliance
+							value = sol_compliance_to_core
+							compare = greater_than_or_equals
+						}
+					}
+					add_core_of = EQS
+					clear_variable = sol_compliance_to_core
+					clear_variable = sol_compliance_base
+					clear_variable = sol_compliance_limit
+					SOL_remove_uprising = yes
+					if = {
+						limit = { has_state_flag = SOL_add_dissatisfied_natives }
+						add_dynamic_modifier = { modifier = SOL_dissatisfied_natives }
+						clr_state_flag = SOL_add_dissatisfied_natives
+					}
+				}
+
+				#Gamer Moments
+				if = {
+					limit = { check_variable = { EQS.sol_states_with_genocide^num > 0 } }
+					for_each_loop = {
+						array = sol_states_with_genocide
+						value = current_state
+						var:current_state = {
+							if = {
+								limit = { 
+									is_controlled_by = EQS 
+								}
+								set_temp_variable = { var = sol_non_pony_population_change_temp value = -2.5 }
+								hidden_effect = { SOL_pony_population_recalculate = yes }
+								add_manpower = -2500
+								subtract_from_variable = { var = sol_genocide_duration value = 1 }
+								if = {
+									limit = {
+										check_variable = {
+											var = sol_genocide_duration
+											value = 0
+											compare = less_than_or_equals
+										}
+									}
+									add_to_array = { EQS.sol_completed_genocide = THIS }
+								}
+							}
+							
+						}
+					}
+					for_each_loop = {
+						array = sol_completed_genocide
+						value = current_state
+						var:current_state = {
+							remove_from_array = { EQS.sol_states_with_genocide = THIS }
+							remove_dynamic_modifier = { modifier = SOL_genocide } 
+							set_state_flag = SOL_completed_genocide
+							force_disable_resistance = EQS
+							SOL_remove_uprising = yes
+							if = {
+								limit = {
+									has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+								}
+								add_core_of = EQS
+							}
+							set_variable = { sol_majority_race_id = 1 }
+							SOL_genocide_custom_effects = yes
+						}	
+					}
+					clear_array = sol_completed_genocide
 				}
 			}
 		}
@@ -490,6 +612,15 @@ on_actions = {
 						remove_ideas = SOL_resistance_cohesion_1
 						remove_ideas = SOL_resistance_cohesion_2
 						remove_ideas = SOL_resistance_cohesion_3
+						every_state ={
+							clr_state_flag = resistance_attack_dummy_target
+							clr_state_flag = resistance_attack_true_target
+						}
+						clear_array = EQS.SOL_resistance_attack_target_array
+						clr_country_flag = SOL_has_ongoing_attack
+						remove_mission = SOL_resistance_attack
+						clr_country_flag = SOL_has_ongoing_cohesion
+						remove_mission = SOL_resistance_cohesion
 						set_variable = { var = solar_resistance_cohesion value = 0 }
 					}
 				}
@@ -578,6 +709,11 @@ on_actions = {
 					coalition_defensive_plan_project_bonus
 					coalition_high_command_project_bonus
 					coalition_expeditionary_forces_project_bonus
+					coalition_recognise_hrm_project_bonus_1
+					coalition_recognise_hrm_project_bonus_2
+					coalition_recognise_hrm_project_bonus_3
+					coalition_recognise_hrm_project_bonus_4
+					coalition_recognise_hrm_project_bonus_5
 				}
 				remove_from_tech_sharing_group = coalition_of_free_tech_share
 			}
@@ -780,20 +916,11 @@ on_actions = {
 					FROM = { 
 						is_SOLAR_EMPIRE = yes
 					}
-					ROOT = { 
-						OR = {
-							original_tag = NLR
-							original_tag = NMS
-							original_tag = CES
-							original_tag = JUN
-							original_tag = BAL
-							original_tag = VAN
-							original_tag = SCS
-							original_tag = LSP
-							original_tag = ZRS
-							original_tag = EQR
-							original_tag = BUF
+					OR = {
+						ROOT = { 
+							is_solar_core = yes
 						}
+						tag = DRG
 					}
 				}
 				FROM = {
@@ -815,6 +942,11 @@ on_actions = {
 				}
 				add_ideas = SOL_coalition_surrender
 			}
+		}
+	}
+	on_startup = {
+		effect = {
+			SOL_calculate_race = yes
 		}
 	}
 }

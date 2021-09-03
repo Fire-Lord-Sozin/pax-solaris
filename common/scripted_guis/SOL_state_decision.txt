@@ -1,0 +1,139 @@
+scripted_gui = {
+	SOL_state_decision_menu_gui = {
+		window_name = "SOL_state_decision_menu"
+		dirty = EQS.sol_display_state_decisions
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		visible = {
+			ROOT = { is_SOLAR_EMPIRE = yes }
+		}
+		effects = {
+			SOL_state_decision_menu_button_click = {
+				ROOT = { 
+					if = {
+						limit = { NOT = { has_variable = sol_display_state_decisions } }
+						set_variable = { var = sol_display_state_decisions value = 1 }
+					}
+					else = { 
+						clear_variable = sol_display_state_decisions
+					}
+				}
+			}
+		}
+	}
+	SOL_develop_settler_colonies_gui = {
+		window_name = "SOL_develop_settler_colonies"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		dirty = EQS.sol_display_state_decisions
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_country_flag = SOL_unlocked_develop_colonies_ability_flag
+				has_variable = sol_display_state_decisions
+			}
+		}
+		properties = {
+			SOL_develop_settler_colonies_button_fake = {
+				y = var:EQS.SOL_develop_settler_colonies_pos
+			}
+			SOL_develop_settler_colonies_button = {
+				y = var:EQS.SOL_develop_settler_colonies_pos
+			}
+		}
+		triggers = {
+			SOL_develop_settler_colonies_button_visible = {
+				THIS = {
+					is_owned_and_controlled_by = EQS
+					NOT = {
+						is_core_of = EQS
+						has_variable = SOL_develop_settler_colony_civ_fac_use
+						OR = {
+							has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+							has_dynamic_modifier = { modifier = SOL_pony_settlement }
+							has_dynamic_modifier = { modifier = SOL_settler_colonies }
+						}
+					}
+					set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
+					multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.005 }
+					add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
+					round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
+					meta_trigger = {
+						text = {
+							check_variable = {
+								var = EQS.num_of_civilian_factories_available_for_projects
+								value = [SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP]
+								compare = greater_than_or_equals
+							}
+						}
+						SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP = SOL_develop_settler_colony_civ_fac_use_temp
+					}
+				}
+				ROOT = {
+					check_variable = {
+						var = political_power
+						value = 20						
+						compare = greater_than_or_equals
+					}
+				}
+			}
+		}
+		effects = {
+			SOL_develop_settler_colonies_button_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							THIS = {
+								is_owned_and_controlled_by = EQS
+								NOT = {
+									is_core_of = EQS
+									has_variable = SOL_develop_settler_colony_civ_fac_use
+									OR = {
+										has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+										has_dynamic_modifier = { modifier = SOL_pony_settlement }
+										has_dynamic_modifier = { modifier = SOL_settler_colonies }
+									}
+								}
+								set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
+								multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.005 }
+								add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
+								round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
+								meta_trigger = {
+									text = {
+										check_variable = {
+											var = EQS.num_of_civilian_factories_available_for_projects
+											value = [SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP]
+											compare = greater_than_or_equals
+										}
+									}
+									SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP = SOL_develop_settler_colony_civ_fac_use_temp
+								}
+							}
+							ROOT = {
+								check_variable = {
+									var = political_power
+									value = 20						
+									compare = greater_than_or_equals
+								}
+							}
+						}
+						ROOT = {
+							add_political_power = -20
+						}
+						THIS = {
+							set_variable = { var = SOL_develop_settler_colony_civ_fac_use value = state_population_k }
+							multiply_variable = { var = SOL_develop_settler_colony_civ_fac_use value = 0.005 }
+							add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use value = 0.5 }
+							round_variable = SOL_develop_settler_colony_civ_fac_use
+							EQS = {
+								add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = PREV.SOL_develop_settler_colony_civ_fac_use }
+								activate_targeted_decision = { target = PREV decision = SOL_develop_settler_colony_decision }
+								add_to_variable = { var = sol_display_state_decisions value = 1 }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

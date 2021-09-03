@@ -442,7 +442,16 @@ country_event = {
 		name = lunas.11.c
 		set_capital = 5
 		set_province_name = { id = 3534 name = "NLR_vp_the_lunar_castle"}
+		set_victory_points = {
+			province = 3534
+			value = 15
+		}
+		save_current_manpower = yes
+		3 = {
+			add_manpower = -250000
+		}
 		5 = {
+			add_manpower = 250000
 		    set_state_category = large_town
 			add_extra_state_shared_building_slots = 2
 			add_building_construction = { 
@@ -466,6 +475,7 @@ country_event = {
 				instant_build = yes 
 			}
 		}
+		restore_previous_manpower = yes
 	}
 }
 
@@ -3428,7 +3438,7 @@ country_event = { #New Imperial Admiralty event
 			maneuvering_skill = 4
 			coordination_skill = 3
 			female = yes
-		}
+		} custom_effect_tooltip = bloodwater_stats_tp
 		create_navy_leader = {
 			name = "Burning Straits"
 			portrait_path = "gfx/leaders/Pony/portrait_pony_generic_navy_13.dds"
@@ -3438,7 +3448,7 @@ country_event = { #New Imperial Admiralty event
 			defense_skill = 5
 			maneuvering_skill = 2
 			coordination_skill = 3
-		}
+		} custom_effect_tooltip = burning_straits_stats_tp
 		create_navy_leader = {
 			name = "Polar Night"
 			portrait_path = "gfx/leaders/Pony/portrait_pony_generic_navy_8.dds"
@@ -3449,7 +3459,7 @@ country_event = { #New Imperial Admiralty event
 			maneuvering_skill = 2
 			coordination_skill = 4
 			female = yes
-		}
+		} custom_effect_tooltip = polar_night_stats_tp
 		create_navy_leader = {
 			name = "Jungle Mango"
 			portrait_path = "gfx/leaders/Pony/portrait_pony_generic_navy_3.dds"
@@ -3460,7 +3470,7 @@ country_event = { #New Imperial Admiralty event
 			maneuvering_skill = 3
 			coordination_skill = 3
 			female = yes
-		}
+		} custom_effect_tooltip = jungle_mango_stats_tp
 		create_navy_leader = {
 			name = "Flicker Fade"
 			portrait_path = "gfx/leaders/Pony/portrait_pony_generic_navy_6.dds"
@@ -3471,7 +3481,7 @@ country_event = { #New Imperial Admiralty event
 			maneuvering_skill = 4
 			coordination_skill = 2
 			female = yes
-		}
+		} custom_effect_tooltip = flicker_fade_stats_tp
 	}
 }
 
@@ -3764,86 +3774,6 @@ country_event = { # Luna Puppet
 		set_cosmetic_tag = YAK_NLR
 
 		set_country_flag = is_luna_puppet
-	}
-}
-
-country_event = {
-	id = lunas.940
-	immediate = {log = "[GetDateText]: [Root.GetName]: event lunas.940"}
-	hidden = yes
-	trigger = {
-		tag = NLR
-		exists = yes
-		NOT = { has_government = fascism }
-		EQS = { has_government = democratic }
-	}
-	fire_only_once = yes
-	mean_time_to_happen = { days = 1 }
-	option = {
-		if = {
-			limit = { 
-				EQS = {
-					exists = yes
-				}
-			}
-			set_global_flag = EQS_exists
-		}
-		if = {
-			limit = { is_subject = yes }
-			EQS = { get_current_autonomy_level_of_PREV = yes }
-			overlord = { set_country_flag = NLR_EQS_master }
-		}
-		else_if = {
-			limit = { is_in_faction = yes }
-			random_other_country = {
-				limit = { is_in_faction_with = ROOT is_faction_leader = yes }
-				set_country_flag = NLR_EQS_faction_leader
-			}
-		}
-		if = {
-			limit = { is_ai = no }
-			EQS = { change_tag_from = ROOT }
-		}
-		EQS = {
-			transfer_technology = yes
-			annex_country = { target = ROOT transfer_troops = yes }
-		}
-		if = {
-			limit = { NOT = { has_global_flag = EQS_exists } }
-			EQS = {
-				if = {
-					limit = { any_country = { has_country_flag = NLR_EQS_master } }
-					random_other_country = {
-						limit = { has_country_flag = NLR_EQS_master }
-						puppet = EQS
-						clr_country_flag = NLR_EQS_master
-					}
-					set_previous_autonomy_level = yes
-				}
-				else_if = {
-					limit = { any_country = { has_country_flag = NLR_EQS_faction_leader } }
-					random_other_country = {
-						limit = { has_country_flag = NLR_EQS_faction_leader }
-						add_to_faction = EQS
-						clr_country_flag = NLR_EQS_faction_leader
-					}
-				}
-				if = {
-					limit = { 
-						has_government = democratic 
-						NOT = { has_country_flag = EQS_force_republic }
-					}
-					set_country_flag = EQS_force_republic
-					complete_national_focus = eqs_come_to_compromise
-					complete_national_focus = eqs_allow_the_vote
-					set_country_flag = congress_president
-					set_cosmetic_tag = EQS_DEM1
-					set_party_name = { ideology = democratic long_name = EQS_republic_long name = EQS_republic }
-					country_event = { hours = 24 id = equestriadem.1 }
-				}
-			}
-		}
-		clr_global_flag = EQS_exists
 	}
 }
 

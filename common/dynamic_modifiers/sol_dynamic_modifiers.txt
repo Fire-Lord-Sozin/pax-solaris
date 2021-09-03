@@ -1,18 +1,23 @@
 SOL_uprising = {
 	icon = GFX_modifiers_SOL_uprising_icon
 	enable = {
-		always = yes
+		is_fully_controlled_by = EQS
+	}
+	remove_trigger = {
+		NOT = { is_controlled_by = EQS }
 	}
 	army_speed_factor = -0.5
 	local_supplies = -0.5
 	attrition = 0.3
 	disable_strategic_redeployment = 1
 }
-
 SOL_uprising_trains = {
 	icon = GFX_modifiers_SOL_uprising_icon
 	enable = {
-		always = yes
+		is_fully_controlled_by = EQS
+	}
+	remove_trigger = {
+		NOT = { is_controlled_by = EQS }
 	}
 	army_speed_factor = -0.5
 	local_supplies = -0.5
@@ -31,13 +36,12 @@ SOL_public_works_modifier = {
 SOL_state_civilian_consolidation = {
 	icon = GFX_decision_railroad
 	enable = { 
-		always = yes
+		is_controlled_by = EQS
 	}
 	state_resources_factor = 0.1
 	state_production_speed_buildings_factor = 0.1
 	local_building_slots_factor = 0.1
-	army_speed_factor_for_controller = 0.1
-	local_org_regain = 0.1
+	army_speed_factor_for_controller = 0.15
 }
 
 SOL_dynamic_heatwave_effect = {
@@ -94,4 +98,131 @@ SOL_gas_attack = {
 	army_defence_factor = -0.5
 	sickness_chance = 1.5
 	local_org_regain = -1
+}
+SOL_efficient_urban_planning = {
+	icon = GFX_SOL_urban_planning
+	enable = { always = yes }
+	local_building_slots_factor = 0.10
+	static_anti_air_damage_factor = 0.10
+	static_anti_air_hit_chance_factor = 0.10
+	state_production_speed_buildings_factor = 0.10
+}
+SOL_mechanised_agriculture_bonus = {
+	enable = { always = yes }
+	consumer_goods_factor = SOL_mechanised_agriculture_bonus_civ_use
+	MONTHLY_POPULATION = SOL_mechanised_agriculture_bonus_monthly_pop
+}
+SOL_settlement_creation_malus = {
+	enable = { always = yes }
+	civilian_factory_use = SOL_develop_settler_colony_civ_fac_use_total 
+}
+SOL_infrastructure_hardening_bonus = {
+	enable = { 
+		is_controlled_by = EQS
+	}
+	icon = GFX_SOL_hardened_infrastructure
+	
+	local_supplies = 0.1
+	static_anti_air_damage_factor = 0.1
+	static_anti_air_hit_chance_factor = 0.1
+	army_core_defence_factor = 0.1
+}
+
+SOL_native_reservations = {
+	icon = GFX_SOL_native_reservations
+	enable = { 
+		is_controlled_by = EQS
+	}
+	recruitable_population_factor = -0.5
+	local_building_slots_factor = -0.25
+	state_resources_factor = -0.25
+	state_production_speed_buildings_factor = -0.25
+}
+SOL_policed_ghettos = {
+	icon = GFX_SOL_policed_ghettos
+	enable = { 
+		is_controlled_by = EQS
+	}
+	recruitable_population_factor = -0.5
+	local_building_slots_factor = -0.15
+	state_resources_factor = -0.15
+	state_production_speed_buildings_factor = -0.15
+}
+SOL_dissatisfied_natives = {
+	icon = GFX_SOL_native_reservations
+	enable = { 
+		is_controlled_by = EQS
+	}
+	recruitable_population_factor = -0.2
+	local_building_slots_factor = -0.1
+	state_resources_factor = -0.1
+	state_production_speed_buildings_factor = -0.1
+}
+SOL_settler_colonies = {
+	icon = GFX_SOL_settler_colonies
+	enable = { 
+		is_controlled_by = EQS
+	}
+	remove_trigger = {
+		is_core_of = EQS
+		has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+		has_dynamic_modifier = { modifier = SOL_pony_settlement }
+	}
+	resistance_decay = 0.3
+	required_garrison_factor = -0.3
+	resistance_target = -0.3
+}
+SOL_pony_settlement = {
+	icon = GFX_modifiers_changeling_settlement_icon
+	enable = { 
+		is_controlled_by = EQS
+	}
+	remove_trigger = {
+		is_core_of = EQS
+		has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+	}
+	resistance_decay = 0.5
+	required_garrison_factor = -0.5
+	resistance_target = -0.5
+	local_factories = 0.3
+	local_resources = 0.3
+	local_non_core_manpower = 0.3
+}
+SOL_extensive_pony_settlement = {
+	icon = GFX_modifiers_changeling_settlement_icon
+	enable = { 
+		is_controlled_by = EQS
+	}
+	remove_trigger = {
+		is_core_of = EQS
+	}
+	resistance_decay = 0.8
+	required_garrison_factor = -0.8
+	resistance_target = -0.8
+	local_factories = 0.5
+	local_resources = 0.5
+	local_non_core_manpower = 0.5
+}
+SOL_genocide = {
+	icon = GFX_SOL_genocidal_occupation
+	enable = {
+		is_controlled_by = EQS
+	}
+	resistance_target = 0.5
+	required_garrison_factor = 1.0
+	resistance_decay = -1.0
+}
+SOL_heart_of_an_empire = {
+	enable = {
+		is_controlled_by = EQS
+	}
+	local_building_slots = 3
+	local_intel_to_enemies = -0.25
+	intel_network_gain_factor = 0.25
+	local_supplies = 0.25
+	max_dig_in_factor = 0.25
+	static_anti_air_damage_factor = 0.25
+	static_anti_air_hit_chance_factor = 0.25
+	army_core_defence_factor = 0.25
+	state_production_speed_buildings_factor = 0.25
 }

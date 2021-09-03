@@ -1,0 +1,697 @@
+ideas = {
+	political_advisor = {
+		HRM_velvet_arrow = {
+			allowed = {
+				original_tag = HRM
+			}
+			picture = unknown_advisor6
+			visible = { has_country_flag = sol_velvet_joined_resistance }
+			traits = { sol_codebreaker }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_coloratura = {
+			name = ELF_coloratura
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_coloratura
+			modifier = { 
+				army_morale_factor = 0.025
+			}
+			traits = { inspiration_leader }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_fine_line = {
+			name = ELF_fine_line
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_fine_line
+			modifier = { 
+				trade_laws_cost_factor = -0.25
+				economy_cost_factor = -0.25
+			}
+			traits = { financial_expert }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_uncle_orange = {
+			name = ELF_uncle_orange
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_uncle_orange
+			traits = { smooth_talking_charmer }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_aunt_orange = {
+			name = ELF_aunt_orange
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_aunt_orange
+			traits = { lady_socialite }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_mayor_mare = {
+			name = ELF_mayor_mare
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_mayor_mare
+			traits = { populist }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_bon_bon = {
+			name = ELF_bon_bon 
+			allowed = {
+				original_tag = HRM
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+			}
+			picture = MAN_bon_bon
+			traits = { agent_of_smile }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_bon_bon_lar = {
+			name = ELF_bon_bon
+			allowed = {
+				original_tag = HRM
+				has_dlc = "La Resistance"
+			}
+			picture = MAN_bon_bon
+			traits = { agent_of_smile_lar }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_joe_pescolt = {
+			name = ELF_joe_pescolt
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_joe_pescolt
+			traits = { captain_of_industry }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_fancy_pants = {
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_fancy_pants
+			traits = { compassionate_gentleman }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	army_chief = {
+		HRM_firefly = {
+			name = ELF_firefly
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_firefly
+			traits = { army_chief_defensive_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_fairy_light = {
+			name = ELF_fairy_light
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_fairy_light
+			traits = { army_chief_organizational_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_purple_dart = {
+			name = ELF_purple_dart
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_purple_dart
+			traits = { army_chief_maneuver_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	air_chief = {
+		HRM_wind_walker = {
+			name = ELF_wind_walker
+			picture = MAN_wind_walker
+			allowed = {
+				original_tag = HRM
+			}
+			traits = { air_air_superiority_3 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_misty_fly = {
+			name = ELF_misty_fly
+			picture = MAN_misty_fly
+			allowed = {
+				original_tag = HRM
+			}
+			traits = { air_chief_ground_support_2 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_vapor_trail = {
+			name = ELF_vapor_trail
+			picture = MAN_vapor_trail
+			allowed = {
+				original_tag = HRM
+			}
+			traits = { air_air_combat_training_2 }
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	navy_chief = {
+		HRM_fairweather_breeze = {
+			name = ELF_fairweather_breeze
+			picture = MAN_fairweather
+			allowed = {
+				original_tag = HRM
+			}
+			traits = { navy_chief_decisive_battle_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_night_thunder = {
+			name = ELF_night_thunder
+			picture = MAN_night_thunder
+			allowed = {
+				original_tag = HRM
+			}
+			traits = { navy_chief_commerce_raiding_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	high_command = {
+		HRM_tall_order = {
+			name = ELF_tall_order
+			ledger = army
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_tall_order
+			traits = { quartermaster_general }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_raspberry_beret = {
+			name = ELF_raspberry_beret
+			ledger = army
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_raspberry_beret
+			traits = { army_commando_1 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_mr_stripes = {
+			name = ELF_mr_stripes
+			ledger = army
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_mr_stripes
+			traits = { armaments_organizer }
+			modifier = { 
+				industrial_capacity_factory = 0.05
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_coco_pommel = {
+			name = ELF_coco_pommel
+			ledger = army
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_coco_pommel
+			traits = { uniform_designer }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		HRM_maverick_flare = {
+			name = ELF_maverick_flare
+			ledger = army
+			allowed = {
+				original_tag = HRM
+			}
+			picture = MAN_maverick_flare
+			traits = { army_infantry_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	theorist = {
+		HRM_moondancer = {
+			ledger = army
+			name = ELF_moondancer
+			picture = MAN_moondancer
+			allowed = {
+				original_tag = HRM
+			}
+			research_bonus = {
+				rocketry = 0.05
+				nuclear = 0.05
+				magical_tech = 0.1
+			}
+			traits = { bookworm }
+		}
+		HRM_flash_force = {
+			ledger = army
+			name = ELF_flash_force
+			picture = MAN_flash_force
+			allowed = {
+				original_tag = HRM
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			traits = { military_theorist }
+		}
+	}
+	tank_manufacturer = {
+		designer = yes
+		HRM_detrot = {
+			name = NLR_detrot
+		    picture = detrot
+			allowed = {
+				original_tag = HRM
+			}
+			available = {
+				has_full_control_of_state = 349
+			}
+			traits = { 
+			    fast_tank_manufacturer 
+			}
+			research_bonus = {
+				armor = 0.10
+			}
+		}
+		HRM_mustang = {
+			name = HRM_mustang
+			picture = mustang	
+			allowed = {
+				original_tag = HRM
+			}
+
+			research_bonus = {
+				armor = 0.1
+			}
+			
+			traits = { main_battle_tank_manufacturer }
+		}
+	}
+	naval_manufacturer = {
+		designer = yes
+
+		HRM_albion_dockyards = {
+			name = ELF_albion_dockyards
+			picture = armoury_of_detrot 
+
+			allowed = {
+				original_tag = HRM
+			}
+
+			available = {
+				has_full_control_of_state = 525
+			}
+
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+
+			traits = { convoy_escort_naval_manufacturer }
+
+		}
+	}
+	aircraft_manufacturer = {
+
+		designer = yes
+
+		HRM_light_aircraft_manufacturer = {
+			name = ELF_light_aircraft_manufacturer
+			picture = generic_air_manufacturer_1
+
+			allowed = {
+				tag = HRM
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+
+			traits = { light_aircraft_manufacturer }
+		}
+
+		HRM_heavy_aircraft_manufacturer = {
+			name = ELF_heavy_aircraft_manufacturer
+			picture = generic_air_manufacturer_2
+
+			allowed = {
+				tag = HRM
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+
+			traits = { heavy_aircraft_manufacturer }
+		}
+
+		HRM_naval_aircraft_manufacturer = {
+			name = ELF_naval_aircraft_manufacturer
+			picture = generic_air_manufacturer_3
+
+			allowed = {
+				tag = HRM
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+
+			traits = { naval_aircraft_manufacturer }
+		}
+	}
+	materiel_manufacturer = {
+		designer = yes
+		HRM_m_arsenal = {
+			name = NLR_m_arsenal
+		    picture = m_arsenal
+			allowed = {
+				original_tag = HRM
+			}
+			available = {
+				has_full_control_of_state = 75
+			}
+			traits = { 
+			    infantry_equipment_manufacturer 
+			}
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+		}
+		HRM_triumph = {
+			name = NLR_triumph
+		    picture = triumph
+			allowed = {
+				original_tag = HRM
+			}
+			traits = { 
+			    motorized_equipment_manufacturer 
+			}
+			research_bonus = {
+				motorized_equipment = 0.10
+				mot_rockets = 0.50
+			}
+		}
+		HRM_thunder = {
+			name = NLR_thunder 
+		    picture = thunder
+			allowed = {
+				original_tag = HRM
+			}
+			
+			traits = { 
+			    artillery_manufacturer 
+			}
+			research_bonus = {
+				artillery = 0.10
+			}
+		}
+	}
+	industrial_concern = {
+		HRM_prench_institute = {
+			name = ELF_prench_institute
+			picture = prench_institute
+
+			allowed = {
+				tag = HRM
+			}
+			
+			available = {
+				has_full_control_of_state = 231
+			}
+
+			traits = { research_center }
+
+			modifier = {
+				research_speed_factor = 0.03
+			}
+		}
+		HRM_manehattan = {
+			name = ELF_manehattan_science_institute
+			picture = manehattan
+
+			allowed = {
+				tag = HRM
+			}
+			
+			available = {
+				has_full_control_of_state = 75
+			}
+
+
+
+			research_bonus = {
+				electronics = 0.10
+			}
+
+			traits = { electronics_concern }
+
+			modifier = {
+			}
+		}
+	}
+	country = {
+		HRM_harmonic_resistance_idea_5 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = HRM_harmonic_resistance
+			removal_cost = -1
+			modifier = {
+				out_of_supply_factor = -0.25
+				supply_consumption_factor = -0.25
+				no_supply_grace = 120
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.25 defense_bonus_against = 0.25 }
+		}
+		HRM_harmonic_resistance_idea_4 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = HRM_harmonic_resistance
+			removal_cost = -1
+			modifier = {
+				out_of_supply_factor = -0.20
+				supply_consumption_factor = -0.20
+				no_supply_grace = 96
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.20 defense_bonus_against = 0.20 }
+		}
+		HRM_harmonic_resistance_idea_3 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = HRM_harmonic_resistance
+			removal_cost = -1
+			modifier = {
+				out_of_supply_factor = -0.15
+				supply_consumption_factor = -0.15
+				no_supply_grace = 72
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.15 defense_bonus_against = 0.15 }
+		}
+		HRM_harmonic_resistance_idea_2 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = HRM_harmonic_resistance
+			removal_cost = -1
+			modifier = {
+				out_of_supply_factor = -0.1
+				supply_consumption_factor = -0.1
+				no_supply_grace = 48
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		HRM_harmonic_resistance_idea_1 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = HRM_harmonic_resistance
+			removal_cost = -1
+			modifier = {
+				out_of_supply_factor = -0.05
+				supply_consumption_factor = -0.05
+				no_supply_grace = 24
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = 0.05 defense_bonus_against = 0.05 }
+		}
+		HRM_solar_loyalists_idea_5 = {
+			allowed = {
+				always = no
+			}
+			picture = sol_paramilitary_armies
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.5
+				industrial_capacity_factory  = -0.5
+				production_speed_buildings_factor = -0.5
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = -0.25 defense_bonus_against = -0.25 }
+		}
+		HRM_solar_loyalists_idea_4 = {
+			allowed = {
+				always = no
+			}
+			picture = sol_paramilitary_armies
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.4
+				industrial_capacity_factory  = -0.4
+				production_speed_buildings_factor = -0.4
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = -0.2 defense_bonus_against = -0.2 }
+		}
+		HRM_solar_loyalists_idea_3 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = sol_paramilitary_armies
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.3
+				industrial_capacity_factory  = -0.3
+				production_speed_buildings_factor = -0.3
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = -0.15 defense_bonus_against = -0.15 }
+		}
+		HRM_solar_loyalists_idea_2 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = sol_paramilitary_armies
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.2
+				industrial_capacity_factory  = -0.2
+				production_speed_buildings_factor = -0.2
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = -0.1 defense_bonus_against = -0.1 }
+		}
+		HRM_solar_loyalists_idea_1 = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = sol_paramilitary_armies
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.1
+				industrial_capacity_factory  = -0.1
+				production_speed_buildings_factor = -0.1
+			}
+			targeted_modifier = { tag = EQS attack_bonus_against = -0.05 defense_bonus_against = -0.05 }
+		}
+		HRM_the_last_stand_of_freedom = {
+			allowed = {
+				always = no
+			}
+			available = { 
+				has_war_with = EQS
+			}
+			picture = ELF_might
+			removal_cost = -1
+			modifier = {
+				surrender_limit = 0.2
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.2
+				mobilization_speed = 0.2
+				experience_loss_factor = -0.2
+				conscription_factor = 0.2
+			}
+		}
+	}
+}
