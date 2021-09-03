@@ -362,131 +362,131 @@ SOL_genocide_effect = {
 				limit = { NOT = { has_dynamic_modifier = { modifier = SOL_genocide } } } 
 				add_dynamic_modifier = { modifier = SOL_genocide } 
 			}
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@synthetic_refinery }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = synthetic_refinery
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@dockyard }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = dockyard
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@arms_factory }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = arms_factory
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@industrial_complex }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = industrial_complex
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@fuel_silo }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = fuel_silo
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@rocket_site }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = rocket_site
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_building_level value = building_level@nuclear_reactor }
-		multiply_temp_variable = { var = sol_building_level value = 0.5 }
-		round_temp_variable = sol_building_level
-		set_building_level = {
-			type = nuclear_reactor
-			level = sol_building_level
-			instant_build = yes
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@steel }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = steel
-			amount = sol_resource_amount
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@tungsten }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = tungsten
-			amount = sol_resource_amount
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@rubber }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = rubber
-			amount = sol_resource_amount
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@chromium }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = chromium
-			amount = sol_resource_amount
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@aluminium }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = aluminium
-			amount = sol_resource_amount
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@crystals }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = crystals
-			amount = sol_resource_amount
-		}
-		set_temp_variable = { var = sol_resource_amount value = resource@oil }
-		multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
-		round_temp_variable = sol_resource_amount
-		add_resource = {
-			type = oil
-			amount = sol_resource_amount
-		}
-		if = {
-			limit = { has_state_category = megalopolis }
-			set_state_category = large_city
-		}
-		else_if = {
-			limit = { has_state_category = metropolis }
-			set_state_category = city
-		}
-		else_if = {
-			limit = { has_state_category = large_city }
-			set_state_category = large_town
-		}
-		else_if = {
-			limit = { has_state_category = city }
-			set_state_category = town
-		}
-		else_if = {
-			limit = { has_state_category = large_town }
-			set_state_category = town
+			set_temp_variable = { var = sol_building_level value = building_level@synthetic_refinery }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = synthetic_refinery
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@dockyard }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = dockyard
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@arms_factory }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = arms_factory
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@industrial_complex }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = industrial_complex
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@fuel_silo }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = fuel_silo
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@rocket_site }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = rocket_site
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@nuclear_reactor }
+			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = nuclear_reactor
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@steel }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = steel
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@tungsten }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = tungsten
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@rubber }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = rubber
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@chromium }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = chromium
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@aluminium }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = aluminium
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@crystals }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = crystals
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@oil }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = oil
+				amount = sol_resource_amount
+			}
+			if = {
+				limit = { has_state_category = megalopolis }
+				set_state_category = large_city
+			}
+			else_if = {
+				limit = { has_state_category = metropolis }
+				set_state_category = city
+			}
+			else_if = {
+				limit = { has_state_category = large_city }
+				set_state_category = large_town
+			}
+			else_if = {
+				limit = { has_state_category = city }
+				set_state_category = town
+			}
+			else_if = {
+				limit = { has_state_category = large_town }
+				set_state_category = town
+			}
 		}
 	}
 	else_if = {
