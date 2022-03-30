@@ -1,0 +1,882 @@
+﻿capital = 3
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "EQS_1007_nsb"
+	else = {
+		set_oob = "EQS_1007"
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_naval_oob = "EQS_1007_naval"
+	else = {
+		set_naval_oob = "EQS_1007_naval_legacy"
+	}
+}
+
+set_research_slots = 3
+starting_train_buffer = 4
+
+save_global_event_target_as = equestria
+
+set_technology = {
+	pony_race = 1
+	melee_weapons = 1
+	melee_weapons1 = 1
+	pre_gw_artillery = 1
+	tech_pegasi = 1
+	early_fighter = 1
+	cv_early_fighter = 1
+	naval_bomber1 = 1
+	cv_naval_bomber1 = 1
+	early_bomber = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_antitank = 1
+	gw_artillery = 1
+	tech_support = 1
+	fuel_silos = 1
+	tech_recon = 1
+	tech_military_police = 1
+	tech_engineers = 1
+	trench_warfare = 1
+	motorised_infantry = 1
+	interwar_antiair = 1
+	base_strike = 1
+	basic_train = 1
+}
+actually_fix_weapon_techs = yes #THIS HAS TO BE CALLED IN EVERY HISTORY FILE RIGHT AFTER MAIN set_technology!
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		early_light_carrier = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		sonar = 1
+		smoke_generator = 1
+		basic_depth_charges = 1
+		basic_secondary_battery = 1
+		basic_cruiser_armor_scheme = 1
+		basic_heavy_armor_scheme = 1
+		mtg_transport = 1
+		improved_secondary_battery = 1
+		basic_fire_control_system = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	set_technology = {
+		armored_car1 = 1
+	}
+}
+add_opinion_modifier = { modifier = equestrian_kindness target = BUF }
+give_guarantee = BUF
+add_equipment_to_stockpile = {
+	type = infantry_equipment_0
+	amount = 10000
+	producer = EQS
+}
+add_equipment_to_stockpile = {
+	type = melee_equipment_1
+	amount = 1600
+	producer = EQS
+}
+add_tech_bonus = {
+	name = fighter_bonus
+	bonus = 3
+	uses = 1
+	technology = fighter1
+}
+add_tech_bonus = {
+	name = bomber_bonus
+	bonus = 0.1
+	uses = 1
+	category = tactical_bomber
+}
+set_convoys = 269
+set_popularities = {
+	democratic = 79
+	fascism = 1
+	communism = 20
+	neutrality = 0
+}
+set_politics = {
+	ruling_party = democratic
+	last_election = "1.10.10"
+	election_frequency = 36
+	elections_allowed = no
+}
+
+add_ideas = {
+	home_of_ponies
+	alicorn_sisters
+	friendly_harmony
+	harmonic_stagnation
+	EQS_bat_pony_divide_1
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	add_ideas = {
+		traditionalism_academy_spirit
+		doctrinal_orthodoxy_spirit
+		disdain_for_the_digging_spirit
+	}
+}
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	add_ideas = {
+		EQS_bad_tanks
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	set_autonomy = {
+		target = CRY
+		autonomy_state = autonomy_integrated_puppet
+	}
+	set_autonomy = {
+		target = EQC
+		autonomy_state = autonomy_dominion
+	}
+	else = {
+		puppet = EQC
+		puppet = CRY
+	}
+}
+
+if = {
+	limit = { has_dlc = "Together for Victory" }
+
+	add_to_tech_sharing_group = equestrian_research
+}
+
+set_stability = 0.65
+set_war_support = 0.3
+
+recruit_character = EQS_prince_blueblood
+recruit_character = EQS_chancellor_neighsay
+recruit_character = EQS_princess_celestia
+recruit_character = EQS_starlight_glimmer
+recruit_character = EQS_soarin
+recruit_character = EQS_fast_clip
+recruit_character = EQS_whiplash
+recruit_character = EQS_madoor_stronghammer
+recruit_character = EQS_evening_squall
+recruit_character = EQS_cynosura
+recruit_character = EQS_dust_hoover
+recruit_character = EQS_copper_gearheart_cog
+recruit_character = EQS_twilight_sparkle
+recruit_character = EQS_cocopomell
+recruit_character = EQS_flim_flam
+recruit_character = EQS_raven_inkwell
+recruit_character = EQS_fancy_pants
+recruit_character = EQS_filthy_rich
+recruit_character = EQS_sweetie_drops
+recruit_character = EQS_rockhoof
+recruit_character = EQS_grimhoof
+recruit_character = EQS_coppertop
+recruit_character = EQS_flash_magnus
+recruit_character = EQS_rainbowdash
+recruit_character = EQS_kittyhawk
+recruit_character = EQS_eqs6
+recruit_character = EQS_maudpie
+recruit_character = EQS_limestone
+recruit_character = EQS_zecora
+recruit_character = EQS_rarity
+recruit_character = EQS_wonderbolts
+recruit_character = EQS_sentinel
+recruit_character = EQS_fizzlepop
+recruit_character = EQS_grannysmith
+recruit_character = EQS_spitfire
+recruit_character = EQS_fluttershy
+recruit_character = EQS_flakesnow
+recruit_character = EQS_SOL_padlock
+recruit_character = EQS_SOL_dottedline
+recruit_character = EQS_SOL_scope
+recruit_character = EQS_SOL_benevelle
+recruit_character = EQS_SOL_summersweet
+recruit_character = EQS_SOL_morninglight
+recruit_character = EQS_SOL_sunnyflare
+recruit_character = EQS_SOL_wind_rider
+recruit_character = EQS_SOL_arcane_nova
+recruit_character = EQS_SOL_blaze
+recruit_character = EQS_SOL_thunderlane
+recruit_character = EQS_NLR_celenite
+recruit_character = EQS_NLR_tempest_wind
+recruit_character = EQS_NLR_bipen
+recruit_character = EQS_NLR_midnight_oil
+recruit_character = EQS_oli_equites
+recruit_character = EQS_SOL_shining_star
+recruit_character = EQS_SOL_scroup_whitemares
+recruit_character = EQS_SOL_aurora_shinesparck
+recruit_character = EQS_SOL_midwinter_halo
+recruit_character = EQS_SOL_august_fon_eisenstadt
+recruit_character = EQS_SOL_comet_trail
+recruit_character = EQS_SOL_Capsaicin
+recruit_character = EQS_SOL_comm_rush
+recruit_character = EQS_SOL_Stormchaser
+recruit_character = EQS_princess_luna
+recruit_character = EQS_sunset_shimmer
+recruit_character = EQS_braeburn
+recruit_character = EQS_sakira
+recruit_character = EQS_applejack
+recruit_character = EQS_allen_spark
+recruit_character = EQS_swift_wing
+recruit_character = EQS_Fireflight
+recruit_character = EQS_anonfilly
+recruit_character = EQS_sergeant_reckless
+recruit_character = EQS_big_macintosh
+recruit_character = EQS_pinkie_pie
+recruit_character = EQS_caltrop_decay
+recruit_character = EQS_sun_marble
+recruit_character = EQS_orion_star
+recruit_character = EQS_bernard_hoofgonery
+recruit_character = EQS_prince_fallen
+recruit_character = EQS_sunrise_moonshadow
+recruit_character = EQS_SOL_ksen_autumn
+recruit_character = EQS_maekt_ix
+recruit_character = EQS_mayor_mare
+recruit_character = EQS_maxos_eternal
+recruit_character = EQS_ledd_metal
+recruit_character = EQS_ember_spark
+
+#Pax Solaris Characters
+
+recruit_character = EQS_golden_delicious
+recruit_character = EQS_starlight_and_trixie
+recruit_character = EQS_starswirl
+recruit_character = EQS_SOL_suri_polomare
+recruit_character = EQS_SOL_duty_price
+recruit_character = EQS_SOL_stygian
+recruit_character = EQS_SOL_keelhaul
+recruit_character = EQS_SOL_sea_salt
+recruit_character = EQS_SOL_cloud_strafer
+recruit_character = EQS_SOL_hurricane
+recruit_character = EQS_SOL_lightning_dust
+recruit_character = EQS_SOL_sparking_flame
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}	
+	EQS_sweetie_drops = {
+		add_advisor_role = {
+			advisor = {
+				slot = political_advisor
+				idea_token = sweetie_drops
+				cost = 200
+				allowed = {
+					has_dlc = "La Resistance"
+				}
+				available = {
+					has_intelligence_agency = yes
+					if = {
+						limit = { is_SOLAR_EMPIRE = yes }
+						custom_trigger_tooltip = {
+							tooltip = sol_harmonists_have_deserted_tt
+							NOT = { has_country_flag = SOL_harmonic_commanders_leave }
+						}
+					}
+				}
+				traits = { agent_of_smile_lar }
+			}	
+		}
+	}			
+	else = {
+		EQS_sweetie_drops = {
+			add_advisor_role = {
+				character = EQS_sweetie_drops
+				advisor = {
+					slot = political_advisor
+					idea_token = sweetie_drops
+					cost = 200
+					available = {
+						has_intelligence_agency = yes
+						if = {
+							limit = { is_SOLAR_EMPIRE = yes }
+							custom_trigger_tooltip = {
+								tooltip = sol_harmonists_have_deserted_tt
+								NOT = { has_country_flag = SOL_harmonic_commanders_leave }
+							}
+						}
+					}
+					traits = { agent_of_smile }
+				}
+			}
+		}
+	}
+}
+
+create_faction = "All_ponies_front"
+add_to_faction = CRY
+add_to_faction = EQC
+
+random_character = {
+	limit = { is_character = EQS_whiplash }
+	save_global_event_target_as = EQS_Whiplash
+}
+
+random_character = {
+	limit = { is_character = EQS_fast_clip }
+	save_global_event_target_as = EQS_Fast_Clip
+}
+
+random_character = {
+	limit = { is_character = EQS_soarin }
+	save_global_event_target_as = EQS_Soarin
+}
+
+random_character = {
+	limit = { is_character = EQS_prince_blueblood }
+	save_global_event_target_as = EQS_Blueblood
+}
+
+random_character = {
+	limit = { is_character = EQS_madoor_stronghammer }
+	save_global_event_target_as = EQS_Stronghammer
+}
+
+random_character = {
+	limit = { is_character = EQS_evening_squall }
+	save_global_event_target_as = EQS_Squall
+}
+
+random_character = {
+    limit = { is_character = EQS_dust_hoover }
+    save_global_event_target_as = EQS_Dust_Hoover
+}
+
+random_character = {
+    limit = { is_character = EQS_princess_celestia }
+    save_global_event_target_as = EQS_princess_celestia_target
+}
+
+random_character = {
+    limit = { is_character = EQS_princess_luna }
+    save_global_event_target_as = EQS_princess_luna_target
+}
+
+random_character = {
+    limit = { is_character = EQS_twilight_sparkle }
+    save_global_event_target_as = EQS_twilight_sparkle_target
+}
+
+random_character = {
+    limit = { is_character = EQS_braeburn }
+    save_global_event_target_as = EQS_braeburn_target
+}
+
+random_character = {
+    limit = { is_character = EQS_rarity }
+    save_global_event_target_as = EQS_rarity_target
+}
+
+random_character = {
+    limit = { is_character = EQS_SOL_arcane_nova }
+    save_global_event_target_as = EQS_SOL_arcane_nova_target
+}
+
+set_rule = {
+	can_generate_female_aces = yes
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "Yak Tank"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 1
+		}
+		obsolete = yes
+		icon = "gfx/interface/technologies/EQS_armoured_tractor.dds"
+	}
+	create_equipment_variant = {
+		name = "Coltden-Loyal"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_fixed_superstructure_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 1
+		}
+		obsolete = yes
+		icon = "gfx/interface/technologies/EQS_armoured_tractor.dds"
+	}	
+	create_equipment_variant = {
+		name = "Stallion 6-Ton A"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = secondary_turret_hmg
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 3
+			tank_nsb_engine_upgrade = 2
+		}
+		icon = "gfx/interface/equipmentdesigner/tanks/designer/ENG/ENG_light_BAB_camo.dds"
+		obsolete = yes #export only
+	}
+
+	create_equipment_variant = {
+		name = "Stallion 6-Ton B"
+		type = light_tank_chassis_1
+		parent_version = 1
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 3
+			tank_nsb_engine_upgrade = 2
+		}
+		icon = "gfx/interface/equipmentdesigner/tanks/designer/ENG/ENG_light_BAB_camo.dds"
+		obsolete = yes #export only
+	}
+	create_equipment_variant = {
+		name = "Light Tank Mk. IV Breezie"
+		type = light_tank_chassis_1
+		parent_version = 2
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 1
+		}
+		icon = "gfx/interface/technologies/EQS_breezie_n.dds"
+		obsolete = yes #used for oob
+	}
+	create_equipment_variant = {
+		name = "Light Tank Mk. VI Breezie"
+		type = light_tank_chassis_1
+		parent_version = 3
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = smoke_launchers
+		}
+		icon = "gfx/interface/technologies/EQS_breezie_n.dds"
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Stallion Medium Mk. II Great Yak"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_medium_three_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 2
+		}
+		icon = "gfx/interface/technologies/ENG_basic_light_tank.dds"
+	}
+}
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	### Variants ###
+	# Submarines #
+	create_equipment_variant = {
+		name = "Amberjack Class"
+		name_group = EQS_SS_HISTORICAL
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Ardent Class"
+		type = ship_hull_light_1
+		name_group = EQS_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = empty
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Acasta Class"
+		type = ship_hull_light_1
+		name_group = EQS_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Constellation Class"
+		type = ship_hull_light_1
+		name_group = EQS_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			mid_1_custom_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Twilight Class"
+		type = ship_hull_light_2
+		name_group = EQS_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			mid_1_custom_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Emerald Class"
+		type = ship_hull_cruiser_1
+		name_group = EQS_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+
+	}
+	create_equipment_variant = {
+		name = "Violet Class"
+		type = ship_hull_cruiser_1
+		name_group = EQS_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Marigold Class"
+		type = ship_hull_cruiser_2
+		name_group = EQS_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			front_1_custom_slot = ship_anti_air_2
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Canterlot Class"
+		type = ship_hull_cruiser_1
+		name_group = EQS_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_medium_battery_2
+		}
+		obsolete = yes
+	}
+	# Battlecruisers #
+	create_equipment_variant = {
+		name = "Virtue Class"
+		type = ship_hull_heavy_1
+		name_group = EQS_BC_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bc_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Hope Class"
+		type = ship_hull_heavy_1
+		name_group = EQS_BC_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bc_2
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_2
+		}
+	}
+	# Battleships #
+	create_equipment_variant = {
+		name = "Star Swirl Class"
+		type = ship_hull_heavy_1
+		name_group = EQS_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_heavy_battery_2
+			mid_1_custom_slot = ship_anti_air_2
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Pillars Class"
+		type = ship_hull_heavy_1
+		name_group = EQS_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_2
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Protector Class"
+		type = ship_hull_heavy_1
+		name_group = EQS_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_2
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Healing Class"
+		type = ship_hull_heavy_2
+		name_group = EQS_BC_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_anti_air_2
+			mid_1_custom_slot = ship_heavy_battery_2
+			mid_2_custom_slot = ship_anti_air_2
+			rear_1_custom_slot = empty
+		}
+	}
+	# Carriers #
+	create_equipment_variant = {
+		name = "Pegasopolis Class"
+		type = ship_hull_carrier_conversion_bb
+		name_group = EQS_CV_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			mid_1_custom_slot = ship_armor_carrier_deck
+		}
+	}
+}

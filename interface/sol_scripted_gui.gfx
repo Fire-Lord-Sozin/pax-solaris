@@ -40,6 +40,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/SOL_magic_start_bg.dds"
 	}
 	spriteType = {
+		name = "GFX_SOL_magic_start_alert_bg"
+		texturefile = "gfx/interface/SOL_magic_start_alert_bg.dds"
+	}
+	spriteType = {
 		name = "GFX_SOL_magic_bar"
 		texturefile = "gfx/interface/SOL_magic_bar.dds"
 	}

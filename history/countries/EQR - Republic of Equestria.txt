@@ -105,151 +105,26 @@ add_political_power = 300
 set_stability = 0.5
 set_war_support = 0.65
 
-create_country_leader = {
-	name = "Mayor Rokenhar"
-	picture = "gfx/leaders/EQR/rokenhar.tga"
-	expire = "1965.1.1"
-	desc = solrokenhardesc
-	ideology = liberalism
-	traits = {
-	}
-}
-create_country_leader = {
-	name = "J.D. Neighvis"
-	expire = "1965.1.1"
-	picture = "gfx/leaders/EQR/JDavis.tga"
-	ideology = centrism
-	desc = neighvis_desc
-	traits = {
-	}
-}
-create_country_leader = {
-	name = "Starry Plough"
-	picture = "gfx/leaders/EQR/starry_plough.tga"
-	expire = "1965.1.1"
-	desc = splowdesc
-	ideology = syndicalism
-	traits = {
-	}
-}
-create_country_leader = {
-	name = "Chancellor Neighsay"
-	expire = "1965.1.1"
-	picture = "gfx/leaders/EQR/Naysay.tga"
-	ideology = fascism_ideology
-	traits = {
-	}
-}
-
-create_field_marshal = {
-	name = "Silverstar"
-	picture = "Silverstar.tga"
-	desc = silverstar_desc
-	traits = { pony_race_trait defensive_doctrine }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 3
-	planning_skill = 2
-	logistics_skill = 2
-}
-create_corps_commander = {
-	name = "Star Spur"
-	picture = "StarSpur.tga"
-	traits = { pony_race_trait desert_fox }
-	skill = 1
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 2
-	logistics_skill = 3
-}
-create_corps_commander = {
-	name = "Apple Ale"
-	picture = "Apple_Ale.tga"
-	desc = SCS_apple_waifu_desc
-	traits = { pony_race_trait politically_connected logistics_wizard }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 1
-	planning_skill = 3
-	logistics_skill = 2
-	female = yes
-}
-create_corps_commander = {
-	name = "Mercy Ribbons"
-	portrait_path = "gfx/leaders/LSP/purplehorse.tga"
-	traits = { pony_race_trait career_officer inflexible_strategist }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-	female = yes
-}
-create_corps_commander = {
-	name = "McCree"
-	picture = "McCree.tga"
-	traits = { pony_race_trait commando }
-	skill = 1
-	attack_skill = 3
-	defense_skill = 2
-	planning_skill = 1
-	logistics_skill = 2
-}
-create_corps_commander = {
-	name = "Moonshine Melody"
-	picture = "Moonshine_Melody.tga"
-	desc = SCS_moonshine_desc
-	traits = { pony_race_trait harsh_leader }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 3
-}
-create_corps_commander = {
-	name = "Sorren Peak"
-	picture = "some_dixie_horse.tga"
-	desc = SCS_dixie_horse_desc
-	traits = { pony_race_trait harsh_leader trait_reckless }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 2
-}
-create_corps_commander = {
-	name = "Burnside Fervor"
-	picture = "Cuddle_Fervor.tga"
-	traits = { artillery_expert trait_cautious }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 2
-}
-create_corps_commander = {
-	name = "Cherry Soda"
-	portrait_path = "gfx/leaders/LSP/spacehorse.tga"
-	desc = LSP_cherry_desc
-	traits = { pony_race_trait air_force_commander }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 2
-	logistics_skill = 1
-	female = yes
-}
-create_corps_commander = {
-	name = "Blueberry Soda"
-	portrait_path = "gfx/leaders/LSP/bluebastard.tga"
-	desc = LSP_blueberry_desc
-	traits = { pony_race_trait harsh_leader }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 2
-	planning_skill = 1
-	logistics_skill = 2
-}
+recruit_character = EQR_mayor_rokenhar
+recruit_character = EQR_starry_plough
+recruit_character = EQR_chancellor_neighsay
+recruit_character = EQR_jd_neighvis
+recruit_character = EQR_silverstar
+recruit_character = EQR_star_spur
+recruit_character = EQR_cherry_soda
+recruit_character = EQR_blueberry_soda
+recruit_character = EQR_apple_ale
+recruit_character = EQR_mccree
+recruit_character = EQR_moonshine_melody
+recruit_character = EQR_sorren_peak
+recruit_character = EQR_burnside_fervor
+recruit_character = EQR_cherry_jubilee
+recruit_character = EQR_venture_capital
+recruit_character = EQR_yuma_spurs
+recruit_character = EQR_stewed_apple
+recruit_character = EQR_henry
+recruit_character = EQR_celery
+recruit_character = EQR_apple_fritter
 set_rule = {
 	can_generate_female_aces = yes
 }

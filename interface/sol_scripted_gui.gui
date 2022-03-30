@@ -172,14 +172,17 @@ guiTypes = {
 		}
 	}
 	containerWindowType = {
-		name = "magic_start_container"
-		position = { x = 1100 y = 4 }
+		name = "SOL_queen_oripia_container"
+		position = {x = 330 y = 465 }
+		size = { width= 68 height= 70 }
 		
-		buttonType = {
-			name = "magic_start_bg"
-			spriteType = "GFX_SOL_magic_start_bg"
-			position = { x=0 y=0 }
-			shortcut = "ctrl+d"
+		iconType = {
+			name = "SOL_queen_oripia_icon" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_queen_oripia"
+			
+			pdx_tooltip = "SOL_queen_oripia_tt"
 		}
 	}
 
@@ -205,6 +208,30 @@ guiTypes = {
 			
 			pdx_tooltip = "SOL_mobile_task_force_tt"
 			pdx_tooltip_delayed = "SOL_mobile_task_force_tt_delayed"
+		}
+	}
+	containerWindowType = {
+		name = "SOL_royal_guard"
+		position = {x = 460 y = 100 }
+		size = { width= 67 height= 325 }
+		
+		iconType = {
+			name = "SOL_royal_guard_button_fake" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_royal_guard_button_greyed"
+			
+			pdx_tooltip = "SOL_royal_guard_tt"
+			pdx_tooltip_delayed = "SOL_royal_guard_tt_delayed_unmet"
+		}
+		buttonType = {
+			name = "SOL_royal_guard_button" 
+			position = {x = 0 y = 0 }
+			orientation = "UPPER_LEFT"
+			spriteType = "GFX_SOL_royal_guard_button"
+			
+			pdx_tooltip = "SOL_royal_guard_tt"
+			pdx_tooltip_delayed = "SOL_royal_guard_tt_delayed"
 		}
 	}
 	

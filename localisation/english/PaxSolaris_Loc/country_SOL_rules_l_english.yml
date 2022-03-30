@@ -1,0 +1,38 @@
+﻿l_english:
+ #PAX SOLARIS GAMERULES
+ SOL_AI_BEHAVIOR:0 "@EQS Solar Empire"
+
+ SOL_CANNOT_RELEASE_CORE:0 "§R[ROOT.GetNameDef] may not release Equestrian territory.§!"
+ SOL_CANNOT_RELEASE_COUNTRY:0 "§R[ROOT.GetNameDef] cannot release this nation.§!"
+ SOL_CANNOT_LEAVE_FACTION:0 "§R[ROOT.GetNameDef] cannot leave this faction.§!"
+ SOL_JOIN_FACTION_BLOCKED:0 "§R[ROOT.GetNameDef] cannot join this faction right now.§!"
+ SOL_INVITE_FACTION_BLOCKED:0 "§RWe cannot invite others to our faction while we are fighting the Solar Civil War.§!"
+ SOL_EQS_INVITE_FACTION_BLOCKED:0 "§RWe cannot invite others to our faction.§!"
+ COALITION_OFFENSIVE_WARS_TT:0 "§RCoalition of the Free members cannot join offensive wars unless the war is waged by the faction leader.§!"
+ SOL_CALL_ALLY_BLOCKED_CIVIL_WAR_TT:0 "§RWe cannot call our allies while we are fighting the Solar Civil War.§!"
+ SOL_JOIN_ALLY_BLOCKED_CIVIL_WAR_TT:0 "§RWe cannot join our allies while they are fighting the Solar Civil War.§!"
+
+ RULE_OPTION_DAYBREAKER_CAELESTIS:0 "§CPax Caelestis§!"
+ RULE_OPTION_DAYBREAKER_CAELESTIS_SOL_AI_DESC:0 "Daybreaker will §Calways§! take §Gmerciful§! options."
+
+ RULE_OPTION_DAYBREAKER_DOMINATUS:0 "§GPax Dominatus§!"
+ RULE_OPTION_DAYBREAKER_DOMINATUS_SOL_AI_DESC:0 "Daybreaker will §Goften§! take §Gmerciful§! options."
+
+ RULE_OPTION_DAYBREAKER_IMPERIA:0 "§YPax Imperia§!"
+ RULE_OPTION_DAYBREAKER_IMPERIA_SOL_AI_DESC:0 "Daybreaker will §Ysometimes§! take §Gmerciful§! options."
+
+ RULE_OPTION_DAYBREAKER_EXITIUM:0 "§OPax Exitium§!"
+ RULE_OPTION_DAYBREAKER_EXITIUM_SOL_AI_DESC:0 "Daybreaker will §Orarely§! take §Gmerciful§! options."
+
+ RULE_OPTION_DAYBREAKER_INTERNECIO:0 "§RPax Internecio§!"
+ RULE_OPTION_DAYBREAKER_INTERNECIO_SOL_AI_DESC:0 "Daybreaker will §Rnever§! take §Gmerciful§! options."
+
+ SOL_HRM_OUTCOME:0 "The War of the Eclipse"
+
+ RULE_OPTION_DEFAULT_SOL_HRM:0 "The chances of the §SHarmony Restoration Movement§! spawning for §YAI-controlled§! §eSolar Empire§! is §Yrandomised.§!"
+ 
+ RULE_OPTION_SOL_HRM_FAILURE:0 "Spawn Harmony Restoration Movement"
+ RULE_OPTION_SOL_HRM_FAILURE_DESC:0 "The §SHarmony Restoration Movement§! will §Ralways§! spawn for §YAI-controlled§! §eSolar Empire.§!"
+
+ RULE_OPTION_SOL_HRM_SUCCESS:0 "Forbid Harmony Restoration Movement"
+ RULE_OPTION_SOL_HRM_SUCCESS_DESC:0 "The §SHarmony Restoration Movement§! will §Gnever§! spawn for §YAI-controlled§! §eSolar Empire.§!"

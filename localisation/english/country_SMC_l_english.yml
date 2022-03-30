@@ -1,0 +1,34 @@
+﻿l_english:
+ SOL_BLUEBLOOD_DESC:0 "A well-educated and accomplished general from the Equestrian military, Prince Blueblood was one of the first to pledge his allegiance to Daybreaker upon her ascension. While some question whether Prince Blueblood truly believes in her cause or is simply working with her to enrich himself, he has nonetheless proven himself a highly effective field marshal and politician.\n\nHis talent for efficient and disciplined administration, plus his close relationship with Empress Daybreaker, have won him the title of Imperial Governor over the changeling lands. While he controls the hives, they will be forced to toil away as slaves to fuel ponykind's new empire, kept in line by the threat of starvation.\n§YPortrait By§!: Tek"
+
+ SMC_democratic:0 "Free Changeling Hives"
+ SMC_neutrality:0 "Changeling Hives"
+ SMC_communist:0 "Union of Changeling Hives"
+ SMC_fascism:0 "Solar Mandate of Changelingia"
+ SMC_democratic_DEF:0 "The Free Changeling Hives"
+ SMC_neutrality_DEF:0 "The Changeling Hives"
+ SMC_communist_DEF:0 "The Union of Changeling Hives"
+ SMC_fascism_DEF:0 "The Solar Mandate of Changelingia"
+ SMC_fascism_ADJ:0 "Mandate"
+ SMC_democratic_ADJ:0 "Changeling"
+ SMC_neutrality_ADJ:0 "Changeling"
+ SMC_communism_ADJ:0 "Changeling"
+
+ SMC_neutrality_party:0 "CLF - Trimmelists"
+ SMC_neutrality_party_long:0 "Changeling Liberation Front - Trimmel Supporters"
+ SMC_communism_party:0 "Socialist Partisans"
+ SMC_communism_party_long:0 "Socialist Partisans"
+ SMC_fascism_party:0 "Solar Administration"
+ SMC_fascism_party_long:0 "Solar Administration for the Changeling Lands"
+ SMC_democratic_party:0 "CLF - Thoraxians"
+ SMC_democratic_party_long:0 "Changeling Liberation Front - Thorax Supporters"
+
+ SMC_thorax_name:0 "Thorax"
+
+ SMC_gold_muffin:0 "Gold Muffin"
+
+ SMC_trimmel:0 "Trimmel"
+
+ smc.1.t:0 "The End of an Empire"
+ smc.1.d:0 "Smoke clouds fill the sky as hive-cities burnt. The war is over. Ponykind has persevered and the Changeling Lands have been broken beneath us.\n\nFor the changelings, shock has given way to despair as solar forces tighten their grip on the nation. Their dreams of challenging Equestria for dominance over the continent have crashed and burned under Daybreaker’s fury. Now their future is bleak, with love reserves running low and an eternity of slavery to fuel our war machine ahead of them.\n\nTo streamline this process and crush the last of the changeling resistance, Daybreaker has carved three regions out of her defeated rival. The largest, containing the changeling capital of Vesalipolis, will be administrated by Prince Blueblood, the nephew of the Empress. He has proven himself an effective field marshal and cutthroat politician, traits that will serve him well in the administration of the Solar Mandate of Changelingia. The border regions will be annexed into [EQS.GetNameDef] directly to provide a buffer and serve as a new frontier for our rapidly growing population. Finally, the hive-city of Vraks will be placed under the rule of Lightning Dust. She will erase the city's legacy, permanently lobotomising the changeling war machine by eliminating the source of their most brilliant officers."
+ smc.1.a:0 "Our future is bright."

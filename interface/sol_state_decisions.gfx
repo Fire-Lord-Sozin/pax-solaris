@@ -16,6 +16,14 @@ spriteTypes = {
 		texturefile = "gfx/interface/state_view/SOL_mtf_button_greyed.dds"
 	}
 	spriteType = {
+		name = "GFX_SOL_royal_guard_button"
+		texturefile = "gfx/interface/state_view/SOL_royal_guard_button.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_royal_guard_button_greyed"
+		texturefile = "gfx/interface/state_view/SOL_royal_guard_button_greyed.dds"
+	}
+	spriteType = {
 		name = "GFX_SOL_colonies_button"
 		texturefile = "gfx/interface/state_view/SOL_colonies_button.dds"
 	}
@@ -30,5 +38,21 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_SOL_wrath_button_greyed"
 		texturefile = "gfx/interface/state_view/SOL_wrath_button_greyed.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_settlement_button"
+		texturefile = "gfx/interface/state_view/SOL_settlement_button.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_settlement_button_greyed"
+		texturefile = "gfx/interface/state_view/SOL_settlement_button_greyed.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_teleport_button"
+		texturefile = "gfx/interface/state_view/SOL_teleport_button.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_teleport_button_greyed"
+		texturefile = "gfx/interface/state_view/SOL_teleport_button_greyed.dds"
 	}
 }

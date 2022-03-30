@@ -1,42 +1,25 @@
-capital = 75
+﻿capital = 75
 
 set_research_slots = 3
-
-add_ideas = {
-	pony_race
-	modern_society
-	proper_science_base
-	no_lack_of_scientists
-	no_poverty
-}
 
 set_technology = {
 	pony_race = 1
 	melee_weapons = 1
 	melee_weapons1 = 1
 	pre_gw_artillery = 1
-	tech_pegasi = 1
 	early_fighter = 1
-	cv_early_fighter = 1
-	naval_bomber1 = 1
-	cv_naval_bomber1 = 1
 	early_bomber = 1
 	gwtank = 1
-	basic_light_tank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	interwar_antitank = 1
 	gw_artillery = 1
 	tech_support = 1
-	fuel_silos = 1
 	tech_recon = 1
-	tech_military_police = 1
 	tech_engineers = 1
-	trench_warfare = 1
-	motorised_infantry = 1
-	guerrila_warfare_enable = 1
+	bat_troopers = 1
 }
-actually_fix_weapon_techs = yes
+actually_fix_weapon_techs = yes #THIS HAS TO BE CALLED IN EVERY HISTORY FILE RIGHT AFTER MAIN set_technology!
 if = {
 	limit = {
 		not = { has_dlc = "Man the Guns" }
@@ -46,10 +29,13 @@ if = {
 		early_destroyer = 1
 		basic_destroyer = 1
 		early_light_cruiser = 1
+		basic_light_cruiser = 1
 		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
 		early_battleship = 1
 		early_battlecruiser = 1
 		early_carrier = 1
+		early_light_carrier = 1
 		transport = 1
 	}
 }
@@ -83,71 +69,70 @@ if = {
 		basic_fire_control_system = 1
 	}
 }
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
-	set_technology = {
-		armored_car1 = 1
-	}
-}
 add_equipment_to_stockpile = {
 	type = infantry_equipment_0
-	amount = 1000
+	amount = 6000
 	producer = EQS
 }
-add_equipment_to_stockpile = {
-	type = melee_equipment_1
-	amount = 500
-	producer = EQS
-}
-set_convoys = 90
+set_convoys = 150
 set_popularities = {
-	democratic = 54
-	fascism = 14
-	communism = 19
-	neutrality = 13
+	democratic = 53
+	neutrality = 25
+	fascism = 10
+	communism = 12
 }
-set_politics = {
-	ruling_party = democratic
-	last_election = "1000.10.10"
-	election_frequency = 36
-	elections_allowed = no
+set_politics = { ruling_party = democratic }
+add_ideas = {
+	pony_race
+	modern_society
+	proper_science_base
+	eqs_civil_war
+	war_economy
+	no_lack_of_scientists
+	no_poverty
+}
+recruit_character = NLH_speck
+
+recruit_character = NLH_silver_soldier
+recruit_character = NLH_safe_swell
+recruit_character = NLH_astral_vision
+recruit_character = NLH_midnight_blossom
+recruit_character = NLH_echo
+
+recruit_character = NLH_night_blade
+recruit_character = NLH_tzyca
+recruit_character = NLH_acerbus_von_sanguinis
+recruit_character = NLH_icy_breeze
+recruit_character = NLH_nightbreeze_thunderstorm
+recruit_character = NLH_cleansing_night
+recruit_character = NLH_seaward_march
+recruit_character = NLH_galaxy_rose
+recruit_character = NLH_cresting_seas
+recruit_character = NLH_lumi
+recruit_character = NLH_nightshade
+recruit_character = NLH_umbra
+recruit_character = NLH_blossom
+recruit_character = NLH_neon
+recruit_character = NLH_cometfall
+recruit_character = NLH_midnight_storm
+recruit_character = NLH_lampa
+recruit_character = NLH_somber
+recruit_character = NLH_bloodwater
+recruit_character = NLH_polar_night
+recruit_character = NLH_jungle_mango
+set_stability = 0.60
+set_war_support = 0.65
+
+
+random_unit_leader = {
+	limit = { has_id = 201 }
+	save_global_event_target_as = NLR_speck
 }
 
-
-
-set_stability = 0.5
-set_war_support = 0.5
-
-recruit_character = HRM_starlight_and_trixie
-recruit_character = HRM_golden_delicious
-recruit_character = HRM_trixie_lulamoon
-recruit_character = HRM_mage_meadowbrook
-recruit_character = HRM_firefly
-recruit_character = HRM_fairy_light
-recruit_character = HRM_on_stage
-recruit_character = HRM_sunny_shine
-recruit_character = HRM_duke_dapper
-recruit_character = HRM_flash_force
-recruit_character = HRM_maverick_flare
-recruit_character = HRM_purple_dart
-recruit_character = HRM_fairweather_breeze
-recruit_character = HRM_coloratura
-recruit_character = HRM_fine_line 
-recruit_character = HRM_uncle_orange
-recruit_character = HRM_aunt_orange
-recruit_character = HRM_joe_pescolt
-recruit_character = HRM_velvet_arrow
-recruit_character = HRM_wind_walker
-recruit_character = HRM_misty_fly
-recruit_character = HRM_vapor_trail 
-recruit_character = HRM_night_thunder
-recruit_character = HRM_tall_order
-recruit_character = HRM_raspberry_beret
-recruit_character = HRM_mr_stripes
-recruit_character = HRM_moondancer
-recruit_character = HRM_sunset_shimmer
+random_unit_leader = {
+	limit = { has_id = 203 }
+	save_global_event_target_as = NLR_midnight_blossom
+}
 
 set_rule = {
 	can_generate_female_aces = yes
@@ -362,6 +347,5 @@ if = {
 			fixed_ship_secondaries_slot = empty
 			mid_1_custom_slot = ship_deck_space
 		}
-		obsolete = yes
 	}
 }

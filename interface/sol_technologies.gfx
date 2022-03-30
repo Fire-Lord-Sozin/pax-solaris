@@ -1,0 +1,6 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_EQS_tech_flame_wraiths_medium"
+		texturefile = "gfx/interface/technologies/support/tech_unicorn_company_fire.dds"
+	}
+}

@@ -1,26 +1,13 @@
 version="1.0.0"
-replace_path="common/countries"
-replace_path="common/country_tags"
-replace_path="common/ideas"
-replace_path="common/national_focus"
-replace_path="common/intelligence_agencies"
-replace_path="common/scripted_triggers"
-replace_path="common/state_category"
-replace_path="common/decisions"
-replace_path="common/decisions/categories"
-replace_path="events"
-replace_path="localisation/country_SOL_l_english.yml"
-replace_path="history/countries"
-replace_path="history/units"
 picture="thumbnail.png"
 tags={
 	"Alternative History"
-	"Events"
 	"Gameplay"
+	"National Focuses"
+	"Events"
 }
 name="Pax Solaris - Daybreaker's Post-War World"
 dependencies={
 	"Equestria at War"
 }
 supported_version="1.10.8"
-remote_file_id="2558317945"

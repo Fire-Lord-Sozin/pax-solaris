@@ -10,6 +10,21 @@ spriteTypes = {
 		legacy_lazy_load = no
 	}	
 	spriteType = {
+		name = "GFX_solar_energy_text_large"
+		texturefile = "gfx/texticons/solar_energy_texticon_large.dds"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_execution_point_text"
+		texturefile = "gfx/texticons/execution_point_texticon.dds"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_execution_point_text_large"
+		texturefile = "gfx/texticons/execution_point_texticon_large.dds"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
 		name = "GFX_health_icon"
 		textureFile = "gfx/interface/sol_fights/health_texticon.dds"
 		legacy_lazy_load = no
