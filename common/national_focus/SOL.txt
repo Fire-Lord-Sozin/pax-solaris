@@ -28,6 +28,14 @@ focus_tree = {
 				has_country_flag = march_on_canterlot
 			}
 		}
+		offset = {
+			x = 0
+			y = 3
+			trigger = {
+				NOT = { has_country_flag = SOL_first_tree_completed }
+				has_country_flag = march_on_canterlot
+			}
+		}
 	}
 
 
@@ -43,4 +51,8 @@ focus_tree = {
 	shared_focus = SOL_solar_economy
 	shared_focus = SOL_united_under_the_sun
 	shared_focus = SOL_the_fate_of_the_changelings
+	shared_focus = SOL_into_a_new_era
+	shared_focus = SOL_the_enemies_of_order
+	shared_focus = SOL_project_invictus
+	shared_focus = SOL_strategic_revision
 }

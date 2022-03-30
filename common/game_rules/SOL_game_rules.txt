@@ -1,0 +1,59 @@
+SOL_ai_behavior = {
+	name = "SOL_AI_BEHAVIOR"
+	group = "RULE_GROUP_AI_BEHAVIOR"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_OPTION_DEFAULT_AI_DESC"
+	}
+	option = {
+		name = DAYBREAKER_CAELESTIS
+		text = "RULE_OPTION_DAYBREAKER_CAELESTIS"
+		desc = "RULE_OPTION_DAYBREAKER_CAELESTIS_SOL_AI_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = DAYBREAKER_DOMINATUS
+		text = "RULE_OPTION_DAYBREAKER_DOMINATUS"
+		desc = "RULE_OPTION_DAYBREAKER_DOMINATUS_SOL_AI_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = DAYBREAKER_IMPERIA
+		text = "RULE_OPTION_DAYBREAKER_IMPERIA"
+		desc = "RULE_OPTION_DAYBREAKER_IMPERIA_SOL_AI_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = DAYBREAKER_EXITIUM
+		text = "RULE_OPTION_DAYBREAKER_EXITIUM"
+		desc = "RULE_OPTION_DAYBREAKER_EXITIUM_SOL_AI_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = DAYBREAKER_INTERNECIO
+		text = "RULE_OPTION_DAYBREAKER_INTERNECIO"
+		desc = "RULE_OPTION_DAYBREAKER_INTERNECIO_SOL_AI_DESC"
+		allow_achievements = yes
+	}
+}
+
+sol_hrm_outcome = {
+	name = "SOL_HRM_OUTCOME"
+	group = "RULE_GROUP_GAME_SETUP"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_OPTION_DEFAULT_SOL_HRM"
+	}
+	option = {
+		name = SOL_HRM_FAILURE
+		text = "RULE_OPTION_SOL_HRM_FAILURE"
+		desc = "RULE_OPTION_SOL_HRM_FAILURE_DESC"	
+	}
+	option = {
+		name = SOL_HRM_SUCCESS
+		text = "RULE_OPTION_SOL_HRM_SUCCESS"
+		desc = "RULE_OPTION_SOL_HRM_SUCCESS_DESC"	
+	}
+}

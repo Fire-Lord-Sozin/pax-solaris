@@ -901,9 +901,13 @@ SOL_coalition_menu = {
 			}
 			custom_trigger_tooltip = { 
 				tooltip = resistance_can_accept
-				EQS = {
-					check_variable = { resistance_attack_blocked > 0 }
-					has_country_flag = resistance_ceasefire
+				NOT = {
+					EQS = {
+						OR = {
+							check_variable = { resistance_attack_blocked > 0 }
+							has_country_flag = resistance_ceasefire
+						}
+					}
 				}
 			}
 		}
@@ -1029,13 +1033,15 @@ SOL_coalition_menu = {
 			}
 		}
 		highlight_states = {
-			OR = {
-				state = FROM.defender_state_vs_@ROOT
-				AND = {
-					is_owned_and_controlled_by = FROM
-					any_neighbor_state = {
-						has_ROOT_at_least_1_div_in_current_state_scope = yes
-						is_fully_controlled_by = ROOT
+			highlight_states_trigger = {
+				OR = {
+					state = FROM.defender_state_vs_@ROOT
+					AND = {
+						is_owned_and_controlled_by = FROM
+						any_neighbor_state = {
+							has_ROOT_at_least_1_div_in_current_state_scope = yes
+							is_fully_controlled_by = ROOT
+						}
 					}
 				}
 			}
@@ -1112,8 +1118,10 @@ SOL_coalition_menu = {
 				size > 0
 			}
 		}
-		highlight_state_targets = {
-			state = var:FROM.attacker_state_vs_@ROOT
+		highlight_states = {
+			highlight_state_targets = {
+				state = var:FROM.attacker_state_vs_@ROOT
+			}
 		}
 		cancel_trigger = {
 			hidden_trigger = {
@@ -1207,8 +1215,10 @@ SOL_coalition_menu = {
 		available = {		
 			NOT = { has_border_war_with = FROM }
 		}
-		highlight_state_targets = {
-			state = var:FROM.attacker_state_vs_@ROOT
+		highlight_states = {
+			highlight_state_targets = {
+				state = var:FROM.attacker_state_vs_@ROOT
+			}
 		}
 		cancel_trigger = {
 			hidden_trigger = {

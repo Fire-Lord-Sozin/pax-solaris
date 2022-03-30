@@ -34,6 +34,17 @@ country_event = {
 	}
 }
 country_event = {
+	id = lunarep.4
+	title = lunarep.4.t
+	desc = lunarep.4.d
+	picture = GFX_event_daybreaker_oil
+	immediate = {log = "[GetDateText]: [Root.GetName]: event lunarep.4"}
+	is_triggered_only = yes
+	option = {
+		name = lunarep.4.a
+	}
+}
+country_event = {
 	id = lunarep.10
 	title = lunarep.10.t
 	desc = lunarep.10.d
@@ -58,10 +69,10 @@ country_event = {
 		send_equipment = {
 		    equipment = infantry_equipment
 		    amount = 1000
-		    target = NLR
+		    target = NLH
 		}
 		add_manpower = -3000
-		NLR = { 
+		NLH = { 
 			add_manpower = 3000
 			set_country_flag = lunarep_10_yes 
 			add_to_variable = { var = NLR_number_of_sent_guns value = 1000 }
@@ -78,7 +89,7 @@ country_event = {
 			}
 			modifier = {
 				NOT = {
-					is_neighbor_of = NLR
+					is_neighbor_of = NLH
 					is_neighbor_of = EQR
 					is_neighbor_of = event_target:solar_empire
 				}
@@ -136,7 +147,7 @@ country_event = {
 			add_equipment_to_stockpile = {
 			    type = infantry_equipment
 			    amount = var:NLR_number_of_sent_guns
-			    producer = NLR
+			    producer = NLH
 			}
 			add_manpower = var:NLR_number_of_sent_manpower
 		}
@@ -165,6 +176,9 @@ country_event = { #Picking A New Warmaster
 
 	option = {
 		name = lunarep.12.a #SPECK
+		trigger = {
+			has_character = NLH_speck
+		}
 		ai_chance = {
 		    factor = 25
 			modifier = {
@@ -179,27 +193,23 @@ country_event = { #Picking A New Warmaster
 				}
 			}
 		}
-		add_tech_bonus = {
+		army_experience = 25
+		add_doctrine_cost_reduction = {
 			name = cat_grand_battle_plan
-			bonus = 2
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_grand_battle_plan
 		}
-		random_army_leader = {
-			limit = { has_id = 201 }
-			add_unit_leader_trait = nlr_commander_in_chief
-		}
+		NLH_speck = { add_unit_leader_trait = nlr_commander_in_chief }
 		custom_effect_tooltip = nlr_thestrals
 	}
 	
 	option = {
 		name = lunarep.12.b #Selenite
 		trigger = {
+			has_character = EQS_NLR_celenite
 			NOT = {
-				has_country_leader = {
-					ruling_only = yes
-					name = "Selenite"
-				}
+				has_country_leader = { ruling_only = yes character = EQS_NLR_celenite }
 			}
 		}
 		ai_chance = {
@@ -216,25 +226,21 @@ country_event = { #Picking A New Warmaster
 				}
 			}
 		}
-		add_tech_bonus = {
+		army_experience = 25
+		add_doctrine_cost_reduction = {
 			name = cat_superior_firepower
-			bonus = 2
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_superior_firepower
 		}
-		random_army_leader = {
-			limit = { has_id = 790 }
-			add_unit_leader_trait = nlr_commander_in_chief
-		}
+		EQS_NLR_celenite = { add_unit_leader_trait = nlr_commander_in_chief }
 		custom_effect_tooltip = nlr_harmonists
 	}
 	option = {
 		name = lunarep.12.c #Galaxy Rose
 		trigger = {
-			has_country_leader = {
-				ruling_only = yes
-				name = "Selenite"
-			}
+			has_character = NLH_galaxy_rose
+			has_country_leader = { ruling_only = yes character = EQS_NLR_celenite }
 		}
 		ai_chance = {
 		    factor = 25
@@ -250,25 +256,22 @@ country_event = { #Picking A New Warmaster
 				}
 			}
 		}
-		add_tech_bonus = {
+		army_experience = 25
+		add_doctrine_cost_reduction = {
 			name = cat_superior_firepower
-			bonus = 2
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_superior_firepower
 		}
-		random_army_leader = {
-			limit = { 
-				has_trait = thestral_race_trait
-				has_trait = night_guard
-				has_trait = medical_expert 
-			}
-			add_unit_leader_trait = nlr_commander_in_chief
-		}
+		NLH_galaxy_rose = { add_unit_leader_trait = nlr_commander_in_chief }
 		custom_effect_tooltip = nlr_harmonists
 	}
 	
 	option = {
 		name = lunarep.12.e #Caltrop
+		trigger = {
+			has_character = EQS_caltrop_decay
+		}
 		ai_chance = {
 		    factor = 25
 			modifier = {
@@ -283,21 +286,22 @@ country_event = { #Picking A New Warmaster
 				}
 			}
 		}
-		add_tech_bonus = {
+		army_experience = 25
+		add_doctrine_cost_reduction = {
 			name = cat_mobile_warfare
-			bonus = 2
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_mobile_warfare
 		}
-		random_army_leader = {
-			limit = { has_id = 10 }
-			add_unit_leader_trait = nlr_commander_in_chief
-		}
+		EQS_caltrop_decay = { add_unit_leader_trait = nlr_commander_in_chief }
 		custom_effect_tooltip = nlr_harmonists
 	}
 	
 	option = {
 		name = lunarep.12.f #Midnight Oil
+		trigger = {
+			has_character = EQS_NLR_midnight_oil
+		}
 		ai_chance = {
 		    factor = 25
 			modifier = {
@@ -312,16 +316,14 @@ country_event = { #Picking A New Warmaster
 				}
 			}
 		}
-		add_tech_bonus = {
+		army_experience = 25
+		add_doctrine_cost_reduction = {
 			name = cat_mass_assault
-			bonus = 2
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_mass_assault
 		}
-		random_army_leader = {
-			limit = { has_id = 205 }
-			add_unit_leader_trait = nlr_commander_in_chief
-		}
+		EQS_NLR_midnight_oil = { add_unit_leader_trait = nlr_commander_in_chief }
 		custom_effect_tooltip = nlr_thestrals
 	}
 }

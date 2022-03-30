@@ -12,10 +12,193 @@ scripted_gui = {
 				ROOT = { 
 					if = {
 						limit = { NOT = { has_variable = sol_display_state_decisions } }
+						SOL_recalculate_button_pos = yes
 						set_variable = { var = sol_display_state_decisions value = 1 }
 					}
 					else = { 
 						clear_variable = sol_display_state_decisions
+					}
+				}
+			}
+		}
+	}
+	SOL_cast_magic_gui = {
+		window_name = "SOL_cast_magic"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		dirty = EQS.sol_display_state_decisions
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_country_flag = sol_has_unlocked_magic
+				has_variable = sol_display_state_decisions
+			}
+		}
+		properties = {
+			SOL_cast_magic_button_fake = {
+				y = var:EQS.SOL_cast_magic_pos
+			}
+			SOL_cast_magic_button = {
+				y = var:EQS.SOL_cast_magic_pos
+			}
+		}
+		triggers = {
+			SOL_cast_magic_button_visible = {
+				check_variable = {
+					var = EQS.daybreaker_magic_reserves
+					value = EQS.sol_magic_cost_var
+					compare = greater_than_or_equals
+				}
+				if = {
+					limit = { check_variable = { EQS.sol_magic_currently_selected_spell = 1 } }
+					THIS.owner = {
+						NOT = { 
+							OR = {
+								has_idea = SOL_spell_1_effect_1
+							}
+						}
+					}
+				}
+				if = {
+					limit = { check_variable = { EQS.sol_magic_currently_selected_spell = 2 } }
+					THIS.owner = {
+						NOT = { 
+							OR = {
+								has_idea = SOL_spell_2_effect_1
+							}
+						}
+					}
+				}
+				if = {
+					limit = { check_variable = { EQS.sol_magic_currently_selected_spell = 3 } }
+					
+				}
+				if = {
+					limit = { check_variable = { EQS.sol_magic_currently_selected_spell = 4 } }
+					THIS.controller = {
+						OR = {
+							is_SOLAR_EMPIRE = yes
+							is_subject_of = EQS
+							is_in_faction_with = EQS
+						}
+					}
+				}
+				if = {
+					limit = { check_variable = { EQS.sol_magic_currently_selected_spell = 5 } }
+					
+				}
+				if = {
+					limit = { check_variable = { EQS.sol_magic_currently_selected_spell = 6 } }
+					
+				}
+			}
+		}
+		effects = {
+			SOL_cast_magic_button_click = {
+				hidden_effect = {	
+					if = {
+						limit = {
+							ROOT = {
+								check_variable = {
+									var = EQS.daybreaker_magic_reserves
+									value = EQS.sol_magic_cost_var
+									compare = greater_than_or_equals
+								}
+							}
+						}
+						if = {
+							limit = { 
+								check_variable = { EQS.sol_magic_currently_selected_spell = 1 } 
+								THIS.controller = {
+									NOT = { 
+										OR = {
+											has_idea = SOL_spell_1_effect_1
+										}
+									}
+								}
+							}
+							THIS.controller = {
+								add_timed_idea = {
+									idea = SOL_spell_1_effect_1
+									days = EQS.sol_magic_spell_duration^1
+								}
+							}
+						}
+						if = {
+							limit = { 
+								check_variable = { EQS.sol_magic_currently_selected_spell = 2 } 
+								THIS.controller = {
+									NOT = { 
+										OR = {
+											has_idea = SOL_spell_2_effect_1
+										}
+									}
+								}
+							}
+							THIS.controller = {
+								add_timed_idea = {
+									idea = SOL_spell_2_effect_1
+									days = EQS.sol_magic_spell_duration^2
+								}
+							}
+						}
+						if = {
+							limit = { 
+								check_variable = { EQS.sol_magic_currently_selected_spell = 4 } 
+								THIS.controller = {
+									OR = {
+										is_SOLAR_EMPIRE = yes
+										is_subject_of = EQS
+										is_in_faction_with = EQS
+									}
+								}
+							}
+							ROOT = {
+								set_variable = { var = sol_flame_wraiths_to_deploy value = 1 }
+								while_loop_effect = {
+									limit = {
+										is_in_array = { sol_flame_wraiths_deployed = sol_flame_wraiths_to_deploy }
+									}
+									add_to_variable = { var = sol_flame_wraiths_to_deploy value = 1 }
+								}
+								meta_effect = {
+									text = {	
+										division_template = {
+											name = "Wraith Group [WRAITH_NUM]"
+											division_names_group = EQS_MAG_02
+											is_locked = yes
+											priority = 2
+											template_counter = 66
+											regiments = {
+												frame_wraiths = { x = 0 y = 0 }
+												frame_wraiths = { x = 0 y = 1 }
+												frame_wraiths = { x = 0 y = 2 }
+												frame_wraiths = { x = 1 y = 0 }
+												frame_wraiths = { x = 1 y = 1 }
+												frame_wraiths = { x = 1 y = 2 }
+												frame_wraiths = { x = 1 y = 3 }
+												frame_wraiths = { x = 2 y = 0 }
+												frame_wraiths = { x = 2 y = 1 }
+												frame_wraiths = { x = 2 y = 2 }
+											}
+										} 
+										PREV = {
+											create_unit = { division = "name = \"Flame Wraith Division\" division_template = \"Wraith Group [WRAITH_NUM]\" start_experience_factor = 0.5 start_equipment_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = no }
+											create_unit = { division = "name = \"Flame Wraith Division\" division_template = \"Wraith Group [WRAITH_NUM]\" start_experience_factor = 0.5 start_equipment_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = no }
+											create_unit = { division = "name = \"Flame Wraith Division\" division_template = \"Wraith Group [WRAITH_NUM]\" start_experience_factor = 0.5 start_equipment_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = no }
+										}
+									}
+									WRAITH_NUM = "[?sol_flame_wraiths_to_deploy|.0]"
+								}
+								add_to_array = { sol_flame_wraiths_deployed = sol_flame_wraiths_to_deploy }
+								country_event = { id = paxsolaris.346 days = var:sol_magic_spell_duration^4 }
+							}
+						}
+						ROOT = {
+							subtract_from_variable = { daybreaker_magic_reserves = sol_magic_cost_var }
+							SOL_calculate_magic = yes
+							add_to_variable = { var = sol_display_state_decisions value = 1 } 
+						}
 					}
 				}
 			}
@@ -31,6 +214,12 @@ scripted_gui = {
 				original_tag = EQS
 				has_country_flag = SOL_unlocked_develop_colonies_ability_flag
 				has_variable = sol_display_state_decisions
+			}
+			THIS = { 
+				NOT = { 
+					has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } 
+					is_core_of = EQS
+				} 
 			}
 		}
 		properties = {
@@ -48,14 +237,19 @@ scripted_gui = {
 					NOT = {
 						is_core_of = EQS
 						has_variable = SOL_develop_settler_colony_civ_fac_use
-						OR = {
-							has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
-							has_dynamic_modifier = { modifier = SOL_pony_settlement }
-							has_dynamic_modifier = { modifier = SOL_settler_colonies }
-						}
+					}
+					if = {
+						limit = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
+						NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+						check_variable = { sol_pony_percentage > 0.4 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = SOL_settler_colonies } }
+						NOT = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
+						check_variable = { sol_pony_percentage > 0.2 }
 					}
 					set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
-					multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.005 }
+					multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = EQS.SOL_develop_settler_colony_civ_fac_use_multiplier }
 					add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
 					round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
 					meta_trigger = {
@@ -69,11 +263,22 @@ scripted_gui = {
 						SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP = SOL_develop_settler_colony_civ_fac_use_temp
 					}
 				}
-				ROOT = {
-					check_variable = {
-						var = political_power
-						value = 20						
-						compare = greater_than_or_equals
+				if = {
+					limit = {
+						THIS = {
+							NOT = {
+								has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+								has_dynamic_modifier = { modifier = SOL_pony_settlement }
+								has_dynamic_modifier = { modifier = SOL_settler_colonies }
+							}
+						}
+					}
+					ROOT = {
+						check_variable = {
+							var = political_power
+							value = 20						
+							compare = greater_than_or_equals
+						}
 					}
 				}
 			}
@@ -81,6 +286,12 @@ scripted_gui = {
 		effects = {
 			SOL_develop_settler_colonies_button_click = {
 				hidden_effect = {
+					THIS = {
+						set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
+						multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = EQS.SOL_develop_settler_colony_civ_fac_use_multiplier }
+						add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
+						round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
+					}
 					if = {
 						limit = {
 							THIS = {
@@ -88,50 +299,372 @@ scripted_gui = {
 								NOT = {
 									is_core_of = EQS
 									has_variable = SOL_develop_settler_colony_civ_fac_use
-									OR = {
+								}
+								if = {
+									limit = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
+									NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+									check_variable = { sol_pony_percentage > 0.4 }
+								}
+								else_if = {
+									limit = { has_dynamic_modifier = { modifier = SOL_settler_colonies } }
+									NOT = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
+									check_variable = { sol_pony_percentage > 0.2 }
+								}
+								check_variable = {
+									var = EQS.num_of_civilian_factories_available_for_projects
+									value = SOL_develop_settler_colony_civ_fac_use_temp
+									compare = greater_than_or_equals
+								}
+							}
+							if = {
+								limit = {
+									THIS = {
+										NOT = {
+											has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+											has_dynamic_modifier = { modifier = SOL_pony_settlement }
+											has_dynamic_modifier = { modifier = SOL_settler_colonies }
+										}
+									}
+								}
+								ROOT = {
+									check_variable = {
+										var = political_power
+										value = 20						
+										compare = greater_than_or_equals
+									}
+								}
+							}
+						}
+						if = {
+							limit = {
+								THIS = {
+									NOT = {
 										has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
 										has_dynamic_modifier = { modifier = SOL_pony_settlement }
 										has_dynamic_modifier = { modifier = SOL_settler_colonies }
 									}
 								}
-								set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
-								multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.005 }
-								add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
-								round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
-								meta_trigger = {
-									text = {
-										check_variable = {
-											var = EQS.num_of_civilian_factories_available_for_projects
-											value = [SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP]
-											compare = greater_than_or_equals
+							}
+							ROOT = {
+								add_political_power = -20
+							}
+							THIS = {
+								set_variable = { var = SOL_develop_settler_colony_civ_fac_use value = SOL_develop_settler_colony_civ_fac_use_temp }
+								EQS = {
+									add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = PREV.SOL_develop_settler_colony_civ_fac_use }
+									activate_targeted_decision = { target = PREV decision = SOL_develop_settler_colony_decision }
+								}
+							}
+						}
+						else = {
+							THIS = {
+								set_variable = { var = SOL_develop_settler_colony_civ_fac_use value = SOL_develop_settler_colony_civ_fac_use_temp }
+								EQS = {
+									add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = PREV.SOL_develop_settler_colony_civ_fac_use }
+									if = {
+										limit = {
+											PREV = {
+												has_dynamic_modifier = { modifier = SOL_pony_settlement }
+												check_variable = { sol_pony_percentage > 0.4 }
+											}
 										}
+										activate_targeted_decision = { target = PREV decision = SOL_upgrade_settler_colony_decision_2 }
 									}
-									SOL_DEVELOP_SETTLER_COLONY_CIV_FAC_USE_TEMP = SOL_develop_settler_colony_civ_fac_use_temp
+									else_if = {
+										limit = {
+											PREV = {
+												has_dynamic_modifier = { modifier = SOL_settler_colonies }
+												check_variable = { sol_pony_percentage > 0.2 }
+											}
+										}
+										activate_targeted_decision = { target = PREV decision = SOL_upgrade_settler_colony_decision_1 }
+									}
+								}
+							}
+						}
+					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
+				}
+			}
+		}
+	}
+	SOL_encourage_settlement_gui = {
+		window_name = "SOL_encourage_settlement"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		dirty = EQS.sol_display_state_decisions
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_country_flag = SOL_unlocked_develop_colonies_ability_flag
+				has_variable = sol_display_state_decisions
+			}
+		}
+		properties = {
+			SOL_encourage_settlement_button_fake = {
+				y = var:EQS.SOL_encourage_settlement_pos
+			}
+			SOL_encourage_settlement_button = {
+				y = var:EQS.SOL_encourage_settlement_pos
+			}
+		}
+		triggers = {
+			SOL_encourage_settlement_button_visible = {
+				THIS = {
+					is_owned_and_controlled_by = EQS
+					OR = {
+						has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+						has_dynamic_modifier = { modifier = SOL_pony_settlement }
+						has_dynamic_modifier = { modifier = SOL_settler_colonies }
+					}
+				}
+				ROOT = {
+					check_variable = {
+						var = EQS.num_of_civilian_factories_available_for_projects
+						value = 1
+						compare = greater_than_or_equals
+					}
+					check_variable = { SOL_number_of_settlements_available > 0 }
+				}
+			}
+		}
+		effects = {
+			SOL_encourage_settlement_button_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							THIS = {
+								is_owned_and_controlled_by = EQS
+								OR = {
+									has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+									has_dynamic_modifier = { modifier = SOL_pony_settlement }
+									has_dynamic_modifier = { modifier = SOL_settler_colonies }
 								}
 							}
 							ROOT = {
 								check_variable = {
-									var = political_power
-									value = 20						
+									var = EQS.num_of_civilian_factories_available_for_projects
+									value = 1
 									compare = greater_than_or_equals
 								}
+								check_variable = { SOL_number_of_settlements_available > 0 }
 							}
 						}
 						ROOT = {
-							add_political_power = -20
+							subtract_from_variable = { var = SOL_number_of_settlements_available value = 1000 }
+							add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = 1 }
 						}
 						THIS = {
-							set_variable = { var = SOL_develop_settler_colony_civ_fac_use value = state_population_k }
-							multiply_variable = { var = SOL_develop_settler_colony_civ_fac_use value = 0.005 }
-							add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use value = 0.5 }
-							round_variable = SOL_develop_settler_colony_civ_fac_use
-							EQS = {
-								add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = PREV.SOL_develop_settler_colony_civ_fac_use }
-								activate_targeted_decision = { target = PREV decision = SOL_develop_settler_colony_decision }
-								add_to_variable = { var = sol_display_state_decisions value = 1 }
+							add_to_variable = { var = SOL_number_of_settlements_this_state value = 1000 }
+							if = {
+								limit = { NOT = { is_in_array = { EQS.sol_states_with_settlement = THIS } } }
+								add_to_array = { EQS.sol_states_with_settlement = THIS }
 							}
 						}
 					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
+				}
+			}
+			SOL_encourage_settlement_button_right_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							THIS = {
+								check_variable = { SOL_number_of_settlements_this_state > 0 }
+							}
+						}
+						ROOT = {
+							add_to_variable = { var = SOL_number_of_settlements_available value = 1000 }
+							subtract_from_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = 1 }
+						}
+						THIS = {
+							subtract_from_variable = { var = SOL_number_of_settlements_this_state value = 1000 }
+							if = {
+								limit = { check_variable = { SOL_number_of_settlements_this_state = 0 } }
+								remove_from_array = { EQS.sol_states_with_settlement = THIS }
+							}
+						}
+					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
+				}
+			}
+			SOL_encourage_settlement_button_fake_right_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							THIS = {
+								check_variable = { SOL_number_of_settlements_this_state > 0 }
+							}
+						}
+						ROOT = {
+							add_to_variable = { var = SOL_number_of_settlements_available value = 1000 }
+							subtract_from_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = 1 }
+						}
+						THIS = {
+							subtract_from_variable = { var = SOL_number_of_settlements_this_state value = 1000 }
+							if = {
+								limit = { check_variable = { SOL_number_of_settlements_this_state = 0 } }
+								remove_from_array = { EQS.sol_states_with_settlement = THIS }
+							}
+						}
+					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
+				}
+			}
+		}
+	}
+	SOL_teleport_armies_gui = {
+		window_name = "SOL_teleport_armies"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		dirty = EQS.sol_display_state_decisions
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_country_flag = sol_has_unlocked_teleportation
+				has_variable = sol_display_state_decisions
+			}
+			THIS = { 
+				has_state_flag = SOL_completed_strat_tele
+				OR = {
+					has_state_category = large_city
+					has_state_category = metropolis
+					has_state_category = megalopolis
+				}
+				is_core_of = EQS
+			}
+		}
+		properties = {
+			SOL_teleport_armies_button_fake = {
+				y = var:EQS.SOL_encourage_settlement_pos
+			}
+			SOL_teleport_armies_button = {
+				y = var:EQS.SOL_encourage_settlement_pos
+			}
+		}
+		triggers = {
+			SOL_teleport_armies_button_visible = {
+				if = {
+					limit = { 
+						THIS = { has_state_flag = SOL_teleport_armies_starting_pos_flag } 
+					}
+				}
+				else_if = {
+					limit = {
+						any_state = {
+							has_event_target = SOL_teleport_armies_starting_pos
+						}
+					}
+					event_target:SOL_teleport_armies_starting_pos = { 
+						is_fully_controlled_by = EQS
+						is_core_of = EQS
+						has_state_flag = SOL_completed_strat_tele
+						OR = {
+							has_state_category = large_city
+							has_state_category = metropolis
+							has_state_category = megalopolis
+						}
+					}
+					THIS = {
+						is_fully_controlled_by = EQS
+						is_core_of = EQS
+						has_state_flag = SOL_completed_strat_tele
+						OR = {
+							has_state_category = large_city
+							has_state_category = metropolis
+							has_state_category = megalopolis
+						}
+					}
+					NOT = { check_variable = { EQS.SOL_teleport_armies_cooldown_var > 0 } }
+				}
+				else = {
+					THIS = {
+						has_state_flag = SOL_completed_strat_tele
+						OR = {
+							has_state_category = large_city
+							has_state_category = metropolis
+							has_state_category = megalopolis
+						}
+						is_fully_controlled_by = EQS
+						is_core_of = EQS
+					}
+				}
+			}
+		}
+		effects = {
+			SOL_teleport_armies_button_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							THIS = { has_state_flag = SOL_teleport_armies_starting_pos_flag }
+						}
+						THIS = { clr_state_flag = SOL_teleport_armies_starting_pos_flag }
+						ROOT = { clear_global_event_target = SOL_teleport_armies_starting_pos }
+					}
+					else_if = {
+						limit = {
+							any_state = {
+								has_state_flag = SOL_teleport_armies_starting_pos_flag
+							}
+						}
+						if = {
+							limit = { 
+								event_target:SOL_teleport_armies_starting_pos = { 
+									is_controlled_by = EQS
+									is_core_of = EQS
+									has_state_flag = SOL_completed_strat_tele
+									OR = {
+										has_state_category = large_city
+										has_state_category = metropolis
+										has_state_category = megalopolis
+									}
+								}
+								THIS = {
+									is_controlled_by = EQS
+									is_core_of = EQS
+									has_state_flag = SOL_completed_strat_tele
+									OR = {
+										has_state_category = large_city
+										has_state_category = metropolis
+										has_state_category = megalopolis
+									}
+								}
+								NOT = { check_variable = { EQS.SOL_teleport_armies_cooldown_var > 0 } }
+							}
+							event_target:SOL_teleport_armies_starting_pos = {
+								clr_state_flag = SOL_teleport_armies_starting_pos_flag
+								teleport_armies = {
+									limit = { tag = EQS }
+									to_state = PREV
+								}
+							}	
+							ROOT = {
+								clear_global_event_target = SOL_teleport_armies_starting_pos
+								set_variable = { SOL_teleport_armies_cooldown_var = 30 }
+							}
+						}
+					}
+					else = {
+						if = {
+							limit = {
+								THIS = {
+									has_state_flag = SOL_completed_strat_tele
+									OR = {
+										has_state_category = large_city
+										has_state_category = metropolis
+										has_state_category = megalopolis
+									}
+									is_fully_controlled_by = EQS
+									is_core_of = EQS
+								}
+							}
+						}
+						THIS = {
+							set_state_flag = SOL_teleport_armies_starting_pos_flag
+							save_global_event_target_as = SOL_teleport_armies_starting_pos 
+						}
+					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
 				}
 			}
 		}

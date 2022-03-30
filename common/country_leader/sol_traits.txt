@@ -1,5 +1,6 @@
 leader_traits = {
 	daybreaker_data_security = {
+		random = no
 		political_power_gain = 0.1
 		encryption_factor = 0.2
 		trade_opinion_factor = -0.3
@@ -7,29 +8,48 @@ leader_traits = {
 		army_intel_to_others = -10
 		airforce_intel_to_others = -10
 		navy_intel_to_others = -10
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	daybreaker_army_of_fanatics = {
+		random = no
 		army_attack_factor = 0.05
 		army_defence_factor = 0.05
 		industrial_capacity_factory = 0.05
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	daybreaker_mandate_of_harmony = {
+		random = no
 		ai_focus_aggressive_factor = 0.5
 		stability_factor = 0.05
 		conscription = 0.01
 		army_attack_factor = 0.05
 		heat_attrition_factor = -0.2
 		justify_war_goal_time = -0.25
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	luna_trust_of_the_people = {
+		random = no
 		war_stability_factor = 0.2
 		drift_defence_factor = 0.3
 		army_morale_factor = 0.1
 		industrial_capacity_factory = 0.1
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	luna_defiant_followers = {
+		random = no
 		army_core_defence_factor = 0.1
 		surrender_limit = 0.1
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	sol_codebreaker = {
 		random = no
@@ -41,10 +61,16 @@ leader_traits = {
 			factor = 0.5
 		}
 	}
+	sol_healing_expert = {
+		random = no
+		experience_loss_factor = -0.1
+		army_morale_factor = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
 	main_battle_tank_manufacturer_communist = {
 		random = no
-		#generic
-
 		equipment_bonus = {
 			armor = {
 				reliability = 0.1

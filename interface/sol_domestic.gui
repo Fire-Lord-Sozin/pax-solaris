@@ -280,5 +280,50 @@ guiTypes = {
 			position = { x = 270 y = 310 }
 			pdx_tooltip = infrastructure_hardening_available_tt
 		}
+		buttonType = {
+			name = "SOL_strat_tele_button"
+			spriteType = "GFX_sol_domestic_button"
+			position = { x = 270 y = 380 }
+			pdx_tooltip = SOL_strat_tele_button_tt
+		}
+		instantTextBoxType = {
+			name ="SOL_strat_tele_textbox"
+			position = { x = 275 y = 385 }
+			font = "hoi_20bs"
+			text = "SOL_strat_tele_text_tt"
+			format = center
+			alwaystransparent = yes
+			maxWidth = 170
+			maxHeight = 30
+		}
+		iconType = {
+			name = "SOL_strat_tele_button_cover"
+			spriteType = "GFX_sol_domestic_button_cover"
+			position = { x = 270 y = 380 }
+			pdx_tooltip = strat_tele_available_tt
+		}
+
+		buttonType = {
+			name = "SOL_modern_national_development_button"
+			spriteType = "GFX_sol_domestic_button"
+			position = { x = 160 y = 240 }
+			pdx_tooltip = SOL_modern_national_development_button_tt
+		}
+		instantTextBoxType = {
+			name ="SOL_modern_national_development_textbox"
+			position = { x = 165 y = 245 }
+			font = "hoi_20bs"
+			text = "SOL_modern_national_development_text_tt"
+			format = center
+			alwaystransparent = yes
+			maxWidth = 170
+			maxHeight = 30
+		}
+		iconType = {
+			name = "SOL_modern_national_development_button_cover"
+			spriteType = "GFX_sol_domestic_button_cover"
+			position = { x = 160 y = 240 }
+			pdx_tooltip = modern_national_development_available_tt
+		}
 	}
 }

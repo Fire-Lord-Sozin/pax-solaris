@@ -2,12 +2,12 @@ SOL_securing_our_domain = {
 	allowed = {
 		original_tag = EQS
 	}
-	icon = GFX_decision_solar_unite_equestria
+	icon = GFX_decision_solar_expand_domain
 	priority = {
 		base = 122
 	}
 	visible = {
-		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+		is_SOLAR_EMPIRE = yes
 	}
 	visible_when_empty = no
 }
@@ -20,8 +20,7 @@ SOL_uniting_equestria = {
 		base = 121
 	}
 	visible = {
-		has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		has_country_flag = SOL_uniting_equestria_decision_unlock
+		is_SOLAR_EMPIRE = yes
 	}
 	visible_when_empty = no
 }
@@ -34,11 +33,20 @@ SOL_resistance_menu = {
 		base = 120
 	}
 	visible = {
-		has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		NOT = { has_country_flag = resistance_ceasefire }
+		is_SOLAR_EMPIRE = yes
 		has_country_flag = march_on_canterlot
 	}
 	scripted_gui = SOL_loyalty_display_container_gui
+}
+SOL_royal_guard_mechanic = {
+	icon = GFX_decision_imperial_royal_guard
+	allowed = {
+		original_tag = EQS
+	}
+	priority = {
+		base = 118
+	}
+	visible_when_empty = no
 }
 SOL_inquisition_mechanic = {
 	icon = GFX_decision_cat_inquisition
@@ -50,7 +58,8 @@ SOL_inquisition_mechanic = {
 	}
 	visible = {
 		has_completed_focus = SOL_Imperial_Inquisition
-		NOT = { has_country_flag = resistance_ceasefire }
+		NOT = { has_country_flag = sol_empowered_royal_guard }
+		NOT = { has_country_flag = SOL_refocused_inquisition_flag }
 	}
 	scripted_gui = SOL_leads_display_container_gui
 	visible_when_empty = yes
@@ -64,23 +73,19 @@ SOL_resistance_activity = {
 		base = 115
 	}
 	visible = {
-		has_country_leader = { ruling_only = yes name = "Daybreaker" }
+		is_SOLAR_EMPIRE = yes
 		has_country_flag = SOL_resistance_begins
 		NOT = { has_country_flag = resistance_ceasefire }
 	}
 	visible_when_empty = yes
 }
-SOL_spells_cancel = {
+SOL_mandates = {
+	icon = GFX_decision_solar_unite_equestria
 	allowed = {
 		original_tag = EQS
 	}
-	icon = GFX_daybreaker_cat_blue
 	priority = {
-		base = 110
-	}
-	visible = {
-		has_country_leader = { ruling_only = yes name = "Daybreaker" }
-		has_variable = sol_magic_screen_show
+		base = 100
 	}
 }
 SOL_coalition_menu = {

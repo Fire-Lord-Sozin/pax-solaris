@@ -6,7 +6,7 @@ fight_calculate_effect = {
 	set_variable = { actions_display_attacker = fight_attacker_num }
 	set_variable = { actions_display_defender = fight_defender_num }
 
-	set_variable { var = background_darkener_frame value = 1 }
+	set_variable = { var = background_darkener_frame value = 1 }
 	for_each_loop = {
 		array = fighters_array
 		if = {

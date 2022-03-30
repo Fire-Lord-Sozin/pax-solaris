@@ -1,0 +1,626 @@
+characters={
+	NLH_speck={
+		name= NLH_speck
+		portraits={
+			army={
+				small="GFX_idea_NLR_speck"
+			}
+			army={
+				large="gfx/leaders/NLR/Speck.tga"
+			}
+		}
+		field_marshal={
+			traits={ thestral_race_trait defensive_doctrine }
+			skill=2
+			attack_skill=1
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=1
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = NLH_speck
+			traits = { 
+				army_chief_defensive_2 
+			}
+		}
+	}
+	NLH_silver_soldier={
+		name=NLH_silver_soldier
+		portraits={
+			army={
+				small="GFX_idea_NLR_silver_soldier"
+			}
+			army={
+				large="gfx/leaders/NLR/SilverSoldier.tga"
+			}
+		}
+		corps_commander={
+			traits={ night_guard pony_race_trait }
+			skill=1
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			visible = {
+				if = {
+					limit = { original_tag = NLH }
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+		}
+		country_leader={
+			expire="1965.1.1.1"
+			ideology = ultranationalism
+			id=-1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = NLH_silver_soldier
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = nlr_unlocked_extremist_advisors_tt
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+			traits = { 
+				army_logistics_2 
+			}
+		}
+	}
+	NLH_safe_swell={
+		name=NLH_safe_swell
+		portraits={
+			army={
+				small="GFX_idea_NLR_safe_swell"
+			}
+			army={
+				large="gfx/leaders/NLR/Safe_Swell.tga"
+			}
+		}
+		navy_leader={
+			traits={ navy_cautious thestral_race_trait fleet_protector }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			maneuvering_skill=1
+			coordination_skill=1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = NLH_safe_swell
+			traits = { 
+				navy_anti_submarine_2
+			}
+		}
+	}
+	NLH_astral_vision={
+		name=NLH_astral_vision
+		portraits={
+			civilian={
+				large="gfx/leaders/leader_unknown.dds"
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	NLH_midnight_blossom={
+		name=NLH_midnight_blossom
+		portraits={
+			army={
+				small="GFX_idea_NLR_midnight_blossom"
+			}
+			army={
+				large="gfx/leaders/NLR/Midnight.tga"
+			}
+		}
+		corps_commander={
+			traits={ night_guard thestral_race_trait }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+		}
+	}
+	NLH_echo={
+		name=NLH_echo
+		portraits={
+			army={
+				small="GFX_idea_NLR_echo"
+			}
+			army={
+				large="gfx/leaders/NLR/Bat.tga"
+			}
+		}
+		corps_commander={
+			traits={ night_guard thestral_race_trait }
+			skill=2
+			attack_skill=1
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=2
+		}
+	}
+	NLH_night_blade={
+		name=NLH_night_blade
+		portraits={
+			army={
+				small="GFX_idea_NLR_night_blade"
+			}
+			army={
+				large="gfx/leaders/NLR/Night_Blade.tga"
+			}
+		}
+		corps_commander={
+			traits={ night_guard thestral_race_trait infantry_leader }
+			skill=1
+			attack_skill=3
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+			visible = {
+				if = {
+					limit = { original_tag = NLH }
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+		}
+	}
+	NLH_tzyca={
+		name=NLH_tzyca
+		portraits={
+			army={
+				small="GFX_idea_NLR_tzyca"
+			}
+			army={
+				large="gfx/leaders/NLR/Checha.tga"
+			}
+		}
+		corps_commander={
+			traits={ queen_terror thestral_race_trait }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=2
+		}
+	}
+	NLH_acerbus_von_sanguinis ={
+		name=NLH_acerbus
+		portraits={
+			army={
+				small="GFX_idea_NLR_acerbus_von_sanguinis"
+			}
+			army={
+				large="gfx/leaders/NLR/Acerbus.tga"
+			}
+		}
+		field_marshal={
+			traits={ sanguinary_prince thestral_race_trait }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			visible = {
+				if = {
+					limit = { original_tag = NLH }
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+		}
+		country_leader={
+			expire="1965.1.1.1"
+			ideology = theocracy_subideology
+			id=-1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = NLH_acerbus
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = nlr_unlocked_extremist_advisors_tt
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+			traits = { 
+				army_regrouping_2 
+			}
+		}
+	}
+	NLH_icy_breeze={
+		name=NLH_icy_breeze
+		portraits={
+			army={
+				small="GFX_idea_NLR_icy_breeze"
+			}
+			army={
+				large="gfx/leaders/NLR/IcyBreeze.tga"
+			}
+		}
+		corps_commander={
+			traits={ night_guard thestral_race_trait winter_specialist }
+			skill=1
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=3
+		}
+	}
+	NLH_nightbreeze_thunderstorm={
+		name=NLH_nightbreeze_thunderstorm
+		portraits={
+			army={
+				small="GFX_idea_NLR_nightbreeze_thunderstorm"
+			}
+			army={
+				large="gfx/leaders/NLR/Nightbreeze.tga"
+			}
+		}
+		corps_commander={
+			traits={ thestral_race_trait trait_engineer naval_invader }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=2
+			visible = {
+				if = {
+					limit = { original_tag = NLH }
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+		}
+	}
+	NLH_cleansing_night={
+		name=NLH_cleansing_night
+		portraits={
+			army={
+				small="GFX_idea_NLR_cleansing_night"
+			}
+			army={
+				large="gfx/leaders/NLR/Cleansing_Night.tga"
+			}
+		}
+		corps_commander={
+			traits={ inflexible_strategist thestral_race_trait infantry_leader }
+			skill=3
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+		}
+	}
+	NLH_seaward_march={
+		name=NLH_seaward_march
+		portraits={
+			army={
+				small="GFX_idea_NLR_seaward_march"
+			}
+			army={
+				large="gfx/leaders/NLR/NLR_Seaward_March.tga"
+			}
+		}
+		corps_commander={
+			traits={ harsh_leader pony_race_trait scavenger }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=3
+		}
+	}
+	NLH_galaxy_rose={
+		name=NLH_galaxy_rose
+		portraits={
+			army={
+				small="GFX_idea_NLR_galaxy_rose"
+			}
+			army={
+				large="gfx/leaders/NLR/Galaxy.tga"
+			}
+		}
+		corps_commander={
+			traits={ night_guard medical_expert thestral_race_trait }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=2
+		}
+	}
+	NLH_cresting_seas={
+		name=NLH_morning
+		portraits={
+			army={
+				small="GFX_idea_NLR_cresting_seas"
+			}
+			army={
+				large="gfx/leaders/NLR/Cresting_Seas.tga"
+			}
+		}
+		navy_leader={
+			traits={ navy_media_personality thestral_race_trait ironside }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			maneuvering_skill=1
+			coordination_skill=1
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = NLH_morning
+			traits = { 
+				navy_chief_decisive_battle_2 
+			}
+		}
+	}
+	NLH_lumi = {
+		name = NLH_lumi
+		portraits = {
+			civilian = {
+				small = "GFX_idea_lumi"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = NLH_lumi
+			traits = { 
+				silent_mule 
+			}
+		}
+	}
+	NLH_nightshade = {
+		name = NLH_nightshade
+		portraits = {
+			civilian = {
+				small = "GFX_idea_nightshade"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = NLH_nightshade
+			traits = { 
+				war_industrialist 
+			}
+		}
+	}
+	NLH_boo_advisor = {
+		name = NLH_boo_advisor
+		portraits = {
+			civilian = {
+				small = "GFX_idea_NLR_boo_advisor"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = NLH_boo_advisor
+			traits = { 
+				financial_expert 
+			}
+		}
+	}
+	
+	NLH_umbra = {
+		name = NLH_umbra
+		portraits = {
+			civilian = {
+				small = "GFX_idea_umbra"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = NLH_umbra
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = nlr_unlocked_extremist_advisors_tt
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+			traits = { 
+				cult_leader 
+			}
+		}
+	}
+	NLH_blossom = {
+		name = NLH_blossom
+		portraits = {
+			army = {
+				small = "GFX_idea_NLR_paint_splotch"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = NLH_blossom
+			traits = { 
+				army_chief_offensive_2 
+			}
+		}
+	}
+	NLH_neon = {
+		name = NLH_neon
+		portraits = {
+			army = {
+				small = "GFX_idea_neon"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = NLH_neon
+			traits = { 
+				army_chief_maneuver_1 
+			}
+		}
+	}
+	NLH_cometfall = {
+		name = NLH_cometfall
+		portraits = {
+			army = {
+				small = "GFX_idea_cometfall"
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = NLH_cometfall
+			traits = {
+				air_chief_night_operations_3 
+			}
+		}
+	}
+	NLH_midnight_storm = {
+		name = NLH_midnight_storm
+		portraits = {
+			army = {
+				small = "GFX_idea_midnight_storm"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = NLH_midnight_storm
+			traits = { 
+				army_infantry_2 
+			}
+		}
+	}
+	NLH_wind_walker = {
+		name = NLH_wind_walker 
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_wind_walker"
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = NLH_wind_walker
+			traits = { air_air_superiority_3 }
+			ai_will_do = {
+				factor = 1
+			}
+			available = {
+				if = {
+					limit = { original_tag = NLH }
+					custom_trigger_tooltip = {
+						tooltip = nlr_not_unlocked_extremist_advisors_tt
+						NOT = { has_country_flag = nlr_unlocked_extremist_advisors }
+					}
+				}
+			}
+		}
+	}
+	NLH_lampa = {
+		name = NLH_lampa
+		portraits = {
+			army = {
+				small = "GFX_idea_lampa"
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = NLH_lampa
+			traits = { 
+			    military_theorist 
+			}
+		}
+	}
+	NLH_somber = {
+		name = NLH_somber
+		portraits = {
+			army = {
+				small = "GFX_idea_somber"
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = NLH_somber
+			traits = { 
+			    nuclear_scientist 
+			}
+			research_bonus = {
+				nuclear = 0.10
+			}
+		}
+	}
+	NLH_bloodwater = {
+		name = NLH_bloodwater
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Pony/portrait_pony_generic_navy_1.dds"
+				small = GFX_portrait_pony_generic_navy_1_small
+			}
+		}
+		navy_leader = {
+			traits = { thestral_race_trait bold cuts_corners }
+			skill = 3
+			attack_skill = 5
+			defense_skill = 2
+			maneuvering_skill = 4
+			coordination_skill = 3
+			visible = {
+				if = {
+					limit = { original_tag = NLH }
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+		}
+		gender = female
+	}
+	NLH_polar_night = {
+		name = NLH_polar_night
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Pony/portrait_pony_generic_navy_8.dds"
+				small = GFX_portrait_pony_generic_navy_8_small
+			}
+		}
+		navy_leader = {
+			traits = { thestral_race_trait arctic_water_expert promising_general }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			maneuvering_skill = 2
+			coordination_skill = 4
+		}
+		gender = female
+	}
+	NLH_jungle_mango = {
+		name = NLH_jungle_mango
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Pony/portrait_pony_generic_navy_3.dds"
+				small = GFX_portrait_pony_generic_navy_3_small
+			}
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = NLH_jungle_mango
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = nlr_unlocked_extremist_advisors_tt
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+			traits = { 
+				air_naval_strike_2
+			}
+		}
+		navy_leader = {
+			traits = { thestral_race_trait air_controller }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			maneuvering_skill = 3
+			coordination_skill = 3
+			visible = {
+				if = {
+					limit = { original_tag = NLH }
+					has_country_flag = nlr_unlocked_extremist_advisors
+				}
+			}
+		}
+		gender = female
+	}
+}

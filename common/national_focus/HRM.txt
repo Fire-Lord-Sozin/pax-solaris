@@ -1,0 +1,693 @@
+focus_tree = {
+	id = hrm_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 15
+			tag = HRM
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 1675 y = 155 }
+
+	shared_focus = HRM_the_last_stand_of_freedom
+}
+
+shared_focus = {
+	id = HRM_the_last_stand_of_freedom
+	icon = GFX_goal_ELF_rising
+	allow_branch = {
+		tag = HRM
+	}
+	cost = 1.5
+	ai_will_do = {
+		factor = 100
+	}
+	x = 8
+	y = 0
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_last_stand_of_freedom"
+		add_political_power = 70
+		add_stability = 0.03
+		add_manpower = 32000
+		country_event = { id = hrm.1 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = HRM_repair_the_factories
+	icon = GFX_HRM_industry
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_last_stand_of_freedom
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	x = -3
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_repair_the_factories"
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		country_event = { id = hrm.2 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_INDUSTRY }
+}
+shared_focus = {
+	id = HRM_the_enemy_of_my_enemy
+	icon = GFX_HRM_the_enemy_of_my_enemy
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_repair_the_factories
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	x = -4
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_enemy_of_my_enemy"
+		custom_effect_tooltip = SOL_coming_soon_tt
+		country_event = { id = hrm.3 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = HRM_our_friends_abroad
+	icon = GFX_goal_ELF_unity
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_enemy_of_my_enemy
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -5
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_our_friends_abroad"
+		add_ideas = HRM_foreign_attaches
+		custom_effect_tooltip = HRM_form_international_legions
+		hidden_effect = {
+			if = {
+				limit = { has_completed_focus = HRM_form_a_high_command }
+				random_owned_controlled_state  = {
+					limit = { is_coastal = yes }
+					create_unit = { division = "name = \"1st International Legion 'Bakaran'\" division_template = \"Regulars\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"2nd International Legion 'Witterlander'\" division_template = \"Regulars\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"3rd International Legion 'Nimbusian'\" division_template = \"Regulars\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"4th International Legion 'Riverlander'\" division_template = \"Regulars\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"5th International Legion 'Aquileian'\" division_template = \"Regulars\" start_experience_factor = 0.7" 
+					owner = HRM }
+				}
+			}
+			else = {
+				random_owned_controlled_state  = {
+					limit = { is_coastal = yes }
+					create_unit = { division = "name = \"1st International Legion 'Bakaran'\" division_template = \"Volunteers\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"2nd International Legion 'Witterlander'\" division_template = \"Volunteers\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"3rd International Legion 'Nimbusian'\" division_template = \"Volunteers\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"4th International Legion 'Riverlander'\" division_template = \"Volunteers\" start_experience_factor = 0.7" 
+					owner = HRM }
+					create_unit = { division = "name = \"5th International Legion 'Aquileian'\" division_template = \"Volunteers\" start_experience_factor = 0.7" 
+					owner = HRM }
+				}
+			}	
+		}
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_foreign_advisors
+	icon = GFX_HRM_foreign_advisors
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_enemy_of_my_enemy
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -3
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_foreign_advisors"
+		every_army_leader = {
+			add_logistics = 1
+			add_planning = 1
+			add_defense = 1
+			add_attack = 1
+		}
+		hidden_effect = { set_technology = { tech_officer_training = 1 popup = no } }
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_the_rebirth_of_harmony
+	icon = GFX_goal_ELF_servicemare
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_enemy_of_my_enemy
+	}
+	available = {
+		if = {
+			limit = {
+				EQS = { 
+					is_SOLAR_EMPIRE = yes 
+					exists = yes
+					is_subject = no
+				}
+				has_war_with = EQS
+			}
+			EQS = { surrender_progress > 0.2 }
+		}
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -4
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_rebirth_of_harmony"
+		set_country_flag = HRM_the_rebirth_of_harmony_flag
+		if = {
+			limit = { has_character = EQS_fancy_pants }
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = fancy_pants
+		}
+		if = {
+			limit = { has_character = EQS_mayor_mare }
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = EQS_mayor_mare
+		}
+		if = {
+			limit = { has_character = HRM_mr_stripes }
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = HRM_mr_stripes
+		}
+		if = {
+			limit = { has_character = HRM_tall_order }
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = HRM_tall_order
+		}
+		if = {
+			limit = { has_character = EQS_caltrop_decay }
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = caltrop_decay
+		}
+		if = {
+			limit = { has_character = HRM_duke_dapper }
+			custom_effect_tooltip = available_theorist
+			show_ideas_tooltip = HRM_duke_dapper
+		}
+		if = {
+			limit = { has_character = EQS_spitfire }
+			custom_effect_tooltip = available_theorist
+			show_ideas_tooltip = spitfire
+		}
+		if = {
+			limit = { has_character = HRM_on_stage }
+			custom_effect_tooltip = available_chief_of_army
+			show_ideas_tooltip = HRM_on_stage
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_reach_out_to_the_industrialists
+	icon = GFX_goal_ELF_factory
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_rebirth_of_harmony
+	}
+	available = {
+		if = {
+			limit = {
+				EQS = { 
+					is_SOLAR_EMPIRE = yes 
+					exists = yes
+					is_subject = no
+				}
+				has_war_with = EQS
+			}
+			EQS = { surrender_progress > 0.4 }
+		}
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -5
+	y = 5
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_reach_out_to_the_industrialists"
+		set_country_flag = HRM_has_secured_industry_support_flag
+		custom_effect_tooltip = available_designer
+        show_ideas_tooltip = HRM_shoof
+        custom_effect_tooltip = available_designer
+        show_ideas_tooltip = HRM_detrot
+        custom_effect_tooltip = available_designer
+        show_ideas_tooltip = HRM_light_aircraft_manufacturer
+		custom_effect_tooltip = available_designer
+        show_ideas_tooltip = HRM_heavy_aircraft_manufacturer
+		custom_effect_tooltip = available_designer
+        show_ideas_tooltip = HRM_naval_aircraft_manufacturer
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_reach_out_to_the_intellectuals
+	icon = GFX_HRM_reach_out_to_the_intellectuals
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_rebirth_of_harmony
+	}
+	prerequisite = {
+		focus = HRM_foreign_advisors
+	}
+	available = {
+		if = {
+			limit = {
+				EQS = { 
+					is_SOLAR_EMPIRE = yes 
+					exists = yes
+					is_subject = no
+				}
+				has_war_with = EQS
+			}
+			EQS = { surrender_progress > 0.4 }
+		}
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -3
+	y = 5
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_reach_out_to_the_intellectuals"
+		add_stability = 0.05
+		if = {
+			limit = {
+				amount_research_slots < 5
+			}
+			add_research_slot = 1
+			custom_effect_tooltip = CZE_war_college_effect_2_tt
+		}
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH }
+}
+shared_focus = {
+	id = HRM_arm_the_populace
+	icon = GFX_goal_ELF_ordnance
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_repair_the_factories
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -2
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_arm_the_populace"
+		custom_effect_tooltip = HRM_arm_the_populace_tt
+		country_event = { id = hrm.4 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_standardise_production
+	icon = GFX_goal_ELF_labour
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_arm_the_populace
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = -2
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_standardise_production"
+		add_ideas = HRM_bits_gun_idea
+		custom_effect_tooltip = HRM_bits_gun_idea_explainer_tt
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+
+shared_focus = {
+	id = HRM_mobilise_the_paramilitaries
+	icon = GFX_goal_ELF_soldier
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_last_stand_of_freedom
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	x = 3
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_mobilise_the_paramilitaries"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_our_finest_hour
+	icon = GFX_goal_ELF_bestpony
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_mobilise_the_paramilitaries
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	x = 4
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_our_finest_hour"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_liberty_or_death
+	icon = GFX_HRM_liberty_or_death
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_our_finest_hour
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 5
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_liberty_or_death"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_form_a_high_command
+	icon = GFX_goal_ELF_services
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_our_finest_hour
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 3
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_form_a_high_command"
+		hidden_effect = {
+			set_division_template_lock = {
+				division_template = "Volunteers"
+				is_locked = no
+			}
+		}
+		division_template = {
+			name = "Regulars"
+			division_names_group = EQS_INF_01
+			template_counter = 5
+			is_locked = yes
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 3 y = 0 }
+				infantry = { x = 3 y = 1 }
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_flying_columns
+	icon = GFX_goal_ELF_pegasus
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_our_finest_hour
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 4
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_flying_columns"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_freedom_at_all_costs
+	icon = GFX_goal_ELF_unicorn
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_flying_columns
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 5
+	y = 5
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_freedom_at_all_costs"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_the_ponies_liberation_army
+	icon = GFX_goal_ELF_army
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_form_a_high_command
+	}
+	prerequisite = {
+		focus = HRM_flying_columns
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 3
+	y = 5
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_ponies_liberation_army"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_decentralised_revolution
+	icon = GFX_goal_ELF_volunteer
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_mobilise_the_paramilitaries
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 2
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_decentralised_revolution"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_desperate_times
+	icon = GFX_goal_ELF_pony_labour
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_decentralised_revolution
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 2
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_desperate_times"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_hearts_and_minds
+	icon = GFX_HRM_hearts_and_minds
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_last_stand_of_freedom
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	x = 0
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_hearts_and_minds"
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = HRM_the_price_of_liberty
+	icon = GFX_HRM_the_price_of_liberty
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_hearts_and_minds
+	}
+	cost = 7.2
+	ai_will_do = {
+		factor = 100
+	}
+	x = 0
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_price_of_liberty"
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = HRM_root_out_the_traitors
+	icon = GFX_HRM_root_out_the_traitors
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_price_of_liberty
+	}
+	cost = 4.3
+	ai_will_do = {
+		factor = 100
+	}
+	x = 0
+	y = 5
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_root_out_the_traitors"
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = HRM_the_fate_of_the_solarists
+	icon = GFX_HRM_the_fate_of_the_solarists
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_foreign_advisors
+		focus = HRM_standardise_production
+	}
+	prerequisite = {
+		focus = HRM_root_out_the_traitors
+	}
+	cost = 5.8
+	ai_will_do = {
+		factor = 100
+	}
+	x = -1
+	y = 6
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_fate_of_the_solarists"
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = HRM_the_hunt_for_the_guardian
+	icon = GFX_HRM_the_hunt_for_the_custodian
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_decentralised_revolution
+		focus = HRM_desperate_times
+	}
+	prerequisite = {
+		focus = HRM_root_out_the_traitors
+	}
+	cost = 5.8
+	ai_will_do = {
+		factor = 100
+	}
+	x = 1
+	y = 6
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_hunt_for_the_guardian"
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = HRM_the_sun_and_the_star
+	icon = GFX_HRM_the_sun_and_the_star
+	relative_position_id = HRM_the_last_stand_of_freedom
+	prerequisite = {
+		focus = HRM_the_fate_of_the_solarists
+	}
+	prerequisite = {
+		focus = HRM_the_hunt_for_the_guardian
+	}
+	cost = 5.8
+	ai_will_do = {
+		factor = 100
+	}
+	x = 0
+	y = 7
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus HRM_the_sun_and_the_star"
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}

@@ -349,7 +349,7 @@ sol_dialogue_display_effect = {
 			clear_variable = sol_dialogue_window_var
 			country_event = {
 				id = paxsolaris.59
-				days = 20
+				days = 10
 			}
 		}
 		if = {
@@ -467,7 +467,7 @@ sol_dialogue_display_effect = {
 			clear_variable = sol_dialogue_window_var
 			country_event = {
 				id = paxsolaris.59
-				days = 20
+				days = 10
 			}
 		}
 	}
@@ -838,7 +838,7 @@ sol_dialogue_display_effect = {
 			clear_variable = sol_dialogue_window_var
 			country_event = {
 				id = paxsolaris.60
-				days = 29
+				days = 10
 			}
 		}
 		if = {
@@ -931,7 +931,7 @@ sol_dialogue_display_effect = {
 			clear_variable = sol_dialogue_window_var
 			country_event = {
 				id = paxsolaris.60
-				days = 29
+				days = 10
 			}
 		}
 	}
@@ -1289,8 +1289,31 @@ sol_dialogue_display_effect = {
 		}
 		if = {
 			limit = { check_variable = { sol_dialogue_window_var = 14 } }
+			add_ideas = sol_sunrise_sparkle
 			clr_country_flag = sol_dialogue_twilight_win
 			clear_variable = sol_dialogue_window_var
+			hidden_effect = { country_event = { id = paxsolaris.65 days = 17 } }
+			set_country_flag = SOL_twilight_ascended
+			if = {
+				limit = {
+					NOT = {
+						any_state = {
+							has_event_target = SOL_strike_target_6
+						}
+					}
+				}
+				121 = { save_global_event_target_as = SOL_strike_target_6 }
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_state = {
+							has_event_target = SOL_raid_resistance_target_2
+						}
+					}
+				}
+				121 = { save_global_event_target_as = SOL_raid_resistance_target_2 }
+			}
 		}
 	}
 	if = {
@@ -1357,8 +1380,31 @@ sol_dialogue_display_effect = {
 		}
 		if = {
 			limit = { check_variable = { sol_dialogue_window_var = 11 } }
+			add_ideas = sol_sunrise_sparkle_dulled
 			clr_country_flag = sol_dialogue_twilight_lose
 			clear_variable = sol_dialogue_window_var
+			hidden_effect = { country_event = { id = paxsolaris.65 days = 17 } }
+			set_country_flag = SOL_twilight_ascended
+			if = {
+				limit = {
+					NOT = {
+						any_state = {
+							has_event_target = SOL_strike_target_6
+						}
+					}
+				}
+				121 = { save_global_event_target_as = SOL_strike_target_6 }
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_state = {
+							has_event_target = SOL_raid_resistance_target_2
+						}
+					}
+				}
+				121 = { save_global_event_target_as = SOL_raid_resistance_target_2 }
+			}
 		}
 	}
 }

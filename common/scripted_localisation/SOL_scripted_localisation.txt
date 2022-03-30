@@ -206,6 +206,24 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = SOL_daybreaker_support_daily_invasion
+	text = {
+		trigger = {
+			check_variable = { daybreaker_support_daily_invasion < 0 }
+		}
+		localization_key = daybreaker_support_daily_invasion_negative
+	}
+	text = {
+		trigger = {
+			check_variable = { daybreaker_support_daily_invasion > 0 }
+		}
+		localization_key = daybreaker_support_daily_invasion_positive
+	}
+	text = {
+		localization_key = daybreaker_support_daily_invasion_neutral
+	}
+}
+defined_text = {
 	name = SOL_resistance_suppression_stage_progress
 	text = {
 		trigger = {
@@ -317,58 +335,67 @@ defined_text = {
 defined_text = {
 	name = SOL_benevolent_civilian_event_description
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 0 } }
+		trigger = { check_variable = { paxsolaris_50 = 1 } }
 		localization_key = SOL_benevolent_civilian_event_description_0
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 1 } }
+		trigger = { check_variable = { paxsolaris_50 = 2 } }
 		localization_key = SOL_benevolent_civilian_event_description_1
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 2 } }
+		trigger = { check_variable = { paxsolaris_50 = 3 } }
 		localization_key = SOL_benevolent_civilian_event_description_2
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 3 } }
+		trigger = { check_variable = { paxsolaris_50 = 4 } }
 		localization_key = SOL_benevolent_civilian_event_description_3
+	}
+	text = {
+		localization_key = SOL_benevolent_civilian_event_description_4
 	}
 }
 defined_text = {
 	name = SOL_benevolent_civilian_event_title
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 0 } }
+		trigger = { check_variable = { paxsolaris_50 = 1 } }
 		localization_key = SOL_benevolent_civilian_event_title_0
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 1 } }
+		trigger = { check_variable = { paxsolaris_50 = 2 } }
 		localization_key = SOL_benevolent_civilian_event_title_1
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 2 } }
+		trigger = { check_variable = { paxsolaris_50 = 3 } }
 		localization_key = SOL_benevolent_civilian_event_title_2
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 3 } }
+		trigger = { check_variable = { paxsolaris_50 = 4 } }
 		localization_key = SOL_benevolent_civilian_event_title_3
+	}
+	text = {
+		localization_key = SOL_benevolent_civilian_event_title_4
 	}
 }
 defined_text = {
 	name = SOL_benevolent_civilian_event_response
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 0 } }
+		trigger = { check_variable = { paxsolaris_50 = 1 } }
 		localization_key = SOL_benevolent_civilian_event_response_0
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 1 } }
+		trigger = { check_variable = { paxsolaris_50 = 2 } }
 		localization_key = SOL_benevolent_civilian_event_response_1
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 2 } }
+		trigger = { check_variable = { paxsolaris_50 = 3 } }
 		localization_key = SOL_benevolent_civilian_event_response_2
 	}
 	text = {
-		trigger = { check_variable = { paxsolaris_50 = 3 } }
+		trigger = { check_variable = { paxsolaris_50 = 4 } }
 		localization_key = SOL_benevolent_civilian_event_response_3
+	}
+	text = {
+		localization_key = SOL_benevolent_civilian_event_response_4
 	}
 }
 defined_text = {
@@ -425,6 +452,25 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = SOL_royal_guard_action_state_requirement_notdeployedyet
+	text = {
+		trigger = {
+			THIS = { 
+				NOT = { has_variable = SOL_royal_guard_deployed_var }
+			}
+		}
+		localization_key = SOL_royal_guard_action_state_requirement_notdeployedyet_met_tt
+	}
+	text = {
+		trigger = {
+			THIS = { 
+				has_variable = SOL_royal_guard_deployed_var
+			}
+		}
+		localization_key = SOL_royal_guard_action_state_requirement_notdeployedyet_unmet_tt
+	}
+}
+defined_text = {
 	name = SOL_mtf_action_state_outcome
 	text = {
 		trigger = {
@@ -434,6 +480,18 @@ defined_text = {
 	}
 	text = {
 		localization_key = SOL_mtf_action_state_outcome_delayed
+	}
+}
+defined_text = {
+	name = SOL_royal_guard_action_state_outcome
+	text = {
+		trigger = {
+			ROOT = { check_variable = { solar_military_support = 5 } }
+		}
+		localization_key = SOL_royal_guard_action_state_outcome_instant
+	}
+	text = {
+		localization_key = SOL_royal_guard_action_state_outcome_delayed
 	}
 }
 
@@ -455,6 +513,24 @@ defined_text = {
 		localization_key = SOL_mtf_action_total_deployed_unmet_tt
 	}
 }
+defined_text = {
+	name = SOL_royal_guard_action_total_deployed
+	text = {
+		trigger = {
+			ROOT = {
+				check_variable = {
+					var = SOL_royal_guard_in_reserve_var
+					value = 0
+					compare = greater_than
+				}
+			}
+		}
+		localization_key = SOL_royal_guard_action_total_deployed_met_tt
+	}
+	text = {
+		localization_key = SOL_royal_guard_action_total_deployed_unmet_tt
+	}
+}
 
 defined_text = {
 	name = SOL_mtf_action_not_recalling
@@ -473,6 +549,25 @@ defined_text = {
 			}
 		}
 		localization_key = SOL_mtf_action_not_recalling_unmet_tt
+	}
+}
+defined_text = {
+	name = SOL_royal_guard_action_not_recalling
+	text = {
+		trigger = {
+			ROOT = {
+				NOT = { has_country_flag = SOL_recall_royal_guard_decision_in_progress_flag }
+			}
+		}
+		localization_key = SOL_royal_guard_action_not_recalling_met_tt
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				has_country_flag = SOL_recall_pegasi_decision_in_progress_flag
+			}
+		}
+		localization_key = SOL_royal_guard_action_not_recalling_unmet_tt
 	}
 }
 defined_text = {
@@ -693,34 +788,33 @@ defined_text = {
 	}
 }
 define_text = {
-	name = paxsolaris2desc
+	name = paxsolaris2desc1
 	text = {
 		trigger = {
 			has_completed_focus = SOL_hear_them_out
-			has_country_flag = SOL_wartime_change
 		}
-		localization_key = paxsolaris2desc1
-	}
-	text = {
-		trigger = {
-			has_completed_focus = SOL_hear_them_out
-			NOT = { has_country_flag = SOL_wartime_change }
-		}
-		localization_key = paxsolaris2desc2
+		localization_key = paxsolaris2desc1_1
 	}
 	text = {
 		trigger = {
 			has_completed_focus = SOL_send_in_the_tanks
+		}
+		localization_key = paxsolaris2desc1_2
+	}
+}
+define_text = {
+	name = paxsolaris2desc2
+	text = {
+		trigger = {
 			has_country_flag = SOL_wartime_change
 		}
-		localization_key = paxsolaris2desc3
+		localization_key = paxsolaris2desc2_1
 	}
 	text = {
 		trigger = {
-			has_completed_focus = SOL_send_in_the_tanks
 			NOT = { has_country_flag = SOL_wartime_change }
 		}
-		localization_key = paxsolaris2desc4
+		localization_key = paxsolaris2desc2_2
 	}
 }
 defined_text = {
@@ -733,41 +827,6 @@ defined_text = {
 	}
 	text = {
 		localization_key = NormalDesc
-	}
-}
-defined_text = {
-	name = CanterlotAttackAftermathDesc
-	text = {
-		trigger = {
-			has_country_flag = major_attack_1_win
-		}
-		localization_key = CanterlotAttackAftermathDescWin
-	}
-	text = {
-		trigger = {
-			has_country_flag = SOL_resistance_major_attack_1_civilian
-			has_country_flag = major_attack_1_loss
-		}
-		localization_key = CanterlotAttackAftermathDescCivilian
-	}
-	text = {
-		trigger = {
-			has_country_flag = SOL_resistance_major_attack_1_military
-			has_country_flag = major_attack_1_loss
-		}
-		localization_key = CanterlotAttackAftermathDescMilitary
-	}
-}
-defined_text = {
-	name = RadioWhinnyapolisDesc
-	text = {
-		trigger = {
-			has_country_flag = SOL_resistance_major_attack_1_surrounding_troops
-		}
-		localization_key = RadioWhinnyapolisDescSurroundingTroops
-	}
-	text = {
-		localization_key = RadioWhinnyapolisDescNoSurroundingTroops
 	}
 }
 defined_text = { 
@@ -1322,187 +1381,6 @@ defined_text = {
 			check_variable = { strike_at_resistance_success_rating > 6 }
 		}
 		localization_key = resistance_strike_mission_success_rating_comment_resounding_success
-	}
-}
-
-defined_text = {
-	name = MagicCurrentSpell
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 1 }
-		}
-		localization_key = selected_spell_heatwave
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 2 }
-		}
-		localization_key = selected_spell_blessing
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 3 }
-		}
-		localization_key = selected_spell_curse
-	}
-}
-defined_text = {
-	name = MagicCurrentSpellDesc
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 1 }
-		}
-		localization_key = selected_spell_heatwave_desc
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 2 }
-		}
-		localization_key = selected_spell_blessing_desc
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 3 }
-		}
-		localization_key = selected_spell_curse_desc
-	}
-}
-
-defined_text = {
-	name = SOL_daybreaker_magic_daily
-	text = {
-		trigger = {
-			check_variable = { daybreaker_magic_daily_change < 0 }
-		}
-		localization_key = daybreaker_magic_daily_negative
-	}
-	text = {
-		trigger = {
-			check_variable = { 
-				var = daybreaker_magic_daily_change
-				value = 0
-				compare = greater_than_or_equals 
-			}
-		}
-		localization_key = daybreaker_magic_daily_positive
-	}
-}
-defined_text = {
-	name = SOL_daybreaker_magic_daily_actions
-	text = {
-		trigger = {
-			check_variable = { daybreaker_magic_daily_change_actions < 0 }
-		}
-		localization_key = daybreaker_magic_daily_actions_negative
-	}
-	text = {
-		trigger = {
-			check_variable = { 
-				var = daybreaker_magic_daily_change_actions
-				value = 0
-				compare = greater_than_or_equals 
-			}
-		}
-		localization_key = daybreaker_magic_daily_actions_positive
-	}
-}
-defined_text = { # Country
-	name = GetSpellCost
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 1 }
-			check_variable = { 
-				var = daybreaker_magic_reserves 
-				value = sol_heatwave_cost
-				compare = greater_than_or_equals
-			}
-		}
-		localization_key = decision_cost_heatwave
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 1 }
-			check_variable = { daybreaker_magic_reserves < sol_heatwave_cost }
-		}
-		localization_key = decision_cost_heatwave_blocked
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 2 }
-			check_variable = { 
-				var = daybreaker_magic_reserves 
-				value = sol_blessing_cost
-				compare = greater_than_or_equals
-			}
-		}
-		localization_key = decision_cost_blessing
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 2 }
-			check_variable = { daybreaker_magic_reserves < sol_blessing_cost }
-		}
-		localization_key = decision_cost_blessing_blocked
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 3 }
-			check_variable = { 
-				var = daybreaker_magic_reserves 
-				value = sol_curse_cost
-				compare = greater_than_or_equals
-			}
-		}
-		localization_key = decision_cost_curse
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 3 }
-			check_variable = { daybreaker_magic_reserves < sol_curse_cost }
-		}
-		localization_key = decision_cost_curse_blocked
-	}
-}
-defined_text = {
-	name = SpellEffect
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 1 }
-		}
-		localization_key = spell_effect_heatwave
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 2 }
-		}
-		localization_key = spell_effect_blessing
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 3 }
-		}
-		localization_key = spell_effect_curse
-	}
-}
-defined_text = {
-	name = SpellEffectCancel
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 1 }
-		}
-		localization_key = spell_effect_cancel_heatwave
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 2 }
-		}
-		localization_key = spell_effect_cancel_blessing
-	}
-	text = {
-		trigger = {
-			check_variable = { sol_magic_currently_selected_spell = 3 }
-		}
-		localization_key = spell_effect_cancel_curse
 	}
 }
 defined_text = {
@@ -2545,7 +2423,7 @@ defined_text = {
 	text = {
 		trigger = {
 			THIS = {
-				owner = {
+				controller = {
 					has_war_with = EQS
 				}
 			}
@@ -2742,10 +2620,8 @@ defined_text = {
 		trigger = {
 			NOT = {
 				any_state = {
-					AND = {
-						check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-						is_controlled_by = event_target:solar_empire
-					}
+					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+					is_owned_and_controlled_by = EQS
 				}
 			}
 		}
@@ -2754,16 +2630,12 @@ defined_text = {
 	text = {
 		trigger = {
 			any_state = {
-				AND = {
-					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-					is_controlled_by = event_target:solar_empire
-				}
+				check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+				is_owned_and_controlled_by = EQS
 			}
 			any_state = {
-				AND = {
-					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-					NOT = { is_controlled_by = event_target:solar_empire }
-				}
+				check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+				NOT = { is_owned_and_controlled_by = EQS }
 			}
 		}
 		localization_key = SOL_controlled_public_works_some_control
@@ -2778,10 +2650,8 @@ defined_text = {
 		trigger = {
 			NOT = {
 				any_state = {
-					AND = {
-						check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-						NOT = { is_controlled_by = event_target:solar_empire }
-					}
+					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+					NOT = { is_owned_and_controlled_by = EQS }
 				}
 			}
 		}
@@ -2792,22 +2662,45 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = public_work_available_triggers_ongoing
+	name = modern_national_development_available_triggers_owned
 	text = {
 		trigger = {
 			NOT = {
-				OR = {
-					is_in_array = { SOL_ongoing_public_works = currently_selected_region }
-					is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
-					is_in_array = { SOL_ongoing_agmech = currently_selected_region }
-					is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11}
+					NOT = { is_owned_and_controlled_by = EQS }
 				}
 			}
+		}
+		localization_key = modern_national_development_available_triggers_owned_met
+	}
+	text = { 
+		localization_key = modern_national_development_available_triggers_owned_unmet
+	}
+}
+defined_text = {
+	name = public_work_available_triggers_ongoing
+	text = {
+		trigger = {
+			has_public_work = no
 		}
 		localization_key = public_work_available_triggers_ongoing_met
 	}
 	text = { 
 		localization_key = public_work_available_triggers_ongoing_unmet
+	}
+}
+defined_text = {
+	name = modern_national_development_available_triggers_ongoing
+	text = {
+		trigger = {
+			has_public_work_all = no
+		}
+		localization_key = modern_national_development_available_triggers_ongoing_met
+	}
+	text = { 
+		localization_key = modern_national_development_available_triggers_ongoing_unmet
 	}
 }
 defined_text = {
@@ -2859,7 +2752,7 @@ defined_text = {
 			any_state = {
 				AND = {
 					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-					NOT = { has_dynamic_modifier = { modifier = SOL_infrastructure_hardening_bonus } }
+					NOT = { has_state_flag = SOL_completed_infrastructure_hardening }
 					is_controlled_by = EQS
 				}
 			}
@@ -2871,11 +2764,50 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = strat_tele_available_triggers_completed
+	text = {
+		trigger = {
+			any_state = {
+				AND = {
+					check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+					NOT = { has_state_flag = SOL_completed_strat_tele }
+					is_controlled_by = EQS
+				}
+			}
+		}
+		localization_key = strat_tele_available_triggers_completed_met
+	}
+	text = { 
+		localization_key = strat_tele_available_triggers_completed_unmet
+	}
+}
+defined_text = {
+	name = modern_national_development_available_triggers_completed
+	text = {
+		trigger = {
+			has_completed_public_works_all = yes
+		}
+		localization_key = modern_national_development_available_triggers_completed_met
+	}
+	text = { 
+		localization_key = modern_national_development_available_triggers_completed_unmet
+	}
+}
+defined_text = {
 	name = public_work_available_triggers_war
 	text = {
 		trigger = {
 			NOT = {
-				has_war = yes
+				OR = {
+					any_country = {
+						sol_is_threat = yes
+						has_war_with = EQS
+					}
+					AND = {
+						has_war = yes
+						surrender_progress > 0.2
+					}
+				}
 			}
 		}
 		localization_key = public_work_available_triggers_war_met
@@ -2900,7 +2832,11 @@ defined_text = {
 	name = public_work_available_triggers_factories
 	text = {
 		trigger = {
-			check_variable = { SOL_public_works_industry_use_after < 1 }
+			check_variable = {
+				var = num_of_civilian_factories_available_for_projects
+				value = SOL_public_works_industry_use_after
+				compare = greater_than_or_equals
+			}
 		}
 		localization_key = public_work_available_triggers_factories_met
 	}
@@ -2912,7 +2848,11 @@ defined_text = {
 	name = urban_planning_available_triggers_factories
 	text = {
 		trigger = {
-			check_variable = { SOL_urban_planning_industry_use_after < 1 }
+			check_variable = {
+				var = num_of_civilian_factories_available_for_projects
+				value = SOL_urban_planning_industry_use_after
+				compare = greater_than_or_equals
+			}
 		}
 		localization_key = public_work_available_triggers_factories_met
 	}
@@ -2924,7 +2864,11 @@ defined_text = {
 	name = agmech_available_triggers_factories
 	text = {
 		trigger = {
-			check_variable = { SOL_agmech_industry_use_after < 1 }
+			check_variable = {
+				var = num_of_civilian_factories_available_for_projects
+				value = SOL_agmech_industry_use_after
+				compare = greater_than_or_equals
+			}
 		}
 		localization_key = public_work_available_triggers_factories_met
 	}
@@ -2936,7 +2880,43 @@ defined_text = {
 	name = infrastructure_hardening_available_triggers_factories
 	text = {
 		trigger = {
-			check_variable = { SOL_infrastructure_hardening_industry_use_after < 1 }
+			check_variable = {
+				var = num_of_civilian_factories_available_for_projects
+				value = SOL_infrastructure_hardening_industry_use_after
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = public_work_available_triggers_factories_met
+	}
+	text = { 
+		localization_key = public_work_available_triggers_factories_unmet
+	}
+}
+defined_text = {
+	name = strat_tele_available_triggers_factories
+	text = {
+		trigger = {
+			check_variable = {
+				var = num_of_civilian_factories_available_for_projects
+				value = SOL_strat_tele_industry_use_after
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = public_work_available_triggers_factories_met
+	}
+	text = { 
+		localization_key = public_work_available_triggers_factories_unmet
+	}
+}
+defined_text = {
+	name = modern_national_development_available_triggers_factories
+	text = {
+		trigger = {
+			check_variable = {
+				var = num_of_civilian_factories_available_for_projects
+				value = SOL_modern_national_development_industry_use_after
+				compare = greater_than_or_equals
+			}
 		}
 		localization_key = public_work_available_triggers_factories_met
 	}
@@ -2971,6 +2951,18 @@ defined_text = {
 		localization_key = SOL_infrastructure_hardening_text_tt
 	}
 	text = {
+		trigger = {
+			is_in_array = { SOL_ongoing_strat_tele = currently_selected_region }
+		}
+		localization_key = SOL_strat_tele_text_tt
+	}
+	text = {
+		trigger = {
+			is_in_array = { SOL_ongoing_modern_national_development = currently_selected_region }
+		}
+		localization_key = SOL_modern_national_development_text_tt
+	}
+	text = {
 		localization_key = SOL_no_ongoing_public_works
 	}
 }
@@ -2984,25 +2976,76 @@ defined_text = {
 						any_state = {
 							AND = {
 								check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
-								NOT = { is_controlled_by = event_target:solar_empire }
+								NOT = { is_owned_and_controlled_by = EQS }
 							}
 						}
-						has_war = yes
+						OR = {
+							any_country = {
+								sol_is_threat = yes
+								has_war_with = EQS
+							}
+							AND = {
+								has_war = yes
+								surrender_progress > 0.2
+							}
+						}
 					}
 					OR = {
 						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
 						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
 						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
+						is_in_array = { SOL_ongoing_modern_national_development = currently_selected_region }
 					}
 				}
 				AND = {
-					has_idea = SOL_worker_strikes
 					OR = {
-						is_in_array = { SOL_ongoing_public_works = currently_selected_region }
-						is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
-						is_in_array = { SOL_ongoing_agmech = currently_selected_region }
-						is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+						any_state = {
+							AND = {
+								has_variable = SOL_public_works_region_id
+								check_variable = { SOL_public_works_region_id < 11 }
+								NOT = { is_owned_and_controlled_by = EQS }
+							}
+						}
+						OR = {
+							any_country = {
+								sol_is_threat = yes
+								has_war_with = EQS
+							}
+							AND = {
+								has_war = yes
+								surrender_progress > 0.2
+							}
+						}
 					}
+					is_in_array = { SOL_ongoing_modern_national_development = currently_selected_region }
+				}
+				AND = {
+					NOT = {
+						any_state = {
+							AND = {
+								check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+								NOT = { has_state_flag = SOL_completed_infrastructure_hardening }
+								is_controlled_by = EQS
+							}
+						}
+					}
+					is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
+				}
+				AND = {
+					NOT = {
+						any_state = {
+							AND = {
+								check_variable = { SOL_public_works_region_id = EQS.currently_selected_region }
+								NOT = { has_state_flag = SOL_completed_strat_tele }
+								is_controlled_by = EQS
+							}
+						}
+					}
+					is_in_array = { SOL_ongoing_strat_tele = currently_selected_region }
+				}
+				AND = {
+					has_idea = SOL_worker_strikes
+					has_public_work = yes
 				}
 			}
 			
@@ -3011,12 +3054,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				is_in_array = { SOL_ongoing_public_works = currently_selected_region }
-				is_in_array = { SOL_ongoing_urban_planning = currently_selected_region }
-				is_in_array = { SOL_ongoing_agmech = currently_selected_region }
-				is_in_array = { SOL_ongoing_infrastructure_hardening = currently_selected_region }
-			}
+			has_public_work = yes
 		}
 		localization_key = SOL_days_remaining_yes
 	}
@@ -3027,7 +3065,12 @@ defined_text = {
 defined_text = {
 	name = sol_military_getspecies
 	text = {
-		trigger = { event_target:sol_defeated = { tag = NLR } }
+		trigger = { 
+			OR = { 
+				event_target:sol_defeated = { tag = NLR } 
+				event_target:sol_defeated = { tag = NLH } 
+			}
+		}
 		localization_key = sol_military_thestrals
 	}
 	text = {
@@ -3048,15 +3091,7 @@ defined_text = {
 		trigger = {
 			AND = {
 				EQR = { exists = yes }
-				NLR = {
-					exists = yes
-					NOT = {
-						has_country_leader = {
-							ruling_only = yes
-							name = "Nightmare Moon"
-						}
-					}
-				}
+				NLH = { exists = yes }
 			}
 		}
 		localization_key = paxsolaris_341_getdesc_nlreqr
@@ -3065,28 +3100,14 @@ defined_text = {
 		trigger = {
 			AND = {
 				EQR = { exists = no }
-				NLR = {
-					exists = yes
-					NOT = {
-						has_country_leader = {
-							ruling_only = yes
-							name = "Nightmare Moon"
-						}
-					}
-				}
+				NLH = { exists = yes }
 			}
 		}
 		localization_key = paxsolaris_341_getdesc_nlr
 	}
 	text = {
 		trigger = {
-			NLR = {
-				exists = yes
-				has_country_leader = {
-					ruling_only = yes
-					name = "Nightmare Moon"
-				}
-			}
+			NLR = { exists = yes }
 		}
 		localization_key = paxsolaris_341_getdesc_nmm
 	}
@@ -3278,6 +3299,10 @@ defined_text = {
 		localization_key = SOL_state_race_10
 	}
 	text = {
+		trigger = { check_variable = { sol_majority_race_id = 11 } }
+		localization_key = SOL_state_race_11
+	}
+	text = {
 		localization_key = SOL_state_race_other
 	}
 }
@@ -3306,19 +3331,34 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = SOL_develop_settler_colony_requirement_20_pony_pop
+	text = {
+		trigger = {
+			THIS = { check_variable = { sol_pony_percentage > 0.2 } }
+		}
+		localization_key = SOL_develop_settler_colony_requirement_20_pony_pop_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_20_pony_pop_unmet
+	}
+}
+defined_text = {
+	name = SOL_develop_settler_colony_requirement_40_pony_pop
+	text = {
+		trigger = {
+			THIS = { check_variable = { sol_pony_percentage > 0.4 } }
+		}
+		localization_key = SOL_develop_settler_colony_requirement_40_pony_pop_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_40_pony_pop_unmet
+	}
+}
+defined_text = {
 	name = SOL_develop_settler_colony_requirement_no_colony
 	text = {
 		trigger = {
-			THIS = { 
-				NOT = {
-					has_variable = SOL_develop_settler_colony_civ_fac_use
-					OR = {
-						has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
-						has_dynamic_modifier = { modifier = SOL_pony_settlement }
-						has_dynamic_modifier = { modifier = SOL_settler_colonies }
-					}
-				} 
-			}
+			THIS = { NOT = { has_variable = SOL_develop_settler_colony_civ_fac_use } }
 		}
 		localization_key = SOL_develop_settler_colony_requirement_no_colony_met
 	}
@@ -3332,7 +3372,7 @@ defined_text = {
 		trigger = {
 			THIS = { 
 				set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
-				multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.005 }
+				multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = EQS.SOL_develop_settler_colony_civ_fac_use_multiplier }
 				add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
 				round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
 				meta_trigger = {
@@ -3354,6 +3394,158 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = SOL_encourage_settlers_requirement_factories_available
+	text = {
+		trigger = {
+			ROOT = { 
+				check_variable = {
+					var = EQS.num_of_civilian_factories_available_for_projects
+					value = 1
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = SOL_develop_settler_colony_requirement_factories_available_met
+	}
+	text = {
+		localization_key = SOL_develop_settler_colony_requirement_factories_available_unmet
+	}
+}
+defined_text = {
+	name = SOL_encourage_settlers_available
+	text = {
+		trigger = { ROOT = { check_variable = { SOL_number_of_settlements_available > 0 } } }
+		localization_key = SOL_encourage_settlers_available_met
+	}
+	text = {
+		localization_key = SOL_encourage_settlers_available_unmet
+	}
+}
+defined_text = {
+	name = SOL_encourage_settlers_available_right_click
+	text = {
+		trigger = { THIS = { check_variable = { SOL_number_of_settlements_this_state > 0 } } }
+		localization_key = SOL_encourage_settlers_available_right_click_met
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_encourage_settlers_existing_settlement
+	text = {
+		trigger = {
+			THIS = { 
+				OR = {
+					has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+					has_dynamic_modifier = { modifier = SOL_pony_settlement }
+					has_dynamic_modifier = { modifier = SOL_settler_colonies }
+				}
+			}
+		}
+		localization_key = SOL_encourage_settlers_existing_settlement_met
+	}
+	text = {
+		localization_key = SOL_encourage_settlers_existing_settlement_unmet
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 1 } }
+		localization_key = SOL_states_with_migration_1
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 2 } }
+		localization_key = SOL_states_with_migration_2
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 3 } }
+		localization_key = SOL_states_with_migration_3
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 4 } }
+		localization_key = SOL_states_with_migration_4
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 5 } }
+		localization_key = SOL_states_with_migration_5
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 6 } }
+		localization_key = SOL_states_with_migration_6
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 7 } }
+		localization_key = SOL_states_with_migration_7
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 8 } }
+		localization_key = SOL_states_with_migration_8
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 9 } }
+		localization_key = SOL_states_with_migration_9
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 10 } }
+		localization_key = SOL_states_with_migration_10
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 11 } }
+		localization_key = SOL_states_with_migration_11
+	}
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num = 12 } }
+		localization_key = SOL_states_with_migration_12
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_develop_colonies_tt_scripted_loc
+	text = {
+		trigger = { THIS = { has_dynamic_modifier = { modifier = SOL_pony_settlement } } }
+		localization_key = SOL_develop_extensive_pony_settlements_tt
+	}
+	text = {
+		trigger = { THIS = { has_dynamic_modifier = { modifier = SOL_settler_colonies } } }
+		localization_key = SOL_develop_pony_settlements_tt
+	}
+	text = {
+		localization_key = SOL_develop_settler_colonies_tt
+	}
+}
+defined_text = {
+	name = SOL_develop_colonies_tt_delayed_scripted_loc
+	text = {
+		trigger = { THIS = { has_dynamic_modifier = { modifier = SOL_pony_settlement } } }
+		localization_key = SOL_develop_extensive_pony_settlements_tt_delayed
+	}
+	text = {
+		trigger = { THIS = { has_dynamic_modifier = { modifier = SOL_settler_colonies } } }
+		localization_key = SOL_develop_pony_settlements_tt_delayed
+	}
+	text = {
+		localization_key = SOL_develop_settler_colonies_tt_delayed
+	}
+}
+defined_text = {
+	name = SOL_develop_colonies_tt_delayed_unmet_scripted_loc
+	text = {
+		trigger = { THIS = { has_dynamic_modifier = { modifier = SOL_pony_settlement } } }
+		localization_key = SOL_develop_extensive_pony_settlements_tt_delayed_unmet
+	}
+	text = {
+		trigger = { THIS = { has_dynamic_modifier = { modifier = SOL_settler_colonies } } }
+		localization_key = SOL_develop_pony_settlements_tt_delayed_unmet
+	}
+	text = {
+		localization_key = SOL_develop_settler_colonies_tt_delayed_unmet
+	}
+}
+defined_text = {
 	name = SOL_twilight_sparkle_stats
 	text = {
 		trigger = {
@@ -3366,5 +3558,412 @@ defined_text = {
 			has_idea = sol_sunrise_sparkle_dulled
 		}
 		localization_key = SOL_twilight_sparkle_stats_dulled
+	}
+}
+defined_text = {
+	name = magic_spell_getname
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 1 } }
+		localization_key = sol_magic_select_1_text_tt
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 2 } }
+		localization_key = sol_magic_select_2_text_tt
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 3 } }
+		localization_key = sol_magic_select_3_text_tt
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 4 } }
+		localization_key = sol_magic_select_4_text_tt
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 5 } }
+		localization_key = sol_magic_select_5_text_tt
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 6 } }
+		localization_key = sol_magic_select_6_text_tt
+	}
+}
+defined_text = {
+	name = magic_spell_gettarget
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 1 } }
+		localization_key = sol_magic_target_type_country
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 2 } }
+		localization_key = sol_magic_target_type_country
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 3 } }
+		localization_key = sol_magic_target_type_state
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 4 } }
+		localization_key = sol_magic_target_type_state
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 5 } }
+		localization_key = sol_magic_target_type_country
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 6 } }
+		localization_key = sol_magic_target_type_world
+	}
+}
+defined_text = {
+	name = magic_spell_getdesc
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 1 } }
+		localization_key = sol_magic_select_1_desc_1
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 2 } }
+		localization_key = sol_magic_select_2_desc_1
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 3 } }
+		localization_key = sol_magic_select_3_desc_1
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 4 } }
+		localization_key = sol_magic_select_4_desc_1
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 5 } }
+		localization_key = sol_magic_select_5_desc_1
+	}
+	text = {
+		trigger = { check_variable = { sol_magic_currently_selected_spell = 6 } }
+		localization_key = sol_magic_select_6_desc_1
+	}
+}
+defined_text = {
+	name = sol_has_magic_reserves
+	text = {
+		trigger = {
+			EQS = {
+				check_variable = {
+					var = daybreaker_magic_reserves
+					value = sol_magic_cost_var
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = sol_has_magic_reserves_met
+	}
+	text = {
+		localization_key = sol_has_magic_reserves_unmet
+	}
+}
+defined_text = {
+	name = sol_no_current_effect 
+	text = {
+		trigger = {
+			OR = {	
+				AND = {
+					check_variable = { EQS.sol_magic_currently_selected_spell = 1 }
+					THIS.controller = {
+						NOT = { 
+							OR = {
+								has_idea = SOL_spell_1_effect_1
+							}
+						}
+					}
+				}
+				AND = {
+					check_variable = { EQS.sol_magic_currently_selected_spell = 2 }
+					THIS.controller = {
+						NOT = { 
+							OR = {
+								has_idea = SOL_spell_2_effect_1
+							}
+						}
+					}
+				}
+			}
+		}
+		localization_key = sol_no_current_effect_met
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { EQS.sol_magic_currently_selected_spell = 1 } 	
+				check_variable = { EQS.sol_magic_currently_selected_spell = 2 } 
+			}
+		}
+		localization_key = sol_no_current_effect_unmet
+	}
+	text = {
+		localization_key = sol_magic_trigger_no
+	}
+}
+defined_text = {
+	name = sol_controlled_by_root
+	text = {
+		trigger = {
+			OR = {	
+				AND = {
+					check_variable = { EQS.sol_magic_currently_selected_spell = 4 }
+					THIS.controller = {
+						OR = {
+							is_SOLAR_EMPIRE = yes
+							is_subject_of = EQS
+							is_in_faction_with = EQS
+						}
+					}
+				}
+			}
+		}
+		localization_key = sol_controlled_by_root_met
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { EQS.sol_magic_currently_selected_spell = 4 } 	
+			}
+		}
+		localization_key = sol_controlled_by_root_unmet
+	}
+	text = {
+		localization_key = sol_magic_trigger_no
+	}
+}
+defined_text = {
+	name = sol_has_flame_revenant 
+	text = {
+		trigger = { 
+			ROOT = {
+				any_unit_leader = { has_trait = flame_revenant }
+			}
+		}
+		localization_key = sol_magic_trigger_no
+	}
+	text = {
+		localization_key = sol_has_flame_revenant_no
+	}
+}
+defined_text = {
+	name = sol_refocus_inquisition_desc_loc
+	text = {
+		trigger = { 
+			has_country_flag = sol_empowered_royal_guard
+		}
+		localization_key = sol_refocus_inquisition_desc_loc_fail
+	}
+	text = {
+		localization_key = sol_refocus_inquisition_desc_loc_win
+	}
+}
+defined_text = {
+	name = SOL_upgrade_state_category_type
+	text = {
+		trigger = { 
+			has_state_category = metropolis
+		}
+		localization_key = SOL_state_category_type_megalopolis
+	}
+	text = {
+		trigger = { 
+			has_state_category = large_city
+		}
+		localization_key = SOL_state_category_type_metropolis
+	}
+	text = {
+		trigger = { 
+			has_state_category = city
+		}
+		localization_key = SOL_state_category_type_large_city
+	}
+	text = {
+		trigger = { 
+			has_state_category = large_town
+		}
+		localization_key = SOL_state_category_type_city
+	}
+	text = {
+		trigger = { 
+			has_state_category = town
+		}
+		localization_key = SOL_state_category_type_large_town
+	}
+	text = {
+		trigger = { 
+			has_state_category = rural
+		}
+		localization_key = SOL_state_category_type_town
+	}
+	text = {
+		trigger = { 
+			has_state_category = pastoral
+		}
+		localization_key = SOL_state_category_type_rural
+	}
+	text = {
+		trigger = { 
+			has_state_category = wasteland
+		}
+		localization_key = SOL_state_category_type_pastoral
+	}
+}
+defined_text = {
+	name = SOL_paxsolaris_114_starting_paragraph
+	text = {
+		trigger = { 
+			16 = { is_controlled_by = JUN }
+		}
+		localization_key = SOL_paxsolaris_114_starting_paragraph_JUN_owns_16
+	}
+	text = {
+		trigger = { 
+			16 = { NOT = { is_controlled_by = EQS } }
+		}
+		localization_key = SOL_paxsolaris_114_starting_paragraph_OTH_owns_16
+	}
+	text = {
+		trigger = { 
+			16 = { is_controlled_by = EQS }
+		}
+		localization_key = SOL_paxsolaris_114_starting_paragraph_EQS_owns_16
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_scripted_loc
+	text = {
+		trigger = { 
+			THIS = { has_state_flag = SOL_teleport_armies_starting_pos_flag }
+		}
+		localization_key = SOL_teleport_armies_tt_cancel
+	}
+	text = {
+		trigger = { 
+			any_state = {
+				has_state_flag = SOL_teleport_armies_starting_pos_flag
+			}
+		}
+		localization_key = SOL_teleport_armies_tt_teleport
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_set
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_desc_scripted_loc
+	text = {
+		trigger = { 
+			THIS = { has_state_flag = SOL_teleport_armies_starting_pos_flag }
+		}
+		localization_key = SOL_teleport_armies_tt_desc_cancel
+	}
+	text = {
+		trigger = { 
+			any_state = {
+				has_state_flag = SOL_teleport_armies_starting_pos_flag
+			}
+		}
+		localization_key = SOL_teleport_armies_tt_desc_teleport
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_desc_set
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_desc_scripted_loc_unmet
+	text = {
+		trigger = { 
+			THIS = { has_state_flag = SOL_teleport_armies_starting_pos_flag }
+		}
+		localization_key = SOL_teleport_armies_tt_desc_cancel_unmet
+	}
+	text = {
+		trigger = { 
+			any_state = {
+				has_state_flag = SOL_teleport_armies_starting_pos_flag
+			}
+		}
+		localization_key = SOL_teleport_armies_tt_desc_teleport_unmet
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_desc_set_unmet
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_fully_controlled
+	text = {
+		trigger = { 
+			is_fully_controlled_by = EQS
+		}
+		localization_key = SOL_teleport_armies_tt_fully_controlled_met
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_fully_controlled_unmet
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_is_core
+	text = {
+		trigger = { 
+			is_core_of = EQS
+		}
+		localization_key = SOL_teleport_armies_tt_is_core_met
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_is_core_unmet
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_has_nexus
+	text = {
+		trigger = { 
+			has_state_flag = SOL_completed_strat_tele
+			OR = {
+				has_state_category = large_city
+				has_state_category = metropolis
+				has_state_category = megalopolis
+			}
+		}
+		localization_key = SOL_teleport_armies_tt_has_nexus_met
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_has_nexus_unmet
+	}
+}
+defined_text = {
+	name = SOL_teleport_armies_tt_no_charging
+	text = {
+		trigger = { 
+			NOT = { check_variable = { EQS.SOL_teleport_armies_cooldown_var > 0 } }
+		}
+		localization_key = SOL_teleport_armies_tt_no_charging_met
+	}
+	text = {
+		localization_key = SOL_teleport_armies_tt_no_charging_unmet
+	}
+}
+defined_text = {
+	name = sol_dis_leader_name
+	text = {
+		trigger = { 
+			EQS = { has_government = communism }
+		}
+		localization_key = sol_dis_leader_name_com
+	}
+	text = {
+		localization_key = sol_dis_leader_name_cap
+	}
+}
+defined_text = {
+	name = SOL_crystal_empire_desc
+	text = {
+		trigger = { 
+			EQS = { owns_state = 344 }
+		}
+		localization_key = SOL_crystal_empire_desc_cry
+	}
+	text = {
+		localization_key = SOL_crystal_empire_desc_344
 	}
 }

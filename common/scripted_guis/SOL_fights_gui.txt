@@ -142,7 +142,7 @@ scripted_gui = {
 					set_variable = { var = currently_selected_spell value = 1 }
 					set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
 					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {
@@ -163,7 +163,7 @@ scripted_gui = {
 					if = {
 						limit = { check_variable = { currently_selected_spell = 2 } }
 						clear_variable = currently_selected_spell
-						set_variable { var = background_darkener_frame value = 1 }
+						set_variable = { var = background_darkener_frame value = 1 }
 						for_each_loop = {
 							array = fighters_array
 							if = {
@@ -204,7 +204,7 @@ scripted_gui = {
 					set_variable = { var = currently_selected_spell value = 3 }
 					set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
 					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {
@@ -225,7 +225,7 @@ scripted_gui = {
 					set_variable = { var = currently_selected_spell value = 4 }
 					set_variable = { var = fight_attacker_num value = daybreaker_fight_num }
 					set_variable = { var = fight_defender_num value = daybreaker_fight_num }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {
@@ -246,7 +246,7 @@ scripted_gui = {
 					if = {
 						limit = { check_variable = { currently_selected_spell = 5 } }
 						clear_variable = currently_selected_spell
-						set_variable { var = background_darkener_frame value = 1 }
+						set_variable = { var = background_darkener_frame value = 1 }
 						for_each_loop = {
 							array = fighters_array
 							if = {
@@ -332,7 +332,7 @@ scripted_gui = {
 					set_variable = { var = currently_selected_spell value = 1 }
 					set_variable = { var = fight_attacker_num value = nightmare_fight_num }
 					set_variable = { var = fight_defender_num value = nightmare_fight_num }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {
@@ -353,7 +353,7 @@ scripted_gui = {
 					if = {
 						limit = { check_variable = { currently_selected_spell = 2 } }
 						clear_variable = currently_selected_spell
-						set_variable { var = background_darkener_frame value = 1 }
+						set_variable = { var = background_darkener_frame value = 1 }
 						for_each_loop = {
 							array = fighters_array
 							if = {
@@ -392,7 +392,7 @@ scripted_gui = {
 					set_variable = { var = currently_selected_spell value = 6 }
 					set_variable = { var = fight_attacker_num value = nightmare_fight_num }
 					set_variable = { var = fight_defender_num value = nightmare_fight_num }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {
@@ -413,7 +413,7 @@ scripted_gui = {
 					set_variable = { var = currently_selected_spell value = 7 }
 					set_variable = { var = fight_attacker_num value = nightmare_fight_num }
 					set_variable = { var = fight_defender_num value = nightmare_fight_num }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {
@@ -434,7 +434,7 @@ scripted_gui = {
 					if = {
 						limit = { check_variable = { currently_selected_spell = 8 } }
 						clear_variable = currently_selected_spell
-						set_variable { var = background_darkener_frame value = 1 }
+						set_variable = { var = background_darkener_frame value = 1 }
 						for_each_loop = {
 							array = fighters_array
 							if = {
@@ -521,7 +521,7 @@ scripted_gui = {
 					set_variable = { var = fight_attacker_num value = sunrise_fight_num }
 					set_variable = { var = fight_defender_num value = sunrise_fight_num }
 					set_variable = { var = vitality_recovered value = 11 }
-					set_variable { var = background_darkener_frame value = 1 }
+					set_variable = { var = background_darkener_frame value = 1 }
 					for_each_loop = {
 						array = fighters_array
 						if = {

@@ -5,7 +5,7 @@ defined_text = {
 			NOT = {
 				has_country_leader = {
 					ruling_only = yes
-					name = "Chancellor Selenite"
+					character = EQS_NLR_celenite
 				}
 			}
 		}
@@ -15,7 +15,7 @@ defined_text = {
 		trigger = {
 			has_country_leader = {
 				ruling_only = yes
-				name = "Chancellor Selenite"
+				character = EQS_NLR_celenite
 			}
 		}
 		localization_key = nlr_warmaster_second_desc_rose

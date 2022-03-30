@@ -2,15 +2,15 @@ shared_focus = {
 	id = SOL_Imperium_Solis
 	icon = GFX_goal_imperium_solem
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		is_subject = no
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
 	cost = 2.9
@@ -31,22 +31,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_Imperium_Solis"
 		add_political_power = 200
 		add_stability = 0.15
-		set_variable = { var = daybreaker_magic_reserves value = 100 }
-		set_variable = { var = daybreaker_magic_max value = 100 }
-		set_variable = { var = daybreaker_magic_regeneration value = 1 }
-		set_variable = { var = daybreaker_magic_loss value = 0 }
-		set_variable = { var = daybreaker_magic_daily_change_actions value = 0 }
-
-		set_variable = { var = sol_heatwave_cost value = 5 }
-		set_variable = { var = sol_heatwave_cost_daily value = 0.4 }
-		set_variable = { var = sol_blessing_cost value = 40 }
-		set_variable = { var = sol_blessing_cost_daily value = 0.8 }
-		set_variable = { var = sol_curse_cost value = 40 }
-		set_variable = { var = sol_curse_cost_daily value = 0.8 }
-
-		set_variable = { var = sol_heatwave_number = 0 }
-		set_variable = { var = sol_blessing_number = 0 }
-		set_variable = { var = sol_curse_number = 0 }
+		country_event = { id = paxsolaris.169 hours = 1 }
 	}
 	search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 }
@@ -66,10 +51,7 @@ shared_focus = {
 	}
 	available = {
 		is_subject = no
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	select_effect = {
 		#just a dummy thing to make it uncancellable
@@ -117,10 +99,7 @@ shared_focus = {
 	}
 	available = {
 		is_subject = no
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	select_effect = {
 		#just a dummy thing to make it uncancellable
@@ -168,10 +147,7 @@ shared_focus = {
 	}
 	available = {
 		is_subject = no
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	select_effect = {
 		#just a dummy thing to make it uncancellable
@@ -214,10 +190,7 @@ shared_focus = {
 		focus = SOL_send_in_the_tanks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = { 
 			tooltip = SOL_harmonist_riots_happened
 			has_country_flag = march_on_canterlot
@@ -256,10 +229,7 @@ shared_focus = {
 		focus = SOL_hear_them_out
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = { 
 			tooltip = SOL_harmonist_riots_happened
 			has_country_flag = march_on_canterlot
@@ -291,10 +261,7 @@ shared_focus = {
 		focus = SOL_send_in_the_tanks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		if = {
 			limit = { has_country_flag = sol_wartime_change }
 			event_target:sol_defeated = {
@@ -306,7 +273,7 @@ shared_focus = {
 			}
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -333,10 +300,7 @@ shared_focus = {
 		focus = SOL_send_in_the_tanks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		if = {
 			limit = { has_country_flag = sol_wartime_change }
 			event_target:sol_defeated = {
@@ -354,7 +318,7 @@ shared_focus = {
 			has_country_flag = victory_parade_bypass
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -391,13 +355,13 @@ shared_focus = {
 		focus = SOL_send_in_the_tanks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -437,13 +401,13 @@ shared_focus = {
 		focus = SOL_reconstruction_equestria
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -510,13 +474,13 @@ shared_focus = {
 		focus = SOL_support_the_eea
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -554,13 +518,13 @@ shared_focus = {
 		focus = SOL_victory_parade
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -576,7 +540,7 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_anti_celestia_propaganda"
 		country_event = {
-			id = paxsolaris.14
+			id = paxsolaris.18
 			hours = 1
 		}	
 	}
@@ -589,13 +553,13 @@ shared_focus = {
 		focus = SOL_anti_celestia_propaganda
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -634,17 +598,17 @@ shared_focus = {
 		focus = SOL_send_in_the_tanks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -656,14 +620,15 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_police_state"
 		custom_effect_tooltip = paxsolaris_government_consolidation_increase
-		add_stability = 0.025
-		add_ideas = MAN_police_state
+		add_stability = 0.05
+		custom_effect_tooltip = SOL_police_state_tt
+		add_to_variable = { var = resistance_uprising_dur value = 5 }
 		hidden_effect = {
 			add_to_variable = { var = solar_civilian_measures_progress value = 1 }
 			SOL_calculate_loyalty = yes
 		}
 	}
-	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 }
 shared_focus = {
 	id = SOL_integrate_south
@@ -673,18 +638,17 @@ shared_focus = {
 		focus = SOL_send_in_the_tanks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
-		eqs_not_has_civil_war = yes
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -699,27 +663,68 @@ shared_focus = {
 		custom_effect_tooltip = paxsolaris_government_consolidation_increase
 		if = {
 			limit = {
-				BUF = { 
-					OR = { 
-						owns_state = 89
-						owns_state = 78
-						owns_state = 93
-						owns_state = 80
-					}
+				any_state = {
+					is_owned_and_controlled_by = BUF
+					has_variable = SOL_public_works_region_id
 				}
 			}
-			effect_tooltip = { 
-				BUF = {
-					country_event = { id = paxsolaris.20 }
+			BUF = {
+				country_event = { 
+					id = paxsolaris.20 
+					days = 4
 				}
 			}
-			hidden_effect = {
-				BUF = {
-					country_event = { 
-						id = paxsolaris.20 
-						days = 4
-					}
-				}
+		}
+		build_railway = {
+			level = 1
+			start_province = 11511
+			target_province = 11037
+			build_only_on_allied = yes
+		}
+		build_railway = {
+			level = 1
+			start_province = 9606
+			target_province = 11580
+			build_only_on_allied = yes
+		}
+		hidden_effect = {
+			build_railway = {
+				level = 1
+				start_province = 11619
+				target_province = 3484
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 3484
+				target_province = 581
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 581
+				target_province = 11577
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 11577
+				target_province = 11612
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 11612
+				target_province = 9606
+				build_only_on_allied = yes
+			}
+		}
+		effect_tooltip = {
+			build_railway = {
+				level = 1
+				start_province = 11619
+				target_province = 9606
+				build_only_on_allied = yes
 			}
 		}
 		if = {
@@ -727,10 +732,10 @@ shared_focus = {
 				EQS = { controls_state = 38 }
 			}
 			38 = {	
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -755,60 +760,19 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				EQS = { controls_state = 85 }
-			}
-			85 = {	
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		if = {
-			limit = {
 				EQS = { controls_state = 22 }
 			}
 			22 = {	
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				add_building_construction = {
 					type = industrial_complex
 					level = 1
 					instant_build = yes
-				}
-			}
-		}
-		if = {
-			limit = {
-				EQS = { controls_state = 80 }
-			}
-			80 = {	
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		else = {
-			if = {
-				limit = {
-					EQS = { controls_state = 23 }
-				}
-				23 = {	
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = infrastructure
-						level = 3
-						instant_build = yes
-					}
 				}
 			}
 		}
@@ -832,23 +796,10 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				EQS = { controls_state = 50 }
-			}
-			50 = {	
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		if = {
-			limit = {
 				EQS = { controls_state = 15 }
 			}
 			15 = {	
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -867,38 +818,6 @@ shared_focus = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				EQS = { controls_state = 33 }
-			}
-			33 = {	
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = infrastructure
-					level = 3
-					instant_build = yes
-				}
-			}
-		}
-		if = {
-			limit = {
-				EQS = { controls_state = 80 }
-			}
-			351 = {	
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = naval_base
-					level = 3
-					instant_build = yes
-					province = 668
-				}
-			}
-		}
 		hidden_effect = {
 			add_to_variable = { var = solar_civilian_measures_progress value = 1 }
 			SOL_calculate_loyalty = yes
@@ -914,10 +833,7 @@ shared_focus = {
 	y = 1
 	cost = 2.9
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = { 
 			tooltip = SOL_investigate_resistance_tt
 			has_country_flag = SOL_resistance_begins
@@ -926,7 +842,10 @@ shared_focus = {
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	ai_will_do = {
 		factor = 800
@@ -947,17 +866,20 @@ shared_focus = {
 		focus = SOL_investigate_resistance
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -986,13 +908,13 @@ shared_focus = {
 		focus = SOL_investigate_resistance
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1026,13 +948,13 @@ shared_focus = {
 		focus = SOL_bounty_hunters
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1051,8 +973,9 @@ shared_focus = {
 		add_to_variable = { var = solar_resistance_suppression_progress value = 1 }
 		hidden_effect = { SOL_calculate_loyalty = yes }
 		add_tech_bonus = {
-			bonus = 3
-			uses = 2
+			name = computer_bonus
+			bonus = 1
+			uses = 1
 			category = encryption_tech
 			category = decryption_tech
 		}
@@ -1069,17 +992,20 @@ shared_focus = {
 		focus = SOL_police_state
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1094,11 +1020,14 @@ shared_focus = {
 	continue_if_invalid = no
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_surveillance"
-		add_ideas = SOL_insight
+		set_technology = { popup = yes tech_project_insight = 1 }
+		custom_effect_tooltip = tech_project_insight_buff
+		custom_effect_tooltip = SOL_surveillance_tt
 		country_event = {
 			id = paxsolaris.33
 			hours = 1
 		}
+		add_to_variable = { var = weekly_leads_modifier value = 2 }
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESISTANCE }
 }
@@ -1109,13 +1038,13 @@ shared_focus = {
 		focus = SOL_police_state
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1151,13 +1080,10 @@ shared_focus = {
 		focus = SOL_surveillance
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 200
 	}
@@ -1178,21 +1104,24 @@ shared_focus = {
 		focus = SOL_imperial_codebreakers
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 10
 		modifier = {
@@ -1228,10 +1157,7 @@ shared_focus = {
 	y = 1
 	cost = 2.9
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = { 
 			tooltip = SOL_Imperial_Inquisition_tt
 			has_country_flag = harmony_restoration_movement_formed
@@ -1240,7 +1166,10 @@ shared_focus = {
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	ai_will_do = {
 		factor = 800
@@ -1284,17 +1213,20 @@ shared_focus = {
 		focus = SOL_integrate_south
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1325,17 +1257,20 @@ shared_focus = {
 		focus = SOL_Imperial_Inquisition
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1364,13 +1299,13 @@ shared_focus = {
 		focus = SOL_Imperial_Inquisition
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	bypass = {
@@ -1408,13 +1343,13 @@ shared_focus = {
 		focus = SOL_Inquisition_Law
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1449,10 +1384,7 @@ shared_focus = {
 		focus = SOL_Inquisition_Law
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -1478,21 +1410,24 @@ shared_focus = {
 		focus = SOL_the_list
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_resistance_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_suppression_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 0
 		modifier = {
@@ -1532,13 +1467,10 @@ shared_focus = {
 		focus = SOL_civilian_militias
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 200
 	}
@@ -1549,10 +1481,11 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_legacy_of_hurricane"
 		custom_effect_tooltip = SOL_legacy_of_hurricane_tt
 		set_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
-		hidden_effect = { SOL_recalculate_button_pos = yes }
 		set_variable = { SOL_mobile_task_force_deployed_var = 0 }
 		set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
-		add_ideas = SOL_who_dares_wins
+		set_technology = { popup = yes tech_who_dares_wins = 1 }
+		custom_effect_tooltip = tech_who_dares_wins_buff
+		#add_ideas = SOL_who_dares_wins
 		division_template = {
 			name = "Inquisitorial Strike Team"
 			division_names_group = EQS_PAR_02
@@ -1561,19 +1494,14 @@ shared_focus = {
 				pegasi = { x = 0 y = 0 }
 				pegasi = { x = 0 y = 1 }
 				pegasi = { x = 0 y = 2 }
-				pegasi = { x = 0 y = 3 }
-				pegasi = { x = 0 y = 4 }
 				pegasi = { x = 1 y = 0 }
 				pegasi = { x = 1 y = 1 }
 				pegasi = { x = 1 y = 2 }
-				pegasi = { x = 1 y = 3 }
-				pegasi = { x = 1 y = 4 }
 			}
 			support = {
 				unicorn_company = { x = 0 y = 0 }
 				recon = { x = 0 y = 1 }
 				signal_company = { x = 0 y = 2 }
-				artillery = { x = 0 y = 3 }
 			}
 			priority = 2
 		}
@@ -1597,13 +1525,10 @@ shared_focus = {
 		focus = SOL_new_order
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 200
 	}
@@ -1612,10 +1537,18 @@ shared_focus = {
 	y = 5
 	select_effect = {
 		hidden_effect = {
-			set_variable = { sol_dialogue_twilight_correct_num = 0 }
-			country_event = {
-				id = paxsolaris.57
-				hours = 6
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { sol_dialogue_twilight_correct_num = 0 }
+				country_event = {
+					id = paxsolaris.57
+					hours = 6
+				}
+			}
+			else = {
+				country_event = { id = paxsolaris.112 days = 30 }
 			}
 		}
 	}
@@ -1625,8 +1558,6 @@ shared_focus = {
 		effect_tooltip = { add_ideas = sol_sunrise_sparkle }
 		custom_effect_tooltip = SOL_twilight_ascend_tt_2
 		effect_tooltip = { add_ideas = sol_sunrise_sparkle_dulled }
-		set_country_flag = SOL_twilight_ascended
-		hidden_effect = { country_event = { id = paxsolaris.65 days = 17 } }
 	}
 }
 shared_focus = {
@@ -1636,14 +1567,11 @@ shared_focus = {
 		focus = SOL_twilight_ascend
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_Freedom_from_Fear
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -1654,11 +1582,112 @@ shared_focus = {
 	continue_if_invalid = no
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_expand_our_domain"
-		custom_effect_tooltip = SOL_expand_our_domain_tt
-		set_country_flag = SOL_unlocked_develop_colonies_ability_flag
+		custom_effect_tooltip = SOL_expand_our_domain_tt	
 		hidden_effect = { 
-			SOL_recalculate_button_pos = yes 
 			add_dynamic_modifier = { modifier = SOL_settlement_creation_malus }
+			set_variable = { var = SOL_develop_settler_colony_civ_fac_use_multiplier value = 0.005 }
+			set_variable = { var = SOL_number_of_settlements_available value = 12000 }
+			set_country_flag = SOL_unlocked_develop_colonies_ability_flag
+			if = {	
+				limit = { has_completed_focus = SOL_manifest_destiny }
+				multiply_variable = { var = SOL_develop_settler_colony_civ_fac_use_multiplier value = 0.6 }
+				add_to_variable = { var = SOL_number_of_settlements_available value = 8000 }
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 170 }
+			}
+			170 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 169 }
+			}
+			169 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 54 }
+			}
+			54 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 175 }
+			}
+			175 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 136 }
+			}
+			136 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				SOL_upgrade_state_category = yes
+				hidden_effect = {
+					set_temp_variable = { SOL_population_to_add = state_population_k }
+					multiply_temp_variable = { SOL_population_to_add = 100 }
+					round_temp_variable = SOL_population_to_add
+					add_manpower = SOL_population_to_add
+				}
+				custom_effect_tooltip = SOL_acornage_uprade_3
+			}
+			if = {
+				limit = {
+					EQS = { controls_state = 170 }
+				}
+				build_railway = {
+					level = 1
+					start_province = 11686
+					target_province = 748
+					build_only_on_allied = yes
+				}
+			}
+			hidden_effect = {
+				add_victory_points = {
+					province = 748
+					value = 5
+				}
+			}	
 		}
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
@@ -1670,14 +1699,11 @@ shared_focus = {
 		focus = SOL_twilight_ascend
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_legacy_of_hurricane
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -1703,10 +1729,7 @@ shared_focus = {
 		focus = SOL_expand_our_domain
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = sol_hrm_final_move_tt
 			has_country_flag = sol_hrm_final_move
@@ -1714,6 +1737,10 @@ shared_focus = {
 		custom_trigger_tooltip = {
 			tooltip = sol_war_of_the_eclipse_not_begun_tt
 			NOT = { has_global_flag = sol_war_of_the_eclipse_begun }
+		}
+		custom_trigger_tooltip = {
+			tooltip = sol_no_ceasefire
+			NOT = { has_country_flag = resistance_ceasefire }
 		}
 	}
 	select_effect = {
@@ -1734,7 +1761,7 @@ shared_focus = {
 	}
 	cost = 1.5
 	ai_will_do = {
-		factor = 200
+		factor = 800
 	}
 	relative_position_id = SOL_Imperium_Solis
 	x = 0
@@ -1755,17 +1782,20 @@ shared_focus = {
 	id = SOL_Solar_Cult
 	icon = GFX_goal_solar_cult
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 		has_completed_focus = SOL_new_order
 		if = {
@@ -1778,7 +1808,10 @@ shared_focus = {
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
 	select_effect = {
@@ -1813,13 +1846,13 @@ shared_focus = {
 		focus = SOL_Solar_Cult
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1848,13 +1881,13 @@ shared_focus = {
 		focus = SOL_expand_the_inquisition
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1884,13 +1917,13 @@ shared_focus = {
 		focus = SOL_inquisitorial_integration
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -1927,10 +1960,7 @@ shared_focus = {
 		focus = SOL_Solar_Cult
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -1969,17 +1999,20 @@ shared_focus = {
 		focus = SOL_an_end_to_waste
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -2012,13 +2045,13 @@ shared_focus = {
 		focus = SOL_an_end_to_waste
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_outreach_suppression_to_be_completed
-			NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_resistance_outreach_strength > 0 } }
+				NOT = { check_variable = { solar_resistance_outreach_suppression_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -2047,13 +2080,13 @@ shared_focus = {
 		focus = SOL_Mandatory_Temple_Attendance
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
 	}
 	#bypass = {}
@@ -2068,10 +2101,12 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_redemption_brigades"
 		custom_effect_tooltip = paxsolaris_government_consolidation_increase
 		add_to_variable = { var = solar_civilian_measures_progress value = 1 }
-		swap_ideas = {
-			remove_idea = SOL_Solar_Cult_idea_2
-			add_idea = SOL_Solar_Cult_idea_3
-		}
+		set_technology = { popup = yes tech_redemption_brigades = 1 }
+		custom_effect_tooltip = tech_redemption_brigades_buff
+		#swap_ideas = {
+		#	remove_idea = SOL_Solar_Cult_idea_2
+		#	add_idea = SOL_Solar_Cult_idea_3
+		#}
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 }
@@ -2086,13 +2121,10 @@ shared_focus = {
 	}
 	available = {
 		is_subject = no
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2110,19 +2142,27 @@ shared_focus = {
 	id = SOL_the_fate_of_the_changelings
 	icon = GFX_SOL_the_fate_of_the_changelings
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_new_order
+		316 = { is_owned_by = EQS }
+		319 = { is_owned_by = EQS }
+		247 = { is_owned_by = EQS }
+		246 = { is_owned_by = EQS }
+		291 = { is_owned_by = EQS }
+		custom_trigger_tooltip = {
+			tooltip = SOL_has_integrated_the_changelings
+			has_country_flag = solar_changeling_branch_enabled
+		}
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
-		always = no #removed for test
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 200
 	}
@@ -2131,6 +2171,22 @@ shared_focus = {
 	y = 5
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_fate_of_the_changelings"
+		custom_effect_tooltip = sol_all_occupied_CHN
+		custom_effect_tooltip = SOL_compliance_limit_increase_10
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+				}
+				add_to_variable = { var = sol_compliance_limit value = 10 }
+			}
+		}
 	}
 	search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 }
@@ -2141,10 +2197,7 @@ shared_focus = {
 		focus = SOL_the_fate_of_the_changelings
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2156,6 +2209,33 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_our_new_subjects"
+		246 = {
+			set_state_name = "Argent River"
+		}
+		247 = {
+			set_state_name = "Frostdale"
+		}
+		291 = {
+			set_state_name = "Poppy Fields"
+		}
+		316 = {
+			set_state_name = "Coltiningrad"
+		}
+		hidden_effect = {
+			set_province_name = {
+			    id = 11690
+			    name = "Coltiningrad"
+			}
+			set_province_name = {
+			    id = 11617
+			    name = "Bluestream"
+			}
+			set_province_name = {
+			    id = 3880
+			    name = "Ponsk"
+			}
+		}
+		country_event = { id = paxsolaris.157 hours = 1 }
 	}
 	search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 }
@@ -2169,10 +2249,7 @@ shared_focus = {
 		focus = SOL_expand_our_domain
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2184,6 +2261,27 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_love_for_loyalty"
+		custom_effect_tooltip = sol_all_occupied_CHN
+		custom_effect_tooltip = SOL_compliance_limit_increase_15
+		custom_effect_tooltip = SOL_compliance_base_increase_5
+		custom_effect_tooltip = SOL_compliance_increase_5
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+				}
+				add_to_variable = { var = sol_compliance_limit value = 15 }
+				add_to_variable = { var = sol_compliance_base value = 5 }
+				add_compliance = 5
+			}
+		}
+		country_event = { id = paxsolaris.158 hours = 1 }
 	}
 	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL }
 }
@@ -2194,10 +2292,36 @@ shared_focus = {
 		focus = SOL_love_for_loyalty
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		if = {
+			limit = { is_ai = no }
+			custom_trigger_tooltip = {
+				tooltip = SOL_the_new_frontier_prereq
+				NOT = {
+					any_state = {
+						OR = {
+							state = 316
+							state = 319
+							state = 247
+							state = 246
+							state = 291
+						}
+						NOT = {
+							OR = {
+								has_dynamic_modifier = { modifier = SOL_pony_settlement }
+								has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+								is_core_of = EQS
+							}
+						}
+					}
+				}
+			}
 		}
+		316 = { is_owned_by = EQS }
+		319 = { is_owned_by = EQS }
+		247 = { is_owned_by = EQS }
+		246 = { is_owned_by = EQS }
+		291 = { is_owned_by = EQS }
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2209,8 +2333,125 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_new_frontier"
+		custom_effect_tooltip = sol_all_occupied_CHN
+		custom_effect_tooltip = SOL_compliance_to_core_set_40
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+				}
+				add_to_variable = { var = sol_compliance_to_core value = 40 }
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 247 }
+			}
+			247 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			build_railway = {
+				level = 1
+				start_province = 6689
+				target_province = 11617
+				build_only_on_allied = yes
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 291 }
+			}
+			291 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 246 }
+			}
+			build_railway = {
+				level = 1
+				start_province = 705
+				target_province = 4117
+				build_only_on_allied = yes
+			}
+			hidden_effect = {
+				build_railway = {
+					level = 1
+					start_province = 748
+					target_province = 3746
+					build_only_on_allied = yes
+				}
+				build_railway = {
+					level = 1
+					start_province = 3746
+					target_province = 6765
+					build_only_on_allied = yes
+				}
+			}
+			effect_tooltip = {
+				build_railway = {
+					level = 1
+					start_province = 748
+					target_province = 3777
+					build_only_on_allied = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				EQS = { controls_state = 316 }
+			}
+			316 = {	
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				SOL_upgrade_state_category = yes
+				hidden_effect = {
+					set_temp_variable = { SOL_population_to_add = state_population_k }
+					multiply_temp_variable = { SOL_population_to_add = 0.1 }
+					set_temp_variable = { var = sol_pony_population_change_temp value = SOL_population_to_add }
+					hidden_effect = { SOL_pony_population_recalculate = yes }
+					multiply_temp_variable = { SOL_population_to_add = 1000 }
+					round_temp_variable = SOL_population_to_add
+					add_manpower = SOL_population_to_add
+				}
+				custom_effect_tooltip = SOL_coltiningrad_upgrade_1
+			}
+			hidden_effect = {
+				add_victory_points = {
+					province = 11690
+					value = 5
+				}
+			}	
+		}
+		country_event = { id = paxsolaris.159 hours = 1 }
 	}
-	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ANNEXATION }
 }
 shared_focus = {
 	id = SOL_fear_and_paranoia
@@ -2219,9 +2460,14 @@ shared_focus = {
 		focus = SOL_the_fate_of_the_changelings
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_frontier_changelings_10_compliance
+			check_variable = {
+				var = EQS.core_compliance@CHN
+				value = 10
+				compare = greater_than_or_equals
+			}
 		}
 	}
 	#bypass = {}
@@ -2234,6 +2480,23 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_fear_and_paranoia"
+		custom_effect_tooltip = sol_all_occupied_CHN
+		custom_effect_tooltip = SOL_resistance_decrease_5
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+				}
+				add_resistance = -5
+			}
+		}
+		country_event = { id = paxsolaris.162 hours = 1 }
 	}
 	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL }
 }
@@ -2244,9 +2507,14 @@ shared_focus = {
 		focus = SOL_fear_and_paranoia
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_frontier_changelings_20_compliance
+			check_variable = {
+				var = EQS.core_compliance@CHN
+				value = 20
+				compare = greater_than_or_equals
+			}
 		}
 	}
 	#bypass = {}
@@ -2259,6 +2527,22 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_mandatory_registration"
+		custom_effect_tooltip = sol_all_occupied_CHN
+		custom_effect_tooltip = SOL_resistance_decrease_5
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+				}
+				add_resistance = -5
+			}
+		}
 	}
 	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL }
 }
@@ -2270,9 +2554,14 @@ shared_focus = {
 		focus = SOL_our_new_subjects
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_frontier_changelings_10_compliance
+			check_variable = {
+				var = EQS.core_compliance@CHN
+				value = 10
+				compare = greater_than_or_equals
+			}
 		}
 	}
 	#bypass = {}
@@ -2285,6 +2574,18 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_study_their_methods"
+		add_tech_bonus = {
+			name = tank_research
+			bonus = 1
+			uses = 1
+			category = armor
+		}
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
 }
@@ -2298,9 +2599,14 @@ shared_focus = {
 		focus = SOL_study_their_methods
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_frontier_changelings_30_compliance
+			check_variable = {
+				var = EQS.core_compliance@CHN
+				value = 30
+				compare = greater_than_or_equals
+			}
 		}
 	}
 	#bypass = {}
@@ -2313,6 +2619,22 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_purge_the_guard"
+		custom_effect_tooltip = sol_all_occupied_CHN
+		custom_effect_tooltip = SOL_resistance_decrease_5
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+				}
+				add_resistance = -5
+			}
+		}
 	}
 	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL }
 }
@@ -2327,13 +2649,25 @@ shared_focus = {
 	}
 	available = {
 		is_subject = no
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = SOL_changelings_of_the_sun_prereq
+			NOT = {
+				any_state = {
+					OR = {
+						state = 316
+						state = 319
+						state = 247
+						state = 246
+						state = 291
+					}
+					NOT = { is_core_of = EQS }
+				}
+			}
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2342,8 +2676,12 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_changelings_of_the_sun"
+		set_technology = {
+			tech_infiltrators = 1
+		}
+		country_event = { id = paxsolaris.160 hours = 1 }
 	}
-	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+	search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_BONUS }
 }
 
 
@@ -2351,10 +2689,7 @@ shared_focus = {
 	id = SOL_economic_miracle
 	icon = GFX_goal_chn_red_economic_boom
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_Imperial_Inquisition
 		custom_trigger_tooltip = {
 			tooltip = solar_civilian_support_greater_than_three
@@ -2367,7 +2702,10 @@ shared_focus = {
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2394,10 +2732,7 @@ shared_focus = {
 		focus = SOL_economic_miracle
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2432,10 +2767,7 @@ shared_focus = {
 		focus = SOL_economic_miracle
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2463,13 +2795,10 @@ shared_focus = {
 		focus = SOL_the_empress_justice
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2481,7 +2810,10 @@ shared_focus = {
 		custom_effect_tooltip = SOL_charter_of_pony_rights_tt
 		hidden_effect = {
 			every_state = {
-				limit = { check_variable = { sol_majority_race_id = 1 } }
+				limit = { 
+					check_variable = { sol_majority_race_id = 1 } 
+					check_variable = { sol_majority_race_id = 11 } 
+				}
 				add_to_variable = { var = sol_compliance_base value = 5 }
 			}
 		}
@@ -2492,10 +2824,7 @@ shared_focus = {
 	id = SOL_remilitarisation
 	icon = GFX_goal_sol_remilitarisation
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_Imperial_Inquisition
 		custom_trigger_tooltip = {
 			tooltip = solar_civilian_support_greater_than_three
@@ -2508,7 +2837,10 @@ shared_focus = {
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2533,10 +2865,7 @@ shared_focus = {
 		focus = SOL_remilitarisation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2559,10 +2888,7 @@ shared_focus = {
 		focus = SOL_remilitarisation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -2577,6 +2903,7 @@ shared_focus = {
 		add_country_leader_trait = daybreaker_mandate_of_harmony
 		custom_effect_tooltip = MAN_line_break
 		custom_effect_tooltip = MAN_load_a_new_focus_tree
+		set_country_flag = SOL_unlocked_advanced_conquest
 		hidden_effect = { mark_focus_tree_layout_dirty = yes }
 	}
 	search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_BONUS }
@@ -2591,13 +2918,10 @@ shared_focus = {
 		focus = SOL_imperial_royal_guard
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2609,6 +2933,14 @@ shared_focus = {
 		hidden_effect = {
 			3 = {
 				set_state_category = megalopolis
+				set_temp_variable = { SOL_population_to_add = state_population_k }
+				multiply_temp_variable = { SOL_population_to_add = 500 }
+				round_temp_variable = SOL_population_to_add
+				add_manpower = SOL_population_to_add
+				add_victory_points = {
+					province = 179
+					value = 5
+				}
 				if = {
 					limit = { has_dynamic_modifier = { modifier = SOL_state_civilian_consolidation } }
 					remove_dynamic_modifier = { modifier = SOL_state_civilian_consolidation }
@@ -2624,6 +2956,7 @@ shared_focus = {
 				add_dynamic_modifier = { modifier = SOL_heart_of_an_empire }
 			}	
 		}
+		custom_effect_tooltip = SOL_upgrade_canterlot_tt
 		custom_effect_tooltip = SOL_direct_rule_from_canterlot_tt
 		country_event = { id = paxsolaris.146 hours = 1 }
 	}
@@ -2639,17 +2972,14 @@ shared_focus = {
 		focus = SOL_the_empress_justice
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = solar_resistance_strength_less_than_three
 			check_variable = { solar_resistance_strength < 3 } 
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2678,17 +3008,14 @@ shared_focus = {
 		focus = SOL_charter_of_pony_rights
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = solar_resistance_outreach_less_than_three
 			check_variable = { solar_resistance_outreach_strength < 3 } 
 		}
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2709,19 +3036,23 @@ shared_focus = {
 	id = SOL_integrate_northwest
 	icon = GFX_SOL_region_north
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_new_order
+		custom_trigger_tooltip = {
+			tooltip = SOL_coming_soon_tt
+			always = no
+		}
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
-		always = no #removed for test
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
+		#always = no #removed for test
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2730,6 +3061,7 @@ shared_focus = {
 	y = 10
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_integrate_northwest"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 }
@@ -2744,19 +3076,18 @@ shared_focus = {
 		focus = SOL_the_unthinkable_option
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
     bypass = {
-		OR = {
-			344 = { owner = { is_subject_of = EQS } }
-			344 = { is_owned_by = EQS }
-			has_war_with = 344.owner
+    	hidden_trigger = {
+			OR = {
+				344 = { owner = { is_subject_of = EQS } }
+				344 = { is_owned_by = EQS }
+				has_war_with = 344.owner
+			}
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2764,6 +3095,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_infiltrate_our_enemies"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -2775,19 +3107,18 @@ shared_focus = {
 		focus = SOL_infiltrate_our_enemies
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	bypass = {
-		OR = {
-			344 = { owner = { is_subject_of = EQS } }
-			344 = { is_owned_by = EQS }
-			has_war_with = 344.owner
+		hidden_trigger = {
+			OR = {
+				344 = { owner = { is_subject_of = EQS } }
+				344 = { is_owned_by = EQS }
+				has_war_with = 344.owner
+			}
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2795,6 +3126,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_test_their_strength"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -2806,19 +3138,18 @@ shared_focus = {
 		focus = SOL_test_their_strength
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	bypass = {
-		OR = {
-			344 = { owner = { is_subject_of = EQS } }
-			344 = { is_owned_by = EQS }
-			has_war_with = 344.owner
+		hidden_trigger = {
+			OR = {
+				344 = { owner = { is_subject_of = EQS } }
+				344 = { is_owned_by = EQS }
+				has_war_with = 344.owner
+			}
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2826,6 +3157,7 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_secure_the_north"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -2840,20 +3172,28 @@ shared_focus = {
 		focus = SOL_infiltrate_our_enemies
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
-		NOT = {
-			OR = {
-				344 = { owner = { is_subject_of = EQS } }
-				344 = { is_owned_by = EQS }
-				has_war_with = 344.owner
+		is_SOLAR_EMPIRE = yes
+		hidden_trigger = {
+			NOT = {
+				OR = {
+					344 = { owner = { is_subject_of = EQS } }
+					344 = { is_owned_by = EQS }
+					has_war_with = 344.owner
+				}
 			}
+		}
+		if = {
+			limit = { 
+				CRY = { 
+					exists = yes
+					is_subject = no 
+				}
+			}
+			NOT = {	CRY = { has_country_leader = { ruling_only = yes character = CRY_sombra } } }
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2861,6 +3201,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_unthinkable_option"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -2872,19 +3213,27 @@ shared_focus = {
 		focus = SOL_the_unthinkable_option
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
     bypass = {
-		OR = {
-			344 = { owner = { is_subject_of = EQS } }
-			344 = { is_owned_by = EQS }
-			has_war_with = 344.owner
+    	hidden_trigger = {
+			OR = {
+				344 = { owner = { is_subject_of = EQS } }
+				344 = { is_owned_by = EQS }
+				has_war_with = 344.owner
+				if = {
+					limit = { 
+						CRY = { 
+							exists = yes
+							is_subject = no 
+						}
+					}
+					CRY = { has_country_leader = { ruling_only = yes character = CRY_sombra } }
+				}
+			}
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2892,6 +3241,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_darkness_rises"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -2903,19 +3253,18 @@ shared_focus = {
 		focus = SOL_darkness_rises
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	bypass = {
-		OR = {
-			344 = { owner = { is_subject_of = EQS } }
-			344 = { is_owned_by = EQS }
-			has_war_with = 344.owner
+		hidden_trigger = {
+			OR = {
+				344 = { owner = { is_subject_of = EQS } }
+				344 = { is_owned_by = EQS }
+				has_war_with = 344.owner
+			}
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2923,6 +3272,7 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_cut_the_loose_end"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -2935,13 +3285,10 @@ shared_focus = {
 		focus = SOL_secure_the_north
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2949,6 +3296,7 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_crystal_province"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -2958,19 +3306,23 @@ shared_focus = {
 	id = SOL_integrate_southeast
 	icon = GFX_SOL_region_southeast
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		has_completed_focus = SOL_new_order
+		custom_trigger_tooltip = {
+			tooltip = SOL_coming_soon_tt
+			always = no
+		}
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
-		always = no #removed for test
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
+		#always = no #removed for test
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -2979,6 +3331,34 @@ shared_focus = {
 	y = 10
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_integrate_southeast"
+		custom_effect_tooltip = SOL_coming_soon_tt
+		hidden_effect = {
+			#Add Later
+			build_railway = {
+				level = 1
+				start_province = 3737
+				target_province = 3552
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 3552
+				target_province = 3716
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 3716
+				target_province = 9618
+				build_only_on_allied = yes
+			}
+			build_railway = {
+				level = 1
+				start_province = 8622
+				target_province = 10107
+				build_only_on_allied = yes
+			}
+		}
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 }
@@ -2993,13 +3373,10 @@ shared_focus = {
 		focus = SOL_the_sun_and_the_moon
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3007,6 +3384,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_a_glorious_legacy"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -3018,13 +3396,10 @@ shared_focus = {
 		focus = SOL_a_glorious_legacy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3032,6 +3407,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_blood_for_the_altar"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -3043,13 +3419,10 @@ shared_focus = {
 		focus = SOL_blood_for_the_altar
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3057,6 +3430,7 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_promised_lands"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -3071,13 +3445,10 @@ shared_focus = {
 		focus = SOL_a_glorious_legacy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3085,6 +3456,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_sun_and_the_moon"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -3096,13 +3468,10 @@ shared_focus = {
 		focus = SOL_the_sun_and_the_moon
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
     #bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3110,6 +3479,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_fourth_tribe"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -3121,13 +3491,10 @@ shared_focus = {
 		focus = SOL_the_fourth_tribe
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3135,6 +3502,7 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_reconciliation"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -3147,13 +3515,10 @@ shared_focus = {
 		focus = SOL_reconciliation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3161,6 +3526,1215 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_southeast_secured"
+		custom_effect_tooltip = SOL_coming_soon_tt
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+}
+
+shared_focus = {
+	id = SOL_project_invictus
+	icon = GFX_SOL_project_invictus
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	allow_branch = {
+		is_SOLAR_EMPIRE = yes
+		has_country_flag = SOL_rebuilt_science_base
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_Imperium_Solis
+	x = -7
+	y = 12
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_project_invictus"
+		add_tech_bonus = {
+			name = nuclear_bonus
+			bonus = 2
+			uses = 2
+			category = nuclear
+		}
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH }
+}
+shared_focus = {
+	id = SOL_magitech_dominance
+	icon = GFX_SOL_magitech_dominance
+	prerequisite = {
+		focus = SOL_project_invictus
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = 0
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_magitech_dominance"
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_rune_computation
+	icon = GFX_SOL_rune_computation
+	prerequisite = {
+		focus = SOL_project_invictus
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = -2
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_rune_computation"
+		custom_effect_tooltip = SOL_rune_computation_tt
+		if = {
+			limit = { NOT = { has_tech = electronic_mechanical_engineering } } #Okay Kaczynski
+			set_technology = { electronic_mechanical_engineering = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = mechanical_computing } } #Git gud noob
+			set_technology = { mechanical_computing = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = computing_machine } } #Perhaps you should go back to playing the Lunar Empire?
+			set_technology = { computing_machine = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = improved_computing_machine } } #You can do better
+			set_technology = { improved_computing_machine = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = advanced_computing_machine } } #Bro why? 
+			set_technology = { advanced_computing_machine = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = future_computing_machine } } #Okay this is decent
+			set_technology = { future_computing_machine = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = future_computing_machine_2 } } #That's pretty good
+			set_technology = { future_computing_machine_2 = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = future_computing_machine_3 } } #Daybreaker is pleased
+			set_technology = { future_computing_machine_3 = 1 }
+		}
+		else_if = {
+			limit = { NOT = { has_tech = future_computing_machine_4 } } #How the hell?
+			set_technology = { future_computing_machine_4 = 1 }
+		}
+		hidden_effect = {
+			add_tech_bonus = {
+				name = computer_bonus
+				ahead_reduction = 2
+				uses = 50
+				category = computing_tech
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH }
+}
+shared_focus = {
+	id = SOL_magi_chemical_compounds
+	icon = GFX_SOL_magi_chemical_compounds
+	prerequisite = {
+		focus = SOL_rune_computation
+	}
+	prerequisite = {
+		focus = SOL_magitech_dominance
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = -1
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_magi_chemical_compounds"
+		set_technology = { popup = yes tech_stabilised_white_phosphorus = 1 }
+		custom_effect_tooltip = tech_stabilised_white_phosphorus_buff
+		custom_effect_tooltip = MAN_line_break
+		set_technology = { popup = yes tech_stabilised_fluoride_oxidisers = 1 }
+		custom_effect_tooltip = tech_stabilised_fluoride_oxidisers_buff
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_computer_aided_manufacturing
+	icon = GFX_SOL_computer_aided_manufacturing
+	prerequisite = {
+		focus = SOL_rune_computation
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = -3
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_computer_aided_manufacturing"
+		set_technology = { popup = yes tech_computer_aided_manufacturing = 1 }
+		custom_effect_tooltip = tech_computer_aided_manufacturing_buff
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+}
+shared_focus = {
+	id = SOL_heat_shells
+	icon = GFX_SOL_heat_shells
+	prerequisite = {
+		focus = SOL_magi_chemical_compounds
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = 0
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_heat_shells"
+		set_technology = { popup = yes tech_heat_shells = 1 }
+		custom_effect_tooltip = tech_heat_shells_buff
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_high_velocity_engines
+	icon = GFX_SOL_high_velocity_engines
+	prerequisite = {
+		focus = SOL_computer_aided_manufacturing
+	}
+	prerequisite = {
+		focus = SOL_magi_chemical_compounds
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = -2
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_high_velocity_engines"
+		add_tech_bonus = {
+			name = jet_bonus
+			bonus = 2
+			uses = 2
+			category = jet_technology
+		}
+		add_tech_bonus = {
+			name = jet_rocket_bonus
+			bonus = 2
+			uses = 2				
+			category = rocketry
+		}
+	}
+	search_filters = { FOCUS_FILTER_RESEARCH }
+}
+shared_focus = {
+	id = SOL_strategic_teleportation
+	icon = GFX_SOL_tactical_teleportation
+	prerequisite = {
+		focus = SOL_high_velocity_engines
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_project_invictus
+	x = -1
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_strategic_teleportation"
+		if = {
+			limit = { NOT = { has_country_flag = sol_has_unlocked_public_works } }
+			hidden_effect = { SOL_initialise_public_works = yes }
+		}
+		custom_effect_tooltip = SOL_strategic_teleportation_tt
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+
+shared_focus = {
+	id = SOL_strategic_revision
+	icon = GFX_SOL_pan_continental_warfare
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	allow_branch = {
+		is_SOLAR_EMPIRE = yes
+		has_country_flag = SOL_unlocked_advanced_conquest
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_Imperium_Solis
+	x = 7
+	y = 12
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_strategic_revision"
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.5
+			uses = 2
+			category = land_doctrine
+		}
+		add_doctrine_cost_reduction = {
+			name = navdoc_bonus
+			cost_reduction = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.5
+			uses = 2
+			category = air_doctrine
+		}
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_the_solar_admiralty
+	icon = GFX_SOL_the_solar_fleet
+	prerequisite = {
+		focus = SOL_strategic_revision
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 0
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_solar_admiralty"
+		every_navy_leader = {
+			add_coordination = 1
+			add_maneuver = 1
+			add_defense = 1
+			add_attack = 1
+		}
+		hidden_effect = { set_technology = { tech_admiral_training = 1 popup = no } }
+	}
+	search_filters = { FOCUS_FILTER_NAVY_BONUS }
+}
+shared_focus = {
+	id = SOL_modern_tank_design
+	icon = GFX_SOL_modern_tank_design
+	prerequisite = {
+		focus = SOL_strategic_revision
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+		if = {
+			limit = { has_dlc = "No Step Back" }
+			OR = {
+				has_tech = advanced_light_tank_chassis
+				has_tech = advanced_medium_tank_chassis
+				has_tech = advanced_heavy_tank_chassis
+			}
+		}
+		else = {
+			OR = {
+				has_tech = advanced_medium_tank
+				has_tech = advanced_heavy_tank
+			}
+		}
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 2
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_modern_tank_design"
+		if = {
+			limit = { has_dlc = "No Step Back" }
+			if = {
+				limit = { has_tech = main_battle_tank_chassis }
+				add_tech_bonus = {
+					name = armor_bonus
+					bonus = 1
+					uses = 2
+					category = armor
+				}
+			}
+			else = {
+				set_technology = { main_battle_tank_chassis = 1 }
+				add_tech_bonus = {
+					name = armor_bonus
+					bonus = 1
+					uses = 1
+					category = armor
+				}
+			}
+			if = {
+				limit = {
+					has_tech = main_battle_tank_chassis_c #Bro how the fuck?
+				}
+				if = {
+					limit = {
+						OR = {
+							has_tech = antiair_f
+							has_tech = antitank_f
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_5 #Seriously how the fuck?
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair_c
+							has_tech = antitank_c
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_4 #You're going to fuck shit up
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair5
+							has_tech = antitank5
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_3 #Decent I suppose
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair3
+							has_tech = antitank2
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_2 #Why?
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = interwar_antitank
+							has_tech = interwar_antitank
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon #Don't do this to yourself
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else = {
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon #You've made Daybreaker cry
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_tech = main_battle_tank_chassis_b #For the Empress!
+				}
+				if = {
+					limit = {
+						OR = {
+							has_tech = antiair_f
+							has_tech = antitank_f
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_5 #Seriously how the fuck?
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair_c
+							has_tech = antitank_c
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_4 #You're going to fuck shit up
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair5
+							has_tech = antitank5
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_3 #Decent I suppose
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair3
+							has_tech = antitank2
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_2 #Why?
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = interwar_antitank
+							has_tech = interwar_antitank
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon #Don't do this to yourself
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else = {
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon #You've made Daybreaker cry
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_tech = main_battle_tank_chassis #You might want to hurry up here
+				}
+				if = {
+					limit = {
+						OR = {
+							has_tech = antiair_f
+							has_tech = antitank_f
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_5 #Seriously how the fuck?
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair_c
+							has_tech = antitank_c
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_4 #You're going to fuck shit up
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair5
+							has_tech = antitank5
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_3 #Decent I suppose
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = antiair3
+							has_tech = antitank2
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_2 #Why?
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = interwar_antitank
+							has_tech = interwar_antitank
+						}
+					}
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon #Don't do this to yourself
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+				else = {
+					create_equipment_variant = {
+						name = "Philomena MBT"
+						type = modern_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon #You've made Daybreaker cry
+							turret_type_slot = tank_modern_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 9
+							tank_nsb_armor_upgrade = 9
+						}
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { has_tech = main_battle_tank }
+				add_tech_bonus = {
+					name = armor_bonus
+					bonus = 1
+					uses = 2
+					category = armor
+				}
+			}
+			else = {
+				set_technology = { main_battle_tank = 1 }
+				add_tech_bonus = {
+					name = armor_bonus
+					bonus = 1
+					uses = 1
+					category = armor
+				}
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
+}
+shared_focus = {
+	id = SOL_secure_the_cradle
+	icon = GFX_SOL_secure_the_cradle
+	prerequisite = {
+		focus = SOL_the_solar_admiralty
+	}
+	prerequisite = {
+		focus = SOL_modern_tank_design
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = SOL_CRY_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 8 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_STG_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 9 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = SOL_GRF_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 14 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 1
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_secure_the_cradle"
+		custom_effect_tooltip = SOL_secure_the_cradle_tp
+		hidden_effect = {
+			GRF = { set_country_flag = SOL_annexation_target }
+			every_state = {
+				limit = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 14 }
+				}
+				owner = { set_country_flag = SOL_annexation_target }
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_ANNEXATION }
+}
+shared_focus = {
+	id = SOL_eliminate_our_rivals
+	icon = GFX_SOL_destroy_our_rivals
+	prerequisite = {
+		focus = SOL_modern_tank_design
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = SOL_CRY_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 8 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_STG_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 9 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_CHN_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					OR = {
+						check_variable = { SOL_public_works_region_id = 11 }
+						check_variable = { SOL_public_works_region_id = 12 }
+					}
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_OLE_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 13 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 3
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_eliminate_our_rivals"
+		custom_effect_tooltip = SOL_eliminate_our_rivals_tp
+		custom_effect_tooltip = SOL_eliminate_our_rivals_disclaimer
+		CRY = { add_to_ROOT_potential_original_cores = yes }
+		STG = { add_to_ROOT_potential_original_cores = yes }
+		hidden_effect = {
+			STL = { add_to_ROOT_potential_original_cores = yes }
+		}
+		hidden_effect = {
+			STG = { set_country_flag = SOL_annexation_target }
+			STL = { set_country_flag = SOL_annexation_target }
+			CRY = { set_country_flag = SOL_annexation_target }
+			CHN = { set_country_flag = SOL_annexation_target }
+			CCN = { set_country_flag = SOL_annexation_target }
+			OLE = { set_country_flag = SOL_annexation_target }
+			every_state = {
+				limit = {
+					has_variable = SOL_public_works_region_id
+					OR = {
+						check_variable = { SOL_public_works_region_id = 8 }
+						check_variable = { SOL_public_works_region_id = 9 }
+						check_variable = { SOL_public_works_region_id = 11 }
+						check_variable = { SOL_public_works_region_id = 12 }
+						check_variable = { SOL_public_works_region_id = 13 }
+					}
+					
+				}
+				owner = { set_country_flag = SOL_annexation_target }
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_ANNEXATION }
+}
+shared_focus = {
+	id = SOL_tame_the_north
+	icon = GFX_SOL_tame_the_north
+	prerequisite = {
+		focus = SOL_secure_the_cradle
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = SOL_GRF_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 14 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_CHN_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					OR = {
+						check_variable = { SOL_public_works_region_id = 11 }
+						check_variable = { SOL_public_works_region_id = 12 }
+					}
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_OLE_states_tooltip
+			NOT = {
+				any_state = {
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id = 13 }
+					NOT = {
+						OR = {
+							is_owned_and_controlled_by = EQS
+							owner = { SOL_can_force_transfer = yes }
+						}
+					}
+				}
+			}
+		}
+	}
+	bypass = {
+		YAK = {
+			OR = {
+				exists = no
+				has_war_with = ROOT
+				is_subject_of = ROOT
+			}
+		}
+		JAK = {
+			OR = {
+				exists = no
+				has_war_with = ROOT
+				is_subject_of = ROOT
+			}
+		}
+		GFF = {
+			OR = {
+				exists = no
+				has_war_with = ROOT
+				is_subject_of = ROOT
+			}
+		}
+		PLB = {
+			OR = {
+				exists = no
+				has_war_with = ROOT
+				is_subject_of = ROOT
+			}
+		}
+		PNG = {
+			OR = {
+				exists = no
+				has_war_with = ROOT
+				is_subject_of = ROOT
+			}
+		}
+	}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 0
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_tame_the_north"
+		custom_effect_tooltip = SOL_tame_the_north_tp
+		hidden_effect = {
+			YAK = { set_country_flag = SOL_annexation_target }
+			JAK = { set_country_flag = SOL_annexation_target }
+			GRF = { set_country_flag = SOL_annexation_target }
+			PLB = { set_country_flag = SOL_annexation_target }
+			PNG = { set_country_flag = SOL_annexation_target }
+			every_state = {
+				limit = {
+					has_variable = SOL_public_works_region_id
+					OR = {
+						check_variable = { SOL_public_works_region_id = 15 }
+						check_variable = { SOL_public_works_region_id = 16 }
+						check_variable = { SOL_public_works_region_id = 17 }
+					}
+					
+				}
+				owner = { set_country_flag = SOL_annexation_target }
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_ANNEXATION }
+}
+shared_focus = {
+	id = SOL_prepare_the_coup
+	icon = GFX_SOL_prepare_the_coup
+	prerequisite = {
+		focus = SOL_secure_the_cradle
+	}
+	prerequisite = {
+		focus = SOL_eliminate_our_rivals
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 2
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_prepare_the_coup"
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+}
+shared_focus = {
+	id = SOL_integrate_the_colony
+	icon = GFX_SOL_integrate_new_mareland
+	prerequisite = {
+		focus = SOL_prepare_the_coup
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_strategic_revision
+	x = 1
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_integrate_the_colony"
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -3170,16 +4744,16 @@ shared_focus = {
 	icon = GFX_SOL_the_solar_economy
 	relative_position_id = SOL_Imperium_Solis
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		is_subject = no
 		has_completed_focus = SOL_new_order
     }
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
 	cost = 1.5
@@ -3194,6 +4768,7 @@ shared_focus = {
 			idea = SOL_economic_stimulus_package
 			days = 300
 		}
+		country_event = { id = paxsolaris.167 hours = 1 }
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 }
@@ -3205,13 +4780,10 @@ shared_focus = {
 		focus = SOL_solar_economy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3232,13 +4804,10 @@ shared_focus = {
 		focus = SOL_machine_tool_proliferation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3265,10 +4834,7 @@ shared_focus = {
 		focus = SOL_shut_down_protests
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_strikes_have_happened
 			has_country_flag = sol_strikes_happened
@@ -3296,6 +4862,9 @@ shared_focus = {
 			multiply_variable = { var = sol_urban_planning_cost_per_state value = 1.2 }
 			multiply_variable = { var = sol_agmech_cost_per_state value = 1.2 }
 			multiply_variable = { var = sol_infrastructure_hardening_cost_per_state value = 1.2 }
+			multiply_variable = { var = sol_strat_tele_cost_per_state value = 1.2 }
+			multiply_variable = { var = sol_modern_national_development_cost_per_state value = 1.2 }
+
 		}
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
@@ -3308,13 +4877,10 @@ shared_focus = {
 		focus = SOL_meet_with_union_leaders
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3338,10 +4904,7 @@ shared_focus = {
 		focus = SOL_meet_with_union_leaders
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_strikes_have_happened
 			has_country_flag = sol_strikes_happened
@@ -3368,6 +4931,8 @@ shared_focus = {
 			multiply_variable = { var = sol_urban_planning_cost_per_state value = 0.75 }
 			multiply_variable = { var = sol_agmech_cost_per_state value = 0.75 }
 			multiply_variable = { var = sol_infrastructure_hardening_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_strat_tele_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_modern_national_development_cost_per_state value = 0.75 }
 
 			multiply_variable = { var = sol_public_works_duration value = 0.9 }
 			round_variable = sol_public_works_duration
@@ -3377,6 +4942,10 @@ shared_focus = {
 			round_variable = sol_agmech_duration
 			multiply_variable = { var = sol_infrastructure_hardening_duration value = 0.9 }
 			round_variable = sol_infrastructure_hardening_duration
+			multiply_variable = { var = sol_strat_tele_duration value = 0.9 }
+			round_variable = sol_strat_tele_duration
+			multiply_variable = { var = sol_modern_national_development_duration value = 0.9 }
+			round_variable = sol_modern_national_development_duration
 			for_each_loop = {
 				array = SOL_ongoing_public_works
 				value = current_region
@@ -3401,6 +4970,18 @@ shared_focus = {
 				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
 				round_variable = SOL_public_works_duration_array^current_region
 			}
+			for_each_loop = {
+				array = SOL_ongoing_strat_tele
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+			for_each_loop = {
+				array = SOL_ongoing_modern_national_development
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
 		}
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
@@ -3413,13 +4994,10 @@ shared_focus = {
 		focus = SOL_shut_down_protests
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3440,13 +5018,10 @@ shared_focus = {
 		focus = SOL_Imperial_Corporation_Council
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3454,7 +5029,8 @@ shared_focus = {
 	y = 5
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_legion_of_labor"
-		add_ideas = SOL_legion_of_labor_idea
+		set_technology = { popup = yes tech_volunteer_work_programs = 1 }
+		custom_effect_tooltip = tech_volunteer_work_programs_buff
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
 }
@@ -3466,13 +5042,10 @@ shared_focus = {
 		focus = SOL_machine_tool_proliferation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3503,13 +5076,10 @@ shared_focus = {
 		focus = SOL_agricultural_aid
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3533,13 +5103,13 @@ shared_focus = {
 		focus = SOL_solar_economy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_civilian_consolidation_to_be_completed
-			NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_civilian_support < 5 } }
+				NOT = { check_variable = { solar_civilian_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
@@ -3566,13 +5136,10 @@ shared_focus = {
 		focus = SOL_national_standards
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3580,7 +5147,9 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_imperial_smelting"
+		country_event = { id = paxsolaris.68 hours = 1 }
 		add_tech_bonus = {
+			name = excavation_tech
 		    bonus = 1
 		    uses = 2
 		    category = excavation_tech
@@ -3640,13 +5209,10 @@ shared_focus = {
 		focus = SOL_imperial_smelting
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3675,13 +5241,10 @@ shared_focus = {
 		focus = SOL_mining_projects
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3707,25 +5270,22 @@ shared_focus = {
 		focus = SOL_earth_pony_magic
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
-			tooltip = sol_controls_all_BUF_cores
+			tooltip = SOL_BUF_states_tooltip
 			NOT = {
 				any_state = {
 					OR = {
 						state = 78
 						state = 89
 					}
-					NOT = { is_controlled_by = EQS }
+					NOT = { is_owned_and_controlled_by = EQS }
 				}
 			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3748,10 +5308,7 @@ shared_focus = {
 		focus = SOL_solar_economy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
 	cost = 2.9
@@ -3778,10 +5335,7 @@ shared_focus = {
 		focus = SOL_new_urban_planning
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		OR = {
 			owns_state = 75
 			owns_state = 12
@@ -3789,7 +5343,7 @@ shared_focus = {
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3859,13 +5413,10 @@ shared_focus = {
 		focus = SOL_the_three_port_cities
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3907,17 +5458,17 @@ shared_focus = {
 		focus = SOL_modern_naval_technology
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3967,17 +5518,17 @@ shared_focus = {
 		focus = SOL_secure_the_coastlines
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -3987,9 +5538,9 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_naval_aeronautics"
 		add_to_variable = { var = solar_military_measures_progress value = 1 }
 		custom_effect_tooltip = paxsolaris_military_consolidation_increase
-		add_tech_bonus = {
-			name = naval_doc_bonus
-			bonus = 1.0
+		add_doctrine_cost_reduction = {
+			name = navdoc_bonus
+			cost_reduction = 0.5
 			uses = 2
 			category = naval_doctrine
 		}
@@ -4049,10 +5600,7 @@ shared_focus = {
 		focus = SOL_naval_aeronautics
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		if = {
 			limit = {
 				has_dlc = "Man the Guns"
@@ -4072,7 +5620,7 @@ shared_focus = {
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4234,13 +5782,14 @@ shared_focus = {
 		focus = SOL_the_marksist_threat
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = SOL_coming_soon_tt
+			always = no
 		}
 	}
 	allow_branch = {
-		always = no #removed for test
+		#always = no #removed for test
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4252,6 +5801,8 @@ shared_focus = {
 	y = 6
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_condemn_the_nobility"
+		custom_effect_tooltip = SOL_coming_soon_tt
+		set_global_flag = SOL_communuist_path_active
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4262,10 +5813,7 @@ shared_focus = {
 		focus = SOL_condemn_the_nobility
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4277,6 +5825,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_pardon_the_revolutionaries"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4287,10 +5836,7 @@ shared_focus = {
 		focus = SOL_pardon_the_revolutionaries
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	bypass = {
 		STG = {
@@ -4312,6 +5858,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_reapproach_stalliongrad"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4322,10 +5869,7 @@ shared_focus = {
 		focus = SOL_condemn_the_nobility
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4337,6 +5881,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_invite_union_leaders"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4347,10 +5892,7 @@ shared_focus = {
 		focus = SOL_invite_union_leaders
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4362,6 +5904,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_investigate_industrialists"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4375,10 +5918,7 @@ shared_focus = {
 		focus = SOL_investigate_industrialists
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4391,6 +5931,7 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_empress_of_the_proletariat"
 		hidden_effect = { mark_focus_tree_layout_dirty = yes }
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4401,20 +5942,23 @@ shared_focus = {
 		focus = SOL_empress_of_the_proletariat
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 		OR = {
 			153 = { owner = { is_subject_of = EQS } }
 			153 = { is_owned_by = EQS }
-			STG = { is_subject = no }
+			STG = { 
+				exists = yes
+				is_subject = no 
+			}
 		}
-		always = no #removed for test
+		#always = no #removed for test
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4426,6 +5970,7 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_union_with_stalliongrad"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -4436,22 +5981,25 @@ shared_focus = {
 		focus = SOL_empress_of_the_proletariat
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 		NOT = {
 			OR = {
 				153 = { owner = { is_subject_of = EQS } }
 				153 = { is_owned_by = EQS }
-				STG = { is_subject = no }
+				STG = { 
+					exists = yes
+					is_subject = no 
+				}
 			}
 		}
-		always = no #removed for test
+		#always = no #removed for test
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4463,6 +6011,7 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_liberate_severyana"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -4480,13 +6029,14 @@ shared_focus = {
 		focus = SOL_condemn_the_nobility
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = SOL_coming_soon_tt
+			always = no
 		}
 	}
 	allow_branch = {
-		always = no #removed for test
+		#always = no #removed for test
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4498,6 +6048,7 @@ shared_focus = {
 	y = 6
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_marksist_threat"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4508,10 +6059,7 @@ shared_focus = {
 		focus = SOL_the_marksist_threat
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4523,6 +6071,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_root_out_the_communists"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4533,10 +6082,7 @@ shared_focus = {
 		focus = SOL_root_out_the_communists
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	bypass = {
 		STG = {
@@ -4555,6 +6101,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_denounce_stalliongrad"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4565,10 +6112,7 @@ shared_focus = {
 		focus = SOL_the_marksist_threat
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	bypass = {
 		OR = {
@@ -4586,6 +6130,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_contact_dissidents"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4596,10 +6141,7 @@ shared_focus = {
 		focus = SOL_contact_dissidents
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	bypass = {
 		OR = {
@@ -4617,6 +6159,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_operation_mongoose"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4630,10 +6173,7 @@ shared_focus = {
 		focus = SOL_operation_mongoose
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	bypass = {
 		OR = {
@@ -4651,6 +6191,7 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_counter_revolution"
+		custom_effect_tooltip = SOL_coming_soon_tt
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -4661,10 +6202,7 @@ shared_focus = {
 		focus = SOL_the_counter_revolution
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4676,6 +6214,7 @@ shared_focus = {
 	y = 4
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_reclaim_the_rogue_province"
+		custom_effect_tooltip = SOL_coming_soon_tt
 		STG = { add_to_ROOT_potential_original_cores = yes }
 		hidden_effect = {
 			STL = { add_to_ROOT_potential_original_cores = yes }
@@ -4689,16 +6228,16 @@ shared_focus = {
 	icon = GFX_goal_solar_unite_equestria
 	relative_position_id = SOL_Imperium_Solis
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		is_subject = no
 		has_completed_focus = SOL_new_order
     }
 	allow_branch = {
 		is_SOLAR_EMPIRE = yes
-		has_country_flag = SOL_first_tree_completed
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
 	}
 	#bypass = {}
 	cost = 1.5
@@ -4724,17 +6263,17 @@ shared_focus = {
 		focus = SOL_united_under_the_sun
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4760,13 +6299,10 @@ shared_focus = {
 		focus = SOL_imperial_academy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4786,10 +6322,7 @@ shared_focus = {
 		focus = SOL_tactical_teleportation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4817,13 +6350,10 @@ shared_focus = {
 		focus = SOL_a_magical_army
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4844,10 +6374,7 @@ shared_focus = {
 		focus = SOL_tactical_teleportation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -4859,6 +6386,7 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_infantry_modernisation"
 		add_tech_bonus = {
+			name = infantry_bonus
 			bonus = 1
 			uses = 2
 			category = infantry_weapons
@@ -4876,13 +6404,10 @@ shared_focus = {
 		focus = SOL_infantry_modernisation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4906,13 +6431,10 @@ shared_focus = {
 		focus = SOL_pegasi_scouts
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4921,6 +6443,11 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_warrior_empress"
 		custom_effect_tooltip = SOL_coming_soon_tt
+		hidden_effect = {
+			set_country_flag = sol_has_unlocked_magic
+			set_variable = { var = daybreaker_magic_reserves value = 100 }
+			set_variable = { var = daybreaker_magic_max value = 100 }
+		}
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
 }
@@ -4932,17 +6459,17 @@ shared_focus = {
 		focus = SOL_imperial_academy
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -4968,13 +6495,10 @@ shared_focus = {
 		focus = SOL_the_imperial_logistics_department
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5001,12 +6525,21 @@ shared_focus = {
 		focus = SOL_the_empress_pardon
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_war_of_the_eclipse_not_begun_tt
+			NOT = { has_global_flag = sol_war_of_the_eclipse_begun }
 		}
     }
-	#bypass = {}
+	bypass = {
+		OR = {
+			has_war_with = HRM
+			custom_trigger_tooltip = {
+				tooltip = sol_war_of_the_eclipse_begun_tt
+				has_global_flag = sol_war_of_the_eclipse_begun
+			}
+		}
+	}
 	select_effect = {
 		country_event = { id = paxsolaris.95 hours = 1 }
 		custom_effect_tooltip = inquisitionoutreachaction
@@ -5099,12 +6632,21 @@ shared_focus = {
 		focus = SOL_the_great_purge
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_war_of_the_eclipse_not_begun_tt
+			NOT = { has_global_flag = sol_war_of_the_eclipse_begun }
 		}
     }
-	#bypass = {}
+	bypass = {
+		OR = {
+			has_war_with = HRM
+			custom_trigger_tooltip = {
+				tooltip = sol_war_of_the_eclipse_begun_tt
+				has_global_flag = sol_war_of_the_eclipse_begun
+			}
+		}
+	}
 	cost = 2.9
 	ai_will_do = {
 		factor = 100
@@ -5136,17 +6678,17 @@ shared_focus = {
 		focus = SOL_the_empress_pardon
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5177,17 +6719,17 @@ shared_focus = {
 		focus = SOL_doctrinal_refinement
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5215,17 +6757,17 @@ shared_focus = {
 		focus = SOL_secure_supply_networks
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5253,17 +6795,17 @@ shared_focus = {
 		focus = SOL_the_solar_continental_command
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
 			tooltip = SOL_no_states_of_military_consolidation_to_be_completed
-			NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			if = {
+				limit = { check_variable = { solar_military_support < 5 } }
+				NOT = { check_variable = { solar_military_measures_progress > 4 } }
+			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5274,6 +6816,7 @@ shared_focus = {
 		custom_effect_tooltip = paxsolaris_military_consolidation_increase
 		add_stability = 0.05
 		add_ideas = SOL_solar_youth_leagues
+		country_event = { id = paxsolaris.163 hours = 1 }
 		hidden_effect = {
 			add_to_variable = { var = solar_military_measures_progress value = 1 }
 			SOL_calculate_loyalty = yes
@@ -5290,13 +6833,10 @@ shared_focus = {
 		focus = SOL_the_empress_pardon
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5304,14 +6844,34 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_imperial_investigative_service"
-		add_ideas = SOL_imperial_investigative_service
 		if = {
 			limit = { has_dlc = "La Resistance" }
+			if = {
+				limit = { has_idea = SOL_imperial_investigative_service_lar }
+				swap_ideas = {
+					remove_idea = SOL_imperial_investigative_service_lar
+					add_idea = SOL_imperial_investigative_service_lar_2
+				}
+			}
+			else = {
+				add_ideas = SOL_imperial_investigative_service_lar 
+			}
 			custom_effect_tooltip = SOL_the_imperial_investigative_service_tt_lar
 		}
 		else = {
+			if = {
+				limit = { has_idea = SOL_imperial_investigative_service }
+				swap_ideas = {
+					remove_idea = SOL_imperial_investigative_service
+					add_idea = SOL_imperial_investigative_service_2
+				}
+			}
+			else = {
+				add_ideas = SOL_imperial_investigative_service 
+			}
 			custom_effect_tooltip = SOL_the_imperial_investigative_service_tt
 		}
+		country_event = { id = paxsolaris.168 hours = 1 }
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -5323,13 +6883,10 @@ shared_focus = {
 		focus = SOL_the_imperial_investigative_service
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5337,7 +6894,8 @@ shared_focus = {
 	y = 3
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_solar_special_service"
-		add_ideas = SOL_imperial_special_service
+		set_technology = { popup = yes tech_imperial_special_service = 1 }
+		custom_effect_tooltip = tech_imperial_special_service_buff
 		add_tech_bonus = {
 			name = special_forces_bonus
 			bonus = 3.0
@@ -5366,10 +6924,7 @@ shared_focus = {
 		focus = SOL_the_imperial_investigative_service
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	bypass = {
 		OR = {
@@ -5378,7 +6933,7 @@ shared_focus = {
 			has_war_with = 7.owner
 		}
 	}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5408,7 +6963,6 @@ shared_focus = {
 		else = {
 			7 = { owner = { country_event = { id = paxsolaris.88 hours = 1 } } }
 		}
-		hidden_effect = { 7 = { set_state_flag = SOL_target_for_annexation } }
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 }
@@ -5420,12 +6974,9 @@ shared_focus = {
 		focus = SOL_pressure_the_dragons
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 		custom_trigger_tooltip = {
-			tooltip = sol_controls_all_DRG_cores
+			tooltip = SOL_DRG_states_tooltip
 			NOT = {
 				any_state = {
 					OR = {
@@ -5439,13 +6990,13 @@ shared_focus = {
 						state = 10
 						state = 328
 					}
-					NOT = { is_controlled_by = EQS }
+					NOT = { is_owned_and_controlled_by = EQS }
 				}
 			}
 		}
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5467,13 +7018,10 @@ shared_focus = {
 		focus = SOL_the_crystal_mines
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
     }
 	#bypass = {}
-	cost = 4.3
+	cost = 2.9
 	ai_will_do = {
 		factor = 100
 	}
@@ -5481,7 +7029,9 @@ shared_focus = {
 	y = 6
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_magical_weaponry_proliferation"
-		add_ideas = SOL_magical_weaponry_proliferation_idea
+		set_technology = { popup = yes tech_magical_production = 1 }
+		custom_effect_tooltip = tech_magical_production_buff
+		hidden_effect = { add_ideas = SOL_magical_weaponry_proliferation_idea }
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS }
 }
@@ -5495,10 +7045,7 @@ shared_focus = {
 		focus = SOL_pegasi_scouts
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5522,10 +7069,7 @@ shared_focus = {
 		focus = SOL_napalm_payloads
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5582,10 +7126,7 @@ shared_focus = {
 		focus = SOL_combined_arms
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5609,10 +7150,7 @@ shared_focus = {
 		focus = SOL_napalm_payloads
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5669,10 +7207,7 @@ shared_focus = {
 		focus = SOL_payload_calibration
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5697,10 +7232,7 @@ shared_focus = {
 		focus = SOL_combined_arms
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5724,10 +7256,7 @@ shared_focus = {
 		focus = SOL_pegasi_magic_applications
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5766,10 +7295,7 @@ shared_focus = {
 		focus = SOL_flamethrowers
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5795,10 +7321,7 @@ shared_focus = {
 		focus = SOL_sarin_munitions
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5812,15 +7335,9 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_a_storm_of_steel"
 		add_tech_bonus = {
 			name = armor_bonus
-			bonus = 1.0
-			uses = 1
-			category = cat_medium_armor
-		}
-		add_tech_bonus = {
-			name = armor_bonus
-			bonus = 1.0
-			uses = 1
-			category = cat_heavy_armor
+			bonus = 1
+			uses = 2
+			category = armor
 		}
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
@@ -5835,10 +7352,7 @@ shared_focus = {
 		focus = SOL_motorised_production_focus
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5850,7 +7364,9 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_tank_production_focus"
-		add_ideas = SOL_tank_production_idea
+		set_technology = { popup = yes tech_tank_production = 1 }
+		custom_effect_tooltip = tech_tank_production_buff
+		hidden_effect = { add_ideas = SOL_tank_production_idea }
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS }
 }
@@ -5861,10 +7377,7 @@ shared_focus = {
 		focus = SOL_sarin_munitions
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5895,10 +7408,7 @@ shared_focus = {
 		focus = SOL_tank_production_focus
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5910,7 +7420,9 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus SOL_motorised_production_focus"
-		add_ideas = SOL_motorised_production_idea
+		set_technology = { popup = yes tech_motorised_production = 1 }
+		custom_effect_tooltip = tech_motorised_production_buff
+		hidden_effect = { add_ideas = SOL_motorised_production_idea }
 	}
 	search_filters = { FOCUS_FILTER_ARMY_BONUS }
 }
@@ -5922,10 +7434,7 @@ shared_focus = {
 		focus = SOL_motorised_production_focus
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5949,10 +7458,7 @@ shared_focus = {
 		focus = SOL_engine_optimisation
 	}
 	available = {
-		has_country_leader = {
-			ruling_only = yes
-			name = "Daybreaker"
-		}
+		is_SOLAR_EMPIRE = yes
 	}
 	#bypass = {}
 	cost = 2.9
@@ -5971,8 +7477,829 @@ shared_focus = {
 }
 
 
+shared_focus = {
+	id = SOL_into_a_new_era
+	icon = GFX_goal_state_personified
+	available = {
+		is_SOLAR_EMPIRE = yes
+		has_completed_focus = SOL_imperial_truth
+		custom_trigger_tooltip = {
+			tooltip = sol_resistance_is_decapitated
+			has_country_flag = sol_resistance_decapitated
+		}
+		if = {
+			limit = { has_global_flag = sol_war_of_the_eclipse_begun }
+			custom_trigger_tooltip = {
+				tooltip = sol_war_of_the_eclipse_concluded_tt
+				has_solar_civil_war = no
+				has_global_flag = sol_war_of_the_eclipse_concluded
+			}
+		}
+	}
+	allow_branch = {
+		is_SOLAR_EMPIRE = yes
+		has_country_flag = sol_resistance_decapitated
+		if = {
+			limit = { has_global_flag = sol_war_of_the_eclipse_begun }
+			has_global_flag = sol_war_of_the_eclipse_concluded
+		}
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
+	}
+	#bypass = {}
+	cost = 1.5
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_Imperium_Solis
+	x = 0
+	y = 15
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_into_a_new_era"
+		add_political_power = 200
+		add_stability = 0.15
+		country_event = { id = paxsolaris.170 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+}
+shared_focus = {
+	id = SOL_controlled_opposition
+	icon = GFX_SOL_controlled_opposition
+	prerequisite = {
+		focus = SOL_into_a_new_era
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = -2
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_controlled_opposition"
+		custom_effect_tooltip = civilianinquisitionaction
+		custom_effect_tooltip = SOL_controlled_opposition_tt
+		country_event = { id = paxsolaris.177 hours = 1}
+		hidden_effect = {
+			set_country_flag = SOL_no_unorganised_resistance_activity
+			add_to_variable = { var = solar_civilian_measures value = 1 }
+			SOL_calculate_loyalty = yes 
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+}
+shared_focus = {
+	id = SOL_mop_up_the_remnants
+	icon = GFX_SOL_anti_harmony
+	prerequisite = {
+		focus = SOL_into_a_new_era
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = 0
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_mop_up_the_remnants"
+		custom_effect_tooltip = SOL_mop_up_the_remnants_tt
+		country_event = { id = paxsolaris.178 hours = 1}
+		hidden_effect = {
+			set_variable = { var = solar_resistance_actions_progress value = 0 }
+			set_variable = { var = solar_resistance_outreach_actions_progress value = 0 }
+			set_variable = { var = solar_resistance_cohesion_actions_progress value = 0 }
+			subtract_from_variable = { var = solar_resistance_suppression value = solar_resistance_strength }
+			subtract_from_variable = { var = solar_resistance_outreach_suppression value = solar_resistance_outreach_strength }
+			set_variable = { var = solar_resistance_cohesion_actions value = 0 }
+			SOL_calculate_loyalty = yes
+			set_country_flag = SOL_mop_up_the_remnants_active
+			remove_ideas = SOL_resistance_strength_0
+			remove_ideas = SOL_harmonist_broadcasts_0
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESISTANCE }
+}
+shared_focus = {
+	id = SOL_counterterrorism_operations
+	icon = GFX_SOL_counterterrorism_operations
+	prerequisite = {
+		focus = SOL_into_a_new_era
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = 2
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_counterterrorism_operations"
+		custom_effect_tooltip = militaryinquisitionaction
+		custom_effect_tooltip = SOL_counterterrorism_operations_tt
+		hidden_effect = {
+			set_country_flag = SOL_unlocked_counterterrorism_decisions
+			add_to_variable = { var = solar_military_measures value = 1 }
+			SOL_calculate_loyalty = yes 
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+}
+shared_focus = {
+	id = SOL_the_new_heartland
+	icon = GFX_SOL_new_urban_planning
+	prerequisite = {
+		focus = SOL_controlled_opposition
+	}
+	prerequisite = {
+		focus = SOL_mop_up_the_remnants
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = -1
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_new_heartland"
+		custom_effect_tooltip = SOL_the_new_heartland_tt
+		if = {
+			limit = { NOT = { has_country_flag = sol_has_unlocked_public_works } }
+			hidden_effect = { SOL_initialise_public_works = yes }
+		}
+		custom_effect_tooltip = SOL_modern_national_development_tt
+		hidden_effect = {
+			multiply_variable = { var = sol_public_works_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_urban_planning_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_agmech_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_infrastructure_hardening_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_strat_tele_cost_per_state value = 0.75 }
+			multiply_variable = { var = sol_modern_national_development_cost_per_state value = 0.75 }
+
+			multiply_variable = { var = sol_public_works_duration value = 0.9 }
+			round_variable = sol_public_works_duration
+			multiply_variable = { var = sol_urban_planning_duration value = 0.9 }
+			round_variable = sol_urban_planning_duration
+			multiply_variable = { var = sol_agmech_duration value = 0.9 }
+			round_variable = sol_agmech_duration
+			multiply_variable = { var = sol_infrastructure_hardening_duration value = 0.9 }
+			round_variable = sol_infrastructure_hardening_duration
+			multiply_variable = { var = sol_strat_tele_duration value = 0.9 }
+			round_variable = sol_strat_tele_duration
+			multiply_variable = { var = sol_modern_national_development_duration value = 0.9 }
+			round_variable = sol_modern_national_development_duration
+			for_each_loop = {
+				array = SOL_ongoing_public_works
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+			for_each_loop = {
+				array = SOL_ongoing_urban_planning
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+			for_each_loop = {
+				array = SOL_ongoing_agmech
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+			for_each_loop = {
+				array = SOL_ongoing_infrastructure_hardening
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+			for_each_loop = {
+				array = SOL_ongoing_strat_tele
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+			for_each_loop = {
+				array = SOL_ongoing_modern_national_development
+				value = current_region
+				multiply_variable = { var = SOL_public_works_duration_array^current_region value = 0.9 }
+				round_variable = SOL_public_works_duration_array^current_region
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+}
+shared_focus = {
+	id = SOL_manifest_destiny
+	icon = GFX_SOL_manifest_destiny
+	prerequisite = {
+		focus = SOL_the_new_heartland
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = -1
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_manifest_destiny"
+		custom_effect_tooltip = SOL_manifest_destiny_tt
+		hidden_effect = {
+			set_country_flag = SOL_manifest_destiny_active
+			set_variable = { daybreaker_support_daily_laws= 0 }
+			set_variable = { daybreaker_support_daily_economic_laws = 0 }
+			set_variable = { daybreaker_support_daily_trade_laws = 0 }
+			set_variable = { daybreaker_support_daily_conscription_laws = 0 }
+			remove_ideas = SOL_law_loyalty
+			if = {
+				limit = { has_completed_focus = SOL_expand_our_domain }
+				multiply_variable = { var = SOL_develop_settler_colony_civ_fac_use_multiplier value = 0.6 }
+				add_to_variable = { var = SOL_number_of_settlements_available value = 8000 }
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+}
+shared_focus = {
+	id = SOL_refocus_the_inquisition
+	icon = GFX_SOL_refocus_the_inquisition
+	prerequisite = {
+		focus = SOL_counterterrorism_operations
+	}
+	prerequisite = {
+		focus = SOL_mop_up_the_remnants
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = 1
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_refocus_the_inquisition"
+		set_country_flag = SOL_refocused_inquisition_flag
+		if = {
+			limit = { has_dlc = "La Resistance" }
+			if = {
+				limit = { has_idea = SOL_imperial_investigative_service_lar }
+				swap_ideas = {
+					remove_idea = SOL_imperial_investigative_service_lar
+					add_idea = SOL_imperial_investigative_service_lar_2
+				}
+			}
+			else = {
+				add_ideas = SOL_imperial_investigative_service_lar 
+			}
+			custom_effect_tooltip = SOL_the_imperial_investigative_service_tt_lar
+		}
+		else = {
+			if = {
+				limit = { has_idea = SOL_imperial_investigative_service }
+				swap_ideas = {
+					remove_idea = SOL_imperial_investigative_service
+					add_idea = SOL_imperial_investigative_service_2
+				}
+			}
+			else = {
+				add_ideas = SOL_imperial_investigative_service 
+			}
+			custom_effect_tooltip = SOL_the_imperial_investigative_service_tt
+		}
+		if = {
+			limit = { NOT = { has_country_flag = sol_empowered_royal_guard } }
+			custom_effect_tooltip = SOL_solar_task_forces_tt
+			set_variable = { SOL_royal_guard_deployed_var = 0 }
+			set_variable = { SOL_royal_guard_in_reserve_var = 14 }
+			division_template = {
+				name = "Solar Task Force"
+				division_names_group = EQS_PAR_02
+				is_locked = yes
+				regiments = {
+					pegasi = { x = 0 y = 0 }
+					pegasi = { x = 0 y = 1 }
+					pegasi = { x = 0 y = 2 }
+					pegasi = { x = 0 y = 3 }
+					pegasi = { x = 1 y = 0 }
+					pegasi = { x = 1 y = 1 }
+					pegasi = { x = 1 y = 2 }
+					pegasi = { x = 1 y = 3 }
+				}
+				support = {
+					unicorn_company = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+					signal_company = { x = 0 y = 2 }
+					artillery = { x = 0 y = 3 }
+				}
+				priority = 2
+			}
+			hidden_effect = {
+				clr_country_flag = SOL_recall_pegasi_decision_in_progress_flag
+				delete_unit_template_and_units = {
+					division_template = "Inquisitorial Strike Team"
+				}
+				division_template = {
+					name = "Inquisitorial Strike Team"
+					division_names_group = EQS_PAR_02
+					is_locked = yes
+					regiments = {
+						pegasi = { x = 0 y = 0 }
+						pegasi = { x = 0 y = 1 }
+						pegasi = { x = 0 y = 2 }
+						pegasi = { x = 1 y = 0 }
+						pegasi = { x = 1 y = 1 }
+						pegasi = { x = 1 y = 2 }
+					}
+					support = {
+						unicorn_company = { x = 0 y = 0 }
+						recon = { x = 0 y = 1 }
+						signal_company = { x = 0 y = 2 }
+					}
+					priority = 2
+				}
+				set_variable = { SOL_mobile_task_force_deployed_var = 0 }
+				set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
+				every_state = {
+					limit = {
+						has_variable = SOL_mobile_task_force_deployed_var
+					}
+					clear_variable = SOL_mobile_task_force_deployed_var
+				}
+			}
+		}
+		country_event = { id = paxsolaris.179 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = SOL_an_empire_without_equals
+	icon = GFX_SOL_an_empire_without_equals
+	prerequisite = {
+		focus = SOL_refocus_the_inquisition
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = 1
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_an_empire_without_equals"
+		custom_effect_tooltip = SOL_subjects_of_the_empress_tp
+		effect_tooltip = {
+			add_ideas = SOL_subjects_of_the_empress
+		}
+		hidden_effect = {
+			every_country = {
+		    	limit = {
+			    	is_subject_of = ROOT
+				}
+				add_ideas = SOL_subjects_of_the_empress
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
+shared_focus = {
+	id = SOL_equestria_rising
+	icon = GFX_SOL_equestria_rising
+	prerequisite = {
+		focus = SOL_manifest_destiny
+	}
+	prerequisite = {
+		focus = SOL_an_empire_without_equals
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = SOL_coming_soon_tt
+			always = no
+		}
+	}
+	#bypass = {}
+	cost = 1.5
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_into_a_new_era
+	x = 0
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_equestria_rising"
+		custom_effect_tooltip = SOL_coming_soon_tt
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL }
+}
 
 
+
+shared_focus = {
+	id = SOL_the_enemies_of_order
+	icon = GFX_SOL_the_enemies_of_order
+	available = {
+		is_SOLAR_EMPIRE = yes
+		custom_trigger_tooltip = {
+			tooltip = sol_war_of_the_eclipse_begun_tt
+			has_global_flag = sol_war_of_the_eclipse_begun
+		}
+	}
+	allow_branch = {
+		is_SOLAR_EMPIRE = yes
+		has_global_flag = sol_war_of_the_eclipse_begun
+		NOT = { has_global_flag = sol_war_of_the_eclipse_concluded }
+		OR = {
+			has_country_flag = SOL_first_tree_completed
+			has_country_flag = march_on_canterlot
+		}
+	}
+	#bypass = {}
+	cost = 0.8
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_Imperium_Solis
+	x = 0
+	y = 15
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_the_enemies_of_order"
+		country_event = { id = paxsolaris.165 hours = 1 }
+		add_political_power = 100
+		add_stability = 0.05
+		add_manpower = 40000
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+}
+shared_focus = {
+	id = SOL_muster_our_forces
+	icon = GFX_SOL_emergency_conscription
+	prerequisite = {
+		focus = SOL_the_enemies_of_order
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = -2
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_muster_our_forces"
+		unlock_decision_tooltip = SOL_forced_conscription
+		custom_effect_tooltip = SOL_forced_conscription_tt
+	}
+	search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_empower_the_guardian
+	icon = GFX_SOL_empower_the_custodian
+	prerequisite = {
+		focus = SOL_the_enemies_of_order
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = 0
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_empower_the_guardian"
+		custom_effect_tooltip = SOL_empower_the_guardian_tt
+		custom_effect_tooltip = SOL_solar_task_forces_tt
+		set_country_flag = sol_empowered_royal_guard
+		set_variable = { SOL_royal_guard_deployed_var = 0 }
+		set_variable = { SOL_royal_guard_in_reserve_var = 14 }
+		division_template = {
+			name = "Solar Task Force"
+			division_names_group = EQS_PAR_02
+			is_locked = yes
+			regiments = {
+				pegasi = { x = 0 y = 0 }
+				pegasi = { x = 0 y = 1 }
+				pegasi = { x = 0 y = 2 }
+				pegasi = { x = 0 y = 3 }
+				pegasi = { x = 1 y = 0 }
+				pegasi = { x = 1 y = 1 }
+				pegasi = { x = 1 y = 2 }
+				pegasi = { x = 1 y = 3 }
+			}
+			support = {
+				unicorn_company = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				signal_company = { x = 0 y = 2 }
+				artillery = { x = 0 y = 3 }
+			}
+			priority = 2
+		}
+		country_event = { id = paxsolaris.164 hours = 1 }
+		hidden_effect = {
+			clr_country_flag = SOL_recall_pegasi_decision_in_progress_flag
+			delete_unit_template_and_units = {
+				division_template = "Inquisitorial Strike Team"
+			}
+			division_template = {
+				name = "Inquisitorial Strike Team"
+				division_names_group = EQS_PAR_02
+				is_locked = yes
+				regiments = {
+					pegasi = { x = 0 y = 0 }
+					pegasi = { x = 0 y = 1 }
+					pegasi = { x = 0 y = 2 }
+					pegasi = { x = 1 y = 0 }
+					pegasi = { x = 1 y = 1 }
+					pegasi = { x = 1 y = 2 }
+				}
+				support = {
+					unicorn_company = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+					signal_company = { x = 0 y = 2 }
+				}
+				priority = 2
+			}
+			set_variable = { SOL_mobile_task_force_deployed_var = 0 }
+			set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
+			every_state = {
+				limit = {
+					has_variable = SOL_mobile_task_force_deployed_var
+				}
+				clear_variable = SOL_mobile_task_force_deployed_var
+			}
+		}
+	}
+	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_mass_crackdowns
+	icon = GFX_SOL_mass_crackdowns
+	prerequisite = {
+		focus = SOL_the_enemies_of_order
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = 2
+	y = 1
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_mass_crackdowns"
+		unlock_decision_tooltip = SOL_cull_the_traitors
+		custom_effect_tooltip = SOL_mass_crackdowns_tt
+		hidden_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					check_variable = { SOL_public_works_region_id < 10 }
+					SOL_eligible_for_state_events = yes
+					all_neighbor_state = { is_owned_and_controlled_by = EQS }
+					NOT = { has_state_flag = SOL_cull_the_traitors_target }
+				}
+				save_global_event_target_as = SOL_cull_the_traitors_target_1
+				set_state_flag = SOL_cull_the_traitors_target
+			}
+			random_owned_controlled_state = {
+				limit = {
+					check_variable = { SOL_public_works_region_id < 10 }
+					SOL_eligible_for_state_events = yes
+					all_neighbor_state = { is_owned_and_controlled_by = EQS }
+					NOT = { has_state_flag = SOL_cull_the_traitors_target }
+				}
+				save_global_event_target_as = SOL_cull_the_traitors_target_2
+				set_state_flag = SOL_cull_the_traitors_target
+			}
+			random_owned_controlled_state = {
+				limit = {
+					check_variable = { SOL_public_works_region_id < 10 }
+					SOL_eligible_for_state_events = yes
+					all_neighbor_state = { is_owned_and_controlled_by = EQS }
+					NOT = { has_state_flag = SOL_cull_the_traitors_target }
+				}
+				save_global_event_target_as = SOL_cull_the_traitors_target_3
+				set_state_flag = SOL_cull_the_traitors_target
+			}
+			random_owned_controlled_state = {
+				limit = {
+					check_variable = { SOL_public_works_region_id < 10 }
+					SOL_eligible_for_state_events = yes
+					all_neighbor_state = { is_owned_and_controlled_by = EQS }
+					NOT = { has_state_flag = SOL_cull_the_traitors_target }
+				}
+				save_global_event_target_as = SOL_cull_the_traitors_target_4
+				set_state_flag = SOL_cull_the_traitors_target
+			}
+			random_owned_controlled_state = {
+				limit = {
+					check_variable = { SOL_public_works_region_id < 10 }
+					SOL_eligible_for_state_events = yes
+					all_neighbor_state = { is_owned_and_controlled_by = EQS }
+					NOT = { has_state_flag = SOL_cull_the_traitors_target }
+				}
+				save_global_event_target_as = SOL_cull_the_traitors_target_5
+				set_state_flag = SOL_cull_the_traitors_target
+			}
+			activate_mission = SOL_cull_the_traitors
+		}
+		country_event = { id = paxsolaris.173 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESISTANCE }
+}
+shared_focus = {
+	id = SOL_martial_law
+	icon = GFX_SOL_martial_law
+	prerequisite = {
+		focus = SOL_muster_our_forces
+	}
+	prerequisite = {
+		focus = SOL_empower_the_guardian
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = -1
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_martial_law"
+		custom_effect_tooltip = SOL_martial_law_tt
+		hidden_effect = {
+			set_country_flag = SOL_martial_law_active
+			add_to_variable = { daybreaker_support_daily_actions = -0.02 }
+			add_to_variable = { var = solar_military_measures value = 1 }
+			add_to_variable = { var = solar_civilian_measures value = 1 }
+			SOL_calculate_loyalty = yes
+		}
+		country_event = { id = paxsolaris.171 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_RESISTANCE FOCUS_FILTER_STABILITY }
+}
+shared_focus = {
+	id = SOL_seize_resources
+	icon = GFX_SOL_seize_resources
+	prerequisite = {
+		focus = SOL_martial_law
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = -1
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_seize_resources"
+		custom_effect_tooltip = SOL_seize_resources_tt
+		hidden_effect = {
+			set_country_flag = SOL_seize_resources_active
+			add_to_variable = { daybreaker_support_daily_actions = -0.02 }
+			add_ideas = SOL_seize_resources_idea
+			SOL_calculate_loyalty = yes
+		}
+	}
+	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+}
+shared_focus = {
+	id = SOL_indiscriminate_bombardment
+	icon = GFX_SOL_indiscriminate_bombardment
+	prerequisite = {
+		focus = SOL_mass_crackdowns
+	}
+	prerequisite = {
+		focus = SOL_empower_the_guardian
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = 1
+	y = 2
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_indiscriminate_bombardment"
+		custom_effect_tooltip = SOL_indiscriminate_bombardment_tt
+		hidden_effect = {
+			set_country_flag = SOL_indiscriminate_bombardment_active
+			add_to_variable = { daybreaker_support_daily_actions = -0.02 }
+			set_technology = { popup = no tech_indiscriminate_bombardment = 1 }
+			SOL_calculate_loyalty = yes
+		}
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_scorched_earth
+	icon = GFX_SOL_nothing_left_to_lose
+	prerequisite = {
+		focus = SOL_indiscriminate_bombardment
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 2.9
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = 1
+	y = 3
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_scorched_earth"
+		custom_effect_tooltip = SOL_scorched_earth_tt
+		hidden_effect = {
+			set_country_flag = SOL_scorched_earth_active
+			add_to_variable = { daybreaker_support_daily_actions = -0.02 }
+			SOL_calculate_loyalty = yes
+		}
+		country_event = { id = paxsolaris.172 hours = 1 }
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_to_the_bitter_end
+	icon = GFX_SOL_to_the_bitter_end
+	prerequisite = {
+		focus = SOL_seize_resources
+	}
+	prerequisite = {
+		focus = SOL_scorched_earth
+	}
+	available = {
+		is_SOLAR_EMPIRE = yes
+	}
+	#bypass = {}
+	cost = 1.5
+	ai_will_do = {
+		factor = 100
+	}
+	relative_position_id = SOL_the_enemies_of_order
+	x = 0
+	y = 4
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_to_the_bitter_end"
+		custom_effect_tooltip = SOL_to_the_bitter_end_tt
+		country_event = { id = paxsolaris.176 hours = 1 }
+		hidden_effect = {
+			add_ideas = SOL_to_the_bitter_end_idea
+		}
+	}
+	search_filters = { FOCUS_FILTER_ARMY_BONUS }
+}
 
 
 
@@ -6094,7 +8421,6 @@ shared_focus = {
 	will_lead_to_war_with = VAN
 	will_lead_to_war_with = BAL
 	will_lead_to_war_with = JUN
-	will_lead_to_war_with = ROC
 	cost = 10
 	ai_will_do = {
 		factor = 35
@@ -6224,181 +8550,6 @@ shared_focus = {
 		add_popularity = {
 			ideology = democratic
 			popularity = 0.1
-		}
-		if = {
-			limit = {
-				OR = {
-					NOT = {
-						has_unit_leader = 2
-					}
-					NOT = {
-						has_unit_leader = 3
-					}
-					NOT = {
-						has_unit_leader = 4
-					}
-					NOT = {
-						has_unit_leader = 6
-					}
-					NOT = {
-						has_unit_leader = 13
-					}
-					NOT = {
-						has_unit_leader = 14
-					}
-					NOT = {
-						has_unit_leader = 12
-					}
-					NOT = {
-						has_unit_leader = 30
-					}
-					NOT = {
-						has_unit_leader = 31
-					}
-					NOT = {
-						has_unit_leader = 33
-					}
-					NOT = {
-						has_unit_leader = 19
-					}
-					NOT = {
-						has_unit_leader = 32
-					}
-				}
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 2
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 3
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 4
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 6
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 13
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 14
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 12
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 30
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 31
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 39
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 33
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 19
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_unit_leader = 32
-						}
-					}
-					add_to_variable = {
-						sol_redemption_cost = 50
-					}
-				}
-			}
-			unlock_decision_tooltip = SOL_rehabilitate_generals
 		}
 	}
 	search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
@@ -6536,6 +8687,7 @@ shared_focus = {
 		add_tech_bonus = {
 			name = motorized_bonus
 			bonus = 3
+			uses = 1
 			category = motorized_equipment
 		}
 	}
@@ -7636,4 +9788,102 @@ shared_focus = {
 		}
 	}
 	search_filters = { FOCUS_FILTER_RESEARCH }
+}
+shared_focus = {
+	id = SOL_Firm_but_Fair
+	icon = GFX_goal_solar_fair_but_just
+	prerequisite = {
+		focus = SOL_rb_marines
+	}
+	#bypass = {}
+	cost = 10
+	ai_will_do = {
+		factor = 50
+	}
+	relative_position_id = SOL_navy
+	x = 0
+	y = 5
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_Firm_but_Fair"
+		add_ideas = SOL_Firm_but_Fair_idea
+		unlock_decision_category_tooltip = SOL_dealing_with_resistance
+	}
+	search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_BONUS }
+}
+shared_focus = {
+	id = SOL_bat_problems
+	icon = GFX_goal_bat
+	cost = 10
+	ai_will_do = {
+		factor = 150
+	}
+	relative_position_id = SOL_navy
+	x = 0
+	y = 6
+	prerequisite = {
+		focus = SOL_Firm_but_Fair
+	}
+	available = {
+		has_country_flag = SOL_bat_problems_flag
+		has_war = no
+		OR = {
+			has_completed_focus = SOL_empress_protector
+			has_completed_focus = SOL_empress_mother
+			has_completed_focus = SOL_god_empress
+		}
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_bat_problems"
+		if = {
+			limit = {
+				has_completed_focus = SOL_empress_protector
+			}
+			country_event = solarempire.40
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = SOL_empress_mother
+			}
+			country_event = solarempire.41
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = SOL_god_empress
+			}
+			country_event = solarempire.42
+		}
+	}
+}
+shared_focus = {
+	id = SOL_increase_presense_inCRY
+	icon = GFX_goal_crystal_empire_sub
+	cost = 10
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = SOL_bat_problems
+	}
+	available = {
+		eqs_not_has_civil_war = yes
+		OR = {
+			has_completed_focus = SOL_empress_protector
+			has_completed_focus = SOL_empress_mother
+			has_completed_focus = SOL_god_empress
+		}
+		CRY = {
+			has_war = no
+			OR = {
+				is_subject = no
+				is_subject_of = ROOT
+			}
+		}
+	}
+	relative_position_id = SOL_navy
+	x = 0
+	y = 7
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus SOL_increase_presense_inCRY"
+	}
+	search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
 }

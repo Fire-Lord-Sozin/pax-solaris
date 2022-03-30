@@ -1,0 +1,84 @@
+SOL_SMC_add_cores = {
+	every_state = {
+		limit = {
+			has_variable = SOL_public_works_region_id
+			check_variable = { SOL_public_works_region_id = 11 }
+		}
+		add_core_of = SMC
+		if = {
+			limit = {
+				THIS = {
+					OR = {
+						is_owned_by = EQS
+						owner = { SOL_can_force_transfer = yes }
+					}
+					OR = {
+						is_fully_controlled_by = EQS
+						controller = { 
+							SOL_can_force_transfer = yes 
+							PREV = { is_fully_controlled_by = PREV } #Fuck you for making me do this, Paradox
+						}
+					}
+				}
+			}
+			SMC = { transfer_state = PREV }
+		}
+	}
+	SMC = { save_global_event_target_as = SOL_region_11_owner }
+}
+SOL_SMV_add_cores = {
+	every_state = {
+		limit = {
+			has_variable = SOL_public_works_region_id
+			check_variable = { SOL_public_works_region_id = 12 }
+		}
+		add_core_of = SMV
+		if = {
+			limit = {
+				THIS = {
+					OR = {
+						is_owned_by = EQS
+						owner = { SOL_can_force_transfer = yes }
+					}
+					OR = {
+						is_fully_controlled_by = EQS
+						controller = { 
+							SOL_can_force_transfer = yes 
+							PREV = { is_fully_controlled_by = PREV } 
+						}
+					}
+				}
+			}
+			SMV = { transfer_state = PREV }
+		}
+	}
+	SMV = { save_global_event_target_as = SOL_region_12_owner }
+}
+SOL_transfer_recent_states = {
+	if = {
+		limit = { has_event_target = SOL_region_11_owner }
+		if = {
+			limit = { 
+				THIS = { 
+					check_variable = { SOL_public_works_region_id = 11 }
+					NOT = { is_owned_by = event_target:SOL_region_11_owner }
+				}
+				event_target:SOL_region_11_owner = { is_subject_of = EQS }
+			}
+			event_target:SOL_region_11_owner = { transfer_state = PREV } 
+		}
+	}
+	if = {
+		limit = { has_event_target = SOL_region_12_owner }
+		if = {
+			limit = { 
+				THIS = { 
+					check_variable = { SOL_public_works_region_id = 12 }
+					NOT = { is_owned_by = event_target:SOL_region_12_owner }
+				}
+				event_target:SOL_region_12_owner = { is_subject_of = EQS }
+			}
+			event_target:SOL_region_12_owner = { transfer_state = PREV } 
+		}
+	}
+}

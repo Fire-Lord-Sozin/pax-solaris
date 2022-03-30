@@ -43,6 +43,21 @@ scripted_gui = {
 			has_completed_focus = SOL_Imperial_Inquisition
 		}
 	}
+	SOL_queen_oripia_gui = {
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		
+		window_name = "SOL_queen_oripia_container"
+		
+		visible = {
+			ROOT = {
+				original_tag = EQS
+			}
+			THIS = {
+				has_dynamic_modifier = { modifier = SOL_queen_orapia }
+			}
+		}
+	}
 	SOL_heart_of_an_empire_gui = {
 		context_type = selected_state_context
 		parent_window_token = selected_state_view
@@ -58,7 +73,6 @@ scripted_gui = {
 			}
 		}
 	}
-
 	SOL_mobile_task_force_gui = {
 		window_name = "SOL_mobile_task_force"
 		context_type = selected_state_context
@@ -69,6 +83,8 @@ scripted_gui = {
 				original_tag = EQS
 				has_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
 				has_variable = sol_display_state_decisions
+				NOT = { has_country_flag = sol_empowered_royal_guard }
+				NOT = { has_country_flag = SOL_refocused_inquisition_flag }
 			}
 		}
 		properties = {
@@ -139,7 +155,6 @@ scripted_gui = {
 							add_command_power = -10
 							add_to_variable = { SOL_mobile_task_force_deployed_var = 1 } 
 							subtract_from_variable = { SOL_mobile_task_force_in_reserve_var = 2 }
-							add_to_variable = { var = sol_display_state_decisions value = 1 }
 						}
 						THIS = {
 							if = {
@@ -226,6 +241,201 @@ scripted_gui = {
 							}
 						}
 					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
+				}
+			}
+		}
+	}
+	SOL_royal_guard_gui = {
+		window_name = "SOL_royal_guard"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		dirty = EQS.sol_display_state_decisions
+		visible = {
+			ROOT = {
+				original_tag = EQS
+				has_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
+				has_variable = sol_display_state_decisions
+				OR = {
+					has_country_flag = sol_empowered_royal_guard
+					has_country_flag = SOL_refocused_inquisition_flag
+				}
+			}
+		}
+		properties = {
+			SOL_royal_guard_button_fake = {
+				y = var:EQS.SOL_mobile_task_force_pos
+			}
+			SOL_royal_guard_button = {
+				y = var:EQS.SOL_mobile_task_force_pos
+			}
+		}
+		triggers = {
+			SOL_royal_guard_button_visible = {
+				ROOT = {
+					NOT = { has_country_flag = SOL_recall_royal_guard_decision_in_progress_flag }
+					check_variable = {
+						var = command_power
+						value = 10
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SOL_royal_guard_in_reserve_var
+						value = 0
+						compare = greater_than
+					}
+				}
+				THIS = {
+					NOT = { has_variable = SOL_royal_guard_deployed_var }
+					controller = {
+						OR = {
+							is_SOLAR_EMPIRE = yes
+							is_subject_of = EQS
+							is_in_faction_with = EQS
+						}
+					}
+				}
+			}
+		}
+		effects = {
+			SOL_royal_guard_button_click = {
+				hidden_effect = {
+					if = {
+						limit = {
+							ROOT = {
+								NOT = { has_country_flag = SOL_recall_royal_guard_decision_in_progress_flag }
+								check_variable = {
+									var = command_power
+									value = 10
+									compare = greater_than_or_equals
+								}
+								check_variable = {
+									var = SOL_royal_guard_in_reserve_var
+									value = 0
+									compare = greater_than
+								}
+							}
+							THIS = {
+								NOT = { has_variable = SOL_royal_guard_deployed_var }
+								controller = {
+									OR = {
+										is_SOLAR_EMPIRE = yes
+										is_subject_of = EQS
+										is_in_faction_with = EQS
+									}
+								}
+							}
+						}
+						ROOT = {
+							add_command_power = -10
+							add_to_variable = { SOL_royal_guard_deployed_var = 1 } 
+							subtract_from_variable = { SOL_royal_guard_in_reserve_var = 2 }
+						}
+						THIS = {
+							if = {
+								limit = {
+									EQS = { check_variable = { solar_military_support = 5 } }
+								}
+								set_variable = { SOL_royal_guard_deployed_var = EQS.SOL_royal_guard_deployed_var }
+								if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 1 }
+										}
+									}
+									create_unit = { division = "name = \"STF-1 'Ashmakers'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-2 'Purity'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 2 }
+										}
+									}
+									create_unit = { division = "name = \"STF-3 'Cremation'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-4 'Shimmer'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 3 }
+										}
+									}
+									create_unit = { division = "name = \"STF-5 'Firebolts'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-6 'Sunrise'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 4 }
+										}
+									}
+									create_unit = { division = "name = \"STF-7 'Dawnbreak'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-8 'Right Hoof'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 5 }
+										}
+									}
+									create_unit = { division = "name = \"STF-9 'Infernos'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-10 'The Enforcers'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 6 }
+										}
+									}
+									create_unit = { division = "name = \"STF-11 'Chromosphere'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-12 'Zealots'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+								else_if = {
+									limit = { 
+										EQS = {
+											check_variable = { SOL_royal_guard_deployed_var = 7 }
+										}
+									}
+									create_unit = { division = "name = \"STF-13 'The Faithful'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+									create_unit = { division = "name = \"STF-14 'Midnight Sun'\" division_template = \"Solar Task Force\" start_experience_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = yes }
+								}
+							}
+							else = {
+								set_variable = { SOL_royal_guard_deployed_var = EQS.SOL_royal_guard_deployed_var }
+								EQS = {
+									set_variable = { SOL_dispatched_mtf_state_decision_duration_var = 127.distance_to@PREV }
+									divide_variable = { SOL_dispatched_mtf_state_decision_duration_var = 100 }
+									if = {
+										limit = { check_variable = { solar_military_support = 0 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 7 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 1 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 5 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 2 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 3 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 3 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 2 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 4 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
+									}
+									else_if = {
+										limit = { check_variable = { solar_military_support = 5 } }
+										add_to_variable = { SOL_dispatched_mtf_state_decision_duration_var = 1 }
+									}
+									activate_targeted_decision = { target = PREV decision = SOL_dispatch_stf_decision }
+								}
+							}
+						}
+					}
+					ROOT = { add_to_variable = { var = sol_display_state_decisions value = 1 } }
 				}
 			}
 		}

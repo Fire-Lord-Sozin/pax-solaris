@@ -1,959 +1,151 @@
 ideas = {
-
-	political_advisor = {
-
-		princess_cadence = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			available = {
-				has_government = democratic
-				has_country_flag = royal_family_returned
-				NOT = {
-					any_country_with_original_tag = {
-						original_tag_to_check = CRY
-						exists = yes
-						has_country_leader = { ruling_only = yes name = "Princess Mi Amore Cadenza" }
-					}
-				}
-			}
-			visible = {
-				has_government = democratic
-				has_country_flag = royal_family_returned
-				NOT = {
-					any_country_with_original_tag = {
-						original_tag_to_check = CRY
-						exists = yes
-						has_country_leader = { ruling_only = yes name = "Princess Mi Amore Cadenza" }
-					}
-				}
-			}
-			traits = { popular_figurehead }
-			modifier = {
-				army_morale_factor = 0.05
-			}
-		}
-
-
-		twilight_sparkle = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no	
-			}
-			available = {
-				is_SOLAR_EMPIRE = no
-				has_government = democratic
-				NOT = { AND = {
-					any_country_with_original_tag = {
-						original_tag_to_check = CRY
-							exists = yes
-							has_country_leader = { id = 1000 ruling_only = yes name = "Princess Twilight Sparkle" }
-							} } }
-			}
-			traits = { element_of_magic }
-			research_bonus = {
-				magical_tech = 0.1
-			}
-			modifier = {
-				research_speed_factor = 0.05
-			}
-		}
-		cocopommel = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no
-			}
-			available = {
-				has_government = democratic
-				NOT = { has_country_leader = { ruling_only = yes name = "Fancy Pants"} }
-			}
-
-			traits = { captain_of_industry }
-		}
-		flim = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				LSP = {
-					exists = no
-				}
-			}
-			available = {
-				if = {
-					limit = { event_target:solar_empire = { exists = yes } }
-					tag = event_target:solar_empire
-				}
-				if = {
-					limit = { has_country_flag = SOL_purge_2 }
-					NOT = { has_country_flag = SOL_purge_2 }
-				}
-			}
-
-			traits = { war_industrialists }
-		}
-		raven = {
-
-			allowed = {
-				original_tag = EQS
-			}
-
-			available = {
-				OR = {
-					has_country_leader = { ruling_only = yes name = "Princess Celestia" }
-					has_country_leader = { ruling_only = yes name = "Princesses Celestia and Luna" }
-					has_country_leader = { ruling_only = yes name = "Daybreaker" }
-				}
-			}
-
-			traits = { silent_workhorse }
-		}
-		blueblood = {
-
-			allowed = {
-				original_tag = EQS
-			}
-
-			available = {
-				OR = {
-					has_country_leader = { ruling_only = yes name = "Princess Celestia" }
-					has_country_leader = { ruling_only = yes name = "Princesses Celestia and Luna" }
-					has_country_leader = { ruling_only = yes name = "Daybreaker" }
-				}
-				OR = {
-					is_SOLAR_EMPIRE = yes
-					if = {
-						limit = { is_original_EQS = yes }
-						has_country_flag = EQS_blueblood_allowed
-					}
-				}
-			}
-
-			traits = { prince_of_terror }
-		}
-		fancy_pants = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no
-			}
-			available = {
-				has_government = democratic
-				NOT = { has_country_leader = { ruling_only = yes name = "Fancy Pants"} }
-			}
-
-			traits = { compassionate_gentleman }
-		}
-		filthy_rich = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no
-			}
-			available = {
-				has_government = democratic
-				NOT = { has_country_leader = { ruling_only = yes name = "Filthy Rich"} }
-			}
-
-			traits = { smooth_talking_charmer }
-		}
-		sweetie_drops = {
-			picture = sweetie_drops
-			allowed = {
-				original_tag = EQS
-				NOT = {
-					has_dlc = "La Resistance"
-				}
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no
-			}
-			available = {
-				has_government = democratic
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
-				}
-			}
-			traits = { agent_of_smile }
-		}
-		sweetie_drops_lar = {
-			picture = sweetie_drops
-			name = sweetie_drops
-			cost = 200
-			allowed = {
-				original_tag = EQS
-				has_dlc = "La Resistance"
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no
-			}
-			available = {
-				has_intelligence_agency = yes
-				has_government = democratic
-				if = {
-					limit = { NOT = { tag = event_target:solar_empire } }
-					has_government = democratic
-				}
-			}
-			traits = { agent_of_smile_lar }
-		}
-	}
-
-
-	army_chief = {
-		rockhoof = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-			traits = { army_entrenchment_3 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-		grimhoof = {
-
-			allowed = {
-				original_tag = EQS
-			}
-
-			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-			traits = { army_chief_offensive_1 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-		coppertop = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-
-			traits = { army_chief_maneuver_2 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		flash_magnus = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			traits = { army_chief_drill_2 }
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		
-	}
-	air_chief = {
-
-		rainbowdash = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no	
-			}
-			available = {
-				is_SOLAR_EMPIRE = no
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-			traits = { element_of_loyalty }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-		kittyhawk = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			traits = { air_chief_reform_1 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-
-	}
-
-	navy_chief = {
-
-		cynosura = {
-
-			allowed = {
-				original_tag = EQS
-			}
-			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-			traits = { navy_chief_decisive_battle_2 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-		eqs6 = {
-			picture = unknown_advisor
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			traits = { navy_chief_naval_aviation_2 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-
-	high_command = {
-		maudpie = {
-			ledger = army
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-			traits = { army_chief_defensive_2 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		limestone = {
-			ledger = army
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			traits = { army_infantry_1 }
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-		zecora = {
-			ledger = army
-
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no
-			}
-			available = {
-				is_SOLAR_EMPIRE = no
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			traits = { army_armored_2 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-
-		rarity = {
-			ledger = army
-
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no	
-			}
-			available = {
-				is_SOLAR_EMPIRE = no
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-			traits = { rarity_the_designer }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		wonderbolts = {
-			ledger = air
-
-
-			allowed = {
-				original_tag = EQS
-			}
-			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-				if = {
-					limit = { has_country_flag = SOL_purge_3 }
-					NOT = { has_country_flag = SOL_purge_3 }
-				}
-			}
-			traits = { air_combat_academy }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		EQS_sentinel = {
-			ledger = army
-
-			allowed = {
-				original_tag = EQS
-			}
-
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = HAS_UNIT_LEADER_SENTINEL
-					hidden_trigger = { has_unit_leader = 19 }
-				}
-				if = {
-					limit = { has_country_flag = SOL_purge_2 }
-					NOT = { has_country_flag = SOL_purge_2 }
-				}
-			}
-			traits = { army_regrouping_1 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		EQS_fizzlepop = {
-			ledger = army
-
-			allowed = {
-				original_tag = EQS
-			}
-
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = HAS_UNIT_LEADER_FIZZLEPOP
-					hidden_trigger = { has_unit_leader = 12 }
-				}
-				if = {
-					limit = { has_country_flag = SOL_purge_1 }
-					NOT = { has_country_flag = SOL_purge_1 }
-				}
-			}
-			traits = { army_chief_maneuver_1 }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-
-	theorist = {
-		grannysmith = {
-			ledger = army
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Extreme_war_comittee
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			research_bonus = {
-				land_doctrine = 0.07
-			}
-
-			traits = { military_theorist }
-		}
-
-		spitfire = {
-			ledger = air
-
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
-				}	
-			}
-			available = {
-				hidden_trigger = {
-					NOT = {
-						has_country_flag = SOL_harmonic_commanders_leave
-						has_country_flag = SOL_purge_finished
-					}	
-				}
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Extreme_war_comittee
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-			research_bonus = {
-				air_doctrine = 0.15
-			}
-
-			traits = { air_warfare_theorist }
-		}
-		fluttershy = {
-			ledger = army
-
-
-			allowed = {
-				original_tag = EQS
-			}
-			visible = {
-				is_SOLAR_EMPIRE = no	
-			}
-			available = {
-				is_SOLAR_EMPIRE = no	
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = EQS_WMD
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_EQS_WMD
-				}
-			}
-			research_bonus = {
-				nuclear = 0.10
-			}
-
-			traits = { nuclear_scientist }
-		}
-		flakesnow = {
-			ledger = air
-
-
-			allowed = {
-				original_tag = EQS
-			}
-
-			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Advisors
-				}
-				if = {
-					limit = { is_SOLAR_EMPIRE = yes }
-					has_global_flag = EQS_completed_advisors
-				}
-			}
-
-
-			research_bonus = {
-				rocketry = 0.10
-			}
-
-			traits = { rocket_scientist }
-		}
-
-	}
-
-
 	# TEEQSOLOGY
 	tank_manufacturer = {
-
 		designer = yes
-
 		mustang = {
-
-
+			allowed = {
+				original_tag = EQS
+			}
+			research_bonus = {
+				armor = 0.12
+			}
+			traits = { fast_tank_manufacturer }
+		}
+		shoof = {
 			allowed = {
 				original_tag = EQS
 			}
 			available = { 
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
+				custom_trigger_tooltip = {
+					tooltip = sol_harmonists_have_deserted_tt
+					NOT = { has_country_flag = SOL_harmonic_commanders_leave }
 				}
 			}
 			visible = { 
 				NOT = {
 					has_country_flag = SOL_harmonic_commanders_leave
 					has_country_flag = SOL_purge_finished
+					hidden_trigger = { NOT = { has_country_flag = SOL_harmonic_companies_leave } }
 				}
 			}
-
-
-			research_bonus = {
-				armor = 0.12
-			}
-
-			traits = { fast_tank_manufacturer }
-		}
-		shoof = {
-
-
-			allowed = {
-				original_tag = EQS
-			}
-
-
 			research_bonus = {
 				armor = 0.10
 			}
-
 			traits = { medium_tank_manufacturer }
-
 			modifier = {
 			}
 		}
 		sirius = {
-
 			allowed = {
 				original_tag = EQS
 			}
-
-
-
 			research_bonus = {
 				armor = 0.10
 			}
-
 			traits = { heavy_tank_manufacturer }
-
 			modifier = {
 			}
 		}
 	}
-
 	materiel_manufacturer = {
-
 		designer = yes
-
 		star_energy = {
 			picture = generic_artillery_manufacturer_3
-
-
 			allowed = {
 				original_tag = EQS
 			}
-
 			research_bonus = {
 				artillery = 0.10
 			}
-
 			traits = { artillery_manufacturer }
-
 			ai_will_do = {
 				factor = 1
 			}
 		}
 		macintosh = {
-
-
 			allowed = {
 				original_tag = EQS
 			}
-
 			available = { 
-				NOT = {
-					has_country_flag = SOL_harmonic_commanders_leave
-					has_country_flag = SOL_purge_finished
+				custom_trigger_tooltip = {
+					tooltip = sol_harmonists_have_deserted_tt
+					NOT = { has_country_flag = SOL_harmonic_commanders_leave }
 				}
 			}
 			visible = { 
 				NOT = {
 					has_country_flag = SOL_harmonic_commanders_leave
 					has_country_flag = SOL_purge_finished
+					hidden_trigger = { NOT = { has_country_flag = SOL_harmonic_companies_leave } }
 				}
 			}
 			research_bonus = {
 				infantry_weapons = 0.10
 			}
-
 			traits = { infantry_equipment_manufacturer }
-
 			modifier = {
 			}
 		}
 		fillydelphia_arms = {
-
-
 			allowed = {
 				original_tag = EQS
 			}
-
-
-
-
 			research_bonus = {
 				motorized_equipment = 0.10
 				mot_rockets = 0.50
 			}
-
 			traits = { motorized_equipment_manufacturer }
-
 			modifier = {
 			}
 		}
 	}
 	industrial_concern = {
-
 		rainbow_factory = {
-
-
 			allowed = {
 				original_tag = EQS
 			}
-
-
-
-
 			research_bonus = {
 				industry = 0.10
 			}
-
 			traits = { industrial_concern }
-
 			modifier = {
 			}
 		}
-
 		manehattan = {
-
-
 			allowed = {
 				original_tag = EQS
 			}
 			available = { 
+				custom_trigger_tooltip = {
+					tooltip = sol_harmonists_have_deserted_tt
+					NOT = { has_country_flag = SOL_harmonic_commanders_leave }
+				}
+			}
+			visible = { 
 				NOT = {
 					has_country_flag = SOL_harmonic_commanders_leave
 					has_country_flag = SOL_purge_finished
+					hidden_trigger = { NOT = { has_country_flag = SOL_harmonic_companies_leave } }
+				}
+			}
+			research_bonus = {
+				electronics = 0.10
+			}
+			traits = { electronics_concern }
+
+			modifier = {
+			}
+		}
+		EQS_sweet_apple_acres = {
+			picture = EQS_sweet_apple_acres
+			allowed = {
+				original_tag = EQS
+			}
+			available = { 
+				owns_state = 2
+				custom_trigger_tooltip = {
+					tooltip = sol_harmonists_have_deserted_tt
+					NOT = { has_country_flag = SOL_harmonic_commanders_leave }
 				}
 			}
 			visible = { 
@@ -962,28 +154,30 @@ ideas = {
 					has_country_flag = SOL_purge_finished
 				}
 			}
+			traits = { agricultural_concern }
 
-
-
-			research_bonus = {
-				electronics = 0.10
+			modifier = {
 			}
-
-			traits = { electronics_concern }
-
+		}
+		EQS_equestrian_railway = {
+			picture = EQS_equestrian_railway
+			allowed = {
+				original_tag = EQS
+			}
+			research_bonus = {
+				train_tech = 0.15
+			}
+			traits = { railway_company }
 			modifier = {
 			}
 		}
 	}
 	aircraft_manufacturer = {
-
 		designer = yes
 		wonderbolt_concern = {
-
 			allowed = {
 				original_tag = EQS
 			}
-
 			available = {
 				if = {
 					limit = { has_country_flag = SOL_purge_3 }
@@ -993,86 +187,59 @@ ideas = {
 			research_bonus = {
 				air_equipment = 0.10
 			}
-
 			traits = { light_aircraft_manufacturer }
-
 			modifier = {
 			}
 		}
 		cloudsdale_research = {
-
 			allowed = {
 				original_tag = EQS
 			}
-
-
 			research_bonus = {
 				air_equipment = 0.10
 			}
-
 			traits = { medium_aircraft_manufacturer }
-
 			modifier = {
 			}
 		}
 		northern = {
-
 			allowed = {
 				original_tag = EQS
 			}
-
 			picture = generic_air_manufacturer_2
-
-
 			research_bonus = {
 				air_equipment = 0.10
 			}
-
 			traits = { heavy_aircraft_manufacturer }
-
 			modifier = {
 			}
 		}
 		EQS_ultramarine = {
-
 			allowed = {
 				original_tag = EQS
 			}
-
-
 			research_bonus = {
 				air_equipment = 0.10
 			}
-
 			traits = { naval_aircraft_manufacturer }
-
 			modifier = {
 			}
 		}
 		EQS_stratus = {
-
 			allowed = {
 				original_tag = EQS
 			}
-
-
 			research_bonus = {
 				air_equipment = 0.10
 			}
-
 			traits = { CAS_manufacturer }
-
 			modifier = {
 			}
 		}
 	}
 	naval_manufacturer = {
-
 		designer = yes
-
 		baltimare = {
-
-
 			allowed = {
 				OR = {
 					original_tag = EQS
@@ -1084,7 +251,6 @@ ideas = {
 					original_tag = NLR
 				}
 			}
-
 			available = {
 				OR = {
 					owns_state = 13
@@ -1105,20 +271,14 @@ ideas = {
 					}
 				}
 			}
-
 			research_bonus = {
 				naval_equipment = 0.10
 			}
-
 			traits = { atlantic_fleet_naval_manufacturer }
-
 			modifier = {
 			}
 		}
-
 		seaward = {
-
-
 			allowed = {
 				OR = {
 					original_tag = EQS
@@ -1131,7 +291,6 @@ ideas = {
 					original_tag = CRY
 				}
 			}
-
 			available = {
 				OR = {
 					owns_state = 14
@@ -1151,37 +310,25 @@ ideas = {
 						}
 					}
 				}
-
 			}
-
 			research_bonus = {
 				naval_equipment = 0.10
 			}
-
 			traits = { pacific_fleet_naval_manufacturer }
-
 			modifier = {
 			}
 		}
-
 		mustangia_shipyards = {
-
 			picture = generic_naval_manufacturer_1
-
 			allowed = {
 				original_TAG = EQS
 			}
-
 			research_bonus = {
 				naval_equipment = 0.10
 			}
-
 			traits = { convoy_escort_naval_manufacturer }
-
 		}
-
 	}
-
 	country = {
 		harmonic_stagnation = {
 
@@ -1204,8 +351,9 @@ ideas = {
 				political_power_gain = -0.85
 				research_speed_factor = -0.35
 				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
 				lend_lease_tension = 0.5
-				send_volunteers_tension = 0.5
+				send_volunteers_tension = 1
 				guarantee_tension = 0.5
 				military_leader_cost_factor = 2
 			}
@@ -1233,7 +381,7 @@ ideas = {
 				political_power_gain = -0.3
 				research_speed_factor = -0.15
 				lend_lease_tension = 0.1
-				send_volunteers_tension = 0.35
+				send_volunteers_tension = 0.85
 				guarantee_tension = 0.25
 			}
 		}
@@ -1257,7 +405,7 @@ ideas = {
 				stability_factor = 0.05
 				consumer_goods_factor = 0.10
 				research_speed_factor = -0.05
-				send_volunteers_tension = 0.15
+				send_volunteers_tension = 0.65
 				guarantee_tension = 0.1
 			}
 		}
@@ -1303,8 +451,7 @@ ideas = {
 
 			modifier = {
 				stability_factor = 0.1
-				surrender_limit = 0.1
-				drift_defence_factor = 0.3
+				surrender_limit = 0.05
 			}
 		}
 	}
@@ -1438,6 +585,7 @@ ideas = {
 			modifier = {
 				stability_factor = 0.05
 				production_speed_arms_factory_factor = -0.3
+				production_speed_dockyard_factor = -0.3
 				conscription = -0.007
 				conscription_factor = -0.05
 				training_time_army_factor = 0.2
@@ -1906,9 +1054,9 @@ ideas = {
 						original_tag_to_check = CRY
 						exists = yes
 						OR = {
-							has_country_leader = { ruling_only = yes name = "Princess Mi Amore Cadenza" }
-							has_country_leader = { ruling_only = yes name = "Princess Flurry Heart" }
-							has_country_leader = { ruling_only = yes name = "Princess Twilight Sparkle" }
+							has_country_leader = { ruling_only = yes character = CRY_princess_mi_amore_cadenza }
+							has_country_leader = { ruling_only = yes character = CRY_flurry_heart }
+							has_country_leader = { ruling_only = yes character = EQS_twilight_sparkle }
 						}
 					}
 				}
@@ -2866,7 +2014,7 @@ ideas = {
 			}
 			available = {
 				has_government = democratic
-				has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+				has_country_leader = { ruling_only = yes character = EQS_princess_celestia }
 			}
 			removal_cost = -1
 			
@@ -2889,7 +2037,7 @@ ideas = {
 			}
 			available = {
 				has_government = democratic
-				has_country_leader = { ruling_only = yes name = "Princess Celestia" }
+				has_country_leader = { ruling_only = yes character = EQS_princess_celestia }
 			}
 			removal_cost = -1
 			
@@ -2906,6 +2054,64 @@ ideas = {
 
 
 	### END PROJECT MOONSHINE ###
+	country = {
+		EQS_bad_tanks = {
+			picture = chi_army_corruption 
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				experience_gain_motorized_combat_factor = -0.1
+				experience_gain_mechanized_combat_factor = -0.1
+				unit_light_armor_design_cost_factor = 1
+				unit_medium_armor_design_cost_factor = 1
+				unit_modern_armor_design_cost_factor = 1
+				unit_heavy_armor_design_cost_factor = 1
+				unit_super_heavy_armor_design_cost_factor = 1
+				unit_motorized_design_cost_factor = 1
+				unit_mechanized_design_cost_factor = 1
+				max_dig_in_factor = -0.1
+				dig_in_speed_factor = -0.1
+				trait_panzer_leader_xp_gain_factor = -0.2
+				trait_cavalry_leader_xp_gain_factor = -0.2
+			}
+		}
+		EQS_bad_tanks2 = {
+			picture = chi_army_corruption2
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				experience_gain_motorized_combat_factor = -0.1
+				experience_gain_mechanized_combat_factor = -0.1
+				unit_light_armor_design_cost_factor = 1
+				unit_medium_armor_design_cost_factor = 1
+				unit_modern_armor_design_cost_factor = 1
+				unit_heavy_armor_design_cost_factor = 1
+				unit_super_heavy_armor_design_cost_factor = 1
+				unit_motorized_design_cost_factor = 1
+				unit_mechanized_design_cost_factor = 1
+				max_dig_in_factor = -0.1
+				dig_in_speed_factor = -0.1
+			}
+		}
+		EQS_bad_tanks3 = {
+			picture = chi_army_corruption3
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				max_dig_in_factor = -0.1
+				dig_in_speed_factor = -0.1
+			}
+		}
+	}
 
 	hidden_ideas = {
 		EQS_block_manpower_demob = {

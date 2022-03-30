@@ -12,6 +12,7 @@ ability = {
 				tag = EQS
 				has_country_flag = SOL_use_gas_attack_ability_flag
 				NOT = { has_country_flag = SOL_use_gas_attack_ability_flag_2 }
+				NOT = { has_country_flag = SOL_indiscriminate_bombardment_active }
 			}
 			is_border_war = no
 		}
@@ -33,8 +34,57 @@ ability = {
 		}
 
 		cost = 0.4
-		duration = 170
-		cooldown = 490
+		duration = 160
+		cooldown = 480
+
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_breakthrough = 0.35
+				combat_offense = 0.35
+				org_damage_multiplier = 0.2
+				str_damage_multiplier = 0.2
+				days = 7
+				tooltip = ABILITY_MUSTARD_GAS_BOMBARDMENT_TOOLTIP
+			}
+		}
+	}
+	tactic_sol_gas_attack_cheap = {
+		name = ABILITY_MUSTARD_GAS_BOMBARDMENT
+		desc = ABILITY_MUSTARD_GAS_BOMBARDMENT_DESC
+
+		sound_effect = command_power_ability_offensive
+
+		type = army_leader
+
+		allowed = {
+			owner = {
+				tag = EQS
+				has_country_flag = SOL_use_gas_attack_ability_flag
+				NOT = { has_country_flag = SOL_use_gas_attack_ability_flag_2 }
+				has_country_flag = SOL_indiscriminate_bombardment_active
+			}
+			is_border_war = no
+		}
+
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_offensive_combats > 6 }
+
+				set_temp_variable = { temp = avg_offensive_combat_status }
+				check_variable = { temp > 0.45 }
+				check_variable = { ai_random > temp }
+
+				add = 2
+			}
+		}
+
+		cost = 0.2
+		duration = 160
+		cooldown = 240
 
 		one_time_effect = {
 			add_temporary_buff_to_units = {
@@ -59,6 +109,7 @@ ability = {
 			owner = {
 				tag = EQS
 				has_country_flag = SOL_use_gas_attack_ability_flag_2
+				NOT = { has_country_flag = SOL_indiscriminate_bombardment_active }
 			}
 			is_border_war = no
 		}
@@ -80,8 +131,56 @@ ability = {
 		}
 
 		cost = 0.4
-		duration = 170
-		cooldown = 490
+		duration = 160
+		cooldown = 480
+
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_breakthrough = 0.45
+				combat_offense = 0.45
+				org_damage_multiplier = 0.15
+				str_damage_multiplier = 0.15
+				days = 7
+				tooltip = ABILITY_SARIN_GAS_BOMBARDMENT_TOOLTIP
+			}
+		}
+	}
+	tactic_sol_gas_attack_2_cheap = {
+		name = ABILITY_SARIN_GAS_BOMBARDMENT
+		desc = ABILITY_SARIN_GAS_BOMBARDMENT_DESC
+
+		sound_effect = command_power_ability_offensive
+
+		type = army_leader
+
+		allowed = {
+			owner = {
+				tag = EQS
+				has_country_flag = SOL_use_gas_attack_ability_flag_2
+				has_country_flag = SOL_indiscriminate_bombardment_active
+			}
+			is_border_war = no
+		}
+
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_offensive_combats > 6 }
+
+				set_temp_variable = { temp = avg_offensive_combat_status }
+				check_variable = { temp > 0.45 }
+				check_variable = { ai_random > temp }
+
+				add = 2
+			}
+		}
+
+		cost = 0.2
+		duration = 160
+		cooldown = 240
 
 		one_time_effect = {
 			add_temporary_buff_to_units = {

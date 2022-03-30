@@ -230,7 +230,7 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 			original_tag = EQS
 			is_SOLAR_EMPIRE = yes
 			FROM = { 
-				original_tag = DRG
+				is_solar_puppet = yes
 			}
 		}
 		custom_trigger_tooltip = {
@@ -1110,10 +1110,23 @@ DIPLOMACY_JOIN_FACTION_ENABLE_TRIGGER = { #Ask to join Faction
 			FROM = {
 				OR = {
 					original_tag = NLR
+					original_tag = NLH
 					original_tag = EQR
 				}
 				has_war_with = EQS
 				EQS = { is_SOLAR_EMPIRE = yes }
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_JOIN_FACTION_BLOCKED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				original_tag = EQS
+				is_SOLAR_EMPIRE = yes
 			}
 		}
 		custom_trigger_tooltip = {
@@ -1179,6 +1192,7 @@ DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = { #Invite to faction
 		limit = {
 			OR = {
 				original_tag = NLR
+				original_tag = NLH
 				original_tag = EQR
 			}
 			has_war_with = EQS
@@ -1186,6 +1200,16 @@ DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = { #Invite to faction
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_INVITE_FACTION_BLOCKED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			original_tag = EQS
+			is_SOLAR_EMPIRE = yes
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOL_EQS_INVITE_FACTION_BLOCKED
 			always = no
 		}
 	}
@@ -1278,11 +1302,24 @@ DIPLOMACY_CALL_ALLY_ENABLE_TRIGGER = {
 	if = {
 		limit = {
 			OR = {
-				original_tag = NLR
-				original_tag = EQR
+				AND = {
+					OR = {
+						original_tag = NLR
+						original_tag = NLH
+						original_tag = EQR
+					}
+					has_war_with = EQS
+					EQS = { is_SOLAR_EMPIRE = yes }
+				}
+				AND = {
+					is_SOLAR_EMPIRE = yes
+					OR = {
+						has_war_with = NLR
+						has_war_with = NLH
+						has_war_with = EQR
+					}
+				}
 			}
-			has_war_with = EQS
-			EQS = { is_SOLAR_EMPIRE = yes }
 		}
 		custom_trigger_tooltip = {
 			tooltip = SOL_CALL_ALLY_BLOCKED_CIVIL_WAR_TT
@@ -1366,11 +1403,24 @@ DIPLOMACY_JOIN_ALLY_ENABLE_TRIGGER = {
 		limit = {
 			FROM = {
 				OR = {
-					original_tag = NLR
-					original_tag = EQR
+					AND = {
+						OR = {
+							original_tag = NLR
+							original_tag = NLH
+							original_tag = EQR
+						}
+						has_war_with = EQS
+						EQS = { is_SOLAR_EMPIRE = yes }
+					}
+					AND = {
+						is_SOLAR_EMPIRE = yes
+						OR = {
+							has_war_with = NLR
+							has_war_with = NLH
+							has_war_with = EQR
+						}
+					}
 				}
-				has_war_with = EQS
-				EQS = { is_SOLAR_EMPIRE = yes }
 			}
 		}
 		custom_trigger_tooltip = {

@@ -1,0 +1,419 @@
+ideas = {
+	tank_manufacturer = {
+		designer = yes
+		NLH_detrot = {
+			name = NLR_detrot
+		    picture = detrot
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    fast_tank_manufacturer 
+			}
+			research_bonus = {
+				armor = 0.10
+			}
+		}
+
+		NLH_nightmare = {
+			name = NLR_nightmare
+		    picture = nightmare
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    heavy_tank_manufacturer
+			}
+			research_bonus = {
+				armor = 0.10
+			}
+		}
+		
+		NLH_shoof = {
+			name = NLR_shoof 
+            picture = shoof
+			allowed = {
+				original_tag = NLH
+			}
+			visible = {
+				has_country_flag = NLR_equestrian_companies
+			}
+			available = {
+				hidden_trigger = {
+					has_country_flag = NLR_equestrian_companies
+				}
+			}
+			traits = { 
+			    medium_tank_manufacturer 
+			}
+			research_bonus = {
+				armor = 0.10
+			}
+		}
+	}
+
+	materiel_manufacturer = {
+		designer = yes
+		NLH_thunder = {
+			name = NLR_thunder
+		    picture = thunder
+			allowed = {
+				original_tag = NLH
+			}
+			
+			traits = { 
+			    artillery_manufacturer 
+			}
+			research_bonus = {
+				artillery = 0.10
+			}
+		}
+		
+		NLH_m_arsenal = {
+			name = NLR_m_arsenal
+		    picture = m_arsenal
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    infantry_equipment_manufacturer 
+			}
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+		}
+
+		NLH_triumph = {
+			name = NLR_triumph
+		    picture = triumph
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    motorized_equipment_manufacturer 
+			}
+			research_bonus = {
+				motorized_equipment = 0.10
+				mot_rockets = 0.50
+			}
+		}
+	}
+	
+	industrial_concern = {
+		NLH_imperial = {
+			name = NLR_imperial
+		    picture = imperial
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    industrial_concern 
+			}
+			research_bonus = {
+				industry = 0.10
+			}
+		}
+
+		NLH_arcane = {
+			name = NLR_arcane
+		    picture = arcane
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    electronics_concern 
+			}
+			research_bonus = {
+				electronics = 0.10
+			}
+		}
+	}
+	
+	aircraft_manufacturer = {
+		designer = yes
+		NLH_moonlight = {
+			name = NLR_moonlight
+		    picture = moonlight
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    light_aircraft_manufacturer 
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+		}
+
+		NLH_starfall = {
+			name = NLR_starfall
+		    picture = starfall
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    medium_aircraft_manufacturer 
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+		}
+		
+		NLH_northern = {
+			name = NLR_northern
+		    picture = northern
+			allowed = {
+				original_tag = NLH
+			}
+			visible = {
+				has_country_flag = NLR_equestrian_companies
+			}
+			available = {
+				hidden_trigger = {
+					has_country_flag = NLR_equestrian_companies
+				}
+			}
+			traits = { 
+			    heavy_aircraft_manufacturer 
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+		}
+		
+		NLH_ultramarine = {
+			name = NLR_ultramarine
+		    picture = EQS_ultramarine
+			allowed = {
+				original_tag = NLH
+			}
+			visible = {
+				has_country_flag = NLR_equestrian_companies
+			}
+			available = {
+				hidden_trigger = {
+					has_country_flag = NLR_equestrian_companies
+				}
+			}
+			traits = { 
+			    naval_aircraft_manufacturer 
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+		}
+		
+		NLH_stratus = {
+			name = NLR_stratus
+		    picture = EQS_stratus
+			allowed = {
+				original_tag = NLH
+			}
+			visible = {
+				has_country_flag = NLR_equestrian_companies
+			}
+			available = {
+				hidden_trigger = {
+					has_country_flag = NLR_equestrian_companies
+				}
+			}
+			traits = { 
+			    CAS_manufacturer 
+			}
+			research_bonus = {
+				air_equipment = 0.10
+			}
+		}
+	}
+	
+	naval_manufacturer = {
+		designer = yes
+		NLH_orca = {
+			name = NLR_orca
+		    picture = orca
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    convoy_escort_naval_manufacturer 
+			}
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+		}
+
+		NLH_moonglade = {
+			name = NLR_moonglade
+		    picture = siemens
+			allowed = {
+				original_tag = NLH
+			}
+			traits = { 
+			    coastal_defence_naval_manufacturer 
+			}
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+		}
+	}
+	country = {
+		NLR_recruitment_drive = {
+			picture = NLR_bats3_idea
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				weekly_manpower = 4000
+				army_org_factor = -0.1
+				training_time_factor = -0.2
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+		}
+		NLR_radio_broadcasts = {
+			picture = NLR_radio_broadcasts
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			available = {
+				NLH = {
+					NOT = {
+						exists = no
+						is_subject_of = EQS
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				stability_weekly = -0.002
+				democratic_drift = 0.02
+			}
+			targeted_modifier = { tag = NLH attack_bonus_against = -0.1 }
+		}
+		NLR_airland_battle = {
+			picture = nlh_airland_doctrine
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				air_cas_efficiency = 0.15
+				air_cas_present_factor = 0.15
+				air_fuel_consumption_factor = -0.1
+				experience_gain_air = 0.05
+			}
+		}
+		NLR_mountain_redoubts = {
+			picture = nlh_mountain_redoubt
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				no_supply_grace = 48
+				terrain_penalty_reduction = 0.1
+				army_core_defence_factor = 0.1
+				pocket_penalty = -0.2
+			}
+		}
+		NLR_masters_of_the_night = {
+			picture = lone_princess_luna
+
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				land_night_attack = 0.2
+				air_night_penalty = -0.2
+			}
+		}
+		NLR_war_rules_1 = {
+            allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NLR_bats0_idea
+			
+			modifier = {
+				army_attack_factor = -0.10
+				war_support_factor = 0.075
+				experience_gain_factor = 0.2
+			}
+		}
+		
+		NLR_war_rules_2 = {
+            allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NLR_bats2_idea
+			
+			modifier = {
+				army_attack_factor = -0.025
+				war_support_factor = 0.025
+				experience_gain_factor = 0.05
+			}
+		}
+		
+		NLR_war_rules_3 = {
+            allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NLR_bats3_idea
+			
+			modifier = {
+				army_attack_factor = 0.10
+				war_support_factor = -0.10
+				experience_gain_factor = -0.20
+			}
+		}
+		NLR_manehattan_industrial_connections = {
+			allowed = { 
+			    always = no 
+			}
+			removal_cost = -1
+			picture = man_five_year_plan_tank
+			
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+		}
+		NLR_our_final_march = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = night_guards
+			available = {
+				event_target:solar_empire = {
+					NOT = {
+						exists = no
+						is_subject = yes
+						has_capitulated = yes
+					}
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.1
+				surrender_limit = 0.1
+				mobilization_speed = 0.1
+				conscription_factor = 0.1
+			}
+		}
+	}
+}

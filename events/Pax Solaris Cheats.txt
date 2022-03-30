@@ -150,13 +150,75 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.9
-	title = ""
+	title = "Magic Test Event"
 	is_triggered_only = yes
 	desc = ""
 	option = { 
-		name = "End Puppet"
-		set_country_flag = SOL_twilight_ascended
-		add_ideas = sol_sunrise_sparkle
+		name = "Enable Magic"
+		set_country_flag = sol_has_unlocked_magic
+		set_variable = { var = sol_magic_stored_progress_bar_pos value = 0 }
+		set_variable = { var = sol_magic_spell_cost^1 value = 80 }
+		set_variable = { var = sol_magic_spell_cost^2 value = 80 }
+		set_variable = { var = sol_magic_spell_cost^3 value = 100 }
+		set_variable = { var = sol_magic_spell_cost^4 value = 120 }
+		set_variable = { var = sol_magic_spell_cost^5 value = 200 }
+		set_variable = { var = sol_magic_spell_cost^6 value = 350 }
+		set_variable = { var = sol_magic_spell_duration^1 value = 80 }
+		set_variable = { var = sol_magic_spell_duration^2 value = 80 }
+		set_variable = { var = sol_magic_spell_duration^3 value = 60 }
+		set_variable = { var = sol_magic_spell_duration^4 value = 60 }
+		set_variable = { var = sol_magic_spell_duration^5 value = 60 }
+		set_variable = { var = sol_magic_spell_duration^6 value = 60 }
+		set_variable = { var = daybreaker_magic_reserves value = 120 }
+		set_variable = { var = daybreaker_magic_max value = 120 }
+		set_variable = { var = daybreaker_magic_regeneration value = 0.2 }
+		set_variable = { var = sol_magic_skill_icon_frame_0 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_1 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_2 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_3 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_4 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_5 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_6 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_7 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_8 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_9 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_10 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_11 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_12 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_13 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_14 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_15 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_16 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_17 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_18 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_19 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_20 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_21 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_22 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_23 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_24 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_25 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_26 value = 2 }
+		set_variable = { var = sol_magic_skill_icon_frame_27 value = 2 }
+		set_variable = { var = daybreaker_current_exp value = 0 }
+		set_variable = { var = daybreaker_exp_to_lv value = 120 }
+		set_variable = { var = daybreaker_skill_lv value = 0 }
+		set_technology = { tech_flame_wraiths = 1 popup = no }
+	}
+	option = {
+		name = "+10 Perk Points"
+		add_to_variable = { var = sol_magic_perk_point_num value = 10 }
+		SOL_calculate_magic = yes
+	}
+	option = {
+		name = "+10 Magic"
+		add_to_variable = { var = daybreaker_magic_reserves value = 10 }
+		SOL_calculate_magic = yes
+	}
+	option = {
+		name = "+40 EXP"
+		add_to_variable = { var = daybreaker_current_exp value = 40 }
+		SOL_calculate_magic = yes
 	}
 }
 country_event = {
@@ -212,37 +274,26 @@ country_event = {
 	id = paxsolaristest.13
 	title = "Commandos"
 	is_triggered_only = yes
-	desc = ""
-	option = { 
-		name = "Activate"
-		clr_country_flag = SOL_recall_pegasi_decision_in_progress_flag
-		set_country_flag = SOL_unlocked_dispatch_mtf_ability_flag
-		division_template = {
-			name = "Inquisitorial Strike Team"
-			division_names_group = EQS_PAR_02
-			is_locked = yes
-			regiments = {
-				pegasi = { x = 0 y = 0 }
-				pegasi = { x = 0 y = 1 }
-				pegasi = { x = 0 y = 2 }
-				pegasi = { x = 0 y = 3 }
-				pegasi = { x = 0 y = 4 }
-				pegasi = { x = 1 y = 0 }
-				pegasi = { x = 1 y = 1 }
-				pegasi = { x = 1 y = 2 }
-				pegasi = { x = 1 y = 3 }
-				pegasi = { x = 1 y = 4 }
+	desc = paxsolaristest.13.d
+	option = {
+		name = "Set Flags"
+		SOL_set_state_flags_for_public_works = yes
+	}
+	option = {
+		name = "Subtract"
+		every_state = {
+			limit = {
+				OR = {
+					state = 316
+					state = 319
+					state = 247
+					state = 246
+					state = 291
+				}
 			}
-			support = {
-				unicorn_company = { x = 0 y = 0 }
-				recon = { x = 0 y = 1 }
-				signal_company = { x = 0 y = 2 }
-				artillery = { x = 0 y = 3 }
-			}
-			priority = 2
+			EQS = { add_to_variable = { SOL_public_works_num_states^PREV.SOL_public_works_region_id = -1 } }
+			clear_variable = SOL_public_works_region_id
 		}
-		set_variable = { SOL_mobile_task_force_deployed_var = 0 }
-		set_variable = { SOL_mobile_task_force_in_reserve_var = 10 }
 	}
 }
 country_event = {
@@ -276,21 +327,93 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.16
-	title = "Resistance Targets"
+	title = "Spawn Wraiths"
 	is_triggered_only = yes
 	desc = ""
 	option = {
-		name = "OK"
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
-		SOL_calculate_resistance_target = yes
+		name = "Create"
+		set_variable = { var = sol_flame_wraiths_to_deploy value = 1 }
+		while_loop_effect = {
+			limit = {
+				is_in_array = { sol_flame_wraiths_deployed = sol_flame_wraiths_to_deploy }
+			}
+			add_to_variable = { var = sol_flame_wraiths_to_deploy value = 1 }
+		}
+		meta_effect = {
+			text = {	
+				division_template = {
+					name = "Wraith Group [WRAITH_NUM]"
+					division_names_group = EQS_MAG_02
+					is_locked = yes
+					priority = 2
+					template_counter = 66
+					regiments = {
+						frame_wraiths = { x = 0 y = 0 }
+						frame_wraiths = { x = 0 y = 1 }
+						frame_wraiths = { x = 0 y = 2 }
+						frame_wraiths = { x = 1 y = 0 }
+						frame_wraiths = { x = 1 y = 1 }
+						frame_wraiths = { x = 1 y = 2 }
+						frame_wraiths = { x = 1 y = 3 }
+						frame_wraiths = { x = 2 y = 0 }
+						frame_wraiths = { x = 2 y = 1 }
+						frame_wraiths = { x = 2 y = 2 }
+					}
+				} 
+				3 = {
+					create_unit = { division = "name = \"Flame Wraith Division\" division_template = \"Wraith Group [WRAITH_NUM]\" start_experience_factor = 1 start_equipment_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Flame Wraith Division\" division_template = \"Wraith Group [WRAITH_NUM]\" start_experience_factor = 1 start_equipment_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = no }
+					create_unit = { division = "name = \"Flame Wraith Division\" division_template = \"Wraith Group [WRAITH_NUM]\" start_experience_factor = 1 start_equipment_factor = 1" owner = ROOT allow_spawning_on_enemy_provs = no }
+				}
+			}
+			WRAITH_NUM = "[?sol_flame_wraiths_to_deploy|.0]"
+		}
+		add_to_array = { sol_flame_wraiths_deployed = sol_flame_wraiths_to_deploy }
+		if = {
+			limit = { NOT = { any_unit_leader = { has_trait = flame_revenant } } }
+			create_corps_commander = {
+				name = "Hurricane"
+				portrait_path = "gfx/leaders/EQS/Commander_Hurricane.tga"
+				desc = hurricane_desc
+				traits = { flame_revenant sky_commander }
+				skill = 4
+				attack_skill = 4
+				defense_skill = 2
+				planning_skill = 4
+				logistics_skill = 3
+			}
+		}
+	}
+	option = {
+		name = "Delete"
+		meta_effect = {
+			text = {	
+				delete_unit_template_and_units = { division_template = "Wraith Group [WRAITH_NUM]" }
+			}
+			WRAITH_NUM = "[?sol_flame_wraiths_deployed^0|.0]"
+		}
+		remove_from_array = { sol_flame_wraiths_deployed = sol_flame_wraiths_deployed^0 }
+		if = {
+			limit = { check_variable = { sol_flame_wraiths_deployed^num < 1 } }
+			every_unit_leader = {
+				limit = { has_trait = flame_revenant }
+				retire = yes
+			}
+		}
+	}
+	option = {
+		name = "Hurricane"
+		create_corps_commander = {
+			name = "Hurricane"
+			portrait_path = "gfx/leaders/EQS/Commander_Hurricane.tga"
+			desc = hurricane_desc
+			traits = { flame_revenant sky_commander }
+			skill = 4
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 3
+		}
 	}
 }
 
@@ -313,13 +436,25 @@ country_event = {
 country_event = {
 	id = paxsolaristest.18
 	title = "Compliance Test"
-	immediate = {
-		224 = { set_variable = { EQS.sol_state_compliance = compliance_speed } }
-	}
 	is_triggered_only = yes
 	desc = paxsolaristest.18.d
 	option = {
-		name = ""
+		name = "WotE"
+		set_global_flag = sol_war_of_the_eclipse_begun
+		set_country_flag = march_on_canterlot
+		hidden_effect = { mark_focus_tree_layout_dirty = yes }
+	}
+	option = {
+		name = "Post-HRM"
+		set_country_flag = sol_resistance_decapitated
+		set_global_flag = sol_war_of_the_eclipse_concluded
+		hidden_effect = { mark_focus_tree_layout_dirty = yes }
+	}
+	option = {
+		name = "Tech + Conquest"
+		set_country_flag = SOL_unlocked_advanced_conquest
+		set_country_flag = SOL_rebuilt_science_base
+		hidden_effect = { mark_focus_tree_layout_dirty = yes }
 	}
 }
 country_event = {
@@ -358,25 +493,60 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.21
-	title = "Urban Planning"
+	title = "Attack"
 	is_triggered_only = yes
 	desc = ""
 	hidden = yes
 	option = {
-		name = "Tear"
-		complete_national_focus = SOL_new_urban_planning
-		set_variable = { var = sol_urban_planning_duration value = 3 }
-		complete_national_focus = SOL_agricultural_mechanisation
-		set_variable = { var = sol_agmech_duration value = 3 }
-		complete_national_focus = SOL_public_works_program
-		set_variable = { var = sol_public_works_duration value = 5 }
-		complete_national_focus = SOL_secure_supply_networks
-		set_variable = { var = sol_infrastructure_hardening_duration value = 2 }
+		name = "Aquileia"
+		every_state = {
+			limit = {
+				OR = {
+					state = 380
+					state = 396
+					state = 379
+					state = 381
+					state = 497
+					state = 378
+					state = 447
+					state = 399
+					state = 433 
+					state = 498 
+					state = 538 
+					state = 520 
+					state = 434 
+					state = 441 
+					state = 440 
+					state = 666
+				}
+			}
+			transfer_state_to = JER
+		}
 	}
 	option = {
-		name = "Upgrade"
-		set_variable = { var = sol_agmech_duration value = 250 }
-		set_variable = { var = sol_urban_planning_duration value = 200 }	
+		name = "GRF + YAK"
+		GRF = { set_country_flag = SOL_annexation_target }
+		YAK = { set_country_flag = SOL_annexation_target }
+	}
+	option = {
+		name = "Clear"
+		clr_country_flag = SOL_preparing_to_attack_country 
+		set_country_flag = SOL_uniting_equestria_decision_unlock
+	}
+	option = {
+		name = "Trolling"
+		PLB = { 
+			annex_country = {
+			    target = YAK
+			    transfer_troops = yes
+			}
+		}
+	}
+	option = {
+		name = "Trolling 2"
+		PLB = { 
+			release = YAK
+		}
 	}
 }
 country_event = {
@@ -402,115 +572,122 @@ country_event = {
 }
 country_event = {
 	id = paxsolaristest.23
-	title = "Focus Trees"
+	title = "Teleportation"
 	is_triggered_only = yes
 	desc = ""
 	option = { 
-		name = "Military"
-		set_country_flag = sol_load_war_focus
-		clr_country_flag = sol_load_prep_focus
-		clr_country_flag = sol_load_peace_focus
-		mark_focus_tree_layout_dirty = yes
+		name = "Enable"
+		set_country_flag = sol_has_unlocked_teleportation
 	}
 	option = { 
-		name = "Prep"
-		clr_country_flag = sol_load_war_focus
-		set_country_flag = sol_load_prep_focus
-		clr_country_flag = sol_load_peace_focus
-		mark_focus_tree_layout_dirty = yes
-	}
-	option = { 
-		name = "Peace"
-		clr_country_flag = sol_load_war_focus
-		clr_country_flag = sol_load_prep_focus
-		set_country_flag = sol_load_peace_focus
-		mark_focus_tree_layout_dirty = yes
+		name = "Clear Cooldown"
+		set_variable = { SOL_teleport_armies_cooldown_var = 0 }
 	}
 }
 country_event = {
 	id = paxsolaristest.24
-	title = "Daybreaker Gaming"
+	title = "State Categories"
 	is_triggered_only = yes
-	desc = ""
+	desc = paxsolaristest.24.d
+	immediate = {
+		hidden_effect = {
+			SOL_set_state_flags_for_public_works = yes
+			set_variable = { current_region = 10 }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = metropolis
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_metropolis_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = large_city
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_large_city_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = city
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_city_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = large_town
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_large_town_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = town
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_town_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = rural
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_rural_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = pastoral
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_pastoral_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+			every_owned_state = {
+				limit = { 
+					has_variable = SOL_public_works_region_id
+					check_variable = { SOL_public_works_region_id < 11 }
+					has_state_category = wasteland
+				}
+				EQS = { add_to_variable = { SOL_state_category_num = 1 } }
+			}
+			set_variable = { SOL_state_wasteland_num = SOL_state_category_num }
+			set_variable = { SOL_state_category_num = 0 }
+		}
+	}
 	option = { 
-		name = "Daybreaker Gaming"
-		set_global_flag = SOL_super_event_zigger_show
+		name = "Okay"
 	}
 }
 country_event = {
 	id = paxsolaristest.25
-	title = "Compliance Tester"
+	title = "Majority Race"
 	is_triggered_only = yes
 	desc = ""
 	option = { 
 		name = "Calculate"
 		SOL_calculate_race = yes
-	}
-	option = { 
-		name = "Settlements"
-		6 = {
-			add_resource = {
-				type = crystals
-				amount = 12
-			}
-			add_manpower = 120000
-			add_to_variable = { var = sol_pony_population_k value = 120 }
-			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
-		}
-		7 = {
-			add_resource = {
-				type = crystals
-				amount = 8
-			}
-			add_manpower = 80000
-			add_to_variable = { var = sol_pony_population_k value = 80 }
-			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
-		}
-		8 = {
-			add_resource = {
-				type = crystals
-				amount = 10
-			}
-			add_manpower = 100000
-			add_to_variable = { var = sol_pony_population_k value = 100 }
-			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
-		}
-		9 = {
-			add_resource = {
-				type = crystals
-				amount = 10
-			}
-			add_manpower = 90000
-			add_to_variable = { var = sol_pony_population_k value = 90 }
-			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
-		}
-		10 = {
-			add_manpower = 20000
-			add_to_variable = { var = sol_pony_population_k value = 20 }
-			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
-		}
-		328 = {
-			add_manpower = 10000
-			add_to_variable = { var = sol_pony_population_k value = 10 }
-			hidden_effect = { add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			custom_effect_tooltip = SOL_extensive_pony_settlement_tt
-		}
-	}
-	option = { 
-		name = "Change Limit"
-		clr_country_flag = SOL_buffalo_problems_flag_work
-		set_country_flag = SOL_buffalo_problems_flag_genocide
-	}
-	option = { 
-		name = "Set Compliance"
-		89 = {
-			set_variable = { var = compliance value = 20 }
-		}
 	}
 }
 country_event = {

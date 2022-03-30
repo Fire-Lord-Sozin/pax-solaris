@@ -28,6 +28,10 @@ spriteTypes = {
 		textureFile = "gfx/interface/SOL_hardened_infrastructure.dds"
 	}
 	spriteType = {
+		name = "GFX_SOL_mechanised_agriculture"
+		textureFile = "gfx/interface/SOL_mechanised_agriculture.dds"
+	}
+	spriteType = {
 		name = "GFX_SOL_genocidal_occupation"
 		textureFile = "gfx/interface/SOL_genocidal_occupation.dds"
 	}
@@ -38,5 +42,17 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_SOL_policed_ghettos"
 		textureFile = "gfx/interface/SOL_policed_ghettos.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_extensive_pony_settlements"
+		textureFile = "gfx/interface/SOL_extensive_pony_settlements.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_pony_settlements"
+		textureFile = "gfx/interface/SOL_pony_settlements.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_resettlement_occupation"
+		textureFile = "gfx/interface/SOL_mandatory_resettlement.dds"
 	}
 }

@@ -139,4 +139,32 @@ spriteTypes = {
 		name = "GFX_decision_six_diamonds"
 		texturefile = "gfx/interface/decisions/decision_six_diamonds.dds"
 	}
+	spriteType = {
+		name = "GFX_decision_solar_unite_equestria"
+		texturefile = "gfx/interface/decisions/decision_solar_unite_equestria.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solar_expand_domain"
+		texturefile = "gfx/interface/decisions/decision_solar_expand_domain.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solar_form_SMC"
+		texturefile = "gfx/interface/decisions/decision_solar_form_SMC.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_imperial_royal_guard"
+		texturefile = "gfx/interface/decisions/decision_imperial_royal_guard.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solar_royal_guard_deploy"
+		texturefile = "gfx/interface/decisions/decision_solar_royal_guard_deploy.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_counterterrorism"
+		texturefile = "gfx/interface/decisions/decision_counterterrorism.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_solar_purge"
+		texturefile = "gfx/interface/decisions/decision_solar_purge.dds"
+	}
 }

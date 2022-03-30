@@ -6,7 +6,7 @@ focus_tree = {
 
 		modifier = {
 			add = 15
-			tag = NLR
+			tag = NLH
 			EQS = { has_country_flag = sol_ascension_luna_rebellion }
 		}
 	}
@@ -37,7 +37,7 @@ shared_focus = {
 			limit = { 
 				has_country_leader = {
 					ruling_only = yes
-					name = "Luna"
+					character = EQS_princess_luna
 				}
 			}
 			country_event = { id = lunarep.1 hours = 1 }
@@ -118,9 +118,9 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus NLH_thestral_militias"
 		army_experience = 25
-		add_equipment_to_stockpile = { type = artillery_equipment amount = 150 producer = NLR }
-		add_equipment_to_stockpile = { type = support_equipment amount = 150 producer = NLR }
-		add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = NLR }
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 150 producer = NLH }
+		add_equipment_to_stockpile = { type = support_equipment amount = 150 producer = NLH }
+		add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = NLH }
 		custom_effect_tooltip = SOL_edit_paramilitary_template
 		hidden_effect = {
 			set_division_template_lock = {
@@ -146,7 +146,7 @@ shared_focus = {
 		}
 		custom_effect_tooltip = NLH_deploy_paramilitary_troops
 		hidden_effect = {
-			load_oob = "NLR_SOL_Civil_War_Paramilitaries"
+			SOL_lunar_spawn_paramilitaries = yes
 		}
 		custom_effect_tooltip = nlr_thestrals
 	}
@@ -250,10 +250,10 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus NLH_lessons_of_the_shadowbolts"
 		air_experience = 50
-		add_tech_bonus = {
-			name = air_bonus
-			bonus = 2
-			uses = 1
+		add_doctrine_cost_reduction = {
+			name = air_doc_bonus
+			cost_reduction = 0.5
+			uses = 2
 			category = air_doctrine
 		}
 		if = {
@@ -269,7 +269,7 @@ shared_focus = {
 			add_equipment_to_stockpile = { 
 				type = fighter_equipment 
 				amount = 75 
-				producer = NLR 
+				producer = NLH
 			}
 		}
 		else = {
@@ -285,7 +285,7 @@ shared_focus = {
 			add_equipment_to_stockpile = { 
 				type = fighter_equipment 
 				amount = 50 
-				producer = NLR 
+				producer = NLH
 			}
 		}
 		custom_effect_tooltip = nlr_thestrals
@@ -397,9 +397,9 @@ shared_focus = {
 				limit = {
 					NOT = {
 						tag = EQS
-						tag = NLR
+						tag = NLH
 						is_in_faction_with = EQS
-						is_in_faction_with = NLR
+						is_in_faction_with = NLH
 						has_idea = detached_country
 						has_idea = communal_society
 						has_idea = tribal_society
@@ -463,7 +463,7 @@ shared_focus = {
 			add_equipment_to_stockpile = { 
 				type = CAS_equipment 
 				amount = 50 
-				producer = NLR 
+				producer = NLH
 			}
 		}
 		else = {
@@ -479,7 +479,7 @@ shared_focus = {
 			add_equipment_to_stockpile = { 
 				type = CAS_equipment 
 				amount = 25 
-				producer = NLR 
+				producer = NLH
 			}
 		}
 		add_ideas = NLR_airland_battle
@@ -596,7 +596,7 @@ shared_focus = {
 			}
 			EQR = {
 				add_opinion_modifier = { 
-					target = NLR
+					target = NLH
 					modifier = NLR_Republican_Cooperation
 				} 
 			}

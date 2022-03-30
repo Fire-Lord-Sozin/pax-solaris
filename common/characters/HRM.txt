@@ -1,0 +1,559 @@
+characters = {
+	HRM_starlight_and_trixie = {
+		name = EQS_starlight_and_trixie
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SOL/Starlight_Trixie.tga"
+			}
+		}
+		country_leader = {
+			expire = "1965.1.1"
+			ideology = socialism
+			traits = { revolutionary_duo }
+		}
+		gender = female
+	}
+	HRM_golden_delicious={
+		name=EQS_golden_delicious
+		portraits={
+			army={
+				small="GFX_idea_Golden_Delicious"
+				large="gfx/leaders/BAL/Golden Delicious.tga"
+			}
+			civilian={
+				large="gfx/leaders/BAL/Golden Delicious.tga"
+			}
+		}
+		country_leader={
+			desc="EQS_golden_delicious_desc"
+			ideology=syndicalism
+			traits={ hero_of_the_revolution }
+			expire="1965.1.1.1"
+		}
+	}
+	HRM_sunset_shimmer = {
+		name = EQS_sunset_shimmer
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SOL/Sunset.tga"
+			}
+		}
+		country_leader = {
+			expire = "1965.1.1"
+			ideology = fascism_ideology
+		}
+		gender = female
+	}
+	HRM_trixie_lulamoon = {
+		name = HRM_trixie_lulamoon
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SOL/Trixie.tga"
+			}
+			army = {
+				large = "gfx/leaders/SOL/Trixie.tga"
+				small="GFX_idea_trixie"
+			}
+		}
+		corps_commander = {
+			traits = { pony_race_trait ambusher trait_unpredictable trait_reckless trickster expert_improviser }
+			skill = 6
+			attack_skill = 5
+			defense_skill = 5
+			planning_skill = 5
+			logistics_skill = 4
+		}
+		gender = female
+	}
+	HRM_mage_meadowbrook={
+		name=HRM_mage_meadowbrook
+		portraits={
+			civilian={
+				small="GFX_idea_BAL_meadowbrook"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = HRM_mage_meadowbrook
+			traits = { sol_healing_expert }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_firefly = {
+		name = HRM_firefly
+		portraits = {
+			army = {
+				large = "gfx/leaders/MAN/Firefly.tga"
+				small = "GFX_idea_MAN_firefly"
+			}
+		}
+		corps_commander = {
+			traits = { pony_race_trait fast_planner organisational_leader career_officer defensive_doctrine }
+			skill = 5
+			attack_skill = 4
+			defense_skill = 4
+			planning_skill = 4
+			logistics_skill = 4
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = HRM_firefly
+			traits = { army_chief_defensive_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_fairy_light = {
+		name = HRM_fairy_light
+		portraits = {
+			army = {
+				large = "gfx/leaders/MAN/FairyLight.tga"
+				small = "GFX_idea_MAN_fairy_light"
+			}
+		}
+		corps_commander = {
+			traits = { pony_race_trait inflexible_strategist hill_fighter urban_assault_specialist adaptable medical_expert }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = HRM_fairy_light
+			traits = { army_chief_organizational_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_on_stage = {
+		name = HRM_on_stage
+		portraits = {
+			civilian = {
+				small = "GFX_idea_MAN_pony1"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = HRM_on_stage
+			traits = { army_chief_morale_2 }
+			available = {
+				if = {
+					limit = { tag = HRM }
+					custom_trigger_tooltip = {
+						tooltip = HRM_proven_ourselves_to_the_harmonists
+						has_country_flag = HRM_the_rebirth_of_harmony_flag
+					}
+				}
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_sunny_shine = {
+		name = HRM_sunny_shine
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_sunny_shine"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = HRM_sunny_shine
+			visible = {
+				is_SOLAR_EMPIRE = no
+			}
+			traits = { army_logistics_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_duke_dapper = {
+		name = HRM_duke_dapper
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_duke_dapper"
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = HRM_duke_dapper
+			research_bonus = {
+				infantry_weapons = 0.05
+				armor = 0.05
+				air_equipment = 0.05
+			}
+			available = {
+				if = {
+					limit = { tag = HRM }
+					custom_trigger_tooltip = {
+						tooltip = HRM_proven_ourselves_to_the_harmonists
+						has_country_flag = HRM_the_rebirth_of_harmony_flag
+					}
+				}
+			}
+			traits = { wartime_innovator }
+		}
+	}
+	HRM_flash_force = {
+		name = HRM_flash_force
+		portraits = {
+			army = {
+				large = "gfx/leaders/MAN/FlashForce.tga"
+				small = "GFX_idea_MAN_flash_force"
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = HRM_flash_force
+			modifier = {
+				land_doctrine_cost_factor = -0.05
+			}
+			traits = { military_theorist }
+		}
+	}
+	HRM_maverick_flare = {
+		name = HRM_maverick_flare
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_maverick_flare"
+				large = "gfx/leaders/MAN/MaverickFlare.tga"
+			}
+		}
+		corps_commander = {
+			traits = { pony_race_trait war_hero media_personality infantry_officer }
+			skill = 4
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = high_command
+			idea_token = HRM_maverick_flare
+			traits = { army_infantry_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_purple_dart = {
+		name = HRM_purple_dart
+		portraits = {
+			army = {
+				large = "gfx/leaders/MAN/PurpleDart.tga"
+				small = "GFX_idea_MAN_purple_dart"
+			}
+		}
+		corps_commander = {
+			traits = { pony_race_trait scavenger panzer_leader trait_engineer }
+			skill = 5
+			attack_skill = 4
+			defense_skill = 4
+			planning_skill = 4
+			logistics_skill = 4
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = HRM_purple_dart
+			traits = { army_chief_maneuver_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_fairweather_breeze = { 
+		name = HRM_fairweather_breeze
+		portraits = {
+			army = {
+				large = "gfx/leaders/MAN/Fairweather.tga"
+				small = "GFX_idea_MAN_fairweather"
+			}
+		}
+		corps_commander = {
+			traits = { pony_race_trait naval_lineage navy_career_officer ironside }
+			skill = 4
+			attack_skill = 3
+			defense_skill = 3
+			maneuvering_skill = 4
+			coordination_skill = 3
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = HRM_fairweather_breeze
+			traits = { navy_chief_decisive_battle_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_coloratura = {
+		name = HRM_coloratura
+		portraits = {
+			civilian = {
+				small = "GFX_idea_MAN_coloratura"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = HRM_coloratura
+			modifier = { 
+				army_morale_factor = 0.025
+			}
+			traits = { inspiration_leader }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_fine_line = {
+		name = HRM_fine_line
+		portraits = {
+			civilian = {
+				small = "GFX_idea_MAN_fine_line"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = HRM_fine_line
+			modifier = { 
+				trade_laws_cost_factor = -0.25
+				economy_cost_factor = -0.25
+			}
+			traits = { financial_expert }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_uncle_orange = {
+		name = HRM_uncle_orange
+		portraits = {
+			civilian = {
+				small = "GFX_idea_MAN_uncle_orange"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = HRM_uncle_orange
+			visible = {
+				is_SOLAR_EMPIRE = no
+			}
+			traits = { smooth_talking_charmer }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_aunt_orange = {
+		name = HRM_aunt_orange
+		portraits = {
+			civilian = {
+				small = "GFX_idea_MAN_aunt_orange"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = HRM_aunt_orange
+			visible = {
+				is_SOLAR_EMPIRE = no
+			}
+			traits = { lady_socialite }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_joe_pescolt = {
+		name = HRM_joe_pescolt
+		portraits = {
+			civilian = {
+				small = "GFX_idea_MAN_joe_pescolt"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = HRM_joe_pescolt
+			traits = { captain_of_industry }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_velvet_arrow = {
+		name = HRM_velvet_arrow
+		portraits = {
+			civilian = {
+				small = "GFX_idea_unknown_advisor6"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = HRM_velvet_arrow
+			visible = { has_country_flag = sol_velvet_joined_resistance }
+			traits = { sol_codebreaker }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_wind_walker = {
+		name = HRM_wind_walker
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_wind_walker"
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = HRM_wind_walker
+			traits = { air_air_superiority_3 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_misty_fly = {
+		name = HRM_misty_fly
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_misty_fly"
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = HRM_misty_fly
+			traits = { air_chief_ground_support_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_vapor_trail = {
+		name = HRM_vapor_trail
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_vapor_trail"
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = HRM_vapor_trail
+			traits = { air_air_combat_training_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_night_thunder = {
+		name = HRM_night_thunder
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_night_thunder"
+			}
+		}	
+		advisor = {
+			slot = navy_chief
+			idea_token = HRM_night_thunder
+			traits = { navy_chief_commerce_raiding_2 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_tall_order = {
+		name = HRM_tall_order 
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_tall_order"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = HRM_tall_order
+			traits = { quartermaster_general }
+			ai_will_do = {
+				factor = 1
+			}
+			available = { 
+				if = {
+					limit = { tag = HRM }
+					custom_trigger_tooltip = {
+						tooltip = HRM_proven_ourselves_to_the_harmonists
+						has_country_flag = HRM_the_rebirth_of_harmony_flag
+					}
+				}
+			}
+		}
+	}
+	HRM_raspberry_beret = {
+		name = HRM_raspberry_beret
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_raspberry_beret"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = HRM_raspberry_beret
+			traits = { army_commando_1 }
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	HRM_mr_stripes = {
+		name = HRM_mr_stripes
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_mr_stripes"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = HRM_mr_stripes
+			traits = { armaments_organizer }
+			modifier = { 
+				industrial_capacity_factory = 0.05
+			}
+			ai_will_do = {
+				factor = 1
+			}
+			available = { 
+				if = {
+					limit = { tag = HRM }
+					custom_trigger_tooltip = {
+						tooltip = HRM_proven_ourselves_to_the_harmonists
+						has_country_flag = HRM_the_rebirth_of_harmony_flag
+					}
+				}
+			}
+		}
+	}
+	HRM_moondancer = {
+		name = HRM_moondancer
+		portraits = {
+			army = {
+				small = "GFX_idea_MAN_moondancer"
+			}
+		}	
+		advisor = {
+			slot = theorist
+			idea_token = HRM_moondancer
+			research_bonus = {
+				rocketry = 0.05
+				nuclear = 0.05
+				magical_tech = 0.1
+			}
+			traits = { bookworm }
+		}
+		gender = female
+	}
+}

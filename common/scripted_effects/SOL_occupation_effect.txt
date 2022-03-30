@@ -10,200 +10,155 @@ SOL_calculate_race = {
 	#8 - Minotaur
 	#9 - Diamond Dog
 	#10 - Zebra
+	#11 - Eastern Pony
 	every_state = {
 		limit = { 
 			OR = {
-				is_owned_by = EQS
-				is_owned_by = CRY
-				is_owned_by = STG
-				is_owned_by = EQC
-				is_owned_by = NTR
-				is_owned_by = WAT
-				is_owned_by = FIR
-				is_owned_by = FBK
-				is_owned_by = BAK
-				is_owned_by = DEP
-				is_owned_by = LCT
-				is_owned_by = RCT
-				is_owned_by = NIM
-				is_owned_by = FRE
-				is_owned_by = WIT
-				is_owned_by = BAR
-				is_owned_by = STL
+				is_state_main_culture_equestrian = yes
+				state = 37
+				state = 80
+				state = 93
+				state = 91
+				state = 92
 			}
 		}
 		set_variable = { sol_majority_race_id = 1 }
+		set_variable = { var = sol_pony_percentage value = 1 }
 	}
 	every_state = {
 		limit = { 
-			OR = {
-				is_owned_by = CHN
-				is_owned_by = NCH
-			}
+			is_state_main_culture_changeling = yes
 		}
 		set_variable = { sol_majority_race_id = 2 }
 	}
 	every_state = {
 		limit = { 
 			OR = {
-				is_owned_by = OLE
-				is_owned_by = OLV
+				is_state_main_culture_olenian = yes
+				is_state_main_culture_old_olenian = yes
 			}
 		}
 		set_variable = { sol_majority_race_id = 3 }
 	}
 	every_state = {
 		limit = { 
+			NOT = {
+				OR = {
+					state = 564
+					state = 565
+					state = 566
+					state = 456
+					state = 451
+				}
+			}
 			OR = {
-				is_owned_by = GFF
-				is_owned_by = GRF
-				is_owned_by = AET
-				is_owned_by = ANG
-				is_owned_by = ARA
-				is_owned_by = AVI
-				is_owned_by = BAN
-				is_owned_by = BOI
-				is_owned_by = BRF
-				is_owned_by = CYA
-				is_owned_by = ERI
-				is_owned_by = EYR
-				is_owned_by = FAL
-				is_owned_by = FAT
-				is_owned_by = FEA
-				is_owned_by = FLO
-				is_owned_by = FRN
-				is_owned_by = GRI
-				is_owned_by = GRU
-				is_owned_by = GRW
-				is_owned_by = GRY
-				is_owned_by = HAU
-				is_owned_by = HEL
-				is_owned_by = HLQ
-				is_owned_by = HLR
-				is_owned_by = JEB
-				is_owned_by = JER
-				is_owned_by = JFT
-				is_owned_by = JRR
-				is_owned_by = KAT
-				is_owned_by = LAK
-				is_owned_by = LNS
-				is_owned_by = LUS
-				is_owned_by = MNC
-				is_owned_by = POM
-				is_owned_by = PYT
-				is_owned_by = ROU
-				is_owned_by = SIC
-				is_owned_by = SRS
-				is_owned_by = STW
-				is_owned_by = TAL
-				is_owned_by = TRD
-				is_owned_by = VED
-				is_owned_by = VIN
-				is_owned_by = WNG
-				is_owned_by = YAL
+				is_state_main_culture_evi_valley = yes
+				is_state_main_culture_herzlander = yes
+				is_state_main_culture_northerner = yes
+				is_state_main_culture_southerner = yes
+				is_state_main_culture_aquileian = yes
 			}
 		}
 		set_variable = { sol_majority_race_id = 4 }
 	}
 	every_state = {
 		limit = { 
-			OR = {
-				is_owned_by = JAK
-				is_owned_by = YAK
-			}
+			is_state_main_culture_yak = yes
 		}
 		set_variable = { sol_majority_race_id = 5 }
 	}
 	every_state = {
 		limit = { 
-			OR = {
-				is_owned_by = BUF
+			NOT = {
+				OR = {
+					state = 80
+					state = 93
+					state = 91
+					state = 92
+				}
 			}
+			is_state_main_culture_buffalo = yes
 		}
 		set_variable = { sol_majority_race_id = 6 }
 	}
 	every_state = {
-		limit = { 
-			OR = {
-				is_owned_by = DRG
+		limit = {
+			NOT = {
+				OR = {
+					state = 37
+				}
 			}
+			is_state_main_culture_dragon = yes
 		}
 		set_variable = { sol_majority_race_id = 7 }
 	}
 	every_state = {
 		limit = { 
-			OR = {
-				is_owned_by = MIT
-			}
+			is_state_main_culture_minotaur = yes
 		}
 		set_variable = { sol_majority_race_id = 8 }
 	}
 	every_state = {
 		limit = { 
-			OR = {
-				is_owned_by = DMT
-				is_owned_by = BRZ
-			}
+			is_state_main_culture_diamond_dog = yes
 		}
 		set_variable = { sol_majority_race_id = 9 }
 	}
 	every_state = {
 		limit = { 
-			OR = {
-				is_owned_by = ZES
+			NOT = {
+				OR = {
+					state = 558
+				}
 			}
+			is_state_main_culture_zebra = yes
 		}
 		set_variable = { sol_majority_race_id = 10 }
 	}
-	337 = { set_variable = { sol_majority_race_id = 5 } }
-	280 = { set_variable = { sol_majority_race_id = 5 } }
-	277 = { set_variable = { sol_majority_race_id = 5 } }
-	278 = { set_variable = { sol_majority_race_id = 5 } }
+	every_state = {
+		limit = { 
+			OR = {
+				is_state_main_culture_riverlander = yes
+				state = 564
+				state = 565
+				state = 566
+				state = 456
+				state = 451
 
-	564 = { set_variable = { sol_majority_race_id = 1 } }
-	565 = { set_variable = { sol_majority_race_id = 1 } }
-	566 = { set_variable = { sol_majority_race_id = 1 } }
-	428 = { set_variable = { sol_majority_race_id = 1 } }
-	451 = { set_variable = { sol_majority_race_id = 1 } }
-	456 = { set_variable = { sol_majority_race_id = 1 } }
-	634 = { set_variable = { sol_majority_race_id = 1 } }
-	505 = { set_variable = { sol_majority_race_id = 1 } }
-	558 = { set_variable = { sol_majority_race_id = 1 } }
-	578 = { set_variable = { sol_majority_race_id = 1 } }
-	17 = { set_variable = { sol_majority_race_id = 1 } }
-	601 = { set_variable = { sol_majority_race_id = 1 } }
-	585 = { set_variable = { sol_majority_race_id = 1 } }
-	542 = { set_variable = { sol_majority_race_id = 1 } }
-
-	510 = { set_variable = { sol_majority_race_id = 8 } }
-	511 = { set_variable = { sol_majority_race_id = 8 } }
-	507 = { set_variable = { sol_majority_race_id = 8 } }
-	446 = { set_variable = { sol_majority_race_id = 8 } }
+				state = 558
+			}
+		}
+		set_variable = { sol_majority_race_id = 11 }
+		set_variable = { var = sol_native_pony_percentage value = 1 }
+	}
 	every_state = {
 		limit = {
 			NOT = { check_variable = { sol_majority_race_id = 1 } }
+			NOT = { check_variable = { sol_majority_race_id = 11 } }
 		}
-		set_variable = { var = sol_compliance_limit value = 30 }
+		set_variable = { var = sol_compliance_limit value = 25 }
 		set_variable = { var = sol_pony_percentage value = 0 }
 	}
-	every_state = {
-		limit = {
-			check_variable = { sol_majority_race_id = 1 }
-		}
-		if = {
-			limit = { has_variable = SOL_public_works_region_id }
-			set_variable = { var = sol_pony_percentage value = 1 }
-		}
-		else = {
-			set_variable = { var = sol_native_pony_percentage value = 1 }
-		}
-	}
-	78 = { set_variable = { var = sol_pony_percentage value = 0.142 } }
+	78 = { set_variable = { var = sol_pony_percentage value = 0.042 } }
+	80 = { set_variable = { var = sol_pony_percentage value = 0.142 } }
 	224 = { set_variable = { var = sol_pony_percentage value = 0.311 } }
 	69 = { set_variable = { var = sol_pony_percentage value = 0.144 } }
 	316 = { set_variable = { var = sol_pony_percentage value = 0.081 } }
 	268 = { set_variable = { var = sol_pony_percentage value = 0.237 } }
-	#2-6% Equestrian
+
+	369 = { set_variable = { var = sol_pony_percentage value = 0.056 } }
+	366 = { set_variable = { var = sol_pony_percentage value = 0.047 } }
+	367 = { set_variable = { var = sol_pony_percentage value = 0.052 } }
+	388 = { set_variable = { var = sol_pony_percentage value = 0.031 } }
+	367 = { set_variable = { var = sol_pony_percentage value = 0.027 } }
+
+	381 = { set_variable = { var = sol_pony_percentage value = 0.114 } }
+	379 = { set_variable = { var = sol_pony_percentage value = 0.056 } }
+	433 = { set_variable = { var = sol_pony_percentage value = 0.039 } }
+	659 = { set_variable = { var = sol_pony_percentage value = 0.087 } }
+	658 = { set_variable = { var = sol_pony_percentage value = 0.042 } }
+	660 = { set_variable = { var = sol_pony_percentage value = 0.018 } }
+	#2-6% Equestrian Pony
 	every_state = {
 		limit = {
 			OR = {
@@ -235,14 +190,15 @@ SOL_calculate_race = {
 		divide_variable = { var = sol_pony_percentage value = 100 }
 		add_to_variable = { var = sol_pony_percentage value = 0.02 }
 	}
-	376 = { set_variable = { var = sol_native_pony_percentage value = 0.242 } }
-	406 = { set_variable = { var = sol_native_pony_percentage value = 0.135 } }
-	377 = { set_variable = { var = sol_native_pony_percentage value = 0.087 } }
-	473 = { set_variable = { var = sol_native_pony_percentage value = 0.053 } }
-	516 = { set_variable = { var = sol_native_pony_percentage value = 0.061 } }
-	472 = { set_variable = { var = sol_native_pony_percentage value = 0.042 } }
-	435 = { set_variable = { var = sol_native_pony_percentage value = 0.056 } }
-	#0.5-3.5% Pony
+
+	376 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.242 } }
+	406 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.135 } }
+	377 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.087 } }
+	473 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.053 } }
+	516 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.061 } }
+	472 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.042 } }
+	435 = { set_variable = { var = sol_aquileian_pony_percentage value = 0.056 } }
+	#2-6% Aquileian Pony
 	every_state = {
 		limit = {
 			OR = {
@@ -251,42 +207,33 @@ SOL_calculate_race = {
 				is_owned_by = JRR
 				is_owned_by = VIN
 				is_owned_by = JFT
-				NOT = { has_variable = sol_native_pony_percentage }
+				NOT = { has_variable = sol_aquileian_pony_percentage }
 			}
 		}
-		set_variable = { var = sol_native_pony_percentage value = 0 }
+		set_variable = { var = sol_aquileian_pony_percentage value = 0 }
 		SOL_calculate_probability = yes
-		add_to_variable = { var = sol_native_pony_percentage value = probability_check }
+		add_to_variable = { var = sol_aquileian_pony_percentage value = probability_check }
 		SOL_calculate_probability = yes
-		add_to_variable = { var = sol_native_pony_percentage value = probability_check }
+		add_to_variable = { var = sol_aquileian_pony_percentage value = probability_check }
 		SOL_calculate_probability = yes
-		add_to_variable = { var = sol_native_pony_percentage value = probability_check }
-		divide_variable = { var = sol_native_pony_percentage value = 100 }
-		add_to_variable = { var = sol_native_pony_percentage value = 0.005 }
+		add_to_variable = { var = sol_aquileian_pony_percentage value = probability_check }
+		SOL_calculate_probability = yes
+		add_to_variable = { var = sol_aquileian_pony_percentage value = probability_check }
+		divide_variable = { var = sol_aquileian_pony_percentage value = 100 }
+		add_to_variable = { var = sol_aquileian_pony_percentage value = 0.02 }
 	}
-	369 = { set_variable = { var = sol_pony_percentage value = 0.056 } }
-	366 = { set_variable = { var = sol_pony_percentage value = 0.047 } }
-	367 = { set_variable = { var = sol_pony_percentage value = 0.052 } }
-	388 = { set_variable = { var = sol_pony_percentage value = 0.031 } }
-	367 = { set_variable = { var = sol_pony_percentage value = 0.027 } }
 
-	381 = { set_variable = { var = sol_pony_percentage value = 0.114 } }
-	379 = { set_variable = { var = sol_pony_percentage value = 0.056 } }
-	433 = { set_variable = { var = sol_pony_percentage value = 0.039 } }
-	659 = { set_variable = { var = sol_pony_percentage value = 0.087 } }
-	658 = { set_variable = { var = sol_pony_percentage value = 0.042 } }
-	660 = { set_variable = { var = sol_pony_percentage value = 0.018 } }
 
 	601 = { set_variable = { var = sol_native_pony_percentage value = 0.726 } }
 	585 = { set_variable = { var = sol_native_pony_percentage value = 0.823 } }
 	542 = { set_variable = { var = sol_native_pony_percentage value = 0.681 } }
 	522 = { set_variable = { var = sol_native_pony_percentage value = 0.241 } }
-	561 = { set_variable = { var = sol_native_pony_percentage value = 0.367 } }
+	561 = { set_variable = { var = sol_native_pony_percentage value = 0.567 } }
 
 	565 = { set_variable = { var = sol_native_pony_percentage value = 0.880 } }
 	566 = { set_variable = { var = sol_native_pony_percentage value = 0.689 } }
 	564 = { set_variable = { var = sol_native_pony_percentage value = 0.745 } }
-	428 = { set_variable = { var = sol_native_pony_percentage value = 0.631 } }
+	428 = { set_variable = { var = sol_native_pony_percentage value = 0.431 } }
 	426 = { set_variable = { var = sol_native_pony_percentage value = 0.329 } }
 	425 = { set_variable = { var = sol_native_pony_percentage value = 0.271 } }
 	427 = { set_variable = { var = sol_native_pony_percentage value = 0.281 } }
@@ -295,7 +242,7 @@ SOL_calculate_race = {
 
 	638 = { set_variable = { var = sol_native_pony_percentage value = 0.313 } }
 	635 = { set_variable = { var = sol_native_pony_percentage value = 0.259 } }
-	657 = { set_variable = { var = sol_native_pony_percentage value = 0.132 } }
+	647 = { set_variable = { var = sol_native_pony_percentage value = 0.132 } }
 	637 = { set_variable = { var = sol_native_pony_percentage value = 0.032 } }
 
 	634 = { set_variable = { var = sol_native_pony_percentage value = 0.504 } }
@@ -307,12 +254,12 @@ SOL_calculate_race = {
 	540 = { set_variable = { var = sol_native_pony_percentage value = 0.351 } }
 	552 = { set_variable = { var = sol_native_pony_percentage value = 0.449 } }
 
-	579 = { set_variable = { var = sol_native_pony_percentage value = 0.366 } }
-	412 = { set_variable = { var = sol_native_pony_percentage value = 0.249 } }
-	558 = { set_variable = { var = sol_native_pony_percentage value = 0.692 } }
-	578 = { set_variable = { var = sol_native_pony_percentage value = 0.529 } }
-	413 = { set_variable = { var = sol_native_pony_percentage value = 0.384 } }
-	680 = { set_variable = { var = sol_native_pony_percentage value = 0.120 } }
+	579 = { set_variable = { var = sol_native_pony_percentage value = 0.266 } }
+	412 = { set_variable = { var = sol_native_pony_percentage value = 0.149 } }
+	558 = { set_variable = { var = sol_native_pony_percentage value = 0.592 } }
+	578 = { set_variable = { var = sol_native_pony_percentage value = 0.329 } }
+	413 = { set_variable = { var = sol_native_pony_percentage value = 0.184 } }
+	680 = { set_variable = { var = sol_native_pony_percentage value = 0.070 } }
 	623 = { set_variable = { var = sol_native_pony_percentage value = 0.195 } }
 	595 = { set_variable = { var = sol_native_pony_percentage value = 0.162 } }
 	#0.5-3.5% Pony
@@ -340,6 +287,9 @@ SOL_calculate_race = {
 		divide_variable = { var = sol_native_pony_percentage value = 100 }
 		add_to_variable = { var = sol_native_pony_percentage value = 0.005 }
 	}
+	every_state = {
+		set_variable = { var = sol_original_population_k value = state_population_k }
+	}
 }
 SOL_genocide_effect = {
 	if = {
@@ -356,14 +306,13 @@ SOL_genocide_effect = {
 		round_variable = sol_genocide_duration
 		add_to_array = { EQS.sol_states_with_genocide = THIS }
 		set_variable = { var = sol_compliance_limit value = sol_compliance_base }
-		custom_effect_tooltip = SOL_genocide_effect_tt
 		hidden_effect = { 
 			if = {
 				limit = { NOT = { has_dynamic_modifier = { modifier = SOL_genocide } } } 
 				add_dynamic_modifier = { modifier = SOL_genocide } 
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@synthetic_refinery }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = synthetic_refinery
@@ -371,7 +320,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@dockyard }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = dockyard
@@ -379,7 +328,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@arms_factory }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = arms_factory
@@ -387,7 +336,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@industrial_complex }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = industrial_complex
@@ -395,7 +344,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@fuel_silo }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = fuel_silo
@@ -403,7 +352,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@rocket_site }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = rocket_site
@@ -411,7 +360,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@nuclear_reactor }
-			multiply_temp_variable = { var = sol_building_level value = 0.5 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = nuclear_reactor
@@ -419,49 +368,49 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@steel }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = steel
 				amount = sol_resource_amount
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@tungsten }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = tungsten
 				amount = sol_resource_amount
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@rubber }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = rubber
 				amount = sol_resource_amount
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@chromium }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = chromium
 				amount = sol_resource_amount
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@aluminium }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = aluminium
 				amount = sol_resource_amount
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@crystals }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = crystals
 				amount = sol_resource_amount
 			}
 			set_temp_variable = { var = sol_resource_amount value = resource@oil }
-			multiply_temp_variable = { var = sol_resource_amount value = -0.2 }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.3 }
 			round_temp_variable = sol_resource_amount
 			add_resource = {
 				type = oil
@@ -491,10 +440,197 @@ SOL_genocide_effect = {
 	}
 	else_if = {
 		limit = {
-			has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
-			has_state_flag = SOL_completed_genocide
+			NOT = { is_in_array = { EQS.sol_states_with_genocide = THIS } }
+			NOT = { has_state_flag = SOL_completed_genocide }
 		}
-		add_core_of = EQS
+		set_state_flag = SOL_completed_genocide
+		force_disable_resistance = EQS
+		SOL_remove_uprising = yes
+		if = {
+			limit = {
+				has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+			}
+			add_core_of = EQS
+		}
+		set_variable = { sol_majority_race_id = 1 }
+		SOL_genocide_custom_effects = yes
+	}
+	EQS = {
+		if = {
+			limit = { has_variable = sol_display_state_decisions }
+			add_to_variable = { sol_display_state_decisions = 1 }
+		}
+	}
+}
+SOL_resettlement_effect = {
+	if = {
+		limit = { 
+			state_population_k > 5 
+			NOT = { is_in_array = { EQS.sol_states_with_resettlement = THIS } }
+			NOT = { has_state_flag = SOL_completed_resettlement }
+		}
+		set_variable = { var = sol_resettlement_duration value = state_population_k }
+		set_temp_variable = { var = sol_non_pony_percentage value = 1 }
+		subtract_from_temp_variable = { var = sol_non_pony_percentage value = sol_pony_percentage }
+		multiply_variable = { var = sol_resettlement_duration value = sol_non_pony_percentage }
+		multiply_variable = { var = sol_resettlement_duration value = 0.65 }
+		round_variable = sol_resettlement_duration
+		add_to_array = { EQS.sol_states_with_resettlement = THIS }
+		set_variable = { var = sol_compliance_limit value = sol_compliance_base }
+		hidden_effect = { 
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = SOL_resettlement } } } 
+				add_dynamic_modifier = { modifier = SOL_resettlement } 
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@synthetic_refinery }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = synthetic_refinery
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@dockyard }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = dockyard
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@arms_factory }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = arms_factory
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@industrial_complex }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = industrial_complex
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@fuel_silo }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = fuel_silo
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@rocket_site }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = rocket_site
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_building_level value = building_level@nuclear_reactor }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			round_temp_variable = sol_building_level
+			set_building_level = {
+				type = nuclear_reactor
+				level = sol_building_level
+				instant_build = yes
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@steel }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = steel
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@tungsten }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = tungsten
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@rubber }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = rubber
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@chromium }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = chromium
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@aluminium }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = aluminium
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@crystals }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = crystals
+				amount = sol_resource_amount
+			}
+			set_temp_variable = { var = sol_resource_amount value = resource@oil }
+			multiply_temp_variable = { var = sol_resource_amount value = -0.1 }
+			round_temp_variable = sol_resource_amount
+			add_resource = {
+				type = oil
+				amount = sol_resource_amount
+			}
+			if = {
+				limit = { has_state_category = megalopolis }
+				set_state_category = large_city
+			}
+			else_if = {
+				limit = { has_state_category = metropolis }
+				set_state_category = city
+			}
+			else_if = {
+				limit = { has_state_category = large_city }
+				set_state_category = large_town
+			}
+			else_if = {
+				limit = { has_state_category = city }
+				set_state_category = town
+			}
+			else_if = {
+				limit = { has_state_category = large_town }
+				set_state_category = town
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { is_in_array = { EQS.sol_states_with_resettlement = THIS } }
+			NOT = { has_state_flag = SOL_completed_resettlement }
+		}
+		set_state_flag = SOL_completed_resettlement
+		force_disable_resistance = EQS
+		SOL_remove_uprising = yes
+		if = {
+			limit = {
+				has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+			}
+			add_core_of = EQS
+		}
+		set_variable = { sol_majority_race_id = 1 }
+		SOL_resettlement_custom_effects = yes
+	}
+	EQS = {
+		if = {
+			limit = { has_variable = sol_display_state_decisions }
+			add_to_variable = { sol_display_state_decisions = 1 }
+		}
 	}
 }
 SOL_genocide_custom_effects = {
@@ -530,7 +666,105 @@ SOL_genocide_custom_effects = {
 				328 = { has_state_flag = SOL_completed_genocide }
 			}
 		}
+		hidden_effect = {
+			set_victory_points = {
+				province = 13071
+				value = 0
+			}
+		}
 		EQS = { country_event = { id = paxsolaris.92 hours = 1 } }
+	}
+	if = {
+		limit = {
+			OR = {
+				state = 316
+				state = 319
+				state = 247
+				state = 246
+				state = 291
+			}
+			AND = {
+				316 = { has_state_flag = SOL_completed_genocide }
+				319 = { has_state_flag = SOL_completed_genocide }
+				247 = { has_state_flag = SOL_completed_genocide }
+				246 = { has_state_flag = SOL_completed_genocide }
+				291 = { has_state_flag = SOL_completed_genocide }
+			}
+		}
+		246 = {
+			set_state_name = "Argent River"
+		}
+		247 = {
+			set_state_name = "Frostdale"
+		}
+		291 = {
+			set_state_name = "Poppy Fields"
+		}
+		316 = {
+			set_state_name = "Coltiningrad"
+		}
+		hidden_effect = {
+			set_province_name = {
+			    id = 11690
+			    name = "Coltiningrad"
+			}
+			set_victory_points = {
+				province = 11617
+				value = 0
+			}
+			set_victory_points = {
+				province = 3880
+				value = 0
+			}
+		}
+		country_event = { id = paxsolaris.161 hours = 1 }
+	}
+}
+SOL_resettlement_custom_effects = {
+	if = {
+		limit = {
+			OR = {
+				state = 316
+				state = 319
+				state = 247
+				state = 246
+				state = 291
+			}
+			AND = {
+				316 = { has_state_flag = SOL_completed_genocide }
+				319 = { has_state_flag = SOL_completed_genocide }
+				247 = { has_state_flag = SOL_completed_genocide }
+				246 = { has_state_flag = SOL_completed_genocide }
+				291 = { has_state_flag = SOL_completed_genocide }
+			}
+		}
+		246 = {
+			set_state_name = "Argent River"
+		}
+		247 = {
+			set_state_name = "Frostdale"
+		}
+		291 = {
+			set_state_name = "Poppy Fields"
+		}
+		316 = {
+			set_state_name = "Coltiningrad"
+		}
+		hidden_effect = {
+			set_province_name = {
+			    id = 11690
+			    name = "Coltiningrad"
+			}
+			set_victory_points = {
+				province = 11617
+				value = 0
+			}
+			set_victory_points = {
+				province = 3880
+				value = 0
+			}
+		}
+		country_event = { id = paxsolaris.161 hours = 1 }
 	}
 }
 SOL_remove_uprising = {
@@ -542,6 +776,7 @@ SOL_remove_uprising = {
 		limit = { has_dynamic_modifier = { modifier = SOL_uprising } }
 		remove_dynamic_modifier = { modifier = SOL_uprising }
 	}
+	clr_state_flag = SOL_overrun_by_resistance
 }
 SOL_pony_population_recalculate = {
 	set_temp_variable = { var = sol_pony_population_k value = state_population_k }
@@ -557,65 +792,68 @@ SOL_pony_population_recalculate = {
 		min = 0
 		max = 1
 	}
-	set_variable = { var = sol_pony_percentage_plus_thirty value = sol_pony_percentage }
-	add_to_variable = { var = sol_pony_percentage_plus_thirty value = 0.3 }
-	set_variable = { var = sol_pony_percentage_plus_thirty_negative value = sol_pony_percentage_plus_thirty }
-	multiply_variable = { var = sol_pony_percentage_plus_thirty_negative value = -1 }
+
+	set_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = state_population_k }
+	multiply_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = EQS.SOL_develop_settler_colony_civ_fac_use_multiplier }
+	add_to_temp_variable = { var = SOL_develop_settler_colony_civ_fac_use_temp value = 0.5 }
+	round_temp_variable = SOL_develop_settler_colony_civ_fac_use_temp
 	if = {
 		limit = {
-			NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			OR = {
-				has_dynamic_modifier = { modifier = SOL_settler_colonies }
-				has_dynamic_modifier = { modifier = SOL_pony_settlement }
+			EQS = { 
+				OR = {
+					has_country_flag = SOL_automatic_upgrading_active
+					is_ai = yes
+				}	
 			}
-			check_variable = { sol_pony_percentage > 0.4 }
-		}
-		if = {
-			limit = { has_dynamic_modifier = { modifier = SOL_settler_colonies } }
-			remove_dynamic_modifier = { modifier = SOL_settler_colonies }
-		}
-		if = {
-			limit = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
-			remove_dynamic_modifier = { modifier = SOL_pony_settlement }
-		}
-		add_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
-	}
-	else_if = {
-		limit = {
-			NOT = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
-			OR = {
-				has_dynamic_modifier = { modifier = SOL_settler_colonies }
-				has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+			is_owned_and_controlled_by = EQS
+			NOT = { 
+				is_core_of = EQS 
+				has_variable = SOL_develop_settler_colony_civ_fac_use 
 			}
-			check_variable = { sol_pony_percentage > 0.2 }
-		}
-		if = {
-			limit = { has_dynamic_modifier = { modifier = SOL_settler_colonies } }
-			remove_dynamic_modifier = { modifier = SOL_settler_colonies }
-		}
-		if = {
-			limit = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			remove_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
-		}
-		add_dynamic_modifier = { modifier = SOL_pony_settlement }
-	}
-	else_if = {
-		limit = {
-			NOT = { has_dynamic_modifier = { modifier = SOL_settler_colonies } }
 			OR = {
-				has_dynamic_modifier = { modifier = SOL_pony_settlement }
-				has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
+				AND = {
+					has_dynamic_modifier = { modifier = SOL_settler_colonies }
+					NOT = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
+					check_variable = { sol_pony_percentage > 0.2 }
+				}
+				AND = {
+					has_dynamic_modifier = { modifier = SOL_pony_settlement }
+					NOT = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
+					check_variable = { sol_pony_percentage > 0.4 }
+				}
+			}
+			check_variable = {
+				var = EQS.num_of_civilian_factories_available_for_projects
+				value = SOL_develop_settler_colony_civ_fac_use_temp
+				compare = greater_than_or_equals
 			}
 		}
-		if = {
-			limit = { has_dynamic_modifier = { modifier = SOL_pony_settlement } }
-			remove_dynamic_modifier = { modifier = SOL_pony_settlement }
+		set_variable = { var = SOL_develop_settler_colony_civ_fac_use value = SOL_develop_settler_colony_civ_fac_use_temp }
+		EQS = {
+			add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = PREV.SOL_develop_settler_colony_civ_fac_use }
+			if = {
+				limit = {
+					PREV = {
+						has_dynamic_modifier = { modifier = SOL_pony_settlement }
+						check_variable = { sol_pony_percentage > 0.4 }
+					}
+				}
+				activate_targeted_decision = { target = PREV decision = SOL_upgrade_settler_colony_decision_2 }
+			}
+			else_if = {
+				limit = {
+					PREV = {
+						has_dynamic_modifier = { modifier = SOL_settler_colonies }
+						check_variable = { sol_pony_percentage > 0.2 }
+					}
+				}
+				activate_targeted_decision = { target = PREV decision = SOL_upgrade_settler_colony_decision_1 }
+			}
+			if = {
+				limit = { has_variable = sol_display_state_decisions }
+				add_to_variable = { var = sol_display_state_decisions value = 1 }
+			}
 		}
-		if = {
-			limit = { has_dynamic_modifier = { modifier = SOL_extensive_pony_settlement } }
-			remove_dynamic_modifier = { modifier = SOL_extensive_pony_settlement }
-		}
-		add_dynamic_modifier = { modifier = SOL_settler_colonies }
 	}
 	if = {
 		limit = {
@@ -640,12 +878,36 @@ SOL_pony_population_recalculate = {
 		}
 		set_variable = { sol_majority_race_id = sol_original_majority_race }
 	}
+	EQS = {
+		if = {
+			limit = { has_variable = sol_display_state_decisions }
+			add_to_variable = { sol_display_state_decisions = 1 }
+		}
+	}
 }
 SOL_recalculate_button_pos = {
+	set_variable = { var = SOL_cast_magic_pos value = 0 }
 	set_variable = { var = SOL_mobile_task_force_pos value = 0 }
 	set_variable = { var = SOL_develop_settler_colonies_pos value = 0 }
+	set_variable = { var = SOL_encourage_settlement_pos value = 0 }
+	if = {
+		limit = { has_country_flag = sol_has_unlocked_magic }
+		add_to_variable = { var = SOL_mobile_task_force_pos value = 65 }
+		add_to_variable = { var = SOL_develop_settler_colonies_pos value = 65 }
+		add_to_variable = { var = SOL_encourage_settlement_pos value = 65 }
+	}
 	if = {
 		limit = { has_country_flag = SOL_unlocked_dispatch_mtf_ability_flag }
+		add_to_variable = { var = SOL_develop_settler_colonies_pos value = 65 }
+		add_to_variable = { var = SOL_encourage_settlement_pos value = 65 }
+	}
+	if = {
+		limit = { 
+			OR = {
+				has_country_flag = SOL_unlocked_develop_colonies_ability_flag 
+				has_country_flag = sol_has_unlocked_teleportation
+			}
+		}
 		add_to_variable = { var = SOL_develop_settler_colonies_pos value = 65 }
 	}
 }

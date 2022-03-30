@@ -1,0 +1,37 @@
+defined_text = {
+	name = hrm_3_first_paragraph
+	text = {
+		trigger = {
+			has_global_flag = SOL_communuist_path_active
+		}
+		localization_key = hrm_3_first_paragraph_lpa
+	}
+	text = {
+		localization_key = hrm_3_first_paragraph_acc
+	}
+}
+defined_text = {
+	name = hrm_3_second_paragraph
+	text = {
+		trigger = {
+			has_global_flag = SOL_thestral_genocide_concluded
+		}
+		localization_key = hrm_3_second_paragraph_thestral_genocide_concluded
+	}
+	text = {
+		trigger = {
+			NOT = { has_global_flag = SOL_thestral_genocide_concluded }
+			has_global_flag = SOL_thestral_genocide_begun
+		}
+		localization_key = hrm_3_second_paragraph_thestral_genocide_begun
+	}
+	text = {
+		trigger = {
+			has_global_flag = SOL_thestrals_pacified
+		}
+		localization_key = hrm_3_second_paragraph_thestrals_pacified
+	}
+	text = {
+		localization_key = hrm_3_second_paragraph_thestrals_available
+	}
+}
