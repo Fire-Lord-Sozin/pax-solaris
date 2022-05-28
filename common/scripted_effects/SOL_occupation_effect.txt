@@ -312,7 +312,7 @@ SOL_genocide_effect = {
 				add_dynamic_modifier = { modifier = SOL_genocide } 
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@synthetic_refinery }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = synthetic_refinery
@@ -320,7 +320,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@dockyard }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = dockyard
@@ -328,7 +328,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@arms_factory }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = arms_factory
@@ -336,7 +336,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@industrial_complex }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = industrial_complex
@@ -344,7 +344,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@fuel_silo }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = fuel_silo
@@ -352,7 +352,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@rocket_site }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = rocket_site
@@ -360,7 +360,7 @@ SOL_genocide_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@nuclear_reactor }
-			multiply_temp_variable = { var = sol_building_level value = 0.6 }
+			multiply_temp_variable = { var = sol_building_level value = 0.4 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = nuclear_reactor
@@ -483,7 +483,7 @@ SOL_resettlement_effect = {
 				add_dynamic_modifier = { modifier = SOL_resettlement } 
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@synthetic_refinery }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = synthetic_refinery
@@ -491,7 +491,7 @@ SOL_resettlement_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@dockyard }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = dockyard
@@ -499,7 +499,7 @@ SOL_resettlement_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@arms_factory }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = arms_factory
@@ -507,7 +507,7 @@ SOL_resettlement_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@industrial_complex }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = industrial_complex
@@ -515,7 +515,7 @@ SOL_resettlement_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@fuel_silo }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = fuel_silo
@@ -523,7 +523,7 @@ SOL_resettlement_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@rocket_site }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = rocket_site
@@ -531,7 +531,7 @@ SOL_resettlement_effect = {
 				instant_build = yes
 			}
 			set_temp_variable = { var = sol_building_level value = building_level@nuclear_reactor }
-			multiply_temp_variable = { var = sol_building_level value = 0.4 }
+			multiply_temp_variable = { var = sol_building_level value = 0.6 }
 			round_temp_variable = sol_building_level
 			set_building_level = {
 				type = nuclear_reactor

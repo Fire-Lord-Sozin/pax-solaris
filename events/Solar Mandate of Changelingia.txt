@@ -2,28 +2,7 @@ add_namespace = smc
 
 country_event = {
 	id = smc.1
-	immediate = { 
-		log = "[GetDateText]: [Root.GetName]: event smc.1" 
-		hidden_effect = {
-			EQS = {
-				set_country_flag = sol_released_smc
-				set_country_flag = sol_released_smv
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 316
-						state = 319
-						state = 247
-						state = 246
-						state = 291
-					}
-				}
-				EQS = { add_to_variable = { SOL_public_works_num_states^PREV.SOL_public_works_region_id = -1 } }
-				clear_variable = SOL_public_works_region_id
-			}
-		}
-	}
+	immediate = { log = "[GetDateText]: [Root.GetName]: event smc.1" }
 	title = smc.1.t
 	desc = smc.1.d
 	picture = GFX_event_solar_flare
@@ -35,56 +14,91 @@ country_event = {
 		}
 		custom_effect_tooltip = SOL_CHN_mandate_tt
 		hidden_effect = {
-			if = {
-				limit = { SMC = { exists = no } }
-				SOL_SMC_add_cores = yes
-				puppet = SMC
-				EQS_prince_blueblood = {
-					remove_country_leader_role = { ideology = despotism }
-					remove_advisor_role = { slot = political_advisor }
-					set_portraits = {
-						civilian = {
-							large = "gfx/leaders/SOL/Prince_Blueblood.tga"
-						}
-						army = {
-							large = "gfx/leaders/SOL/Prince_Blueblood.tga"
-							small = GFX_idea_prince_blueblood
-						}
+			set_variable = { SOL_region_owner^1 = SMC.id }
+			set_variable = { SOL_reload_region_ownership_var = 1 }
+			SOL_add_cores = yes
+			set_autonomy = {
+				target = SMC
+				autonomy_state = autonomy_solar_mandate
+			}
+			EQS_prince_blueblood = {
+				remove_country_leader_role = { ideology = despotism }
+				remove_advisor_role = { slot = political_advisor }
+				set_portraits = {
+					civilian = {
+						large = "gfx/leaders/SOL/Prince_Blueblood.tga"
 					}
-					add_country_leader_role = {
-						country_leader = {
-							expire="1965.1.1.1"
-							ideology = nazism
-							desc = "SOL_BLUEBLOOD_DESC"
-						}
+					army = {
+						large = "gfx/leaders/SOL/Prince_Blueblood.tga"
+						small = GFX_idea_prince_blueblood
 					}
-					set_nationality = SMC
 				}
-				EQS = { SMC = { transfer_technology = yes } }
-				SMC = {
-					add_popularity = {
-					    ideology = fascism
-					    popularity = 1
+				add_country_leader_role = {
+					country_leader = {
+						expire="1965.1.1.1"
+						ideology = nazism
+						desc = "SOL_BLUEBLOOD_DESC"
 					}
+				}
+				set_nationality = SMC
+			}
+			EQS = { SMC = { transfer_technology = yes } }
+			SMC = {
+				add_popularity = {
+				    ideology = fascism
+				    popularity = 1
+				}
+				if = {
+					limit = { has_character = EQS_prince_blueblood }
 					promote_character = EQS_prince_blueblood
 				}
+				set_variable = { SOL_owns_region = 1 }
+				save_global_event_target_as = SOL_region_1_owner
+				SOL_initiate_solar_mandate = yes
 			}
-			if = {
-				limit = { SMV = { exists = no } }
-				SOL_SMV_add_cores = yes
-				puppet = SMV
-				EQS_SOL_lightning_dust = {
-					remove_advisor_role = { slot = high_command }
-					set_nationality = SMV
-				}
-				EQS = { SMV = { transfer_technology = yes } }
-				SMV = {
-					add_popularity = {
-					    ideology = fascism
-					    popularity = 1
+			set_variable = { SOL_region_owner^2 = SMV.id }
+			set_variable = { SOL_reload_region_ownership_var = 2 }
+			SOL_add_cores = yes
+			set_autonomy = {
+				target = SMV
+				autonomy_state = autonomy_solar_pacification_zone
+			}
+			EQS_SOL_lightning_dust = {
+				remove_advisor_role = { slot = high_command }
+				add_country_leader_role = {
+					country_leader = {
+						expire="1965.1.1.1"
+						ideology = nazism
+						desc = "SOL_LIGHTNING_DESC"
 					}
+				}
+				set_nationality = SMV
+			}
+			EQS = { SMV = { transfer_technology = yes } }
+			SMV = {
+				add_popularity = {
+				    ideology = fascism
+				    popularity = 1
+				}
+				if = {
+					limit = { has_character = EQS_SOL_lightning_dust }
 					promote_character = EQS_SOL_lightning_dust
 				}
+				set_variable = { SOL_owns_region = 2 }
+				save_global_event_target_as = SOL_region_2_owner
+				SOL_initiate_pacification_zone = yes
+			}
+			set_country_flag = SOL_created_region_11
+			set_country_flag = SOL_created_region_12
+			set_variable = { SOL_created_region_display_type^1 = 1 }
+			set_variable = { SOL_created_region_display_type^2 = 1 }
+			set_variable = { SOL_puppet_region_frame^1 = 5 }
+			set_variable = { SOL_puppet_region_frame^2 = 6 }
+			add_to_array = { SOL_created_regions = 1 }
+			add_to_array = { SOL_created_regions = 2 }
+			if = {
+				limit = { has_variable = sol_puppet_mechanic_show }
+				add_to_variable = { sol_puppet_mechanic_show = 1 }
 			}
 		}
 	}

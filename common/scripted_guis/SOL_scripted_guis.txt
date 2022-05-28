@@ -455,19 +455,8 @@ scripted_gui = {
 				clear_variable = sol_alert_popup_show
 			}
 			alert_disable_bg_click = {
+				clear_variable = sol_alert_popup_show
 				set_country_flag = SOL_has_disabled_alerts
-			}
-		}
-	}
-	sol_alert_enable_gui = {
-		window_name = "alert_enable_container"
-		context_type = player_context
-		visible = {
-			has_country_flag = SOL_has_disabled_alerts
-		}
-		effects = {
-			alert_enable_bg_click = {
-				clr_country_flag = SOL_has_disabled_alerts
 			}
 		}
 	}
@@ -530,7 +519,6 @@ scripted_gui = {
 		
 		window_name = "SOL_state_action_chemical_attack"
 	}
-
 	SOL_state_action_chemical_attack_clickable_gui = {
 		context_type = selected_state_context
 		parent_window_token = selected_state_view
@@ -569,6 +557,106 @@ scripted_gui = {
 						}
 					}
 				}
+			}
+		}
+	}
+
+	SOL_gui_menu_container = {
+		window_name = "SOL_gui_menu_container"
+		context_type = player_context
+		visible = {
+			is_SOLAR_EMPIRE = yes
+		}
+		effects = {
+			alert_toggle_bg_click = {
+				if = {
+					limit = { has_country_flag = SOL_has_disabled_alerts }
+					clr_country_flag = SOL_has_disabled_alerts
+				}
+				else = {
+					set_country_flag = SOL_has_disabled_alerts
+				}
+			}
+			alert_enable_bg_click = {
+				if = {
+					limit = { has_country_flag = SOL_has_disabled_alerts }
+					clr_country_flag = SOL_has_disabled_alerts
+				}
+				else = {
+					set_country_flag = SOL_has_disabled_alerts
+				}
+			}
+			sol_domestic_show_bg_click = {
+				if = {
+					limit = { has_variable = sol_public_works_screen_show }
+					clear_variable = sol_public_works_screen_show
+				}
+				else = {
+					set_variable = {
+						sol_public_works_screen_show = 1
+					}
+					hidden_effect = {
+						SOL_calculate_region_development = yes 
+					}
+				}
+			}
+			sol_magic_show_bg_click = {
+				if = {
+					limit = { has_variable = sol_magic_screen_show }
+					clear_variable = sol_magic_screen_show
+				}
+				else = {
+					set_variable = { sol_magic_screen_show = 1 }
+					hidden_effect = { sol_calculate_magic = yes }
+				}
+			}
+			sol_magic_show_alert_bg_click = {
+				if = {
+					limit = { has_variable = sol_magic_screen_show }
+					clear_variable = sol_magic_screen_show
+				}
+				else = {
+					set_variable = { sol_magic_skills_show = 1 }
+					set_variable = { sol_magic_screen_show = 1 }
+					hidden_effect = { sol_calculate_magic = yes }
+				}
+			}
+			sol_puppet_show_bg_click = {
+				if = {
+					limit = { has_variable = sol_puppet_mechanic_show }
+					clear_variable = sol_puppet_mechanic_show
+				}
+				else = {
+					set_variable = { sol_puppet_mechanic_show = 1 }
+				}
+			}
+			sol_puppet_show_alert_bg_click = {
+				if = {
+					limit = { has_variable = sol_puppet_mechanic_show }
+					clear_variable = sol_puppet_mechanic_show
+				}
+				else = {
+					set_variable = { sol_puppet_mechanic_show = 1 }
+				}
+			}
+		}
+		triggers = {
+			alert_enable_bg_visible = {
+				has_variable = sol_alert_popup_show
+			}
+			sol_domestic_show_bg_visible = {
+				has_country_flag = sol_has_unlocked_public_works
+				NOT = { has_country_flag = SOL_has_completed_modern_national_development }
+			}
+			sol_magic_show_bg_visible = {
+				has_country_flag = sol_has_unlocked_magic
+			}
+			sol_magic_show_alert_bg_visible = {
+				has_country_flag = sol_has_unlocked_magic
+				check_variable = { sol_magic_perk_point_num > 0 }
+			}
+			sol_puppet_show_alert_bg_visible = {
+				SOL_any_region_trigger = yes
 			}
 		}
 	}

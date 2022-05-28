@@ -275,25 +275,16 @@ country_event = {
 	title = "Commandos"
 	is_triggered_only = yes
 	desc = paxsolaristest.13.d
+	immediate = {
+		set_variable = { SOL_population_test_var = max_manpower_k }
+	}
 	option = {
 		name = "Set Flags"
 		SOL_set_state_flags_for_public_works = yes
 	}
 	option = {
 		name = "Subtract"
-		every_state = {
-			limit = {
-				OR = {
-					state = 316
-					state = 319
-					state = 247
-					state = 246
-					state = 291
-				}
-			}
-			EQS = { add_to_variable = { SOL_public_works_num_states^PREV.SOL_public_works_region_id = -1 } }
-			clear_variable = SOL_public_works_region_id
-		}
+		
 	}
 }
 country_event = {
@@ -499,54 +490,7 @@ country_event = {
 	hidden = yes
 	option = {
 		name = "Aquileia"
-		every_state = {
-			limit = {
-				OR = {
-					state = 380
-					state = 396
-					state = 379
-					state = 381
-					state = 497
-					state = 378
-					state = 447
-					state = 399
-					state = 433 
-					state = 498 
-					state = 538 
-					state = 520 
-					state = 434 
-					state = 441 
-					state = 440 
-					state = 666
-				}
-			}
-			transfer_state_to = JER
-		}
-	}
-	option = {
-		name = "GRF + YAK"
-		GRF = { set_country_flag = SOL_annexation_target }
-		YAK = { set_country_flag = SOL_annexation_target }
-	}
-	option = {
-		name = "Clear"
-		clr_country_flag = SOL_preparing_to_attack_country 
-		set_country_flag = SOL_uniting_equestria_decision_unlock
-	}
-	option = {
-		name = "Trolling"
-		PLB = { 
-			annex_country = {
-			    target = YAK
-			    transfer_troops = yes
-			}
-		}
-	}
-	option = {
-		name = "Trolling 2"
-		PLB = { 
-			release = YAK
-		}
+		set_variable = { sol_puppet_mechanic_show = 1 }
 	}
 }
 country_event = {
@@ -577,11 +521,34 @@ country_event = {
 	desc = ""
 	option = { 
 		name = "Enable"
-		set_country_flag = sol_has_unlocked_teleportation
+		hidden_effect = { 
+			add_dynamic_modifier = { modifier = SOL_settlement_creation_malus }
+			set_variable = { var = SOL_develop_settler_colony_civ_fac_use_multiplier value = 0.005 }
+			set_variable = { var = SOL_number_of_settlements_available value = 12000 }
+			set_country_flag = SOL_unlocked_develop_colonies_ability_flag
+			if = {	
+				limit = { has_completed_focus = SOL_manifest_destiny }
+				multiply_variable = { var = SOL_develop_settler_colony_civ_fac_use_multiplier value = 0.6 }
+				add_to_variable = { var = SOL_number_of_settlements_available value = 8000 }
+			}
+		}
 	}
 	option = { 
 		name = "Clear Cooldown"
-		set_variable = { SOL_teleport_armies_cooldown_var = 0 }
+		78 = {
+			add_dynamic_modifier = { modifier = SOL_settler_colonies }
+			ROOT = {
+				subtract_from_variable = { var = SOL_number_of_settlements_available value = 1000 }
+				add_to_variable = { var = SOL_develop_settler_colony_civ_fac_use_total value = 1 }
+			}
+			THIS = {
+				add_to_variable = { var = SOL_number_of_settlements_this_state value = 1000 }
+				if = {
+					limit = { NOT = { is_in_array = { EQS.sol_states_with_settlement = THIS } } }
+					add_to_array = { EQS.sol_states_with_settlement = THIS }
+				}
+			}
+		}
 	}
 }
 country_event = {
@@ -687,7 +654,15 @@ country_event = {
 	desc = ""
 	option = { 
 		name = "Calculate"
-		SOL_calculate_race = yes
+		add_dynamic_modifier = { modifier = SOL_puppet_resource_gain }
+	}
+	option = {
+		name = ""
+		set_variable = { SOL_puppet_resource_extraction_oil = resource_produced@oil }
+		multiply_variable = { SOL_puppet_resource_extraction_oil = SOL_resource_fraction_this_country }
+		round_variable = SOL_puppet_resource_extraction_oil
+		add_to_variable = { EQS.SOL_puppet_resource_oil = SOL_puppet_resource_extraction_oil }
+		multiply_variable = { SOL_puppet_resource_extraction_oil = -1 }
 	}
 }
 country_event = {
@@ -696,28 +671,20 @@ country_event = {
 	is_triggered_only = yes
 	desc = ""
 	option = { 
-		name = "One"
-		set_country_flag = sol_dialogue_twilight_first
-		set_variable = { sol_dialogue_window_var = 1 }
-		sol_dialogue_display_effect = yes
+		name = "Compliance +5"
+		add_to_variable = { SOL_puppet_compliance_array^currently_selected_puppet = 5 }
 	}
 	option = { 
-		name = "Lose"
-		set_country_flag = sol_dialogue_twilight_lose
-		set_variable = { sol_dialogue_window_var = 1 }
-		sol_dialogue_display_effect = yes
+		name = "Resistance +5"
+		add_to_variable = { SOL_puppet_resistance_array^currently_selected_puppet = 5 }
 	}
 	option = { 
-		name = "Three"
-		set_country_flag = sol_dialogue_twilight_third
-		set_variable = { sol_dialogue_window_var = 1 }
-		sol_dialogue_display_effect = yes
+		name = "Compliance Growth +0.02"
+		add_to_variable = { SOL_puppet_compliance_active_effects^currently_selected_puppet = 0.02 }
 	}
 	option = { 
-		name = "Four"
-		set_country_flag = sol_dialogue_twilight_fourth
-		set_variable = { sol_dialogue_window_var = 1 }
-		sol_dialogue_display_effect = yes
+		name = "Compliance Growth -0.02"
+		add_to_variable = { SOL_puppet_compliance_active_effects^currently_selected_puppet = -0.02 }
 	}
 }
 country_event = {

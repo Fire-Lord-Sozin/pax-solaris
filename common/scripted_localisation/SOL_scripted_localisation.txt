@@ -3450,54 +3450,300 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = SOL_states_with_migration
+	name = SOL_states_with_migration_0
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 1 } }
-		localization_key = SOL_states_with_migration_1
+		trigger = { check_variable = { sol_states_with_settlement^num > 0 } }
+		localization_key = SOL_states_with_migration_tt_0
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 2 } }
-		localization_key = SOL_states_with_migration_2
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_1
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 1 } }
+		localization_key = SOL_states_with_migration_tt_1
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 3 } }
-		localization_key = SOL_states_with_migration_3
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_2
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 2 } }
+		localization_key = SOL_states_with_migration_tt_2
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 4 } }
-		localization_key = SOL_states_with_migration_4
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_3
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 3 } }
+		localization_key = SOL_states_with_migration_tt_3
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 5 } }
-		localization_key = SOL_states_with_migration_5
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_4
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 4 } }
+		localization_key = SOL_states_with_migration_tt_4
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 6 } }
-		localization_key = SOL_states_with_migration_6
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_5
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 5 } }
+		localization_key = SOL_states_with_migration_tt_5
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 7 } }
-		localization_key = SOL_states_with_migration_7
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_6
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 6 } }
+		localization_key = SOL_states_with_migration_tt_6
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 8 } }
-		localization_key = SOL_states_with_migration_8
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_7
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 7 } }
+		localization_key = SOL_states_with_migration_tt_7
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 9 } }
-		localization_key = SOL_states_with_migration_9
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_8
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 8 } }
+		localization_key = SOL_states_with_migration_tt_8
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 10 } }
-		localization_key = SOL_states_with_migration_10
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_9
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 9 } }
+		localization_key = SOL_states_with_migration_tt_9
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 11 } }
-		localization_key = SOL_states_with_migration_11
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_10
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 10 } }
+		localization_key = SOL_states_with_migration_tt_10
 	}
 	text = {
-		trigger = { check_variable = { sol_states_with_settlement^num = 12 } }
-		localization_key = SOL_states_with_migration_12
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_11
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 11 } }
+		localization_key = SOL_states_with_migration_tt_11
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_12
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 12 } }
+		localization_key = SOL_states_with_migration_tt_12
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_13
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 13 } }
+		localization_key = SOL_states_with_migration_tt_13
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_14
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 14 } }
+		localization_key = SOL_states_with_migration_tt_14
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_15
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 15 } }
+		localization_key = SOL_states_with_migration_tt_15
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_16
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 16 } }
+		localization_key = SOL_states_with_migration_tt_16
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_17
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 17 } }
+		localization_key = SOL_states_with_migration_tt_17
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_18
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 18 } }
+		localization_key = SOL_states_with_migration_tt_18
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_19
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 19 } }
+		localization_key = SOL_states_with_migration_tt_19
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_20
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 20 } }
+		localization_key = SOL_states_with_migration_tt_20
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_21
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 21 } }
+		localization_key = SOL_states_with_migration_tt_21
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_22
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 22 } }
+		localization_key = SOL_states_with_migration_tt_22
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_23
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 23 } }
+		localization_key = SOL_states_with_migration_tt_23
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_24
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 24 } }
+		localization_key = SOL_states_with_migration_tt_24
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_25
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 25 } }
+		localization_key = SOL_states_with_migration_tt_25
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_26
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 26 } }
+		localization_key = SOL_states_with_migration_tt_26
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_27
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 27 } }
+		localization_key = SOL_states_with_migration_tt_27
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_28
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 28 } }
+		localization_key = SOL_states_with_migration_tt_28
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_states_with_migration_29
+	text = {
+		trigger = { check_variable = { sol_states_with_settlement^num > 29 } }
+		localization_key = SOL_states_with_migration_tt_29
 	}
 	text = {
 		localization_key = SOL_public_works_no
@@ -3965,5 +4211,397 @@ defined_text = {
 	}
 	text = {
 		localization_key = SOL_crystal_empire_desc_344
+	}
+}
+defined_text = {
+	name = SOL_toggle_alerts
+	text = {
+		trigger = { 
+			has_country_flag = SOL_has_disabled_alerts
+		}
+		localization_key = alert_enable_bg_tt
+	}
+	text = {
+		localization_key = alert_disable_bg_tt
+	}
+}
+defined_text = {
+	name = SOL_puppet_type_scripted_loc
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 1 } }
+		localization_key = autonomy_solar_junior_power
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 2 } }
+		localization_key = autonomy_solar_signatory
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 3 } }
+		localization_key = autonomy_solar_protectorate
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 4 } }
+		localization_key = autonomy_solar_autonomous_mandate
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 5 } }
+		localization_key = autonomy_solar_mandate
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 6 } }
+		localization_key = autonomy_solar_pacification_zone
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 7 } }
+		localization_key = autonomy_solar_reconstruction_zone
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 8 } }
+		localization_key = autonomy_solar_purification_zone
+	}
+}
+defined_text = {
+	name = SOL_puppet_type_scripted_loc_tt
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 1 } }
+		localization_key = autonomy_solar_junior_power_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 2 } }
+		localization_key = autonomy_solar_signatory_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 3 } }
+		localization_key = autonomy_solar_protectorate_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 4 } }
+		localization_key = autonomy_solar_autonomous_mandate_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 5 } }
+		localization_key = autonomy_solar_mandate_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 6 } }
+		localization_key = autonomy_solar_pacification_zone_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 7 } }
+		localization_key = autonomy_solar_reconstruction_zone_tt
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 8 } }
+		localization_key = autonomy_solar_purification_zone_tt
+	}
+}
+defined_text = {
+	name = SOL_puppet_type_scripted_loc_desc
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 1 } }
+		localization_key = autonomy_solar_junior_power_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 2 } }
+		localization_key = autonomy_solar_signatory_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 3 } }
+		localization_key = autonomy_solar_protectorate_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 4 } }
+		localization_key = autonomy_solar_autonomous_mandate_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 5 } }
+		localization_key = autonomy_solar_mandate_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 6 } }
+		localization_key = autonomy_solar_pacification_zone_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 7 } }
+		localization_key = autonomy_solar_reconstruction_zone_desc
+	}
+	text = { 
+		trigger = { check_variable = { SOL_puppet_region_frame^currently_selected_puppet = 8 } }
+		localization_key = autonomy_solar_purification_zone_desc
+	}
+}
+defined_text = {
+	name = SOL_puppet_type_scripted_loc_scope
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_junior_power }
+		localization_key = autonomy_solar_junior_power
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_signatory }
+		localization_key = autonomy_solar_signatory
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_protectorate }
+		localization_key = autonomy_solar_protectorate
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_autonomous_mandate }
+		localization_key = autonomy_solar_autonomous_mandate
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_mandate }
+		localization_key = autonomy_solar_mandate
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_pacification_zone }
+		localization_key = autonomy_solar_pacification_zone
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_reconstruction_zone }
+		localization_key = autonomy_solar_reconstruction_zone
+	}
+	text = { 
+		trigger = { has_autonomy_state = autonomy_solar_purification_zone }
+		localization_key = autonomy_solar_purification_zone
+	}
+}
+defined_text = {
+	name = SOL_puppet_garrison_tt_resistance
+	text = {
+		trigger = { check_variable = { SOL_puppet_garrison_array_resistance_multiplier^currently_selected_puppet > 0 } }
+		localization_key = SOL_puppet_garrison_tt_resistance_loc
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_garrison_tt_compliance
+	text = {
+		trigger = { check_variable = { SOL_puppet_garrison_array_compliance^currently_selected_puppet < 0 } }
+		localization_key = SOL_puppet_garrison_tt_compliance_loc
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_garrison_tt_scaled_garrison
+	text = {
+		trigger = { check_variable = { SOL_puppet_garrison_array_filled_percent^currently_selected_puppet < 1 } }
+		localization_key = SOL_puppet_garrison_tt_scaled_garrison_loc
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_resistance_garrison_tt
+	text = {
+		trigger = { check_variable = { SOL_puppet_garrison_array_filled_percent^currently_selected_puppet < 1 } }
+		localization_key = SOL_puppet_garrison_tt_unmet_garrison
+	}
+	text = { 
+		localization_key = SOL_puppet_garrison_tt_met_garrison
+	}
+}
+defined_text = {
+	name = SOL_puppet_resistance_compliance
+	text = {
+		trigger = { check_variable = { SOL_puppet_resistance_target_compliance_decrease^currently_selected_puppet < 0 } }
+		localization_key = SOL_puppet_resistance_target_compliance
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_resistance_active_effects
+	text = {
+		trigger = { check_variable = { SOL_puppet_resistance_target_active_effects^currently_selected_puppet > 0 } }
+		localization_key = SOL_puppet_resistance_target_active_effects_pv
+	}
+	text = {
+		trigger = { check_variable = { SOL_puppet_resistance_target_active_effects^currently_selected_puppet < 0 } }
+		localization_key = SOL_puppet_resistance_target_active_effects_nv
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_resistance_change 
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_resistance_target_array^currently_selected_puppet > SOL_puppet_resistance_array^currently_selected_puppet }
+			check_variable = { SOL_puppet_resistance_array^currently_selected_puppet = 0 }
+			NOT = { check_variable = { SOL_puppet_resistance_target_array^currently_selected_puppet > 10 } }
+		}
+		localization_key = SOL_puppet_resistance_change_not_until_10
+	}
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_resistance_target_array^currently_selected_puppet > SOL_puppet_resistance_array^currently_selected_puppet }
+		}
+		localization_key = SOL_puppet_resistance_change_growing
+	}
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_resistance_target_array^currently_selected_puppet < SOL_puppet_resistance_array^currently_selected_puppet }
+		}
+		localization_key = SOL_puppet_resistance_change_decaying
+	}
+	text = { 
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_true_compliance_growth_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_true_compliance_growth^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_pv
+	}
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_true_compliance_growth^currently_selected_puppet < 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_nv
+	}
+	text = {
+		localization_key = SOL_puppet_true_compliance_growth_nt
+	}
+}
+defined_text = {
+	name = SOL_puppet_true_compliance_growth_puppet_type_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_compliance_growth_array^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_puppet_type_pv
+	}
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_compliance_growth_array^currently_selected_puppet < 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_puppet_type_nv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_true_compliance_growth_existing_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_compliance_decrease_existing_compliance^currently_selected_puppet < 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_existing_nv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_true_compliance_growth_active_effects_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_compliance_active_effects^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_active_effects_pv
+	}
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_compliance_active_effects^currently_selected_puppet < 0 }
+		}
+		localization_key = SOL_puppet_true_compliance_growth_active_effects_nv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_manpower_gain_compliance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_manpower_gain_compliance^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_manpower_gain_compliance_pv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_civ_factory_gain_compliance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_civilian_factory_gain_compliance^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_civ_factory_gain_compliance_pv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_civ_factory_gain_resistance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_obligation_scaling_factor^currently_selected_puppet < 1 }
+		}
+		localization_key = SOL_puppet_civ_factory_gain_resistance_yes
+	}
+	text = {
+		localization_key = SOL_puppet_civ_factory_gain_resistance_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_mil_factory_gain_compliance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_military_factory_gain_compliance^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_mil_factory_gain_compliance_pv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_mil_factory_gain_resistance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_obligation_scaling_factor^currently_selected_puppet < 1 }
+		}
+		localization_key = SOL_puppet_mil_factory_gain_resistance_yes
+	}
+	text = {
+		localization_key = SOL_puppet_mil_factory_gain_resistance_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_resources_gain_compliance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_resource_fraction_this_country_compliance^currently_selected_puppet > 0 }
+		}
+		localization_key = SOL_puppet_resources_gain_compliance_pv
+	}
+	text = {
+		localization_key = SOL_public_works_no
+	}
+}
+defined_text = {
+	name = SOL_puppet_resources_gain_resistance_loc
+	text = {
+		trigger = {
+			check_variable = { SOL_puppet_obligation_scaling_factor^currently_selected_puppet < 1 }
+		}
+		localization_key = SOL_puppet_resources_gain_resistance_yes
+	}
+	text = {
+		localization_key = SOL_puppet_resources_gain_resistance_no
 	}
 }

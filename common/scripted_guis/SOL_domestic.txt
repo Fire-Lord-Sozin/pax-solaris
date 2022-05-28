@@ -1,29 +1,4 @@
 scripted_gui = {
-	sol_domestic_start_gui = {
-		window_name = "sol_domestic_start_container"
-		context_type = player_context
-		visible = {
-			original_tag = EQS 
-			has_country_flag = sol_has_unlocked_public_works
-			NOT = { has_country_flag = SOL_has_completed_modern_national_development }
-		}
-		effects = {
-			sol_domestic_show_bg_click = {
-				if = {
-					limit = { has_variable = sol_public_works_screen_show }
-					clear_variable = sol_public_works_screen_show
-				}
-				else = {
-					set_variable = {
-						sol_public_works_screen_show = 1
-					}
-					hidden_effect = {
-						SOL_calculate_region_development = yes 
-					}
-				}
-			}
-		}
-	}
 	sol_domestic_container_gui = {
 		window_name = "sol_domestic_container"
 		dirty = sol_public_works_screen_show

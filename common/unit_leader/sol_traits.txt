@@ -15,6 +15,7 @@ leader_traits = {
 			sickness_chance = -1
 			wounded_chance_factor = -1
 			experience_gain_factor = -1
+			reassignment_duration_factor = -1
 		}
 	}
 	sky_commander = {	
@@ -25,7 +26,7 @@ leader_traits = {
 		}
 		modifier = {
 			air_superiority_bonus_in_combat = 0.5
-			army_speed_factor = 0.3
+			army_speed_factor = 0.2
 			no_supply_grace = 76
 			org_loss_when_moving = -0.2
 		}

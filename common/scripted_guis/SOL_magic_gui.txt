@@ -1,40 +1,4 @@
 scripted_gui = {
-	sol_magic_start_gui = {
-		window_name = "sol_magic_start_container"
-		context_type = player_context
-		visible = {
-			original_tag = EQS 
-			has_country_flag = sol_has_unlocked_magic
-		}
-		effects = {
-			sol_magic_show_bg_click = {
-				if = {
-					limit = { has_variable = sol_magic_screen_show }
-					clear_variable = sol_magic_screen_show
-				}
-				else = {
-					set_variable = { sol_magic_screen_show = 1 }
-					hidden_effect = { sol_calculate_magic = yes }
-				}
-			}
-			sol_magic_show_alert_bg_click = {
-				if = {
-					limit = { has_variable = sol_magic_screen_show }
-					clear_variable = sol_magic_screen_show
-				}
-				else = {
-					set_variable = { sol_magic_skills_show = 1 }
-					set_variable = { sol_magic_screen_show = 1 }
-					hidden_effect = { sol_calculate_magic = yes }
-				}
-			}
-		}
-		triggers = {
-			sol_magic_show_alert_bg_visible = {
-				check_variable = { sol_magic_perk_point_num > 0 }
-			}
-		}
-	}
 	sol_magic_container_gui = {
 		window_name = "sol_magic_container"
 		dirty = sol_magic_screen_show

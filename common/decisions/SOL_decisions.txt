@@ -5718,7 +5718,6 @@ SOL_mandates = {
 
 		visible = {
 			is_SOLAR_EMPIRE = yes
-			has_country_flag = SOL_unlocked_mandate_CHN
 			NOT = {
 				AND = {
 					has_country_flag = sol_released_smc

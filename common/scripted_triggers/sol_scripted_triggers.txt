@@ -377,19 +377,13 @@ has_public_work_all = {
 	any_of = {
 		array = SOL_region_array
 		value = current_region
-		if = {
-			limit = { check_variable = { current_region < 11 } }
-			OR = {
-				is_in_array = { SOL_ongoing_public_works = current_region }
-				is_in_array = { SOL_ongoing_urban_planning = current_region }
-				is_in_array = { SOL_ongoing_agmech = current_region }
-				is_in_array = { SOL_ongoing_infrastructure_hardening = current_region }
-				is_in_array = { SOL_ongoing_strat_tele = current_region }
-				is_in_array = { SOL_ongoing_modern_national_development = current_region }
-			}
-		}
-		else = {
-			always = no
+		OR = {
+			is_in_array = { SOL_ongoing_public_works = current_region }
+			is_in_array = { SOL_ongoing_urban_planning = current_region }
+			is_in_array = { SOL_ongoing_agmech = current_region }
+			is_in_array = { SOL_ongoing_infrastructure_hardening = current_region }
+			is_in_array = { SOL_ongoing_strat_tele = current_region }
+			is_in_array = { SOL_ongoing_modern_national_development = current_region }
 		}
 	}
 }
@@ -415,28 +409,22 @@ has_completed_public_works_all = {
 		any_of = {
 			array = SOL_region_array
 			value = current_region
-			if = {
-				limit = { check_variable = { current_region < 11 } }
+			NOT = {
+				is_in_array = { SOL_completed_public_works = current_region }
+				is_in_array = { SOL_completed_urban_planning = current_region }
+				is_in_array = { SOL_completed_agmech = current_region }
 				NOT = {
-					is_in_array = { SOL_completed_public_works = current_region }
-					is_in_array = { SOL_completed_urban_planning = current_region }
-					is_in_array = { SOL_completed_agmech = current_region }
-					NOT = {
-						any_state = {
-							check_variable = { SOL_public_works_region_id = EQS.current_region }
-							NOT = { has_state_flag = SOL_completed_infrastructure_hardening }
-						}
-					}
-					NOT = {
-						any_state = {
-							check_variable = { SOL_public_works_region_id = EQS.current_region }
-							NOT = { has_state_flag = SOL_completed_strat_tele }
-						}
+					any_state = {
+						check_variable = { SOL_public_works_region_id = EQS.current_region }
+						NOT = { has_state_flag = SOL_completed_infrastructure_hardening }
 					}
 				}
-			}
-			else = {
-				always = no
+				NOT = {
+					any_state = {
+						check_variable = { SOL_public_works_region_id = EQS.current_region }
+						NOT = { has_state_flag = SOL_completed_strat_tele }
+					}
+				}
 			}
 		}
 	}
@@ -712,7 +700,10 @@ is_solar_puppet = {
 	}
 }
 SOL_can_force_transfer = {
-	is_subject_of = EQS
+	OR = {
+		is_subject_of = EQS
+		original_tag = EQS
+	}
 }
 SOL_eligible_for_state_events = {
 	NOT = { state = 3 }

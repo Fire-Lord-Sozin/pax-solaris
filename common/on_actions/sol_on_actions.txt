@@ -114,22 +114,6 @@ on_actions = {
 				}
 			}
 			if = {
-				limit = { 
-					EQS = { is_SOLAR_EMPIRE = yes }
-					ROOT = { 
-						OR = {
-							is_SOLAR_EMPIRE = yes 
-							SOL_can_force_transfer = yes
-						}
-					}
-					FROM.FROM = {
-						is_fully_controlled_by = ROOT
-						is_owned_by = ROOT
-					}
-				}
-				FROM.FROM = { SOL_transfer_recent_states = yes }
-			}
-			if = {
 				limit = {
 					FROM = {
 						is_SOLAR_EMPIRE = yes 
@@ -433,6 +417,26 @@ on_actions = {
 						add_to_variable = { sol_display_state_decisions = 1 }
 					}
 				}
+				if = {
+					limit = { check_variable = { SOL_created_regions^num > 0 } }
+					for_each_loop = {
+						array = SOL_created_regions
+						value = current_region
+
+						if = {
+							limit = {
+								check_variable = {
+									var = SOL_puppet_resistance_array^current_region
+									value = 0
+									compare = less_than_or_equals
+								}
+							}
+							var:SOL_region_owner^current_region = {
+								add_stability = 0.004
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -634,29 +638,6 @@ on_actions = {
 					subtract_from_variable = { resistance_attack_blocked = 1 }
 				}
 
-				#Sarin Attack
-				if = {
-					limit = { has_variable = sol_gas_attack_cooldown }
-					subtract_from_variable = { sol_gas_attack_cooldown = 1 }
-					if = {
-						limit = { 
-							check_variable = { sol_gas_attack_cooldown < 91 } 
-							event_target:SOL_gassed_state = { has_dynamic_modifier = { modifier = SOL_gas_attack } }
-						}
-						event_target:SOL_gassed_state = {
-							remove_dynamic_modifier = { modifier = SOL_gas_attack } 
-							remove_province_modifier = {	
-								static_modifiers = { SOL_gas_attack_province }
-								province = { all_provinces = yes }
-							}
-						}
-					}
-					if = {
-						limit = { check_variable = { sol_gas_attack_cooldown < 1 } }
-						clear_variable = sol_gas_attack_cooldown
-					}
-				}
-
 				#Compliance Limit/Base/Core
 				every_state = {
 					limit = {
@@ -817,54 +798,6 @@ on_actions = {
 								divide_temp_variable = { var = sol_pony_population_change_temp value = 1000 }
 								hidden_effect = { SOL_pony_population_recalculate = yes }
 								add_manpower = var:SOL_number_of_settlements_this_state
-								if = {
-									limit = { check_variable = { EQS.current_pos = 0 } }
-									save_global_event_target_as = SOL_states_with_settlement_0
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 1 } }
-									save_global_event_target_as = SOL_states_with_settlement_1
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 2 } }
-									save_global_event_target_as = SOL_states_with_settlement_2
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 3 } }
-									save_global_event_target_as = SOL_states_with_settlement_3
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 4 } }
-									save_global_event_target_as = SOL_states_with_settlement_4
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 5 } }
-									save_global_event_target_as = SOL_states_with_settlement_5
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 6 } }
-									save_global_event_target_as = SOL_states_with_settlement_6
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 7 } }
-									save_global_event_target_as = SOL_states_with_settlement_7
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 8 } }
-									save_global_event_target_as = SOL_states_with_settlement_8
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 9 } }
-									save_global_event_target_as = SOL_states_with_settlement_9
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 10 } }
-									save_global_event_target_as = SOL_states_with_settlement_10
-								}
-								if = {
-									limit = { check_variable = { EQS.current_pos = 11 } }
-									save_global_event_target_as = SOL_states_with_settlement_11
-								}
 							}
 							else = {
 								add_to_array = { EQS.sol_remove_resettlement = THIS }
@@ -985,6 +918,242 @@ on_actions = {
 						}
 						clr_country_flag = SOL_preparing_to_attack_country
 						clear_global_event_target = SOL_strike_foe_target
+					}
+				}
+
+				if = {
+					limit = { check_variable = { SOL_created_regions^num > 0 } }
+					for_each_loop = {
+						array = SOL_created_regions
+						value = current_region
+
+						var:SOL_region_owner^current_region = {
+							save_global_event_target_as = sol_current_region_owner
+						}
+
+						set_variable = { SOL_puppet_stability_array^current_region = event_target:sol_current_region_owner.stability }
+
+						set_variable = { SOL_puppet_garrison_array^current_region = event_target:sol_current_region_owner.max_manpower_k }
+						multiply_variable = { SOL_puppet_garrison_array^current_region = SOL_puppet_garrison_base_requirement_array^current_region }
+						multiply_variable = { SOL_puppet_garrison_array^current_region = SOL_puppet_max_resistance_target^current_region }
+						divide_variable = { SOL_puppet_garrison_array^current_region = 100 }
+						set_variable = { SOL_puppet_garrison_base_manpower_draw^current_region = SOL_puppet_garrison_array^current_region }
+						if = {
+							limit = { check_variable = { SOL_puppet_resistance_array^current_region > 20 } }
+							if = {
+								limit = { check_variable = { SOL_puppet_resistance_array^current_region < 60 } }
+								set_variable = { SOL_puppet_garrison_array_resistance_multiplier^current_region = 0.05 }
+								multiply_variable = { SOL_puppet_garrison_array_resistance_multiplier^current_region = SOL_puppet_resistance_array^current_region }	
+							}
+							else = {
+								set_variable = { SOL_puppet_garrison_array_resistance_multiplier^current_region = 3 }
+							}
+						}
+						else = {
+							set_variable = { SOL_puppet_garrison_array_resistance_multiplier^current_region = 1 }
+						}
+						multiply_variable = { SOL_puppet_garrison_array^current_region = SOL_puppet_garrison_array_resistance_multiplier^current_region }
+						subtract_from_variable = { SOL_puppet_garrison_array_resistance_multiplier^current_region = 1 }
+
+						set_variable = { SOL_puppet_stability_modifier_array^current_region = SOL_puppet_stability_array^current_region }
+						if = {
+							limit = { 
+								OR = {
+									event_target:sol_current_region_owner = { has_autonomy_state = autonomy_solar_purification_zone }
+									event_target:sol_current_region_owner = { has_autonomy_state = autonomy_solar_reconstruction_zone }
+								}
+							}
+							multiply_variable = { SOL_puppet_stability_modifier_array^current_region = -0.8 }
+						}
+						else_if = {
+							limit = { 
+								OR = {
+									event_target:sol_current_region_owner = { has_autonomy_state = autonomy_solar_pacification_zone }
+									event_target:sol_current_region_owner = { has_autonomy_state = autonomy_solar_signatory }
+								}
+							}
+							multiply_variable = { SOL_puppet_stability_modifier_array^current_region = -0.7 }
+						}
+						else = {
+							multiply_variable = { SOL_puppet_stability_modifier_array^current_region = -0.5 }
+						}
+						set_temp_variable = { SOL_garrison_multiplier = SOL_puppet_stability_modifier_array^current_region }
+						set_variable = { SOL_puppet_garrison_array_compliance^current_region = SOL_puppet_compliance_array^current_region }
+						divide_variable = { SOL_puppet_garrison_array_compliance^current_region = -200 }
+						add_to_temp_variable = { SOL_garrison_multiplier = SOL_puppet_garrison_array_compliance^current_region }
+						add_to_temp_variable = { SOL_garrison_multiplier = 1 }
+						multiply_variable = { SOL_puppet_garrison_array^current_region = SOL_garrison_multiplier }
+						if = {
+							limit = { EQS = { is_ai = yes } }
+							multiply_variable = { SOL_puppet_garrison_array^current_region = 0.5 }
+						}
+						set_variable = { SOL_puppet_manpower_fraction^current_region = 0 }
+						set_variable = { SOL_puppet_manpower_gain_compliance^current_region = SOL_puppet_compliance_array^current_region }
+						divide_variable = { SOL_puppet_manpower_gain_compliance^current_region = 2.5 }
+						add_to_variable = { SOL_puppet_manpower_fraction^current_region = SOL_puppet_manpower_gain_compliance^current_region }
+						set_variable = { SOL_puppet_manpower_gained^current_region = SOL_puppet_manpower_fraction^current_region }
+						multiply_variable = { SOL_puppet_manpower_gained^current_region = event_target:sol_current_region_owner.max_manpower_k }
+						multiply_variable = { SOL_puppet_manpower_gained^current_region = 0.01 }
+						multiply_variable = { SOL_puppet_manpower_gained^current_region = modifier@conscription }
+						if = {
+							limit = { check_variable = { SOL_puppet_manpower_gained^current_region > SOL_puppet_manpower_received^current_region } }
+							set_temp_variable = { SOL_manpower_to_add = SOL_puppet_manpower_gained^current_region }
+							subtract_from_temp_variable = { SOL_manpower_to_add = SOL_puppet_manpower_received^current_region }
+							multiply_temp_variable = { SOL_manpower_to_add = 1000 }
+							round_temp_variable = SOL_manpower_to_add
+							add_manpower = SOL_manpower_to_add
+							set_variable = { SOL_puppet_manpower_received^current_region = SOL_puppet_manpower_gained^current_region }
+						}
+					}
+					SOL_calculate_manpower_draw = yes
+					for_each_loop = {
+						array = SOL_created_regions
+						value = current_region
+						clamp_variable = {
+							var = SOL_puppet_resistance_target_array^current_region
+							min = 0
+							max = 100
+						}
+						if = {
+							limit = { 
+								check_variable = { SOL_puppet_resistance_target_array^current_region > SOL_puppet_resistance_array^current_region }
+								if = {
+									limit = { check_variable = { SOL_puppet_resistance_array^current_region = 0 } }
+									check_variable = { SOL_puppet_resistance_target_array^current_region > 10 }
+								}
+							}
+							add_to_variable = { SOL_puppet_resistance_array^current_region = 0.2 }
+							clamp_variable = {
+								var = SOL_puppet_resistance_array^current_region
+								max = SOL_puppet_resistance_target_array^current_region
+							}
+						}
+						if = {
+							limit = { 
+								check_variable = { SOL_puppet_resistance_target_array^current_region < SOL_puppet_resistance_array^current_region }
+							}
+							add_to_variable = { SOL_puppet_resistance_array^current_region = -0.2 }
+							clamp_variable = {
+								var = SOL_puppet_resistance_array^current_region
+								min = SOL_puppet_resistance_target_array^current_region
+							}
+						}
+						set_variable = { SOL_puppet_true_compliance_growth^current_region = SOL_puppet_compliance_growth_array^current_region }
+						set_variable = { SOL_puppet_compliance_decrease_existing_compliance^current_region = SOL_puppet_compliance_array^current_region }
+						divide_variable = { SOL_puppet_compliance_decrease_existing_compliance^current_region = 10 }
+						multiply_variable = { SOL_puppet_compliance_decrease_existing_compliance^current_region = -0.008 }
+						add_to_variable = { SOL_puppet_true_compliance_growth^current_region = SOL_puppet_compliance_decrease_existing_compliance^current_region }
+						add_to_variable = { SOL_puppet_true_compliance_growth^current_region = SOL_puppet_compliance_active_effects^current_region }
+						add_to_variable = { SOL_puppet_compliance_array^current_region = SOL_puppet_true_compliance_growth^current_region }
+						clamp_variable = {
+							var = SOL_puppet_compliance_array^current_region
+							min = 0
+							max = 100
+						}
+						set_variable = { SOL_puppet_max_resistance_target^current_region = 100 }
+						set_variable = { SOL_puppet_resistance_target_compliance_decrease^current_region = SOL_puppet_compliance_array^current_region }
+						multiply_variable = { SOL_puppet_resistance_target_compliance_decrease^current_region = -0.5 }
+						add_to_variable = { SOL_puppet_max_resistance_target^current_region = SOL_puppet_resistance_target_compliance_decrease^current_region }
+						add_to_variable = { SOL_puppet_max_resistance_target^current_region = SOL_puppet_resistance_target_active_effects^current_region }
+						clamp_variable = {
+							var = SOL_puppet_max_resistance_target^current_region
+							min = 0
+							max = 100
+						}
+						if = {
+							limit = { check_variable = { SOL_puppet_resistance_array^current_region > 20 } }
+							if = {
+								limit = { check_variable = { SOL_puppet_resistance_array^current_region < 80 } }
+								set_variable = { SOL_puppet_obligation_scaling_factor^current_region = 100 }
+								subtract_from_variable = { SOL_puppet_obligation_scaling_factor^current_region = SOL_puppet_resistance_array^current_region }
+								subtract_from_variable = { SOL_puppet_obligation_scaling_factor^current_region = 20 }
+								divide_variable = { SOL_puppet_obligation_scaling_factor^current_region = 60 }
+							}
+							else = {
+								set_variable = { SOL_puppet_obligation_scaling_factor^current_region = 0 }
+							}
+						}
+						else = {
+							set_variable = { SOL_puppet_obligation_scaling_factor^current_region = 1 }
+						}
+						set_variable = { SOL_puppet_civilian_factory_obligations_array^current_region = 0 }
+						add_to_variable = { SOL_puppet_civilian_factory_obligations_array^current_region = SOL_puppet_civilian_factory_obligations_base_array^current_region }
+						set_variable = { SOL_puppet_civilian_factory_gain_compliance^current_region = SOL_puppet_compliance_array^current_region }
+						multiply_variable = { SOL_puppet_civilian_factory_gain_compliance^current_region = SOL_puppet_civilian_factory_obligations_base_array^current_region }
+						round_variable = SOL_puppet_civilian_factory_gain_compliance^current_region
+						divide_variable = { SOL_puppet_civilian_factory_gain_compliance^current_region = 500 }
+						add_to_variable = { SOL_puppet_civilian_factory_obligations_array^current_region = SOL_puppet_civilian_factory_gain_compliance^current_region }
+						multiply_variable = { SOL_puppet_civilian_factory_obligations_array^current_region = SOL_puppet_obligation_scaling_factor^current_region }
+
+						set_variable = { SOL_puppet_military_factory_obligations_array^current_region = 0 }
+						add_to_variable = { SOL_puppet_military_factory_obligations_array^current_region = SOL_puppet_military_factory_obligations_base_array^current_region }
+						set_variable = { SOL_puppet_military_factory_gain_compliance^current_region = SOL_puppet_compliance_array^current_region }
+						multiply_variable = { SOL_puppet_military_factory_gain_compliance^current_region = SOL_puppet_military_factory_obligations_base_array^current_region }
+						round_variable = SOL_puppet_military_factory_gain_compliance^current_region
+						divide_variable = { SOL_puppet_military_factory_gain_compliance^current_region = 500 }
+						add_to_variable = { SOL_puppet_military_factory_obligations_array^current_region = SOL_puppet_military_factory_gain_compliance^current_region }
+						multiply_variable = { SOL_puppet_military_factory_obligations_array^current_region = SOL_puppet_obligation_scaling_factor^current_region }
+
+						set_variable = { SOL_resource_fraction_this_country_array^current_region = 0 }
+						add_to_variable = { SOL_resource_fraction_this_country_array^current_region = SOL_resource_fraction_this_country_base_array^current_region }
+						set_variable = { SOL_resource_fraction_this_country_compliance^current_region = SOL_puppet_compliance_array^current_region }
+						multiply_variable = { SOL_resource_fraction_this_country_compliance^current_region = SOL_resource_fraction_this_country_base_array^current_region }
+						round_variable = SOL_resource_fraction_this_country_compliance^current_region
+						divide_variable = { SOL_resource_fraction_this_country_compliance^current_region = 500 }
+						add_to_variable = { SOL_resource_fraction_this_country_array^current_region = SOL_resource_fraction_this_country_compliance^current_region }
+						multiply_variable = { SOL_resource_fraction_this_country_array^current_region = SOL_puppet_obligation_scaling_factor^current_region }
+						
+						var:SOL_region_owner^current_region = {
+							set_variable = { SOL_puppet_civilian_factory_obligations = PREV.SOL_puppet_civilian_factory_obligations_array^SOL_owns_region }
+							set_variable = { SOL_puppet_military_factory_obligations = PREV.SOL_puppet_military_factory_obligations_array^SOL_owns_region }
+							set_variable = { SOL_resource_fraction_this_country = PREV.SOL_resource_fraction_this_country_array^SOL_owns_region}
+						}
+					}
+					if = {
+						limit = { has_variable = currently_selected_puppet }
+						SOL_calculate_puppet_bar_pos = yes
+					}
+					if = {
+						limit = { has_variable = sol_puppet_mechanic_show }
+						add_to_variable = { sol_puppet_mechanic_show = 1 }
+					}
+				}
+			}
+		}
+	}
+	on_monthly_EQS = {
+		effect = {
+			if = {
+				limit = { 
+					EQS = { is_SOLAR_EMPIRE = yes }
+					check_variable = { SOL_created_regions^num > 0 }
+				}
+				every_state = {
+					limit = { 
+						owner = {
+							has_full_control_of_state = PREV
+							SOL_can_force_transfer = yes
+						}				
+						has_variable = SOL_puppet_region_id
+						EQS = { is_in_array = { SOL_created_regions = PREV.SOL_puppet_region_id } }
+						NOT = { owner = { tag = var:EQS.SOL_region_owner^PREV.SOL_puppet_region_id } }
+					}
+					var:EQS.SOL_region_owner^THIS.SOL_puppet_region_id = { transfer_state = PREV }
+				}
+				if = {
+					limit = {
+						any_country = { has_dynamic_modifier = { modifier = SOL_puppet_exploitation } }
+					}
+					set_variable = { SOL_puppet_resource_aluminium = 0 }
+					set_variable = { SOL_puppet_resource_chromium = 0 }
+					set_variable = { SOL_puppet_resource_oil = 0 }
+					set_variable = { SOL_puppet_resource_rubber = 0 }
+					set_variable = { SOL_puppet_resource_steel = 0 }
+					set_variable = { SOL_puppet_resource_tungsten = 0 }
+					set_variable = { SOL_puppet_resource_crystals = 0 }
+					every_country = {
+						limit = { has_dynamic_modifier = { modifier = SOL_puppet_exploitation } }
+						SOL_calculate_resource_share = yes
 					}
 				}
 			}
@@ -1540,6 +1709,12 @@ on_actions = {
 					}
 				}
 			}
+			if = {
+				limit = { 
+					ROOT = { has_dynamic_modifier = { modifier = SOL_puppet_exploitation } }
+				}
+				ROOT = { SOL_recalculate_resource = yes}
+			}
 		}
 	}
 	on_puppet = {
@@ -1634,24 +1809,21 @@ on_actions = {
 				}
 			}
 			if = {
-				limit = { EQS = { is_SOLAR_EMPIRE = yes } }
+				limit = { 
+					EQS = { is_SOLAR_EMPIRE = yes }
+					check_variable = { SOL_created_regions^num > 0 }
+				}
 				every_state = {
-					limit = {
-						has_variable = SOL_public_works_region_id
-						check_variable = { SOL_public_works_region_id > 10 }
-						OR = {
-							is_owned_by = EQS
-							owner = { SOL_can_force_transfer = yes }
-						}
-						OR = {
-							is_fully_controlled_by = EQS
-							controller = { 
-								SOL_can_force_transfer = yes 
-								PREV = { is_fully_controlled_by = PREV } 
-							}
-						}
+					limit = { 
+						owner = {
+							has_full_control_of_state = PREV
+							SOL_can_force_transfer = yes
+						}				
+						has_variable = SOL_puppet_region_id
+						EQS = { is_in_array = { SOL_created_regions = PREV.SOL_puppet_region_id } }
+						NOT = { owner = { tag = var:EQS.SOL_region_owner^PREV.SOL_puppet_region_id } }
 					}
-					SOL_transfer_recent_states = yes
+					var:EQS.SOL_region_owner^THIS.SOL_puppet_region_id = { transfer_state = PREV }
 				}
 			}
 		}

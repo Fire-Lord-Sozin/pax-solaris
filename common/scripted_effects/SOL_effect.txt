@@ -1439,12 +1439,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 313
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 11 } #North Changelingia
+		set_variable = { SOL_puppet_region_id = 1 } #North Changelingia
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^11 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^1 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 11 }
+	add_to_array = { SOL_puppet_region_array = 1 }
 	every_state = {
 		limit = {
 			OR = {
@@ -1465,12 +1465,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 291
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 12 } #South Changelingia
+		set_variable = { SOL_puppet_region_id = 2 } #South Changelingia
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^12 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^2 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 12 }
+	add_to_array = { SOL_puppet_region_array = 2 }
 	every_state = {
 		limit = {
 			OR = {
@@ -1521,12 +1521,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 224
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 13 } #Olenia
+		set_variable = { SOL_puppet_region_id = 3 } #Olenia
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^13 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^3 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 13 }
+	add_to_array = { SOL_puppet_region_array = 3 }
 	every_state = {
 		limit = {
 			OR = {
@@ -1547,12 +1547,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 288
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 14 } #Nova Griffonia
+		set_variable = { SOL_puppet_region_id = 4 } #Nova Griffonia
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^14 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^4 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 14 }
+	add_to_array = { SOL_puppet_region_array = 4 }
 	every_state = {
 		limit = {
 			OR = {
@@ -1577,12 +1577,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 342
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 15 } #Yakyakistan
+		set_variable = { SOL_puppet_region_id = 5 } #Yakyakistan
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^15 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^5 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 15 }
+	add_to_array = { SOL_puppet_region_array = 5 }
 	every_state = {
 		limit = {
 			OR = {
@@ -1593,12 +1593,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 325
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 16 } #Pingland
+		set_variable = { SOL_puppet_region_id = 6 } #Pingland
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^16 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^6 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 16 }
+	add_to_array = { SOL_puppet_region_array = 6 }
 	every_state = {
 		limit = {
 			OR = {
@@ -1611,12 +1611,12 @@ SOL_set_state_flags_for_public_works = {
 				state = 280
 			}
 		}
-		set_variable = { SOL_public_works_region_id = 17 } #Polar Bears
+		set_variable = { SOL_puppet_region_id = 7 } #Polar Bears
 		EQS = { add_to_temp_variable = { SOL_num_states_this_region = 1 } }
 	}
-	set_variable = { SOL_public_works_num_states^17 = SOL_num_states_this_region }
+	set_variable = { SOL_puppet_num_states^7 = SOL_num_states_this_region }
 	set_temp_variable = { SOL_num_states_this_region = 0 }
-	add_to_array = { SOL_region_array = 17 }
+	add_to_array = { SOL_puppet_region_array = 7 }
 }
 SOL_calculate_region_development = {
 	set_variable = { SOL_public_works_region_development_average = 0 }

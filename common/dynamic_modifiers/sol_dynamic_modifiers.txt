@@ -249,3 +249,30 @@ SOL_queen_orapia = {
 	resistance_decay = 0.1
 	compliance_gain = 0.025
 }
+
+SOL_puppet_no_autonomy_modifier = {
+	autonomy_gain_global_factor = -3
+}
+SOL_puppet_exploitation = {
+	remove_trigger = {
+		NOT = { is_subject_of = EQS }
+	}
+	cic_to_overlord_factor = SOL_puppet_civilian_factory_obligations
+	mic_to_overlord_factor = SOL_puppet_military_factory_obligations
+	country_resource_aluminium = SOL_puppet_resource_extraction_aluminium
+	country_resource_chromium = SOL_puppet_resource_extraction_chromium
+	country_resource_oil = SOL_puppet_resource_extraction_oil
+	country_resource_rubber = SOL_puppet_resource_extraction_rubber
+	country_resource_steel = SOL_puppet_resource_extraction_steel
+	country_resource_tungsten = SOL_puppet_resource_extraction_tungsten
+	country_resource_crystals = SOL_puppet_resource_extraction_crystals
+}
+SOL_puppet_resource_gain = {
+	country_resource_aluminium = SOL_puppet_resource_aluminium
+	country_resource_chromium = SOL_puppet_resource_chromium
+	country_resource_oil = SOL_puppet_resource_oil
+	country_resource_rubber = SOL_puppet_resource_rubber
+	country_resource_steel = SOL_puppet_resource_steel
+	country_resource_tungsten = SOL_puppet_resource_tungsten
+	country_resource_crystals = SOL_puppet_resource_crystals
+}
