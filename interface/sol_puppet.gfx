@@ -1,0 +1,218 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_sol_puppet_background"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_background.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_close_button"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_close_button.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_frame"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_frame.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_minimap_frame"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_minimap_frame.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_mist"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_mist.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_mist"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_mist.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_resistance_bar_large_bg"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_resistance_bar_large_bg.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_compliance_bar_large_bg"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_compliance_bar_large_bg.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_resistance_progress_bar"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_resistance_progress_bar.dds"
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_compliance_progress_bar"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_compliance_progress_bar.dds"
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_0"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_0.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_1"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_1.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_2"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_2.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_3"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_3.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_4"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_4.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_5"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_5.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_super_region_6"
+		texturefile = "gfx/interface/sol_puppets/sol_super_region_6.dds"
+		noOfFrames = 2
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_create"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_create.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_alert"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_alert.dds"
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_priority_high"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_priority_high.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_priority_med"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_priority_med.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_priority_low"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_priority_low.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_priority"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_priority.dds"
+	}
+
+
+	#Northwest Equus
+	spriteType = {
+		name = "GFX_SOL_region_11"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_11.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_11_key"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_11_key.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_11_unified"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_11_unified.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_11_unified_key"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_11_unified_key.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_12"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_12.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_13"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_13.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_13_rump"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_13_rump.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_SOL_region_18"
+		texturefile = "gfx/interface/sol_puppets/SOL_region_18.dds"
+		noOfFrames = 8
+		transparencecheck = yes
+	}
+	frameAnimatedSpriteType = {
+		name = "GFX_sol_puppet_available_1"
+		texturefile = "gfx/interface/sol_puppets/sol_magic_aura_1.dds"
+		noOfFrames = 3
+		animation_rate_fps = 1
+		looping = yes
+		play_on_show = yes
+		pause_on_loop = 0.0
+		alwaystransparent = yes
+		effectFile = "gfx/FX/buttonstate_blendframes.lua"
+	}
+	frameAnimatedSpriteType = {
+		name = "GFX_sol_puppet_available_2"
+		texturefile = "gfx/interface/sol_puppets/sol_magic_aura_2.dds"
+		noOfFrames = 3
+		animation_rate_fps = 0.9
+		looping = yes
+		play_on_show = yes
+		pause_on_loop = 0.0
+		alwaystransparent = yes
+		effectFile = "gfx/FX/buttonstate_blendframes.lua"
+	}
+	spriteType = {
+		name = "GFX_SOL_puppet_types"
+		texturefile = "gfx/interface/sol_puppets/SOL_puppet_types.dds"
+		noOfFrames = 8
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_stability"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_stability.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_garrison"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_garrison.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_civ_factory"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_civ_factory.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_manpower"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_manpower.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_mil_factory"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_mil_factory.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_puppet_resources"
+		texturefile = "gfx/interface/sol_puppets/sol_puppet_resources.dds"
+	}
+}

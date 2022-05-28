@@ -320,8 +320,8 @@ recruit_character = EQS_SOL_keelhaul
 recruit_character = EQS_SOL_sea_salt
 recruit_character = EQS_SOL_cloud_strafer
 recruit_character = EQS_SOL_hurricane
-recruit_character = EQS_SOL_lightning_dust
 recruit_character = EQS_SOL_sparking_flame
+recruit_character = EQS_SOL_lightning_dust
 
 if = {
 	limit = {

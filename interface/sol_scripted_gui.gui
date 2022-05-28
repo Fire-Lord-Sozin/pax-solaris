@@ -289,20 +289,8 @@ guiTypes = {
 			name = "alert_disable_bg"
 			spriteType = "GFX_cancel_conversion_button"
 			pdx_tooltip = "alert_disable_bg_tt"
-			pdx_tooltip_delayed = "alert_disable_bg_delayed"
 			position = { x=20 y=20 }
 			clicksound = click_close
-		}
-	}
-	containerWindowType = {
-		name = "alert_enable_container"
-		position = { x = 1070 y = 2 }
-		
-		buttonType = {
-			name = "alert_enable_bg"
-			spriteType = "GFX_SOL_alert_enable_bg"
-			position = { x=0 y=0 }
-			pdx_tooltip = "alert_enable_bg_tt"
 		}
 	}
 	containerWindowType = {
@@ -409,6 +397,64 @@ guiTypes = {
 			maxHeight = 36
 			format = center
 			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "SOL_gui_menu_container"
+		Orientation = UPPER_RIGHT
+		position = {x = -36 y = 85 }
+		size = { width= 36 height= 139 }
+		Background = {
+			name = "sol_gui_menu"
+			spriteType = "GFX_sol_gui_menu"
+		}
+		buttonType = {
+			name = "alert_toggle_bg"
+			spriteType = "GFX_SOL_alert_toggle_bg"
+			position = { x=6 y=98 }
+			pdx_tooltip = "alert_toggle_bg_tt"
+		}
+		buttonType = {
+			name = "alert_enable_bg"
+			spriteType = "GFX_SOL_alert_enable_bg"
+			position = { x=6 y=96 }
+			pdx_tooltip = "alert_toggle_bg_tt"
+		}
+		buttonType = {
+			name = "sol_domestic_show_bg"
+			spriteType = "GFX_SOL_public_works_icon"
+			position = { x=6 y=70 }
+			shortcut = "ctrl+p"
+			pdx_tooltip = "sol_public_works_bg_tt"
+		}
+		buttonType = {
+			name = "sol_magic_show_bg"
+			spriteType = "GFX_SOL_magic_start_bg"
+			position = { x=6 y=42 }
+			shortcut = "ctrl+d"
+			pdx_tooltip = "sol_magic_bg_tt"
+		}
+		buttonType = {
+			name = "sol_magic_show_alert_bg"
+			spriteType = "GFX_SOL_magic_start_alert_bg"
+			position = { x=6 y=40 }
+			shortcut = "ctrl+d"
+			pdx_tooltip = "sol_magic_bg_tt"
+		}
+		buttonType = {
+			name = "sol_puppet_show_bg"
+			spriteType = "GFX_SOL_puppet_start_bg"
+			position = { x=6 y=14 }
+			shortcut = "ctrl+w"
+			pdx_tooltip = "sol_puppet_bg_tt"
+		}
+		buttonType = {
+			name = "sol_puppet_show_alert_bg"
+			spriteType = "GFX_SOL_puppet_start_alert_bg"
+			position = { x=6 y=12 }
+			shortcut = "ctrl+w"
+			pdx_tooltip = "sol_puppet_bg_tt"
 		}
 	}
 }

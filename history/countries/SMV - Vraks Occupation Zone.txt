@@ -108,12 +108,4 @@ set_politics = {
 recruit_character = SMV_thorax
 recruit_character = SMV_gold_muffin
 recruit_character = SMV_trimmel
-create_country_leader = {
-	name = "Lightning Dust"
-	expire = "1965.1.1"
-	picture = "gfx/leaders/SOL/sol_lightning.tga"
-	ideology = nazism
-	desc = "SOL_LIGHTNING_DESC"
-	traits = {
-	}
-}
+

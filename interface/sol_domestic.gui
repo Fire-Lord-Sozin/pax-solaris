@@ -1,16 +1,5 @@
 guiTypes = {
 	containerWindowType = {
-		name = "sol_domestic_start_container"
-		position = { x = 1130 y = 4 }
-		
-		buttonType = {
-			name = "sol_domestic_show_bg"
-			spriteType = "GFX_SOL_public_works_icon"
-			position = { x= 0 y= 0 }
-			shortcut = "ctrl+p"
-		}
-	}
-	containerWindowType = {
 		name = "sol_domestic_container"
 		size = { width = 1268 height = 691 }
 		position = { x=308 y=199 }

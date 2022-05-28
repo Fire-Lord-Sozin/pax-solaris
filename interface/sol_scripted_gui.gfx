@@ -80,10 +80,6 @@ spriteTypes = {
 		texturefile = "gfx/interface/SOL_chemical_attack_greyed.dds"
 	}
 	spriteType = {
-		name = "GFX_SOL_alert_enable_bg"
-		texturefile = "gfx/interface/SOL_alert_enable_bg.dds"
-	}
-	spriteType = {
 		name = "GFX_sol_sunlight_background"
 		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_background.dds"
 	}
@@ -110,5 +106,25 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_sol_sunlight_sunset_allies"
 		texturefile = "gfx/interface/sol_dialogue/sol_sunlight_sunset_allies.dds"
+	}
+	spriteType = {
+		name = "GFX_sol_gui_menu"
+		texturefile = "gfx/interface/sol_gui_menu.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_alert_toggle_bg"
+		texturefile = "gfx/interface/SOL_alert_toggle_bg.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_alert_enable_bg"
+		texturefile = "gfx/interface/SOL_alert_enable_bg.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_puppet_start_bg"
+		texturefile = "gfx/interface/SOL_puppet_start_bg.dds"
+	}
+	spriteType = {
+		name = "GFX_SOL_puppet_start_alert_bg"
+		texturefile = "gfx/interface/SOL_puppet_start_alert_bg.dds"
 	}
 }
