@@ -1,9 +1,0 @@
-opinion_modifiers = {
-  NLR_Republican_Cooperation = { value = 100 }
-}
-opinion_modifiers = {
-  HRM_recognised_HRM = { value = 50 }
-}
-opinion_modifiers = {
-  EQS_recognised_HRM = { value = -50 }
-}
